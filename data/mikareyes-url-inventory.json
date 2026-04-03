@@ -1,0 +1,2998 @@
+{
+  "fetchedAt": "2026-04-02T17:33:49.640Z",
+  "source": "https://mikareyes.com/sitemap.xml",
+  "total": 273,
+  "counts": {
+    "home": 1,
+    "root_article": 38,
+    "static_page": 1,
+    "blog_index": 1,
+    "blog_post": 197,
+    "nested_page": 35
+  },
+  "nestedSectionRoots": [
+    "links",
+    "more",
+    "more/mikas-projects",
+    "press"
+  ],
+  "entries": [
+    {
+      "url": "https://mikareyes.com/",
+      "path": "/",
+      "pathForNotion": "",
+      "category": "home",
+      "lastmod": null,
+      "segments": []
+    },
+    {
+      "url": "https://mikareyes.com/a-real-life-wonderwoman",
+      "path": "/a-real-life-wonderwoman",
+      "pathForNotion": "a-real-life-wonderwoman",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "a-real-life-wonderwoman"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/about",
+      "path": "/about",
+      "pathForNotion": "about",
+      "category": "static_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "about"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/backscoop-founder-feature",
+      "path": "/backscoop-founder-feature",
+      "pathForNotion": "backscoop-founder-feature",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "backscoop-founder-feature"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog",
+      "path": "/blog",
+      "pathForNotion": "blog",
+      "category": "blog_index",
+      "lastmod": "2026-03-30T12:01:42.727Z",
+      "segments": [
+        "blog"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/2018-year-end-review",
+      "path": "/blog/2018-year-end-review",
+      "pathForNotion": "blog/2018-year-end-review",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "2018-year-end-review"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/6-games-to-play-in-your-career",
+      "path": "/blog/6-games-to-play-in-your-career",
+      "pathForNotion": "blog/6-games-to-play-in-your-career",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "6-games-to-play-in-your-career"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/a-2020-year-in-review",
+      "path": "/blog/a-2020-year-in-review",
+      "pathForNotion": "blog/a-2020-year-in-review",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "a-2020-year-in-review"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/a-learning-a-day",
+      "path": "/blog/a-learning-a-day",
+      "pathForNotion": "blog/a-learning-a-day",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "a-learning-a-day"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/a-more-customer-centric-team",
+      "path": "/blog/a-more-customer-centric-team",
+      "pathForNotion": "blog/a-more-customer-centric-team",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "a-more-customer-centric-team"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/a-new-hope-for-immigrants",
+      "path": "/blog/a-new-hope-for-immigrants",
+      "pathForNotion": "blog/a-new-hope-for-immigrants",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "a-new-hope-for-immigrants"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/a-not-so-lyrical-but-equally-meaningful-ode-to-mentors",
+      "path": "/blog/a-not-so-lyrical-but-equally-meaningful-ode-to-mentors",
+      "pathForNotion": "blog/a-not-so-lyrical-but-equally-meaningful-ode-to-mentors",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "a-not-so-lyrical-but-equally-meaningful-ode-to-mentors"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/a-wow-airbnb-words-of-wisdom",
+      "path": "/blog/a-wow-airbnb-words-of-wisdom",
+      "pathForNotion": "blog/a-wow-airbnb-words-of-wisdom",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "a-wow-airbnb-words-of-wisdom"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/ai-app-builders-fast-starts-slow-finishes",
+      "path": "/blog/ai-app-builders-fast-starts-slow-finishes",
+      "pathForNotion": "blog/ai-app-builders-fast-starts-slow-finishes",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "ai-app-builders-fast-starts-slow-finishes"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/ai-as-your-ultimate-thinking-partner",
+      "path": "/blog/ai-as-your-ultimate-thinking-partner",
+      "pathForNotion": "blog/ai-as-your-ultimate-thinking-partner",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "ai-as-your-ultimate-thinking-partner"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/ai-gift-ideas-for-the-holidays",
+      "path": "/blog/ai-gift-ideas-for-the-holidays",
+      "pathForNotion": "blog/ai-gift-ideas-for-the-holidays",
+      "category": "blog_post",
+      "lastmod": "2025-12-01T13:01:26.275Z",
+      "segments": [
+        "blog",
+        "ai-gift-ideas-for-the-holidays"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/ai-opportunities-for-filipinos",
+      "path": "/blog/ai-opportunities-for-filipinos",
+      "pathForNotion": "blog/ai-opportunities-for-filipinos",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "ai-opportunities-for-filipinos"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/ai-tool-to-auto-update-faq-docs",
+      "path": "/blog/ai-tool-to-auto-update-faq-docs",
+      "pathForNotion": "blog/ai-tool-to-auto-update-faq-docs",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "ai-tool-to-auto-update-faq-docs"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/ai-tools-for-custom-landing-page-graphics",
+      "path": "/blog/ai-tools-for-custom-landing-page-graphics",
+      "pathForNotion": "blog/ai-tools-for-custom-landing-page-graphics",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "ai-tools-for-custom-landing-page-graphics"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/annual-reflection-template-and-misogi-challenge",
+      "path": "/blog/annual-reflection-template-and-misogi-challenge",
+      "pathForNotion": "blog/annual-reflection-template-and-misogi-challenge",
+      "category": "blog_post",
+      "lastmod": "2026-01-05T13:00:07.904Z",
+      "segments": [
+        "blog",
+        "annual-reflection-template-and-misogi-challenge"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/annual-year-in-review-2022",
+      "path": "/blog/annual-year-in-review-2022",
+      "pathForNotion": "blog/annual-year-in-review-2022",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "annual-year-in-review-2022"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/anti-sell-interview",
+      "path": "/blog/anti-sell-interview",
+      "pathForNotion": "blog/anti-sell-interview",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "anti-sell-interview"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/arriving-home",
+      "path": "/blog/arriving-home",
+      "pathForNotion": "blog/arriving-home",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "arriving-home"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/avoiding-advisor-syndrome-in-user-research",
+      "path": "/blog/avoiding-advisor-syndrome-in-user-research",
+      "pathForNotion": "blog/avoiding-advisor-syndrome-in-user-research",
+      "category": "blog_post",
+      "lastmod": "2025-10-06T12:00:32.330Z",
+      "segments": [
+        "blog",
+        "avoiding-advisor-syndrome-in-user-research"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/beach-wedding-bliss-in-the-philippines",
+      "path": "/blog/beach-wedding-bliss-in-the-philippines",
+      "pathForNotion": "blog/beach-wedding-bliss-in-the-philippines",
+      "category": "blog_post",
+      "lastmod": "2026-02-02T13:01:16.703Z",
+      "segments": [
+        "blog",
+        "beach-wedding-bliss-in-the-philippines"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/becoming-a-us-citizen-my-immigrant-journey",
+      "path": "/blog/becoming-a-us-citizen-my-immigrant-journey",
+      "pathForNotion": "blog/becoming-a-us-citizen-my-immigrant-journey",
+      "category": "blog_post",
+      "lastmod": "2025-11-03T13:01:17.092Z",
+      "segments": [
+        "blog",
+        "becoming-a-us-citizen-my-immigrant-journey"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/best-way-i-manage-my-founder-psychology",
+      "path": "/blog/best-way-i-manage-my-founder-psychology",
+      "pathForNotion": "blog/best-way-i-manage-my-founder-psychology",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "best-way-i-manage-my-founder-psychology"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/best-way-to-manage-founder-psychology",
+      "path": "/blog/best-way-to-manage-founder-psychology",
+      "pathForNotion": "blog/best-way-to-manage-founder-psychology",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "best-way-to-manage-founder-psychology"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/big-decisions-template",
+      "path": "/blog/big-decisions-template",
+      "pathForNotion": "blog/big-decisions-template",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "big-decisions-template"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/bridge-and-stripe-announce-monumental-partnership",
+      "path": "/blog/bridge-and-stripe-announce-monumental-partnership",
+      "pathForNotion": "blog/bridge-and-stripe-announce-monumental-partnership",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "bridge-and-stripe-announce-monumental-partnership"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/building-a-guestbook-app-in-three-hours-with-ai",
+      "path": "/blog/building-a-guestbook-app-in-three-hours-with-ai",
+      "pathForNotion": "blog/building-a-guestbook-app-in-three-hours-with-ai",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "building-a-guestbook-app-in-three-hours-with-ai"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/building-a-startup-with-my-husband",
+      "path": "/blog/building-a-startup-with-my-husband",
+      "pathForNotion": "blog/building-a-startup-with-my-husband",
+      "category": "blog_post",
+      "lastmod": "2026-03-09T12:00:13.344Z",
+      "segments": [
+        "blog",
+        "building-a-startup-with-my-husband"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/building-community-at-south-park-commons",
+      "path": "/blog/building-community-at-south-park-commons",
+      "pathForNotion": "blog/building-community-at-south-park-commons",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "building-community-at-south-park-commons"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/building-customer-empathy-across-the-whole-team",
+      "path": "/blog/building-customer-empathy-across-the-whole-team",
+      "pathForNotion": "blog/building-customer-empathy-across-the-whole-team",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "building-customer-empathy-across-the-whole-team"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/building-mvp-of-an-faq-management-tool",
+      "path": "/blog/building-mvp-of-an-faq-management-tool",
+      "pathForNotion": "blog/building-mvp-of-an-faq-management-tool",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "building-mvp-of-an-faq-management-tool"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/built-an-app-in-1-hour-with-ai",
+      "path": "/blog/built-an-app-in-1-hour-with-ai",
+      "pathForNotion": "blog/built-an-app-in-1-hour-with-ai",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "built-an-app-in-1-hour-with-ai"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/celebrating-an-inspiring-womens-event",
+      "path": "/blog/celebrating-an-inspiring-womens-event",
+      "pathForNotion": "blog/celebrating-an-inspiring-womens-event",
+      "category": "blog_post",
+      "lastmod": "2025-12-15T13:00:27.217Z",
+      "segments": [
+        "blog",
+        "celebrating-an-inspiring-womens-event"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/celebrating-my-sisters-notion-internship",
+      "path": "/blog/celebrating-my-sisters-notion-internship",
+      "pathForNotion": "blog/celebrating-my-sisters-notion-internship",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "celebrating-my-sisters-notion-internship"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/challenges-faced-by-women-founders",
+      "path": "/blog/challenges-faced-by-women-founders",
+      "pathForNotion": "blog/challenges-faced-by-women-founders",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "challenges-faced-by-women-founders"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/check-in-30-days-in-my-pm-job",
+      "path": "/blog/check-in-30-days-in-my-pm-job",
+      "pathForNotion": "blog/check-in-30-days-in-my-pm-job",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "check-in-30-days-in-my-pm-job"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/claude-cowork-vs-code-best-fit-for-non-engineers",
+      "path": "/blog/claude-cowork-vs-code-best-fit-for-non-engineers",
+      "pathForNotion": "blog/claude-cowork-vs-code-best-fit-for-non-engineers",
+      "category": "blog_post",
+      "lastmod": "2026-03-30T12:01:35.724Z",
+      "segments": [
+        "blog",
+        "claude-cowork-vs-code-best-fit-for-non-engineers"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/comfort-through-normalization",
+      "path": "/blog/comfort-through-normalization",
+      "pathForNotion": "blog/comfort-through-normalization",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "comfort-through-normalization"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/community-as-a-career-strategy",
+      "path": "/blog/community-as-a-career-strategy",
+      "pathForNotion": "blog/community-as-a-career-strategy",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "community-as-a-career-strategy"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/crafting-a-successful-launch",
+      "path": "/blog/crafting-a-successful-launch",
+      "pathForNotion": "blog/crafting-a-successful-launch",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "crafting-a-successful-launch"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/creative-marketing-with-2-cents",
+      "path": "/blog/creative-marketing-with-2-cents",
+      "pathForNotion": "blog/creative-marketing-with-2-cents",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "creative-marketing-with-2-cents"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/crisis-management",
+      "path": "/blog/crisis-management",
+      "pathForNotion": "blog/crisis-management",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "crisis-management"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/custom-logo-inspired-ring-creation",
+      "path": "/blog/custom-logo-inspired-ring-creation",
+      "pathForNotion": "blog/custom-logo-inspired-ring-creation",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "custom-logo-inspired-ring-creation"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/customer-support-as-a-retention-superpower",
+      "path": "/blog/customer-support-as-a-retention-superpower",
+      "pathForNotion": "blog/customer-support-as-a-retention-superpower",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "customer-support-as-a-retention-superpower"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/dado-banatao-filipino-tech-pioneer-remembered",
+      "path": "/blog/dado-banatao-filipino-tech-pioneer-remembered",
+      "pathForNotion": "blog/dado-banatao-filipino-tech-pioneer-remembered",
+      "category": "blog_post",
+      "lastmod": "2025-12-29T13:00:48.877Z",
+      "segments": [
+        "blog",
+        "dado-banatao-filipino-tech-pioneer-remembered"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/dehumanization-is-not-the-answer-to-equality",
+      "path": "/blog/dehumanization-is-not-the-answer-to-equality",
+      "pathForNotion": "blog/dehumanization-is-not-the-answer-to-equality",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "dehumanization-is-not-the-answer-to-equality"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/design-partnership-playbook-for-founders",
+      "path": "/blog/design-partnership-playbook-for-founders",
+      "pathForNotion": "blog/design-partnership-playbook-for-founders",
+      "category": "blog_post",
+      "lastmod": "2026-03-23T12:05:20.004Z",
+      "segments": [
+        "blog",
+        "design-partnership-playbook-for-founders"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/designing-design-partnerships",
+      "path": "/blog/designing-design-partnerships",
+      "pathForNotion": "blog/designing-design-partnerships",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "designing-design-partnerships"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/discreet-tips-for-second-job-applications",
+      "path": "/blog/discreet-tips-for-second-job-applications",
+      "pathForNotion": "blog/discreet-tips-for-second-job-applications",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "discreet-tips-for-second-job-applications"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/diversity-in-our-cap-table",
+      "path": "/blog/diversity-in-our-cap-table",
+      "pathForNotion": "blog/diversity-in-our-cap-table",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "diversity-in-our-cap-table"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/domains-are-more-important-than-you-think",
+      "path": "/blog/domains-are-more-important-than-you-think",
+      "pathForNotion": "blog/domains-are-more-important-than-you-think",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "domains-are-more-important-than-you-think"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/early-team-to-hire-or-not-to-hire",
+      "path": "/blog/early-team-to-hire-or-not-to-hire",
+      "pathForNotion": "blog/early-team-to-hire-or-not-to-hire",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "early-team-to-hire-or-not-to-hire"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/empathy-as-a-service",
+      "path": "/blog/empathy-as-a-service",
+      "pathForNotion": "blog/empathy-as-a-service",
+      "category": "blog_post",
+      "lastmod": null,
+      "segments": [
+        "blog",
+        "empathy-as-a-service"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/excited-to-try-epic-graphic-design-tools",
+      "path": "/blog/excited-to-try-epic-graphic-design-tools",
+      "pathForNotion": "blog/excited-to-try-epic-graphic-design-tools",
+      "category": "blog_post",
+      "lastmod": "2026-02-09T13:00:36.652Z",
+      "segments": [
+        "blog",
+        "excited-to-try-epic-graphic-design-tools"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/financial-system-discrimination",
+      "path": "/blog/financial-system-discrimination",
+      "pathForNotion": "blog/financial-system-discrimination",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "financial-system-discrimination"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/fintech-data-paranoia",
+      "path": "/blog/fintech-data-paranoia",
+      "pathForNotion": "blog/fintech-data-paranoia",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "fintech-data-paranoia"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/fintech-reality-your-data-isnt-truly-private",
+      "path": "/blog/fintech-reality-your-data-isnt-truly-private",
+      "pathForNotion": "blog/fintech-reality-your-data-isnt-truly-private",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "fintech-reality-your-data-isnt-truly-private"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/fintech-things-i-didnt-know-i-didnt-know",
+      "path": "/blog/fintech-things-i-didnt-know-i-didnt-know",
+      "pathForNotion": "blog/fintech-things-i-didnt-know-i-didnt-know",
+      "category": "blog_post",
+      "lastmod": "2025-07-30T18:01:20.517Z",
+      "segments": [
+        "blog",
+        "fintech-things-i-didnt-know-i-didnt-know"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/forcing-functions",
+      "path": "/blog/forcing-functions",
+      "pathForNotion": "blog/forcing-functions",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "forcing-functions"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/founder-ikigai",
+      "path": "/blog/founder-ikigai",
+      "pathForNotion": "blog/founder-ikigai",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "founder-ikigai"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/from-linkedin-beginnings-to-time-rich-living",
+      "path": "/blog/from-linkedin-beginnings-to-time-rich-living",
+      "pathForNotion": "blog/from-linkedin-beginnings-to-time-rich-living",
+      "category": "blog_post",
+      "lastmod": "2025-10-20T12:00:08.816Z",
+      "segments": [
+        "blog",
+        "from-linkedin-beginnings-to-time-rich-living"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/from-online-acquaintance-to-real-life-friend",
+      "path": "/blog/from-online-acquaintance-to-real-life-friend",
+      "pathForNotion": "blog/from-online-acquaintance-to-real-life-friend",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "from-online-acquaintance-to-real-life-friend"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/full-circle-speaking-at-filipinos-at-linkedin",
+      "path": "/blog/full-circle-speaking-at-filipinos-at-linkedin",
+      "pathForNotion": "blog/full-circle-speaking-at-filipinos-at-linkedin",
+      "category": "blog_post",
+      "lastmod": "2025-10-20T12:00:10.387Z",
+      "segments": [
+        "blog",
+        "full-circle-speaking-at-filipinos-at-linkedin"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/general-wedding-planning-tips",
+      "path": "/blog/general-wedding-planning-tips",
+      "pathForNotion": "blog/general-wedding-planning-tips",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "general-wedding-planning-tips"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/getting-hate-as-a-founder",
+      "path": "/blog/getting-hate-as-a-founder",
+      "pathForNotion": "blog/getting-hate-as-a-founder",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "getting-hate-as-a-founder"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/go-corporate-first-for-financial-runway",
+      "path": "/blog/go-corporate-first-for-financial-runway",
+      "pathForNotion": "blog/go-corporate-first-for-financial-runway",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "go-corporate-first-for-financial-runway"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/go-small-to-go-big",
+      "path": "/blog/go-small-to-go-big",
+      "pathForNotion": "blog/go-small-to-go-big",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "go-small-to-go-big"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/gradients-of-a-hug",
+      "path": "/blog/gradients-of-a-hug",
+      "pathForNotion": "blog/gradients-of-a-hug",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "gradients-of-a-hug"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/habits-that-keep-you-poor",
+      "path": "/blog/habits-that-keep-you-poor",
+      "pathForNotion": "blog/habits-that-keep-you-poor",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "habits-that-keep-you-poor"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/hardships-and-triumphs-of-my-visa-journey",
+      "path": "/blog/hardships-and-triumphs-of-my-visa-journey",
+      "pathForNotion": "blog/hardships-and-triumphs-of-my-visa-journey",
+      "category": "blog_post",
+      "lastmod": "2025-11-03T13:01:15.388Z",
+      "segments": [
+        "blog",
+        "hardships-and-triumphs-of-my-visa-journey"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/horizons-faq-from-a-horizons-fellow",
+      "path": "/blog/horizons-faq-from-a-horizons-fellow",
+      "pathForNotion": "blog/horizons-faq-from-a-horizons-fellow",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "horizons-faq-from-a-horizons-fellow"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/horizontals-and-verticals-in-a-remote-first-world",
+      "path": "/blog/horizontals-and-verticals-in-a-remote-first-world",
+      "pathForNotion": "blog/horizontals-and-verticals-in-a-remote-first-world",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "horizontals-and-verticals-in-a-remote-first-world"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-do-we-knowourcustomer",
+      "path": "/blog/how-do-we-knowourcustomer",
+      "pathForNotion": "blog/how-do-we-knowourcustomer",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-do-we-knowourcustomer"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-early-stage-startups-can-win-pr-without-agencies",
+      "path": "/blog/how-early-stage-startups-can-win-pr-without-agencies",
+      "pathForNotion": "blog/how-early-stage-startups-can-win-pr-without-agencies",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-early-stage-startups-can-win-pr-without-agencies"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-i-found-the-right-cofounder",
+      "path": "/blog/how-i-found-the-right-cofounder",
+      "pathForNotion": "blog/how-i-found-the-right-cofounder",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-i-found-the-right-cofounder"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-i-manage-my-budget",
+      "path": "/blog/how-i-manage-my-budget",
+      "pathForNotion": "blog/how-i-manage-my-budget",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-i-manage-my-budget"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-not-to-email-a-startup-hiring-manager",
+      "path": "/blog/how-not-to-email-a-startup-hiring-manager",
+      "pathForNotion": "blog/how-not-to-email-a-startup-hiring-manager",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-not-to-email-a-startup-hiring-manager"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-to-build-a-kickass-life-by-kevin-dahlstrom",
+      "path": "/blog/how-to-build-a-kickass-life-by-kevin-dahlstrom",
+      "pathForNotion": "blog/how-to-build-a-kickass-life-by-kevin-dahlstrom",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-to-build-a-kickass-life-by-kevin-dahlstrom"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-to-decode-fluffy-vc-phrases",
+      "path": "/blog/how-to-decode-fluffy-vc-phrases",
+      "pathForNotion": "blog/how-to-decode-fluffy-vc-phrases",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-to-decode-fluffy-vc-phrases"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-to-hard-launch-your-company",
+      "path": "/blog/how-to-hard-launch-your-company",
+      "pathForNotion": "blog/how-to-hard-launch-your-company",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-to-hard-launch-your-company"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-to-not-get-hired",
+      "path": "/blog/how-to-not-get-hired",
+      "pathForNotion": "blog/how-to-not-get-hired",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-to-not-get-hired"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-to-prevent-cash-grabs",
+      "path": "/blog/how-to-prevent-cash-grabs",
+      "pathForNotion": "blog/how-to-prevent-cash-grabs",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-to-prevent-cash-grabs"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-to-run-an-effective-design-partnership",
+      "path": "/blog/how-to-run-an-effective-design-partnership",
+      "pathForNotion": "blog/how-to-run-an-effective-design-partnership",
+      "category": "blog_post",
+      "lastmod": "2026-03-17T10:33:30.294Z",
+      "segments": [
+        "blog",
+        "how-to-run-an-effective-design-partnership"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-to-write-a-forwardable-email",
+      "path": "/blog/how-to-write-a-forwardable-email",
+      "pathForNotion": "blog/how-to-write-a-forwardable-email",
+      "category": "blog_post",
+      "lastmod": "2025-12-01T13:01:26.782Z",
+      "segments": [
+        "blog",
+        "how-to-write-a-forwardable-email"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-we-15xd-users-in-one-month",
+      "path": "/blog/how-we-15xd-users-in-one-month",
+      "pathForNotion": "blog/how-we-15xd-users-in-one-month",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-we-15xd-users-in-one-month"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-we-slashed-our-startup-legal-bills",
+      "path": "/blog/how-we-slashed-our-startup-legal-bills",
+      "pathForNotion": "blog/how-we-slashed-our-startup-legal-bills",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "how-we-slashed-our-startup-legal-bills"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/how-we-work-with-lawyers",
+      "path": "/blog/how-we-work-with-lawyers",
+      "pathForNotion": "blog/how-we-work-with-lawyers",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "how-we-work-with-lawyers"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/igtv-vs-youtube-who-will-win-the-fight",
+      "path": "/blog/igtv-vs-youtube-who-will-win-the-fight",
+      "pathForNotion": "blog/igtv-vs-youtube-who-will-win-the-fight",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "igtv-vs-youtube-who-will-win-the-fight"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/innovation-through-constraints-deepseeks-secret",
+      "path": "/blog/innovation-through-constraints-deepseeks-secret",
+      "pathForNotion": "blog/innovation-through-constraints-deepseeks-secret",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "innovation-through-constraints-deepseeks-secret"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/inside-facebook-memoir-reflections-and-disillusionment",
+      "path": "/blog/inside-facebook-memoir-reflections-and-disillusionment",
+      "pathForNotion": "blog/inside-facebook-memoir-reflections-and-disillusionment",
+      "category": "blog_post",
+      "lastmod": "2026-02-09T13:00:38.932Z",
+      "segments": [
+        "blog",
+        "inside-facebook-memoir-reflections-and-disillusionment"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/inspiring-filipino-founders-in-new-york",
+      "path": "/blog/inspiring-filipino-founders-in-new-york",
+      "pathForNotion": "blog/inspiring-filipino-founders-in-new-york",
+      "category": "blog_post",
+      "lastmod": "2025-12-15T13:00:34.753Z",
+      "segments": [
+        "blog",
+        "inspiring-filipino-founders-in-new-york"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/is-this-possible",
+      "path": "/blog/is-this-possible",
+      "pathForNotion": "blog/is-this-possible",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "is-this-possible"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/is-your-product-just-a-claude-skill",
+      "path": "/blog/is-your-product-just-a-claude-skill",
+      "pathForNotion": "blog/is-your-product-just-a-claude-skill",
+      "category": "blog_post",
+      "lastmod": "2026-03-30T12:01:42.727Z",
+      "segments": [
+        "blog",
+        "is-your-product-just-a-claude-skill"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/just-do-the-thingimpostor-syndrome-lessons",
+      "path": "/blog/just-do-the-thingimpostor-syndrome-lessons",
+      "pathForNotion": "blog/just-do-the-thingimpostor-syndrome-lessons",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "just-do-the-thingimpostor-syndrome-lessons"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/key-h-1b-visa-changes-announced",
+      "path": "/blog/key-h-1b-visa-changes-announced",
+      "pathForNotion": "blog/key-h-1b-visa-changes-announced",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "key-h-1b-visa-changes-announced"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/kp-fellowship-faq",
+      "path": "/blog/kp-fellowship-faq",
+      "pathForNotion": "blog/kp-fellowship-faq",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "kp-fellowship-faq"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/launching-taste-tactics-podcast-debut",
+      "path": "/blog/launching-taste-tactics-podcast-debut",
+      "pathForNotion": "blog/launching-taste-tactics-podcast-debut",
+      "category": "blog_post",
+      "lastmod": "2025-10-06T12:00:29.819Z",
+      "segments": [
+        "blog",
+        "launching-taste-tactics-podcast-debut"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/learnings-on-prep-for-press-and-pr",
+      "path": "/blog/learnings-on-prep-for-press-and-pr",
+      "pathForNotion": "blog/learnings-on-prep-for-press-and-pr",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "learnings-on-prep-for-press-and-pr"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/lessons-in-finance-lessons-in-life",
+      "path": "/blog/lessons-in-finance-lessons-in-life",
+      "pathForNotion": "blog/lessons-in-finance-lessons-in-life",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "lessons-in-finance-lessons-in-life"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/life-in-the-time-of-corona",
+      "path": "/blog/life-in-the-time-of-corona",
+      "pathForNotion": "blog/life-in-the-time-of-corona",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "life-in-the-time-of-corona"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/literal-win-placing-at-the-solana-riptide-hackathon-2022",
+      "path": "/blog/literal-win-placing-at-the-solana-riptide-hackathon-2022",
+      "pathForNotion": "blog/literal-win-placing-at-the-solana-riptide-hackathon-2022",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "literal-win-placing-at-the-solana-riptide-hackathon-2022"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/lumon-industries-redefining-branding-on-linkedin",
+      "path": "/blog/lumon-industries-redefining-branding-on-linkedin",
+      "pathForNotion": "blog/lumon-industries-redefining-branding-on-linkedin",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "lumon-industries-redefining-branding-on-linkedin"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/making-most-of-conferences",
+      "path": "/blog/making-most-of-conferences",
+      "pathForNotion": "blog/making-most-of-conferences",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "making-most-of-conferences"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/managing-my-psychology",
+      "path": "/blog/managing-my-psychology",
+      "pathForNotion": "blog/managing-my-psychology",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "managing-my-psychology"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/misha-reyes-launches-first-intern-project",
+      "path": "/blog/misha-reyes-launches-first-intern-project",
+      "pathForNotion": "blog/misha-reyes-launches-first-intern-project",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "misha-reyes-launches-first-intern-project"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/moderating-ai-in-fintech-at-ai-agent-conference",
+      "path": "/blog/moderating-ai-in-fintech-at-ai-agent-conference",
+      "pathForNotion": "blog/moderating-ai-in-fintech-at-ai-agent-conference",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "moderating-ai-in-fintech-at-ai-agent-conference"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/morning-workouts-with-nyc-founders",
+      "path": "/blog/morning-workouts-with-nyc-founders",
+      "pathForNotion": "blog/morning-workouts-with-nyc-founders",
+      "category": "blog_post",
+      "lastmod": "2025-09-29T12:01:05.449Z",
+      "segments": [
+        "blog",
+        "morning-workouts-with-nyc-founders"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-beyonce-moment-why-i-write",
+      "path": "/blog/my-beyonce-moment-why-i-write",
+      "pathForNotion": "blog/my-beyonce-moment-why-i-write",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "my-beyonce-moment-why-i-write"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-big-decisions-journal",
+      "path": "/blog/my-big-decisions-journal",
+      "pathForNotion": "blog/my-big-decisions-journal",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "my-big-decisions-journal"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-co-founder-dating-process",
+      "path": "/blog/my-co-founder-dating-process",
+      "pathForNotion": "blog/my-co-founder-dating-process",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "my-co-founder-dating-process"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-deep-dive-into-fintech",
+      "path": "/blog/my-deep-dive-into-fintech",
+      "pathForNotion": "blog/my-deep-dive-into-fintech",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "my-deep-dive-into-fintech"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-favorite-emails-that-make-me-smile",
+      "path": "/blog/my-favorite-emails-that-make-me-smile",
+      "pathForNotion": "blog/my-favorite-emails-that-make-me-smile",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "my-favorite-emails-that-make-me-smile"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-favorite-products-of-2018",
+      "path": "/blog/my-favorite-products-of-2018",
+      "pathForNotion": "blog/my-favorite-products-of-2018",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "my-favorite-products-of-2018"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-favorite-ted-talk-a-call-for-empathy-in-gender-issues-beyond",
+      "path": "/blog/my-favorite-ted-talk-a-call-for-empathy-in-gender-issues-beyond",
+      "pathForNotion": "blog/my-favorite-ted-talk-a-call-for-empathy-in-gender-issues-beyond",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "my-favorite-ted-talk-a-call-for-empathy-in-gender-issues-beyond"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-job-offer-was-rescinded-twice",
+      "path": "/blog/my-job-offer-was-rescinded-twice",
+      "pathForNotion": "blog/my-job-offer-was-rescinded-twice",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "my-job-offer-was-rescinded-twice"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-real-estate-journey",
+      "path": "/blog/my-real-estate-journey",
+      "pathForNotion": "blog/my-real-estate-journey",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "my-real-estate-journey"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/my-sister-graduates-and-moves-to-new-york",
+      "path": "/blog/my-sister-graduates-and-moves-to-new-york",
+      "pathForNotion": "blog/my-sister-graduates-and-moves-to-new-york",
+      "category": "blog_post",
+      "lastmod": "2025-12-15T13:00:30.084Z",
+      "segments": [
+        "blog",
+        "my-sister-graduates-and-moves-to-new-york"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/myths-about-the-cofounder-search",
+      "path": "/blog/myths-about-the-cofounder-search",
+      "pathForNotion": "blog/myths-about-the-cofounder-search",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "myths-about-the-cofounder-search"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/naked",
+      "path": "/blog/naked",
+      "pathForNotion": "blog/naked",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "naked"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/now-cash-out-in-5-new-countries",
+      "path": "/blog/now-cash-out-in-5-new-countries",
+      "pathForNotion": "blog/now-cash-out-in-5-new-countries",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "now-cash-out-in-5-new-countries"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/on-live-tv",
+      "path": "/blog/on-live-tv",
+      "pathForNotion": "blog/on-live-tv",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "on-live-tv"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/on-opportunity-vs-happiness",
+      "path": "/blog/on-opportunity-vs-happiness",
+      "pathForNotion": "blog/on-opportunity-vs-happiness",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "on-opportunity-vs-happiness"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/onboarding-users-1-on-1",
+      "path": "/blog/onboarding-users-1-on-1",
+      "pathForNotion": "blog/onboarding-users-1-on-1",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "onboarding-users-1-on-1"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/only-get-feedback-from-your-customers",
+      "path": "/blog/only-get-feedback-from-your-customers",
+      "pathForNotion": "blog/only-get-feedback-from-your-customers",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "only-get-feedback-from-your-customers"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/openclaw-manila-meetup-february-2026",
+      "path": "/blog/openclaw-manila-meetup-february-2026",
+      "pathForNotion": "blog/openclaw-manila-meetup-february-2026",
+      "category": "blog_post",
+      "lastmod": "2026-02-23T13:01:55.345Z",
+      "segments": [
+        "blog",
+        "openclaw-manila-meetup-february-2026"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/overcoming-founder-loneliness",
+      "path": "/blog/overcoming-founder-loneliness",
+      "pathForNotion": "blog/overcoming-founder-loneliness",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "overcoming-founder-loneliness"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/parallax-joins-phantom-to-revolutionize-payments",
+      "path": "/blog/parallax-joins-phantom-to-revolutionize-payments",
+      "pathForNotion": "blog/parallax-joins-phantom-to-revolutionize-payments",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "parallax-joins-phantom-to-revolutionize-payments"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/pricing-page-magic-tricks",
+      "path": "/blog/pricing-page-magic-tricks",
+      "pathForNotion": "blog/pricing-page-magic-tricks",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "pricing-page-magic-tricks"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/product-interview-tips",
+      "path": "/blog/product-interview-tips",
+      "pathForNotion": "blog/product-interview-tips",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "product-interview-tips"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/product-management-interviews-for-newbs",
+      "path": "/blog/product-management-interviews-for-newbs",
+      "pathForNotion": "blog/product-management-interviews-for-newbs",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "product-management-interviews-for-newbs"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/reflections-of-the-lost-and-temporarily-found",
+      "path": "/blog/reflections-of-the-lost-and-temporarily-found",
+      "pathForNotion": "blog/reflections-of-the-lost-and-temporarily-found",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "reflections-of-the-lost-and-temporarily-found"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/rescinded-my-first-job-offer-saga",
+      "path": "/blog/rescinded-my-first-job-offer-saga",
+      "pathForNotion": "blog/rescinded-my-first-job-offer-saga",
+      "category": "blog_post",
+      "lastmod": "2025-08-18T19:31:09.026Z",
+      "segments": [
+        "blog",
+        "rescinded-my-first-job-offer-saga"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/send-a-wallet-to-a-friend",
+      "path": "/blog/send-a-wallet-to-a-friend",
+      "pathForNotion": "blog/send-a-wallet-to-a-friend",
+      "category": "blog_post",
+      "lastmod": null,
+      "segments": [
+        "blog",
+        "send-a-wallet-to-a-friend"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/setting-milestones-priorities",
+      "path": "/blog/setting-milestones-priorities",
+      "pathForNotion": "blog/setting-milestones-priorities",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "setting-milestones-priorities"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/severance-party-printouts-for-watch-parties",
+      "path": "/blog/severance-party-printouts-for-watch-parties",
+      "pathForNotion": "blog/severance-party-printouts-for-watch-parties",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "severance-party-printouts-for-watch-parties"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/shortcutting-your-life",
+      "path": "/blog/shortcutting-your-life",
+      "pathForNotion": "blog/shortcutting-your-life",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "shortcutting-your-life"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/silver-linings",
+      "path": "/blog/silver-linings",
+      "pathForNotion": "blog/silver-linings",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "silver-linings"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/soft-launch-vs-hard-launch",
+      "path": "/blog/soft-launch-vs-hard-launch",
+      "pathForNotion": "blog/soft-launch-vs-hard-launch",
+      "category": "blog_post",
+      "lastmod": "2025-07-30T18:01:20.517Z",
+      "segments": [
+        "blog",
+        "soft-launch-vs-hard-launch"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/solo-vs-cofounder-choosing-your-startup-path",
+      "path": "/blog/solo-vs-cofounder-choosing-your-startup-path",
+      "pathForNotion": "blog/solo-vs-cofounder-choosing-your-startup-path",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "solo-vs-cofounder-choosing-your-startup-path"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/stablecoins-teleporting-money-across-borders",
+      "path": "/blog/stablecoins-teleporting-money-across-borders",
+      "pathForNotion": "blog/stablecoins-teleporting-money-across-borders",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "stablecoins-teleporting-money-across-borders"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/stop-using-gendered-labels-for-leaders",
+      "path": "/blog/stop-using-gendered-labels-for-leaders",
+      "pathForNotion": "blog/stop-using-gendered-labels-for-leaders",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "stop-using-gendered-labels-for-leaders"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/stop-with-the-ads",
+      "path": "/blog/stop-with-the-ads",
+      "pathForNotion": "blog/stop-with-the-ads",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "stop-with-the-ads"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/summary-built-to-move",
+      "path": "/blog/summary-built-to-move",
+      "pathForNotion": "blog/summary-built-to-move",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "summary-built-to-move"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/surviving-a-pre-launch-scam-attack",
+      "path": "/blog/surviving-a-pre-launch-scam-attack",
+      "pathForNotion": "blog/surviving-a-pre-launch-scam-attack",
+      "category": "blog_post",
+      "lastmod": "2025-11-10T13:01:07.090Z",
+      "segments": [
+        "blog",
+        "surviving-a-pre-launch-scam-attack"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/taking-an-asymmetric-bet",
+      "path": "/blog/taking-an-asymmetric-bet",
+      "pathForNotion": "blog/taking-an-asymmetric-bet",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "taking-an-asymmetric-bet"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-anti-sell-hiring-interview",
+      "path": "/blog/the-anti-sell-hiring-interview",
+      "pathForNotion": "blog/the-anti-sell-hiring-interview",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-anti-sell-hiring-interview"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-autonomy-impact-axis",
+      "path": "/blog/the-autonomy-impact-axis",
+      "pathForNotion": "blog/the-autonomy-impact-axis",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-autonomy-impact-axis"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-balikbayan-box",
+      "path": "/blog/the-balikbayan-box",
+      "pathForNotion": "blog/the-balikbayan-box",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-balikbayan-box"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-challenges-female-founders-still-face",
+      "path": "/blog/the-challenges-female-founders-still-face",
+      "pathForNotion": "blog/the-challenges-female-founders-still-face",
+      "category": "blog_post",
+      "lastmod": "2026-03-16T12:02:34.024Z",
+      "segments": [
+        "blog",
+        "the-challenges-female-founders-still-face"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-danger-of-chasing-easy-wins",
+      "path": "/blog/the-danger-of-chasing-easy-wins",
+      "pathForNotion": "blog/the-danger-of-chasing-easy-wins",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-danger-of-chasing-easy-wins"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-great-obsolescence-of-paper",
+      "path": "/blog/the-great-obsolescence-of-paper",
+      "pathForNotion": "blog/the-great-obsolescence-of-paper",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-great-obsolescence-of-paper"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-hidden-biases-in-fintech-compliance",
+      "path": "/blog/the-hidden-biases-in-fintech-compliance",
+      "pathForNotion": "blog/the-hidden-biases-in-fintech-compliance",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "the-hidden-biases-in-fintech-compliance"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-ironic-story-towards-finding-my-north-star",
+      "path": "/blog/the-ironic-story-towards-finding-my-north-star",
+      "pathForNotion": "blog/the-ironic-story-towards-finding-my-north-star",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-ironic-story-towards-finding-my-north-star"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-perfection-of-the-40-minute-zoom",
+      "path": "/blog/the-perfection-of-the-40-minute-zoom",
+      "pathForNotion": "blog/the-perfection-of-the-40-minute-zoom",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-perfection-of-the-40-minute-zoom"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-power-of-niching-down",
+      "path": "/blog/the-power-of-niching-down",
+      "pathForNotion": "blog/the-power-of-niching-down",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-power-of-niching-down"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-power-of-saying-yes-to-coffee-chats",
+      "path": "/blog/the-power-of-saying-yes-to-coffee-chats",
+      "pathForNotion": "blog/the-power-of-saying-yes-to-coffee-chats",
+      "category": "blog_post",
+      "lastmod": "2026-03-16T12:02:29.703Z",
+      "segments": [
+        "blog",
+        "the-power-of-saying-yes-to-coffee-chats"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-summer-i-turned-adult",
+      "path": "/blog/the-summer-i-turned-adult",
+      "pathForNotion": "blog/the-summer-i-turned-adult",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-summer-i-turned-adult"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-ultimate-millenials-personal-finance-guide-part-1-budgeting",
+      "path": "/blog/the-ultimate-millenials-personal-finance-guide-part-1-budgeting",
+      "pathForNotion": "blog/the-ultimate-millenials-personal-finance-guide-part-1-budgeting",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-ultimate-millenials-personal-finance-guide-part-1-budgeting"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/the-ultimate-millenials-personal-finance-guide-part-2-saving",
+      "path": "/blog/the-ultimate-millenials-personal-finance-guide-part-2-saving",
+      "pathForNotion": "blog/the-ultimate-millenials-personal-finance-guide-part-2-saving",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "the-ultimate-millenials-personal-finance-guide-part-2-saving"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/things-i-wasted-time-on-as-an-early-stage-founder",
+      "path": "/blog/things-i-wasted-time-on-as-an-early-stage-founder",
+      "pathForNotion": "blog/things-i-wasted-time-on-as-an-early-stage-founder",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "things-i-wasted-time-on-as-an-early-stage-founder"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/this-2020-set-yourself-up-for-success",
+      "path": "/blog/this-2020-set-yourself-up-for-success",
+      "pathForNotion": "blog/this-2020-set-yourself-up-for-success",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "this-2020-set-yourself-up-for-success"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/time-wasters-for-early-startup-founders",
+      "path": "/blog/time-wasters-for-early-startup-founders",
+      "pathForNotion": "blog/time-wasters-for-early-startup-founders",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "time-wasters-for-early-startup-founders"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/to-the-women-who-are-too-nice",
+      "path": "/blog/to-the-women-who-are-too-nice",
+      "pathForNotion": "blog/to-the-women-who-are-too-nice",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "to-the-women-who-are-too-nice"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/top-3-vc-catchphrases-during-a-fundraise",
+      "path": "/blog/top-3-vc-catchphrases-during-a-fundraise",
+      "pathForNotion": "blog/top-3-vc-catchphrases-during-a-fundraise",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "top-3-vc-catchphrases-during-a-fundraise"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/treat-your-hiring-process-like-a-product",
+      "path": "/blog/treat-your-hiring-process-like-a-product",
+      "pathForNotion": "blog/treat-your-hiring-process-like-a-product",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "treat-your-hiring-process-like-a-product"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/validating-startups-get-paid-before-building",
+      "path": "/blog/validating-startups-get-paid-before-building",
+      "pathForNotion": "blog/validating-startups-get-paid-before-building",
+      "category": "blog_post",
+      "lastmod": "2026-03-23T12:05:21.834Z",
+      "segments": [
+        "blog",
+        "validating-startups-get-paid-before-building"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/vision-mission-strategy-doc",
+      "path": "/blog/vision-mission-strategy-doc",
+      "pathForNotion": "blog/vision-mission-strategy-doc",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "vision-mission-strategy-doc"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/want-to-chat-with-me-about-spc-or-the-kp-fellowship",
+      "path": "/blog/want-to-chat-with-me-about-spc-or-the-kp-fellowship",
+      "pathForNotion": "blog/want-to-chat-with-me-about-spc-or-the-kp-fellowship",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "want-to-chat-with-me-about-spc-or-the-kp-fellowship"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/we-coded-our-own-wedding-website",
+      "path": "/blog/we-coded-our-own-wedding-website",
+      "pathForNotion": "blog/we-coded-our-own-wedding-website",
+      "category": "blog_post",
+      "lastmod": "2025-11-24T13:00:56.362Z",
+      "segments": [
+        "blog",
+        "we-coded-our-own-wedding-website"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/we-launched-a-singles-site-at-our-wedding",
+      "path": "/blog/we-launched-a-singles-site-at-our-wedding",
+      "pathForNotion": "blog/we-launched-a-singles-site-at-our-wedding",
+      "category": "blog_post",
+      "lastmod": "2026-03-23T12:05:19.307Z",
+      "segments": [
+        "blog",
+        "we-launched-a-singles-site-at-our-wedding"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/weekly-mtgs",
+      "path": "/blog/weekly-mtgs",
+      "pathForNotion": "blog/weekly-mtgs",
+      "category": "blog_post",
+      "lastmod": null,
+      "segments": [
+        "blog",
+        "weekly-mtgs"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/were-launching-consensus",
+      "path": "/blog/were-launching-consensus",
+      "pathForNotion": "blog/were-launching-consensus",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "were-launching-consensus"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/what-i-learned-as-an-airbnb-host",
+      "path": "/blog/what-i-learned-as-an-airbnb-host",
+      "pathForNotion": "blog/what-i-learned-as-an-airbnb-host",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "what-i-learned-as-an-airbnb-host"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/what-i-learned-from-three-cofounding-styles",
+      "path": "/blog/what-i-learned-from-three-cofounding-styles",
+      "pathForNotion": "blog/what-i-learned-from-three-cofounding-styles",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "what-i-learned-from-three-cofounding-styles"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/when-comfort-becomes-the-bigger-risk",
+      "path": "/blog/when-comfort-becomes-the-bigger-risk",
+      "pathForNotion": "blog/when-comfort-becomes-the-bigger-risk",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "when-comfort-becomes-the-bigger-risk"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/when-haters-validate-your-startup",
+      "path": "/blog/when-haters-validate-your-startup",
+      "pathForNotion": "blog/when-haters-validate-your-startup",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "when-haters-validate-your-startup"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/when-my-dream-job-offer-was-rescinded-twice",
+      "path": "/blog/when-my-dream-job-offer-was-rescinded-twice",
+      "pathForNotion": "blog/when-my-dream-job-offer-was-rescinded-twice",
+      "category": "blog_post",
+      "lastmod": "2025-08-18T19:31:09.026Z",
+      "segments": [
+        "blog",
+        "when-my-dream-job-offer-was-rescinded-twice"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/when-should-you-start-a-company",
+      "path": "/blog/when-should-you-start-a-company",
+      "pathForNotion": "blog/when-should-you-start-a-company",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "when-should-you-start-a-company"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/which-career-game-are-you-playing",
+      "path": "/blog/which-career-game-are-you-playing",
+      "pathForNotion": "blog/which-career-game-are-you-playing",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "which-career-game-are-you-playing"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-angels-first-in-fundraising",
+      "path": "/blog/why-angels-first-in-fundraising",
+      "pathForNotion": "blog/why-angels-first-in-fundraising",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:17:10.219Z",
+      "segments": [
+        "blog",
+        "why-angels-first-in-fundraising"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-care-about-crypto",
+      "path": "/blog/why-care-about-crypto",
+      "pathForNotion": "blog/why-care-about-crypto",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-care-about-crypto"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-every-founder-needs-an-exec-coach",
+      "path": "/blog/why-every-founder-needs-an-exec-coach",
+      "pathForNotion": "blog/why-every-founder-needs-an-exec-coach",
+      "category": "blog_post",
+      "lastmod": "2025-10-06T12:00:27.968Z",
+      "segments": [
+        "blog",
+        "why-every-founder-needs-an-exec-coach"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-founders-give-pessimistic-startup-advice",
+      "path": "/blog/why-founders-give-pessimistic-startup-advice",
+      "pathForNotion": "blog/why-founders-give-pessimistic-startup-advice",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-founders-give-pessimistic-startup-advice"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-i-chose-not-to-pursue-an-mba",
+      "path": "/blog/why-i-chose-not-to-pursue-an-mba",
+      "pathForNotion": "blog/why-i-chose-not-to-pursue-an-mba",
+      "category": "blog_post",
+      "lastmod": "2025-11-24T13:00:59.182Z",
+      "segments": [
+        "blog",
+        "why-i-chose-not-to-pursue-an-mba"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-i-quit-my-mba-journey",
+      "path": "/blog/why-i-quit-my-mba-journey",
+      "pathForNotion": "blog/why-i-quit-my-mba-journey",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-i-quit-my-mba-journey"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-i-skip-casual-vc-coffee-chats",
+      "path": "/blog/why-i-skip-casual-vc-coffee-chats",
+      "pathForNotion": "blog/why-i-skip-casual-vc-coffee-chats",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-i-skip-casual-vc-coffee-chats"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-i-skipped-the-mbaand-dont-regret-it",
+      "path": "/blog/why-i-skipped-the-mbaand-dont-regret-it",
+      "pathForNotion": "blog/why-i-skipped-the-mbaand-dont-regret-it",
+      "category": "blog_post",
+      "lastmod": "2026-02-09T13:00:35.894Z",
+      "segments": [
+        "blog",
+        "why-i-skipped-the-mbaand-dont-regret-it"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-i-will-only-pitch-to-us-investors-when-fundraising-for-venture-capital",
+      "path": "/blog/why-i-will-only-pitch-to-us-investors-when-fundraising-for-venture-capital",
+      "pathForNotion": "blog/why-i-will-only-pitch-to-us-investors-when-fundraising-for-venture-capital",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-i-will-only-pitch-to-us-investors-when-fundraising-for-venture-capital"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-most-founders-shouldnt-build-in-public",
+      "path": "/blog/why-most-founders-shouldnt-build-in-public",
+      "pathForNotion": "blog/why-most-founders-shouldnt-build-in-public",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-most-founders-shouldnt-build-in-public"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-now",
+      "path": "/blog/why-now",
+      "pathForNotion": "blog/why-now",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-now"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-raising-from-angels-first-works",
+      "path": "/blog/why-raising-from-angels-first-works",
+      "pathForNotion": "blog/why-raising-from-angels-first-works",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-raising-from-angels-first-works"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-so-many-stealth-startups-on-linkedin",
+      "path": "/blog/why-so-many-stealth-startups-on-linkedin",
+      "pathForNotion": "blog/why-so-many-stealth-startups-on-linkedin",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-so-many-stealth-startups-on-linkedin"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-w2-income-is-losing-the-wealth-game",
+      "path": "/blog/why-w2-income-is-losing-the-wealth-game",
+      "pathForNotion": "blog/why-w2-income-is-losing-the-wealth-game",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-w2-income-is-losing-the-wealth-game"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-we-default-to-linear-over-slack",
+      "path": "/blog/why-we-default-to-linear-over-slack",
+      "pathForNotion": "blog/why-we-default-to-linear-over-slack",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "why-we-default-to-linear-over-slack"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/why-your-domain-choice-really-matters",
+      "path": "/blog/why-your-domain-choice-really-matters",
+      "pathForNotion": "blog/why-your-domain-choice-really-matters",
+      "category": "blog_post",
+      "lastmod": "2025-07-31T17:59:09.354Z",
+      "segments": [
+        "blog",
+        "why-your-domain-choice-really-matters"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/wishful-longing",
+      "path": "/blog/wishful-longing",
+      "pathForNotion": "blog/wishful-longing",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "wishful-longing"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/working-well-with-hourly-billed-workers",
+      "path": "/blog/working-well-with-hourly-billed-workers",
+      "pathForNotion": "blog/working-well-with-hourly-billed-workers",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "working-well-with-hourly-billed-workers"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/blog/year-1-startup-learnings",
+      "path": "/blog/year-1-startup-learnings",
+      "pathForNotion": "blog/year-1-startup-learnings",
+      "category": "blog_post",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "blog",
+        "year-1-startup-learnings"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/circle-founder-story-mika-from-parallax",
+      "path": "/circle-founder-story-mika-from-parallax",
+      "pathForNotion": "circle-founder-story-mika-from-parallax",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "circle-founder-story-mika-from-parallax"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/dear-aspiring-kpcb-fellow",
+      "path": "/dear-aspiring-kpcb-fellow",
+      "pathForNotion": "dear-aspiring-kpcb-fellow",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "dear-aspiring-kpcb-fellow"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/early-career-pm-job-hunt",
+      "path": "/early-career-pm-job-hunt",
+      "pathForNotion": "early-career-pm-job-hunt",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "early-career-pm-job-hunt"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/forced-situations-keep-us-innovative",
+      "path": "/forced-situations-keep-us-innovative",
+      "pathForNotion": "forced-situations-keep-us-innovative",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "forced-situations-keep-us-innovative"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/from-near-deportation-to-linkedin-pm",
+      "path": "/from-near-deportation-to-linkedin-pm",
+      "pathForNotion": "from-near-deportation-to-linkedin-pm",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "from-near-deportation-to-linkedin-pm"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/guestbook",
+      "path": "/guestbook",
+      "pathForNotion": "guestbook",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "guestbook"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/hackernoon-how-mika-reyes-got-her-job-at-linkedin-as-a-product-manager",
+      "path": "/hackernoon-how-mika-reyes-got-her-job-at-linkedin-as-a-product-manager",
+      "pathForNotion": "hackernoon-how-mika-reyes-got-her-job-at-linkedin-as-a-product-manager",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "hackernoon-how-mika-reyes-got-her-job-at-linkedin-as-a-product-manager"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/hiring-designer",
+      "path": "/hiring-designer",
+      "pathForNotion": "hiring-designer",
+      "category": "root_article",
+      "lastmod": "2021-09-13T14:10:00.000Z",
+      "segments": [
+        "hiring-designer"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/how-i-prepped-for-my-pm-interviews",
+      "path": "/how-i-prepped-for-my-pm-interviews",
+      "pathForNotion": "how-i-prepped-for-my-pm-interviews",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "how-i-prepped-for-my-pm-interviews"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/how-to-pm-after-college",
+      "path": "/how-to-pm-after-college",
+      "pathForNotion": "how-to-pm-after-college",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "how-to-pm-after-college"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/hustleshare-podcast-mika-reyes-the-hustle-of-a-product-manager",
+      "path": "/hustleshare-podcast-mika-reyes-the-hustle-of-a-product-manager",
+      "pathForNotion": "hustleshare-podcast-mika-reyes-the-hustle-of-a-product-manager",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "hustleshare-podcast-mika-reyes-the-hustle-of-a-product-manager"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/kumu-kwentuhan-the-making-of-an-app-early-days-at-kumu",
+      "path": "/kumu-kwentuhan-the-making-of-an-app-early-days-at-kumu",
+      "pathForNotion": "kumu-kwentuhan-the-making-of-an-app-early-days-at-kumu",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "kumu-kwentuhan-the-making-of-an-app-early-days-at-kumu"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/kumu-kwentuhan-the-women-of-kumu",
+      "path": "/kumu-kwentuhan-the-women-of-kumu",
+      "pathForNotion": "kumu-kwentuhan-the-women-of-kumu",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "kumu-kwentuhan-the-women-of-kumu"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/linkedin-product-manager-mika-reyes-on-leaving-home-and-dreaming-big",
+      "path": "/linkedin-product-manager-mika-reyes-on-leaving-home-and-dreaming-big",
+      "pathForNotion": "linkedin-product-manager-mika-reyes-on-leaving-home-and-dreaming-big",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "linkedin-product-manager-mika-reyes-on-leaving-home-and-dreaming-big"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/links",
+      "path": "/links",
+      "pathForNotion": "links",
+      "category": "root_article",
+      "lastmod": "2025-12-05T01:42:47.512Z",
+      "segments": [
+        "links"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/links/holiday-gift-guide-2025",
+      "path": "/links/holiday-gift-guide-2025",
+      "pathForNotion": "links/holiday-gift-guide-2025",
+      "category": "nested_page",
+      "lastmod": "2025-12-05T01:42:47.512Z",
+      "segments": [
+        "links",
+        "holiday-gift-guide-2025"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/meet-the-kleiner-perkins-fellows",
+      "path": "/meet-the-kleiner-perkins-fellows",
+      "pathForNotion": "meet-the-kleiner-perkins-fellows",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "meet-the-kleiner-perkins-fellows"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more",
+      "path": "/more",
+      "pathForNotion": "more",
+      "category": "root_article",
+      "lastmod": "2025-11-13T22:32:05.179Z",
+      "segments": [
+        "more"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects",
+      "path": "/more/mikas-projects",
+      "pathForNotion": "more/mikas-projects",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:32:05.179Z",
+      "segments": [
+        "more",
+        "mikas-projects"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/casa-baltazar-airbnb",
+      "path": "/more/mikas-projects/casa-baltazar-airbnb",
+      "pathForNotion": "more/mikas-projects/casa-baltazar-airbnb",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "casa-baltazar-airbnb"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/co-founder-dating-questionnaire",
+      "path": "/more/mikas-projects/co-founder-dating-questionnaire",
+      "pathForNotion": "more/mikas-projects/co-founder-dating-questionnaire",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "co-founder-dating-questionnaire"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/collection-of-trivia-decks",
+      "path": "/more/mikas-projects/collection-of-trivia-decks",
+      "pathForNotion": "more/mikas-projects/collection-of-trivia-decks",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "collection-of-trivia-decks"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/consensus",
+      "path": "/more/mikas-projects/consensus",
+      "pathForNotion": "more/mikas-projects/consensus",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "consensus"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/magnum-opus-nft",
+      "path": "/more/mikas-projects/magnum-opus-nft",
+      "pathForNotion": "more/mikas-projects/magnum-opus-nft",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "magnum-opus-nft"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/mint-a-snooty-coffee-nft",
+      "path": "/more/mikas-projects/mint-a-snooty-coffee-nft",
+      "pathForNotion": "more/mikas-projects/mint-a-snooty-coffee-nft",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "mint-a-snooty-coffee-nft"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/nft-playbook-launch-quality-nft-projects",
+      "path": "/more/mikas-projects/nft-playbook-launch-quality-nft-projects",
+      "pathForNotion": "more/mikas-projects/nft-playbook-launch-quality-nft-projects",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "nft-playbook-launch-quality-nft-projects"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/nifty-pay",
+      "path": "/more/mikas-projects/nifty-pay",
+      "pathForNotion": "more/mikas-projects/nifty-pay",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "nifty-pay"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/notion-dashboard-template",
+      "path": "/more/mikas-projects/notion-dashboard-template",
+      "pathForNotion": "more/mikas-projects/notion-dashboard-template",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "notion-dashboard-template"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/notion-templates-for-startups-small-biz",
+      "path": "/more/mikas-projects/notion-templates-for-startups-small-biz",
+      "pathForNotion": "more/mikas-projects/notion-templates-for-startups-small-biz",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "notion-templates-for-startups-small-biz"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/online-game-can-you-hear-me-now",
+      "path": "/more/mikas-projects/online-game-can-you-hear-me-now",
+      "pathForNotion": "more/mikas-projects/online-game-can-you-hear-me-now",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "online-game-can-you-hear-me-now"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/online-game-zoom-background-scavenger-hunt",
+      "path": "/more/mikas-projects/online-game-zoom-background-scavenger-hunt",
+      "pathForNotion": "more/mikas-projects/online-game-zoom-background-scavenger-hunt",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "online-game-zoom-background-scavenger-hunt"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/passion-economy-stack",
+      "path": "/more/mikas-projects/passion-economy-stack",
+      "pathForNotion": "more/mikas-projects/passion-economy-stack",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "passion-economy-stack"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/simple-guestbook",
+      "path": "/more/mikas-projects/simple-guestbook",
+      "pathForNotion": "more/mikas-projects/simple-guestbook",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "simple-guestbook"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/template-reunion-update",
+      "path": "/more/mikas-projects/template-reunion-update",
+      "pathForNotion": "more/mikas-projects/template-reunion-update",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "template-reunion-update"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/template-year-end-reflections-goals",
+      "path": "/more/mikas-projects/template-year-end-reflections-goals",
+      "pathForNotion": "more/mikas-projects/template-year-end-reflections-goals",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:31:40.806Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "template-year-end-reflections-goals"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/more/mikas-projects/time-rich-calculator",
+      "path": "/more/mikas-projects/time-rich-calculator",
+      "pathForNotion": "more/mikas-projects/time-rich-calculator",
+      "category": "nested_page",
+      "lastmod": "2025-11-13T22:32:08.021Z",
+      "segments": [
+        "more",
+        "mikas-projects",
+        "time-rich-calculator"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/my-dreams",
+      "path": "/my-dreams",
+      "pathForNotion": "my-dreams",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "my-dreams"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/my-youtube-channel",
+      "path": "/my-youtube-channel",
+      "pathForNotion": "my-youtube-channel",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "my-youtube-channel"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/network",
+      "path": "/network",
+      "pathForNotion": "network",
+      "category": "root_article",
+      "lastmod": "2024-09-16T02:08:52.599Z",
+      "segments": [
+        "network"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/parallax",
+      "path": "/parallax",
+      "pathForNotion": "parallax",
+      "category": "root_article",
+      "lastmod": null,
+      "segments": [
+        "parallax"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press",
+      "path": "/press",
+      "pathForNotion": "press",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/abi-marquez-arshie-larga-ez-mil-take-spot-on-forbes-30-under-30-asia-2024-list-when-in-manila",
+      "path": "/press/abi-marquez-arshie-larga-ez-mil-take-spot-on-forbes-30-under-30-asia-2024-list-when-in-manila",
+      "pathForNotion": "press/abi-marquez-arshie-larga-ez-mil-take-spot-on-forbes-30-under-30-asia-2024-list-when-in-manila",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "abi-marquez-arshie-larga-ez-mil-take-spot-on-forbes-30-under-30-asia-2024-list-when-in-manila"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/ez-mil-lumpia-queen-5-other-pinoys-make-it-to-forbes-asia-30-under-30-list-abs-cbn",
+      "path": "/press/ez-mil-lumpia-queen-5-other-pinoys-make-it-to-forbes-asia-30-under-30-list-abs-cbn",
+      "pathForNotion": "press/ez-mil-lumpia-queen-5-other-pinoys-make-it-to-forbes-asia-30-under-30-list-abs-cbn",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "ez-mil-lumpia-queen-5-other-pinoys-make-it-to-forbes-asia-30-under-30-list-abs-cbn"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/forbes-30-under-30-finance-venture-capital-forbes",
+      "path": "/press/forbes-30-under-30-finance-venture-capital-forbes",
+      "pathForNotion": "press/forbes-30-under-30-finance-venture-capital-forbes",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "forbes-30-under-30-finance-venture-capital-forbes"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/launching-parallax-linkedin",
+      "path": "/press/launching-parallax-linkedin",
+      "pathForNotion": "press/launching-parallax-linkedin",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "launching-parallax-linkedin"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/launching-parallax-twitter",
+      "path": "/press/launching-parallax-twitter",
+      "pathForNotion": "press/launching-parallax-twitter",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "launching-parallax-twitter"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/lumpia-queen-arshie-larga-ez-mil-4-other-pinoys-make-waves-in-forbes-30-under-30-asia-2024-list-ptv-news",
+      "path": "/press/lumpia-queen-arshie-larga-ez-mil-4-other-pinoys-make-waves-in-forbes-30-under-30-asia-2024-list-ptv-news",
+      "pathForNotion": "press/lumpia-queen-arshie-larga-ez-mil-4-other-pinoys-make-waves-in-forbes-30-under-30-asia-2024-list-ptv-news",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "lumpia-queen-arshie-larga-ez-mil-4-other-pinoys-make-waves-in-forbes-30-under-30-asia-2024-list-ptv-news"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/meet-the-30-under-30-fintech-entrepreneurs-facilitating-access-to-capital-forbes",
+      "path": "/press/meet-the-30-under-30-fintech-entrepreneurs-facilitating-access-to-capital-forbes",
+      "pathForNotion": "press/meet-the-30-under-30-fintech-entrepreneurs-facilitating-access-to-capital-forbes",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "meet-the-30-under-30-fintech-entrepreneurs-facilitating-access-to-capital-forbes"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/meet-the-filipinos-in-forbes-30-under-30-2024-list-rappler",
+      "path": "/press/meet-the-filipinos-in-forbes-30-under-30-2024-list-rappler",
+      "pathForNotion": "press/meet-the-filipinos-in-forbes-30-under-30-2024-list-rappler",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "meet-the-filipinos-in-forbes-30-under-30-2024-list-rappler"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/parallax-launch-on-e27",
+      "path": "/press/parallax-launch-on-e27",
+      "pathForNotion": "press/parallax-launch-on-e27",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "parallax-launch-on-e27"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/parallax-launch-on-tech-in-asia",
+      "path": "/press/parallax-launch-on-tech-in-asia",
+      "pathForNotion": "press/parallax-launch-on-tech-in-asia",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "parallax-launch-on-tech-in-asia"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/parallax-launch-on-yahoo",
+      "path": "/press/parallax-launch-on-yahoo",
+      "pathForNotion": "press/parallax-launch-on-yahoo",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "parallax-launch-on-yahoo"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/parallax-on-techcrunch",
+      "path": "/press/parallax-on-techcrunch",
+      "pathForNotion": "press/parallax-on-techcrunch",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "parallax-on-techcrunch"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/phantom-acquires-parallax",
+      "path": "/press/phantom-acquires-parallax",
+      "pathForNotion": "press/phantom-acquires-parallax",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "phantom-acquires-parallax"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/seven-filipinos-in-the-ninth-edition-of-forbes-30-under-30-asia-business-world",
+      "path": "/press/seven-filipinos-in-the-ninth-edition-of-forbes-30-under-30-asia-business-world",
+      "pathForNotion": "press/seven-filipinos-in-the-ninth-edition-of-forbes-30-under-30-asia-business-world",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "seven-filipinos-in-the-ninth-edition-of-forbes-30-under-30-asia-business-world"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/speaker-nyc-philippine-consulate",
+      "path": "/press/speaker-nyc-philippine-consulate",
+      "pathForNotion": "press/speaker-nyc-philippine-consulate",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "speaker-nyc-philippine-consulate"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/press/stay-stable-podcast",
+      "path": "/press/stay-stable-podcast",
+      "pathForNotion": "press/stay-stable-podcast",
+      "category": "nested_page",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "press",
+        "stay-stable-podcast"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/product-alliance-course",
+      "path": "/product-alliance-course",
+      "pathForNotion": "product-alliance-course",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "product-alliance-course"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/product-ph-getting-your-foot-in-the-product-world-with-mika-reyes",
+      "path": "/product-ph-getting-your-foot-in-the-product-world-with-mika-reyes",
+      "pathForNotion": "product-ph-getting-your-foot-in-the-product-world-with-mika-reyes",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "product-ph-getting-your-foot-in-the-product-world-with-mika-reyes"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/reframing-disadvantage",
+      "path": "/reframing-disadvantage",
+      "pathForNotion": "reframing-disadvantage",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "reframing-disadvantage"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/reyes-17-earns-2-tech-fellowships",
+      "path": "/reyes-17-earns-2-tech-fellowships",
+      "pathForNotion": "reyes-17-earns-2-tech-fellowships",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "reyes-17-earns-2-tech-fellowships"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/stay-for-the-community",
+      "path": "/stay-for-the-community",
+      "pathForNotion": "stay-for-the-community",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "stay-for-the-community"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/strides-beta",
+      "path": "/strides-beta",
+      "pathForNotion": "strides-beta",
+      "category": "root_article",
+      "lastmod": null,
+      "segments": [
+        "strides-beta"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/swarm-w-product-managers-what-it-takes-to-become-a-product-manager",
+      "path": "/swarm-w-product-managers-what-it-takes-to-become-a-product-manager",
+      "pathForNotion": "swarm-w-product-managers-what-it-takes-to-become-a-product-manager",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "swarm-w-product-managers-what-it-takes-to-become-a-product-manager"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/the-southpark-commons-community",
+      "path": "/the-southpark-commons-community",
+      "pathForNotion": "the-southpark-commons-community",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "the-southpark-commons-community"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/unconventionally-breaking-into-tech-and-impacting-society-by-mika-reyes-pm-linkedin",
+      "path": "/unconventionally-breaking-into-tech-and-impacting-society-by-mika-reyes-pm-linkedin",
+      "pathForNotion": "unconventionally-breaking-into-tech-and-impacting-society-by-mika-reyes-pm-linkedin",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "unconventionally-breaking-into-tech-and-impacting-society-by-mika-reyes-pm-linkedin"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/university-of-the-future",
+      "path": "/university-of-the-future",
+      "pathForNotion": "university-of-the-future",
+      "category": "root_article",
+      "lastmod": "2025-09-28T21:42:58.302Z",
+      "segments": [
+        "university-of-the-future"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/wi-tech-feature-mika-reyes",
+      "path": "/wi-tech-feature-mika-reyes",
+      "pathForNotion": "wi-tech-feature-mika-reyes",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "wi-tech-feature-mika-reyes"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/women-in-product-on-linkedin-launching-big-hairy-projects",
+      "path": "/women-in-product-on-linkedin-launching-big-hairy-projects",
+      "pathForNotion": "women-in-product-on-linkedin-launching-big-hairy-projects",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "women-in-product-on-linkedin-launching-big-hairy-projects"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/women-of-silicon-valley-mika-reyes",
+      "path": "/women-of-silicon-valley-mika-reyes",
+      "pathForNotion": "women-of-silicon-valley-mika-reyes",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "women-of-silicon-valley-mika-reyes"
+      ]
+    },
+    {
+      "url": "https://mikareyes.com/yes-we-can-with-cloudflaretv-hosted-by-michelle-zatlyn-coo-of-cloudflare",
+      "path": "/yes-we-can-with-cloudflaretv-hosted-by-michelle-zatlyn-coo-of-cloudflare",
+      "pathForNotion": "yes-we-can-with-cloudflaretv-hosted-by-michelle-zatlyn-coo-of-cloudflare",
+      "category": "root_article",
+      "lastmod": "2025-09-23T20:53:30.626Z",
+      "segments": [
+        "yes-we-can-with-cloudflaretv-hosted-by-michelle-zatlyn-coo-of-cloudflare"
+      ]
+    }
+  ]
+}

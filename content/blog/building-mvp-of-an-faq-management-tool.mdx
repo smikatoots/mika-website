@@ -1,0 +1,549 @@
+---
+title: Building MVP of an FAQ Management Tool
+slug: building-mvp-of-an-faq-management-tool
+path: blog/building-mvp-of-an-faq-management-tool
+lastEdited: '2025-03-13T19:28:00.000Z'
+notionPageId: 1b4c5bb9-4aec-8095-8fbe-d0d23757abf2
+tags:
+  - startup
+  - productivity
+  - product
+---
+2025-03-12 our company has a hack day. Here’s the documentation log of what I’m building, using AI app building tools. 
+
+
+# PHASE 1: GOALS & SCOPE
+
+
+# Problem
+
+
+We make product or operational changes constantly but our FAQs and SOPs do not keep up with the pace of our changes.
+
+
+## Evidence
+
+- We have various new currencies launched but FAQs still don't reflect those changes [﻿(sample link](https://parallaxlabshelp.zendesk.com/hc/en-us/articles/21601741169933-How-long-do-withdrawals-from-Parallax-to-my-linked-account-take))
+- Back and forth on asking about fees updates on Feb 2025 when updates were made in 2024
+
+![UY7pf7YYWCvWo24epmGBD.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/UY7pf7YYWCvWo24epmGBD.png?ixlib=js-3.7.0)
+
+- Manual need to create & update FAQs -> takes up time when all this can be automated. Especially annoying when there is a BIG update (e.g. Thunder)
+
+![NPmC-CtpHqau2uBh2Gmj0.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/NPmC-CtpHqau2uBh2Gmj0.png?ixlib=js-3.7.0)
+
+
+![9-cvUd_RXK37WMZa1xJtr.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/9-cvUd_RXK37WMZa1xJtr.png?ixlib=js-3.7.0)
+
+
+![_f3ImHPIIF75gu_ZmmKev.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/_f3ImHPIIF75gu_ZmmKev.png?ixlib=js-3.7.0)
+
+
+![tHxs1Y-WUjqiqBiRdsTNs.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/tHxs1Y-WUjqiqBiRdsTNs.png?ixlib=js-3.7.0)
+
+
+![AEbSktZwuo_2P8FrXBq9z.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/AEbSktZwuo_2P8FrXBq9z.png?ixlib=js-3.7.0)
+
+- Other companies not updating their documentation -> annoying
+
+![PjSygUgICX3RbZNXFqLul.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/PjSygUgICX3RbZNXFqLul.png?ixlib=js-3.7.0)
+
+
+# Proposed Solution
+
+
+A way to track product updates or frequently asked questions from sources like support tickets and suggest regular updates to FAQs to keep documentation in sync.
+
+
+## MVP Scope & Implementation
+
+- **User can connect their current set of FAQ documents**
+    - Input links on FAQ documentation to read from
+    - _If time:_ Actually connect to Zendesk API
+- **User can import support tickets from last X days**
+    - Connect to Zendesk API
+    - Import 7 days worth of tickets
+    - _If time:_ Also allow the import of other documentation such as PRDs on Notion, tickets on Linear, or just plain text
+- **User will then see suggestions** for 1) new FAQs that should be created; 2) edits to existing FAQs
+    - New: Show list of new FAQs and suggested topic titles. When you click into the suggestion, it also previews all the support tickets with links out related to that suggested topic.
+    - Edits: Show list of all existing FAQs and which ones have potential to be edited. When clicked, it shows the diff highlighting what the suggested edits are. It also previews all the support tickets with links out related to the edits to that FAQ.
+    - _If time:_ Merge or cut: Show list of FAQs that can be cut out
+    - _Inspiration for UI:_ [﻿x.com/marty_kausas/status/1879748003013009764](https://x.com/marty_kausas/status/1879748003013009764)
+- **User can now add these suggestions to their knowledge base**
+    - Easy copy/paste LEL
+    - _If time:_ Add text editor for easy edits + push to connected Knowledge Base
+
+# PHASE 2: INITIAL PROMPT
+
+
+# Prompt with Lovable.dev
+
+
+Build an AI-powered support knowledge manager that helps users refine and expand their FAQs based on actual support tickets.
+
+
+**Sidebar Menu** with the following:
+
+1. Inputs (shows the "Inputs" section below)
+2. Suggestions (which shows the "Suggestions" section dashboard below)
+
+**Inputs** section
+
+1. **Connect Existing FAQ Documents**
+    - Allow users to input links to their FAQ documentation. The system should scrape and extract content for analysis.
+    - _(Stretch goal)_ Provide an option to connect directly to the Zendesk API to pull existing FAQ content.
+2. **Import Support Tickets from the Last X Days**
+    - Default: Import the last **7 days** of support tickets from Zendesk.
+    - _(Stretch goal)_ Allow importing from additional sources like:
+        - PRDs from Notion
+        - Tickets from Linear
+        - Plain text files (drag & drop upload)
+3. **ChatGPT API Analysis**
+    1. After this, we will call the ChatGPT API and ask it to
+        1. Look at the support tickets from the last 7 days and also look at the existing FAQ documents
+        2. Based on support tickets, it must analyze if a NEW article needs to be created that was asked in support tickets that doesn't already exist in the knowledge base and if there are suggested edits to the existing FAQs. The output will be shown as below.
+
+**Suggestions** section
+
+
+The main Suggestions dashboard then shows up after they completed the info in the Inputs tab, otherwise an empty state shows.
+
+1. **Generate FAQ Suggestions & Edits** with 2 sub tabs
+    1. First Tab: "**New FAQ"**
+        1. This tab shows a table with column headers "Suggested Topics", "Related Tickets", "Create Article"
+        2. **"Suggested Topics"** shows the suggested title of the new Knowledge Base article that should be made
+        3. **"Related Tickets"** shows the # of tickets that contributes to the mention of that suggested topic, analyzed by AI using ChatGPT API
+        4. **"Create Article"** shows a button that when clicked, opens a large modal that allows the user to create an article based on that suggested topic. The modal then pops up and generates the contents of that topic. There is also a copy/paste button on this modal that, when clicked easily copy/pastes that article.
+        5. When the line item on the table is clicked, a side drawer opens up that shows a preview of relevant support tickets that mentions that particular topic, line by line, previewing the subject of that support ticket (from zendesk) and a link to go to that support ticket on Zendesk
+    2. Second Tab: "**Edits to Existing FAQs"**
+        1. This tab shows a table with column headers "Suggested Articles to Edit", "Related Tickets", "Update"
+        2. **"Suggested Articles to Edit"** shows the title of the existing Knowledge Base article
+        3. **"Related Tickets"** shows the # of tickets that contributes to the editing of that suggested topic analyzed by AI using ChatGPT API
+        4. When the line item on the table is clicked, a side drawer opens up that first shows the suggested edits to the article like a diff checker. After, it shows a preview of relevant support tickets that mentions that particular topic, line by line, previewing the subject of that support ticket (from zendesk) and a link to go to that support ticket on Zendesk
+        5. **"Update Article"** shows a button that when clicked, opens a large modal that allows the user the text to the updated article. The modal then pops up and generates the contents of that topic. There is also a copy/paste button on this modal that, when clicked easily copy/pastes that article.
+
+### UI/UX Considerations
+
+- **Simple, intuitive dashboard**
+    - A **clean, card-based layout** in light mode
+    - Any primary buttons or any are the color #276D6A
+    - Support tickets should be linked **inline** as cards for easy reference.
+    - For article creation or edits, use a **side-by-side diff view** to highlight suggested changes on the modal
+
+![CeX8HUBqbamNdqwxBJR3t.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/CeX8HUBqbamNdqwxBJR3t.png?ixlib=js-3.7.0)
+
+
+![Q1EaZBwtwy4q-UPueBlLv.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/Q1EaZBwtwy4q-UPueBlLv.png?ixlib=js-3.7.0)
+
+
+![tgPOe9SWMlSvsne2V-Z-Z.png](https://eraser.imgix.net/workspaces/1UPdxe3mMTG9NASrYDDn/hRJq4d8J45OIXgCZWHZ6grtcCLm2/tgPOe9SWMlSvsne2V-Z-Z.png?ixlib=js-3.7.0)
+
+
+This app should prioritize **automation and ease of use**, reducing the manual effort needed to maintain a high-quality FAQ repository.
+
+
+# PHASE 3: REFINING WITH AI
+
+
+Learnings
+
+- If I want a backend, I should connect the backend off the bat. Lovable makes it easy with Supabase. I can also do authentication!
+- Knowledge manager allows me to add universal prompts. Good for code templates or UI guidelines.
+- Configure everything auth related upfront & make sure the database model is as expected → leads to many conflicts and errors.
+- Sidebar and route navigation is weird, so be explicit about that.
+    - Initial: All items in the sidebar fall under index. Data from one route doesn’t necessarily persist. e.g. If I connect an integration on the /integrations page, it doesn’t persist in the index page.
+    - Desire: All items in the sidebar have their own route and data persists across the app.
+
+Logs
+
+<details>
+<summary>**Output:** First deployment - error! </summary>
+- When deployed, it showed a blank white screen. There was an error so I asked Lovable to fix the error. That worked.
+
+![Screenshot_2025-03-12_at_12.04.13_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/5d0b693c-f1b2-406d-9bcd-8a4b0bb361ed/Screenshot_2025-03-12_at_12.04.13_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4663IJT2Q6T%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144112Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQCj98e3hjzW8dwMVZBlSGawe1RjwSSbka5OLBVxT8WFzgIgdAf8rubF%2Bd260q8PUHsTZY6F1lSvPDaHO%2F3WLROF%2F90qiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDF1DmK%2FrTdUkGmTWhSrcA4LNfSGtRP%2FQ3YWFGDzEkNjzpSDwApPrq5cGNdMlwYpvIxyyLyH5%2BlEW%2B%2FmdouQV1plZAm7Lqp1BlSQXz5NSJCuP2KstPQF%2BA69j1MFSD7sQoHvfHDPwUhodes1Knj3L1F1jSlcBV%2FGLjEUXUGhSpVw7jZN8UzBssXfImm%2BouJJFgD0JNIk4vQaDmrWYBrSsgA5yQu9PlauSDUuf1rqk3Esml%2Be2D0Q%2ByHfbJSbiluaBXa5mnJ5sbwR8XDDZ%2BvcYb5NCvRyizrzbWOIuPfidC7GCSLWfleT5vQGmAA6ef9YGTakDqz6seI2Osxzdm%2BKkfCS4Q%2BNrs1v4LAimQ0eRVS4bwhQvD4A0XAiY81EMFwB7T6%2F0K%2BFNM1erz7YeeRZiq7HPQ1cWS3XkzWC4iCTA0hHPchRW5aaiDmOrA%2FxLMpJBb5IdPF2z2tVHlww9j6t%2F4zAk%2B1ZE4KC8sueryN3%2FTDCRfzbwkLgwjtEi6NXU59Sep5L5891mNh77UQn1AyBuXQAuWy5vhcHkzbDp7fToa9fR%2BllCgsYyFIGfheIomu6AYTxPYdCSUOrxu8IlUOKok%2BmHk%2B1mDD8uahSdc%2FpVvaG8mHzhCvKcHnWdcI6kCAi3UM%2Bwpt58vLJB7fZrMM6Mv84GOqUB%2FJNcZl3E3aqjmgafedTKDHPIDND5wtDkDh4nsTpuWkIQnGy0bnJgOB8wQanTwhkGM5DkfG2922WPllRW%2FhD0twcD9P7PArYTIDSRLrarGb%2FeaMRZkvTiYY0kTeaIZl0SkuVgE8NjEbUOEs4RWRGNR89Jm901uhIZVtUmyO%2FKLuCR5hyHc3mJvOqa55vWoN1TBK4suQl%2BBvmV%2FJsv0mfzbqTB%2FxVO&X-Amz-Signature=a89a65f942ba3ae139d2f7e0594942e437bb624fb3ba6f05325913e1051bde3b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+</details>
+
+<details>
+<summary>**Output:** I see the UI! Delightfully surprised by frontend, but turns out no backend. </summary>
+- Delightfully surprised by:
+    - How closely it mimicked the UI design I asked
+    - That it had an empty state!
+    - That it even gave me a collapsible sidebar menu
+    - Gave me mock data to visualize and work with
+    - It showed “We’ll import X tickets from Zendesk in the last 7 days” → I didn’t ask for this
+    - I specified Zendesk but it gave me other potential sources like Linear and Notion. It understood the goal of the app and inferred other suggestions from there!
+- Things to do better
+    - I gave it A LOT of functionality. Instead of full functionality, it gave me mock data. That’s fine and maybe not expected that it’d be perfect
+    - I asked it for functionality with a backend, and even specified the databases and APIs to use but it only gave me the frontend
+    - The “Add” link functionality doesn’t really work. When I paste a link, it shows up in the button but doesn’t actually allow me to Add. This makes sense because there’s no database to persist the info but the interaction was odd
+- Next: Lets create a database using Supabase and actually persist information and call APIs
+
+![Screenshot_2025-03-12_at_12.04.45_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/2cbdf339-b860-4000-b2a4-3294bc85aa7a/Screenshot_2025-03-12_at_12.04.45_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665Z6P7WEX%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144112Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIGSpjaj7JFGdZ4CPjsj%2F%2BYmVh9f6eKEIIuKpEmQzHd5gAiEApBdvPsUNE%2Fwz4m8h3%2FyYWih%2BCHuNu%2BMI0rrJa184q9sqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDIX6ssOlcNphf7W%2F3yrcA6ifwye1TepXAiOhaORrf3FAf%2BsJvmja0VoaVRL3HuraJ3wbfziWgjAbeeN0SfJnObPTBAEO1cdRkKYazE5%2Bv13Ew6DXD%2F8SCt2eBiB3nuD1lUfJLYnHNZ1sfvIusOH8i9ETGc5CBAUSyU%2F4r0R4GRoNXShHz5H4DPwpkNts398rwY0HEaEPpvwfXAlKAA6t9GD65PYUVY4JAGxhzI8aNYEFuoGxJLtSpNgsn42oh0iiYV%2B5Z6U%2B%2FspOZXXjbY8KbzapjZjjW1qRSyTpQSTuXaBpIQIiv%2Bw76ytMGovk1Wm5mI3t1WkloYG3gghLIwQ1fXJCr1PY%2BkJ1Rg8FVsZImPYzQrxYUAhKVv6SlilN7%2FLSKdbCHwwNBLiBTOHtXZ%2B0NN60UjwQ7%2FszgQZCWwgtR0FwMn20qqZ%2BOTnLSYCascDbSbtYTEQBTbE34m1ZrWmr3poWD73eZ4HZS2hHmVUm953wnFvMT8QnLr5pNSybFyaBQ9HcxiXqJCezVg92JVnbqLR%2FtcB%2F29fG1%2F%2B7oL3kKZvTQF94BpJtSd%2FnLBg7WimqgZQW7uUBOEYODRPKEVLYyyac0%2Fd%2FapeinpM7Oswe0yM59VG2cHV2ek%2BzREPPplifIEabeBQX%2FZyNr4rsMLeMv84GOqUB%2BfdzlNskDFA7wObu1YeMLraC4Z0X1qea5NTXKN%2FwOeSffm5ZP3UVwN58WviFFBDeyKXDSV5QYMZIT0o5MBEQ66Tt3BetjmvYo9tAxrrb%2B9RiutAx0vq7QXuJLkBAqrra5vNFYD0BPf7eJFcdQm4rl5DDeFmRMhZe2gKH2VG%2FdBQp8hVQq5VD28u9ZhAM1Lz7Oit2AMAMNxvwv1Q5sINRBNrWiUO1&X-Amz-Signature=28ac86903b2684974a39959a17cbefa844b614b8c672ba0fac9f1399f42a2132&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+![Screenshot_2025-03-12_at_12.11.24_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/25955518-e807-463a-b050-d413f4c36bd8/Screenshot_2025-03-12_at_12.11.24_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665Z6P7WEX%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144112Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIGSpjaj7JFGdZ4CPjsj%2F%2BYmVh9f6eKEIIuKpEmQzHd5gAiEApBdvPsUNE%2Fwz4m8h3%2FyYWih%2BCHuNu%2BMI0rrJa184q9sqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDIX6ssOlcNphf7W%2F3yrcA6ifwye1TepXAiOhaORrf3FAf%2BsJvmja0VoaVRL3HuraJ3wbfziWgjAbeeN0SfJnObPTBAEO1cdRkKYazE5%2Bv13Ew6DXD%2F8SCt2eBiB3nuD1lUfJLYnHNZ1sfvIusOH8i9ETGc5CBAUSyU%2F4r0R4GRoNXShHz5H4DPwpkNts398rwY0HEaEPpvwfXAlKAA6t9GD65PYUVY4JAGxhzI8aNYEFuoGxJLtSpNgsn42oh0iiYV%2B5Z6U%2B%2FspOZXXjbY8KbzapjZjjW1qRSyTpQSTuXaBpIQIiv%2Bw76ytMGovk1Wm5mI3t1WkloYG3gghLIwQ1fXJCr1PY%2BkJ1Rg8FVsZImPYzQrxYUAhKVv6SlilN7%2FLSKdbCHwwNBLiBTOHtXZ%2B0NN60UjwQ7%2FszgQZCWwgtR0FwMn20qqZ%2BOTnLSYCascDbSbtYTEQBTbE34m1ZrWmr3poWD73eZ4HZS2hHmVUm953wnFvMT8QnLr5pNSybFyaBQ9HcxiXqJCezVg92JVnbqLR%2FtcB%2F29fG1%2F%2B7oL3kKZvTQF94BpJtSd%2FnLBg7WimqgZQW7uUBOEYODRPKEVLYyyac0%2Fd%2FapeinpM7Oswe0yM59VG2cHV2ek%2BzREPPplifIEabeBQX%2FZyNr4rsMLeMv84GOqUB%2BfdzlNskDFA7wObu1YeMLraC4Z0X1qea5NTXKN%2FwOeSffm5ZP3UVwN58WviFFBDeyKXDSV5QYMZIT0o5MBEQ66Tt3BetjmvYo9tAxrrb%2B9RiutAx0vq7QXuJLkBAqrra5vNFYD0BPf7eJFcdQm4rl5DDeFmRMhZe2gKH2VG%2FdBQp8hVQq5VD28u9ZhAM1Lz7Oit2AMAMNxvwv1Q5sINRBNrWiUO1&X-Amz-Signature=cb6ce356d2fa3c2e9526e66f2ac166422895910734e6c7ef502b09a7b6ba2a10&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/30ca8468-580e-4807-8ba4-819c14a09923/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665Z6P7WEX%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144112Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIGSpjaj7JFGdZ4CPjsj%2F%2BYmVh9f6eKEIIuKpEmQzHd5gAiEApBdvPsUNE%2Fwz4m8h3%2FyYWih%2BCHuNu%2BMI0rrJa184q9sqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDIX6ssOlcNphf7W%2F3yrcA6ifwye1TepXAiOhaORrf3FAf%2BsJvmja0VoaVRL3HuraJ3wbfziWgjAbeeN0SfJnObPTBAEO1cdRkKYazE5%2Bv13Ew6DXD%2F8SCt2eBiB3nuD1lUfJLYnHNZ1sfvIusOH8i9ETGc5CBAUSyU%2F4r0R4GRoNXShHz5H4DPwpkNts398rwY0HEaEPpvwfXAlKAA6t9GD65PYUVY4JAGxhzI8aNYEFuoGxJLtSpNgsn42oh0iiYV%2B5Z6U%2B%2FspOZXXjbY8KbzapjZjjW1qRSyTpQSTuXaBpIQIiv%2Bw76ytMGovk1Wm5mI3t1WkloYG3gghLIwQ1fXJCr1PY%2BkJ1Rg8FVsZImPYzQrxYUAhKVv6SlilN7%2FLSKdbCHwwNBLiBTOHtXZ%2B0NN60UjwQ7%2FszgQZCWwgtR0FwMn20qqZ%2BOTnLSYCascDbSbtYTEQBTbE34m1ZrWmr3poWD73eZ4HZS2hHmVUm953wnFvMT8QnLr5pNSybFyaBQ9HcxiXqJCezVg92JVnbqLR%2FtcB%2F29fG1%2F%2B7oL3kKZvTQF94BpJtSd%2FnLBg7WimqgZQW7uUBOEYODRPKEVLYyyac0%2Fd%2FapeinpM7Oswe0yM59VG2cHV2ek%2BzREPPplifIEabeBQX%2FZyNr4rsMLeMv84GOqUB%2BfdzlNskDFA7wObu1YeMLraC4Z0X1qea5NTXKN%2FwOeSffm5ZP3UVwN58WviFFBDeyKXDSV5QYMZIT0o5MBEQ66Tt3BetjmvYo9tAxrrb%2B9RiutAx0vq7QXuJLkBAqrra5vNFYD0BPf7eJFcdQm4rl5DDeFmRMhZe2gKH2VG%2FdBQp8hVQq5VD28u9ZhAM1Lz7Oit2AMAMNxvwv1Q5sINRBNrWiUO1&X-Amz-Signature=2d7a0e1a20c2b9d99e77d9edfe1ebd4f2e927d28ecae1ca90766fbf24ecc8c4a&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/7bd31c58-970c-4839-9c9a-3d89b51e766e/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665Z6P7WEX%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144112Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIGSpjaj7JFGdZ4CPjsj%2F%2BYmVh9f6eKEIIuKpEmQzHd5gAiEApBdvPsUNE%2Fwz4m8h3%2FyYWih%2BCHuNu%2BMI0rrJa184q9sqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDIX6ssOlcNphf7W%2F3yrcA6ifwye1TepXAiOhaORrf3FAf%2BsJvmja0VoaVRL3HuraJ3wbfziWgjAbeeN0SfJnObPTBAEO1cdRkKYazE5%2Bv13Ew6DXD%2F8SCt2eBiB3nuD1lUfJLYnHNZ1sfvIusOH8i9ETGc5CBAUSyU%2F4r0R4GRoNXShHz5H4DPwpkNts398rwY0HEaEPpvwfXAlKAA6t9GD65PYUVY4JAGxhzI8aNYEFuoGxJLtSpNgsn42oh0iiYV%2B5Z6U%2B%2FspOZXXjbY8KbzapjZjjW1qRSyTpQSTuXaBpIQIiv%2Bw76ytMGovk1Wm5mI3t1WkloYG3gghLIwQ1fXJCr1PY%2BkJ1Rg8FVsZImPYzQrxYUAhKVv6SlilN7%2FLSKdbCHwwNBLiBTOHtXZ%2B0NN60UjwQ7%2FszgQZCWwgtR0FwMn20qqZ%2BOTnLSYCascDbSbtYTEQBTbE34m1ZrWmr3poWD73eZ4HZS2hHmVUm953wnFvMT8QnLr5pNSybFyaBQ9HcxiXqJCezVg92JVnbqLR%2FtcB%2F29fG1%2F%2B7oL3kKZvTQF94BpJtSd%2FnLBg7WimqgZQW7uUBOEYODRPKEVLYyyac0%2Fd%2FapeinpM7Oswe0yM59VG2cHV2ek%2BzREPPplifIEabeBQX%2FZyNr4rsMLeMv84GOqUB%2BfdzlNskDFA7wObu1YeMLraC4Z0X1qea5NTXKN%2FwOeSffm5ZP3UVwN58WviFFBDeyKXDSV5QYMZIT0o5MBEQ66Tt3BetjmvYo9tAxrrb%2B9RiutAx0vq7QXuJLkBAqrra5vNFYD0BPf7eJFcdQm4rl5DDeFmRMhZe2gKH2VG%2FdBQp8hVQq5VD28u9ZhAM1Lz7Oit2AMAMNxvwv1Q5sINRBNrWiUO1&X-Amz-Signature=ecc8604296a50744c885aa0de512e8ce09803f3e35699c56d6741f35cda74a47&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+</details>
+
+<details>
+<summary>**Prompt:** Hooking up the backend and other APIs</summary>
+
+Prompt
+
+
+AWESOME! The frontend is excellent. The backend needs work. 
+
+Ok it seems I don’t have a database to persist information. I’d like to add that in the code using Supabase so I can persist the data. I would also like to connect my ChatGPT API instance so I can actually analyze inputs and output the analysis information. 
+
+Let’s update the app to do the following.
+
+
+Persist information with a database
+
+- Allow me to connect Supabase Postgres database for my database. I can connect a Supabase account. Please also give me proper instructions on how I should do this with Lovable.
+- When I paste a URL and only when I click “Add” will the link show up in the UI and also persist in my database. Now this added URL will be in the repository of existing FAQ documents that needs to be checked against
+
+Connect Zendesk API 
+
+- Under “Import Support Tickets” the first thing the user must be able to do is select which source with the dropdown.
+- The dropdown will show Zendesk, Notion, Linear. For Notion and Linear, it will just be dummy dropdown. For Zendesk, show the rest of the following.
+- When user selects Zendesk from the dropdown…
+- Shows a “Connect Zendesk” button - it will then let me login into my Zendesk API instance which usually involves a login and specifying what my zendesk instance is.
+    - When they click connect, let the user connect to their Zendesk API instance based on Zendesk’s recommendations on how to connect with Zendesk via API. This usually involves generating an API key with Zendesk.
+- Only when I’m properly connected do I see the other fields of selecting the time range of # of days to import tickets. The default is 7 days.
+- Before showing the banner with “We’ll import approximately X tickets from Zendesk created in the last Y days.” first let me click “Import”
+- Once Import is called, call the Zendesk API to read and pull the last 7 days worth of tickets. This will then persist in our database with columns: “subject” “content” “status” “user_email” “source” = which would just be Zendesk , “timestamp” “link”
+- Once import is done, show a preview of the most recent 3 tickets that were pulled
+
+Run Analysis
+
+- Connect with our project’s ChatGPT instance. I can give you a ChatGPT API key for the project and add it to an env file. Just make sure to give me instructions on how I can best do that.
+- When “Run Analysis” is clicked, start the AI analysis to generate suggestions for FAQ knowledge base updates.
+- Then output the information under “Suggestions” page with the actual data that is output from ChatGPT
+
+</details>
+
+<details>
+<summary>**Output:** Supabase instructions </summary>
+
+I realize if I wanted to have a backend to begin with, I could’ve actually already connected Supabase off the bat. That’s probably why nothing on the backend existed.. because it didn’t exist!
+
+- It asked me to set up Supabase first, which makes sense because the secrets to OpenAI, and Zendesk are dependent on Supabase Secrets Manager.
+
+    ![Screenshot_2025-03-12_at_12.38.03_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/d3a93274-08ee-4ace-bd93-f27b10f537dd/Screenshot_2025-03-12_at_12.38.03_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466YE5PPV6S%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144121Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIBop6hh729Htj%2FRDAa%2FVQ0T3lUlNQdCVAgtzZAEbSg0tAiBlLlkLv5RaBoq%2FYLi4YWH9%2FyWap9DzxYmtXlJVlq245CqIBAiH%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYzNzQyMzE4MzgwNSIMgId6mGFFXXbqrJOcKtwD1w83CBlxT%2BrXtPF2aydvbcO708G1a7FqeGJeNmvnA%2FdZorhTGKakM%2F%2BY6E9ip%2FFN6E7xM21WbgHMCOHYEtcRtlvTPU9iXwJc%2BeVg%2FlBRCH1W4IVwYTve4Pt0hA1kgbO71Fv9BXZ8YIoazH5sMB9fkwV5IJyt4uuUcQPrrAWYAnarqMtiiEdETGK0EeLCFvP75rhoaQRxtzjac7udmxnTeB7IVQHQXJ7QUdSfIdQlvA4yf8OGNANJmdZy8qi7udvl2c7XQi62Hpjh3rQm8UNh534vbJiu1ltpuS0pQZ2Hl5t6LBPOMrDbQ6406W2eD170Ub0I6Nxs2ol5oL%2FF%2FAZy24UqNynoXJCYKaXlgdA%2Bfw8kPy%2B1L%2FDcVjYASB%2F9jIVHqT4ddmeeOr7UtExsqUqFMlPIMgoK%2BlkMfe8uUynwCd1GVt0OPgBrmyOPaz3xXEogRZY2BrxvEN02u4tTvXWQaRZu%2FTs4vKMFv%2B%2FCJAsGjdj8Tcnei%2FaR4FPvyLPW8xnSskMNQSas9ItueLSkXFYmftvpBHz4LSiKNMEI1hQ9L75KtI1mH78jEk9wWM9suBs8l44D1mGU5ibMZ4HMkL4B8xTFyHueiFgN8olpE7a%2Bbb%2FqJvhuLV14OHo0X8IwzIy%2FzgY6pgEZLnlnpr7djOU24VV8ygNx4pYD%2BkHiMzHxNM5595wRBnLwkUWZPM%2FmBz0HhSnGYPfyViQ%2FPEEu2ZO%2BMgCkf0Ns4rE8xqhILWCAW5WsDTAErCUsv1GxXo7yysB3nhYSANMgHPMgFYxFhx0%2B7udLG3hec2yyWv0e%2Fey6xfV4xBWdD13ytSOaiZDfyD5gUfiYO1%2B1yfGpHHaXyhi8Y6KGLRZ4eRg%2FZ0pX&X-Amz-Signature=de66464676a25c7393a7d3e2b179970ef22b104edaba34c0cf0022d49afdea07&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- Also looks like Supabase is the database of choice for Lovable so they make it super easy to connect!
+
+    ![Screenshot_2025-03-12_at_12.38.33_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/2058623d-290b-434f-b52b-aa1eff93ccdd/Screenshot_2025-03-12_at_12.38.33_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB46652ODY4ZG%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144122Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDD3zpJ%2F12Z6IwpRqj0hZI%2FvlTdT1eCJGzvXetXA840LwIhAKv2t8H8FvyqhJ9%2BATiQE2IF1ZgSwmaGsFbiCSdrTlSSKogECIf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgyXVf83%2BmVr7MA9t1wq3AOpKGTlqiyVcv1UNFfBBaoQWcjvHZVO49eoanxxGtOpr1JjvBZAi328X9ACN%2F17QPlxB%2FKWo%2F6DU7G3Re0nBrio2o1kmKeORrd%2FkvghGdOCWCnwmj23Q5yjZufBWwmSHN4ch%2BweJvnaEijcjOcKe4YWFwNDnQU17DTqvNSLuPY9i9V3bcymXbUxA7F5i8m3v1SPrF5Qigb90mPK%2FWewyQPnqJ%2FJt8EXczyGRdJDgeR5av0XFCImlkBUgpeIWTeLeYeA7mtyXYTgYMhfsKdoaOJRgvVlsilAhpuMZNgtEW6wNbkRKEzaSpONdDFethIH9BRJ7QKmtmyBCKsCJ6XGTOFVcolzuKqg0Evdhye2nd6hOf8pTC%2F5ORavLiYf%2FhL79DpnEN0KcQ7sZm13%2BYDMnE4bPGnvsMW6%2FlIsiG4v%2FGy6LoSzVFB4mj2MNA0RpN70JBj9r5%2BAf%2B1q6le8HtKiArh2zfaWzXbESkN45Q5XKoHh0dOncHWv%2BrLjWAMU2FK4JEZ27PcnDCR96BZJV82vNdLTxAIQ81X68JyERXtEbYhoO8s5nIiq3q47TqrG5vrSfFxPLqduy6axw%2FK2g1gRaAxghu%2B6jyqTFDoZfs2xTgLkCWTh2tFtPZM4W1cvUjCpi7%2FOBjqkAW4mF4VOzSxrQ2uhCKqkdUFZLmDMQ%2FHPuUMGrQ8zX6OB9DURuV6GoMiv7nJjQQaq2u%2BeQ6AGCUZIVm8YvQzTScQdJxnkYNnGLOXeZVnO%2FQLn%2FWKjN8eduvDHF0Pf9rFu%2BGqTfTjTO%2BCwKlCgW0vdt7R7OEsxFlCJskqke9D2F%2BI6St4PauArSD7VxbhsHtDnv45UTqliI1R80XsLf0crjVqieYXx&X-Amz-Signature=c79de0079f656d34b3254ce56e20669c38cc1b1f392fad6415865ea64a381f1e&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- After I connected my Supabase, it gave me the following. Hm it seemed to have missed doing the rest of the tasks I ask. But seems like I’m jumping the gun - it’s asking me to do authentication first, which I’m happy to do!
+
+    ![Screenshot_2025-03-12_at_12.43.48_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/f6d643b6-436b-4475-a3ee-904982e31956/Screenshot_2025-03-12_at_12.43.48_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466UL3PYNKV%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144122Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDmsbc90A%2BFjH%2F5SD3RfHn4qt4OrrOp848LotvMR0%2Fw6wIhAKN25hz5vFYRdFwhy2se1%2Fji11fOL72yWcOib9u0MvlgKogECIf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgydM%2BDhDKpV%2FXlVflYq3AMkHnPQE%2FinH1Y6A14iIWKKxnH1Rqj6SuVSbu%2B55q7dCqdc4Vv6XEyDUIpQKcwe4VQNuykaVGUErNYYHinhETu3yY1J9TOSqz7JJ%2BaIekdMV90j7UdjFSwQ9qg2qYNIOpxkatD4KUX4W7kcA%2BHpnKYG1IUmPFrxS%2Bu%2BlYeYTzn10hizh3wCku9AksLd3Gyi3PqSpxKRaI%2Fr4akePAIjUCvooF6ZVxYsdUELniADC%2FlSf73UQLD03YmTQNQIJkxrkjcQiY48IMkjXWkXXUokRit5J2ztvanGmUZmXfwXDVz8E8KGCdV%2BRumPB2TpCnkXPIcg3%2BnobLfUOI2f3awmUMn4m2z0z7oM%2F10hTkwfE3ivZUJnVGfOn5tl6WXUHziKhdPXKlTwtfKbvS2Wx3bhzJhqdjT1ioxYld3ZNoKptNLrcIYBNyeSF2INbpPVbpfnrH5BNKmyKFMlWYLwVCVUCoi2EXAXBtkeJKitwqI%2BoLBpUY9wfdDrUy52QUlugo3UI7WgF7ff%2BzHtdqVX2JdDh4HySwzywCXpitSx4Si2W4Q8pnbwwfTtkFLDC09rub41tMAHGwD67TE2LNa211y1dIY5wzVuku66u1HJ7gzLVhycazkPZ4VWwrG0GKJ4PDDYi7%2FOBjqkAaaDO99HKvutsg7S%2BhtLv5oKxkoPr9cQqeF0j7qI9fvY8UFCbzXsn1iVHRASMzEYLY%2Fqk7iDJ711pD1Ih8lQI0jRm2WdK3nvogqZMMu%2FcfQLazK3Tm8kGdQOZF20D%2FSoSWykDMVK0g0eCTrIqrZ6%2BhQNBVDMPJz9%2FVL63Sk%2FeGrt0oOJIkXZAgGcp4y1oCfEL7EDy8FF50bWhfWNcGvPf1aEWdA5&X-Amz-Signature=aab0a4bc3b93c7f10e1d05d6fceaf5fc1bf1767c2788104bd70a4da4ed32290e&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+</details>
+
+<details>
+<summary>**Prompt:** Authentication, RLS policies (?), rewrite old prompt</summary>
+
+Can you help me setup basic authentication with Supabase? I want a user to be able to sign in with Google login and then create an organization/company account, and default be the admin user for that account with their email. 
+
+I also appreciate if you can help with the RLS policies. 
+
+Also now that I have a database, allow me to do the following: 
+
+
+
+Let’s update the app to do the following. [pasted my old prompt here] 
+
+
+</details>
+
+<details>
+<summary>**Output:** Creating tables</summary>
+- It gave me a set of SQL commands to create and approve before implementing.
+
+    ![Screenshot_2025-03-12_at_12.46.26_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/6343424d-cdc9-4d06-b214-13d5e3ed794e/Screenshot_2025-03-12_at_12.46.26_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466WEWHSFXL%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144123Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIECjHrjb1pS3XuRgMEJs%2FTXrkjYSNg9OLPnJD6ATClmEAiEAqpeV041GnY%2FBkTrq%2BL%2FFl6UPUb5B8quDD9lcVqbgARsqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDOlicMeYd75vZkvUcyrcA4h%2FcrniyLlb70Frqw4df80uGgJJUJJEzxXeF5YJXokrAKcfupoJE2ORRk%2Fl7J9Buhl0tmnLlNgbbGVsZrOpkd7V25RArNnZE7CsHsKKTZho6skCp57XqEkSxvdDanBsNpo9r2ww3GwxfYbLnXOfn5ertsj42BtfARZc1VpN0aVj2IlmtRhjgnvs9TDqsc2BnCOyghLltBFUGB9N24foKKhVTlH6liBhhgrfJ4KBLecmKACSVUurTk9GFvJgAPhh7hdyMytz1AjbqtbWuY0%2BA%2FGNYKm33KOMNWRva813fChxiv9Q4JXIu82CXYBJueo0nX7UhEN6ewOn%2BX7zNpQAe2peHHT9agq2jt9AUuRSk7AixTMhOO10DR9%2FuwcW2thtj4RZ35hokJuqBTp31HYRq5JDGzLJQYxuDadhvXS%2FT2KpzE4MQwtWvmhUPf1BOhJTZQl2aT7M6GS8%2FDMJMkowtL8sIOy%2Fx%2BuPdXFUfWxfUax9v6eub2dP3n5Jq85%2BtdLxA8uaC9dOxPjGqv8w5UJ3O4TisueTSbqFAMI62j0Zvjq3IzXgm0cf1Vieujq08sCwGGPKlU3oLhG%2BHwYGIMR12ZlJwEdwo49XpbcaLfoZQvPw0kqAQl4Wz4S32OieMKmJv84GOqUBMJskTechGU8yLrTsU5o1Z1OifsK8kh4R4xO%2BAixgvRgAdsEViWpEBYYTDhl5Fdgrm6xoXDqGFITJXo1%2B8UE2WJSiUr4V0ZQIaViUsS2l1gQFXQIAMEfydQCM56O4cD1odNkunIzcxliEaTlBtq%2Bht6vYrfV987qKsHo3WN2spmAyjrftX2mHd68jd6rxHOuNe6uyqcHsmfX7BnTLuIpkjvSrtjvj&X-Amz-Signature=c88a891915fed3d1f3785a96fe35b51e092a266455b4620612d9955c731703cb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- When approved, it asked me to Add an API Key, super easy!
+
+    ![Screenshot_2025-03-12_at_12.47.09_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/93b6711f-32b5-466b-ad4d-7304b549ae0b/Screenshot_2025-03-12_at_12.47.09_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665WMTMKIL%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144127Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIA%2BXt9JEc%2Bz9%2BqRv4UMtJB%2BH%2BYnqJHk4kqjs3F2ZqaP7AiEA7wyM%2BQ87a%2FaynTqJy9WFgu9bYxzcfsx0L0BbyIc1WIgqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDNd377mKJzJSKLzDlircA7KGH%2Fx7TFpXtB2AvxBkGrfJcKpZW5ueVR3PkBrTLZYZ%2BkFovXzxKmV%2BAYjsXMs%2F9fEvghHK27c9useApKSuggRUyKQDosKAdEsxS%2BsC8A3sBvP2ABlFB%2BSj3Or1jNf8J9TgWlRUGf1GK40czCLv6OsR%2FbcKPAnsktnBkBWrdJ3JXJfQQZ0PnEpzDwhTu8MqlGXl6TIKCXzkW5WwRu2knzgK1OkZ4RGVoT1gBoLM3KzUQ%2F2FwEGvqSKIQNz4CP%2Flo%2FODhIn6AxcVR1PgWMjDLgPe8jNl8hCAWDh%2Fui4FzHonnEhfXZAAMmHfGWjqFPWHVkMlJVOsZE9riOnbw8x9%2FIdJLaukDwg7ZvKYWXKVqIsOFXe6U22k6OIag0l0AJvTa8d6dvPR3OjWf1CLvu8AVc1S6iKwcF39FGQkTA%2FK%2BN9VaOlL0V9CL2ZjbB0nNWZ9SewxB8q11exW8fSeysxJvOIvrttacYvmmdVIy2uFHNJyA0%2F7df3GEv8XQot0MwG0ERyIZUKFvgLk3wC%2BuzrshYnLZaG%2FjU2WVjBkmKQqkvHudhrA8iuArRS84j%2BlJtUJy3VNUSBQq5pd6DUcY%2FF5SbWQ1yT08D3RO9q7NOZApgka6G39AFiONK7De8TZMIyJv84GOqUBWwNiSMbtzPW6OXGhtH89jlu3gKogFBQ7xFxdNaoiTRFn7Lixzj5Z8e4lcTyE5H9lUPmRRqHuwMVekr6%2FCo%2FTX0yHCXOQyYaonkyaDHb1%2FBBhO9Jr%2BWMqPBckne18%2F8V0EPHEZvNRJlUyOaT%2Bx53yZQzbigZ%2Bl5j8YY1c6jvCjf4oqM%2FmqfSu5SZ0w5JWVGerRZvkkg2VZoNKXC6b2jcy4X%2F0FtIA&X-Amz-Signature=9bfb1585312c99a2d72d1ae295d65ba1f7a26f0ef1a7770c36f9075305cd0f5b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- After that, it said it implemented the requested features.
+
+    ![Screenshot_2025-03-12_at_1.09.25_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/bc841ec7-bf9e-4b9b-a06d-37742a07d2ac/Screenshot_2025-03-12_at_1.09.25_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665A4RJFAX%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144128Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQC6UgGD0MYPRvL5J2I3yP41VFJB6C%2FJVDFnR%2FTA8PUgVAIgLRAzH8ofH8%2B2NjNgiuHQzDSDklwsObVaWzP7vaJUofcqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDO6T5qC2%2Fz3zC7rCaircAydXxGF7FzI2hjiogLpb1sO9lzEGxa3SL04CDVQREm1ovPVJ8xc3rGdMnlCqJO%2FNTvrF6Nv12z8uzejYRupdntUCe30VTHtvoSOeYqu61yU5M87sjJOUdIeHSUXCVH9c%2FTTeZe25keeI9VF3rUD%2F4zBYolLbYlPUwNxLsTNldI8%2F1oAdZdOyEIZs3urHVNSzxDpQbzFpkH%2F90SbJbOKSOnfeyHBgH2fHv9HcunwLt6mXPWnzE2r0H0CkIVnZ9pzUfbB64BQVPkHH3wvUB3FjOMasb1r%2BRyNiuysAkbqnHUqaLrsS0NyTGcZnvIaM5fODQ%2FO1QQG76wy%2F6%2F3QvDWOwbtQ%2FYSfUJZ8p6BUweHGt5UsCGk%2FHSlnbEbcOZdibVJNLuXAcqWo1ydczwZc593qLJ1zrPuysuVTo%2Bb8aDSCBMa%2Fwjf8aYQfe60x45P4MkCDQ9lGUzRcHVdb8P2dpe5wMKWOPQjm4yek0NvKZpdoccClnqZTKb2pwu4iTom5q9rpE5Z6KMgfNDmExUzmc07s%2B%2B4IEXmIGdxSAGlZnavxjWih11jXanydRNIWsJ83Tkkj3UNS0j9ucav9Jl4wl1HMEu2QE0NEIh5pmCu5TTX1qtxejTmvAHn6MyiHz05QMKCMv84GOqUBkcBItD%2BEMIk%2FeJDvHIJrx8aiaVA97S2fWG8Mf94b%2F%2FbMyvSYmpSnnc3UIvNpdsRUU7zSvS8X93E4CDMv4E8bpdU0btnVh%2F2VEurq4GHC4Oj%2BKPN0o2eLZ28qBcYKg99%2FLaJUCw9i5c%2BKGh%2FHWVdVH0puYIlYQKwxARsLXibNzigTpnUvKUSTGh77huSIlKRAGY6D90YXpA%2BZ0imFF9jc%2BtVvf4jQ&X-Amz-Signature=b38121092c31171f14034b47a73e02dc1cd7db67034f038a2995974060df5a11&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+</details>
+
+<details>
+<summary>**Error:** Typescript errors</summary>
+- I asked it to fix it.
+
+![Screenshot_2025-03-12_at_1.11.55_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/0ce64998-4d03-4563-9f62-f97a83bb3873/Screenshot_2025-03-12_at_1.11.55_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4662V3AGMMK%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144128Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCfTF9dvXW7NqQaxeNGpF11wFoVwer0s%2Bpw2LOERU2iWAIhAOpginxjQO1tVrlp37J%2F9hbj4GPeCIQhvYuoX2AnfuoaKogECIf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgzTW8qfNJvO27Y3K4Uq3ANXCL25%2B5fbrdrRpdy7Vc%2FMbjwi39Jvg7PJoVSjiYg776g8hbISAqr2%2FXUN7LtcirjGlOIqG2Pnl8MXY2Qks04y%2BWpzeZltvQM0b927d7AuMpTttX8ZAIx4YsBf4LRFvqkkBSzdCOb353JlpG5w3%2FB55g3xKrO%2FmP8lCfy0V0RewTKuKRBpprBwqtmXVSIiYLh4NRKCtOJiKZ%2FYL91M9Ugx6HLm6n9lZQxi5%2B3jcpu6tT5XFu5uPr2j18%2B0dI794M6FdBAAfMMgzNVtufLRe%2FuqFAnIVL7l%2FPqLbYPin6%2Fcc%2FlUutgZcsLt2FcfOgZ7btvcheajMiQE7qlUz9pg9I9AK9CkGpfVeiw8jji57p%2BTyEsPZGOGrh7kPOUA848UWsk9DERpkifbTHYxJsKH%2F9KcAdUkXQ8ekJpXgFjIQHo4szuHLOZnrJ5aztbvRlhmKCX6wTxAnDP5VsCno9MXlqVyS0QYb7IDXyGZqJD3apkSvISiCer%2F7FzZTXdqT1jgtS0fKbxiGiNf7MeSgCflo%2BQPSPEswHgH5E%2FFKsu2gySajNH1fHaZpDgXSciRZ94ZVmXonuSMC9AgKP21XZzKouBCNmqOiF%2Bh385R5%2FT%2B2c8ddD%2F1y926d7sEBTI0FTCni7%2FOBjqkAZ0jecd7Ql3yB1aDJ6yWtrhCP8q25FzC6PD1om8IX0lwhiDqFAiZlZ3XjnOQQVBM17WM%2FzZQj1nZNAeFTjnXn%2FoLrQ4%2FApJiTwWy6GPo6dHteSqnJJNCycx%2F%2FIJt5RW7P%2Fq6cVadrEOdg3cv5LipwmgFy1pGHDHgPupJHOQz5fTKfOSsxYRcnqfMHZOTwMvo0YCBm8cwTP%2BDYEeKZJ%2FxjjExhVF1&X-Amz-Signature=d299af516350069d53a86e1aeae0effffe5942024d8fdd2343ec0a7e8548a52f&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+</details>
+
+<details>
+<summary>**Output:** Auth! And maybe database persisting?</summary>
+- Landing page is now Auth
+
+    ![Screenshot_2025-03-12_at_1.13.12_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/69b72869-583c-4fac-b4c4-9d6b2aef9b1f/Screenshot_2025-03-12_at_1.13.12_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4662YQ7XKRR%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144129Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDx2vr%2BGyUuwtpqwX69AMsDJT%2BoxWF2G5MrSoKfuvV68gIgJtSGvDYPsndg%2BRqiRG5YNyF%2Bs5HUIoZoWOe%2FqPfwXEkqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDHLwKgO1wPeS8QjDcyrcA6QOi95YDY7D7ysYf%2BRhLECT4DvisLabV1O91CPxw1PyRQoD49kB6BI%2FZtSICg4%2BRar32OrCqfWp4Z0R4nzwukaP%2BUtRfRlXFhotWqX2dT%2Bo84wRDnh5bnLoQowsbx94MEOLgBaknx4Aq9lQ8QfQcVMQyb%2BE0mDWVGooiq%2BZQJVxRQtJqmzSAcaXFWHklzujMMphzfE4QriCREoUQqN9oi7BwOnnqYiZNFnhInFTYzel6bm2fkr5g%2FcgBjGTbMCx%2FystSswiXyZnpklR6rYykVvjNsB8lrLpfwdJGw4JaIM5bS%2B5xIp50dQpcNbVPG3hWVW0IVV478Eyp6y2vBcNvDR94l1n2mDGEqvjNm%2BAk9C6hsXeG7E%2Frth1IDhaa%2FQvhViboJeJ5u9p9gWdH3Pwz%2BaTTe%2FLMerIlc%2BaUpJNVVb%2FTPvEgFRe8R2GO9rPevjCqCiyRtZ1aYzXQK9lGMJYbsDysF9ZFC%2FtZ0HEcDxfIGg%2FplDXQjYIBc34kx0aaRxoQxkgA%2Bezhmy7EmoUr8ovGHVf4kWgV3gjPrpX6nERl2Dn%2FJNCqHV0h9ztWS5lnEjqCh4pyztrjKuwZN5Pi3Vvh4B34mxO7%2ByYFhQrFC5JUbCUCA6spg%2BdlpU9UKQaMIaMv84GOqUBjEzzzlr2IZWsnRMa8eSGMjKO8AV7AEzK3x0aep0Qmxes3b0YI5HU4cRmKLIqUSUULL1ttjSP0bd6zfN9wBsFcmXfRrzILgW4AlOOYE6uKMc8kfSiE1olMsJT%2FuwNA0H4v3ztUqYaUb%2BE7Rh80%2BqReJQtW1GLP2TlBSQpsTpQPCkYwxWSFFjfKO8xGqcoRcZHAHkKeWbPEGGzNGnALC9QO2hmKYyi&X-Amz-Signature=f66dea63715331b30801b3ca615acb1c5ef27ba641cb75420de43a4dbaa46c2c&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- But when I click.. an error!
+
+</details>
+
+<details>
+<summary>**Error:** Provider not enabled</summary>
+
+![Screenshot_2025-03-12_at_1.13.22_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/d620aa41-7c2e-4b1f-bc1f-4ddcfdf9a6d1/Screenshot_2025-03-12_at_1.13.22_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB46662A3IQOJ%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144129Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDF4hHcZ8dlw7XEeRLpHCYmirWvfHc6jrvDzT7F2PP%2F1gIhAIQvMiPb2NA%2FVwpGJqfX%2BHZX3CoQGJ%2Babb2xkDFiTFg%2FKogECIf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgyRAQXDIcvQDMbe4UIq3AMbhkRw0T1z4I7ZUUY3nBtoVFiu5D6ZFBrGjw%2BcEvc8qITPuaPUtpSljRCNQzOIy3OD4We9C5yGjHu6XZXSFtLK8kvdlqlpOMPCovs3cBQ49880URDGxjXpPfIpBynrbZOjUHTubhuyv%2B81Pbwo1L6VOBFFnErPlz8Qr%2Bhr53wyAZnEuks3obFuhJ4%2BIbXhCMRA4kyGL16CG2rwTMMNya5Zmk1NMGOSHHqpgDxpQJLoVZHwaH745VkwLBj159ocET%2BC2pYP9jNZJsgUYk7tz4aa9VBcgDW5xcYkZLfZqZfNsrDt%2BeOL1hl2uWi7TFB%2BLswi6p2ypPltTFByTAtOM%2FG%2F302mBdtbYybpfEw8WitoXROIJsG5KcjFa2t1yc2cOj%2BbYJdVDJNbmPGMKLpmBoLxzC%2FAV6T7VxW9b5Rxe0cT3MflxXOFWA%2FQfImjRgwWkDDmoCMCcCc4oHWaTmTSMOmZvSFKQd2A6SgpmdeAX6IovYjeQ0f8rNRgoSy4DyDkfI7Q04hGyXyU%2FufNTGvG%2BZlO95mL9kYDJo7VCC9AupO9PLohnIB86%2F2929Hzx6nXIaK0RbrhUyqYOrmi7bL8l7h3KPKcHK3QSmnwWgT9VTHAsuejbKzZjB3pOR1KPTDxib%2FOBjqkAUZn65uZRV%2FASQW%2B9CHI6hETrrfdJakedbtLayu4IkFJie2%2FCtt5O%2FhOnan%2BagpgjLufVY%2BV5QOx6sFaJIjUK1PphYBSz%2F3j5fCvYYVZhh%2B8IJg3miqEYXObYD%2F1tr%2FiLscNmlXQ2pqdZJZejxlFqSHy3Av9cYRXLYStLtxJnHjydXPqVHWF82dXobd%2FgWulNfsaQ5jRrMu%2BL%2BXzIrbZGS3x2VBM&X-Amz-Signature=0841479316b5512ef6ff5101452f3572e3394c86f8676cbd4c656d2e39f77e6d&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- Seems like there were errors with Google Authentication because I needed to set it up as an auth provider with Supabase and Google Cloud
+- I thought that was a bit tedious so I just asked it to do simple email authentication to start!
+
+    ![Screenshot_2025-03-12_at_1.19.53_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/5a9974fe-1922-4af0-8d1c-f6fb1ecbedb4/Screenshot_2025-03-12_at_1.19.53_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466YNYX5LR7%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144129Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQCE9yj4mI2CBYlGZ2NQ9pU%2BTEq9pZw%2BEPZypUNZkMy%2BUQIgeZhHeFgcWfCKyy2bvw2B5xWaZ3gtAOMjLwDCrcq94QIqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDCk%2FQ7QqN3nTbUGn6CrcA1JPxLbPMDB4Ifjvci%2FAWCFQfI4TMXm%2BPXbPUhEWsASUQA5j5K6TY4F0V4WFTcu%2BZIOQue2OT%2FIyjQm8gjETzth4FyLBe7zCIK48xskt3XPxhCZSZbPCUCtAriTpmstIkAZrzCbTQHdtjTVrykHkhPMWSlx6DWoVoXZNoiFm1OvrL8o6BPckM%2BGjeDKkgr0xR%2FI7JhSWmQYlicrfYviXINB8EnxP%2FUm0zGx5iq3WgJ6LKoO9s%2FKIJLh6NCq%2FB7eOBRKHWdPGU04zG54uoHbZFMh9vr1qaBwrXFXriAeVQn3xRswdTqk7ArDL%2FdE2DasbxtamE0Szb2QX6jQk9q6KA4BFeg2bFhlQW2pdeZWmFBSrECO0PoezBU9VaybSmlmKrxS3Vz8vBLhD6DmQQEMJetgyzuG5I1U7m%2F9kuMY1H7XSFraKa6mW5vLT%2BLEdv8Fu38oUJG%2BPssW4dmxokcgMFE69eey6wtT34e3Z0vlqLnuAfDPKo9dKzhRi2pgoAOfgn%2Bh%2BK0KzmA%2F2oh4y30jLcg5sh%2FYDrzdI9fUGdoI%2FSm5Y2TLuE51c1vXHPMQ8%2B5wrbCoFDc7Lk%2FkDz29UvrXqmsPbY%2Bu01%2BYiam1ioHTomeKQNstsbS67kBBgfkvcMPmJv84GOqUB7Blvi16P8aPW2dPR9oPQZo9i771AwL56nmeEyBdgOEJ%2FdARTCGvT6BP1Kby4wH3dfu%2FIC6LW54wpP6R9Kyd%2FwC4GR0deT4PnDgMztyCHQHEoodW7vd5L%2FY0f%2FyM0bQwtmmVm14w42xvlYgWdBR1kBJ1YaBWiq89cDme5RISaEC%2FJzPsE3WLXVO5b1x5vg8LCZ7v2Ts%2BRv4hOaeawPmuReI%2F0LgGB&X-Amz-Signature=2060c9f5fa0994429da3344e032b0a01ac7787a8d95823da2eabccfbe8569534&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+</details>
+
+<details>
+<summary>**Prompt:** Simple auth</summary>
+
+Ok instead of Google authentication, let's just do simple email authentication. It should already be configured in Supabase. Can you update everything to support just simple email authentication, the default that Supabase provides? 
+
+- Error!
+
+</details>
+
+<details>
+<summary>**Error:** Promise errors</summary>
+
+![Screenshot_2025-03-12_at_1.22.42_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/998f3465-4939-4753-a944-ef55c8353d1f/Screenshot_2025-03-12_at_1.22.42_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4664H2WFOI6%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144131Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIEWYGbyzoN3NtUh1KlShTe4GQxQCtgdjesc2uvQQXcvNAiEArR5ww5DtELBhMJ3IGvILK7qI9r%2FjWAGeBMcUV8V4qsYqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDARJCfFslCk4VIzSaircAxOW0jXluQYwQHc8k7Id6vfNhQoflgdo%2B9YfAavdkMc9NLHRYPgq5CHBkVmbwCzh34CyPe2cGDml0SfxkiCTjrFS5a6Nr0Joda9esSQdTiirmJpkNyEg8GiPLaycPZ3W5t4TcPVUOvBclv1j9yw67hZ1PNrJd5TdFWLUuKjOf0YfI1UKd0tvRSY0tGjcBYfmSK8L0REdrsL5OmKNkGIbaclrORIL%2BjtZYCOQOFHzJCieeMH3k6kFozTKqW8Pb5IW7ZKBCm7WmQ0i%2BuCHghk98aPFCDOp0Sb0hCJG%2BhPkEHPGpNxejrm4bxhLhA5l1KdnK0BooZNtWXSX%2BvGhmgf6ZpDO6Nsp6FtH6O1R10kcDvU4QcMSDa13QjAeiN1FXo1H8A0ZbAPBh64qWZtoW0km0Yw0VzA8XHonSugp374GSfW6%2Fv6kG0h1jTwNCymtml7P4Aj9Mm3pSlp7MyvUKvE0Fxl7pIHdBq5Xcg7xYEezj0yJUTY9e5kwKXKuD1I1lhwvxdhZs3Pl3b7kELSi7ubKOZDAyrq4vScGGEYVS0yfU03IA90pRIz7cEuLNIFw0E5QY3JRIIcJkq1ON4EUa0%2BI2lmV3p8Lj3orkWdQQ64krG1pBfODqvNWWk%2FbjStTMNeLv84GOqUBRbhhsQ7%2FP6LNPA0yKbwwp1tVJawWritPwQdUP3POZqU8VkPlR56C%2B%2Fl4OZGnlOoRFQJ%2BWWc%2Fizn8Y12bsuexyqcjuZW62lVNHfNyLJT231vOOqEByhB1HrNhouO8NuddfJvw1ZDamVJ8fbP6KH%2Foy4l2AAQQN6%2BuMiJiWgQaBN0QYnKiJ%2FV0KXrR%2F586vlQHkOVRtigSui2jpH5wdm9ZzWgdyxv0&X-Amz-Signature=6f10f5e12c486c460ba511a50df9308d0ffaf7892c2ea42cfc601caef5bb5733&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+</details>
+
+<details>
+<summary>**Output:** </summary>
+- Allows me to sign in and sign up
+
+![Screenshot_2025-03-12_at_1.22.53_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/aa50c590-16e1-4501-aa8d-9a1fa80b2055/Screenshot_2025-03-12_at_1.22.53_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466XAFYWKOV%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144132Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDpCcprAOQ3eispZGuPGa8qGz2csoiXXU5%2BW7t9dOaoYAIgRJQHja48sO3I5DYRMj4p9atgbCdQ5iujALSI4%2BuT9vYqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDIncSC2O4afCEP%2Bp6SrcA%2Bqj9YYOs67j6WSY9Miuv1M9mgXCgVWZoCnsIDJeVEXmU%2BbKUMQgsE0fw%2FtfmtycwK%2Bq2oSaMEK8WtqUO7Epv5wQjwFhyeryi9%2FB9nUOTJvq53%2BXPdRBAe3Uag12WnCwuduOA2n%2BPBwb9Ns2Ft%2ByahvU8j3%2Fc%2BRd6km%2Bccut8OqArjcQKk2SoqYsci1O6OjSb4VxHVVaxjzn4zAc60jdlAg4leQIzapeCU2mParYp1h2C8Pf6lC2qcQbXm7nPzYTVRNKwDtSciByML%2BaBGzEZxBe0KtMFxbp3fPaZoiy7VW5OupVaMZRPL0WP1ocuCRoyZeNQN8KWHAFsZgVYwI9Eie8YfcpWTA4JgfmJYTZZnQf9A%2BNoNbWP0wuZnbEwtNMhFrKSrO%2B4xJ2viLEH61bGnyev3aHx2j6Fp1YpfiC0VPOvlnWUh9J9YrYtSg9aY8cHzJYvZMySUbUVkJcOucyqabvP9%2BRUismLB34N4XMGA8uzaSNaTmed7qNIcfNpq1ZQth03IG%2FIWc1kyIg4O9lXqhmOxXWLeW5DW47w0kOVfOfaqqNrepfzspLS8DRR1mz3JpkQKUkU9VOQ%2FkaPWfeielolbih5UzGzg9zZbRj2P5%2F7PU%2FlEvRArZdgOjSMMSJv84GOqUB%2B%2FENe2%2F06p3%2Bfe8uEkhbA03cnrq67t4OonacGad%2F9tk0WNfIvhFXFiGMwy1%2FA5wwfRfI7M9DmKgtUO6yFi8PVvMlOLXxq46X%2Fo%2FWhqP3eXSkhpb5%2Fc8037akUMQs093TeCaG5qUKbHeAGGNmUEbwWlkjw5yEC7QpNZx1JkA2onx3R0h3tURuOhdEMjvFkKJGKiEiIBX8EULOsjzOCY3WF%2BpWxxwP&X-Amz-Signature=376cb246429a1d0db2ac0a0def0c4e9ed8b7b1eaec236dba5372b9d402ff9475&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- Even does the auth email, nice!
+
+![Screenshot_2025-03-12_at_1.23.52_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/d531e0e1-f182-44fa-ab97-87b6511530a5/Screenshot_2025-03-12_at_1.23.52_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466XAFYWKOV%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144132Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDpCcprAOQ3eispZGuPGa8qGz2csoiXXU5%2BW7t9dOaoYAIgRJQHja48sO3I5DYRMj4p9atgbCdQ5iujALSI4%2BuT9vYqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDIncSC2O4afCEP%2Bp6SrcA%2Bqj9YYOs67j6WSY9Miuv1M9mgXCgVWZoCnsIDJeVEXmU%2BbKUMQgsE0fw%2FtfmtycwK%2Bq2oSaMEK8WtqUO7Epv5wQjwFhyeryi9%2FB9nUOTJvq53%2BXPdRBAe3Uag12WnCwuduOA2n%2BPBwb9Ns2Ft%2ByahvU8j3%2Fc%2BRd6km%2Bccut8OqArjcQKk2SoqYsci1O6OjSb4VxHVVaxjzn4zAc60jdlAg4leQIzapeCU2mParYp1h2C8Pf6lC2qcQbXm7nPzYTVRNKwDtSciByML%2BaBGzEZxBe0KtMFxbp3fPaZoiy7VW5OupVaMZRPL0WP1ocuCRoyZeNQN8KWHAFsZgVYwI9Eie8YfcpWTA4JgfmJYTZZnQf9A%2BNoNbWP0wuZnbEwtNMhFrKSrO%2B4xJ2viLEH61bGnyev3aHx2j6Fp1YpfiC0VPOvlnWUh9J9YrYtSg9aY8cHzJYvZMySUbUVkJcOucyqabvP9%2BRUismLB34N4XMGA8uzaSNaTmed7qNIcfNpq1ZQth03IG%2FIWc1kyIg4O9lXqhmOxXWLeW5DW47w0kOVfOfaqqNrepfzspLS8DRR1mz3JpkQKUkU9VOQ%2FkaPWfeielolbih5UzGzg9zZbRj2P5%2F7PU%2FlEvRArZdgOjSMMSJv84GOqUB%2B%2FENe2%2F06p3%2Bfe8uEkhbA03cnrq67t4OonacGad%2F9tk0WNfIvhFXFiGMwy1%2FA5wwfRfI7M9DmKgtUO6yFi8PVvMlOLXxq46X%2Fo%2FWhqP3eXSkhpb5%2Fc8037akUMQs093TeCaG5qUKbHeAGGNmUEbwWlkjw5yEC7QpNZx1JkA2onx3R0h3tURuOhdEMjvFkKJGKiEiIBX8EULOsjzOCY3WF%2BpWxxwP&X-Amz-Signature=a4f942a3302059e4138b17b1766f268e2314a15d4abd0d8215d914cba2751bc3&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- Weirdly the link brings me to a weird route.. but ok it works. And I was able to sign in and start creating an Org
+
+    ![Screenshot_2025-03-12_at_1.25.19_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/0f8863e1-b27d-4c74-bd33-d1757a17f191/Screenshot_2025-03-12_at_1.25.19_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4665B67YDQ7%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144132Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIF1JtOaDavxcOwckRMGg4Y%2BuaCDqEfHxhWrQz2%2FxjU0VAiEAy38bWKxSR4u3D7%2FYKwqo81%2FFbIgOYsEu2vJTqmMQHukqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDKTtovIPfARrFcaWtyrcA08dPmIcuUPPRf17JeNK2Ah3v%2FVTsGjkqS1JfAVRQZmsNMZpQqICo1FMErrIfGEc1sQJVclrJYpyO8V%2FqB3dPW%2BFpmO71YF6OA3C9xycg0uHmyNeP7oqjW1dKSSBRbQNuq%2BNCqXWu2eQRE24svKZMdakMmk5t7%2Bja4ANY0aQxdaz9yrGT02QBCWEsYgIBcbxDiYszkNMC3QVixJK5GXhVYhMTAeiDypvqdR%2B6J%2FVzK39f175mCDweNu%2FDfZUkpNyJNNnD4GoPwudKtxZnIp98lSN6%2B7PTULCm%2Bi%2BTkqFluS%2BAERDT8uefoV8DqXRb8mNauRv9t95dQMbkBHXosjewuTG1zWnR6kmBs%2BGeiY52OFU4wAUCNYw6fbuOoqIENM4eUxvjddWn%2BDn4y5iwttzXqbqxqgC05t7Yp7NwtRLoHTxVEqGFBnv%2Bf9TWERgDpTnDCuJa8Za5w1x6ZdKPDqwkeqGN9k29ctWvn8m%2BJBq76wfyyhg263NH1DM2yvptc8uVIzjOHkYgEITWEuWoaYB2gFYSFm5b11tBq6FAlN5YGUiWPqzcpHjGz8OGBbV5NiZ4eIzdox63HE%2BMm3cKbrLXpEjH16LCjx8EXLwSu%2FV%2FMnccPHBRsYMigqQ8YitMKmJv84GOqUBGOLASMUfnK1AH8%2BGtB26S8Fh%2By2lFkwUiMZKtkGWT986lb9uDuuZFvPXxEdpIKt%2F2AocMwnNDr4BHHAa1uqUVTlaDS%2BpOTZwPdo7g26j3k0h2%2BofwDRx2lZYxYbO3ZKpkLBC2KA%2Bbz0iSe1idKQccd3OFmKG6pQArmEaJr3rGEft7tkuRjKY8qYF%2BSXNJcmq707ktizUe5NPxArMPScaMF1LvGtm&X-Amz-Signature=c1efc264e7d476e8b25f8fd92747d436ef3a400125240413e54e0d6cc7920578&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- Now it shows the new Import UI! Shows errors tho…
+
+![Screenshot_2025-03-12_at_1.25.28_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/f8f5616d-889e-406c-9814-b77c227cd627/Screenshot_2025-03-12_at_1.25.28_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466XAFYWKOV%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144132Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQDpCcprAOQ3eispZGuPGa8qGz2csoiXXU5%2BW7t9dOaoYAIgRJQHja48sO3I5DYRMj4p9atgbCdQ5iujALSI4%2BuT9vYqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDIncSC2O4afCEP%2Bp6SrcA%2Bqj9YYOs67j6WSY9Miuv1M9mgXCgVWZoCnsIDJeVEXmU%2BbKUMQgsE0fw%2FtfmtycwK%2Bq2oSaMEK8WtqUO7Epv5wQjwFhyeryi9%2FB9nUOTJvq53%2BXPdRBAe3Uag12WnCwuduOA2n%2BPBwb9Ns2Ft%2ByahvU8j3%2Fc%2BRd6km%2Bccut8OqArjcQKk2SoqYsci1O6OjSb4VxHVVaxjzn4zAc60jdlAg4leQIzapeCU2mParYp1h2C8Pf6lC2qcQbXm7nPzYTVRNKwDtSciByML%2BaBGzEZxBe0KtMFxbp3fPaZoiy7VW5OupVaMZRPL0WP1ocuCRoyZeNQN8KWHAFsZgVYwI9Eie8YfcpWTA4JgfmJYTZZnQf9A%2BNoNbWP0wuZnbEwtNMhFrKSrO%2B4xJ2viLEH61bGnyev3aHx2j6Fp1YpfiC0VPOvlnWUh9J9YrYtSg9aY8cHzJYvZMySUbUVkJcOucyqabvP9%2BRUismLB34N4XMGA8uzaSNaTmed7qNIcfNpq1ZQth03IG%2FIWc1kyIg4O9lXqhmOxXWLeW5DW47w0kOVfOfaqqNrepfzspLS8DRR1mz3JpkQKUkU9VOQ%2FkaPWfeielolbih5UzGzg9zZbRj2P5%2F7PU%2FlEvRArZdgOjSMMSJv84GOqUB%2B%2FENe2%2F06p3%2Bfe8uEkhbA03cnrq67t4OonacGad%2F9tk0WNfIvhFXFiGMwy1%2FA5wwfRfI7M9DmKgtUO6yFi8PVvMlOLXxq46X%2Fo%2FWhqP3eXSkhpb5%2Fc8037akUMQs093TeCaG5qUKbHeAGGNmUEbwWlkjw5yEC7QpNZx1JkA2onx3R0h3tURuOhdEMjvFkKJGKiEiIBX8EULOsjzOCY3WF%2BpWxxwP&X-Amz-Signature=ea6a6c8e39e2d600922546753595a20c1adb4118b102ee16d9cf3913092a8f50&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- I refresh, and it keeps showing no organizations found. Seems like the Organization is not persisting.
+
+</details>
+
+<details>
+<summary>**Error**: Organization not persisting</summary>
+
+![Screenshot_2025-03-12_at_1.31.50_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/9533ec95-0f70-4957-8f7b-67318aa8500e/Screenshot_2025-03-12_at_1.31.50_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4662YUAXQMQ%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144132Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDC3Zy8z4TUH4vJ5xGUVd6qDLbafQBcH1ZHPYlBDquHuwIhAIlYM%2FPb2%2F5zimIfghQh%2B9oO2Uu1hsvQpHI3lN8bQTGBKogECIf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgxTQqGDBGPCkSPOeBgq3AO5tIVzMzh9ryLeJkT04qhBZ114wPXlYc1B40f8Xe4vFlyTmXO6%2FRP3PbOvrM1aLOcPh9q8ltw3im8mU7cGKFDRUqG9Jf3OijhXUFWjw2v4ZevUC65rZha9uyHhNMRCgyPx%2Ble6RA0Gy7%2FOgcd4DgvaGkTvadFFld2hAbY62lR10s5CscuM8ucIM2VrGSLuMNpXMPy998ZEBA%2FRhncekLQ8lo%2Bd1%2B%2BjWFTbUh3Os4K0xOv7ytsUw7lio7Uzci5jmFequJAFtqNFhF%2BJjLkmX8SXBHbmHjYOliJkermtGIyfhVAMXAcN5d8VBn8LyoLPlmQyrQOQpbfQzivFcmq2mg9%2B1zvZ8WVBU4GqO332pRrBNNg0azSZ4XrmR9FQnzELb0REl1%2B51uKeqJi6Xp%2FPiWqxjdHxXXo6ngSUlqnHMPdA8RdZCLQWnet3kjlodAMsr6fsJrxxPtO9VlAVjTz%2BSLcBdNByUft6BUxP85efQlc%2BE9H5TiBobXFn3p0%2BlgJhIcbTsUkxA1%2FrmlW4CSuOpktVFjhMjaojkStnknGscCNSq2ZV69%2BdgD84DuCX7K7fnt%2FZIKr%2BRgO2gjlhPXykIzUyPSyigy2CnG%2Fq4inwGU04U6I%2FAn0Pdm1Py1392TCNir%2FOBjqkAQUZCzwEgtpo61vxYmzZ9hzskeC9yTFVlgDidoM7V9Yq8Bx7f38rAX1XT0SibqlI2tODueUaSEzfja5Yvl11HqTKMu8d4WM1I%2FdvBcOQHC9xpoKPfurks4cmA4UfukSXfeCUWWbOic649zx9mEmbHbUFWnufvrU4%2FciZPKvz7n44TWIXOZsL6tA%2FS%2F4Ws%2FfG4%2BoaFO8%2BXObNYmSWW1d%2BUJJTuZU3&X-Amz-Signature=fe52534b56f5af4d2edac5c6277111c8956c5bb604564ecfaf6030c6861f4e8b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+</details>
+
+<details>
+<summary>**Output + 32 Errors:** Too. Many. Errors. </summary>
+- Holy shmokes - I will not bore with the details but I had so many errors I had to correct!!! Took almost 2 hours just talking to [Lovable.dev](http://lovable.dev/) and ChatGPT… Lots of auth errors in particular. New learnings to focus on Auth above all else.
+
+</details>
+
+<details>
+<summary>**Output**: Authentication to Zendesk worked!</summary>
+- Now shows the below, as expected. However, it was unclear to me that I properly connected. Need to update that in the UI!
+
+![Screenshot_2025-03-12_at_4.18.07_PM.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/c830b620-d5af-4061-aae0-300313879f1f/1702a096-4dcc-4191-8f00-93ee4ef281cc/Screenshot_2025-03-12_at_4.18.07_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466V6PLOIBQ%2F20260403%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260403T144133Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEL7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIGJnVXcDpab%2FrH080zUZoDnPHNLdPYjWGwWHXia2RsSeAiEApQ4Rn0ZOabd7eN4Q%2BCptU71onRR4%2Fu4Rz3jB7sVEduEqiAQIh%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDFWp14Z0BlheiIeGaircA7E13NWC7qJVAIu%2BIXfN%2BQdk09rgcYyIEVIIM3PvmFDOvjb9IECid7coRVPhp6mKImU1NzdEpw5bcvqMxdxszPWOhCM43zXKyJFLL%2BElFV2jS%2BItYFPvRB1ynidtkVQOPGmtbBYYbm3%2FdlFCNZafeepWKUpjviS6WOQeLfUaGcVjXEVgdsVCgKDjHI4ZWAVn1P%2FnZoVzJVGLo7Dty%2BFIrAjwK0eNjAZi83L76tfwru%2BZzW3z6aKsN%2BBsF5B8UNmMgFs5lcCXz9Jex9WOTtFn7y5CkVSNy1ztgljuIcFvd3eKIg3ri%2FRRKBJLGUNrn4WWMGscnLl3W070nbdmfLjLzBq2krjSsDTQFT3y3KYNPywxUx2DrSa9C2Pth2U0sb%2FbJMi%2Bk2fkxeGcmP1%2BFCWwamLwHxHVsXjPJF6EgFpS932sENvTO82URbQ83AdOt5eLPWsBnQFUb3cm0jEnh1VyFZYZaJsByhE8hYj%2FKKfKPlT5KYwyGmN6DjnLbW%2BaUNDAWFd5INLT2lZuLxMTBklo0%2Bhm7P4hTjJLS0IPd8uId7S4T3HaBSNkchARFVUt2vpm4nezQGX1TBKIXz0bDTgtou8QcFzD5nfMSwPFAsH65BY9f3sqycDikO2tbUKnMLmMv84GOqUBW4ELmOjjvPOggVxLQh2HbVkYjtVJbAo0ANALocKRx%2BYECX1eapOllIibXqIYHmJ06K3u%2BV7LHI%2Bi3Ux4wvjzOKunRo3CLG4G7DXid5VxAjD1n2SfB5t9LKjWyW0%2BZJD2VUf612iqQDOOD9tIoFzRUJLcFwaw2BxeEAUAZz73mkSoePlLGOVvQDcWZrGxLH96822CugXDwotc%2B%2FCO6OM4%2F7nkwXiV&X-Amz-Signature=3667467368dc3e9960ae3778ae5076528c23f010e4b66a29df272b09ea08b5e9&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+- Also I can’t erase 7. It persists. Lol. I can only append to it!
+
+Ok some UI changes
+
+- when I connect to Zendesk and it properly connects, show a success message showing that Zendesk connected. Maybe also show an indication in the UI of which workspace it is connect to and some checkmark that all is well.
+- For "Import from last" field - default 7 but make sure that I can also update the number. RIght now I can only append to it, I don't want that. I want to be able to edit the number
+- Whenever I sign in, an error message shows up on the right side momentarily but I htink it’s a mistake and shouldn’t show up
+
+For zendesk import
+
+- Dedup based on ID - if i’ve already imported a specific ticket, do not import it again.
+- On the banner, show the number of messages that I imported from the last 7 days
+- It seems that it caps from a max of 100 support tickets, don’t cap it. I want to see from last # of days being specified.
+
+For sign in
+
+- just for testing purposes, is there a way for me to stay signed in with my current account and be cached? whenever i refresh it seems i have to log back in and it’s getting annoying when im testing
+
+</details>
+
+<details>
+<summary>**Output**: Need a better prompt through Open AI</summary>
+
+**Original**
+
+
+```plain text
+const promptData = {
+  faqDocuments: faqDocuments.map((doc) => ({
+    id: doc.id,
+    url: doc.url,
+    title: doc.title || "Untitled",
+    content: doc.content || "No content available",
+  })),
+  tickets: tickets.map((ticket) => ({
+    id: ticket.id,
+    subject: ticket.subject || "",
+    content: ticket.content || "No content available",
+    status: ticket.status || "unknown",
+  })),
+};
+
+console.log(`Analyzing ${tickets.length} tickets and ${faqDocuments.length} FAQ documents`);
+
+// Create system prompt
+const systemPrompt = `
+  You are an AI assistant that helps identify patterns in support tickets and suggests improvements to FAQ documents.
+  Your task is to analyze support tickets and existing FAQ documents, then generate two types of suggestions:
+
+  1. New FAQ topics that should be created based on common issues in the support tickets that aren't addressed in existing FAQs.
+  2. Edits to existing FAQ documents to improve clarity or address missing information based on support ticket questions.
+
+  For new FAQs:
+  - Identify recurring questions or issues in support tickets that aren't covered in existing FAQs
+  - Group related tickets together and suggest comprehensive FAQ topics
+  - Write detailed and clear content for each suggested FAQ
+
+  For edits to existing FAQs:
+  - Identify tickets that relate to existing FAQ topics but indicate the FAQ content is insufficient
+  - Suggest specific edits to improve clarity, accuracy, or completeness
+  - Provide both the original text section and your improved version
+
+  EXTREMELY IMPORTANT: You must respond with ONLY a valid JSON object with no formatting, markdown, or explanation.
+  Return a JSON object with this exact structure:
+  {
+    "newFAQs": [
+      {
+        "id": "unique-id-1",
+        "title": "Suggested FAQ Title",
+        "relatedTickets": [
+          { "id": "ticket-id", "subject": "Ticket Subject" }
+        ],
+        "suggestedContent": "Content for the new FAQ"
+      }
+    ],
+    "existingFAQEdits": [
+      {
+        "id": "unique-id-2",
+        "faqDocument": {
+          "id": "faq-doc-id",
+          "title": "Existing FAQ Title",
+          "url": "<https://example.com/faq/123>"
+        },
+        "relatedTickets": [
+          { "id": "ticket-id", "subject": "Ticket Subject" }
+        ],
+        "suggestedEdits": {
+          "original": "Text that needs to be improved",
+          "suggested": "Improved text"
+        }
+      }
+    ]
+  }
+`;
+```
+
+
+Updated
+
+
+```plain text
+const promptData = {
+  faqDocuments: faqDocuments.map((doc) => ({
+    id: doc.id,
+    url: doc.url,
+    title: doc.title || "Untitled",
+    content: doc.content || "No content available",
+  })),
+  tickets: tickets.map((ticket) => ({
+    id: ticket.id,
+    subject: ticket.subject || "",
+    content: ticket.content || "No content available",
+    status: ticket.status || "unknown",
+  })),
+  suggestions: suggestions.map((suggestion) => ({
+    id: suggestion.id,
+    subject: suggestion.subject || "",
+    content: suggestion.content || "No content available",
+  })),
+};
+
+console.log(`Analyzing ${tickets.length} tickets and ${faqDocuments.length} FAQ documents`);
+
+// Create system prompt
+const systemPrompt = `
+  You are an AI assistant that helps identify patterns in support tickets and suggests improvements to FAQ documents.
+  Your task is to analyze support tickets with tickets and existing FAQ documents with faqDocument, then generate 2 types of suggestions as below. However, do not repeat suggestions from the suggestions data. Use the tone that we already use in our answers to support tickets. 
+
+  1. New FAQ topics that should be created based on common issues in the support tickets that aren't addressed in existing FAQs.
+  2. Edits to existing FAQ documents to improve clarity or address missing information based on support ticket questions.
+
+  For new FAQs:
+  - Identify recurring questions or issues in support ticket content and titles that aren't covered in existing FAQs
+  - Group related tickets together. Suggest comprehensive topics and titles in question form, from the perspective of a user, to add to the FAQ. Examples: "I'm having trouble with creating an account. What are common issues?" or "How long do withdrawals usually take?" 
+  - Also give a suggest on suggested content that answers the question robustly and comprehensively but still brief and to the point. consider answers to the question based on answers from support tickets that are marked "solved" 
+
+  For edits to existing FAQs:
+  - Identify tickets that relate to existing FAQ topics and titles but indicate the FAQ content is insufficient, unclear or lacking given customers continue to ask the same questions.
+  - Suggest specific edits to existing FAQs title OR content to improve clarity, accuracy, or completeness. Make these suggestions robust. 
+  - Provide both the original text section and your improved version on the content (let's not include suggestions to the title yet) 
+
+  EXTREMELY IMPORTANT: You must respond with ONLY a valid JSON object with no formatting, markdown, or explanation.
+  Return a JSON object with this exact structure:
+{
+  "type": "new" | "edit",
+  "related_tickets": [
+    { "id": "ticket-id that maps to support_tickets. this should be required for ALL types of suggestions whether new or edit"}
+  ],
+  "new_suggested_content": "Content for new FAQs (only present if type is 'new')",
+  "new_suggested_topic": "FAQ Title (only present if type is 'new')",
+  "edit_suggested_content": {
+    "original": "Text that needs to be improved (only for edit type)",
+    "suggested": "Improved text (only for edit type)"
+  }
+ "edit_existing_faq_document": {
+    "id": "faq-doc-id from faq_documents only for edit type",
+  },
+};
+```
+
+
+</details>
+
+
+---
+
+
+Ok, at this point, I am logging A LOT. There are too many errors and lots of back and forth so I’m only going to log highlights and learnings, at the top of this section to spare y’all the details!
+
+
+# Future
