@@ -7,10 +7,10 @@ export default function SiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex min-h-full flex-col bg-zinc-950 text-zinc-50">
-      <SiteHeader variant="dark" />
+    <div className="flex min-h-screen flex-col bg-white text-zinc-950">
+      <SiteHeader />
       <div className="flex-1">{children}</div>
-      <SiteFooter variant="dark" />
+      <SiteFooter />
     </div>
   );
 }

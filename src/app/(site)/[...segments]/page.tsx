@@ -1,10 +1,11 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { NotionDocument } from "@/components/notion/NotionDocument";
 import { isNotionConfigured } from "@/lib/notion/config";
 import { getPostByPath, getPostSummaries } from "@/lib/notion/posts";
+import { BackLink } from "@/components/ui/BackLink";
+import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ segments: string[] }> };
 
@@ -54,20 +55,15 @@ export default async function SitePage({ params }: Props) {
   }
 
   return (
-    <article className="mx-auto max-w-2xl px-6 py-16">
-      <Link
-        href="/"
-        className="text-sm font-medium text-teal-400 hover:underline"
-      >
-        ← Home
-      </Link>
+    <article className={mainProse}>
+      <BackLink href="/" label="Home" />
       <header className="mt-6">
-        <h1 className="text-4xl font-semibold tracking-tight text-zinc-50">
+        <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 md:text-5xl">
           {post.title}
         </h1>
         <time
           dateTime={post.lastEdited}
-          className="mt-3 block text-sm text-zinc-500"
+          className={`mt-3 block ${textMuted}`}
         >
           Updated{" "}
           {new Date(post.lastEdited).toLocaleDateString("en-US", {

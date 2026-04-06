@@ -3,18 +3,10 @@ import type { ReactNode } from "react";
 import { Fragment } from "react";
 
 import type { NotionSurface } from "@/lib/notion/surface";
+import { siteLink } from "@/lib/ui/site-styles";
 
-const linkClass: Record<NotionSurface, string> = {
-  default:
-    "text-teal-400 underline decoration-teal-500/50 underline-offset-[3px] hover:decoration-teal-300",
-  home:
-    "text-zinc-900 underline decoration-zinc-400 underline-offset-[3px] hover:decoration-zinc-900",
-};
-
-const codeClass: Record<NotionSurface, string> = {
-  default: "rounded bg-zinc-800 px-1 py-0.5 text-[0.9em] text-zinc-200",
-  home: "rounded bg-zinc-100 px-1 py-0.5 text-[0.9em] text-zinc-900 ring-1 ring-zinc-200/80",
-};
+const codeInlineClass =
+  "rounded bg-zinc-100 px-1 py-0.5 text-[0.9em] text-zinc-900 ring-1 ring-zinc-200/80";
 
 /** Preserves Notion soft line breaks inside one rich_text run. */
 function TextWithLineBreaks({ text }: { text: string }) {
@@ -31,13 +23,7 @@ function TextWithLineBreaks({ text }: { text: string }) {
   );
 }
 
-function RichTextFragment({
-  fragment,
-  surface,
-}: {
-  fragment: RichTextItemResponse;
-  surface: NotionSurface;
-}) {
+function RichTextFragment({ fragment }: { fragment: RichTextItemResponse }) {
   if (fragment.type !== "text") {
     return (
       <span className="text-zinc-500">
@@ -52,7 +38,7 @@ function RichTextFragment({
 
   if (code) {
     node = (
-      <code className={codeClass[surface]}>
+      <code className={codeInlineClass}>
         <TextWithLineBreaks text={content} />
       </code>
     );
@@ -67,7 +53,7 @@ function RichTextFragment({
     node = (
       <a
         href={link.url}
-        className={linkClass[surface]}
+        className={siteLink}
         rel="noopener noreferrer"
         target={link.url.startsWith("http") ? "_blank" : undefined}
       >
@@ -79,18 +65,17 @@ function RichTextFragment({
   return <>{node}</>;
 }
 
-export function RichText({
-  items,
-  surface = "default",
-}: {
+export function RichText(props: {
   items: RichTextItemResponse[];
+  /** Kept for API compatibility with Notion blocks; styling is unified (light). */
   surface?: NotionSurface;
 }) {
+  const { items } = props;
   if (!items.length) return null;
   return (
     <>
       {items.map((item, i) => (
-        <RichTextFragment key={i} fragment={item} surface={surface} />
+        <RichTextFragment key={i} fragment={item} />
       ))}
     </>
   );

@@ -3,9 +3,12 @@ import { unstable_cache } from "next/cache";
 import { isNotionConfigured, notionEnv } from "./config";
 import { fetchBlockTree, type BlockTree } from "./blocks";
 import { getNotionClient } from "./client";
-import { getPublicPath, getTags, getTitle, isPublished } from "./properties";
+import { getPublicPath, getTags, getTitle } from "./properties";
+import { queryDatabasePages } from "./query-database-pages";
 
-import type { DatabaseObjectResponse, PageObjectResponse } from "@notionhq/client";
+import type { PageObjectResponse } from "@notionhq/client";
+
+export { queryDatabasePages } from "./query-database-pages";
 
 function normalizeNotionId(id: string): string {
   return id.replace(/-/g, "").toLowerCase();
@@ -34,48 +37,6 @@ function asFullPage(p: unknown): PageObjectResponse | null {
     return p as PageObjectResponse;
   }
   return null;
-}
-
-async function getPrimaryDataSourceId(): Promise<string | null> {
-  const notion = getNotionClient();
-  const db = await notion.databases.retrieve({
-    database_id: notionEnv.databaseId!,
-  });
-  if (db.object !== "database") {
-    return null;
-  }
-  const full = db as DatabaseObjectResponse;
-  const first = full.data_sources?.[0];
-  return first?.id ?? null;
-}
-
-export async function queryDatabasePages(): Promise<PageObjectResponse[]> {
-  const notion = getNotionClient();
-  const dataSourceId = await getPrimaryDataSourceId();
-  if (!dataSourceId) {
-    return [];
-  }
-
-  const pages: PageObjectResponse[] = [];
-  let cursor: string | undefined;
-
-  do {
-    const res = await notion.dataSources.query({
-      data_source_id: dataSourceId,
-      start_cursor: cursor,
-      page_size: 100,
-      result_type: "page",
-    });
-    for (const row of res.results) {
-      const page = asFullPage(row);
-      if (page && isPublished(page)) {
-        pages.push(page);
-      }
-    }
-    cursor = res.has_more ? res.next_cursor ?? undefined : undefined;
-  } while (cursor);
-
-  return pages;
 }
 
 async function listSummariesInternal(): Promise<PostSummary[]> {

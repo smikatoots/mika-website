@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 
 import { loadBlogManifest } from "@/lib/blog/manifest";
+import { loadPressManifest } from "@/lib/press/manifest";
+import { loadProjectsManifest } from "@/lib/projects/manifest";
 import { isNotionConfigured } from "@/lib/notion/config";
 import { getPostSummaries } from "@/lib/notion/posts";
 import { SITE_URL } from "@/lib/site";
@@ -13,20 +15,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/about`, lastModified: new Date() },
     { url: `${SITE_URL}/blog`, lastModified: new Date() },
     { url: `${SITE_URL}/links`, lastModified: new Date() },
-    { url: `${SITE_URL}/more`, lastModified: new Date() },
+    { url: `${SITE_URL}/projects`, lastModified: new Date() },
     { url: `${SITE_URL}/press`, lastModified: new Date() },
-    { url: `${SITE_URL}/guestbook`, lastModified: new Date() },
     { url: `${SITE_URL}/my-dreams`, lastModified: new Date() },
   ];
 
   const { posts: manifestPosts } = await loadBlogManifest();
+  const { projects } = await loadProjectsManifest();
+  const { items: pressItems } = await loadPressManifest();
   const fromMdx: MetadataRoute.Sitemap = manifestPosts.map((p) => ({
     url: `${SITE_URL}/${p.path}`,
     lastModified: new Date(p.lastEdited),
   }));
+  const projectEntries: MetadataRoute.Sitemap = projects.map((p) => ({
+    url: `${SITE_URL}/projects/${p.slug}`,
+    lastModified: new Date(),
+  }));
+  const pressEntries: MetadataRoute.Sitemap = pressItems.map((p) => ({
+    url: `${SITE_URL}/press/${p.slug}`,
+    lastModified: new Date(p.lastEdited),
+  }));
 
   if (!isNotionConfigured()) {
-    return [...staticEntries, ...fromMdx];
+    return [...staticEntries, ...fromMdx, ...projectEntries, ...pressEntries];
   }
 
   const posts = await getPostSummaries();
@@ -37,5 +48,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(p.lastEdited),
     }));
 
-  return [...staticEntries, ...fromMdx, ...fromNotion];
+  return [
+    ...staticEntries,
+    ...fromMdx,
+    ...projectEntries,
+    ...pressEntries,
+    ...fromNotion,
+  ];
 }

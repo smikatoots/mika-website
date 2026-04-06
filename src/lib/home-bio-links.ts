@@ -2,6 +2,7 @@
  * Home bio links. Paths starting with `/` are in-app routes (same slugs as mikareyes.com).
  */
 export const homeBioLinks = {
+  kingsCrossLabs: "https://kingscrosslabs.com",
   parallax: "https://withparallax.com",
   tiktok: "https://www.tiktok.com/@its.mikareyes",
   instagram: "https://www.instagram.com/its.mikareyes/",

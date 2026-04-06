@@ -1,55 +1,25 @@
 import Link from "next/link";
 
+import { siteNavItems } from "@/lib/site-nav";
 import { SITE_NAME } from "@/lib/site";
+import { siteNavLink } from "@/lib/ui/site-styles";
 
-const nav = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-] as const;
-
-export function SiteHeader({ variant = "dark" }: { variant?: "light" | "dark" }) {
-  if (variant === "light") {
-    return (
-      <header className="border-b border-zinc-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-6 md:px-10">
-          <Link
-            href="/"
-            className="font-semibold tracking-tight text-zinc-900"
-          >
-            {SITE_NAME}
-          </Link>
-          <nav className="flex items-center gap-6 text-sm font-medium text-zinc-600">
-            {nav.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="transition-colors hover:text-zinc-900"
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </header>
-    );
-  }
-
+export function SiteHeader() {
   return (
-    <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-6 md:px-10">
+    <header className="border-b border-zinc-200 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-6 md:px-8">
         <Link
           href="/"
-          className="font-semibold tracking-tight text-zinc-50"
+          className="font-semibold tracking-tight text-zinc-950"
         >
           {SITE_NAME}
         </Link>
-        <nav className="flex items-center gap-6 text-sm font-medium text-zinc-400">
-          {nav.map(({ href, label }) => (
+        <nav className="flex max-w-[min(100%,42rem)] flex-1 justify-end gap-4 overflow-x-auto py-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-5 lg:max-w-none lg:gap-6 [&::-webkit-scrollbar]:hidden">
+          {siteNavItems.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className="transition-colors hover:text-teal-400"
+              className={`shrink-0 whitespace-nowrap ${siteNavLink}`}
             >
               {label}
             </Link>

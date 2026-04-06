@@ -46,6 +46,14 @@ export async function buildPageLinkContext(): Promise<PageLinkContext> {
     });
   }
 
+  const dreamsRaw = notionEnv.dreamsPageId;
+  if (dreamsRaw) {
+    byNormId.set(normalizeNotionId(dreamsRaw), {
+      path: "my-dreams",
+      title: "Dreams",
+    });
+  }
+
   function notionPublicUrl(pageId: string): string {
     const id = pageId.replace(/-/g, "");
     return `https://www.notion.so/${id}`;

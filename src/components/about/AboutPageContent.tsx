@@ -1,12 +1,11 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 
+import { BackLink } from "@/components/ui/BackLink";
 import { homeBioLinks } from "@/lib/home-bio-links";
+import { siteLink } from "@/lib/ui/site-styles";
 
 import { AboutPhoto } from "./AboutPhoto";
-
-const linkClass =
-  "text-zinc-900 underline decoration-zinc-400 underline-offset-[3px] transition-colors hover:decoration-zinc-900";
 
 function ALink({
   href,
@@ -17,7 +16,7 @@ function ALink({
 }) {
   if (href.startsWith("/")) {
     return (
-      <Link href={href} className={linkClass}>
+      <Link href={href} className={siteLink}>
         {children}
       </Link>
     );
@@ -25,7 +24,7 @@ function ALink({
   return (
     <a
       href={href}
-      className={linkClass}
+      className={siteLink}
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -62,12 +61,7 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-14 md:max-w-4xl md:px-10 md:py-20">
-      <Link
-        href="/"
-        className="text-sm font-medium text-zinc-600 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-900 hover:decoration-zinc-600"
-      >
-        ← Home
-      </Link>
+      <BackLink href="/" label="Home" />
 
       <header className="mt-8 text-center">
         <div className="mx-auto mb-4 flex justify-center text-zinc-500" aria-hidden>
@@ -119,49 +113,50 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
             </li>
             <li>
               working on{" "}
-              <span className="font-medium text-blue-600">wedding planning</span>
+              <ALink href={homeBioLinks.kingsCrossLabs}>
+                <span className="font-medium text-blue-600">
+                  King&apos;s Cross Labs
+                </span>
+              </ALink>
             </li>
             <li>
               writing{" "}
-              <ALink href="/blog">
-                <span className="font-medium text-emerald-600">startup lessons</span>
-              </ALink>
+              <span className="font-medium text-emerald-600">
+                AI tutorials for normal people
+              </span>
             </li>
             <li>
               reading{" "}
               <span className="font-medium text-orange-600">
-                Company of One, Deep Work
+                The Art of Spending
               </span>
             </li>
             <li>
               creating{" "}
               <span className="font-medium text-red-600">
-                content on{" "}
-                <ALink href={homeBioLinks.tiktok}>Tiktok</ALink>
-                {" & "}
-                <ALink href="https://www.linkedin.com/in/itsmikareyes">
-                  LinkedIn
+                videos on{" "}
+                <ALink href="https://instagram.com/its.mikareyes">
+                  Instagram
                 </ALink>
-                !
               </span>
             </li>
             <li>
               watching{" "}
-              <span className="font-medium text-red-800">Secrets We Keep</span>
+              <span className="font-medium text-red-800">The Pitt</span>
             </li>
             <li>
               listening to{" "}
               <span className="font-medium text-amber-800">
-                Gnarly by Katseye
+                my Wedding Dinner Playlist
               </span>
             </li>
             <li>
               addicted to{" "}
-              <span className="font-medium text-violet-600">pistachios</span>
+              <span className="font-medium text-violet-600">Claude!</span>
             </li>
           </ul>
           <p className="text-sm italic text-zinc-500">
-            Last updated @ July 30, 2025
+            Last updated @ April 2, 2026
           </p>
         </div>
       </section>
@@ -261,7 +256,7 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
           </span>
           <p className="text-zinc-800">
             On the side, I like to work on fun projects like a{" "}
-            <ALink href="/more">virtual startup incubator for emerging markets</ALink>
+            <ALink href="/projects">virtual startup incubator for emerging markets</ALink>
             ,{" "}
             <ALink href="/links">
               the first playbook for launching NFTs

@@ -7,6 +7,8 @@ import { renderBlogMdx } from "@/components/blog/render-blog-mdx";
 import type { BlogPostFrontmatter } from "@/lib/blog/types";
 import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadBlogMdxPost } from "@/lib/blog/load-mdx-post";
+import { BackLink } from "@/components/ui/BackLink";
+import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -30,6 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const tagClass =
+  "rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 transition hover:border-teal-300 hover:text-teal-800";
+
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const loaded = await loadBlogMdxPost(slug);
@@ -40,20 +45,15 @@ export default async function BlogPostPage({ params }: Props) {
   const { content, frontmatter } = await renderBlogMdx(loaded.source);
 
   return (
-    <article className="mx-auto max-w-2xl px-6 py-16">
-      <Link
-        href="/blog"
-        className="text-sm font-medium text-teal-400 hover:underline"
-      >
-        ← Blog
-      </Link>
+    <article className={mainProse}>
+      <BackLink href="/blog" label="Blog" />
       <header className="mt-6">
-        <h1 className="text-4xl font-semibold tracking-tight text-zinc-50">
+        <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 md:text-5xl">
           {frontmatter.title}
         </h1>
         <time
           dateTime={frontmatter.lastEdited}
-          className="mt-3 block text-sm text-zinc-500"
+          className={`mt-3 block ${textMuted}`}
         >
           Updated{" "}
           {new Date(frontmatter.lastEdited).toLocaleDateString("en-US", {
@@ -66,10 +66,7 @@ export default async function BlogPostPage({ params }: Props) {
           <ul className="mt-4 flex flex-wrap gap-2">
             {frontmatter.tags.map((t) => (
               <li key={t}>
-                <Link
-                  href={`/blog?tag=${encodeURIComponent(t)}`}
-                  className="rounded-full border border-zinc-700 bg-zinc-900/40 px-3 py-1 text-xs font-medium text-zinc-400 transition hover:border-zinc-600 hover:text-teal-400"
-                >
+                <Link href={`/blog?tag=${encodeURIComponent(t)}`} className={tagClass}>
                   {t}
                 </Link>
               </li>

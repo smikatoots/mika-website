@@ -7,10 +7,10 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex min-h-full flex-col bg-white text-zinc-900">
-      <SiteHeader variant="light" />
+    <div className="flex min-h-screen flex-col bg-white text-zinc-950">
+      <SiteHeader />
       <div className="flex-1">{children}</div>
-      <SiteFooter variant="light" />
+      <SiteFooter />
     </div>
   );
 }

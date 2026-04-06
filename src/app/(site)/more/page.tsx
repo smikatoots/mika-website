@@ -1,12 +1,6 @@
-import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-import { PlaceholderPage } from "@/components/site/PlaceholderPage";
-
-export const metadata: Metadata = {
-  title: "Projects",
-  description: "Projects",
-};
-
-export default function ProjectsPage() {
-  return <PlaceholderPage title="Projects" />;
+/** Legacy path; gallery lives at /projects. */
+export default function MoreRedirectPage() {
+  redirect("/projects");
 }

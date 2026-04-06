@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const cardClass =
   "group flex h-full min-h-[3.25rem] items-center gap-3 rounded-lg border border-zinc-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400";
 
@@ -93,55 +91,31 @@ function IconTikTok() {
   );
 }
 
-function IconPen() {
-  return (
-    <svg
-      className="h-8 w-8 shrink-0 text-zinc-600"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M3 20.5v-2.4l9.5-9.5 1.5 1.5-9.5 9.5H3zm2-.5h1.2l8.3-8.3-.7-.7L5.5 19.3V20zm12.7-12.7l-1.4-1.4c-.4-.4-1-.4-1.4 0l-.7.7 2.8 2.8.7-.7c.4-.4.4-1 0-1.4z" />
-    </svg>
-  );
-}
-
 const ctas = [
   {
     label: "Contact",
     href: "https://letterbird.co/mikareyes",
-    external: true,
     icon: IconAt,
   },
   {
     label: "Connect",
     href: "https://www.linkedin.com/in/itsmikareyes",
-    external: true,
     icon: IconLinkedIn,
   },
   {
     label: "Follow",
     href: "https://www.instagram.com/its.mikareyes/",
-    external: true,
     icon: IconInstagram,
   },
   {
     label: "Tweet",
     href: "https://twitter.com/__mikareyes",
-    external: true,
     icon: IconTwitter,
   },
   {
     label: "Watch",
     href: "https://www.tiktok.com/@its.mikareyes",
-    external: true,
     icon: IconTikTok,
-  },
-  {
-    label: "Sign",
-    href: "/guestbook",
-    external: false,
-    icon: IconPen,
   },
 ] as const;
 
@@ -151,25 +125,18 @@ export function HomeCtaGrid() {
       className="mt-12 grid grid-cols-1 gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
       aria-label="Social and contact"
     >
-      {ctas.map(({ label, href, external, icon: Icon }) =>
-        external ? (
-          <a
-            key={label}
-            href={href}
-            className={cardClass}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Icon />
-            <span className={labelClass}>{label}</span>
-          </a>
-        ) : (
-          <Link key={label} href={href} className={cardClass}>
-            <Icon />
-            <span className={labelClass}>{label}</span>
-          </Link>
-        ),
-      )}
+      {ctas.map(({ label, href, icon: Icon }) => (
+        <a
+          key={label}
+          href={href}
+          className={cardClass}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <Icon />
+          <span className={labelClass}>{label}</span>
+        </a>
+      ))}
     </nav>
   );
 }

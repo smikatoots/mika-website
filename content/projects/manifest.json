@@ -1,0 +1,244 @@
+{
+  "generatedAt": "2026-04-03T17:41:58.438Z",
+  "projects": [
+    {
+      "slug": "time-rich-calculator",
+      "title": "Time-Rich Calculator",
+      "url": "https://mikareyes.gumroad.com/l/timerich-calculator",
+      "tags": [
+        {
+          "name": "personal finance",
+          "color": "brown"
+        }
+      ],
+      "cover": "/projects/covers/time-rich-calculator-0.png",
+      "launchDate": "2025-11-13",
+      "notionPageId": "2aac5bb9-4aec-80ee-a340-cc8c2fb2d426"
+    },
+    {
+      "slug": "co-founder-dating-questionnaire",
+      "title": "Co-Founder Dating Questionnaire",
+      "url": "https://mikareyes.gumroad.com/l/cofounder-questionnaire",
+      "tags": [
+        {
+          "name": "templates",
+          "color": "default"
+        }
+      ],
+      "cover": "/projects/covers/co-founder-dating-questionnaire-0.png",
+      "launchDate": "2025-07-30",
+      "notionPageId": "240c5bb9-4aec-807b-acd0-e294d495414d"
+    },
+    {
+      "slug": "magnum-opus-nft",
+      "title": "Magnum Opus NFT",
+      "url": "magnum-opus.xyz",
+      "tags": [
+        {
+          "name": "crypto/web3",
+          "color": "purple"
+        }
+      ],
+      "cover": "/projects/covers/magnum-opus-nft-0.png",
+      "launchDate": "2022-03-31",
+      "notionPageId": "1b139229-82ee-40ee-8cd6-de48f18ab852"
+    },
+    {
+      "slug": "nifty-pay",
+      "title": "Nifty Pay",
+      "url": "https://niftypayapp.vercel.app",
+      "tags": [
+        {
+          "name": "crypto/web3",
+          "color": "purple"
+        }
+      ],
+      "cover": "/projects/covers/nifty-pay-0.png",
+      "launchDate": "2022-03-11",
+      "notionPageId": "d60b4b04-c583-46fd-a7a0-2897ebee4c7e"
+    },
+    {
+      "slug": "nft-playbook-launch-quality-nft-projects",
+      "title": "NFT Playbook — Launch Quality NFT Projects",
+      "url": "https://nft-playbook.xyz/",
+      "tags": [
+        {
+          "name": "crypto/web3",
+          "color": "purple"
+        }
+      ],
+      "cover": "/projects/covers/nft-playbook-launch-quality-nft-projects-0.png",
+      "launchDate": "2022-03-09",
+      "notionPageId": "d06e84f1-d3eb-466c-9b7e-fafbee12cec8"
+    },
+    {
+      "slug": "mint-a-snooty-coffee-nft",
+      "title": "Mint a Snooty Coffee NFT",
+      "url": "https://nft-starter-repo-final.mikaelareyes1.repl.co/",
+      "tags": [
+        {
+          "name": "crypto/web3",
+          "color": "purple"
+        }
+      ],
+      "cover": "/projects/covers/mint-a-snooty-coffee-nft-0.png",
+      "launchDate": "2021-10-08",
+      "notionPageId": "aede0319-cb2c-46f1-b90e-198a0e850112"
+    },
+    {
+      "slug": "notion-dashboard-template",
+      "title": "Notion Dashboard template",
+      "url": "https://mikareyes.gumroad.com/l/notion-dash",
+      "tags": [],
+      "cover": "/projects/covers/notion-dashboard-template-0.png",
+      "launchDate": "2021-08-12",
+      "notionPageId": "5607d93c-21ce-4b14-a147-6ca6c17e1cf8"
+    },
+    {
+      "slug": "passion-economy-stack",
+      "title": "Passion Economy Stack",
+      "url": "https://www.passioneconomy.xyz/",
+      "tags": [
+        {
+          "name": "product",
+          "color": "pink"
+        }
+      ],
+      "cover": "/projects/covers/passion-economy-stack-0.png",
+      "launchDate": "2021-01-10",
+      "notionPageId": "58e0e40d-9ae4-4a31-a0f0-0b71d904f991"
+    },
+    {
+      "slug": "template-year-end-reflections-goals",
+      "title": "Template: Year-End Reflections & Goals",
+      "url": "https://gum.co/year-end-template",
+      "tags": [
+        {
+          "name": "templates",
+          "color": "default"
+        }
+      ],
+      "cover": "/projects/covers/template-year-end-reflections-goals-0.png",
+      "launchDate": "2020-12-31",
+      "notionPageId": "fc6eba6c-8f80-4345-89dd-837ec23e2e21"
+    },
+    {
+      "slug": "online-game-can-you-hear-me-now",
+      "title": "Online Game: Can You Hear Me Now?",
+      "url": null,
+      "tags": [
+        {
+          "name": "fun and games",
+          "color": "blue"
+        }
+      ],
+      "cover": "/projects/covers/online-game-can-you-hear-me-now-0.png",
+      "launchDate": "2020-12-01",
+      "notionPageId": "e4173932-4928-4b23-836d-fe42f5aecfa9"
+    },
+    {
+      "slug": "online-game-zoom-background-scavenger-hunt",
+      "title": "Online Game: Zoom Background Scavenger Hunt",
+      "url": null,
+      "tags": [
+        {
+          "name": "fun and games",
+          "color": "blue"
+        }
+      ],
+      "cover": "/projects/covers/online-game-zoom-background-scavenger-hunt-0.png",
+      "launchDate": "2020-12-01",
+      "notionPageId": "20595ab0-d1c3-4558-95b8-484d1b3b5387"
+    },
+    {
+      "slug": "template-reunion-update",
+      "title": "Template: Reunion Update",
+      "url": "https://docs.google.com/presentation/d/11cH_2Cs9ownot-qu6V025VurGOvcv4p6zpS8o3a5vWI/edit#slide=id.p",
+      "tags": [
+        {
+          "name": "fun and games",
+          "color": "blue"
+        },
+        {
+          "name": "templates",
+          "color": "default"
+        }
+      ],
+      "cover": "/projects/covers/template-reunion-update-0.png",
+      "launchDate": "2020-12-01",
+      "notionPageId": "a602d105-7358-4837-a6fa-8f58a9c36ae3"
+    },
+    {
+      "slug": "collection-of-trivia-decks",
+      "title": "Collection of Trivia Decks",
+      "url": "https://gum.co/mika-trivia",
+      "tags": [
+        {
+          "name": "fun and games",
+          "color": "blue"
+        },
+        {
+          "name": "templates",
+          "color": "default"
+        }
+      ],
+      "cover": "/projects/covers/collection-of-trivia-decks-0.png",
+      "launchDate": "2020-09-01",
+      "notionPageId": "0d94a9ab-9534-44ea-adf2-e3c36eb2d6d5"
+    },
+    {
+      "slug": "consensus",
+      "title": "Consensus",
+      "url": "playconsensus.com",
+      "tags": [
+        {
+          "name": "fun and games",
+          "color": "blue"
+        },
+        {
+          "name": "templates",
+          "color": "default"
+        },
+        {
+          "name": "personal finance",
+          "color": "brown"
+        }
+      ],
+      "cover": "/projects/covers/consensus-0.png",
+      "launchDate": "2020-04-01",
+      "notionPageId": "bde3a1e1-f1ed-4005-96f2-7318b41addd3"
+    },
+    {
+      "slug": "casa-baltazar-airbnb",
+      "title": "Casa Baltazar AirBnb",
+      "url": "https://airbnb.com/h/casabaltazara",
+      "tags": [
+        {
+          "name": "living spaces",
+          "color": "red"
+        }
+      ],
+      "cover": "/projects/covers/casa-baltazar-airbnb-0.png",
+      "launchDate": null,
+      "notionPageId": "871881d0-395c-42ae-9d2c-5d405a4e5798"
+    },
+    {
+      "slug": "notion-templates-for-startups-small-biz",
+      "title": "Notion Templates for Startups & Small Biz",
+      "url": "https://mikareyes.gumroad.com/l/startup-templates",
+      "tags": [],
+      "cover": "/projects/covers/notion-templates-for-startups-small-biz-0.png",
+      "launchDate": null,
+      "notionPageId": "f522a77c-07d3-456c-ab0c-31de97bcbb91"
+    },
+    {
+      "slug": "simple-guestbook",
+      "title": "Simple Guestbook",
+      "url": null,
+      "tags": [],
+      "cover": "/projects/covers/simple-guestbook-0.png",
+      "launchDate": null,
+      "notionPageId": "189c5bb9-4aec-80b3-93e9-fe3dc2728bee"
+    }
+  ]
+}

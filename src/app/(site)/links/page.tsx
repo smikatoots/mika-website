@@ -1,12 +1,27 @@
 import type { Metadata } from "next";
 
-import { PlaceholderPage } from "@/components/site/PlaceholderPage";
+import { ProductLinksContent } from "@/components/links/ProductLinksContent";
+import { BackLink } from "@/components/ui/BackLink";
+import { PageHero } from "@/components/ui/PageHero";
+import { mainWide } from "@/lib/ui/site-styles";
 
 export const metadata: Metadata = {
-  title: "Product links",
-  description: "Product links",
+  title: "Links",
+  description:
+    "Finance stack, tools, referrals, and favorites — curated links.",
+  openGraph: { title: "Links" },
 };
 
 export default function ProductLinksPage() {
-  return <PlaceholderPage title="Product links" />;
+  return (
+    <main className={mainWide}>
+      <div className="mb-8">
+        <BackLink href="/" label="Home" />
+      </div>
+      <PageHero emoji="🔗" title="Links" />
+      <div className="mt-12">
+        <ProductLinksContent />
+      </div>
+    </main>
+  );
 }

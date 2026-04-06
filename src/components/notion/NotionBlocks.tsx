@@ -1,9 +1,11 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import type { PageLinkContext } from "@/lib/notion/page-links";
 import type { BlockTree } from "@/lib/notion/blocks";
 import type { NotionSurface } from "@/lib/notion/surface";
+import { siteLink } from "@/lib/ui/site-styles";
 
 import { RichText } from "./RichText";
 
@@ -67,6 +69,64 @@ function InternalOrExternal({
   );
 }
 
+/** Groups consecutive `numbered_list_item` blocks into a real `<ol>` (Notion order preserved). */
+function renderBlockSequence(
+  blocks: BlockTree[],
+  links: PageLinkContext,
+  surface: NotionSurface,
+  isTopLevel: boolean,
+): ReactNode[] {
+  const out: React.ReactNode[] = [];
+  let i = 0;
+  while (i < blocks.length) {
+    const b = blocks[i]!;
+    if (b.type === "numbered_list_item") {
+      const run: BlockTree[] = [];
+      let j = i;
+      while (j < blocks.length && blocks[j]!.type === "numbered_list_item") {
+        run.push(blocks[j]!);
+        j += 1;
+      }
+      const olText =
+        "list-decimal space-y-3 pl-6 leading-relaxed text-zinc-800 marker:text-zinc-500";
+      out.push(
+        <ol key={run[0]!.id} className={`my-1 ${olText}`}>
+          {run.map((item) => {
+            if (item.type !== "numbered_list_item") return null;
+            return (
+              <li key={item.id} className="pl-1">
+                <RichText
+                  items={item.numbered_list_item.rich_text}
+                  surface={surface}
+                />
+                <BlockChildren
+                  blocks={item.children}
+                  links={links}
+                  surface={surface}
+                />
+              </li>
+            );
+          })}
+        </ol>,
+      );
+      i = j;
+    } else {
+      out.push(
+        <NotionBlock
+          key={b.id}
+          block={b}
+          links={links}
+          surface={surface}
+          blockIndex={i}
+          isTopLevel={isTopLevel}
+        />,
+      );
+      i += 1;
+    }
+  }
+  return out;
+}
+
 function BlockChildren({
   blocks,
   links,
@@ -77,20 +137,10 @@ function BlockChildren({
   surface: NotionSurface;
 }) {
   if (!blocks.length) return null;
-  const borderClass =
-    surface === "home" ? "border-zinc-200" : "border-zinc-800";
+  const borderClass = "border-zinc-200";
   return (
     <div className={`mt-2 space-y-2 border-l ${borderClass} pl-4`}>
-      {blocks.map((b, j) => (
-        <NotionBlock
-          key={b.id}
-          block={b}
-          links={links}
-          surface={surface}
-          blockIndex={j}
-          isTopLevel={false}
-        />
-      ))}
+      {renderBlockSequence(blocks, links, surface, false)}
     </div>
   );
 }
@@ -104,8 +154,7 @@ export function NotionBlocks({
   links: PageLinkContext;
   surface?: NotionSurface;
 }) {
-  const rootGap =
-    surface === "home" ? "space-y-4 md:space-y-5" : "space-y-3 md:space-y-4";
+  const rootGap = "space-y-4 md:space-y-5";
 
   if (surface === "home") {
     const { hero, columnList, rest } = partitionHomeLayout(blocks);
@@ -185,16 +234,7 @@ export function NotionBlocks({
 
   return (
     <div className={rootGap}>
-      {blocks.map((b, i) => (
-        <NotionBlock
-          key={b.id}
-          block={b}
-          links={links}
-          surface={surface}
-          blockIndex={i}
-          isTopLevel
-        />
-      ))}
+      {renderBlockSequence(blocks, links, surface, true)}
     </div>
   );
 }
@@ -218,10 +258,7 @@ function NotionBlock({
   const rt = surface;
 
   if (t === "paragraph") {
-    const pClass =
-      surface === "home"
-        ? "leading-[1.65] text-zinc-800"
-        : "leading-relaxed text-zinc-300";
+    const pClass = "leading-relaxed text-zinc-800";
     return (
       <p className={pClass}>
         <RichText items={block.paragraph.rich_text} surface={rt} />
@@ -234,7 +271,7 @@ function NotionBlock({
     const homeHero =
       surface === "home"
         ? "mt-1 mb-1 text-4xl font-bold tracking-tight text-zinc-950 md:text-5xl"
-        : "mt-10 mb-3 text-2xl font-semibold tracking-tight text-white md:text-3xl";
+        : "mt-10 mb-3 text-3xl font-semibold tracking-tight text-zinc-950 md:text-4xl";
     return (
       <h2 className={homeHero}>
         <RichText items={block.heading_1.rich_text} surface={rt} />
@@ -243,10 +280,7 @@ function NotionBlock({
   }
 
   if (t === "heading_2") {
-    const cls =
-      surface === "home"
-        ? "mt-8 mb-2 text-xl font-semibold tracking-tight text-zinc-950"
-        : "mt-8 mb-2 text-xl font-semibold tracking-tight text-white";
+    const cls = "mt-8 mb-2 text-xl font-semibold tracking-tight text-zinc-950";
     return (
       <h3 className={cls}>
         <RichText items={block.heading_2.rich_text} surface={rt} />
@@ -255,10 +289,7 @@ function NotionBlock({
   }
 
   if (t === "heading_3") {
-    const cls =
-      surface === "home"
-        ? "mt-6 mb-2 text-lg font-semibold text-zinc-950"
-        : "mt-6 mb-2 text-lg font-semibold text-white";
+    const cls = "mt-6 mb-2 text-lg font-semibold text-zinc-950";
     return (
       <h4 className={cls}>
         <RichText items={block.heading_3.rich_text} surface={rt} />
@@ -267,10 +298,7 @@ function NotionBlock({
   }
 
   if (t === "heading_4") {
-    const cls =
-      surface === "home"
-        ? "mt-5 mb-2 text-base font-semibold text-zinc-900"
-        : "mt-5 mb-2 text-base font-semibold text-zinc-100";
+    const cls = "mt-5 mb-2 text-base font-semibold text-zinc-900";
     return (
       <h5 className={cls}>
         <RichText items={block.heading_4.rich_text} surface={rt} />
@@ -279,8 +307,8 @@ function NotionBlock({
   }
 
   if (t === "bulleted_list_item") {
-    const textCls = surface === "home" ? "text-zinc-800" : "text-zinc-300";
-    const bulletCls = surface === "home" ? "text-zinc-500" : "text-zinc-500";
+    const textCls = "text-zinc-800";
+    const bulletCls = "text-zinc-500";
     return (
       <div className={`flex gap-2 ${textCls}`}>
         <span className={`select-none ${bulletCls}`} aria-hidden>
@@ -299,7 +327,7 @@ function NotionBlock({
   }
 
   if (t === "numbered_list_item") {
-    const textCls = surface === "home" ? "text-zinc-800" : "text-zinc-300";
+    const textCls = "text-zinc-800";
     return (
       <div className={`flex gap-2 ${textCls}`}>
         <span className="w-6 shrink-0 text-right text-zinc-500" aria-hidden>
@@ -319,7 +347,7 @@ function NotionBlock({
 
   if (t === "to_do") {
     const checked = block.to_do.checked;
-    const textCls = surface === "home" ? "text-zinc-800" : "text-zinc-300";
+    const textCls = "text-zinc-800";
     return (
       <div className={`flex gap-2 ${textCls}`}>
         <span aria-hidden className="select-none text-zinc-500">
@@ -339,8 +367,8 @@ function NotionBlock({
 
   if (t === "toggle") {
     return (
-      <details className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-3">
-        <summary className="cursor-pointer font-medium text-zinc-100">
+      <details className="rounded-lg border border-zinc-200 bg-zinc-50 p-3">
+        <summary className="cursor-pointer font-medium text-zinc-900">
           <RichText items={block.toggle.rich_text} surface={rt} />
         </summary>
         <div className="mt-2">
@@ -356,7 +384,7 @@ function NotionBlock({
 
   if (t === "quote") {
     return (
-      <blockquote className="border-l-4 border-teal-500 pl-4 italic text-zinc-400">
+      <blockquote className="border-l-4 border-teal-500 pl-4 italic text-zinc-600">
         <RichText items={block.quote.rich_text} surface={rt} />
         <BlockChildren
           blocks={block.children}
@@ -368,13 +396,12 @@ function NotionBlock({
   }
 
   if (t === "divider") {
-    const hrClass = surface === "home" ? "border-zinc-200" : "border-zinc-800";
-    return <hr className={`my-8 ${hrClass}`} />;
+    return <hr className="my-8 border-zinc-200" />;
   }
 
   if (t === "code") {
     return (
-      <pre className="my-4 overflow-x-auto rounded-lg border border-zinc-800 bg-black/40 p-4 text-sm text-zinc-200">
+      <pre className="my-4 overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-900">
         <code>
           <RichText items={block.code.rich_text} surface={rt} />
         </code>
@@ -413,13 +440,17 @@ function NotionBlock({
       );
     }
     return (
-      <div className="my-4 flex gap-3 rounded-lg border border-zinc-800 bg-zinc-900/40 p-4">
+      <div className="my-4 flex items-start gap-3 rounded-lg border border-zinc-200 bg-zinc-50 p-4">
         {block.callout.icon?.type === "emoji" ? (
           <span className="text-xl" aria-hidden>
             {block.callout.icon.emoji}
           </span>
-        ) : null}
-        <div className="min-w-0 flex-1 text-zinc-300">
+        ) : (
+          <span className="shrink-0 text-zinc-500" aria-hidden>
+            ◆
+          </span>
+        )}
+        <div className="min-w-0 flex-1 text-zinc-800">
           <RichText items={block.callout.rich_text} surface={rt} />
           <BlockChildren
             blocks={block.children}
@@ -441,9 +472,7 @@ function NotionBlock({
       surface === "home" && isTopLevel && blockIndex === 0;
     const rounded = avatarLike
       ? "rounded-full border-2 border-zinc-300 bg-white"
-      : surface === "home"
-        ? "rounded-lg border border-zinc-200"
-        : "rounded-lg border border-zinc-800";
+      : "rounded-lg border border-zinc-200";
     return (
       <figure
         className={
@@ -463,7 +492,7 @@ function NotionBlock({
             className={
               surface === "home"
                 ? "mt-2 text-left text-sm text-zinc-500"
-                : "mt-2 text-center text-sm text-zinc-500"
+                : "mt-2 text-center text-sm text-zinc-600"
             }
           >
             <RichText items={caption} surface={rt} />
@@ -478,7 +507,7 @@ function NotionBlock({
     return (
       <a
         href={url}
-        className="my-4 block rounded-xl border border-zinc-800 p-4 text-teal-400 underline-offset-2 hover:border-zinc-600 hover:bg-zinc-900/60"
+        className={`my-4 block rounded-xl border border-zinc-200 bg-white p-4 ${siteLink} hover:border-zinc-300 hover:bg-zinc-50`}
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -498,7 +527,7 @@ function NotionBlock({
         ? block.video.external.url
         : block.video.file.url;
     return (
-      <div className="my-4 aspect-video w-full overflow-hidden rounded-lg border border-zinc-800">
+      <div className="my-4 aspect-video w-full overflow-hidden rounded-lg border border-zinc-200">
         <iframe
           title="Video"
           src={url}
@@ -513,7 +542,7 @@ function NotionBlock({
     return (
       <a
         href={block.embed.url}
-        className="my-4 block text-teal-400 underline underline-offset-2"
+        className={`my-4 block ${siteLink}`}
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -526,7 +555,7 @@ function NotionBlock({
     const grid =
       surface === "home"
         ? "my-8 grid items-start gap-12 md:my-10 md:grid-cols-2 md:gap-x-20 lg:gap-x-28 lg:gap-y-2"
-        : "my-4 grid items-start gap-6 md:grid-cols-2 md:gap-8";
+        : "my-8 grid items-start gap-8 md:grid-cols-2 md:gap-x-12";
     return (
       <div className={grid}>
         {block.children.map((b, j) => (
@@ -578,7 +607,7 @@ function NotionBlock({
       <div className="my-2">
         <InternalOrExternal
           href={href}
-          className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 px-4 py-3 font-medium text-zinc-100 transition hover:border-zinc-600 hover:bg-zinc-900/60"
+          className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-3 font-medium text-zinc-900 shadow-sm transition hover:border-zinc-300 hover:bg-zinc-50"
         >
           <span aria-hidden className="text-zinc-500">
             📄
@@ -613,7 +642,7 @@ function NotionBlock({
       <div className="my-2">
         <InternalOrExternal
           href={href}
-          className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 px-4 py-3 font-medium text-zinc-100 transition hover:border-zinc-600 hover:bg-zinc-900/60"
+          className="inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-3 font-medium text-zinc-900 shadow-sm transition hover:border-zinc-300 hover:bg-zinc-50"
         >
           <span aria-hidden className="text-zinc-500">
             🗂
@@ -633,7 +662,7 @@ function NotionBlock({
       const cls =
         surface === "home"
           ? "font-medium text-zinc-900 underline decoration-zinc-400 underline-offset-[5px] hover:decoration-zinc-900"
-          : "font-medium text-teal-400 underline decoration-teal-500/40 underline-offset-2 hover:decoration-teal-300";
+          : siteLink;
       return (
         <div className={surface === "home" ? "my-0.5" : "my-2"}>
           <InternalOrExternal href={href} className={cls}>
@@ -646,11 +675,11 @@ function NotionBlock({
       const blogLink =
         surface === "home"
           ? "font-medium text-teal-700 underline underline-offset-2 hover:text-teal-900"
-          : "font-medium text-teal-400 underline underline-offset-2";
+          : siteLink;
       return (
         <div
           className={
-            surface === "home" ? "my-2 text-sm text-zinc-600" : "my-2 text-sm text-zinc-500"
+            surface === "home" ? "my-2 text-sm text-zinc-600" : "my-2 text-sm text-zinc-600"
           }
         >
           <Link href="/blog" className={blogLink}>
@@ -675,8 +704,8 @@ function NotionBlock({
   }
 
   if (t === "table_row") {
-    const rowBorder = surface === "home" ? "border-zinc-200" : "border-zinc-800";
-    const cellText = surface === "home" ? "text-zinc-800" : "text-zinc-300";
+    const rowBorder = "border-zinc-200";
+    const cellText = "text-zinc-800";
     return (
       <div className={`flex gap-4 border-b ${rowBorder} py-2`}>
         {block.table_row.cells.map((cell, i) => (
