@@ -36,7 +36,23 @@ function ALink({
 const bioBoxClass =
   "flex gap-4 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm";
 
-export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
+/** public/about-assets/ — profile, thumbnails ×4, feature, gallery rows, full-width */
+const ABOUT_IMAGE_PATHS: readonly string[] = [
+  "/about-assets/000.jpg",
+  "/about-assets/001.jpg",
+  "/about-assets/002.jpg",
+  "/about-assets/003.jpg",
+  "/about-assets/004.jpg",
+  "/about-assets/005.jpg",
+  "/about-assets/006.jpg",
+  "/about-assets/007.jpg",
+  "/about-assets/008.jpg",
+  "/about-assets/009.jpg",
+  "/about-assets/010.jpg",
+  "/about-assets/011.jpg",
+];
+
+export function AboutPageContent() {
   const [
     profileImg,
     t0,
@@ -50,7 +66,7 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
     g3,
     g4,
     g5,
-  ] = imageUrls;
+  ] = ABOUT_IMAGE_PATHS;
 
   const thumbs = [t0, t1, t2, t3].filter(Boolean) as string[];
   const galleryTop = [g0, g1].filter(Boolean) as string[];
