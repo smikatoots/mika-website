@@ -8,6 +8,7 @@ import { loadProjectsManifest } from "@/lib/projects/manifest";
 import type { ProjectFrontmatter } from "@/lib/projects/types";
 import { loadProjectMdxPost } from "@/lib/projects/load-mdx";
 import { BackLink } from "@/components/ui/BackLink";
+import { ProjectExternalLink } from "@/components/projects/ProjectExternalLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -17,9 +18,6 @@ function externalHref(raw: string | null): string | null {
   const u = raw.trim();
   return /^https?:\/\//i.test(u) ? u : `https://${u}`;
 }
-
-const extCtaClass =
-  "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-teal-700 shadow-sm transition hover:border-teal-200 hover:bg-teal-50/80";
 
 export async function generateStaticParams() {
   const { projects } = await loadProjectsManifest();
@@ -71,14 +69,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         ) : null}
         {ext ? (
           <p className="mt-6">
-            <a
-              href={ext}
-              className={extCtaClass}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Open project →
-            </a>
+            <ProjectExternalLink href={ext} title={fm.title} />
           </p>
         ) : null}
       </header>

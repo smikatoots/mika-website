@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import posthog from "posthog-js";
 
 import { siteLink } from "@/lib/ui/site-styles";
 
@@ -26,14 +29,14 @@ const U = {
   ramp: "https://ramp.com/?rc=32UCQH&referral_location=login",
   gusto: "https://gusto.com/r/mika07e8",
   /**
-   * In Notion, “Glimpse” points at an in-page block anchor. Same public page + block id.
+   * In Notion, "Glimpse" points at an in-page block anchor. Same public page + block id.
    */
   glimpse:
     "https://www.notion.so/smikatoots/Product-Links-6a8f47cf73da4fd1b0245355198ce13a#459b66c7fdc84647874ce49582bf6c9d",
   mercury: "https://mercury.com/r/parallax-labs",
   cometeer: "https://cometeer.com/get-started?code=T7shdZ",
   seated: "https://seated.app.link/wWbtCgatjhb",
-  /** Label in Notion is “Studio”; href is Monthly (per Notion). */
+  /** Label in Notion is "Studio"; href is Monthly (per Notion). */
   studio: "https://monthly.com/stevie-mackey-singing?friend=mika-reyes",
   cora: "https://cora.computer/?ref=wEZMc0H1",
   glowbar: "https://blvd.app/@glowbar/refer/MIKAELA-717659",
@@ -53,13 +56,20 @@ function PLink({
       className={`font-semibold ${siteLink}`}
       rel="noopener noreferrer"
       target="_blank"
+      onClick={() =>
+        posthog.capture("referral_link_clicked", {
+          href,
+          label: typeof children === "string" ? children : undefined,
+          link_type: "product",
+        })
+      }
     >
       {children}
     </a>
   );
 }
 
-/** Secondary link in body copy (e.g. “my link”, “referral link”). */
+/** Secondary link in body copy (e.g. "my link", "referral link"). */
 function ILink({
   href,
   children,
@@ -73,6 +83,13 @@ function ILink({
       className={siteLink}
       rel="noopener noreferrer"
       target="_blank"
+      onClick={() =>
+        posthog.capture("referral_link_clicked", {
+          href,
+          label: typeof children === "string" ? children : undefined,
+          link_type: "inline",
+        })
+      }
     >
       {children}
     </a>

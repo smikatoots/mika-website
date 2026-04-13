@@ -8,6 +8,7 @@ import type { BlogPostFrontmatter } from "@/lib/blog/types";
 import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadBlogMdxPost } from "@/lib/blog/load-mdx-post";
 import { BackLink } from "@/components/ui/BackLink";
+import { BlogPostViewTracker } from "@/components/blog/BlogPostViewTracker";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -47,6 +48,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article className={mainProse}>
+      <BlogPostViewTracker slug={slug} title={frontmatter.title} />
       <BackLink href="/blog" label="Blog" />
       <header className="mt-6">
         <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 md:text-5xl">

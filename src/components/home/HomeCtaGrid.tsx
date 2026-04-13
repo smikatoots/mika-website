@@ -1,3 +1,7 @@
+"use client";
+
+import posthog from "posthog-js";
+
 const cardClass =
   "group flex h-full min-h-[3.25rem] items-center gap-3 rounded-lg border border-zinc-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400";
 
@@ -132,6 +136,7 @@ export function HomeCtaGrid() {
           className={cardClass}
           rel="noopener noreferrer"
           target="_blank"
+          onClick={() => posthog.capture("social_link_clicked", { label, href })}
         >
           <Icon />
           <span className={labelClass}>{label}</span>
