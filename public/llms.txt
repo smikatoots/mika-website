@@ -1,0 +1,34 @@
+# Mika Reyes
+
+> Personal site for Mika Reyes — AI, startups, and life: bio, writing, projects, press, and curated links.
+
+This is the canonical marketing site at https://mikareyes.com. Pages are HTML; there are no parallel `.md` URLs. For a full list of indexable URLs, use the sitemap below.
+
+- **Blog** posts live under `/blog/<slug>` (MDX synced from Notion; source of truth for paths is the published site and sitemap).
+- **Projects** and **press** use `/projects/<slug>` and `/press/<slug>` with in-repo content and manifests.
+- **Redirects:** `/dreams` → `/my-dreams`; `/more` → `/projects`. Prefer the canonical targets in links and citations.
+
+The homepage expands on current work, prior roles (including Parallax), and featured coverage; start at `/` for the full narrative.
+
+## Primary pages
+
+- [Home](https://mikareyes.com/): Bio summary, social/contact grid, and positioning.
+- [About](https://mikareyes.com/about): Longer bio and photos.
+- [Blog](https://mikareyes.com/blog): Post index; individual posts at `/blog/<slug>`.
+- [Projects](https://mikareyes.com/projects): Project index and detail pages.
+- [Press](https://mikareyes.com/press): Press index and article/clipping pages.
+- [Links](https://mikareyes.com/links): Recommended products and tools.
+- [My dreams](https://mikareyes.com/my-dreams): Dreams page (canonical; `/dreams` redirects here).
+
+## Contact and profiles
+
+- [Contact (Letterbird)](https://letterbird.co/mikareyes): Preferred way to reach out.
+- [LinkedIn](https://www.linkedin.com/in/itsmikareyes): Professional profile.
+- [Instagram](https://www.instagram.com/its.mikareyes/): Social.
+- [X (Twitter)](https://twitter.com/__mikareyes): Social.
+- [TikTok](https://www.tiktok.com/@its.mikareyes): Short-form video.
+
+## Optional
+
+- [Sitemap](https://mikareyes.com/sitemap.xml): Exhaustive list of canonical URLs including all blog, project, and press entries.
+- [Robots](https://mikareyes.com/robots.txt): Crawl policy and sitemap pointer.
