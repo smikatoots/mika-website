@@ -10,6 +10,8 @@ import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = false;
+
 function externalHref(raw: string | null): string | null {
   if (!raw?.trim()) return null;
   const u = raw.trim();
