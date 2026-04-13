@@ -1,8 +1,8 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 
 import { allTagsFromManifest, loadBlogManifest } from "@/lib/blog/manifest";
 import { BackLink } from "@/components/ui/BackLink";
+import { InternalLink } from "@/components/ui/InternalLink";
 import { PageHero } from "@/components/ui/PageHero";
 import { mainWide } from "@/lib/ui/site-styles";
 
@@ -69,20 +69,20 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       {allTags.length > 0 ? (
         <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
           <span className="text-sm font-medium text-zinc-500">Filter:</span>
-          <Link
+          <InternalLink
             href="/blog"
             className={!tag ? tagPillActive : tagPillIdle}
           >
             All
-          </Link>
+          </InternalLink>
           {allTags.map((t) => (
-            <Link
+            <InternalLink
               key={t}
               href={`/blog?tag=${encodeURIComponent(t)}`}
               className={tag === t ? tagPillActive : tagPillIdle}
             >
               {t}
-            </Link>
+            </InternalLink>
           ))}
         </div>
       ) : null}
@@ -97,7 +97,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       <ul className="mx-auto mt-8 max-w-4xl divide-y divide-zinc-100 border-b border-zinc-100 text-left">
         {filtered.map((post) => (
           <li key={post.slug}>
-            <Link
+            <InternalLink
               href={`/blog/${post.slug}`}
               className="group grid grid-cols-1 gap-x-4 gap-y-1 py-2.5 transition hover:bg-zinc-50/80 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline"
             >
@@ -127,7 +127,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
                   })}
                 </time>
               </span>
-            </Link>
+            </InternalLink>
           </li>
         ))}
       </ul>

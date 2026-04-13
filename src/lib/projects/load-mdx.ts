@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -10,16 +11,22 @@ export function assertSafeProjectSlug(slug: string): boolean {
   return /^[\w.-]+$/u.test(slug);
 }
 
+const loadProjectMdxSourceCached = cache(
+  async (slug: string): Promise<string | null> => {
+    if (!assertSafeProjectSlug(slug)) return null;
+    const file = path.join(process.cwd(), "content/projects", `${slug}.mdx`);
+    try {
+      return await readFile(file, "utf-8");
+    } catch {
+      return null;
+    }
+  },
+);
+
 export async function loadProjectMdxSource(
   slug: string,
 ): Promise<string | null> {
-  if (!assertSafeProjectSlug(slug)) return null;
-  const file = path.join(process.cwd(), "content/projects", `${slug}.mdx`);
-  try {
-    return await readFile(file, "utf-8");
-  } catch {
-    return null;
-  }
+  return loadProjectMdxSourceCached(slug);
 }
 
 export async function loadProjectMdxPost(

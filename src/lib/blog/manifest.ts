@@ -1,9 +1,10 @@
+import { cache } from "react";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import type { BlogManifest } from "./types";
 
-export async function loadBlogManifest(): Promise<BlogManifest> {
+const loadBlogManifestCached = cache(async (): Promise<BlogManifest> => {
   try {
     const p = path.join(process.cwd(), "content/blog/manifest.json");
     const raw = await readFile(p, "utf-8");
@@ -15,6 +16,10 @@ export async function loadBlogManifest(): Promise<BlogManifest> {
   } catch {
     return { generatedAt: "", posts: [] };
   }
+});
+
+export async function loadBlogManifest(): Promise<BlogManifest> {
+  return loadBlogManifestCached();
 }
 
 export function allTagsFromManifest(posts: BlogManifest["posts"]): string[] {
