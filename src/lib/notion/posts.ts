@@ -4,6 +4,7 @@ import { isNotionConfigured, notionEnv } from "./config";
 import { fetchBlockTree, type BlockTree } from "./blocks";
 import { getNotionClient } from "./client";
 import { getPublicPath, getTags, getTitle } from "./properties";
+import { NOTION_SIGNED_MEDIA_CACHE_SECONDS } from "./notion-signed-url-cache";
 import { queryDatabasePages } from "./query-database-pages";
 
 import type { PageObjectResponse } from "@notionhq/client";
@@ -98,7 +99,10 @@ export async function getPostByPath(
   return unstable_cache(
     async () => fetchPostByPathInternal(pathSegments),
     ["notion-post-by-path", pathSegments],
-    { tags: ["posts", `post:${pathSegments}`], revalidate: 3600 },
+    {
+      tags: ["posts", `post:${pathSegments}`],
+      revalidate: NOTION_SIGNED_MEDIA_CACHE_SECONDS,
+    },
   )();
 }
 

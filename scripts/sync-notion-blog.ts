@@ -1,19 +1,23 @@
 /**
  * Pulls published blog rows from Notion and writes:
  * - content/blog/<slug>.mdx (markdown body + YAML frontmatter)
+ * - public/blog-assets/<slug>/… for Notion-hosted images (API URLs expire ~1h)
+ * - Escapes "<" before digits in prose (outside ``` fences) for MDX safety
  * - content/blog/manifest.json (for /blog index, filters, sitemap)
  *
  * Incremental: skips pageToMarkdown when frontmatter lastEdited matches Notion
- * last_edited_time (and notionPageId matches). Always refreshes manifest.
- * Removes .mdx for posts no longer in Notion.
+ * last_edited_time (and notionPageId matches), unless MDX still contains
+ * Notion S3 image URLs (they expire ~1h) or you pass --force.
+ * Always refreshes manifest. Removes .mdx for posts no longer in Notion.
  *
- * Run: npm run sync:blog
+ * Run: yarn sync:blog
+ * Re-export everything (e.g. after changing image pipeline): yarn sync:blog --force
  *
  * Optional: content/blog/sync-path-overrides.json — { "overrides": { "<notionPageId>": "blog/your-slug" } }
  * forces filename + frontmatter path/slug for those pages so you do not have to match Slug/Path in Notion.
  */
 
-import { readFile, writeFile, readdir, mkdir, unlink } from "node:fs/promises";
+import { readFile, writeFile, readdir, mkdir, unlink, rm } from "node:fs/promises";
 import path from "node:path";
 
 import matter from "gray-matter";
@@ -30,6 +34,12 @@ import {
 import { queryDatabasePages } from "../src/lib/notion/query-database-pages";
 
 import type { BlogManifest, BlogManifestPost } from "../src/lib/blog/types";
+
+import { escapeLessThanBeforeDigitsForMdx } from "./escape-mdx-less-than-digit";
+import {
+  localizeNotionMarkdownImages,
+  markdownContainsExpiringNotionImageUrls,
+} from "./localize-notion-markdown-images";
 
 function blogSlugFromPath(p: string): string | null {
   if (!p.startsWith("blog/")) return null;
@@ -98,7 +108,11 @@ function canSkipBodySync(
 }
 
 async function main() {
+  const forceResync = process.argv.includes("--force");
   console.log("Notion blog sync — starting…");
+  if (forceResync) {
+    console.log("(force) Re-exporting every post body from Notion.\n");
+  }
 
   if (!isNotionConfigured()) {
     console.error("Set NOTION_API_KEY and NOTION_BLOG_DATABASE_ID first.");
@@ -157,11 +171,22 @@ async function main() {
 
     let fileExisted = false;
     let skipMarkdown = false;
+    let unchangedFromNotion = false;
+    let bodyHasExpiringNotionImages = false;
     try {
       const existing = await readFile(filePath, "utf-8");
       fileExisted = true;
-      const { data } = matter(existing);
-      skipMarkdown = canSkipBodySync(lastEdited, page.id, data as Record<string, unknown>);
+      const { data, content } = matter(existing);
+      unchangedFromNotion = canSkipBodySync(
+        lastEdited,
+        page.id,
+        data as Record<string, unknown>,
+      );
+      bodyHasExpiringNotionImages = markdownContainsExpiringNotionImageUrls(
+        content.trim(),
+      );
+      skipMarkdown =
+        !forceResync && unchangedFromNotion && !bodyHasExpiringNotionImages;
     } catch {
       // missing file → full sync
     }
@@ -176,12 +201,24 @@ async function main() {
       if (label === "new") created += 1;
       else updated += 1;
 
+      if (
+        unchangedFromNotion &&
+        bodyHasExpiringNotionImages &&
+        !forceResync
+      ) {
+        console.log(
+          `  [images] ${slug} — MDX still has Notion-hosted image URLs; re-exporting`,
+        );
+      }
+
       console.log(
         `  [${label}] ${slug} — ${title.slice(0, 55)}${title.length > 55 ? "…" : ""}`,
       );
       const mdBlocks = await n2m.pageToMarkdown(page.id);
       const mdObj = n2m.toMarkdownString(mdBlocks);
-      const body = (mdObj.parent ?? "").trim();
+      const rawBody = (mdObj.parent ?? "").trim();
+      const localized = await localizeNotionMarkdownImages(rawBody, slug);
+      const body = escapeLessThanBeforeDigitsForMdx(localized);
 
       const frontmatter = {
         title,
@@ -233,13 +270,22 @@ async function main() {
     const base = name.slice(0, -4);
     if (!syncedSlugs.has(base)) {
       await unlink(path.join(outDir, name));
+      await rm(path.join(process.cwd(), "public", "blog-assets", base), {
+        recursive: true,
+        force: true,
+      });
       console.log("Removed stale:", name);
     }
   }
 
   console.log(
-    `Done: ${manifestPosts.length} post(s) in manifest — ${created} new, ${updated} updated, ${skipped} skipped (no Notion body changes).`,
+    `Done: ${manifestPosts.length} post(s) in manifest — ${created} new, ${updated} updated, ${skipped} skipped (unchanged & no expiring image URLs in MDX).`,
   );
+  if (skipped > 0 && !forceResync) {
+    console.log(
+      "Tip: use yarn sync:blog --force to re-export all bodies (fresh Notion image URLs).",
+    );
+  }
 }
 
 main().catch((e) => {

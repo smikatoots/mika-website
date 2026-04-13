@@ -21,12 +21,25 @@ export const metadata: Metadata = {
     default: SITE_NAME,
     template: `%s · ${SITE_NAME}`,
   },
-  description: "Mika Reyes — writing on product, startups, and life.",
+  description: "Mika Reyes — AI, startups, and life.",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
     siteName: SITE_NAME,
+    description: "Mika Reyes — AI, startups, and life.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1024,
+        height: 537,
+        alt: "Mika Reyes — follow for real talk on founder life, AI, and living time-rich.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-image.jpg"],
   },
 };
 

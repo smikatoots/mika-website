@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "process:logo": "tsx scripts/make-logo-transparent.ts",
     "sync:blog": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-blog.ts",
+    "sync:blog:force": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-blog.ts --force",
     "sync:projects": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-projects.ts",
     "sync:press": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-press.ts",
     "match:legacy-blog": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/match-legacy-blog-urls.ts",
@@ -34,6 +36,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
     "notion-to-md": "^3.1.9",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"

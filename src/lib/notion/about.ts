@@ -4,6 +4,7 @@ import type { PageObjectResponse } from "@notionhq/client";
 import { isAboutPageConfigured, notionEnv } from "./config";
 import { fetchBlockTree, type BlockTree } from "./blocks";
 import { getNotionClient } from "./client";
+import { NOTION_SIGNED_MEDIA_CACHE_SECONDS } from "./notion-signed-url-cache";
 import { getTitle } from "./properties";
 
 function asFullPage(p: unknown): PageObjectResponse | null {
@@ -40,6 +41,9 @@ export async function getAboutPageFromEnv(): Promise<AboutEnvPage | null> {
   return unstable_cache(
     fetchAboutFromEnvInternal,
     ["notion-about-env", notionEnv.aboutPageId!],
-    { tags: ["posts", "about"], revalidate: 3600 },
+    {
+      tags: ["posts", "about"],
+      revalidate: NOTION_SIGNED_MEDIA_CACHE_SECONDS,
+    },
   )();
 }

@@ -7,9 +7,8 @@ import { mainWide } from "@/lib/ui/site-styles";
 
 export const metadata: Metadata = {
   title: "Links",
-  description:
-    "Finance stack, tools, referrals, and favorites — curated links.",
-  openGraph: { title: "Links" },
+  description: "Links I recommend and use",
+  openGraph: { title: "Links", description: "Links I recommend and use" },
 };
 
 export default function ProductLinksPage() {

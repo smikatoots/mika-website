@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { HomeCtaGrid } from "@/components/home/HomeCtaGrid";
@@ -37,33 +38,45 @@ export function HomeLanding() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-14 md:px-10 md:py-20">
-      <h1 className="text-4xl font-bold tracking-tight text-zinc-950 md:text-5xl">
-        Mika Reyes
-      </h1>
+      <header className="text-center">
+        <div className="mb-4 flex justify-center">
+          <Image
+            src="/mika-reyes-logo.png"
+            alt="Mika Reyes logo: circular black and white m monogram"
+            width={64}
+            height={64}
+            className="h-16 w-16"
+            priority
+          />
+        </div>
+        <h1 className="text-4xl font-bold tracking-tight text-zinc-950 md:text-5xl">
+          Mika Reyes
+        </h1>
+      </header>
 
       <div className={`mt-8 space-y-5 ${textBody}`}>
         <p>
-          As co-founder &amp; CEO of{" "}
-          <BioLink href={homeBioLinks.parallax}>Parallax</BioLink>, a
-          venture-backed stablecoin payments startup, I raised ~$5M, scaled the
-          company to +$X00M in &lt;1y in volume, before a successful exit.
-        </p>
-        <p>
-          <strong className="font-semibold text-zinc-950">Nowadays:</strong>{" "}
-          creating on <BioLink href={homeBioLinks.tiktok}>Tiktok</BioLink>{" "}
-          &amp; <BioLink href={homeBioLinks.instagram}>Instagram</BioLink>{" "}
-          helping people build wealth, freedom &amp; time-rich lives.
-        </p>
-        <p>
-          <strong className="font-semibold text-zinc-950">Soon:</strong> a new
-          startup! 🙂 Stay tuned.
+          <strong className="font-semibold text-zinc-950">Now:</strong>{" "}
+          Building AI products at{" "}
+          <BioLink href={homeBioLinks.kingsCrossLabs}>
+            King&apos;s Cross Labs
+          </BioLink>
+          . Creating on <BioLink href={homeBioLinks.tiktok}>TikTok</BioLink>{" "}
+          &amp;{" "}
+          <BioLink href={homeBioLinks.instagram}>Instagram</BioLink> helping
+          people uplevel with AI.
         </p>
         <p>
           <strong className="font-semibold text-zinc-950">Prior:</strong>{" "}
-          product lead @ <BioLink href={homeBioLinks.linkedin}>LinkedIn</BioLink>
-          , <BioLink href={homeBioLinks.kumu}>Kumu.ph</BioLink>,{" "}
+          Co-founder &amp; CEO of{" "}
+          <BioLink href={homeBioLinks.parallax}>Parallax</BioLink>, a
+          venture-backed stablecoin payments startup. Raised ~$5M, scaled the
+          company to +$X00M in {'<'}1y in volume, before a successful exit.
+          Also: product lead @{" "}
+          <BioLink href={homeBioLinks.linkedin}>LinkedIn</BioLink>,{" "}
+          <BioLink href={homeBioLinks.kumu}>Kumu.ph</BioLink>,{" "}
           <BioLink href={homeBioLinks.medgrocer}>MedGrocer</BioLink>,{" "}
-          <BioLink href={homeBioLinks.ripcord}>Ripcord</BioLink>
+          <BioLink href={homeBioLinks.ripcord}>Ripcord</BioLink>.
         </p>
         <p>
           <strong className="font-semibold text-zinc-950">Featured on:</strong>{" "}

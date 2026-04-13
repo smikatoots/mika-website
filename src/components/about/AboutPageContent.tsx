@@ -64,22 +64,6 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
       <BackLink href="/" label="Home" />
 
       <header className="mt-8 text-center">
-        <div className="mx-auto mb-4 flex justify-center text-zinc-500" aria-hidden>
-          <svg
-            className="h-12 w-12"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            viewBox="0 0 24 24"
-            aria-hidden
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-            />
-          </svg>
-        </div>
         <h1 className="text-4xl font-bold tracking-tight text-zinc-950 md:text-5xl">
           About
         </h1>
@@ -166,18 +150,57 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
         <div className="mt-6 space-y-4">
           <div className={bioBoxClass}>
             <span className="text-xl" aria-hidden>
+              🌸
+            </span>
+            <div className="min-w-0 space-y-2 text-zinc-800">
+              <p>Currently:</p>
+              <ul className="list-disc space-y-2 pl-5">
+              <li>
+                Building AI products with{" "}
+                <ALink href="https://www.linkedin.com/in/nicolasreyes26/">
+                  Nick
+                </ALink>{" "}
+                (my cofounder &amp; husband) at{" "}
+                <ALink href={homeBioLinks.kingsCrossLabs}>
+                  King&apos;s Cross Labs
+                </ALink>
+                .
+              </li>
+              <li>
+                Creating content to learn about AI on{" "}
+                <ALink href="https://instagram.com/its.mikareyes">
+                  Instagram
+                </ALink>{" "}
+                &amp;{" "}
+                <ALink href={homeBioLinks.tiktok}>TikTok</ALink>.
+              </li>
+              <li>
+                Consulting on how to integrate AI into your business workflows.
+                Reach out at{" "}
+                <ALink href="mailto:ask@kingscrosslabs.com">
+                  ask@kingscrosslabs.com
+                </ALink>
+                .
+              </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className={bioBoxClass}>
+            <span className="text-xl" aria-hidden>
               ✨
             </span>
             <div className="min-w-0 space-y-3 text-zinc-800">
-              <p className="font-semibold text-zinc-950">
-                Recently CEO and co-founder @ Parallax. Acquired by Phantom.
+              <p>
+                Recently CEO and co-founder @ Parallax. Acquired by Phantom ($3B
+                val acquirer, best crypto wallet).
               </p>
               <ul className="list-disc space-y-2 pl-5">
                 <li>
                   Led product vision and strategy, developing one of the
                   earliest stablecoin cross-border payments companies.
                 </li>
-                <li>Scaled the business to over $100M+ in volume</li>
+                <li>Scaled the business to over $X00M+ in volume</li>
                 <li>
                   Raised ~$5M in venture funding from top VCs, including
                   Dragonfly, General Catalyst &amp; more
@@ -199,7 +222,14 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
               <ALink href={a.forbes30}>Forbes 30 Under 30</ALink>,{" "}
               <ALink href={a.tatler}>Tatler Gen.T Leader of Tomorrow</ALink>,{" "}
               <ALink href={a.kleinerPerkins}>Kleiner Perkins Fellowship</ALink>{" "}
-              <ALink href={a.spc}>SPC Founder Fellowship</ALink>.
+              <ALink href={a.spc}>SPC Founder Fellowship</ALink>. I&apos;ve also
+              been featured on{" "}
+              <ALink href={homeBioLinks.press.forbes}>Forbes</ALink>,{" "}
+              <ALink href={homeBioLinks.press.techcrunch}>TechCrunch</ALink>,{" "}
+              <ALink href="https://www.businessinsider.com">
+                BusinessInsider
+              </ALink>
+              , <ALink href={a.tatler}>Tatler</ALink> &amp; other publications.
             </p>
           </div>
 
@@ -209,11 +239,11 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
             </span>
             <p className="text-zinc-800">
               Previously product lead @{" "}
-              <ALink href={homeBioLinks.linkedin}>LinkedIn</ALink> (if you see
-              those purple &quot;Hiring&quot; rings on people&apos;s profiles,
-              built that and more!),{" "}
-              <ALink href={homeBioLinks.kumu}>Kumu</ALink> (led the team to
-              product-market fit in the early days) &amp;{" "}
+              <ALink href={homeBioLinks.linkedin}>LinkedIn</ALink>{" "}
+              (if you see those purple &quot;Hiring&quot; rings on
+              people&apos;s profiles, built that and more!),{" "}
+              <ALink href={homeBioLinks.kumu}>Kumu</ALink>{" "}
+              (led the team to product-market fit in the early days) &amp;{" "}
               <ALink href={homeBioLinks.ripcord}>Ripcord</ALink> through the{" "}
               <ALink href={a.kleinerPerkins}>KP Product Fellowship</ALink>. I
               started the Filipinos @ LinkedIn group &amp; was a Women in
@@ -231,8 +261,7 @@ export function AboutPageContent({ imageUrls }: { imageUrls: string[] }) {
               Philippine Science High School scholar. I graduated B.A.
               Economics, Psychology, Data Analysis from{" "}
               <ALink href="https://www.wesleyan.edu">Wesleyan University</ALink>,{" "}
-              <em>Phi Beta Kappa</em> &amp; a <em>summa cum laude</em>{" "}
-              equivalent.
+              <em>Phi Beta Kappa</em> &amp; a <em>summa cum laude</em>.
             </p>
           </div>
         </div>
