@@ -1,0 +1,41 @@
+name: Auto Deploy Commit
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  create-deploy-commit:
+    name: Create Auto Deploy Commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get commit author
+        id: commit_author
+        run: |
+          AUTHOR=$(git log -1 --pretty=format:'%an')
+          echo "author=$AUTHOR" >> $GITHUB_OUTPUT
+
+      - name: Get previous commit info
+        id: prev_commit
+        run: |
+          PREV_TITLE=$(git log -1 --pretty=format:'%s')
+          PREV_HASH=$(git log -1 --pretty=format:'%H')
+          echo "title=$PREV_TITLE" >> $GITHUB_OUTPUT
+          echo "hash=$PREV_HASH" >> $GITHUB_OUTPUT
+
+      - name: Create auto-deploy commit
+        if: steps.commit_author.outputs.author != 'Mikaela Reyes'
+        run: |
+          git config --global user.name "Mikaela Reyes"
+          git config --global user.email "reyes.mikaelahelene@gmail.com"
+          git commit --allow-empty -m "auto-deploy: \"${{ steps.prev_commit.outputs.title }}\"" -m "previous commit hash: ${{ steps.prev_commit.outputs.hash }}"
+          git push
