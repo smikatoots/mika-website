@@ -1,35 +1,44 @@
-import matter from "gray-matter";
-import Link from "next/link";
+import { cache } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { renderBlogMdx } from "@/components/blog/render-blog-mdx";
-import type { BlogPostFrontmatter } from "@/lib/blog/types";
 import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadBlogMdxPost } from "@/lib/blog/load-mdx-post";
 import { BackLink } from "@/components/ui/BackLink";
 import { BlogPostViewTracker } from "@/components/blog/BlogPostViewTracker";
+import { InternalLink } from "@/components/ui/InternalLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const { posts } = await loadBlogManifest();
   return posts.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+const getBlogPost = cache(async (slug: string) => {
   const loaded = await loadBlogMdxPost(slug);
   if (!loaded) {
+    return null;
+  }
+
+  const { content, frontmatter } = await renderBlogMdx(loaded.source);
+  return { content, frontmatter };
+});
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+  if (!post) {
     return { title: "Not found" };
   }
-  const { data } = matter(loaded.source);
-  const fm = data as BlogPostFrontmatter;
   return {
-    title: fm.title,
-    description: fm.title,
-    openGraph: { title: fm.title },
+    title: post.frontmatter.title,
+    description: post.frontmatter.title,
+    openGraph: { title: post.frontmatter.title },
   };
 }
 
@@ -38,12 +47,12 @@ const tagClass =
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const loaded = await loadBlogMdxPost(slug);
-  if (!loaded) {
+  const post = await getBlogPost(slug);
+  if (!post) {
     notFound();
   }
 
-  const { content, frontmatter } = await renderBlogMdx(loaded.source);
+  const { content, frontmatter } = post;
   const publishedAt = frontmatter.published ?? frontmatter.lastEdited;
 
   return (
@@ -69,12 +78,12 @@ export default async function BlogPostPage({ params }: Props) {
             <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
               {frontmatter.tags.map((t) => (
                 <li key={t}>
-                  <Link
+                  <InternalLink
                     href={`/blog?tag=${encodeURIComponent(t)}`}
                     className={tagClass}
                   >
                     {t}
-                  </Link>
+                  </InternalLink>
                 </li>
               ))}
             </ul>
