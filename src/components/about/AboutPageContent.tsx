@@ -121,7 +121,7 @@ export function AboutPageContent() {
             </li>
             <li>
               writing{" "}
-              <span className="font-medium text-emerald-600">
+              <span className="font-medium text-accent">
                 AI tutorials for normal people
               </span>
             </li>

@@ -3,7 +3,7 @@
 import posthog from "posthog-js";
 
 const extCtaClass =
-  "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-teal-700 shadow-sm transition hover:border-teal-200 hover:bg-teal-50/80";
+  "inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-accent shadow-sm transition hover:border-accent/30 hover:bg-accent/10";
 
 export function ProjectExternalLink({
   href,

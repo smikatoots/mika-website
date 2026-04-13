@@ -22,17 +22,17 @@ export const textH3 = "text-xl font-semibold tracking-tight text-zinc-950";
 /** Muted / metadata. */
 export const textMuted = "text-sm text-zinc-500";
 
-/** Inline & nav links (turquoise + hover). */
+/** Inline & nav links (accent + hover). */
 export const siteLink =
-  "font-medium text-teal-600 underline decoration-teal-500/45 underline-offset-[3px] transition-colors hover:text-teal-800 hover:decoration-teal-700/60";
+  "font-medium text-accent underline decoration-accent/45 underline-offset-[3px] transition-colors hover:text-accent-hover hover:decoration-accent-hover/60";
 
 /** Simpler link (e.g. back link). */
 export const siteLinkSubtle =
-  "text-sm font-medium text-teal-600 underline decoration-teal-400/50 underline-offset-[3px] transition-colors hover:text-teal-800";
+  "text-sm font-medium text-accent underline decoration-accent/40 underline-offset-[3px] transition-colors hover:text-accent-hover";
 
-/** Header nav: same teal as body links, no underline (dense horizontal nav). */
+/** Header nav: same accent as body links, no underline (dense horizontal nav). */
 export const siteNavLink =
-  "text-sm font-medium text-teal-600 transition-colors hover:text-teal-800";
+  "text-sm font-medium text-accent transition-colors hover:text-accent-hover";
 
 /** Article-width main column. */
 export const mainProse =

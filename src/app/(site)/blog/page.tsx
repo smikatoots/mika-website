@@ -33,7 +33,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
   const allTags = allTagsFromManifest(posts);
 
   const tagPillActive =
-    "rounded-full border border-teal-500/50 bg-teal-50 px-3 py-1 text-sm font-medium text-teal-800";
+    "rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-sm font-medium text-accent-hover";
   const tagPillIdle =
     "rounded-full border border-zinc-200 px-3 py-1 text-sm font-medium text-zinc-600 transition hover:border-zinc-300 hover:text-zinc-900";
 
@@ -101,7 +101,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
               href={`/blog/${post.slug}`}
               className="group grid grid-cols-1 gap-x-4 gap-y-1 py-2.5 transition hover:bg-zinc-50/80 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline"
             >
-              <span className="min-w-0 text-left font-medium text-zinc-950 group-hover:text-teal-700">
+              <span className="min-w-0 text-left font-medium text-zinc-950 group-hover:text-accent">
                 {post.title}
               </span>
               <span className="flex flex-wrap items-center justify-start gap-2 text-sm text-zinc-500 sm:justify-end">

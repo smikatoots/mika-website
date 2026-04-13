@@ -40,7 +40,7 @@ export function ProjectCard({ project }: { project: ProjectManifestEntry }) {
 
   return (
     <GalleryCard href={href} media={media}>
-      <h2 className="text-base font-semibold leading-snug text-zinc-950 group-hover:text-teal-700">
+      <h2 className="text-base font-semibold leading-snug text-zinc-950 group-hover:text-accent">
         📄 {project.title}
       </h2>
       {urlLine ? (

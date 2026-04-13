@@ -37,7 +37,7 @@ export const blogMdxComponents: MDXComponents = {
   li: (props) => <li className="leading-relaxed" {...props} />,
   blockquote: (props) => (
     <blockquote
-      className="my-4 border-l-4 border-teal-500 pl-4 italic text-zinc-600"
+      className="my-4 border-l-4 border-accent pl-4 italic text-zinc-600"
       {...props}
     />
   ),

@@ -384,7 +384,7 @@ function NotionBlock({
 
   if (t === "quote") {
     return (
-      <blockquote className="border-l-4 border-teal-500 pl-4 italic text-zinc-600">
+      <blockquote className="border-l-4 border-accent pl-4 italic text-zinc-600">
         <RichText items={block.quote.rich_text} surface={rt} />
         <BlockChildren
           blocks={block.children}
@@ -674,7 +674,7 @@ function NotionBlock({
     if (ltp.type === "database_id") {
       const blogLink =
         surface === "home"
-          ? "font-medium text-teal-700 underline underline-offset-2 hover:text-teal-900"
+          ? "font-medium text-accent underline underline-offset-2 hover:text-accent-hover"
           : siteLink;
       return (
         <div

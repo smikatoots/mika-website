@@ -3,11 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Brand accent (coral); replaces former teal/turquoise links. */
+  --accent: #f17b81;
+  --accent-hover: #d9656c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
