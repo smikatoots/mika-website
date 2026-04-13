@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
+
+import { InternalLink } from "@/components/ui/InternalLink";
 
 /** Shared shell for Projects / Press tiles (16:10 image, light card). */
 export function GalleryCard({
@@ -12,7 +13,7 @@ export function GalleryCard({
   children: ReactNode;
 }) {
   return (
-    <Link
+    <InternalLink
       href={href}
       className="group flex flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm transition hover:border-teal-200/90 hover:shadow-md"
     >
@@ -22,6 +23,6 @@ export function GalleryCard({
       <div className="flex flex-1 flex-col gap-2 border-t border-zinc-100 p-4">
         {children}
       </div>
-    </Link>
+    </InternalLink>
   );
 }

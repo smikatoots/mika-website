@@ -1,10 +1,9 @@
-import matter from "gray-matter";
+import { cache } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { renderPressMdx } from "@/components/press/render-press-mdx";
 import { loadPressManifest } from "@/lib/press/manifest";
-import type { PressFrontmatter } from "@/lib/press/types";
 import { loadPressMdxPost } from "@/lib/press/load-mdx";
 import { BackLink } from "@/components/ui/BackLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
@@ -25,28 +24,33 @@ export async function generateStaticParams() {
   return items.map((p) => ({ slug: p.slug }));
 }
 
+const getPressPost = cache(async (slug: string) => {
+  const loaded = await loadPressMdxPost(slug);
+  if (!loaded) {
+    return null;
+  }
+
+  const { content, frontmatter } = await renderPressMdx(loaded.source);
+  return { content, frontmatter };
+});
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const loaded = await loadPressMdxPost(slug);
-  if (!loaded) return { title: "Not found" };
-  const { data } = matter(loaded.source);
-  const fm = data as PressFrontmatter;
+  const post = await getPressPost(slug);
+  if (!post) return { title: "Not found" };
   return {
-    title: fm.title,
-    description: fm.title,
-    openGraph: { title: fm.title },
+    title: post.frontmatter.title,
+    description: post.frontmatter.title,
+    openGraph: { title: post.frontmatter.title },
   };
 }
 
 export default async function PressDetailPage({ params }: Props) {
   const { slug } = await params;
-  const loaded = await loadPressMdxPost(slug);
-  if (!loaded) notFound();
+  const post = await getPressPost(slug);
+  if (!post) notFound();
 
-  const { data } = matter(loaded.source);
-  const fm = data as PressFrontmatter;
-  const { content } = await renderPressMdx(loaded.source);
-  const ext = externalHref(fm.url);
+  const ext = externalHref(post.frontmatter.url);
 
   return (
     <article className={mainProse}>
@@ -54,12 +58,14 @@ export default async function PressDetailPage({ params }: Props) {
 
       <header className="mt-6">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl md:text-4xl">
-          {fm.title}
+          {post.frontmatter.title}
         </h1>
-        {fm.lastEdited ? (
+        {post.frontmatter.lastEdited ? (
           <p className={`mt-2 ${textMuted}`}>
             Updated{" "}
-            {new Date(fm.lastEdited).toLocaleDateString("en-US", {
+            {new Date(
+              post.frontmatter.lastEdited,
+            ).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
               day: "numeric",
@@ -80,7 +86,7 @@ export default async function PressDetailPage({ params }: Props) {
         ) : null}
       </header>
 
-      <div className="mt-10">{content}</div>
+      <div className="mt-10">{post.content}</div>
     </article>
   );
 }

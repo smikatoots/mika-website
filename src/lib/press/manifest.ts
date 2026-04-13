@@ -1,9 +1,10 @@
+import { cache } from "react";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import type { PressManifest } from "./types";
 
-export async function loadPressManifest(): Promise<PressManifest> {
+const loadPressManifestCached = cache(async (): Promise<PressManifest> => {
   try {
     const p = path.join(process.cwd(), "content/press/manifest.json");
     const raw = await readFile(p, "utf-8");
@@ -15,4 +16,8 @@ export async function loadPressManifest(): Promise<PressManifest> {
   } catch {
     return { generatedAt: "", items: [] };
   }
+});
+
+export async function loadPressManifest(): Promise<PressManifest> {
+  return loadPressManifestCached();
 }
