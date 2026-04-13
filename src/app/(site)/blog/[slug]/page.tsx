@@ -43,6 +43,7 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   const { content, frontmatter } = await renderBlogMdx(loaded.source);
+  const publishedAt = frontmatter.published ?? frontmatter.lastEdited;
 
   return (
     <article className={mainProse}>
@@ -51,28 +52,32 @@ export default async function BlogPostPage({ params }: Props) {
         <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 md:text-5xl">
           {frontmatter.title}
         </h1>
-        <time
-          dateTime={frontmatter.lastEdited}
-          className={`mt-3 block ${textMuted}`}
+        <div
+          className={`mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 ${textMuted}`}
         >
-          Updated{" "}
-          {new Date(frontmatter.lastEdited).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
-        {(frontmatter.tags?.length ?? 0) > 0 ? (
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {frontmatter.tags.map((t) => (
-              <li key={t}>
-                <Link href={`/blog?tag=${encodeURIComponent(t)}`} className={tagClass}>
-                  {t}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : null}
+          <time dateTime={publishedAt} className="whitespace-nowrap">
+            Published{" "}
+            {new Date(publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+          {(frontmatter.tags?.length ?? 0) > 0 ? (
+            <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
+              {frontmatter.tags.map((t) => (
+                <li key={t}>
+                  <Link
+                    href={`/blog?tag=${encodeURIComponent(t)}`}
+                    className={tagClass}
+                  >
+                    {t}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
       </header>
       <div className="mt-10">{content}</div>
     </article>

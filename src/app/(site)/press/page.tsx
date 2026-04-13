@@ -4,7 +4,7 @@ import { PressCard } from "@/components/press/PressCard";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { BackLink } from "@/components/ui/BackLink";
 import { PageHero } from "@/components/ui/PageHero";
-import { mainGallery } from "@/lib/ui/site-styles";
+import { mainWide } from "@/lib/ui/site-styles";
 
 export const metadata: Metadata = {
   title: "Press",
@@ -17,12 +17,11 @@ export default async function PressIndexPage() {
   const { items } = await loadPressManifest();
 
   return (
-    <main className={mainGallery}>
+    <main className={mainWide}>
       <div className="mb-8">
         <BackLink href="/" label="Home" />
       </div>
       <PageHero
-        emoji="📰"
         title="Press"
         subtitle="Articles, podcasts, and appearances."
       />
@@ -36,7 +35,7 @@ export default async function PressIndexPage() {
           to pull from Notion.
         </p>
       ) : (
-        <div className="mt-10 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <PressCard key={item.slug} item={item} />
           ))}

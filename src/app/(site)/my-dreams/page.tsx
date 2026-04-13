@@ -18,7 +18,7 @@ export default function MyDreamsPage() {
       <div className="mb-8">
         <BackLink href="/" label="Home" />
       </div>
-      <PageHero emoji="💭" title="Dreams" />
+      <PageHero title="Dreams" />
       <div className="mt-10">
         <DreamsPageContent />
       </div>

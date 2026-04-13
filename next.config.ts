@@ -1,24 +1,14 @@
 import type { NextConfig } from "next";
 
+import { urlRedirects } from "./src/lib/url-redirects";
+
 const nextConfig: NextConfig = {
   async redirects() {
-    return [
-      {
-        source: "/guestbook",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/more/mikas-projects",
-        destination: "/projects",
-        permanent: true,
-      },
-      {
-        source: "/more/mikas-projects/:slug",
-        destination: "/projects/:slug",
-        permanent: true,
-      },
-    ];
+    return urlRedirects.map((r) => ({
+      source: r.source,
+      destination: r.destination,
+      permanent: true,
+    }));
   },
 };
 

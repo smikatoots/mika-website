@@ -8,6 +8,9 @@
  * Removes .mdx for posts no longer in Notion.
  *
  * Run: npm run sync:blog
+ *
+ * Optional: content/blog/sync-path-overrides.json — { "overrides": { "<notionPageId>": "blog/your-slug" } }
+ * forces filename + frontmatter path/slug for those pages so you do not have to match Slug/Path in Notion.
  */
 
 import { readFile, writeFile, readdir, mkdir, unlink } from "node:fs/promises";
@@ -18,7 +21,12 @@ import { NotionToMarkdown } from "notion-to-md";
 
 import { getNotionClient } from "../src/lib/notion/client";
 import { isNotionConfigured } from "../src/lib/notion/config";
-import { getPublicPath, getTags, getTitle } from "../src/lib/notion/properties";
+import {
+  getPublicPath,
+  getPublishedTime,
+  getTags,
+  getTitle,
+} from "../src/lib/notion/properties";
 import { queryDatabasePages } from "../src/lib/notion/query-database-pages";
 
 import type { BlogManifest, BlogManifestPost } from "../src/lib/blog/types";
@@ -35,6 +43,29 @@ function blogSlugFromPath(p: string): string | null {
 
 function normalizeNotionId(id: string): string {
   return id.replace(/-/g, "").toLowerCase();
+}
+
+/** Notion page id (any hyphenation) → full public path e.g. blog/my-post */
+async function loadPathOverrides(
+  outDir: string,
+): Promise<Map<string, string>> {
+  const p = path.join(outDir, "sync-path-overrides.json");
+  try {
+    const raw = await readFile(p, "utf-8");
+    const data = JSON.parse(raw) as { overrides?: Record<string, string> };
+    const m = new Map<string, string>();
+    for (const [k, v] of Object.entries(data.overrides ?? {})) {
+      const pathNorm = String(v)
+        .trim()
+        .replace(/^\/+|\/+$/g, "");
+      if (pathNorm) {
+        m.set(normalizeNotionId(k), pathNorm);
+      }
+    }
+    return m;
+  } catch {
+    return new Map();
+  }
 }
 
 function toTimeMs(value: unknown): number | null {
@@ -83,6 +114,13 @@ async function main() {
   const outDir = path.join(process.cwd(), "content/blog");
   await mkdir(outDir, { recursive: true });
 
+  const pathOverrides = await loadPathOverrides(outDir);
+  if (pathOverrides.size > 0) {
+    console.log(
+      `Using ${pathOverrides.size} path override(s) from sync-path-overrides.json`,
+    );
+  }
+
   const manifestPosts: BlogManifestPost[] = [];
   const syncedSlugs = new Set<string>();
 
@@ -91,14 +129,30 @@ async function main() {
   let skipped = 0;
 
   for (const page of pages) {
-    const pubPath = getPublicPath(page);
+    const fromNotion = getPublicPath(page);
+    const rawOverride = pathOverrides.get(normalizeNotionId(page.id));
+    let pubPath: string | null = null;
+    if (rawOverride) {
+      pubPath = rawOverride;
+    } else {
+      pubPath = fromNotion;
+    }
     if (!pubPath) continue;
     const slug = blogSlugFromPath(pubPath);
     if (!slug) continue;
 
+    if (rawOverride && fromNotion && fromNotion !== pubPath) {
+      console.log(
+        `  [path override] Using ${pubPath} (Notion had ${fromNotion})`,
+      );
+    } else if (rawOverride && !fromNotion) {
+      console.log(`  [path override] Using ${pubPath} (no Path/Slug from Notion)`);
+    }
+
     const title = getTitle(page);
     const tags = getTags(page);
     const lastEdited = page.last_edited_time;
+    const published = getPublishedTime(page);
     const filePath = path.join(outDir, `${slug}.mdx`);
 
     let fileExisted = false;
@@ -134,6 +188,7 @@ async function main() {
         slug,
         path: pubPath,
         lastEdited,
+        published,
         notionPageId: page.id,
         tags,
       };
@@ -151,14 +206,17 @@ async function main() {
       title,
       path: pubPath,
       lastEdited,
+      published,
       notionPageId: page.id,
       tags,
     });
   }
 
-  manifestPosts.sort(
-    (a, b) => new Date(b.lastEdited).getTime() - new Date(a.lastEdited).getTime(),
-  );
+  function sortTime(p: BlogManifestPost): number {
+    return new Date(p.published ?? p.lastEdited).getTime();
+  }
+
+  manifestPosts.sort((a, b) => sortTime(b) - sortTime(a));
 
   const manifest: BlogManifest = {
     generatedAt: new Date().toISOString(),

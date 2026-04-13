@@ -22,12 +22,11 @@ export default async function ProjectsIndexPage() {
         <BackLink href="/" label="Home" />
       </div>
       <PageHero
-        emoji="💼"
         title="Projects"
         subtitle={
           <>
-            My <em>many</em> fun <em>side</em> projects (&amp; still quite a bit
-            missing from my past life!)
+            My many fun side projects (&amp; still quite a bit missing from my
+            past life!)
           </>
         }
       />

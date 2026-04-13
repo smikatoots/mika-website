@@ -15,6 +15,9 @@ export const notionEnv = {
   propertyPath: process.env.NOTION_PROPERTY_PATH ?? "Path",
   /** multi_select or select — used for /blog filters */
   propertyTags: process.env.NOTION_PROPERTY_TAGS ?? "Tags",
+  /** date property — public "published" date for blog posts (falls back to page created_time). */
+  propertyPublishedDate:
+    process.env.NOTION_PROPERTY_PUBLISHED_DATE ?? "Date",
 } as const;
 
 export function isNotionConfigured(): boolean {

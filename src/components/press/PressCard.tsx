@@ -13,7 +13,7 @@ export function PressCard({ item }: { item: PressManifestEntry }) {
       alt={item.title}
       fill
       className="object-cover transition duration-300 group-hover:scale-[1.02]"
-      sizes="(max-width: 768px) 100vw, 33vw"
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       unoptimized
     />
   ) : (

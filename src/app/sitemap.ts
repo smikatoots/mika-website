@@ -3,8 +3,6 @@ import type { MetadataRoute } from "next";
 import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { loadProjectsManifest } from "@/lib/projects/manifest";
-import { isNotionConfigured } from "@/lib/notion/config";
-import { getPostSummaries } from "@/lib/notion/posts";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -25,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { items: pressItems } = await loadPressManifest();
   const fromMdx: MetadataRoute.Sitemap = manifestPosts.map((p) => ({
     url: `${SITE_URL}/${p.path}`,
-    lastModified: new Date(p.lastEdited),
+    lastModified: new Date(p.published ?? p.lastEdited),
   }));
   const projectEntries: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${SITE_URL}/projects/${p.slug}`,
@@ -36,23 +34,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(p.lastEdited),
   }));
 
-  if (!isNotionConfigured()) {
-    return [...staticEntries, ...fromMdx, ...projectEntries, ...pressEntries];
-  }
-
-  const posts = await getPostSummaries();
-  const fromNotion: MetadataRoute.Sitemap = posts
-    .filter((p) => p.path !== "about" && !p.path.startsWith("blog/"))
-    .map((p) => ({
-      url: `${SITE_URL}/${p.path}`,
-      lastModified: new Date(p.lastEdited),
-    }));
-
+  /**
+   * Non-blog URLs are authored in-repo (press/projects/links/etc.); blog posts
+   * come from MDX synced from Notion. We do not list extra Notion DB rows here,
+   * so obsolete paths are not advertised once removed from Notion.
+   */
   return [
     ...staticEntries,
     ...fromMdx,
     ...projectEntries,
     ...pressEntries,
-    ...fromNotion,
   ];
 }

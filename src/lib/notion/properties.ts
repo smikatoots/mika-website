@@ -3,9 +3,9 @@ import type {
   RichTextItemResponse,
 } from "@notionhq/client";
 
-import { slugifyTitleForBlog } from "@/lib/slugify";
-
 import { notionEnv } from "./config";
+
+import { slugifyTitleForBlog } from "@/lib/slugify";
 
 export type ContentRoute = "blog" | "root";
 
@@ -103,6 +103,24 @@ export function getPublicPath(page: PageObjectResponse): string | null {
 
 export function richTextToPlain(items: RichTextItemResponse[]): string {
   return items.map((i) => ("plain_text" in i ? i.plain_text : "")).join("");
+}
+
+/**
+ * ISO timestamp for when the post was published (Notion date column, or page created_time).
+ */
+export function getPublishedTime(page: PageObjectResponse): string {
+  const name = notionEnv.propertyPublishedDate;
+  const prop = page.properties[name];
+  if (prop?.type === "date" && prop.date?.start) {
+    const start = prop.date.start;
+    const d = new Date(
+      start.length <= 10 ? `${start}T12:00:00.000Z` : start,
+    );
+    if (!Number.isNaN(d.getTime())) {
+      return d.toISOString();
+    }
+  }
+  return page.created_time;
 }
 
 export function getTags(page: PageObjectResponse): string[] {

@@ -15,13 +15,17 @@ type Props = {
   searchParams: Promise<{ tag?: string }>;
 };
 
+const listTagClass =
+  "rounded-full border border-zinc-200 bg-zinc-50 px-2 py-0.5 text-xs text-zinc-600";
+
 export default async function BlogIndexPage({ searchParams }: Props) {
   const { tag: tagRaw } = await searchParams;
   const tag = tagRaw?.trim() ?? "";
   const { posts } = await loadBlogManifest();
   const sorted = [...posts].sort(
     (a, b) =>
-      new Date(b.lastEdited).getTime() - new Date(a.lastEdited).getTime(),
+      new Date(b.published ?? b.lastEdited).getTime() -
+      new Date(a.published ?? a.lastEdited).getTime(),
   );
   const filtered = tag
     ? sorted.filter((p) => (p.tags ?? []).includes(tag))
@@ -38,7 +42,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
       <div className="mb-8">
         <BackLink href="/" label="Home" />
       </div>
-      <PageHero emoji="✏️" title="Blog" />
+      <PageHero title="Blog" />
 
       {posts.length === 0 ? (
         <p className="mt-10 rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-950">
@@ -90,35 +94,39 @@ export default async function BlogIndexPage({ searchParams }: Props) {
         </p>
       ) : null}
 
-      <ul className="mx-auto mt-12 max-w-2xl space-y-4 text-center">
+      <ul className="mx-auto mt-8 max-w-4xl divide-y divide-zinc-100 border-b border-zinc-100 text-left">
         {filtered.map((post) => (
           <li key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="group block rounded-xl border border-transparent px-6 py-5 transition hover:border-zinc-200 hover:bg-zinc-50"
+              className="group grid grid-cols-1 gap-x-4 gap-y-1 py-2.5 transition hover:bg-zinc-50/80 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline"
             >
-              <span className="block font-medium text-zinc-950 group-hover:text-teal-700">
+              <span className="min-w-0 text-left font-medium text-zinc-950 group-hover:text-teal-700">
                 {post.title}
               </span>
-              <span className="mt-2 block text-sm text-zinc-500">
-                {new Date(post.lastEdited).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })}
+              <span className="flex flex-wrap items-center justify-start gap-2 text-sm text-zinc-500 sm:justify-end">
+                {(post.tags?.length ?? 0) > 0 ? (
+                  <span className="flex flex-wrap items-center justify-end gap-1">
+                    {(post.tags ?? []).map((t) => (
+                      <span key={t} className={listTagClass}>
+                        {t}
+                      </span>
+                    ))}
+                  </span>
+                ) : null}
+                <time
+                  className="whitespace-nowrap tabular-nums"
+                  dateTime={post.published ?? post.lastEdited}
+                >
+                  {new Date(
+                    post.published ?? post.lastEdited,
+                  ).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </time>
               </span>
-              {(post.tags?.length ?? 0) > 0 ? (
-                <span className="mt-3 flex flex-wrap justify-center gap-1.5">
-                  {(post.tags ?? []).map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-zinc-200 bg-zinc-50 px-2 py-0.5 text-xs text-zinc-600"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </span>
-              ) : null}
             </Link>
           </li>
         ))}

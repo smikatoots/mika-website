@@ -25,7 +25,7 @@ export const blogMdxComponents: MDXComponents = {
     <h4 className="mt-6 text-lg font-semibold text-zinc-900" {...props} />
   ),
   p: (props) => (
-    <p className="leading-relaxed text-zinc-800" {...props} />
+    <p className="mb-5 leading-relaxed text-zinc-800" {...props} />
   ),
   a: (props) => <a className={siteLink} {...props} />,
   ul: (props) => (

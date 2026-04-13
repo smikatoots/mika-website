@@ -9,7 +9,12 @@
     "lint": "eslint",
     "sync:blog": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-blog.ts",
     "sync:projects": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-projects.ts",
-    "sync:press": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-press.ts"
+    "sync:press": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-press.ts",
+    "match:legacy-blog": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/match-legacy-blog-urls.ts",
+    "changelog:urls": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/generate-url-migration-changelog.ts",
+    "sync:url-redirects": "node scripts/sync-url-redirects-from-changelog.mjs",
+    "verify:legacy-urls": "node scripts/verify-legacy-urls.mjs",
+    "verify:legacy-urls:relax": "node scripts/verify-legacy-urls.mjs --allow-missing-blog"
   },
   "dependencies": {
     "@notionhq/client": "^5.16.0",
