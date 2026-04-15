@@ -4,7 +4,7 @@
  */
 export function AiGuideBusinessCtaBlock() {
   return (
-    <aside className="not-prose my-10 flex flex-col items-center rounded-[10px] border border-accent bg-white px-6 py-8 text-center shadow-sm sm:px-8">
+    <aside className="not-prose mt-8 mb-16 flex flex-col items-center rounded-[10px] border border-accent bg-white px-6 py-8 text-center shadow-sm sm:px-8">
       <h2 className="max-w-3xl text-xl font-semibold tracking-tight text-accent sm:text-2xl">
         Looking to integrate AI into your business so you&apos;re not falling
         behind?
