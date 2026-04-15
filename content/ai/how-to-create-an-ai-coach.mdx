@@ -1,0 +1,119 @@
+---
+title: How to Create an AI Coach
+description: >-
+  Build a personal AI coach modeled after any expert using Claude Projects.
+  Walk through a real example: a negotiation coach based on Chris Voss.
+tags:
+  - advanced
+published: "2026-04-14"
+cta: Dive in
+order: 4
+---
+
+A friend of mine almost left 35% of her salary on the table last week. Instead, we built her an AI coach in about 20 minutes and she walked into that negotiation with a full playbook.
+
+The AI coach framework works for negotiation, marketing, sales, product strategy — basically anything where you'd normally pay someone $500 an hour to tell you what to do.
+
+### Why this works
+
+When most people use AI for advice, they type one vague question and get one vague answer back. The better move is to give your AI a specific expert identity, load it with that expert's actual thinking, and then ask it to coach you on your real situation.
+
+I've built coaches for negotiation, brand positioning, and PMF discovery. Same setup every time, just a different expert.
+
+### Step 1: Pick your expert
+
+Start with one person whose methodology you actually trust and who has a specific, documented way of thinking. Generic thinkers make weak coaches. The more tactical and situational their framework, the better.
+
+For the negotiation coach, I used Chris Voss, a former FBI hostage negotiator who wrote *Never Split the Difference.* His principles are specific enough for Claude to actually apply: tactical empathy, mirroring, calibrated questions, and "no"-oriented framing. That specificity is what makes the coaching useful.
+
+Other people I've used or considered: Seth Godin for positioning, April Dunford for product marketing, Lenny Rachitsky for PMF.
+
+### Step 2: Collect their source material
+
+Search the expert's name alongside "interview," "article," or "framework." Look for:
+
+- Long-form interviews where they explain their thinking in their own words
+- Articles or book excerpts that go deep on specific tactics
+- Podcast transcripts with real examples, not just highlights
+
+Copy the full text and save it somewhere. A short bio gives you a weak coach. A detailed interview where they walk through actual situations gives you a coach that can actually help.
+
+For the Chris Voss coach, I found two long interviews and a few articles on his mirroring and labeling techniques. That was enough.
+
+![Google search results for Chris Voss negotiation articles](/ai-guides/ai-coach-step-1.png "Search Chris Voss articles. Recommend to downlaod these PDFs and copy text into markdown files so your token usage is smaller")
+
+### Step 3: Create a Claude Project
+
+In Claude, open Projects and create a new one. Name it after the coach: "Negotiation Coach," "Marketing Coach," whatever makes sense.
+
+A Claude Project keeps context between sessions. You brief it once; every future conversation picks up where the last one left off. No re-explaining, no re-uploading.
+
+![Claude Projects view with new project button](/ai-guides/ai-coach-step-2.png "Click Projects on Claude's sidebar then New Project.")
+
+### Step 4: Upload the source material
+
+Paste or upload the articles and interviews into your Project. Claude will pull from these when it coaches you, not just from its general training.
+
+More specific inputs produce more specific coaching. Vague material in, vague advice out.
+
+📸 *Screenshot tip: Show the Claude Project with a document already attached — highlight the file upload panel.*
+
+### Step 5: Write a real persona prompt
+
+The prompt is where most people underdeliver. Don't just say "act like Chris Voss." Give Claude the role, the methodology, the situation, and what you actually need back.
+
+Here's what worked for the negotiation coach:
+
+```
+You are Chris Voss, former FBI hostage negotiator and author of Never Split the Difference.
+You coach people using tactical empathy, mirroring, calibrated questions, and the
+"no"-oriented question framework. I've included several of your articles and interviews
+as context — use those as your primary reference.
+
+I am negotiating [SITUATION]. Here is the offer on the table: [DETAILS].
+
+Build me a complete negotiation playbook. Include:
+- My opening move
+- How to respond to pushback
+- The specific language I should use
+- What to avoid saying
+- How to anchor the conversation without losing the relationship
+```
+
+A prompt like this returns a structured playbook. "Help me negotiate my salary" returns a pep talk.
+
+![Claude project context panel showing instructions and context options](/ai-guides/ai-coach-step-3.png "On the right of Cowork, you can add more context by clicking the + button and Add a link.")
+
+<AiGuideBusinessCtaBlock />
+
+### Step 6: Practice before you use it
+
+Read through the playbook Claude gives you, then run a practice round. Ask Claude to play the other side — your hiring manager, your client, whoever — and push back. Get your reps in before it matters.
+
+My friend went into that salary negotiation having already practiced her responses to five different objections. She was calm because she'd already had that conversation, just with AI.
+
+> **Worth noting:** Nothing replaces an actual expert. But a well-built AI coach gets you closer than going in unprepared.
+
+### Other coaches worth building
+
+- **Marketing coach:** a copywriter or brand strategist whose work you follow closely
+- **PMF coach:** a product thinker who has written in depth about finding product-market fit
+- **Sales coach:** a methodology expert (SPIN selling, Challenger, etc.)
+- **Career coach:** someone whose career path you want to study and apply
+
+The setup is the same for all of them. Find the expert, gather their material, build the Project, write the full prompt.
+
+### Where to start
+
+**If you've never used Claude Projects,** do Steps 3 and 4 first. Create one project, paste in one article. See how it holds context. That alone changes how you use Claude.
+
+**If you already use Claude regularly,** go straight to Step 5. Pick an expert and write the full persona prompt for something you're working on right now.
+
+**If you want this coach to get better over time,** consider converting this Project to a Skill.
+
+## Additional Reading
+
+Here are some related guides to check out:
+1. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+2. [What is a Skill?](/ai/what-is-a-skill)
+3. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)

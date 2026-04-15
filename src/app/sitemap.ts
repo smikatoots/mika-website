@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { loadAllAiGuideIndexEntries } from "@/lib/ai-guides/load-guides";
 import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { loadProjectsManifest } from "@/lib/projects/manifest";
@@ -11,6 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = [
     { url: SITE_URL, lastModified: new Date() },
     { url: `${SITE_URL}/about`, lastModified: new Date() },
+    { url: `${SITE_URL}/ai`, lastModified: new Date() },
     { url: `${SITE_URL}/blog`, lastModified: new Date() },
     { url: `${SITE_URL}/links`, lastModified: new Date() },
     { url: `${SITE_URL}/projects`, lastModified: new Date() },
@@ -18,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/my-dreams`, lastModified: new Date() },
   ];
 
+  const aiGuides = await loadAllAiGuideIndexEntries();
   const { posts: manifestPosts } = await loadBlogManifest();
   const { projects } = await loadProjectsManifest();
   const { items: pressItems } = await loadPressManifest();
@@ -33,6 +36,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}/press/${p.slug}`,
     lastModified: new Date(p.lastEdited),
   }));
+  const aiGuideEntries: MetadataRoute.Sitemap = aiGuides.map((g) => ({
+    url: `${SITE_URL}/ai/${g.slug}`,
+    lastModified: new Date(g.published),
+  }));
 
   /**
    * Non-blog URLs are authored in-repo (press/projects/links/etc.); blog posts
@@ -44,5 +51,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...fromMdx,
     ...projectEntries,
     ...pressEntries,
+    ...aiGuideEntries,
   ];
 }

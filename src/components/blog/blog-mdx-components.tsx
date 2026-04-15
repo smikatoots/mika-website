@@ -1,6 +1,8 @@
 import type { MDXComponents } from "mdx/types";
 
 import { siteLink } from "@/lib/ui/site-styles";
+import { CodeBlock } from "@/components/blog/CodeBlock";
+import { MdxImage } from "@/components/blog/MdxImage";
 
 export const blogMdxComponents: MDXComponents = {
   h1: (props) => (
@@ -54,25 +56,14 @@ export const blogMdxComponents: MDXComponents = {
       );
     }
     return (
-      <code className={`text-sm text-zinc-900 ${className ?? ""}`} {...props}>
+      <code className={className ?? ""} {...props}>
         {children}
       </code>
     );
   },
-  pre: (props) => (
-    <pre className="my-4 overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-900">
-      {props.children}
-    </pre>
-  ),
+  pre: (props) => <CodeBlock>{props.children}</CodeBlock>,
   hr: () => <hr className="my-10 border-zinc-200" />,
-  img: (props) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      className="my-6 max-h-[480px] w-full rounded-lg border border-zinc-200 object-contain"
-      alt={props.alt ?? ""}
-      {...props}
-    />
-  ),
+  img: (props) => <MdxImage {...props} />,
   strong: (props) => (
     <strong className="font-semibold text-zinc-950" {...props} />
   ),

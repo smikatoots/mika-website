@@ -1,6 +1,7 @@
 /** Primary nav (header). */
 export const siteNavItems = [
   { href: "/about", label: "About", icon: "👤" },
+  { href: "/ai", label: "AI", icon: "🤖" },
   { href: "/blog", label: "Blog", icon: "✏️" },
   { href: "/links", label: "Links", icon: "🔗" },
   { href: "/projects", label: "Projects", icon: "💼" },

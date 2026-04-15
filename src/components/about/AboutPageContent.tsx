@@ -36,6 +36,9 @@ function ALink({
 const bioBoxClass =
   "flex gap-4 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm";
 
+/** Emphasis in the “currently” list — matches global `--accent` (e.g. #fd4869). */
+const aboutHighlight = "font-medium text-accent";
+
 /** public/about-assets/ — profile, thumbnails ×4, feature, gallery rows, full-width */
 const ABOUT_IMAGE_PATHS: readonly string[] = [
   "/about-assets/000.jpg",
@@ -109,31 +112,27 @@ export function AboutPageContent() {
           </p>
           <ul className="list-none space-y-2 pl-0">
             <li>
-              in <span className="font-medium text-rose-500">New York</span>
+              in <span className={aboutHighlight}>New York</span>
             </li>
             <li>
               working on{" "}
               <ALink href={homeBioLinks.kingsCrossLabs}>
-                <span className="font-medium text-blue-600">
-                  King&apos;s Cross Labs
-                </span>
+                <span className={aboutHighlight}>King&apos;s Cross Labs</span>
               </ALink>
             </li>
             <li>
               writing{" "}
-              <span className="font-medium text-accent">
+              <span className={aboutHighlight}>
                 AI tutorials for normal people
               </span>
             </li>
             <li>
               reading{" "}
-              <span className="font-medium text-orange-600">
-                The Art of Spending
-              </span>
+              <span className={aboutHighlight}>The Art of Spending</span>
             </li>
             <li>
               creating{" "}
-              <span className="font-medium text-red-600">
+              <span className={aboutHighlight}>
                 videos on{" "}
                 <ALink href="https://instagram.com/its.mikareyes">
                   Instagram
@@ -141,18 +140,16 @@ export function AboutPageContent() {
               </span>
             </li>
             <li>
-              watching{" "}
-              <span className="font-medium text-red-800">The Pitt</span>
+              watching <span className={aboutHighlight}>The Pitt</span>
             </li>
             <li>
               listening to{" "}
-              <span className="font-medium text-amber-800">
+              <span className={aboutHighlight}>
                 my Wedding Dinner Playlist
               </span>
             </li>
             <li>
-              addicted to{" "}
-              <span className="font-medium text-violet-600">Claude!</span>
+              addicted to <span className={aboutHighlight}>Claude!</span>
             </li>
           </ul>
           <p className="text-sm italic text-zinc-500">

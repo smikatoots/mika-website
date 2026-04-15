@@ -3,9 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* Brand accent (coral); replaces former teal/turquoise links. */
-  --accent: #f17b81;
-  --accent-hover: #d9656c;
+  /* Brand accent — links, nav, focus states, AI CTA block. */
+  --accent: #fd4869;
+  --accent-hover: #e03b5c;
 }
 
 @theme inline {

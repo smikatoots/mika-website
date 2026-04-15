@@ -6,6 +6,8 @@ export const homeBioLinks = {
   parallax: "https://withparallax.com",
   tiktok: "https://www.tiktok.com/@its.mikareyes",
   instagram: "https://www.instagram.com/its.mikareyes/",
+  /** Personal profile (content, AI guides). Distinct from `linkedin` (company product URL in bio timeline). */
+  linkedinProfile: "https://www.linkedin.com/in/itsmikareyes",
   linkedin: "https://www.linkedin.com/company/linkedin/",
   kumu: "https://kumu.ph",
   medgrocer: "https://www.medgrocer.com",
