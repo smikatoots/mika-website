@@ -1,0 +1,119 @@
+---
+title: How to Setup Claude Code (5-Min Guide for Non-Techies)
+description: >-
+  Claude Code isn't just a chatbot — it's an AI that does things. Here's how to get it set up in 5 minutes and see it in action with a real example.
+tags:
+  - setup
+  - beginner
+published: "2026-04-17"
+cta: Get started
+order: 6
+---
+
+Most people treat Claude like a smarter search engine. Type something in, get an answer, close the tab.
+
+That's fine, but it's like hiring a full-time assistant and only ever asking them to Google things. Claude Code is the version of Claude that actually *does* the work. Give it a task in plain English and it reads your files, writes new ones, runs code, updates spreadsheets.
+
+This guide gets you set up in under 5 minutes and shows you exactly what that looks like in action.
+
+## What is Claude Code?
+
+There are two modes of working with AI. Most people only know one.
+
+**Chat (Claude.ai, ChatGPT):** You talk to it, it responds. The conversation ends, nothing else happens.
+
+**Agentic (Claude Code):** You give it a task, it performs it. It can read files on your computer, write new ones, run its own code, and remember things across sessions.
+
+Claude Code is the desktop app version of Claude built for this second mode. There are other agentic tools out there (Claude Cowork, OpenClaw) but we're starting here because Claude Code is the most accessible one to get your hands on.
+
+> **Key insight:** The gap between Chat and Code isn't about prompting skill. It's about what the tool is actually allowed to do.
+
+## Quickstart (5 minutes)
+
+### Step 1: Install the Claude desktop app
+
+Go to [claude.com/download](https://claude.com/download) and download the app for your computer. Standard install, nothing complicated.
+
+[📸 image 1 - The Claude download page showing the Download button. Recommended caption: "Download Claude desktop from claude.com/download."]
+
+### Step 2: Get Claude Pro ($20/month)
+
+Claude Code requires a [Claude Pro subscription](https://claude.com/pricing). Once you're logged in, you'll see an upgrade prompt. The $20/month plan is what unlocks it.
+
+[📸 image 2 - The Claude pricing page with the Pro plan highlighted. Recommended caption: "The $20/month Pro plan is what unlocks Claude Code."]
+
+### Step 3: Switch to the Code tab
+
+After logging into the desktop app, look at the very top of the window. You'll see tabs. Click the one that says **Code**. This switches you from chat mode into agent mode.
+
+[📸 image 3 - The Claude desktop app with the Code tab visible at the top of the window. Recommended caption: "Switch to the Code tab at the top of the app."]
+
+### Step 4: Pick your workspace folder
+
+Below the message input, you'll see a folder selector. This is your **workspace**, the folder on your computer that Claude Code is allowed to read and write files in.
+
+[📸 image 4 - The Claude Code interface with the folder selector visible below the message input area. Recommended caption: "Click here to select your workspace folder."]
+
+Click it to choose a different folder, or create one called `claude` on your Desktop and use that. Either works.
+
+[📸 image 5 - Your computer's file picker open, ready to select a folder. Recommended caption: "Your computer's file picker will open. Choose any folder you want Claude to work in."]
+
+That's it. You're set up.
+
+## Understanding the workspace
+
+Before you jump in, two things worth knowing.
+
+The **workspace** is the folder you selected. Claude Code can read any file inside it and create new files there. Think of it as Claude's desk. It can only work with what's on the desk.
+
+**Skills** are sets of custom instructions you give Claude Code to follow. For example, `/generate-instagram-hooks` could be a Skill you build that generates hooks in your specific voice, using examples of what's worked before. The more you use it, the better it gets. [Official Skills docs here](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
+
+## Real example: turning receipts into a spreadsheet
+
+Here's something I actually did that shows what makes Claude Code different from a normal chat.
+
+I had two receipt PDFs in a folder called `my-folder`, both for computer parts, both priced in Philippine Pesos.
+
+[📸 image 6 - Finder/File Explorer showing my-folder with 2 receipt PDF files inside. Recommended caption: "Two receipts in my-folder. Claude Code can see both of these."]
+
+I opened Claude Code, set `my-folder` as my workspace, and typed:
+
+> "Read both receipts in my-folder and create a spreadsheet with all the items, quantities, and prices."
+
+[📸 image 7 - The Claude Code chat interface with the above message typed in. Recommended caption: "A plain English instruction is all it takes."]
+
+[📸 image 8 - GIF or screen recording of Claude Code reading the receipts and generating the spreadsheet. Recommended caption: "Claude Code in action, reading the files and building the spreadsheet."]
+
+If it needs to write code to parse the files, it does that on its own and runs it inside the workspace. You don't touch any of it.
+
+The result: a brand new `.xlsx` spreadsheet in `my-folder`.
+
+[📸 image 9 - Finder/File Explorer showing the new .xlsx file created in my-folder. Recommended caption: "A new spreadsheet, created automatically in your folder."]
+
+[📸 image 10 - The spreadsheet open, showing all receipt items with prices in Philippine Pesos. Recommended caption: "All items pulled from both receipts, organized into columns."]
+
+Looks good, but I wanted a USD column too. So I just asked:
+
+> "Update the spreadsheet to add a USD column using today's exchange rate."
+
+[📸 image 11 - Claude Code chat showing the follow-up message asking for a USD column. Recommended caption: "One follow-up message. That's it."]
+
+Claude opens the file, writes code to update it, runs that code, saves the result. No manual work.
+
+[📸 image 12 - The updated spreadsheet showing the new USD column with conversion rate applied. Recommended caption: "USD column added, conversion rate included."]
+
+Done.
+
+## What's next
+
+That receipt example is a simple one. Claude Code works with any file type: PDFs, images, text files, code, markdown. If it doesn't know how to read a format natively, it writes code to figure it out.
+
+The more you use it, the more you'll find tasks you were doing manually that Claude Code can just handle.
+
+## Additional reading
+
+Here are some related guides to check out:
+1. [What is a Skill?](/ai/what-is-a-skill)
+2. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+3. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+4. [Daily Briefing](/ai/daily-briefing)

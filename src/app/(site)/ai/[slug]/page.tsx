@@ -17,6 +17,20 @@ type Props = { params: Promise<{ slug: string }> };
 
 export const dynamicParams = false;
 
+function formatPublishedDate(date: string): string {
+  // Parse bare YYYY-MM-DD as UTC to avoid local timezone day shifts.
+  const normalized = /^\d{4}-\d{2}-\d{2}$/u.test(date)
+    ? `${date}T00:00:00Z`
+    : date;
+
+  return new Date(normalized).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 export async function generateStaticParams() {
   const guides = await loadAllAiGuideIndexEntries();
   return guides.map((g) => ({ slug: g.slug }));
@@ -73,12 +87,7 @@ export default async function AiGuidePage({ params }: Props) {
           className={`mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 ${textMuted}`}
         >
           <time dateTime={publishedAt} className="whitespace-nowrap">
-            Published{" "}
-            {new Date(publishedAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            Published {formatPublishedDate(publishedAt)}
           </time>
           {(frontmatter.tags?.length ?? 0) > 0 ? (
             <ul className="m-0 flex list-none flex-wrap gap-2 p-0">

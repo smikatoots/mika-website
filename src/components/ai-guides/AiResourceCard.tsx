@@ -1,19 +1,30 @@
 import { InternalLink } from "@/components/ui/InternalLink";
 
+import { AI_GUIDE_COMING_SOON_SLUGS } from "@/lib/ai-guides/constants";
 import type { AiGuideIndexEntry } from "@/lib/ai-guides/types";
 
 const listTagClass =
   "rounded-full border border-zinc-200 bg-zinc-50 px-2 py-0.5 text-xs text-zinc-600";
 
+const cardInteractiveClass =
+  "group flex flex-col rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:border-accent/35 hover:shadow-md";
+
+const cardStaticClass =
+  "flex flex-col rounded-xl border border-zinc-200 bg-zinc-100/60 p-5 shadow-sm";
+
 export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
   const href = `/ai/${guide.slug}`;
+  const comingSoon = AI_GUIDE_COMING_SOON_SLUGS.has(guide.slug);
 
-  return (
-    <InternalLink
-      href={href}
-      className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:border-accent/35 hover:shadow-md"
-    >
-      <h2 className="text-base font-semibold leading-snug text-zinc-950 group-hover:text-accent">
+  const inner = (
+    <>
+      <h2
+        className={
+          comingSoon
+            ? "text-base font-semibold leading-snug text-zinc-800"
+            : "text-base font-semibold leading-snug text-zinc-950 group-hover:text-accent"
+        }
+      >
         {guide.title}
       </h2>
       <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-zinc-600">
@@ -28,9 +39,32 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
           ))}
         </div>
       ) : null}
-      <span className="mt-auto pt-4 text-sm font-medium text-accent group-hover:text-accent-hover">
-        {guide.cta} →
+      <span
+        className={
+          comingSoon
+            ? "mt-auto pt-4 text-sm font-medium text-zinc-500"
+            : "mt-auto pt-4 text-sm font-medium text-accent group-hover:text-accent-hover"
+        }
+      >
+        {comingSoon ? "Coming soon..." : `${guide.cta} →`}
       </span>
+    </>
+  );
+
+  if (comingSoon) {
+    return (
+      <div
+        className={cardStaticClass}
+        aria-label={`${guide.title} — coming soon`}
+      >
+        {inner}
+      </div>
+    );
+  }
+
+  return (
+    <InternalLink href={href} className={cardInteractiveClass}>
+      {inner}
     </InternalLink>
   );
 }

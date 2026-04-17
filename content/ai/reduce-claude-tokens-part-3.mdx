@@ -1,0 +1,102 @@
+---
+title: How to Stop Hitting Claude Usage Limits (part 3)
+description: >-
+  There are features running in the background of every Claude session you
+  probably never turned on intentionally. Here's what to turn off, and the
+  Claude Code habits that make every session leaner.
+tags:
+  - claude
+published: "2026-04-16"
+cta: Read part 3
+order: 12
+---
+
+There are features running in the background of every Claude session you probably never turned on intentionally. Web search. Extended Thinking. Connectors you set up once and forgot about. They all add tokens to every response -- even when you don't need them for the task at hand.
+
+This is the final part of the series. It covers the settings worth changing once, and the Claude Code habits that keep every session leaner.
+
+---
+
+## Settings to fix right now
+
+### 1. Turn off features you're not using
+
+Web search, connectors (Slack, Google Drive, Notion), and Extended Thinking all add tokens to every response. Even when you don't need them. Writing your own content? Turn off Search. Doing a grammar check? Turn off Extended Thinking. My default is everything off. I turn features on per task, not per session.
+
+When you do use connectors, be specific. "Search Slack from the last 7 days for messages about the Q2 launch" costs a fraction of "Search Slack for anything about launches." Filtered retrieval loads fewer results and fewer tokens.
+
+![Claude Chat showing the toolbar with web search, connectors, and Extended Thinking toggles all visible and turned off](/ai-guides/reduce-tokens-p3-features-off.png "Default everything off. Turn features on only when the task actually needs them.")
+
+### 2. Turn off Memory. Set User Preferences instead.
+
+Memory is odd and I don't love it. Turn it off in Settings. Instead, go to Settings > General > Personal Preferences and write your context there once -- things like "I prefer concise responses" or "I'm a non-technical founder." Set up a Style while you're there. "Concise" is a good default. Both persist across every chat without eating your context window.
+
+One setup. Permanent savings. You never have to re-explain yourself at the start of a chat again.
+
+![Claude Settings panel showing the Memory toggle turned off, with Personal Preferences and Styles sections filled in below](/ai-guides/reduce-tokens-p3-preferences.png "Set it once here. Never type 'I prefer concise responses' again.")
+
+---
+
+## Claude Code habits
+
+### 3. Switch models in Claude Code based on what you're actually doing
+
+Type `/models` in Claude Code and you'll see your options. Opus for complex multi-file work, architecture decisions, and tricky debugging. Sonnet for daily work -- writing, editing, explaining, testing. Haiku for quick lookups, renaming, and formatting. Using Opus to reformat a CSV is like using heavy machinery to move a chair.
+
+This single habit makes a bigger difference than most people expect. Most daily Claude Code work doesn't need Opus.
+
+![Claude Code terminal showing the /models command output with the list of available models](/ai-guides/reduce-tokens-p3-models-command.png "Two seconds to switch models. Worth doing every time the task type changes.")
+
+### 4. Clear your context between tasks
+
+The longer a Claude Code session runs, the more bloated it gets. Slower responses, worse quality, higher cost. Use `/clear` between unrelated tasks to wipe the slate. Use `/compact` before you start something big -- it compresses your conversation down to just the important parts.
+
+If you don't reset, you're paying more to get dumber answers. That's not a metaphor.
+
+### 5. Use CLI tools instead of MCP when one exists
+
+MCP servers connect Claude to external services like GitHub, Notion, or Slack. Useful, but expensive -- they inject their full definition into your context on both ends of every call. When a command-line tool (CLI) exists for the same job, use it instead.
+
+GitHub is the clearest example. The `gh` CLI does everything the GitHub MCP server does, faster and with far fewer tokens. My rule: CLI first. MCP only if there's no alternative.
+
+### 6. Install the Context-Mode plugin
+
+When an MCP tool returns results, it can dump thousands of lines of raw data straight into your conversation. Your context fills up and your token count spikes before Claude even starts working.
+
+Context-Mode is a free open-source plugin that fixes this. Instead of flooding your conversation with raw output, it stores results in a separate workspace and gives Claude a clean summary. Claude gets what it needs. Your context stays lean. To install: search "context-mode" on GitHub, follow the README install instructions (usually one line in your terminal), then add it to your Claude Code config. It runs in the background after that. Users report 50 to 90% reduction in MCP-related token usage.
+
+![GitHub repo page for the Context-Mode plugin showing the README with the install command highlighted](/ai-guides/reduce-tokens-p3-context-mode.png "One install, runs in the background forever. If you use MCP servers regularly, this is worth doing today.")
+
+### 7. Use /schedule for recurring tasks
+
+If you run the same report, digest, or research task every week, you're wasting tokens re-explaining the full setup from scratch each time. Skills, scheduled tasks, and Projects replace repeated instructions with cached, on-demand loading -- Claude picks up exactly where the workflow needs it, without the overhead.
+
+Type `/schedule` in Claude Code, define the task once, and it runs automatically. No re-explaining. No context built from scratch every week.
+
+![Claude Code showing the /schedule command interface with a recurring task configured](/ai-guides/reduce-tokens-p3-schedule.png "Define it once. It runs on its own. No tokens wasted on setup every week.")
+
+### 8. Give Claude Code a clear scope before it starts
+
+Claude Code is curious by default. If you don't constrain it, it explores your whole directory, reads files it doesn't need, and runs checks you didn't ask for. You're paying tokens for all of that.
+
+Be specific before you hit enter. Instead of "help me with my revenue data," write: "Create a bar chart from this CSV showing monthly revenue for 2025. Save it as chart.png." No room to explore. No tokens spent on curiosity.
+
+> **Key insight:** Claude Code's default behavior is to understand before it acts. That's great for quality -- but without a tight scope, it spends your tokens learning things it didn't need to know.
+
+---
+
+## One last thing
+
+### 9. Spread your work across the day
+
+Claude runs on a rolling 5-hour usage window -- roughly 10 to 40 prompts depending on your plan and task complexity. The timer resets 5 hours after your first message in a session. Burn through everything before noon and most of your daily capacity is already gone.
+
+Split into two or three sessions: morning, afternoon, evening. By the time you come back, your earlier usage has rolled off. One more thing worth knowing: limits tighten during peak hours on weekdays from 8am to 2pm EST. If you keep hitting walls mid-morning, try shifting heavier sessions to early morning before 8am or evenings after 7pm. Same plan, more headroom.
+
+---
+
+Here are some related guides to check out:
+1. [How to Stop Hitting Claude Usage Limits (part 1)](/ai/reduce-claude-tokens-part-1)
+2. [How to Stop Hitting Claude Usage Limits (part 2)](/ai/reduce-claude-tokens-part-2)
+3. [How to Set Up Claude](/ai/how-to-setup-claude)
+4. [What is a Skill?](/ai/what-is-a-skill)
