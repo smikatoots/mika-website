@@ -3,6 +3,7 @@
  */
 export const homeBioLinks = {
   kingsCrossLabs: "https://kingscrosslabs.com",
+  lelandCoach: "https://www.joinleland.com/coach/mikaela-r",
   parallax: "https://withparallax.com",
   tiktok: "https://www.tiktok.com/@its.mikareyes",
   instagram: "https://www.instagram.com/its.mikareyes/",

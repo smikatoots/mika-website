@@ -35,6 +35,8 @@ This sounds counterintuitive. Speak more and spend fewer tokens? When you type, 
 
 When you speak, you naturally give more context in one shot. "The tone is too stiff. I want it to sound like I'm texting a friend who runs a 200-person company. Keep the data but make it casual. Only redo section 2." That's one message instead of five. I use Wispr Flow for this -- it's a voice-to-text tool that works in any text field on your screen.
 
+![Slide showing why voice-to-text reduces follow-up messages and token waste](/ai-guides/reduce-tokens-p2-voice-to-text.png "Use voice-to-text to add context in one message instead of multiple follow-ups.")
+
 ### 3. Stop asking Claude to redo the whole thing
 
 When section 3 of a report is wrong, don't say "redo the report." Say "only redo section 3. Keep everything else to save tokens." Every full redo means Claude regenerates the entire output. If your report is 2,000 tokens, that's 2,000 output tokens burned again on parts that were already right.
@@ -47,11 +49,15 @@ Add "No commentary. No explanations. Just the output." when you know exactly wha
 
 Three separate messages means Claude loads the full conversation context three times. One message with three tasks means one load. Instead of "Summarize this article," then "List the main points," then "Suggest a headline" -- write: "Summarize this article, list the main points, and suggest a headline." One message. Three answers. One context reload. The answers usually come out better too.
 
+![Slide showing three separate prompts versus one batched message](/ai-guides/reduce-tokens-p2-batch-tasks.png "Batch tasks in one message so Claude only reloads context once.")
+
 ### 5. Use the same prompt structure every time
 
 Anthropic has confirmed that prompts you use frequently get partially cached -- meaning similar structures you reuse cost less to process over time. Keep a stable prompt library and only swap out the variable part.
 
 I use the same 30-word structure for 80% of my sessions: "I want to [task] to [success criteria]. Read my folder. Ask me questions using AskUserQuestion before you start." One template. Dozens of use cases.
+
+![Slide showing repeated prompt structures and caching benefits](/ai-guides/reduce-tokens-p2-prompt-structure.png "Reuse a stable prompt template so frequent structures become cheaper over time.")
 
 ### 6. Edit your message instead of sending a follow-up
 
@@ -71,13 +77,15 @@ This is the highest-ROI habit on this list. I use it constantly.
 
 Every message forces Claude to re-read the entire conversation above it. If you asked Claude to help with a LinkedIn post, then a client proposal, then a quick recipe -- it's re-reading the LinkedIn post every time it thinks about your dinner. That history is dead weight. New topic = new chat. No exceptions.
 
+![Slide showing the New chat action for topic changes](/ai-guides/reduce-tokens-p2-new-chat-topic.png "New topic, new chat. Drop dead context before it compounds.")
+
 ### 8. Cap sessions at 15-20 messages
 
 Your first message in a fresh chat costs a few hundred tokens. By message 15, a simple question forces Claude to reprocess thousands of tokens of history first. By message 30, you've burned roughly 232,000 tokens.
 
 When a Cowork session gets long: ask Claude to "Write a session-notes.md with the key decisions and next steps." Copy that summary. Open a new session. Paste it as your first message. You carry the context forward without paying to re-read the full history.
 
-![Side by side of a long Cowork conversation on the left, and a new session on the right with a short session-notes summary as the first message](/ai-guides/reduce-tokens-p2-session-notes.png "Summarize and start fresh. The context travels with you -- the token debt doesn't.")
+![Slide showing a prompt to summarize and restart in a fresh chat](/ai-guides/reduce-tokens-p2-session-cap.png "Cap sessions around 15-20 messages, then summarize and restart fresh.")
 
 ### 9. In Cowork, restart from an earlier message instead of starting over
 

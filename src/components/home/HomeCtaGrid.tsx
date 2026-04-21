@@ -95,6 +95,17 @@ function IconTikTok() {
   );
 }
 
+function IconCoach() {
+  return (
+    <span
+      className="flex h-8 w-8 shrink-0 items-center justify-center text-2xl leading-none"
+      aria-hidden
+    >
+      🧑‍🏫
+    </span>
+  );
+}
+
 const ctas = [
   {
     label: "Contact",
@@ -120,6 +131,11 @@ const ctas = [
     label: "Watch",
     href: "https://www.tiktok.com/@its.mikareyes",
     icon: IconTikTok,
+  },
+  {
+    label: "Get coached",
+    href: "https://www.joinleland.com/coach/mikaela-r",
+    icon: IconCoach,
   },
 ] as const;
 

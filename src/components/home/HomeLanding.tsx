@@ -64,7 +64,11 @@ export function HomeLanding() {
           . Creating on <BioLink href={homeBioLinks.tiktok}>TikTok</BioLink>{" "}
           &amp;{" "}
           <BioLink href={homeBioLinks.instagram}>Instagram</BioLink> helping
-          people uplevel with AI.
+          people uplevel with AI. Also doing{" "}
+          <BioLink href={homeBioLinks.lelandCoach}>
+            1:1 coaching on careers &amp; AI
+          </BioLink>
+          .
         </p>
         <p>
           <strong className="font-semibold text-zinc-950">Prior:</strong>{" "}
