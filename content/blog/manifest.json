@@ -1,6 +1,39 @@
 {
-  "generatedAt": "2026-04-13T20:51:01.055Z",
+  "generatedAt": "2026-04-21T17:38:08.950Z",
   "posts": [
+    {
+      "slug": "organizing-an-nyc-ai-coworking-cafe-session",
+      "title": "Organizing an NYC AI Coworking Cafe Session",
+      "path": "blog/organizing-an-nyc-ai-coworking-cafe-session",
+      "lastEdited": "2026-04-20T12:00:00.000Z",
+      "published": "2026-04-20T12:00:00.000Z",
+      "notionPageId": "348c5bb9-4aec-81a8-a65f-cf7bd88a8df6",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "claude-design-2d-pixel-art-tutorial",
+      "title": "Claude Design 2D Pixel Art Tutorial",
+      "path": "blog/claude-design-2d-pixel-art-tutorial",
+      "lastEdited": "2026-04-20T12:00:00.000Z",
+      "published": "2026-04-20T12:00:00.000Z",
+      "notionPageId": "348c5bb9-4aec-81b7-8d05-cc1f49c19bd8",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "ai-tool-to-find-top-instagram-video-hooks",
+      "title": "AI Tool to Find Top Instagram Video Hooks",
+      "path": "blog/ai-tool-to-find-top-instagram-video-hooks",
+      "lastEdited": "2026-04-20T12:00:00.000Z",
+      "published": "2026-04-20T12:00:00.000Z",
+      "notionPageId": "348c5bb9-4aec-81dc-be77-f4b75fca5f1d",
+      "tags": [
+        "career"
+      ]
+    },
     {
       "slug": "exclusive-nyc-ai-gtm-community-launch",
       "title": "Exclusive NYC AI GTM Community Launch",
@@ -71,17 +104,6 @@
       ]
     },
     {
-      "slug": "validating-startups-get-paid-before-building",
-      "title": "Validating Startups: Get Paid Before Building",
-      "path": "blog/validating-startups-get-paid-before-building",
-      "lastEdited": "2026-03-23T12:05:00.000Z",
-      "published": "2026-03-23T12:05:00.000Z",
-      "notionPageId": "32cc5bb9-4aec-81dc-8e5d-dcc3a978c5d7",
-      "tags": [
-        "career"
-      ]
-    },
-    {
       "slug": "design-partnership-playbook-for-founders",
       "title": "Design Partnership Playbook for Founders",
       "path": "blog/design-partnership-playbook-for-founders",
@@ -104,12 +126,12 @@
       ]
     },
     {
-      "slug": "the-challenges-female-founders-still-face",
-      "title": "The Challenges Female Founders Still Face",
-      "path": "blog/the-challenges-female-founders-still-face",
-      "lastEdited": "2026-03-16T12:02:00.000Z",
-      "published": "2026-03-16T12:02:00.000Z",
-      "notionPageId": "325c5bb9-4aec-81cb-8e39-e06e0a159514",
+      "slug": "validating-startups-get-paid-before-building",
+      "title": "Validating Startups: Get Paid Before Building",
+      "path": "blog/validating-startups-get-paid-before-building",
+      "lastEdited": "2026-03-23T12:05:00.000Z",
+      "published": "2026-03-23T12:05:00.000Z",
+      "notionPageId": "32cc5bb9-4aec-81dc-8e5d-dcc3a978c5d7",
       "tags": [
         "career"
       ]
@@ -121,6 +143,17 @@
       "lastEdited": "2026-03-16T12:02:00.000Z",
       "published": "2026-03-16T12:02:00.000Z",
       "notionPageId": "325c5bb9-4aec-816d-a134-fb4199e3e6c1",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "the-challenges-female-founders-still-face",
+      "title": "The Challenges Female Founders Still Face",
+      "path": "blog/the-challenges-female-founders-still-face",
+      "lastEdited": "2026-03-16T12:02:00.000Z",
+      "published": "2026-03-16T12:02:00.000Z",
+      "notionPageId": "325c5bb9-4aec-81cb-8e39-e06e0a159514",
       "tags": [
         "career"
       ]
@@ -214,23 +247,23 @@
       ]
     },
     {
-      "slug": "inspiring-filipino-founders-in-new-york",
-      "title": "Inspiring Filipino Founders in New York",
-      "path": "blog/inspiring-filipino-founders-in-new-york",
-      "lastEdited": "2025-12-15T13:00:00.000Z",
-      "published": "2025-12-15T13:00:00.000Z",
-      "notionPageId": "2cac5bb9-4aec-814d-b920-e317960be9b0",
-      "tags": [
-        "career"
-      ]
-    },
-    {
       "slug": "my-sister-graduates-and-moves-to-new-york",
       "title": "My Sister Graduates and Moves to New York",
       "path": "blog/my-sister-graduates-and-moves-to-new-york",
       "lastEdited": "2025-12-15T13:00:00.000Z",
       "published": "2025-12-15T13:00:00.000Z",
       "notionPageId": "2cac5bb9-4aec-812e-9588-c7fd9967f2f5",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "inspiring-filipino-founders-in-new-york",
+      "title": "Inspiring Filipino Founders in New York",
+      "path": "blog/inspiring-filipino-founders-in-new-york",
+      "lastEdited": "2025-12-15T13:00:00.000Z",
+      "published": "2025-12-15T13:00:00.000Z",
+      "notionPageId": "2cac5bb9-4aec-814d-b920-e317960be9b0",
       "tags": [
         "career"
       ]
@@ -324,17 +357,6 @@
       ]
     },
     {
-      "slug": "full-circle-speaking-at-filipinos-at-linkedin",
-      "title": "Full Circle: Speaking at Filip[in]os at LinkedIn",
-      "path": "blog/full-circle-speaking-at-filipinos-at-linkedin",
-      "lastEdited": "2025-10-20T12:00:00.000Z",
-      "published": "2025-10-20T12:00:00.000Z",
-      "notionPageId": "292c5bb9-4aec-81e2-af61-f37752fb7999",
-      "tags": [
-        "career"
-      ]
-    },
-    {
       "slug": "from-linkedin-beginnings-to-time-rich-living",
       "title": "From LinkedIn Beginnings to Time-Rich Living",
       "path": "blog/from-linkedin-beginnings-to-time-rich-living",
@@ -346,12 +368,12 @@
       ]
     },
     {
-      "slug": "avoiding-advisor-syndrome-in-user-research",
-      "title": "Avoiding Advisor Syndrome in User Research",
-      "path": "blog/avoiding-advisor-syndrome-in-user-research",
-      "lastEdited": "2025-10-06T12:00:00.000Z",
-      "published": "2025-10-06T12:00:00.000Z",
-      "notionPageId": "284c5bb9-4aec-81c0-8bb3-c53a58f8756f",
+      "slug": "full-circle-speaking-at-filipinos-at-linkedin",
+      "title": "Full Circle: Speaking at Filip[in]os at LinkedIn",
+      "path": "blog/full-circle-speaking-at-filipinos-at-linkedin",
+      "lastEdited": "2025-10-20T12:00:00.000Z",
+      "published": "2025-10-20T12:00:00.000Z",
+      "notionPageId": "292c5bb9-4aec-81e2-af61-f37752fb7999",
       "tags": [
         "career"
       ]
@@ -363,6 +385,17 @@
       "lastEdited": "2025-10-06T12:00:00.000Z",
       "published": "2025-10-06T12:00:00.000Z",
       "notionPageId": "284c5bb9-4aec-81a1-a1ab-fcad764b2ecd",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "avoiding-advisor-syndrome-in-user-research",
+      "title": "Avoiding Advisor Syndrome in User Research",
+      "path": "blog/avoiding-advisor-syndrome-in-user-research",
+      "lastEdited": "2025-10-06T12:00:00.000Z",
+      "published": "2025-10-06T12:00:00.000Z",
+      "notionPageId": "284c5bb9-4aec-81c0-8bb3-c53a58f8756f",
       "tags": [
         "career"
       ]
@@ -403,23 +436,23 @@
       ]
     },
     {
-      "slug": "key-h-1b-visa-changes-announced",
-      "title": "Key H-1B Visa Changes Announced",
-      "path": "blog/key-h-1b-visa-changes-announced",
-      "lastEdited": "2025-09-22T12:02:00.000Z",
-      "published": "2025-09-22T12:02:00.000Z",
-      "notionPageId": "276c5bb9-4aec-8175-a3cd-fb52e84696ec",
-      "tags": [
-        "career"
-      ]
-    },
-    {
       "slug": "habits-that-keep-you-poor",
       "title": "Habits That Keep You Poor",
       "path": "blog/habits-that-keep-you-poor",
       "lastEdited": "2025-09-22T12:02:00.000Z",
       "published": "2025-09-22T12:02:00.000Z",
       "notionPageId": "276c5bb9-4aec-816e-9ae1-eca51d34ba7a",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "key-h-1b-visa-changes-announced",
+      "title": "Key H-1B Visa Changes Announced",
+      "path": "blog/key-h-1b-visa-changes-announced",
+      "lastEdited": "2025-09-22T12:02:00.000Z",
+      "published": "2025-09-22T12:02:00.000Z",
+      "notionPageId": "276c5bb9-4aec-8175-a3cd-fb52e84696ec",
       "tags": [
         "career"
       ]
@@ -447,23 +480,23 @@
       ]
     },
     {
-      "slug": "go-corporate-first-for-financial-runway",
-      "title": "Go Corporate First for Financial Runway",
-      "path": "blog/go-corporate-first-for-financial-runway",
-      "lastEdited": "2025-09-08T12:00:00.000Z",
-      "published": "2025-09-08T12:00:00.000Z",
-      "notionPageId": "268c5bb9-4aec-81e0-97fe-ed10f5c9bb57",
-      "tags": [
-        "career"
-      ]
-    },
-    {
       "slug": "misha-reyes-launches-first-intern-project",
       "title": "Misha Reyes Launches First Intern Project",
       "path": "blog/misha-reyes-launches-first-intern-project",
       "lastEdited": "2025-09-08T12:00:00.000Z",
       "published": "2025-09-08T12:00:00.000Z",
       "notionPageId": "268c5bb9-4aec-810c-b984-c8f7b1afdd41",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "go-corporate-first-for-financial-runway",
+      "title": "Go Corporate First for Financial Runway",
+      "path": "blog/go-corporate-first-for-financial-runway",
+      "lastEdited": "2025-09-08T12:00:00.000Z",
+      "published": "2025-09-08T12:00:00.000Z",
+      "notionPageId": "268c5bb9-4aec-81e0-97fe-ed10f5c9bb57",
       "tags": [
         "career"
       ]
@@ -491,23 +524,23 @@
       ]
     },
     {
-      "slug": "why-i-will-only-pitch-to-us-investors-when-fundraising-for-venture-capital",
-      "title": "Why I Will Only Pitch to US Investors when Fundraising for Venture Capital",
-      "path": "blog/why-i-will-only-pitch-to-us-investors-when-fundraising-for-venture-capital",
-      "lastEdited": "2025-08-25T16:45:00.000Z",
-      "published": "2025-08-25T12:00:00.000Z",
-      "notionPageId": "25ac5bb9-4aec-81e4-8bda-cc7e32ebcbdf",
-      "tags": [
-        "career"
-      ]
-    },
-    {
       "slug": "stop-using-gendered-labels-for-leaders",
       "title": "Stop Using Gendered Labels for Leaders",
       "path": "blog/stop-using-gendered-labels-for-leaders",
       "lastEdited": "2025-08-25T12:00:00.000Z",
       "published": "2025-08-25T12:00:00.000Z",
       "notionPageId": "25ac5bb9-4aec-8188-9173-f0fc47130507",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "why-i-will-only-pitch-to-us-investors-when-fundraising-for-venture-capital",
+      "title": "Why I Will Only Pitch to US Investors when Fundraising for Venture Capital",
+      "path": "blog/why-i-will-only-pitch-to-us-investors-when-fundraising-for-venture-capital",
+      "lastEdited": "2025-08-25T16:45:00.000Z",
+      "published": "2025-08-25T12:00:00.000Z",
+      "notionPageId": "25ac5bb9-4aec-81e4-8bda-cc7e32ebcbdf",
       "tags": [
         "career"
       ]
@@ -551,23 +584,12 @@
       ]
     },
     {
-      "slug": "how-early-stage-startups-can-win-pr-without-agencies",
-      "title": "How Early-Stage Startups Can Win PR Without Agencies",
-      "path": "blog/how-early-stage-startups-can-win-pr-without-agencies",
+      "slug": "now-cash-out-in-5-new-countries",
+      "title": "Now Cash Out in 5 New Countries",
+      "path": "blog/now-cash-out-in-5-new-countries",
       "lastEdited": "2025-07-31T17:39:00.000Z",
       "published": "2025-07-31T17:39:00.000Z",
-      "notionPageId": "241c5bb9-4aec-81a1-ab35-e142995af8bd",
-      "tags": [
-        "career"
-      ]
-    },
-    {
-      "slug": "ai-as-your-ultimate-thinking-partner",
-      "title": "AI as Your Ultimate Thinking Partner",
-      "path": "blog/ai-as-your-ultimate-thinking-partner",
-      "lastEdited": "2025-07-31T17:39:00.000Z",
-      "published": "2025-07-31T17:39:00.000Z",
-      "notionPageId": "241c5bb9-4aec-8176-bc65-e8133b07c18b",
+      "notionPageId": "241c5bb9-4aec-8104-80ac-d2321bc034f2",
       "tags": [
         "career"
       ]
@@ -606,6 +628,28 @@
       ]
     },
     {
+      "slug": "innovation-through-constraints-deepseeks-secret",
+      "title": "Innovation Through Constraints: DeepSeek's Secret",
+      "path": "blog/innovation-through-constraints-deepseeks-secret",
+      "lastEdited": "2025-07-31T17:39:00.000Z",
+      "published": "2025-07-31T17:39:00.000Z",
+      "notionPageId": "241c5bb9-4aec-8173-95b4-d3075cc17368",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "ai-as-your-ultimate-thinking-partner",
+      "title": "AI as Your Ultimate Thinking Partner",
+      "path": "blog/ai-as-your-ultimate-thinking-partner",
+      "lastEdited": "2025-07-31T17:39:00.000Z",
+      "published": "2025-07-31T17:39:00.000Z",
+      "notionPageId": "241c5bb9-4aec-8176-bc65-e8133b07c18b",
+      "tags": [
+        "career"
+      ]
+    },
+    {
       "slug": "challenges-faced-by-women-founders",
       "title": "Challenges Faced by Women Founders",
       "path": "blog/challenges-faced-by-women-founders",
@@ -628,34 +672,12 @@
       ]
     },
     {
-      "slug": "why-we-default-to-linear-over-slack",
-      "title": "Why We Default to Linear Over Slack",
-      "path": "blog/why-we-default-to-linear-over-slack",
+      "slug": "how-early-stage-startups-can-win-pr-without-agencies",
+      "title": "How Early-Stage Startups Can Win PR Without Agencies",
+      "path": "blog/how-early-stage-startups-can-win-pr-without-agencies",
       "lastEdited": "2025-07-31T17:39:00.000Z",
       "published": "2025-07-31T17:39:00.000Z",
-      "notionPageId": "241c5bb9-4aec-81cb-ab06-d4cb4776cb68",
-      "tags": [
-        "career"
-      ]
-    },
-    {
-      "slug": "lumon-industries-redefining-branding-on-linkedin",
-      "title": "Lumon Industries: Redefining Branding on LinkedIn",
-      "path": "blog/lumon-industries-redefining-branding-on-linkedin",
-      "lastEdited": "2025-07-31T17:39:00.000Z",
-      "published": "2025-07-31T17:39:00.000Z",
-      "notionPageId": "241c5bb9-4aec-81e2-9191-ee2222b7bb64",
-      "tags": [
-        "career"
-      ]
-    },
-    {
-      "slug": "now-cash-out-in-5-new-countries",
-      "title": "Now Cash Out in 5 New Countries",
-      "path": "blog/now-cash-out-in-5-new-countries",
-      "lastEdited": "2025-07-31T17:39:00.000Z",
-      "published": "2025-07-31T17:39:00.000Z",
-      "notionPageId": "241c5bb9-4aec-8104-80ac-d2321bc034f2",
+      "notionPageId": "241c5bb9-4aec-81a1-ab35-e142995af8bd",
       "tags": [
         "career"
       ]
@@ -672,12 +694,23 @@
       ]
     },
     {
-      "slug": "innovation-through-constraints-deepseeks-secret",
-      "title": "Innovation Through Constraints: DeepSeek's Secret",
-      "path": "blog/innovation-through-constraints-deepseeks-secret",
+      "slug": "stablecoins-teleporting-money-across-borders",
+      "title": "Stablecoins: Teleporting Money Across Borders",
+      "path": "blog/stablecoins-teleporting-money-across-borders",
       "lastEdited": "2025-07-31T17:39:00.000Z",
       "published": "2025-07-31T17:39:00.000Z",
-      "notionPageId": "241c5bb9-4aec-8173-95b4-d3075cc17368",
+      "notionPageId": "241c5bb9-4aec-81c1-a941-fb8b1ad2a8be",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "why-we-default-to-linear-over-slack",
+      "title": "Why We Default to Linear Over Slack",
+      "path": "blog/why-we-default-to-linear-over-slack",
+      "lastEdited": "2025-07-31T17:39:00.000Z",
+      "published": "2025-07-31T17:39:00.000Z",
+      "notionPageId": "241c5bb9-4aec-81cb-ab06-d4cb4776cb68",
       "tags": [
         "career"
       ]
@@ -694,12 +727,81 @@
       ]
     },
     {
-      "slug": "stablecoins-teleporting-money-across-borders",
-      "title": "Stablecoins: Teleporting Money Across Borders",
-      "path": "blog/stablecoins-teleporting-money-across-borders",
+      "slug": "lumon-industries-redefining-branding-on-linkedin",
+      "title": "Lumon Industries: Redefining Branding on LinkedIn",
+      "path": "blog/lumon-industries-redefining-branding-on-linkedin",
       "lastEdited": "2025-07-31T17:39:00.000Z",
       "published": "2025-07-31T17:39:00.000Z",
-      "notionPageId": "241c5bb9-4aec-81c1-a941-fb8b1ad2a8be",
+      "notionPageId": "241c5bb9-4aec-81e2-9191-ee2222b7bb64",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "customer-support-as-a-retention-superpower",
+      "title": "Customer Support as a Retention Superpower",
+      "path": "blog/customer-support-as-a-retention-superpower",
+      "lastEdited": "2025-08-25T16:46:00.000Z",
+      "published": "2025-07-31T17:38:00.000Z",
+      "notionPageId": "241c5bb9-4aec-8107-b292-d0fbd87ffc16",
+      "tags": [
+        "career",
+        "startup"
+      ]
+    },
+    {
+      "slug": "what-i-learned-from-three-cofounding-styles",
+      "title": "What I Learned from Three Cofounding Styles",
+      "path": "blog/what-i-learned-from-three-cofounding-styles",
+      "lastEdited": "2025-07-31T17:38:00.000Z",
+      "published": "2025-07-31T17:38:00.000Z",
+      "notionPageId": "241c5bb9-4aec-8109-bb2e-ee1e35872e43",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "time-wasters-for-early-startup-founders",
+      "title": "Time Wasters for Early Startup Founders",
+      "path": "blog/time-wasters-for-early-startup-founders",
+      "lastEdited": "2025-08-25T16:45:00.000Z",
+      "published": "2025-07-31T17:38:00.000Z",
+      "notionPageId": "241c5bb9-4aec-8128-bc2d-ca0b046fe9b8",
+      "tags": [
+        "career",
+        "startup",
+        "founder"
+      ]
+    },
+    {
+      "slug": "how-we-15xd-users-in-one-month",
+      "title": "How We 1.5x’d Users in One Month",
+      "path": "blog/how-we-15xd-users-in-one-month",
+      "lastEdited": "2025-07-31T17:38:00.000Z",
+      "published": "2025-07-31T17:38:00.000Z",
+      "notionPageId": "241c5bb9-4aec-813c-bf60-fea97847dfb8",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "which-career-game-are-you-playing",
+      "title": "Which Career Game Are You Playing?",
+      "path": "blog/which-career-game-are-you-playing",
+      "lastEdited": "2025-07-31T17:38:00.000Z",
+      "published": "2025-07-31T17:38:00.000Z",
+      "notionPageId": "241c5bb9-4aec-8147-8dbf-db281143cee8",
+      "tags": [
+        "career"
+      ]
+    },
+    {
+      "slug": "how-to-decode-fluffy-vc-phrases",
+      "title": "How to Decode Fluffy VC Phrases",
+      "path": "blog/how-to-decode-fluffy-vc-phrases",
+      "lastEdited": "2025-07-31T17:38:00.000Z",
+      "published": "2025-07-31T17:38:00.000Z",
+      "notionPageId": "241c5bb9-4aec-814f-b256-f6eb03eb57f2",
       "tags": [
         "career"
       ]
@@ -727,17 +829,6 @@
       ]
     },
     {
-      "slug": "only-get-feedback-from-your-customers",
-      "title": "Only Get Feedback From Your Customers",
-      "path": "blog/only-get-feedback-from-your-customers",
-      "lastEdited": "2025-07-31T17:38:00.000Z",
-      "published": "2025-07-31T17:38:00.000Z",
-      "notionPageId": "241c5bb9-4aec-81e5-b4f4-f97795f1b3e4",
-      "tags": [
-        "career"
-      ]
-    },
-    {
       "slug": "why-founders-give-pessimistic-startup-advice",
       "title": "Why Founders Give Pessimistic Startup Advice",
       "path": "blog/why-founders-give-pessimistic-startup-advice",
@@ -749,70 +840,12 @@
       ]
     },
     {
-      "slug": "customer-support-as-a-retention-superpower",
-      "title": "Customer Support as a Retention Superpower",
-      "path": "blog/customer-support-as-a-retention-superpower",
-      "lastEdited": "2025-08-25T16:46:00.000Z",
-      "published": "2025-07-31T17:38:00.000Z",
-      "notionPageId": "241c5bb9-4aec-8107-b292-d0fbd87ffc16",
-      "tags": [
-        "career",
-        "startup"
-      ]
-    },
-    {
-      "slug": "time-wasters-for-early-startup-founders",
-      "title": "Time Wasters for Early Startup Founders",
-      "path": "blog/time-wasters-for-early-startup-founders",
-      "lastEdited": "2025-08-25T16:45:00.000Z",
-      "published": "2025-07-31T17:38:00.000Z",
-      "notionPageId": "241c5bb9-4aec-8128-bc2d-ca0b046fe9b8",
-      "tags": [
-        "career",
-        "startup",
-        "founder"
-      ]
-    },
-    {
-      "slug": "which-career-game-are-you-playing",
-      "title": "Which Career Game Are You Playing?",
-      "path": "blog/which-career-game-are-you-playing",
+      "slug": "only-get-feedback-from-your-customers",
+      "title": "Only Get Feedback From Your Customers",
+      "path": "blog/only-get-feedback-from-your-customers",
       "lastEdited": "2025-07-31T17:38:00.000Z",
       "published": "2025-07-31T17:38:00.000Z",
-      "notionPageId": "241c5bb9-4aec-8147-8dbf-db281143cee8",
-      "tags": [
-        "career"
-      ]
-    },
-    {
-      "slug": "how-to-decode-fluffy-vc-phrases",
-      "title": "How to Decode Fluffy VC Phrases",
-      "path": "blog/how-to-decode-fluffy-vc-phrases",
-      "lastEdited": "2025-07-31T17:38:00.000Z",
-      "published": "2025-07-31T17:38:00.000Z",
-      "notionPageId": "241c5bb9-4aec-814f-b256-f6eb03eb57f2",
-      "tags": [
-        "career"
-      ]
-    },
-    {
-      "slug": "what-i-learned-from-three-cofounding-styles",
-      "title": "What I Learned from Three Cofounding Styles",
-      "path": "blog/what-i-learned-from-three-cofounding-styles",
-      "lastEdited": "2025-07-31T17:38:00.000Z",
-      "published": "2025-07-31T17:38:00.000Z",
-      "notionPageId": "241c5bb9-4aec-8109-bb2e-ee1e35872e43",
-      "tags": [
-        "career"
-      ]
-    },
-    {
-      "slug": "how-we-15xd-users-in-one-month",
-      "title": "How We 1.5x’d Users in One Month",
-      "path": "blog/how-we-15xd-users-in-one-month",
-      "lastEdited": "2025-07-31T17:38:00.000Z",
-      "published": "2025-07-31T17:38:00.000Z",
-      "notionPageId": "241c5bb9-4aec-813c-bf60-fea97847dfb8",
+      "notionPageId": "241c5bb9-4aec-81e5-b4f4-f97795f1b3e4",
       "tags": [
         "career"
       ]
@@ -1811,37 +1844,14 @@
       ]
     },
     {
-      "slug": "2018-year-end-review",
-      "title": "2018 Year-End Review",
-      "path": "blog/2018-year-end-review",
-      "lastEdited": "2020-07-21T03:01:00.000Z",
-      "published": "2020-07-20T05:53:00.000Z",
-      "notionPageId": "9fdf3c67-bf81-4bb6-90bc-6bd87e3e3d53",
-      "tags": [
-        "personal"
-      ]
-    },
-    {
-      "slug": "check-in-30-days-in-my-pm-job",
-      "title": "Check-In: 30 Days in my PM Job",
-      "path": "blog/check-in-30-days-in-my-pm-job",
-      "lastEdited": "2020-07-21T03:01:00.000Z",
-      "published": "2020-07-20T05:53:00.000Z",
-      "notionPageId": "868baa1c-b8e7-422f-b105-b5f65e039c07",
-      "tags": [
-        "personal"
-      ]
-    },
-    {
-      "slug": "from-near-deportation-to-linkedin-pm",
-      "title": "From Near Deportation to LinkedIn PM",
-      "path": "blog/from-near-deportation-to-linkedin-pm",
+      "slug": "the-great-obsolescence-of-paper",
+      "title": "The Great Obsolescence of Paper",
+      "path": "blog/the-great-obsolescence-of-paper",
       "lastEdited": "2020-07-21T03:02:00.000Z",
       "published": "2020-07-20T05:53:00.000Z",
-      "notionPageId": "9fe6ddd3-0456-4a39-8502-da2f00914aa9",
+      "notionPageId": "069277d6-4fe7-4ce2-8c23-b4d0fc2c7a19",
       "tags": [
-        "product",
-        "personal"
+        "product"
       ]
     },
     {
@@ -1869,34 +1879,46 @@
       ]
     },
     {
+      "slug": "check-in-30-days-in-my-pm-job",
+      "title": "Check-In: 30 Days in my PM Job",
+      "path": "blog/check-in-30-days-in-my-pm-job",
+      "lastEdited": "2020-07-21T03:01:00.000Z",
+      "published": "2020-07-20T05:53:00.000Z",
+      "notionPageId": "868baa1c-b8e7-422f-b105-b5f65e039c07",
+      "tags": [
+        "personal"
+      ]
+    },
+    {
+      "slug": "2018-year-end-review",
+      "title": "2018 Year-End Review",
+      "path": "blog/2018-year-end-review",
+      "lastEdited": "2020-07-21T03:01:00.000Z",
+      "published": "2020-07-20T05:53:00.000Z",
+      "notionPageId": "9fdf3c67-bf81-4bb6-90bc-6bd87e3e3d53",
+      "tags": [
+        "personal"
+      ]
+    },
+    {
+      "slug": "from-near-deportation-to-linkedin-pm",
+      "title": "From Near Deportation to LinkedIn PM",
+      "path": "blog/from-near-deportation-to-linkedin-pm",
+      "lastEdited": "2020-07-21T03:02:00.000Z",
+      "published": "2020-07-20T05:53:00.000Z",
+      "notionPageId": "9fe6ddd3-0456-4a39-8502-da2f00914aa9",
+      "tags": [
+        "product",
+        "personal"
+      ]
+    },
+    {
       "slug": "igtv-vs-youtube-who-will-win-the-fight",
       "title": "IGTV vs. YouTube – who will win the fight?",
       "path": "blog/igtv-vs-youtube-who-will-win-the-fight",
       "lastEdited": "2020-09-05T17:21:00.000Z",
       "published": "2020-07-20T05:53:00.000Z",
       "notionPageId": "d8b53f18-6edc-4881-912d-0e7e9e550853",
-      "tags": [
-        "product"
-      ]
-    },
-    {
-      "slug": "the-great-obsolescence-of-paper",
-      "title": "The Great Obsolescence of Paper",
-      "path": "blog/the-great-obsolescence-of-paper",
-      "lastEdited": "2020-07-21T03:02:00.000Z",
-      "published": "2020-07-20T05:53:00.000Z",
-      "notionPageId": "069277d6-4fe7-4ce2-8c23-b4d0fc2c7a19",
-      "tags": [
-        "product"
-      ]
-    },
-    {
-      "slug": "what-i-learned-as-an-airbnb-host",
-      "title": "What I Learned As An Airbnb Host",
-      "path": "blog/what-i-learned-as-an-airbnb-host",
-      "lastEdited": "2020-09-05T17:22:00.000Z",
-      "published": "2020-07-20T05:47:00.000Z",
-      "notionPageId": "801d43da-dd89-4e00-be48-f754207bf5d2",
       "tags": [
         "product"
       ]
@@ -1913,15 +1935,25 @@
       ]
     },
     {
-      "slug": "how-to-get-a-pm-role-out-of-college",
-      "title": "How to Get a PM Role Out of College",
-      "path": "blog/how-to-get-a-pm-role-out-of-college",
+      "slug": "what-i-learned-as-an-airbnb-host",
+      "title": "What I Learned As An Airbnb Host",
+      "path": "blog/what-i-learned-as-an-airbnb-host",
       "lastEdited": "2020-09-05T17:22:00.000Z",
-      "published": "2020-07-20T05:46:00.000Z",
-      "notionPageId": "839e427a-b435-4e54-b3cc-82ebe04cc9b5",
+      "published": "2020-07-20T05:47:00.000Z",
+      "notionPageId": "801d43da-dd89-4e00-be48-f754207bf5d2",
       "tags": [
-        "product",
-        "career"
+        "product"
+      ]
+    },
+    {
+      "slug": "the-ultimate-millenials-personal-finance-guide-part-1-budgeting",
+      "title": "The Ultimate Millenial’s Personal Finance Guide (Part 1: Budgeting)",
+      "path": "blog/the-ultimate-millenials-personal-finance-guide-part-1-budgeting",
+      "lastEdited": "2025-07-30T18:08:00.000Z",
+      "published": "2020-07-20T05:46:00.000Z",
+      "notionPageId": "422dbd81-ab5a-4b1a-825f-d32fa6e5810f",
+      "tags": [
+        "productivity"
       ]
     },
     {
@@ -1934,14 +1966,15 @@
       "tags": []
     },
     {
-      "slug": "the-ultimate-millenials-personal-finance-guide-part-1-budgeting",
-      "title": "The Ultimate Millenial’s Personal Finance Guide (Part 1: Budgeting)",
-      "path": "blog/the-ultimate-millenials-personal-finance-guide-part-1-budgeting",
-      "lastEdited": "2025-07-30T18:08:00.000Z",
+      "slug": "how-to-get-a-pm-role-out-of-college",
+      "title": "How to Get a PM Role Out of College",
+      "path": "blog/how-to-get-a-pm-role-out-of-college",
+      "lastEdited": "2020-09-05T17:22:00.000Z",
       "published": "2020-07-20T05:46:00.000Z",
-      "notionPageId": "422dbd81-ab5a-4b1a-825f-d32fa6e5810f",
+      "notionPageId": "839e427a-b435-4e54-b3cc-82ebe04cc9b5",
       "tags": [
-        "productivity"
+        "product",
+        "career"
       ]
     },
     {
@@ -2024,17 +2057,6 @@
       ]
     },
     {
-      "slug": "to-the-women-who-are-too-nice",
-      "title": "To the Women Who Are “Too Nice”",
-      "path": "blog/to-the-women-who-are-too-nice",
-      "lastEdited": "2020-07-21T02:57:00.000Z",
-      "published": "2020-07-20T05:36:00.000Z",
-      "notionPageId": "f1442a87-687d-4c30-ba74-756b85cf616f",
-      "tags": [
-        "personal"
-      ]
-    },
-    {
       "slug": "the-kp-fellowship-a-how-to-guide",
       "title": "The KP Fellowship: A How-To Guide",
       "path": "blog/the-kp-fellowship-a-how-to-guide",
@@ -2043,6 +2065,17 @@
       "notionPageId": "5ee59db2-d362-4014-8884-3d7f07630c25",
       "tags": [
         "career"
+      ]
+    },
+    {
+      "slug": "to-the-women-who-are-too-nice",
+      "title": "To the Women Who Are “Too Nice”",
+      "path": "blog/to-the-women-who-are-too-nice",
+      "lastEdited": "2020-07-21T02:57:00.000Z",
+      "published": "2020-07-20T05:36:00.000Z",
+      "notionPageId": "f1442a87-687d-4c30-ba74-756b85cf616f",
+      "tags": [
+        "personal"
       ]
     },
     {
@@ -2089,18 +2122,6 @@
       ]
     },
     {
-      "slug": "on-opportunity-vs-happiness",
-      "title": "On Opportunity vs. Happiness",
-      "path": "blog/on-opportunity-vs-happiness",
-      "lastEdited": "2022-08-26T05:22:00.000Z",
-      "published": "2020-07-20T05:26:00.000Z",
-      "notionPageId": "707e66f4-add7-4314-ba1f-0de1d46c3288",
-      "tags": [
-        "personal",
-        "career"
-      ]
-    },
-    {
       "slug": "one-pretty-badass-woman",
       "title": "One Pretty Badass Woman",
       "path": "blog/one-pretty-badass-woman",
@@ -2110,6 +2131,18 @@
       "tags": [
         "career",
         "personal"
+      ]
+    },
+    {
+      "slug": "on-opportunity-vs-happiness",
+      "title": "On Opportunity vs. Happiness",
+      "path": "blog/on-opportunity-vs-happiness",
+      "lastEdited": "2022-08-26T05:22:00.000Z",
+      "published": "2020-07-20T05:26:00.000Z",
+      "notionPageId": "707e66f4-add7-4314-ba1f-0de1d46c3288",
+      "tags": [
+        "personal",
+        "career"
       ]
     }
   ]
