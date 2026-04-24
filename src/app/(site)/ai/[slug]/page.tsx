@@ -105,10 +105,10 @@ export default async function AiGuidePage({ params }: Props) {
             </ul>
           ) : null}
         </div>
-        <AiGuideBusinessCtaBlock />
+        <AiGuideSocialCtaBlock />
       </header>
       <div className="mt-10">{content}</div>
-      <AiGuideSocialCtaBlock />
+      <AiGuideBusinessCtaBlock />
     </article>
   );
 }
