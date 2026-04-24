@@ -26,8 +26,6 @@ If there's no `claude.md`, Claude just starts. No context, no background, no pre
 
 **The problem:** a blank session means Claude defaults to generic. Generic tone, generic structure, generic assumptions about what you need. You end up editing more, prompting more, explaining the same things over and over.
 
-[📸 image 1 - Side-by-side of a Claude session with no context files vs. one that starts with "Reading claude.md..." before executing. Recommended caption: "Left: Claude starts cold. Right: Claude starts with full context about who you are."]
-
 ---
 
 ## Recommended Starter Files
@@ -132,9 +130,7 @@ Target: under 2,000 tokens total. Every sentence should carry signal. If a sente
 Save the file as about-me.md in my ___ folder.
 ```
 
-[📸 image 2 - Claude Cowork session showing AskUserQuestion prompts appearing one at a time during the interview. Recommended caption: "Claude interviews you one question at a time before compiling your about-me.md file."]
-
-[📸 image 3 - The final about-me.md file open in a text editor or shown in Claude Cowork's output, showing the structured sections. Recommended caption: "The finished about-me.md: under 2,000 tokens, built from your actual answers."]
+![Final `user.md` profile file in text editor](/ai-guides/global-context-claude-step-3-user-md.png "The finished `user.md`: concise, high-signal, and built from your real answers.")
 
 ---
 
@@ -223,11 +219,11 @@ Use this prompt to build yours:
 Help me create a claude.md file in this project folder that references my about-me.md and voice-and-style.md at the start of every session. Keep it token efficient, under 2,000 tokens total. Ask me questions about anything else you think I should be mindful of when creating this file.
 ```
 
-[📸 image 4 - Claude Cowork or a file manager showing the claude.md file at the root of the project folder, with about-me.md and projects.md visible nearby. Recommended caption: "Your claude.md at the root of your folder — this is the first thing Claude reads every session."]
+![`CLAUDE.md` file in your global folder](/ai-guides/global-context-claude-step-4-claude-md-location.png "Put `CLAUDE.md` at the root of your global `.claude` folder so it loads first.")
 
 Keep it short. Anthropic has noted that bloated `claude.md` files make Claude worse at following your instructions, not better. If you have workflows that only apply sometimes, those belong in Skills, not in `claude.md`.
 
-[📸 image 5 - A clean, short claude.md file open in a text editor showing 3-5 lines of references to other files. Recommended caption: "A good claude.md is short. It points to your context files and stays out of the way."]
+![Short `CLAUDE.md` pointing to context files](/ai-guides/global-context-claude-step-5-claude-md-short.png "A good `CLAUDE.md` stays short and references only high-signal files.")
 
 > **Key insight:** Skills load on demand. `claude.md` loads every single time. Keep the always-on file lean.
 
