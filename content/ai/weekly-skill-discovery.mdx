@@ -1,0 +1,108 @@
+---
+title: Weekly Skill Discovery
+description: >-
+  A weekly operating review that scans your work across tools and tells you
+  which repeated workflows should become reusable AI skills.
+tags:
+  - skills
+  - automation
+  - productivity
+published: "2026-04-29"
+cta: Try this workflow
+order: 14
+---
+
+I like workflows that get better every week.
+
+This is one of my favorites because it is a machine for creating more machines. Instead of manually auditing my own behavior, I run one weekly review that spots repeated work and tells me what to turn into a skill next.
+
+If you are trying to become more AI-native, this helps a lot. You stop guessing what to automate and start building from real evidence in your day-to-day work.
+
+## The prompt I use
+
+```text
+You are running a weekly analysis for Mikaela Reyes to identify repeatable processes that should be turned into Cowork skills.
+
+Run a proactive review across my Linear, Notion, Slack, Gmail, and Cowork session history from the past 7 days to identify repeatable work that should become reusable skills.
+
+Your goal is to help me become more AI-native without requiring me to manually audit my own workflows.
+
+Look for patterns such as:
+
+tasks I repeat multiple times across the week
+similar requests I make in different tools or contexts
+workflows with clear inputs, steps, and outputs
+research, writing, synthesis, triage, planning, or coordination work that follows a repeatable structure
+things I do manually that could be standardized, templated, or automated
+processes where a skill could save time, improve consistency, or help me delegate better to AI
+
+For each potential skill candidate, return:
+
+* Skill name
+* What repeated process it captures
+* Why it should become a skill
+* Signals observed across my tools
+   * relevant Linear issues
+   * Notion docs or pages
+   * Slack threads or channels
+   * Gmail patterns or recurring email types
+   * Cowork sessions or transcripts
+* Suggested trigger
+   * when I would use this skill
+* Suggested inputs
+   * what I would need to provide
+* Suggested outputs
+   * what the skill should produce
+* Recommended priority
+   * High: frequent and high leverage
+   * Medium: useful but less frequent
+   * Low: interesting but not yet worth formalizing
+
+Also include a short section at the top:
+
+This Week’s Best Opportunities
+List the top 3 skills I should create first based on frequency, leverage, and ease of implementation.
+
+Focus on practical, high-ROI opportunities. Prefer skills that reduce recurring cognitive load, context switching, and manual busywork. Avoid suggesting one-off tasks unless they are clearly becoming recurring patterns.
+
+The final output should feel like an operating review for how I work, with the aim of gradually building a library of skills that compounds over time.
+```
+
+![Weekly Skill Discovery routine setup](/ai-guides/weekly-skill-discovery-routine.png "Set this once: a weekly routine that audits your tools and proposes skills automatically.")
+
+## How I run this each week
+
+1. Block this as a recurring scheduled run.
+I run it every Sunday at 5:00 AM so I start Monday with a clean list of what to automate next.
+
+2. Keep the output format strict.
+I ask for the same fields every time so I can compare weeks and see what keeps coming back.
+
+3. Prioritize only the top three.
+I pick the candidates with the best mix of frequency, leverage, and ease. Everything else goes into a backlog.
+
+4. Build from evidence, not vibes.
+If the signals show up across multiple tools, it is usually a real pattern worth packaging.
+
+5. Ship one skill before chasing new ideas.
+The compounding happens when you turn insights into working skills, then feed results back into next week's run.
+
+> **Key insight:** A repeated workflow is already a draft skill. Weekly discovery just makes it obvious.
+
+## What "good" output looks like
+
+A strong weekly report gives you:
+
+- A top 3 shortlist you can act on immediately
+- Clear evidence across Linear, Notion, Slack, Gmail, and Cowork sessions
+- Trigger suggestions so you know exactly when to use the skill
+- Input and output specs so implementation is fast
+- A priority rating that keeps you focused on high-ROI wins first
+
+## Additional Reading
+
+Here are some related guides to check out:
+1. [What is a Skill?](/ai/what-is-a-skill)
+2. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+3. [How to Setup Global Context for Claude (CLAUDE.md, USER.md)](/ai/how-to-setup-global-context-claude)
+4. [Daily Briefing](/ai/daily-briefing)
