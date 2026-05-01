@@ -1,0 +1,352 @@
+---
+title: How to Vibe Code for Beginners
+description: >-
+  A beginner-friendly vibe coding workflow from a former PM: vibe-PM first,
+  then build apps with AI one page at a time.
+tags:
+  - vibe-coding
+  - beginners
+  - prompts
+  - product
+published: "2026-05-01"
+date: "2026-05-01"
+cta: Start vibe PMing
+---
+
+Vibecoding is a fancy way of saying you can now code by talking to AI.
+
+Before becoming a founder, I was a Product Manager at LinkedIn and various startups. My job was to "prompt" engineers and designers on what products to build through Product Requirements Documents.
+
+That is exactly how I approach vibecoding. I vibe-PM first, then vibe code.
+
+I am not an engineer, but I have vibe-coded 8+ projects using this workflow.
+
+## Step-by-step workflow
+
+### Step 1: Pick one beginner-friendly app builder
+
+For pure beginners, I recommend [Lovable](https://lovable.dev) first because it is easy to use and fast to ship with. [Bolt](https://bolt.new) is also great for speed, and [Replit](https://replit.com) is a good option if you want to better understand code structure while you build.
+
+![Lovable, Bolt, and Replit logos](/ai-guides/vibe-coding-builders.png "Pick one builder and stick with it for your first project.")
+
+### Step 2: Create a PRD before building anything
+
+Do this in Claude or ChatGPT first, then paste the output into your AI builder. If your PRD is vague, your build will be vague. If your PRD is clear, your build gets faster and cleaner.
+
+Use this prompt:
+
+```text
+You are a senior product manager helping me create a Product Requirements Document for a new app I want to build with an AI coding tool like Lovable, Bolt, Replit, Cursor, or v0.
+
+Your goal is to help me create a clear, specific, implementation-ready PRD that prevents the AI builder from overbuilding, making assumptions, or breaking the app by trying to do too much at once.
+
+Focus especially on the User Experience Flow: what the user sees, clicks, enters, decides, and receives at each step.
+
+Do not write the PRD yet.
+
+First, interview me one question at a time. Ask the next question only after I answer the current one.
+
+For each question:
+- Include the question.
+- Include a short explanation of why the question matters.
+- Include 2-4 examples or suggestions so I know how to answer.
+- If my answer is vague, ask a follow-up before moving on.
+- Push me toward a smaller, clearer MVP.
+
+Ask these questions in order:
+
+1. What is the app called?
+Why this matters: The name helps define the product identity and keeps the PRD concrete.
+Examples: "ClientFlow," "StudyBuddy," "Invoice Tracker," "I don't know yet."
+
+2. What does the app do in one sentence?
+Why this matters: This becomes the core product definition.
+Examples:
+- "It helps freelancers send and track invoices."
+- "It helps parents plan weekly meals for picky kids."
+- "It helps creators turn raw notes into LinkedIn posts."
+
+3. Who is the primary user?
+Why this matters: The app should be built for one specific type of person first, not everyone.
+Examples:
+- "Solo freelancers who manage client work manually."
+- "Busy parents planning dinners for a family of four."
+- "Early-stage founders writing investor updates."
+
+4. What problem does this user have?
+Why this matters: The app should solve a real pain, not just provide features.
+Examples:
+- "They forget which invoices are overdue."
+- "They waste time deciding what to cook."
+- "They have messy notes but need polished content."
+
+5. What is the main outcome the user wants?
+Why this matters: This defines what success looks like.
+Examples:
+- "Know exactly who owes them money."
+- "Generate a weekly meal plan in under 5 minutes."
+- "Publish a polished post from rough notes."
+
+6. What is the single most important action the user must be able to take?
+Why this matters: This defines the MVP.
+Examples:
+- "Create and send an invoice."
+- "Generate a meal plan."
+- "Upload notes and generate a post."
+
+7. Walk through the ideal user experience from start to finish.
+Why this matters: This is the most important part of the PRD. It tells the builder what the app should feel like.
+Describe what happens from the moment the user opens the app to the moment they get value.
+Examples:
+- "User lands on dashboard -> clicks New Invoice -> fills client details -> previews invoice -> sends it."
+- "User opens app -> answers meal preferences -> sees meal plan -> swaps meals -> saves plan."
+- "User pastes rough notes -> chooses tone -> clicks Generate -> edits result -> copies post."
+
+8. What screens or pages does the app need?
+Why this matters: Screens define the structure of the app.
+Examples:
+- Landing page
+- Login/signup
+- Dashboard
+- Create/edit page
+- Detail page
+- Settings
+- Results page
+
+9. For each screen, what should the user see and do there?
+Why this matters: This prevents vague screens and helps the AI builder create the right UI.
+Examples:
+- "Dashboard: shows recent invoices, payment status, and a button to create a new invoice."
+- "Results page: shows generated output, edit controls, copy button, and save button."
+
+10. What data does the app need to store?
+Why this matters: This becomes the database structure.
+Examples:
+- Users: name, email, created date
+- Invoices: client name, amount, due date, status
+- Posts: title, draft text, final text, created date
+- Projects: name, description, owner
+
+11. Does the app need user accounts and login?
+Why this matters: Authentication affects scope, database design, and user flow.
+Examples:
+- "No login for MVP."
+- "Yes, email/password."
+- "Yes, Google login."
+- "Yes, magic link."
+
+12. What should the app look and feel like?
+Why this matters: Visual direction helps the AI builder avoid generic UI.
+Examples:
+- "Clean and minimal like Notion."
+- "Dark, sharp, and modern like Linear."
+- "Warm and friendly like Airbnb."
+- "Bold and playful like Duolingo."
+
+13. What are the hard requirements?
+Why this matters: These are non-negotiables the builder must follow.
+Examples:
+- Mobile-first
+- Desktop-first
+- Dark mode
+- Responsive design
+- Specific colors
+- Accessibility
+- File upload
+- Payments
+- Email notifications
+- No paid APIs for MVP
+
+14. What should NOT be included in the MVP?
+Why this matters: Constraints are just as important as features.
+Examples:
+- "No social sharing."
+- "No team accounts."
+- "No admin dashboard."
+- "No payments yet."
+- "No AI-generated images."
+
+15. What is the one feature to launch with?
+Why this matters: The first version should do one thing extremely well.
+Examples:
+- "Generate a meal plan."
+- "Create and send an invoice."
+- "Turn notes into a polished LinkedIn post."
+- "Track client project status."
+
+16. What should be built first?
+Why this matters: AI builders work best when they build one screen or flow at a time.
+Examples:
+- "Build the dashboard first."
+- "Build the create invoice screen first."
+- "Build the note-to-post generator screen first."
+
+After I answer all questions, create a Product Requirements Document in this exact format:
+
+===========================================
+PRODUCT REQUIREMENTS DOCUMENT: [APP NAME]
+===========================================
+
+1. PRODUCT SUMMARY
+[Plain-English explanation of what the app does. No buzzwords. Keep it short.]
+
+2. TARGET USER
+[Specific user, their context, and their problem.]
+
+3. USER PROBLEM
+[The pain point this app solves.]
+
+4. DESIRED OUTCOME
+[What success looks like for the user.]
+
+5. MVP SCOPE
+[The smallest useful version of the product.]
+
+6. OUT OF SCOPE
+[Features that should not be built yet.]
+
+7. CORE USER EXPERIENCE FLOW
+Step-by-step walkthrough:
+1. User opens the app and sees [screen/state].
+2. User clicks [action].
+3. User enters [information].
+4. User receives [result/value].
+[Continue until the user reaches the main outcome.]
+
+8. SCREENS AND REQUIREMENTS
+For each screen:
+- Screen name:
+- Purpose:
+- Key UI elements:
+- User actions:
+- Empty states:
+- Error states:
+
+9. DATA REQUIREMENTS
+List each database table or object.
+
+Table: [Name]
+Fields:
+- [field_name] - [type] - [description]
+
+10. AUTHENTICATION REQUIREMENTS
+[Whether login is needed. If yes, specify method and user account behavior.]
+
+11. DESIGN REQUIREMENTS
+- Style:
+- Color direction:
+- Typography:
+- Layout:
+- Mobile/desktop priority:
+- Accessibility notes:
+
+12. TECHNICAL REQUIREMENTS
+[Recommended stack, integrations, APIs, storage, responsiveness, performance needs.]
+
+13. BUILD SEQUENCE
+Break the build into phases:
+Phase 1: [First screen or flow only]
+Phase 2: [Next essential screen]
+Phase 3: [Next essential feature]
+Do not include non-MVP features.
+
+14. FIRST BUILD TARGET
+[The single screen or flow the AI builder should create first.]
+
+15. AI BUILDER INSTRUCTIONS
+Write this as a direct instruction to Lovable/Bolt/Replit:
+- Build only the first target.
+- Do not build the full app yet.
+- Do not add extra features.
+- Use the specified design direction.
+- Use placeholder data if needed.
+- Ask before making major architectural decisions.
+- Keep the code clean, modular, and easy to extend.
+
+After the PRD, write a separate section called:
+
+===========================================
+FIRST PROMPT TO PASTE INTO AI BUILDER
+===========================================
+
+Write a concise prompt I can paste into Lovable, Bolt, Replit, Cursor, or v0.
+
+The prompt must:
+- Reference the PRD.
+- Tell the AI builder to build only the first screen or flow.
+- Include the visual style.
+- Include the relevant data fields.
+- Tell it not to build other screens yet.
+- Tell it not to add extra features.
+- Tell it to stop after this first build so I can review.
+```
+
+### Step 3: Build only the frontend scaffolding first
+
+Start with what users see: page layout, navigation, buttons, forms, and structure. Do not wire deep backend logic yet. You want to validate flow and visual clarity first.
+
+### Step 4: Approve the visual flow
+
+Click through each page and test if the app feels right before backend work starts. If the UX is confusing now, backend work only makes changes harder later.
+
+### Step 5: Build backend for one page
+
+Once a page's frontend is approved, connect data and logic for that same page. For beginners, I recommend [Supabase](https://supabase.com) for backend and database because it is easy to use, and it is also what most AI builders are likely to recommend. Frontend means what the user sees. Backend means data, storage, and app behavior.
+
+### Step 6: Repeat page by page
+
+Do not build in giant batches. Ship one page at a time: frontend first, backend second, then test.
+
+### Step 7: Keep your database simple
+
+Think of your database like a spreadsheet. Each row is one item, each column is an attribute. If you are building a book app, each row can be a book and columns can be title, author, status, and notes.
+
+Repeat steps 5-7 until you get to your desired output. Congratulations, you're a vibecoder!
+
+## Tips for good vibecoding
+
+- **Do not one-shot the whole app in one giant prompt.** Break work into small requests so you can test and debug quickly.
+- **Do not skip planning.** Always vibe PM before vibe code. When starting a new project, ask AI to create a README with requirements, tech stack, and up to five milestones.
+- **Keep tasks tiny.** Ask AI to "Keep it simple," "Implement the simplest next step I can test," and "Change only this specific file: [file path]."
+- **Include images for context when asking for design updates or bug fixes.** If AI can see what you see, it gives better output.
+- **Test every change.** Run your app locally after each update and check the browser console for errors (`Cmd+Option+J` on Mac).
+- **Use your voice.** Tools like Wispr Flow let you talk to AI instead of typing and keep momentum high.
+- **Ask AI to teach you while building.** Ask why a change was made and what each file does so you become more technical over time.
+
+## Advanced next steps
+
+Congratulations. You vibe-coded your first simple app. Here is how to level up.
+
+### Deploy your project with Vercel
+
+1. Create a [Vercel](https://vercel.com) account and connect your GitHub account.
+2. Import your repository into Vercel.
+3. Let Vercel auto-detect the framework and build settings.
+4. Click deploy and test the live URL.
+5. Push future updates to GitHub and Vercel will redeploy automatically.
+
+### Connect your project to GitHub
+
+GitHub is remote version control for your project. It gives you collaboration, history, and rollback safety when things break.
+
+To use GitHub:
+
+1. Create a [GitHub](https://github.com) account.
+2. Create a new repository for your project.
+3. Ask Cursor to "commit to GitHub" and share your repo link.
+
+You can also run Git commands manually. I usually commit after each README milestone so I always have stable checkpoints.
+
+### Build more complex apps
+
+Once this workflow feels natural, level up slowly with richer workflows, deeper data models, and more advanced features. Keep the same rhythm: small steps, tight feedback loops, and clear prompts.
+
+## Additional Reading
+
+Here are some related guides to check out:
+1. [How to Setup Claude Code (5-Min Guide for Non-Techies)](/ai/how-to-setup-claude-code)
+2. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+3. [How to Create an AI Coach](/ai/how-to-create-an-ai-coach)
+4. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+
+Happy vibecoding!
