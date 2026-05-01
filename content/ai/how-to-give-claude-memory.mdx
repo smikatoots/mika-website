@@ -1,0 +1,106 @@
+---
+title: How to Give Claude Memory (Beginner to Advanced)
+description: >-
+  By default, Claude starts every session blank. Here are three levels for fixing that — from a 5-minute toggle to a full second brain.
+tags:
+  - beginner
+  - advanced
+  - setup
+  - claude
+published: "2026-05-01"
+cta: Get started
+---
+
+Someone sent a meme in a group chat about Claude never remembering who you are. Every session, you're a stranger. I couldn't relate — my Claude sessions have been remembering me for months.
+
+Here's exactly how I set that up, from the five-minute beginner version to the full second brain Nick and I built together.
+
+---
+
+By default, Claude starts every session blank. Most people accept this as a limitation. It isn't — it's a default setting. There are a few ways to change it, and they get progressively more powerful. Pick the one that fits where you are right now.
+
+---
+
+### Beginner — Turn on in-app memory (5 minutes)
+
+**1. Turn on Claude's memory settings**
+
+Go to Settings, then Capabilities. You'll see two toggles: "Search and reference chats" and "Generate memory from chat history." Switch both on. From here, Claude automatically saves things it learns about you across sessions. You can also review and edit what it's saved at any time.
+
+![Claude Settings Capabilities memory toggles](/ai-guides/claude-memory-step-1-memory-settings.png "Settings > Capabilities — turn on both memory toggles")
+
+**2. Add your Global Instructions**
+
+Go to Claude Cowork, then Global Instructions. This is a text field where you brief Claude before every session: who you are, how you work, what to assume by default. Think of it as a standing memo Claude reads before you say anything.
+
+Shortcut: ask Claude to write it for you. Tell it about yourself and your work, and ask it to draft a Global Instructions section. Much easier than writing from scratch.
+
+![Claude Cowork Global Instructions panel](/ai-guides/claude-memory-step-2-global-instructions.png "Claude Cowork → Global Instructions — this is where you add your standing context")
+
+**3. Tell Claude to remember things explicitly**
+
+When something comes up in a session that you want Claude to hold onto — a preference, a context, a decision — just say "remember this." Claude updates its internal memory in real time. You don't need settings. Just tell it directly.
+
+---
+
+### Intermediate — Create context files (30–60 min to set up)
+
+**4. Set up a CLAUDE.md file**
+
+Claude's built-in memory is convenient but not fully reliable for things that matter. For that, you want a file. A CLAUDE.md file is a markdown document Claude reads automatically at the start of every Claude Code or Cowork session. Put whatever you want in there: your role, your preferences, your team context.
+
+You can also create supplementary files like USER.md and point to them from CLAUDE.md. For a full walkthrough and the exact prompts I used to set mine up, see: [How to Setup Global Context for Claude](/ai/how-to-setup-global-context-claude).
+
+---
+
+### Advanced — Build a second brain (ongoing)
+
+**5. Create a folder system for your context**
+
+This is the deepest level and not for everyone — it takes setup and ongoing maintenance. But when it's running, Claude becomes a collaborator that knows your thinking, your history, and your work. It doesn't just remember you; it knows you.
+
+Here's the file structure Nick and I use for our company brain:
+
+```
+company-brain/
+├── about-kcl.md          What KCL is, current stage
+├── icp.md                Current ICP hypothesis
+├── voice.md              Company voice for all comms
+├── glossary.md           Terms, acronyms, codenames
+├── gtm/                  Go-to-market strategy
+├── offerings/            Revenue offerings
+├── people/               Per-person context
+│   ├── mika/
+│   │   ├── about.md
+│   │   ├── voice.md
+│   │   └── preferences.md
+│   └── nick/
+└── lessons/              Things we've learned
+```
+
+We keep this on GitHub. I've also seen people do this in Notion or Obsidian.
+
+**6. Add a scheduled task to keep it current**
+
+A second brain only works if it stays up to date. Two things that help:
+
+- A weekly scheduled task where Claude pulls what it learned from recent sessions, proposes updates to your brain, and asks for approval before writing anything.
+- A daily prompt where Claude asks you one specific question about yourself — not "what's your favorite color" but something that goes deeper. Over time, this builds a personal layer that goes way beyond what any app onboarding ever captures.
+
+**7. Update the brain when new things happen**
+
+We have a lessons/ folder. Every week in our Sunday standup, we talk through what we learned that week. That used to go in Notion. Now it goes here, and Claude can pull those lessons when we're making a decision that touches the same territory.
+
+This is where compounding kicks in. The brain gets more useful the more you put into it.
+
+> **Key insight:** The default Claude experience is a goldfish memory. These setups turn it into a collaborator that actually knows you — and gets better the longer you use it.
+
+---
+
+## Additional Reading
+
+Here are some related guides to check out:
+1. [How to Setup Global Context for Claude (CLAUDE.md, USER.md)](/ai/how-to-setup-global-context-claude)
+2. [How to Setup Claude (10-Minute Setup Guide)](/ai/how-to-setup-claude)
+3. [Weekly Skill Discovery](/ai/weekly-skill-discovery)
+4. [What is a Skill?](/ai/what-is-a-skill)

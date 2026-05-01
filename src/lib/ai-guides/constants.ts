@@ -12,5 +12,4 @@ export const AI_HUB_FILTER_TAGS = [
  */
 export const AI_GUIDE_COMING_SOON_SLUGS: ReadonlySet<string> = new Set([
   "reduce-claude-tokens-part-3",
-  "how-to-setup-claude-code",
 ]);
