@@ -6,7 +6,8 @@ import posthog from "posthog-js";
 import { siteLink } from "@/lib/ui/site-styles";
 
 /**
- * Exact hrefs from the Notion Links page (referral / affiliate URLs).
+ * Referral / affiliate URLs. Granola + Wispr Flow match mikareyes.com AI guides;
+ * others from the Notion Links page:
  * https://www.notion.so/smikatoots/Product-Links-6a8f47cf73da4fd1b0245355198ce13a
  */
 const U = {
@@ -40,6 +41,8 @@ const U = {
   studio: "https://monthly.com/stevie-mackey-singing?friend=mika-reyes",
   cora: "https://cora.computer/?ref=wEZMc0H1",
   glowbar: "https://blvd.app/@glowbar/refer/MIKAELA-717659",
+  granola: "https://join.granola.ai/t/vhhbzajvu7",
+  wisprFlow: "https://wisprflow.ai/r?MIKAELA1",
 } as const;
 
 /** Product / brand name (bold + underlined). */
@@ -131,6 +134,26 @@ function Section({
 export function ProductLinksContent() {
   return (
     <article className="space-y-10">
+      <Section title="AI">
+        <LinkCard icon="🤖">
+          <PLink href={U.granola}>Granola</PLink>
+          {" — "}
+          AI meeting notes with no bot on the call. Two free months of Granola
+          Business when you sign up with my{" "}
+          <ILink href={U.granola}>referral link</ILink>.
+        </LinkCard>
+        <LinkCard icon="🤖">
+          <PLink href={U.wisprFlow}>Wispr Flow</PLink>
+          {" — "}
+          voice dictation into any text field. One free month of Pro with my{" "}
+          <ILink href={U.wisprFlow}>referral link</ILink>.
+        </LinkCard>
+        <LinkCard icon="🤖">
+          <PLink href={U.cora}>Cora</PLink>
+          {" — "}email productivity! Honestly, love it so much
+        </LinkCard>
+      </Section>
+
       <Section title="Finance Stack">
         <LinkCard icon="💳">
           <PLink href={U.capitalVentureX}>Capital Venture X</PLink>
@@ -260,13 +283,6 @@ export function ProductLinksContent() {
           {" — "}
           learn a new creative thing, with a peer group, and an expert, all in
           one month
-        </LinkCard>
-      </Section>
-
-      <Section title="AI">
-        <LinkCard icon="🖌️">
-          <PLink href={U.cora}>Cora</PLink>
-          {" — "}email productivity! Honestly, love it so much
         </LinkCard>
       </Section>
 

@@ -14,12 +14,26 @@ export function MdxImage({ src, alt, title }: Props) {
   const [mounted, setMounted] = useState(false);
   const safeSrc = src ?? "";
   const safeAlt = alt ?? "";
+  const isInlineLogo = title === "inline-logo";
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!safeSrc) return null;
+
+  if (isInlineLogo) {
+    return (
+      <span className="mr-2 inline-block shrink-0 align-middle [&+strong]:align-middle">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={safeSrc}
+          alt={safeAlt}
+          className="inline-block h-9 w-9 object-contain align-middle"
+        />
+      </span>
+    );
+  }
 
   return (
     <>
