@@ -27,7 +27,7 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
       >
         {guide.title}
       </h2>
-      <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-zinc-600">
+      <p className="mt-2 line-clamp-5 text-sm leading-relaxed text-zinc-600">
         {guide.description}
       </p>
       {guide.tags.length > 0 ? (
