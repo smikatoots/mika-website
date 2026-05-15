@@ -142,6 +142,18 @@ const legacyBlogSlugRedirects = [
   ["/blog/how-to-prevent-nft-cash-grabs", "/blog/how-to-prevent-cash-grabs"],
   ["/blog/we-re-launching-consensus", "/blog/were-launching-consensus"],
   ["/blog/daily-learnings", "/blog/weekly-mtgs"],
+  [
+    "/ai/5-secret-claude-codes-run-before-every-project",
+    "/ai/15-secret-claude-codes",
+  ],
+  [
+    "/ai/5-secret-claude-codes-for-smarter-thinking",
+    "/ai/15-secret-claude-codes",
+  ],
+  [
+    "/ai/5-secret-claude-codes-for-big-decisions",
+    "/ai/15-secret-claude-codes",
+  ],
 ];
 
 const merged = new Map([...fromChangelog, ...legacyBlogSlugRedirects]);

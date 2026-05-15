@@ -69,6 +69,10 @@ export const urlRedirects: { source: string; destination: string }[] = [
     destination: "/blog/full-circle-speaking-at-filipinos-at-linkedin",
   },
   {
+    source: "/ai/5-secret-claude-codes-run-before-every-project",
+    destination: "/ai/15-secret-claude-codes",
+  },
+  {
     source: "/blog/fintech-reality-your-data-isnt-truly-private",
     destination: "/blog/fintech-data-paranoia",
   },
@@ -97,6 +101,10 @@ export const urlRedirects: { source: string; destination: string }[] = [
     destination: "/blog/why-i-skipped-the-mbaand-dont-regret-it",
   },
   {
+    source: "/ai/5-secret-claude-codes-for-smarter-thinking",
+    destination: "/ai/15-secret-claude-codes",
+  },
+  {
     source: "/blog/fintech-things-i-didnt-know-i-didnt-know",
     destination: "/blog/financial-system-discrimination",
   },
@@ -116,6 +124,7 @@ export const urlRedirects: { source: string; destination: string }[] = [
     source: "/blog/my-first-job-offer-was-rescinded-twice",
     destination: "/blog/my-job-offer-was-rescinded-twice",
   },
+  { source: "/ai/5-secret-claude-codes-for-big-decisions", destination: "/ai/15-secret-claude-codes" },
   {
     source: "/blog/best-way-to-manage-founder-psychology",
     destination: "/blog/best-way-i-manage-my-founder-psychology",
