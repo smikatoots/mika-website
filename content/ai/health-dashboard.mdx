@@ -1,9 +1,10 @@
 ---
-title: "Build a Personal Health Dashboard in Claude (No Trainer Required)"
+title: "Personal Health Dashboard"
 description: >-
   Connect Strava, Oura, and Apple Health to Claude via MCP, then build a
   self-updating training and recovery dashboard as a Cowork Live Artifact.
 tags:
+  - advanced
   - claude
   - cowork
   - live-artifacts
@@ -14,6 +15,8 @@ date: "2026-05-17"
 cta: Build your health dashboard
 order: 18
 ---
+
+> **Heads up:** This guide is a step more technical than most on this site. You will edit a config file and connect MCP servers (Model Context Protocol) so Claude can read your Strava and Oura data. If that sounds fine, keep going. If not, start with [How to Setup Claude](/ai/how-to-setup-claude) and come back when you are ready.
 
 You do not need to pay a personal trainer hundreds of dollars to get a workout plan that respects how you actually feel on a given day. If you already track runs in Strava and recovery in Oura (or Apple Health), Claude can read that data and help you train smarter.
 
@@ -53,8 +56,6 @@ Add this block (merge with any existing `mcpServers` you already have):
 }
 ```
 
-[📸 [image #1 - add the image # in the order this was placed for easier reference] Screenshot of `claude_desktop_config.json` open in a text editor with the `strava` MCP block added under `mcpServers`. Recommended caption: "Add the Strava MCP server to your Claude Desktop config."]
-
 **Restart Claude Desktop**
 
 Close and fully quit Claude Desktop, then reopen it so the new MCP server loads.
@@ -66,8 +67,6 @@ In Claude, say:
 > Connect my Strava account
 
 A browser window opens. Enter your Strava API credentials, authorize the app, and you are done. Claude will confirm when the connection is live.
-
-[📸 [image #2] Browser setup page for Strava MCP showing fields for Client ID and Client Secret, with a "Continue to Strava" button. Recommended caption: "First-time setup opens in your browser. Enter API credentials once."]
 
 **First-time setup (what happens)**
 
@@ -104,25 +103,31 @@ After Strava is connected, you can ask Claude about recent runs, pace, weekly vo
 
 For sleep, readiness, HRV, and cycle tags, use the [Oura Ring MCP](https://github.com/mitchhankins01/oura-ring-mcp).
 
-**Install (optional)**
+**Install**
 
 ```bash
 npm install -g oura-ring-mcp
 ```
+
+![Terminal running npm install -g oura-ring-mcp](/ai-guides/health-dashboard-oura-install.png "Install the Oura Ring MCP package globally.")
 
 Or skip install and run via `npx` each time (Claude Desktop does this for you in the config below).
 
 **Get a Personal Access Token**
 
 1. Go to [cloud.ouraring.com/personal-access-tokens](https://cloud.ouraring.com/personal-access-tokens)
-2. Create a new token
+2. Create a new token (e.g. note it "Claude MCP")
 3. Copy it (you will paste it into Claude Desktop config)
 
-[📸 [image #3] Oura Cloud page showing "Create new personal access token" with a generated token visible. Recommended caption: "Create a personal access token in Oura Cloud."]
+![Oura Developer portal New Personal Access Token form](/ai-guides/health-dashboard-oura-token.png "Create a personal access token in Oura Cloud.")
 
 **Add Oura to Claude Desktop**
 
-In the same `claude_desktop_config.json`, add:
+Open `~/Library/Application Support/Claude/claude_desktop_config.json` on Mac (or `%APPDATA%\Claude\claude_desktop_config.json` on Windows). Add an `mcpServers` block at the root level, next to `preferences`:
+
+![claude_desktop_config.json with mcpServers section for Oura](/ai-guides/health-dashboard-claude-config-mcp.png "Add mcpServers alongside preferences in your Claude Desktop config.")
+
+Merge this into your file (keep any other MCP servers you already have, like Strava):
 
 ```json
 {
@@ -140,8 +145,6 @@ In the same `claude_desktop_config.json`, add:
 
 Replace `your_token_here` with the token you copied. Restart Claude Desktop again.
 
-[📸 [image #4] Claude Desktop config showing both `strava` and `oura` under `mcpServers`. Recommended caption: "You can run Strava and Oura MCP servers side by side."]
-
 ### 3. Connect Apple Health (beta)
 
 On **iPhone**, open the **Claude iOS app** → **Settings** → **Beta Features** → turn on **Apple Health** and approve the categories you want (steps, sleep, heart rate, and so on).
@@ -149,8 +152,6 @@ On **iPhone**, open the **Claude iOS app** → **Settings** → **Beta Features*
 On **Android**, use **Health Connect** the same way in the Claude Android app.
 
 Apple Health in Claude is still beta and syncs through the phone, not Desktop MCP. My workaround: I send Apple Health data to **Strava**, then let Claude read it through the **Strava MCP**. That keeps everything in one Cowork session on desktop.
-
-[📸 [image #5] Claude iOS Settings showing Beta Features with Apple Health toggled on and permission categories listed. Recommended caption: "Apple Health connects in the Claude mobile app under Beta Features."]
 
 ## Build your Health Dashboard (Live Artifact)
 
@@ -170,11 +171,11 @@ The artifact should be **one self-contained HTML page** that:
 **Two gotchas that trip people up**
 
 1. **MCP responses are objects, not plain strings.** Shape looks like `{ content: [{ text: "..." }] }`. Normalize with a small wrapper before you parse anything.
-2. **Oura often returns formatted markdown, not JSON.** Parse with regex against known templates. Entries split on `---+`. Examples: `\*\*Score:\*\* (\d+) \(([^)]+)\)`, `Total Sleep:\*\* (\d+)h (\d+)m`, `Avg HRV: ([0-9.]+)`.
+2. **Oura often returns formatted markdown, not JSON.** Parse with regex against known templates. Entries split on `---+`. Examples: `\*\*Score:\*\* (\d+) (\([^)]+\))`, `Total Sleep:\*\* (\d+)h (\d+)m`, `Avg HRV: ([0-9.]+)`.
 
 **Personalize the prompt**
 
-Before you paste the build prompt, tell Claude your chronological age, primary sport, whether you track cycle in Oura, and the tag name you use for period days (default: `tag_generic_period`).
+Before you paste the build prompt, tell Claude your chronological age and primary sport. If you track your cycle in Oura, say so. If not, ask Claude to skip cycle-related sections.
 
 ### Cowork build prompt (copy and adapt)
 
@@ -265,10 +266,8 @@ Light mode. Off-white background, white cards, soft shadows, generous whitespace
 
 ## Personalize this prompt
 
-Tell the LLM your: chronological age, primary sport, whether you track cycle, location of cycle tags in Oura (default: "tag_generic_period").
+Tell the LLM your chronological age, primary sport, and whether you track your cycle in Oura.
 ```
-
-[📸 [image #6] Cowork Live Artifacts tab with "New artifact" and a chat thread where the build prompt is pasted. Recommended caption: "Create the dashboard from the Live artifacts tab in Cowork."]
 
 Claude will probe your MCP tools, then generate the HTML artifact. Expect a few rounds of "fix the HRV parser" or "highlight this week on the volume chart." Live Artifacts keep version history, so you can roll back if an edit breaks something.
 

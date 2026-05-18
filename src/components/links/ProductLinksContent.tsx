@@ -6,7 +6,7 @@ import posthog from "posthog-js";
 import { siteLink } from "@/lib/ui/site-styles";
 
 /**
- * Referral / affiliate URLs. Granola + Wispr Flow match mikareyes.com AI guides;
+ * Referral / affiliate URLs. Granola, Wispr Flow, and Cursor match mikareyes.com AI guides;
  * others from the Notion Links page:
  * https://www.notion.so/smikatoots/Product-Links-6a8f47cf73da4fd1b0245355198ce13a
  */
@@ -43,6 +43,7 @@ const U = {
   glowbar: "https://blvd.app/@glowbar/refer/MIKAELA-717659",
   granola: "https://join.granola.ai/t/vhhbzajvu7",
   wisprFlow: "https://wisprflow.ai/r?MIKAELA1",
+  cursor: "https://cursor.com/referral?code=W5VDPGO8R3BO",
 } as const;
 
 /** Product / brand name (bold + underlined). */
@@ -147,6 +148,12 @@ export function ProductLinksContent() {
           {" — "}
           voice dictation into any text field. One free month of Pro with my{" "}
           <ILink href={U.wisprFlow}>referral link</ILink>.
+        </LinkCard>
+        <LinkCard icon="🤖">
+          <PLink href={U.cursor}>Cursor</PLink>
+          {" — "}
+          AI-native code editor for real projects. $20 credit toward Pro when you
+          sign up with my <ILink href={U.cursor}>referral link</ILink>.
         </LinkCard>
         <LinkCard icon="🤖">
           <PLink href={U.cora}>Cora</PLink>
