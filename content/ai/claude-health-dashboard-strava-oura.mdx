@@ -1,0 +1,307 @@
+---
+title: "Build a Personal Health Dashboard in Claude (No Trainer Required)"
+description: >-
+  Connect Strava, Oura, and Apple Health to Claude via MCP, then build a
+  self-updating training and recovery dashboard as a Cowork Live Artifact.
+tags:
+  - claude
+  - cowork
+  - live-artifacts
+  - health
+  - mcp
+published: "2026-05-17"
+date: "2026-05-17"
+cta: Build your health dashboard
+order: 18
+---
+
+You do not need to pay a personal trainer hundreds of dollars to get a workout plan that respects how you actually feel on a given day. If you already track runs in Strava and recovery in Oura (or Apple Health), Claude can read that data and help you train smarter.
+
+I built a **Health Dashboard** as a Claude Cowork Live Artifact. It pulls fresh data from my wearables and Strava each time I open it: readiness, sleep, HRV, cycle phase, training load, and a week-by-week plan with nutrition notes. No spreadsheet. No copy-paste from three apps.
+
+> **Key insight:** The dashboard only works because Claude can call your real health data through MCP connectors. Set up the data pipes first, then ask Cowork to build the artifact.
+
+## What you need before you start
+
+- **Claude Desktop** on Mac or Windows (for MCP setup)
+- A **paid Claude plan** with **Cowork** and **Live Artifacts** enabled
+- At least one data source: **Strava** (runs/activities), **Oura** (sleep/recovery), or **Apple Health** (beta on Claude mobile)
+
+## Connect your data sources
+
+### 1. Connect Strava with MCP
+
+We use the open-source [Strava MCP server](https://github.com/r-huijts/strava-mcp) so Claude can read your activities, stats, and workout details.
+
+**Add Strava to Claude Desktop**
+
+Open your Claude Desktop configuration file:
+
+- **Mac:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+Add this block (merge with any existing `mcpServers` you already have):
+
+```json
+{
+  "mcpServers": {
+    "strava": {
+      "command": "npx",
+      "args": ["-y", "@r-huijts/strava-mcp-server"]
+    }
+  }
+}
+```
+
+[📸 [image #1 - add the image # in the order this was placed for easier reference] Screenshot of `claude_desktop_config.json` open in a text editor with the `strava` MCP block added under `mcpServers`. Recommended caption: "Add the Strava MCP server to your Claude Desktop config."]
+
+**Restart Claude Desktop**
+
+Close and fully quit Claude Desktop, then reopen it so the new MCP server loads.
+
+**Connect your Strava account**
+
+In Claude, say:
+
+> Connect my Strava account
+
+A browser window opens. Enter your Strava API credentials, authorize the app, and you are done. Claude will confirm when the connection is live.
+
+[📸 [image #2] Browser setup page for Strava MCP showing fields for Client ID and Client Secret, with a "Continue to Strava" button. Recommended caption: "First-time setup opens in your browser. Enter API credentials once."]
+
+**First-time setup (what happens)**
+
+1. Browser opens to the MCP setup page
+2. You enter **Client ID** and **Client Secret**
+3. Click **Continue to Strava** and authorize on Strava's site
+4. You see a success message and can close the browser
+5. Claude confirms you are connected
+
+Credentials are saved locally at `~/.config/strava-mcp/config.json` and persist across sessions.
+
+**Get your Strava API credentials (one-time)**
+
+1. Go to [strava.com/settings/api](https://www.strava.com/settings/api)
+2. Click **Create an App** (or open an existing app)
+3. Fill in the form:
+   - **Application Name:** anything (e.g. "My Claude Assistant")
+   - **Category:** any
+   - **Website:** can be `http://localhost`
+   - **Authorization Callback Domain:** must be `localhost`
+4. Copy your **Client ID** and **Client Secret**
+
+You only do this once.
+
+**Manage the connection**
+
+- Check status: "Am I connected to Strava?"
+- Reconnect: "Connect my Strava account" (use `force: true` to reconnect)
+- Disconnect: "Disconnect my Strava account"
+
+After Strava is connected, you can ask Claude about recent runs, pace, weekly volume, and athlete stats.
+
+### 2. Connect Oura with MCP
+
+For sleep, readiness, HRV, and cycle tags, use the [Oura Ring MCP](https://github.com/mitchhankins01/oura-ring-mcp).
+
+**Install (optional)**
+
+```bash
+npm install -g oura-ring-mcp
+```
+
+Or skip install and run via `npx` each time (Claude Desktop does this for you in the config below).
+
+**Get a Personal Access Token**
+
+1. Go to [cloud.ouraring.com/personal-access-tokens](https://cloud.ouraring.com/personal-access-tokens)
+2. Create a new token
+3. Copy it (you will paste it into Claude Desktop config)
+
+[📸 [image #3] Oura Cloud page showing "Create new personal access token" with a generated token visible. Recommended caption: "Create a personal access token in Oura Cloud."]
+
+**Add Oura to Claude Desktop**
+
+In the same `claude_desktop_config.json`, add:
+
+```json
+{
+  "mcpServers": {
+    "oura": {
+      "command": "npx",
+      "args": ["oura-ring-mcp"],
+      "env": {
+        "OURA_ACCESS_TOKEN": "your_token_here"
+      }
+    }
+  }
+}
+```
+
+Replace `your_token_here` with the token you copied. Restart Claude Desktop again.
+
+[📸 [image #4] Claude Desktop config showing both `strava` and `oura` under `mcpServers`. Recommended caption: "You can run Strava and Oura MCP servers side by side."]
+
+### 3. Connect Apple Health (beta)
+
+On **iPhone**, open the **Claude iOS app** → **Settings** → **Beta Features** → turn on **Apple Health** and approve the categories you want (steps, sleep, heart rate, and so on).
+
+On **Android**, use **Health Connect** the same way in the Claude Android app.
+
+Apple Health in Claude is still beta and syncs through the phone, not Desktop MCP. My workaround: I send Apple Health data to **Strava**, then let Claude read it through the **Strava MCP**. That keeps everything in one Cowork session on desktop.
+
+[📸 [image #5] Claude iOS Settings showing Beta Features with Apple Health toggled on and permission categories listed. Recommended caption: "Apple Health connects in the Claude mobile app under Beta Features."]
+
+## Build your Health Dashboard (Live Artifact)
+
+Once Strava and/or Oura are connected in Claude Desktop, switch to **Cowork** and open the **Live artifacts** tab. Click **New artifact** → **Chat with Claude**, then paste a build prompt like the one below.
+
+The artifact should be **one self-contained HTML page** that:
+
+- Calls Oura and Strava tools on each load via `window.cowork.callMcpTool`
+- Uses **Chart.js v4** for charts
+- Uses `window.cowork.askClaude` for the weekly plan and nutrition copy
+
+**MCP tools to require in the artifact**
+
+- **Oura:** `get_readiness`, `get_sleep`, `get_daily_sleep`, `analyze_hrv_trend`, `get_cardiovascular_age`, `get_resilience`, `get_enhanced_tags`
+- **Strava:** `get-recent-activities`, `get-athlete-stats`, `get-activity-details`
+
+**Two gotchas that trip people up**
+
+1. **MCP responses are objects, not plain strings.** Shape looks like `{ content: [{ text: "..." }] }`. Normalize with a small wrapper before you parse anything.
+2. **Oura often returns formatted markdown, not JSON.** Parse with regex against known templates. Entries split on `---+`. Examples: `\*\*Score:\*\* (\d+) \(([^)]+)\)`, `Total Sleep:\*\* (\d+)h (\d+)m`, `Avg HRV: ([0-9.]+)`.
+
+**Personalize the prompt**
+
+Before you paste the build prompt, tell Claude your chronological age, primary sport, whether you track cycle in Oura, and the tag name you use for period days (default: `tag_generic_period`).
+
+### Cowork build prompt (copy and adapt)
+
+```text
+# Build: Personal training/recovery dashboard (Cowork Live Artifact)
+
+Build one self-contained HTML artifact that pulls fresh data from Oura + Strava MCPs each load. Use Chart.js v4 only. Call MCPs via `window.cowork.callMcpTool`, generate AI content via `window.cowork.askClaude`.
+
+## MCP tools (all required in artifact's `mcp_tools`)
+
+**Oura:** `get_readiness` `get_sleep` `get_daily_sleep` `analyze_hrv_trend` `get_cardiovascular_age` `get_resilience` `get_enhanced_tags`
+**Strava:** `get-recent-activities` `get-athlete-stats` `get-activity-details`
+
+## Two critical gotchas
+
+1. **MCP responses are objects, not strings**: `{ content: [{ text: "..." }] }`. Normalize with a wrapper before every parse.
+2. **Oura returns formatted markdown, not JSON.** Parse with regex against known templates. Entries split on `---+`. Examples: `\*\*Score:\*\* (\d+) \(([^)]+)\)`, `Total Sleep:\*\* (\d+)h (\d+)m`, `Avg HRV: ([0-9.]+)`.
+
+## Cycle algorithm — derive from Oura, don't ask the user
+
+1. `get_enhanced_tags` for last 120 days
+2. Extract dates of all "Generic Period" entries
+3. Group consecutive tagged days; gap >7 days = new cycle start
+4. Avg gaps between starts → personal cycle length (don't assume 28)
+5. Day in cycle = days since last start + 1
+6. Phases: 1–5 menstrual, 6–13 follicular, 14–17 ovulatory, 18+ luteal
+
+## Activity intensity (Strava often has no HR data)
+
+Classify by type + pace:
+- Yoga / walk → easy
+- Hike / swim / strength / moderate ride → moderate
+- Ride >25 km/h → hard
+- Run by pace: ≥7:00/km easy, 6:30–7:00 moderate, <6:30 hard
+
+## ACWR (training load)
+
+Acute = last 7d km. Chronic = last 28d km / 4. Ratio = acute/chronic.
+Zones: 0.8–1.3 sweet spot · 1.3–1.5 caution · >1.5 injury risk · <0.8 detraining.
+
+## "Today's call" engine
+
+Base from readiness: ≥85 hard · ≥75 moderate · ≥65 easy · <65 rest.
+
+Downgrade one level if ANY of: HRV ≤−7% baseline · ACWR >1.5 (force to easy) · sleep <6h last night · menstrual phase · late luteal (≤3 days to period).
+
+## Warnings (surface only when actionable)
+
+- **Recovery debt** — HRV ≤−7% AND last 3d readiness <80
+- **Injury risk** — ACWR >1.5 (warn at 1.3–1.5)
+- **Period incoming** — late luteal, ≤3 days
+- **Sleep debt** — 2 of last 3 nights <7h
+
+## Sections, top to bottom
+
+1. **Daily glance** (4-col grid)
+   - Readiness card (span 2): big score + Optimal/Good/Fair/Pay badge + 6 contributors with mini bars
+   - Today's call (span 2): title + body + workout window line
+   - Sleep / HRV / RHR / Cycle (1 col each)
+
+2. **Weekly view**
+   - 8-week volume bar chart, current week highlighted, dashed 4-week-avg line
+   - ACWR gauge (3 colored zones, marker for current ratio)
+   - This week's activities — type badges header (🏃 5 Run, 🧘 1 Yoga …) + row per activity with emoji, name, distance, pace/duration
+   - Easy/hard distribution donut bar (target ~80% easy)
+   - HRV trend line: 30d → 14d → 7d → last night, with baseline line
+   - Sleep regularity line over 30 days
+
+3. **Weekly plan (Sun→Sat)** — `askClaude` returning JSON `{plan: [{weekday, type, intensity, duration, reason}], summary}`. Pass: current phase, each day's phase across the week, recent 10 activities, ACWR, today's readiness, HRV%. Constraints in prompt: hard on follicular/ovulatory, easy/rest on menstrual + late luteal, ≥2 non-running days (yoga/strength), hold volume if ACWR >1.3. Color each card by intensity.
+
+4. **Nutrition** — `askClaude` prompt: ~140 words in 4 sections (daily anchors, pre/post fueling, one meal to make, one grocery item). Phase + training-aware.
+
+5. **Long-term** (4-col stat grid): YTD distance · all-time count · vascular age vs chronological · resilience "Exceptional" streak count.
+
+## Info tooltips on every metric
+
+Small ⓘ icon next to each metric label. Click → popover with **(a) what it is** (2 sentences) **(b) how to read it** (concrete thresholds). Cover: readiness, HRV, RHR, sleep, cycle, ACWR/training-load, weekly volume, easy/hard distribution, vascular age, resilience, workout window, recovery debt, weekly plan. Generate the copy yourself — keep it tight.
+
+## Style
+
+Light mode. Off-white background, white cards, soft shadows, generous whitespace. Status colors: sage (good), amber (caution), muted red (danger), dusty rose (cycle), cool blue (HRV). Big numbers, small labels.
+
+## Before building
+
+1. Call `get-athlete-profile` once → hardcode the athlete ID
+2. Probe each Oura and Strava tool with one real call → inspect actual response shape
+3. Then build
+
+## Personalize this prompt
+
+Tell the LLM your: chronological age, primary sport, whether you track cycle, location of cycle tags in Oura (default: "tag_generic_period").
+```
+
+[📸 [image #6] Cowork Live Artifacts tab with "New artifact" and a chat thread where the build prompt is pasted. Recommended caption: "Create the dashboard from the Live artifacts tab in Cowork."]
+
+Claude will probe your MCP tools, then generate the HTML artifact. Expect a few rounds of "fix the HRV parser" or "highlight this week on the volume chart." Live Artifacts keep version history, so you can roll back if an edit breaks something.
+
+## What mine looks like
+
+Here is the dashboard running on my real Strava + Oura data.
+
+**Daily glance:** readiness score, today's training call, sleep, HRV, resting heart rate, and cycle phase (derived from Oura period tags, not a generic 28-day guess).
+
+![Health dashboard daily glance with readiness, today's call, sleep, HRV, and cycle](/ai-guides/health-dashboard-daily-glance.png "Daily glance: readiness, workout recommendation, sleep, HRV, and cycle phase.")
+
+**Weekly view:** 8-week running volume, acute-to-chronic workload ratio (ACWR), this week's Strava activities, easy vs hard distribution, HRV trend, and sleep regularity.
+
+![Health dashboard weekly view with volume chart, ACWR gauge, activities, and trends](/ai-guides/health-dashboard-weekly-view.png "Weekly training load, recent activities, and recovery trends.")
+
+**Weekly plan and nutrition:** Sun–Sat sessions with reasons tied to cycle phase and recovery, plus phase-aware nutrition anchors.
+
+![Health dashboard weekly plan and nutrition section](/ai-guides/health-dashboard-weekly-plan.png "AI-generated weekly plan and nutrition notes based on your phase and load.")
+
+The ⓘ icons on each metric open short tooltips so you are not guessing what "ACWR 1.19" or "follicular" means for today's workout.
+
+## Tips after your first build
+
+- **Refresh before a run.** Open the artifact and hit reload so readiness and HRV reflect last night.
+- **Iterate in plain English.** "Make hard days terracotta" or "Add a warning when sleep is under 6 hours two nights in a row" works better than editing HTML yourself.
+- **Start with one data source.** Strava-only still gives you volume and pace; add Oura when you want readiness and cycle logic.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [Intro to Claude Live Artifacts](/ai/intro-to-claude-live-artifacts)
+2. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+3. [5 AI Tools That Save Me 10+ Hours a Week](/ai/five-ai-tools-save-10-hours-weekly)
+4. [How to Give Claude Memory](/ai/how-to-give-claude-memory)
+5. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
