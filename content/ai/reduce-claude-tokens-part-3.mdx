@@ -25,15 +25,11 @@ Web search, connectors (Slack, Google Drive, Notion), and Extended Thinking all 
 
 When you do use connectors, be specific. "Search Slack from the last 7 days for messages about the Q2 launch" costs a fraction of "Search Slack for anything about launches." Filtered retrieval loads fewer results and fewer tokens.
 
-![Claude Chat showing the toolbar with web search, connectors, and Extended Thinking toggles all visible and turned off](/ai-guides/reduce-tokens-p3-features-off.png "Default everything off. Turn features on only when the task actually needs them.")
-
 ### 2. Turn off Memory. Set User Preferences instead.
 
 Memory is odd and I don't love it. Turn it off in Settings. Instead, go to Settings > General > Personal Preferences and write your context there once -- things like "I prefer concise responses" or "I'm a non-technical founder." Set up a Style while you're there. "Concise" is a good default. Both persist across every chat without eating your context window.
 
 One setup. Permanent savings. You never have to re-explain yourself at the start of a chat again.
-
-![Claude Settings panel showing the Memory toggle turned off, with Personal Preferences and Styles sections filled in below](/ai-guides/reduce-tokens-p3-preferences.png "Set it once here. Never type 'I prefer concise responses' again.")
 
 ---
 
@@ -44,8 +40,6 @@ One setup. Permanent savings. You never have to re-explain yourself at the start
 Type `/models` in Claude Code and you'll see your options. Opus for complex multi-file work, architecture decisions, and tricky debugging. Sonnet for daily work -- writing, editing, explaining, testing. Haiku for quick lookups, renaming, and formatting. Using Opus to reformat a CSV is like using heavy machinery to move a chair.
 
 This single habit makes a bigger difference than most people expect. Most daily Claude Code work doesn't need Opus.
-
-![Claude Code terminal showing the /models command output with the list of available models](/ai-guides/reduce-tokens-p3-models-command.png "Two seconds to switch models. Worth doing every time the task type changes.")
 
 ### 4. Clear your context between tasks
 
@@ -65,15 +59,11 @@ When an MCP tool returns results, it can dump thousands of lines of raw data str
 
 Context-Mode is a free open-source plugin that fixes this. Instead of flooding your conversation with raw output, it stores results in a separate workspace and gives Claude a clean summary. Claude gets what it needs. Your context stays lean. To install: search "context-mode" on GitHub, follow the README install instructions (usually one line in your terminal), then add it to your Claude Code config. It runs in the background after that. Users report 50 to 90% reduction in MCP-related token usage.
 
-![GitHub repo page for the Context-Mode plugin showing the README with the install command highlighted](/ai-guides/reduce-tokens-p3-context-mode.png "One install, runs in the background forever. If you use MCP servers regularly, this is worth doing today.")
-
 ### 7. Use /schedule for recurring tasks
 
 If you run the same report, digest, or research task every week, you're wasting tokens re-explaining the full setup from scratch each time. Skills, scheduled tasks, and Projects replace repeated instructions with cached, on-demand loading -- Claude picks up exactly where the workflow needs it, without the overhead.
 
 Type `/schedule` in Claude Code, define the task once, and it runs automatically. No re-explaining. No context built from scratch every week.
-
-![Claude Code showing the /schedule command interface with a recurring task configured](/ai-guides/reduce-tokens-p3-schedule.png "Define it once. It runs on its own. No tokens wasted on setup every week.")
 
 ### 8. Give Claude Code a clear scope before it starts
 
