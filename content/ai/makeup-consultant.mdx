@@ -1,0 +1,95 @@
+---
+title: Makeup Consultant
+description: >-
+  The ChatGPT Images prompt I used to turn one face photo into a visual makeup guide with looks, swatches, and what to skip.
+tags:
+  - prompts
+  - chatgpt
+  - style
+published: "2026-05-20"
+cta: Try this prompt
+---
+
+Confession: I suck at putting on my own make-up! So I asked AI to help me out. 
+
+I uploaded a clear headshot to ChatGPT Images and asked for one visual guide: what suits my face, what to skip, and a few full looks I could actually copy. The useful part was forcing real try-on portraits and color swatches, not another "you have warm undertones" paragraph.
+
+## What you need
+
+One clear photo of your face. Front-facing works best. Good lighting, no heavy filters. If you can, pull hair back or tuck it behind your ears so the model can read your bone structure, brows, and lip shape.
+
+Chest-up is fine. Skip sunglasses, masks, or a full glam beat in the reference photo if you want undertone reads to be honest.
+
+![Example input photo for the makeup consultant prompt](/ai-guides/makeup-consultant-input.png "The headshot I uploaded.")
+
+## Prompt to use
+
+```text
+You are Makeup Analyzer: a beauty consultant, makeup artist, and visual style analyst.
+
+I am uploading a photo of my face. Analyze my natural features from this photo only: face shape, undertone, skin tone, eye shape, brow shape, lip shape, cheek structure, and overall vibe.
+
+CRITICAL RULES:
+- Base all recommendations on my actual features in the photo, not generic advice.
+- Be honest but kind. Prioritize enhancing my features, not covering them up.
+- You MUST produce a visual output (image), not text-only.
+- Preserve my identity and likeness in all generated portraits and diagrams.
+- Make advice practical, specific, and easy to recreate.
+
+OUTPUT: One infographic-style image titled "YOUR MAKEUP GUIDE" with subtitle "Enhance Your Natural Beauty." Use a clean layout: summary box, portraits, color swatches, and labeled placement diagrams.
+
+Include these sections in the image:
+
+1. YOUR FEATURES (summary box)
+Undertone, skin tone, face shape, eyes, brows, lips, cheeks, overall vibe.
+
+2. VISUAL LOOK EXAMPLES (top row)
+Three portraits of me wearing makeup that suits me:
+- Everyday / Natural — fresh, radiant, effortless
+- Night Out / Glam — sultry, confident, elegant
+- Creative / Editorial — playful, modern, artistic
+Below each portrait: a row of circular color swatches for that look.
+
+3. OVERALL MAKEUP ANALYSIS
+Short paragraph: best styles, finishes, colors, and techniques for my face.
+
+4. EYE MAKEUP
+- Eyeshadow color swatch grid (12+ shades that suit me)
+- Eyeliner style close-ups (e.g. thin tightline + soft wing, brown liner, smudged)
+- Lashes & brows: length, arch, fill style
+- Looks to try vs. eye makeup to avoid (with brief why)
+
+5. LIP RECOMMENDATIONS
+- Best shade swatches (everyday to bold)
+- Finishes (gloss vs satin vs matte) and lip liner technique note
+- Lip makeup to avoid (with why)
+
+6. CHEEK & COMPLEXION
+- Face diagrams for blush, bronzer/contour, and highlight placement
+- Blush colors, foundation/concealer finish
+- Cheek makeup to avoid
+
+7. FULL MAKEUP COMBINATIONS (sidebar)
+Five named recipes. For each: best colors, eye, lip, cheek, vibe, and why it works for my face.
+Examples: Soft Everyday Glow, Polished Work Look, Romantic Date Night, Dramatic Night Out, Eccentric/Editorial.
+
+8. WHAT TO AVOID & WHY (bottom row)
+6 items with red X icons (e.g. cool-toned makeup, heavy contour, thick black liner, flat matte skin, blush too low, overlined lips). One-line reason each.
+
+Keep the layout readable at a glance: portraits, swatches, and diagrams over long paragraphs.
+```
+
+![Makeup consultant guide output](/ai-guides/makeup-consultant-result.png "This was the resulting image.")
+
+You should get one shareable image: a feature summary, three looks on your face (everyday, glam, editorial) with palette rows, eye/lip/cheek breakdowns with swatches and placement diagrams, five named full-face combos, and a short "what to avoid" row at the bottom.
+
+**Note:** The model may nudge your features while still getting undertone, placement, and color direction right. I treat it as a styling compass, not a shade match at Sephora. Test one product or placement at a time in real life.
+
+If the first image is too crowded, reply: "Split into 2 images: looks + eye/lip/cheek detail" or "Less text, keep all 8 sections."
+
+## Additional Reading
+
+Here are some related guides to check out:
+1. [Color Theory Analysis](/ai/color-theory-analysis)
+2. [Haircut Analysis](/ai/haircut-analysis)
+3. [Personal Stylist](/ai/personal-stylist)

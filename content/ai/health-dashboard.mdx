@@ -1,5 +1,5 @@
 ---
-title: "Personal Health Dashboard"
+title: "Health Coach"
 description: >-
   Connect Strava, Oura, and Apple Health to Claude via MCP, then build a
   self-updating training and recovery dashboard as a Cowork Live Artifact.
@@ -103,6 +103,14 @@ After Strava is connected, you can ask Claude about recent runs, pace, weekly vo
 
 For sleep, readiness, HRV, and cycle tags, use the [Oura Ring MCP](https://github.com/mitchhankins01/oura-ring-mcp).
 
+**Get a Personal Access Token**
+
+1. Go to [cloud.ouraring.com/personal-access-tokens](https://cloud.ouraring.com/personal-access-tokens)
+2. Create a new token (e.g. note it "Claude MCP")
+3. Copy it (you will paste it into Claude Desktop config)
+
+![Oura Developer portal New Personal Access Token form](/ai-guides/health-dashboard-oura-token.png "Create a personal access token in Oura Cloud.")
+
 **Install**
 
 ```bash
@@ -112,14 +120,6 @@ npm install -g oura-ring-mcp
 ![Terminal running npm install -g oura-ring-mcp](/ai-guides/health-dashboard-oura-install.png "Install the Oura Ring MCP package globally.")
 
 Or skip install and run via `npx` each time (Claude Desktop does this for you in the config below).
-
-**Get a Personal Access Token**
-
-1. Go to [cloud.ouraring.com/personal-access-tokens](https://cloud.ouraring.com/personal-access-tokens)
-2. Create a new token (e.g. note it "Claude MCP")
-3. Copy it (you will paste it into Claude Desktop config)
-
-![Oura Developer portal New Personal Access Token form](/ai-guides/health-dashboard-oura-token.png "Create a personal access token in Oura Cloud.")
 
 **Add Oura to Claude Desktop**
 
@@ -171,7 +171,7 @@ The artifact should be **one self-contained HTML page** that:
 **Two gotchas that trip people up**
 
 1. **MCP responses are objects, not plain strings.** Shape looks like `{ content: [{ text: "..." }] }`. Normalize with a small wrapper before you parse anything.
-2. **Oura often returns formatted markdown, not JSON.** Parse with regex against known templates. Entries split on `---+`. Examples: `\*\*Score:\*\* (\d+) (\([^)]+\))`, `Total Sleep:\*\* (\d+)h (\d+)m`, `Avg HRV: ([0-9.]+)`.
+2. **Oura often returns formatted markdown, not JSON.** Parse with regex against known templates. Entries split on `---+`. Examples: `\*\*Score:\*\* (\d+) \(([^)]+)\)`, `Total Sleep:\*\* (\d+)h (\d+)m`, `Avg HRV: ([0-9.]+)`.
 
 **Personalize the prompt**
 

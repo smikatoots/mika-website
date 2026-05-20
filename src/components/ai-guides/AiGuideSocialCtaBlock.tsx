@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const MAVEN_WORKSHOP_URL =
-  "https://maven.com/mika-reyes/master-claude-code-as-a-non-technical-pro?promoCode=MAY7";
+  "https://maven.com/mika-reyes/master-claude-code-as-a-non-technical-pro";
 
 /**
  * Shared promo block at the top of every AI guide (`/ai/*`). Edit copy and links
@@ -21,7 +21,7 @@ export function AiGuideSocialCtaBlock() {
       <div className="flex flex-col items-center px-6 pb-8 pt-6 text-center sm:px-8">
         <h2 className="max-w-3xl text-xl font-semibold tracking-tight text-accent sm:text-2xl">
           Join our <strong>live, hands-on</strong> workshop on{" "}
-          <strong>May 22, 2026</strong>!
+          <strong>May 22 &amp; June 13</strong>!
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-accent">
           Build your own AI agent in 1 day. Skip 6 months of trial &amp; error
@@ -33,7 +33,7 @@ export function AiGuideSocialCtaBlock() {
           rel="noopener noreferrer"
           className="mt-6 inline-flex items-center justify-center rounded-[10px] bg-accent px-6 py-2.5 text-base font-semibold text-white transition hover:bg-accent-hover"
         >
-          Get 40% off
+          Learn more
         </a>
       </div>
     </aside>
