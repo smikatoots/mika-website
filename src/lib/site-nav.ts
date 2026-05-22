@@ -8,3 +8,8 @@ export const siteNavItems = [
   { href: "/press", label: "Press", icon: "📰" },
   { href: "/my-dreams", label: "Dreams", icon: "💭" },
 ] as const;
+
+/** Indexed static routes not shown in header nav. */
+export const siteRoutesNotInNav = [
+  { href: "/media-kit", label: "Media Kit" },
+] as const;

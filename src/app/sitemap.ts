@@ -5,6 +5,7 @@ import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { loadProjectsManifest } from "@/lib/projects/manifest";
 import { SITE_URL } from "@/lib/site";
+import { siteRoutesNotInNav } from "@/lib/site-nav";
 
 export const revalidate = 3600;
 
@@ -18,6 +19,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/projects`, lastModified: new Date() },
     { url: `${SITE_URL}/press`, lastModified: new Date() },
     { url: `${SITE_URL}/my-dreams`, lastModified: new Date() },
+    ...siteRoutesNotInNav.map(({ href }) => ({
+      url: `${SITE_URL}${href}`,
+      lastModified: new Date(),
+    })),
   ];
 
   const aiGuides = await loadAllAiGuideIndexEntries();
