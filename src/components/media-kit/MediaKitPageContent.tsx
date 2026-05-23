@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { DemographicPieChart } from "@/components/media-kit/DemographicPieChart";
+import { DemographicRanking } from "@/components/media-kit/DemographicRanking";
 import { homeBioLinks } from "@/lib/home-bio-links";
 import { siteLink } from "@/lib/ui/site-styles";
 
@@ -119,38 +120,34 @@ const headerLinkClass =
 
 export function MediaKitPageContent() {
   return (
-    <div className="pb-20">
+    <div className="flex flex-1 flex-col">
       <header className="border-b border-zinc-200 bg-zinc-950 text-white">
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-10 sm:px-6 md:flex-row md:items-end md:justify-between md:py-12">
-          <div className="min-w-0">
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-              Mika Reyes
-            </h1>
-            <p className="mt-4 text-[10px] font-semibold uppercase leading-relaxed tracking-[0.15em] text-accent sm:text-xs sm:tracking-[0.2em]">
-              AI Education for Founders, Operators &amp; Professionals 25–54
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-zinc-200">
-              I teach non-technical founders, business owners, and career
-              professionals how to use AI to get ahead in their careers, get
-              time back, and stay relevant in the AI age.
-            </p>
+        <div className="mx-auto max-w-5xl px-4 py-10 text-center sm:px-6 md:py-12">
+          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            Mika Reyes
+          </h1>
+          <p className="mt-4 text-[10px] font-semibold uppercase leading-relaxed tracking-[0.15em] text-accent sm:text-xs sm:tracking-[0.2em]">
+            AI Education for Founders, Operators &amp; Professionals 25–54
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-200">
+            I teach non-technical founders, business owners, and career
+            professionals how to use AI to get ahead in their careers, get time
+            back, and stay relevant in the AI age.
+          </p>
+          <div className="mt-6 flex flex-col items-center justify-center gap-2 text-sm text-zinc-300 sm:flex-row sm:flex-wrap">
+            <ExternalLink href={homeBioLinks.instagram} className={headerLinkClass}>
+              Instagram {INSTAGRAM_HANDLE}
+            </ExternalLink>
+            <span className="hidden text-zinc-600 sm:inline" aria-hidden>
+              ·
+            </span>
+            <a href={`mailto:${CONTACT_EMAIL}`} className={headerLinkClass}>
+              {CONTACT_EMAIL}
+            </a>
           </div>
-          <div className="min-w-0 shrink-0 text-sm text-zinc-300 md:text-right">
-            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center md:justify-end">
-              <ExternalLink href={homeBioLinks.instagram} className={headerLinkClass}>
-                Instagram {INSTAGRAM_HANDLE}
-              </ExternalLink>
-              <span className="hidden text-zinc-600 sm:inline" aria-hidden>
-                ·
-              </span>
-              <a href={`mailto:${CONTACT_EMAIL}`} className={headerLinkClass}>
-                {CONTACT_EMAIL}
-              </a>
-            </div>
-            <p className="mt-3 text-xs leading-relaxed text-zinc-500">
-              Last updated {STATS_AS_OF}. All metrics reflect the past 30 days.
-            </p>
-          </div>
+          <p className="mt-3 text-xs leading-relaxed text-zinc-500">
+            Last updated {STATS_AS_OF}. All metrics reflect the past 30 days.
+          </p>
         </div>
       </header>
 
@@ -202,42 +199,31 @@ export function MediaKitPageContent() {
             </div>
           </div>
         </div>
-
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-3">
-          <MetricCard
-            value="10.3%"
-            label="Engagement Rate"
-            hint="~7x IG industry avg"
-          />
-          <MetricCard
-            value="461K+"
-            label="Monthly Views"
-            hint="Instagram, last 30 days"
-          />
-          <MetricCard
-            value="94.7%"
-            label="Non-Follower Reach"
-            hint="Content spreads organically"
-          />
-        </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 md:py-16">
-        <SectionEyebrow>Platform Stats</SectionEyebrow>
-        <p className="mt-4 w-full text-base leading-relaxed text-zinc-700 sm:text-[1.05rem]">
-          Backed by a decade in tech: ex-LinkedIn product, ex-CEO of Parallax
-          ($100M+ in stablecoin transaction volume, acquired by Phantom, $3B),
-          Forbes 30 Under 30.
-        </p>
+      <section className="border-t border-zinc-200 bg-zinc-50/60">
+        <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 md:py-16">
+          <SectionEyebrow>Platform Stats</SectionEyebrow>
 
-        <div className="mt-8 grid w-full gap-6 lg:grid-cols-3 lg:items-stretch">
-          <div className="flex flex-col gap-4 lg:col-span-1">
-            <MetricCard value="461K+" label="Views / Month" />
-            <MetricCard value="9,414" label="Total Followers" />
-            <MetricCard value="10.3%" label="Engagement Rate" />
+          <div className="mt-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-3">
+            <MetricCard
+              value="10.3%"
+              label="Engagement Rate"
+              hint="~7x IG industry avg"
+            />
+            <MetricCard
+              value="505K+"
+              label="Views / Month"
+              hint="Instagram, last 30 days"
+            />
+            <MetricCard
+              value="94.7%"
+              label="Non-Follower Reach"
+              hint="Content spreads organically"
+            />
           </div>
 
-          <div className="flex min-w-0 flex-col rounded-2xl border border-zinc-200 bg-zinc-50/80 p-4 sm:p-6 md:p-8 lg:col-span-2">
+          <div className="mt-6 flex w-full min-w-0 flex-col rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm sm:p-6 md:p-8">
             <h3 className="text-base font-semibold text-zinc-950 sm:text-lg">
               Instagram ({INSTAGRAM_HANDLE})
             </h3>
@@ -253,19 +239,19 @@ export function MediaKitPageContent() {
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Followers</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    9,414
+                    9,867
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Views</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    461,427
+                    504,525
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Accounts Reached</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    278,889
+                    304,733
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
@@ -277,7 +263,7 @@ export function MediaKitPageContent() {
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Interactions</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    26,579+
+                    45,761
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
@@ -305,8 +291,8 @@ export function MediaKitPageContent() {
         </div>
       </section>
 
-      <section className="border-t border-zinc-200 bg-zinc-50/60">
-        <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14 md:py-16">
+      <section className="border-t border-zinc-200 bg-white">
+        <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 md:py-16">
           <SectionEyebrow>Audience Demographics</SectionEyebrow>
 
           <div className="mt-8 grid w-full grid-cols-1 gap-6 sm:mt-10 md:grid-cols-2">
@@ -376,13 +362,13 @@ export function MediaKitPageContent() {
                 </>
               }
             />
-            <DemographicPieChart
+            <DemographicRanking
               title="Top Cities"
-              slices={[
-                { label: "New York", percent: 6.8 },
-                { label: "Singapore", percent: 3.3 },
-                { label: "San Francisco", percent: 2.1 },
-                { label: "Los Angeles", percent: 2 },
+              items={[
+                "New York",
+                "Singapore",
+                "San Francisco",
+                "Los Angeles",
               ]}
               note={
                 <>
@@ -402,47 +388,34 @@ export function MediaKitPageContent() {
         </div>
       </section>
 
-      <section className="border-t border-zinc-200">
-        <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 md:px-8 md:py-16">
+      <section className="border-t border-zinc-200 bg-zinc-50/60">
+        <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 md:py-16">
           <SectionEyebrow>About</SectionEyebrow>
-          <div className="mt-6 grid w-full grid-cols-1 gap-6 text-base leading-relaxed text-zinc-700 sm:gap-8 sm:text-[1.05rem] lg:grid-cols-2 lg:gap-10">
+          <div className="mt-6 w-full space-y-4 text-base leading-relaxed text-zinc-700 sm:text-[1.05rem]">
             <p>
-              I spent{" "}
-              <strong className={textEmphasis}>a decade in tech</strong> before
-              becoming a creator.{" "}
-              <strong className={textEmphasis}>Product lead at</strong>{" "}
-              <ExternalLink href={homeBioLinks.linkedin}>LinkedIn</ExternalLink>
-              , where I launched the{" "}
-              <strong className={textEmphasis}>
-                &quot;I&apos;m Hiring&quot; ring
-              </strong>
-              . Then{" "}
-              <strong className={textEmphasis}>
-                co-founder and CEO of{" "}
-              </strong>
-              <ExternalLink href={homeBioLinks.parallax}>Parallax</ExternalLink>
-              , one of the earliest global stablecoin payments products. We raised{" "}
-              <strong className={textEmphasis}>about $5M</strong> from{" "}
-              <strong className={textEmphasis}>
-                Dragonfly and General Catalyst
-              </strong>
-              , scaled to{" "}
-              <strong className={textEmphasis}>$100M+</strong> in transaction
-              volume in{" "}
-              <strong className={textEmphasis}>under a year</strong>, and were
-              acquired by{" "}
-              <strong className={textEmphasis}>Phantom, a $3B crypto wallet</strong>
-              .
+              I&apos;m co-founder of{" "}
+              <ExternalLink href={homeBioLinks.kingsCrossLabs}>
+                King&apos;s Cross Labs
+              </ExternalLink>{" "}
+              with my husband: AI tools, training, and education for
+              non-technical operators and founders.
             </p>
             <p>
-              After the exit, I rebuilt around a different question: what&apos;s
-              the point of building if you don&apos;t have time for the life
-              you&apos;re building it for? I now use{" "}
-              <strong className={textEmphasis}>AI every day</strong> to run a
-              company, create content, and stay{" "}
-              <strong className={textEmphasis}>time-rich</strong>. My content
-              shows the{" "}
-              <strong className={textEmphasis}>actual workflows</strong>.
+              Before this, I led product at{" "}
+              <ExternalLink href={homeBioLinks.linkedin}>LinkedIn</ExternalLink>{" "}
+              (launched the &quot;I&apos;m Hiring&quot; ring), then co-founded
+              and ran{" "}
+              <ExternalLink href={homeBioLinks.parallax}>Parallax</ExternalLink>{" "}
+              as CEO, one of the earliest global stablecoin payments products. We
+              raised ~$5M from Dragonfly and General Catalyst, hit $100M+ in
+              transaction volume in under a year, and were acquired by Phantom, a
+              $3B crypto wallet.
+            </p>
+            <p>
+              I make AI content because these are the tools I wished I had when I
+              was scaling Parallax, and in my own personal life. 1,000+ hours in,
+              the workflows are too useful to keep to myself, so I share real,
+              practical education on upleveling work and personal life with AI.
             </p>
           </div>
           <div className="mt-8 flex w-full flex-wrap gap-3">
@@ -455,18 +428,14 @@ export function MediaKitPageContent() {
         </div>
       </section>
 
-      <section className="border-t border-zinc-200 bg-zinc-950 text-white">
+      <div className="mt-auto flex flex-1 flex-col bg-zinc-950">
+      <section className="border-t border-zinc-200 text-white">
         <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 md:px-8 md:py-16">
           <SectionEyebrow>Partnerships</SectionEyebrow>
           <p className="mt-4 w-full max-w-none text-base leading-relaxed text-zinc-300 sm:text-[1.05rem]">
-            <strong className="font-semibold text-white">
-              You work directly with me.
-            </strong>{" "}
-            No agency, no manager in between. I&apos;m hands-on, fast to work
-            with, and I only post about products I&apos;d genuinely use myself.{" "}
-            <strong className="font-semibold text-white">
-              That filter is what makes a partnership here actually convert.
-            </strong>
+            You work directly with me. No agency or no manager in between.
+            I&apos;m easy to work with &amp; excited to share products I&apos;d
+            actually use &amp; recommend.
           </p>
 
           <h3 className="mt-12 w-full text-xl font-semibold text-white">
@@ -483,9 +452,29 @@ export function MediaKitPageContent() {
             </FitCard>
           </div>
 
-          <h3 className="mt-12 w-full text-xl font-semibold text-white">
-            Package types
-          </h3>
+          <h3 className="mt-12 w-full text-xl font-semibold text-white">Values</h3>
+          <ul className="mt-6 space-y-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
+            <li>
+              <strong className="font-semibold text-white">Trust</strong> — My
+              audience comes first. Every partnership goes through one question:
+              would my community thank me for this? Exclusive perks aren&apos;t
+              required but go a long way.
+            </li>
+            <li>
+              <strong className="font-semibold text-white">Transparency</strong>{" "}
+              — Every paid partnership is disclosed clearly and upfront. No
+              buried disclaimers, no sneaky integrations as it&apos;s better for
+              your brand &amp; my audience.
+            </li>
+            <li>
+              <strong className="font-semibold text-white">Belief</strong> — I
+              partner with products I use, want to use or stand behind. With a
+              background in product and founding, I&apos;m happy to try your
+              products &amp; share real, honest feedback!
+            </li>
+          </ul>
+
+          <h3 className="mt-12 w-full text-xl font-semibold text-white">Types</h3>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <DeliverableCard
               title="Dedicated Reel"
@@ -524,15 +513,14 @@ export function MediaKitPageContent() {
             Rates available upon request.
           </p>
           <p className="mt-2 text-center text-sm text-zinc-400">
-            Bundles convert best. Multi-post series drive significantly more
-            results for the brand than one-offs because my audience needs to see
-            a tool used in a few different contexts before they buy.
+            Bundled partnerships and multi-post series work best. They keep my
+            content authentic &amp; drive better conversions for the brand.
           </p>
         </div>
       </section>
 
       <footer className="border-t border-zinc-800 bg-zinc-950 text-white">
-        <div className="mx-auto max-w-5xl px-4 py-10 text-center sm:px-6 sm:py-12">
+        <div className="mx-auto max-w-5xl px-4 py-8 text-center sm:px-6 sm:py-10">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
             Mika Reyes
           </p>
@@ -567,6 +555,7 @@ export function MediaKitPageContent() {
           </p>
         </div>
       </footer>
+      </div>
     </div>
   );
 }
