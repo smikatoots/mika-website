@@ -75,11 +75,11 @@ export function DemographicPieChart({
   const chartSlices = slicesWithOther(slices);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  let cursor = 0;
   const arcs = chartSlices.map((slice, index) => {
-    const startAngle = cursor;
-    cursor += (slice.percent / 100) * 360;
-    const endAngle = cursor;
+    const startAngle = chartSlices
+      .slice(0, index)
+      .reduce((sum, s) => sum + (s.percent / 100) * 360, 0);
+    const endAngle = startAngle + (slice.percent / 100) * 360;
     return {
       ...slice,
       index,

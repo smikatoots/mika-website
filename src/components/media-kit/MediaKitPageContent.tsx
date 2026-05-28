@@ -9,7 +9,7 @@ import { siteLink } from "@/lib/ui/site-styles";
 
 const CONTACT_EMAIL = "partner@mikareyes.com";
 const INSTAGRAM_HANDLE = "@its.mikareyes";
-const STATS_AS_OF = "May 21, 2026";
+const STATS_AS_OF = "May 28, 2026";
 const PROFILE_IMAGE = "/media-kit/mika-reyes.png";
 
 const textEmphasis = "font-semibold text-zinc-950";
@@ -186,7 +186,7 @@ export function MediaKitPageContent() {
               <p>
                 They also don&apos;t just scroll.{" "}
                 <strong className="font-medium text-zinc-950">
-                  94.7% of my reach is non-followers
+                  94.9% of my reach is non-followers
                 </strong>
                 , so content keeps spreading past my own audience. Engagement
                 runs about{" "}
@@ -212,12 +212,12 @@ export function MediaKitPageContent() {
               hint="~7x IG industry avg"
             />
             <MetricCard
-              value="505K+"
+              value="620K+"
               label="Views / Month"
               hint="Instagram, last 30 days"
             />
             <MetricCard
-              value="94.7%"
+              value="94.9%"
               label="Non-Follower Reach"
               hint="Content spreads organically"
             />
@@ -239,31 +239,31 @@ export function MediaKitPageContent() {
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Followers</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    9,867
+                    11,365
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Views</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    504,525
+                    620,098
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Accounts Reached</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    304,733
+                    385,151
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Non-Follower Reach</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    94.7%
+                    94.9%
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Interactions</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    45,761
+                    63,110
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
@@ -433,7 +433,7 @@ export function MediaKitPageContent() {
         <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 md:px-8 md:py-16">
           <SectionEyebrow>Partnerships</SectionEyebrow>
           <p className="mt-4 w-full max-w-none text-base leading-relaxed text-zinc-300 sm:text-[1.05rem]">
-            You work directly with me. No agency or no manager in between.
+            You work directly with me. No agency and no manager in between.
             I&apos;m easy to work with &amp; excited to share products I&apos;d
             actually use &amp; recommend.
           </p>
