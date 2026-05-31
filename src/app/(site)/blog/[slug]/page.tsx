@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { renderBlogMdx } from "@/components/blog/render-blog-mdx";
 import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadBlogMdxPost } from "@/lib/blog/load-mdx-post";
+import { formatSiteDate } from "@/lib/format-date";
 import { BackLink } from "@/components/ui/BackLink";
 import { BlogPostViewTracker } from "@/components/blog/BlogPostViewTracker";
 import { InternalLink } from "@/components/ui/InternalLink";
@@ -67,12 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
           className={`mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 ${textMuted}`}
         >
           <time dateTime={publishedAt} className="whitespace-nowrap">
-            Published{" "}
-            {new Date(publishedAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            Published {formatSiteDate(publishedAt)}
           </time>
           {(frontmatter.tags?.length ?? 0) > 0 ? (
             <ul className="m-0 flex list-none flex-wrap gap-2 p-0">

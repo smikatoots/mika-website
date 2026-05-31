@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { NotionDocument } from "@/components/notion/NotionDocument";
 import { isNotionConfigured } from "@/lib/notion/config";
 import { getPostByPath, getPostSummaries } from "@/lib/notion/posts";
+import { formatSiteDate } from "@/lib/format-date";
 import { BackLink } from "@/components/ui/BackLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -65,12 +66,7 @@ export default async function SitePage({ params }: Props) {
           dateTime={post.lastEdited}
           className={`mt-3 block ${textMuted}`}
         >
-          Updated{" "}
-          {new Date(post.lastEdited).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          Updated {formatSiteDate(post.lastEdited)}
         </time>
       </header>
       <div className="mt-10">

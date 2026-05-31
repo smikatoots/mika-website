@@ -1,8 +1,30 @@
 import type { MDXComponents } from "mdx/types";
+import { Children, isValidElement, type ReactNode } from "react";
 
 import { siteLink } from "@/lib/ui/site-styles";
 import { CodeBlock } from "@/components/blog/CodeBlock";
 import { MdxImage } from "@/components/blog/MdxImage";
+
+function isImageOnlyParagraph(children: ReactNode): boolean {
+  const meaningful = Children.toArray(children).filter((child) => {
+    if (typeof child === "string" || typeof child === "number") {
+      return String(child).trim().length > 0;
+    }
+    return isValidElement(child);
+  });
+
+  if (meaningful.length !== 1) {
+    return false;
+  }
+
+  const only = meaningful[0];
+  if (!isValidElement(only)) {
+    return false;
+  }
+
+  const props = only.props as { src?: string };
+  return typeof props.src === "string";
+}
 
 export const blogMdxComponents: MDXComponents = {
   h1: (props) => (
@@ -26,9 +48,17 @@ export const blogMdxComponents: MDXComponents = {
   h4: (props) => (
     <h4 className="mt-6 text-lg font-semibold text-zinc-900" {...props} />
   ),
-  p: (props) => (
-    <p className="mb-5 leading-relaxed text-zinc-800" {...props} />
-  ),
+  p: ({ children, ...props }) => {
+    if (isImageOnlyParagraph(children)) {
+      return <>{children}</>;
+    }
+
+    return (
+      <p className="mb-5 leading-relaxed text-zinc-800" {...props}>
+        {children}
+      </p>
+    );
+  },
   a: (props) => <a className={siteLink} {...props} />,
   ul: (props) => (
     <ul className="my-4 list-disc space-y-2 pl-6 text-zinc-800" {...props} />

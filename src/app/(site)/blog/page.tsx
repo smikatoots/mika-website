@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { allTagsFromManifest, loadBlogManifest } from "@/lib/blog/manifest";
+import { formatSiteDate } from "@/lib/format-date";
 import { BackLink } from "@/components/ui/BackLink";
 import { InternalLink } from "@/components/ui/InternalLink";
 import { PageHero } from "@/components/ui/PageHero";
@@ -118,13 +119,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
                   className="whitespace-nowrap tabular-nums"
                   dateTime={post.published ?? post.lastEdited}
                 >
-                  {new Date(
-                    post.published ?? post.lastEdited,
-                  ).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
+                  {formatSiteDate(post.published ?? post.lastEdited, "short")}
                 </time>
               </span>
             </InternalLink>

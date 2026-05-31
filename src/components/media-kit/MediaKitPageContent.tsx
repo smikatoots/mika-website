@@ -176,7 +176,7 @@ export function MediaKitPageContent() {
                 productivity software, and online education at scale. It&apos;s
                 not my audience either.{" "}
                 <strong className="font-medium text-zinc-950">
-                  71% of my followers are women, 81% are between 25 and 54
+                  69% of my followers are women, 81% are between 25 and 54
                 </strong>
                 , and most of them are operators, founders, and professionals
                 who are paying customers of the products you sell. It&apos;s one
@@ -239,7 +239,7 @@ export function MediaKitPageContent() {
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Followers</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    11,365
+                    11,547
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
@@ -299,8 +299,8 @@ export function MediaKitPageContent() {
             <DemographicPieChart
               title="Gender"
               slices={[
-                { label: "Women", percent: 71.1 },
-                { label: "Men", percent: 28.9 },
+                { label: "Women", percent: 68.8 },
+                { label: "Men", percent: 31.2 },
               ]}
               note={
                 <>

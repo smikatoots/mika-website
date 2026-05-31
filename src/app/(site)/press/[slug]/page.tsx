@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { renderPressMdx } from "@/components/press/render-press-mdx";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { loadPressMdxPost } from "@/lib/press/load-mdx";
+import { formatSiteDate } from "@/lib/format-date";
 import { BackLink } from "@/components/ui/BackLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -64,14 +65,7 @@ export default async function PressDetailPage({ params }: Props) {
         </h1>
         {post.frontmatter.lastEdited ? (
           <p className={`mt-2 ${textMuted}`}>
-            Updated{" "}
-            {new Date(
-              post.frontmatter.lastEdited,
-            ).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            Updated {formatSiteDate(post.frontmatter.lastEdited)}
           </p>
         ) : null}
         {ext ? (

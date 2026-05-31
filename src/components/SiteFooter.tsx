@@ -6,7 +6,9 @@ export function SiteFooter() {
     <footer
       className={`border-t border-zinc-200 bg-white py-10 text-center ${textMuted}`}
     >
-      © {new Date().getFullYear()} {SITE_NAME}
+      ©{" "}
+      <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
+      {SITE_NAME}
     </footer>
   );
 }

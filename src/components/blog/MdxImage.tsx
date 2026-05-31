@@ -37,7 +37,7 @@ export function MdxImage({ src, alt, title }: Props) {
 
   return (
     <>
-      <span className="my-6 block text-center">
+      <figure className="my-6 text-center">
         <span className="inline-block overflow-hidden rounded-[10px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -48,11 +48,11 @@ export function MdxImage({ src, alt, title }: Props) {
           />
         </span>
         {title ? (
-          <span className="mt-2 block text-center text-sm leading-relaxed text-zinc-500">
+          <figcaption className="mt-2 text-sm leading-relaxed text-zinc-500">
             {title}
-          </span>
+          </figcaption>
         ) : null}
-      </span>
+      </figure>
 
       {mounted && open
         ? createPortal(

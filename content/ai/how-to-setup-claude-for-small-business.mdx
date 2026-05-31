@@ -1,0 +1,106 @@
+---
+title: How to Setup Claude for Small Business
+description: >-
+  Anthropic's Claude for Small Business plugin in Cowork connects QuickBooks,
+  PayPal, HubSpot, and more, with 15 ready workflows. Setup in about 15 minutes.
+tags:
+  - claude
+  - setup
+  - productivity
+  - beginner
+published: "2026-05-31"
+date: "2026-05-31"
+cta: Install the plugin
+order: 20
+---
+
+Small businesses make up about 44% of U.S. GDP. Most of that work still runs on QuickBooks, PayPal, HubSpot, and a pile of tabs nobody wants to open on a Sunday night.
+
+Anthropic just shipped Claude for Small Business: a plugin inside the Claude Cowork desktop app that hooks into those tools and ships with 15 workflows for payroll prep, month-end close, invoice chasing, and the rest. I have not run payroll through it yet, but the setup itself is straightforward if you have the right plan and an updated Cowork build.
+
+## Why bother
+
+A lot of owners already pay for Claude and still use it like a smarter Google. One question, one answer, close the tab. The Small Business plugin is different because it runs in Cowork on your Mac or Windows machine and can read whatever your connected accounts can see. Plan on about 15 minutes to install the plugin, run onboarding, and connect your first tool or two.
+
+> Claude inherits the permissions of whatever account you sign in with. If your bookkeeper cannot open payroll in QuickBooks today, Claude will not see payroll either. Most owners should connect with their own admin login.
+
+## Before you start
+
+You need three things:
+
+1. A paid Claude plan: Pro ($20/mo), Max ($100 to $200/mo), Team, or Enterprise. Claude for Small Business is included on paid plans at no extra cost. The free tier does not include it.
+
+2. The Claude Cowork desktop app on Mac or Windows. Cowork and this plugin do not run in the browser or on mobile. Download from [claude.com/download](https://claude.com/download) if you need it, then update to the latest version.
+
+3. Admin access to the tools you want to connect: QuickBooks Online, PayPal, HubSpot, Canva, DocuSign, Google Workspace, Microsoft 365. You do not need all of them. Start with what you actually use.
+
+## Set up Claude for Small Business
+
+### 1. Open the Directory and install the plugin
+
+Open Claude Cowork. Open the Directory from the sidebar, click Plugins, and search for `small business`. You should see Small Business by Anthropic in the results.
+
+![Directory search for Small Business plugin](/ai-guides/claude-smb-directory-search.png "In Cowork Directory, open Plugins and search for small business.")
+
+Click the card, then hit Install on the plugin page. The bundle downloads as one package: workflows, skills, and connector definitions. Usually about 60 seconds.
+
+![Small Business plugin install page](/ai-guides/claude-smb-install.png "Click Install on the Small Business plugin page.")
+
+If Small Business does not show up, Cowork is probably on an old build. Go to Settings, click Check for updates, install, and restart. That fixes it most of the time.
+
+### 2. Type /smb-onboard
+
+In a new chat, type `/smb-onboard` and send. Claude walks you through onboarding: your business, your tools, which workflows you want first. You do not have to guess the order.
+
+Prefer plain English? Type "get me started" instead. Same flow, less formal.
+
+### 3. Connect your tools
+
+When Claude asks you to connect tools, start with the ones you touch every week. At launch, the main connectors are:
+
+- QuickBooks (accounting, invoicing, payroll prep)
+- PayPal (payments, settlements, refunds)
+- HubSpot (leads, deals, contacts, campaigns)
+- Canva (marketing creative)
+- DocuSign (contracts and agreements)
+- Google Workspace (Gmail, Drive, Calendar)
+- Microsoft 365 (Outlook, Word, Excel, Calendar)
+
+You can add Slack, Stripe, Square, Gmail, and Outlook later. For each connector, Claude opens that tool's OAuth login in your browser. Sign in once, approve permissions, done. About 60 to 90 seconds per tool.
+
+### 4. Run your first workflow
+
+After install, open the Small Business plugin in your plugins list to see every skill and slash command. Type `/` in chat to invoke one, or let Claude pick the right workflow for the task.
+
+![Small Business plugin skills and slash commands](/ai-guides/claude-smb-skills.png "Browse installed skills and slash commands in the Small Business plugin settings.")
+
+A few worth trying first:
+
+- `/plan-payroll` forecasts your next payroll run from QuickBooks and flags anything unusual
+- `/close-month` reconciles books, finds missing entries, prepares month-end close
+- `/monday-brief` gives you a one-page weekly business pulse
+- `/canva-creator` runs a campaign end to end across your connected marketing tools
+
+The bundle also includes invoice chasing (`/invoice-chase`), margin analysis (`/margin-analyzer`), contract review (`/contract-review`), lead triage (`/lead-triage`), cash flow snapshots (`/cash-flow-snapshot`), CRM cleanup (`/crm-cleanup`), and more. Ask "what workflows can I run?" in Cowork if you want a list in plain English.
+
+### 5. Optional: take the free training first
+
+PayPal and Anthropic built AI Fluency for Small Business: nine lessons, 54 minutes, certificate when you finish. You do not need a Claude subscription to take it. Find it at [anthropic.skilljar.com/ai-fluency-for-small-businesses](https://anthropic.skilljar.com/ai-fluency-for-small-businesses). If payroll and month-end close make you nervous, those 54 minutes are a reasonable buffer before you automate anything sensitive.
+
+## Where to go from here
+
+Brand new to Cowork? Do steps 1 through 3 only. Connect QuickBooks or PayPal plus one marketing tool. Run `/monday-brief` once before you touch payroll or close workflows.
+
+Already living in Cowork? Install the plugin, run `/smb-onboard`, connect HubSpot or Google Workspace if you have not already, then try `/canva-creator` or `/lead-triage`.
+
+Handing this to a bookkeeper or VA? Have them connect with their own login only if that login already has the right permissions. Otherwise you will wonder why Claude "cannot see" payroll or bank data.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+2. [Daily Briefing](/ai/daily-briefing)
+3. [Chat-Based AI vs Agentic AI (side by side comparison)](/ai/chat-based-ai-vs-agentic-ai)
+4. [What is a Skill?](/ai/what-is-a-skill)
+5. [5 AI Tools That Save Me 10+ Hours a Week](/ai/five-ai-tools-save-10-hours-weekly)
