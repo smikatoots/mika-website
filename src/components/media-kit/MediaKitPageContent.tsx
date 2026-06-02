@@ -9,7 +9,7 @@ import { siteLink } from "@/lib/ui/site-styles";
 
 const CONTACT_EMAIL = "partner@mikareyes.com";
 const INSTAGRAM_HANDLE = "@its.mikareyes";
-const STATS_AS_OF = "May 28, 2026";
+const STATS_AS_OF = "June 1, 2026";
 const PROFILE_IMAGE = "/media-kit/mika-reyes.png";
 
 const textEmphasis = "font-semibold text-zinc-950";
@@ -212,7 +212,7 @@ export function MediaKitPageContent() {
               hint="~7x IG industry avg"
             />
             <MetricCard
-              value="620K+"
+              value="626K+"
               label="Views / Month"
               hint="Instagram, last 30 days"
             />
@@ -239,19 +239,19 @@ export function MediaKitPageContent() {
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Followers</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    11,547
+                    11,731
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Views</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    620,098
+                    626,136
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Accounts Reached</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    385,151
+                    391,578 (+186%)
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
@@ -263,7 +263,7 @@ export function MediaKitPageContent() {
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Interactions</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    63,110
+                    65,511
                   </td>
                 </tr>
                 <tr className="border-b border-zinc-100">
@@ -275,7 +275,7 @@ export function MediaKitPageContent() {
                 <tr className="border-b border-zinc-100">
                   <td className="py-3 pr-4 text-zinc-600">Story Views</td>
                   <td className="py-3 font-medium tabular-nums text-zinc-950">
-                    2,610
+                    15,027
                   </td>
                 </tr>
                 <tr>
