@@ -41,13 +41,13 @@ In the Claude desktop app, go to **Settings → Claude in Chrome (Beta) → Gene
 
 ![Claude in Chrome settings with Allow all browser actions enabled](/ai-guides/book-flights-allow-browser-actions.png "Turn on Allow all browser actions under Claude in Chrome → General.")
 
-### **Step 2: Connect Expedia or Booking.com**
+### **Step 2: Connect Expedia**
 
 Connectors let Claude search flights from inside Claude before it opens the browser to book.
 
-Go to **Settings → Connectors** and connect **Expedia** or **Booking.com** (whichever you already have an account with). Set interactive tools like **Flight Search** to **Always allow** so research doesn't stall mid-trip.
+Go to **Settings → Connectors** and connect **Expedia**. Set interactive tools like **Flight Search** to **Always allow** so research doesn't stall mid-trip.
 
-Expedia and Booking.com work well if you already log into those sites. Claude can also book through **Google Flights** in the browser when that's the better path.
+Expedia works well if you already log into the site. Claude can also book through **Google Flights** in the browser when that's the better path.
 
 ![Expedia connector with Flight Search and Hotel Search set to Always allow](/ai-guides/book-flights-expedia-connector.png "Connect Expedia and allow Flight Search so Claude can research fares inside Claude.")
 
@@ -335,6 +335,20 @@ You'll see it working in a Cowork browser window. You can watch live or ignore i
 Before anything charges your card, Claude should show you the final total, baggage rules, and cancellation terms. Only say **"Go"**, **"Confirm"**, **"Purchase"**, **"Book it"**, or **"Yes, charge it"** when you're ready.
 
 After booking, you should get a clean confirmation summary (confirmation code, seat, total charged) from your project instructions.
+
+---
+
+## Safety first
+
+**1. Sensitive information needs a real strategy**
+
+The way Boris Cherny did the actual booking was by giving Claude access to sensitive information like credit card numbers. If you're going that far, I recommend using something like [1Password for agents](https://1password.com/solutions/agentic-ai) to pass credentials safely at runtime instead of pasting them into project instructions or chat.
+
+Personally, I've done the booking research step but haven't yet done the payment step. On a personal level, I'm not there yet with passing my financial information to Claude. Use wisely!
+
+**2. Expect some trial and error**
+
+Depending on your setup, there might be a bit of prompt handling or trial and error to get this right. Claude in the browser is quite finicky, so stay conscious of what it's doing when you move into the booking flow. I've found the most success using the **Expedia MCP connector** for researching fares inside Claude, then switching to the browser only when it's time to book.
 
 ---
 

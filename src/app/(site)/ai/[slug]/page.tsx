@@ -11,6 +11,7 @@ import {
   resolveAiGuidePublishedDate,
 } from "@/lib/ai-guides/load-guides";
 import { formatSiteDate } from "@/lib/format-date";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
 import { InternalLink } from "@/components/ui/InternalLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
@@ -44,7 +45,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: guide.frontmatter.title,
     description,
-    openGraph: { title: guide.frontmatter.title, description },
+    openGraph: buildOpenGraph({
+      title: guide.frontmatter.title,
+      description,
+    }),
+    twitter: buildTwitter({
+      title: guide.frontmatter.title,
+      description,
+    }),
   };
 }
 

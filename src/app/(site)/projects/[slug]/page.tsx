@@ -6,6 +6,7 @@ import { renderProjectMdx } from "@/components/projects/render-project-mdx";
 import { projectTagClass } from "@/components/projects/project-tag-styles";
 import { loadProjectsManifest } from "@/lib/projects/manifest";
 import { loadProjectMdxPost } from "@/lib/projects/load-mdx";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
 import { ProjectExternalLink } from "@/components/projects/ProjectExternalLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
@@ -42,7 +43,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.frontmatter.title,
     description: project.frontmatter.title,
-    openGraph: { title: project.frontmatter.title },
+    openGraph: buildOpenGraph({ title: project.frontmatter.title }),
+    twitter: buildTwitter({ title: project.frontmatter.title }),
   };
 }
 

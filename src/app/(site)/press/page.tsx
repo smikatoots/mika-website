@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { PressCard } from "@/components/press/PressCard";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { BackLink } from "@/components/ui/BackLink";
 import { PageHero } from "@/components/ui/PageHero";
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
   title: "Press",
   description:
     "Press, podcasts, talks, and features — media gallery from the archive.",
-  openGraph: { title: "Press" },
+  openGraph: buildOpenGraph({ title: "Press" }),
+  twitter: buildTwitter({ title: "Press" }),
 };
 
 export default async function PressIndexPage() {

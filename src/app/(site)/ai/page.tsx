@@ -4,6 +4,7 @@ import { AiResourceCard } from "@/components/ai-guides/AiResourceCard";
 import { AI_HUB_FILTER_TAGS } from "@/lib/ai-guides/constants";
 import { loadAllAiGuideIndexEntries } from "@/lib/ai-guides/load-guides";
 import { homeBioLinks } from "@/lib/home-bio-links";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { siteLink } from "@/lib/ui/site-styles";
 import { BackLink } from "@/components/ui/BackLink";
 import { InternalLink } from "@/components/ui/InternalLink";
@@ -14,7 +15,8 @@ export const metadata: Metadata = {
   title: "AI Guides",
   description:
     "Become time-rich and stay ahead in the new age of AI — practical guides aligned with what I share on social.",
-  openGraph: { title: "AI Guides" },
+  openGraph: buildOpenGraph({ title: "AI Guides" }),
+  twitter: buildTwitter({ title: "AI Guides" }),
 };
 
 type Props = {

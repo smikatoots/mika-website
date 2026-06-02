@@ -6,6 +6,7 @@ import { renderPressMdx } from "@/components/press/render-press-mdx";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { loadPressMdxPost } from "@/lib/press/load-mdx";
 import { formatSiteDate } from "@/lib/format-date";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -44,7 +45,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.title,
-    openGraph: { title: post.frontmatter.title },
+    openGraph: buildOpenGraph({ title: post.frontmatter.title }),
+    twitter: buildTwitter({ title: post.frontmatter.title }),
   };
 }
 

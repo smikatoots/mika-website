@@ -5,6 +5,7 @@ import { NotionDocument } from "@/components/notion/NotionDocument";
 import { isNotionConfigured } from "@/lib/notion/config";
 import { getPostByPath, getPostSummaries } from "@/lib/notion/posts";
 import { formatSiteDate } from "@/lib/format-date";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -33,7 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.title,
-    openGraph: { title: post.title },
+    openGraph: buildOpenGraph({ title: post.title }),
+    twitter: buildTwitter({ title: post.title }),
   };
 }
 

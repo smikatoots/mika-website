@@ -6,6 +6,7 @@ import { renderBlogMdx } from "@/components/blog/render-blog-mdx";
 import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadBlogMdxPost } from "@/lib/blog/load-mdx-post";
 import { formatSiteDate } from "@/lib/format-date";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
 import { BlogPostViewTracker } from "@/components/blog/BlogPostViewTracker";
 import { InternalLink } from "@/components/ui/InternalLink";
@@ -39,7 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.title,
-    openGraph: { title: post.frontmatter.title },
+    openGraph: buildOpenGraph({ title: post.frontmatter.title }),
+    twitter: buildTwitter({ title: post.frontmatter.title }),
   };
 }
 

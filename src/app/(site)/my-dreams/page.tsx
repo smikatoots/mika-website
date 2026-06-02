@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { DreamsPageContent } from "@/components/dreams/DreamsPageContent";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
 import { PageHero } from "@/components/ui/PageHero";
 import { mainProse } from "@/lib/ui/site-styles";
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
   title: "Dreams",
   description:
     "Dreams and goals — some deep, some vanity; dreams nonetheless.",
-  openGraph: { title: "Dreams" },
+  openGraph: buildOpenGraph({ title: "Dreams" }),
+  twitter: buildTwitter({ title: "Dreams" }),
 };
 
 export default function MyDreamsPage() {

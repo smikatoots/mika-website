@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { loadProjectsManifest } from "@/lib/projects/manifest";
 import { BackLink } from "@/components/ui/BackLink";
 import { PageHero } from "@/components/ui/PageHero";
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Side projects, templates, games, and experiments — past and present.",
-  openGraph: { title: "Projects" },
+  openGraph: buildOpenGraph({ title: "Projects" }),
+  twitter: buildTwitter({ title: "Projects" }),
 };
 
 export default async function ProjectsIndexPage() {

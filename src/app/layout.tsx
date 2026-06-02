@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SiteStructuredData } from "@/components/SiteStructuredData";
+import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_SEO_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 import "./globals.css";
 
@@ -17,30 +24,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: SITE_SEO_NAME,
   title: {
     default: SITE_NAME,
     template: `%s · ${SITE_NAME}`,
   },
-  description: "Mika Reyes — AI, startups, and life.",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    description: "Mika Reyes — AI, startups, and life.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1024,
-        height: 537,
-        alt: "Mika Reyes — follow for real talk on founder life, AI, and living time-rich.",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    images: ["/og-image.jpg"],
-  },
+  description: SITE_DESCRIPTION,
+  openGraph: buildOpenGraph(),
+  twitter: buildTwitter(),
 };
 
 export default function RootLayout({
@@ -56,6 +47,7 @@ export default function RootLayout({
       className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        <SiteStructuredData />
         {gaMeasurementId ? (
           <>
             <script
