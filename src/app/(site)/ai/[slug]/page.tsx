@@ -2,7 +2,6 @@ import { cache } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-import { AiGuideBusinessCtaBlock } from "@/components/ai-guides/AiGuideBusinessCtaBlock";
 import { AiGuideSocialCtaBlock } from "@/components/ai-guides/AiGuideSocialCtaBlock";
 import { renderAiGuideMdx } from "@/components/ai-guides/render-ai-guide-mdx";
 import {
@@ -100,10 +99,9 @@ export default async function AiGuidePage({ params }: Props) {
             </ul>
           ) : null}
         </div>
-        <AiGuideSocialCtaBlock />
       </header>
       <div className="mt-10">{content}</div>
-      <AiGuideBusinessCtaBlock />
+      <AiGuideSocialCtaBlock />
     </article>
   );
 }

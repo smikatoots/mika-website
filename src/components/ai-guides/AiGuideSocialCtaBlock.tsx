@@ -4,7 +4,7 @@ const MAVEN_WORKSHOP_URL =
   "https://maven.com/mika-reyes/master-claude-code-as-a-non-technical-pro";
 
 /**
- * Shared promo block at the top of every AI guide (`/ai/*`). Edit copy and links
+ * Shared promo block at the bottom of every AI guide (`/ai/*`). Edit copy and links
  * here only — it is reused across all guide pages.
  */
 export function AiGuideSocialCtaBlock() {
