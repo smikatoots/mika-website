@@ -1,0 +1,152 @@
+---
+title: How to Connect Meta Ads to Claude
+description: >-
+  Meta Ads AI Connectors let you manage Facebook and Instagram ads from Claude
+  in 5 minutes. No developer app, no API keys. Includes a simple Cowork dashboard
+  prompt to monitor your ad performance.
+tags:
+  - claude
+  - cowork
+  - connectors
+  - marketing
+  - meta-ads
+  - beginner
+published: "2026-06-09"
+date: "2026-06-09"
+cta: Connect Meta Ads in 5 minutes
+order: 21
+---
+
+I hate ads.
+
+Not the concept. The execution. At my old startup, I hired two people at a marketing agency and still spent months inside Meta's interface trying to figure out what was working. It ate time and money. I eventually gave up because the UI is confusing, the reporting is scattered, and every question meant clicking through five tabs.
+
+Meta launched **Meta Ads AI Connectors** on April 29, 2026. It changes that. You connect Claude directly to your ad account through an official MCP server (Model Context Protocol, basically a secure pipe between Claude and your data). No developer app. No API keys. No copy-pasting CSV exports every Monday.
+
+I recently helped Monica, founder of [But Better](https://butbetter.shop) (a nut butter brand on Shopify), set this up. She went from juggling Ads Manager to asking Claude plain-language questions about spend, performance, and what to scale. Setup took about 5 minutes.
+
+This guide walks you through the connector setup, including steps Meta does not spell out clearly, plus a simple prompt to build a Meta Ads monitoring dashboard in Cowork.
+
+## Why this matters
+
+If you run ads on Meta, your performance data lives inside one of the most confusing interfaces in marketing. You end up doing mental math: "Which campaign is actually profitable? Should I refresh this creative or kill it?" Claude with the Meta Ads MCP can pull live ad data and answer those questions in plain English, without you learning Ads Manager's layout.
+
+> **Key insight:** The connector gets Claude access to your ad account. A Cowork Live Artifact turns that access into something you actually open every morning.
+
+## Before you start
+
+You will need:
+
+- A **Meta Business account** with admin access to at least one ad account
+- **Claude** on web (claude.ai) or the desktop app, on a paid plan with Cowork and Live Artifacts
+- About **5 minutes** for setup
+
+**Open beta note:** Meta is rolling this out gradually. Some accounts are not enabled yet. If you complete setup but Claude says the connector is disabled, your account may not be in the beta yet. Check back in a week or two, or confirm eligibility in Meta's Business Help Center under "Manage Ads from an AI Agent with Meta Ads AI Connectors."
+
+## Connect Claude to Meta Ads
+
+### 1. **Get the official Meta MCP server URL**
+
+Go to Meta's Business Help Center page: **Manage Ads from an AI Agent with Meta Ads AI Connectors.** Copy the official MCP server URL Meta publishes there.
+
+The URL is:
+
+```
+https://mcp.facebook.com/ads
+```
+
+Meta hosts and maintains this server. You are not running anything yourself. Do not use third-party URLs or GitHub repos claiming to be Meta MCP servers.
+
+### 2. **Open Claude → Settings → Connectors**
+
+In Claude.ai (web) or the desktop app, click your name in the bottom-left, choose **Settings**, then go to the **Connectors** tab. Click **Add custom connector**.
+
+![Add custom connector modal in Claude](/ai-guides/meta-ads-add-custom-connector.png "Name it Meta Ads and paste the MCP URL.")
+
+### 3. **Paste the MCP URL and connect**
+
+Drop `https://mcp.facebook.com/ads` into the URL field. Name it **Meta Ads**. Click **Add**, then **Connect**.
+
+![Meta Ads connector screen with Connect button](/ai-guides/meta-ads-connect-button.png "After adding the connector, click Connect to start Facebook authorization.")
+
+### 4. **Authorize with Facebook**
+
+A Facebook OAuth window opens. Sign in with the Facebook profile that has admin access to your ad account(s).
+
+You will see two screens.
+
+**Screen 1:** Confirm you are connecting Claude to the ads MCP server. Claude will have the same ad management permissions as you. Meta is explicit: you are responsible for any spend or changes it makes.
+
+![Facebook OAuth connect screen](/ai-guides/meta-ads-oauth-connect.png "Confirm the connection to the ads MCP server.")
+
+**Screen 2:** Review what Claude can access: product catalogs, ad management, ads stats, and business settings. Click **Save**.
+
+![Facebook permissions review screen](/ai-guides/meta-ads-oauth-permissions.png "Review and save the permissions Claude will receive.")
+
+Permissions granted include: `ads_read`, `ads_management`, `read_insights`, and `business_management`.
+
+### 5. **Pick which ad accounts Claude can touch**
+
+Meta asks which ad accounts and Pages to expose. **Pick only the ones you actually want Claude to manage.** If you have personal and client accounts, keep client accounts off this list unless you are cleared to manage them.
+
+For a first test, grant access to one ad account only.
+
+### 6. **Set tool permissions to "Needs approval"**
+
+Back in Claude Settings → Connectors → Meta Ads, you will see a list of 40+ tools Claude can call (`ads_activate_entity`, `ads_catalog_create`, and so on).
+
+**Set these to "Needs approval"** (the hand icon), especially anything that creates, edits, or activates ads. Claude has to ask before making changes. You keep read access for reporting without accidentally pausing a campaign mid-flight.
+
+![Meta Ads connector tool permissions](/ai-guides/meta-ads-tool-permissions.png "Set write tools to Needs approval for safety.")
+
+This granular control is not obvious from Meta's setup docs. Worth 2 minutes now so you do not get surprised later.
+
+### 7. **Test the connection (read-only first)**
+
+Open a new chat and type:
+
+> What ad accounts do I have connected, and what was my total spend in the last 7 days?
+
+If Claude returns live numbers, you are in.
+
+If it says the connector is disabled, your account may not be in the open beta yet. Double-check you are logged into the right Facebook profile and that you selected the correct ad account during OAuth.
+
+## Build a simple Meta Ads dashboard
+
+Once the connector is live, open **Cowork → Live Artifacts → New artifact → Chat with Claude** and paste a prompt like the one below.
+
+You do not need to specify charts, tables, or layout. Tell Claude what you are trying to watch and let it pull from your connected Meta Ads account. It will focus on what actually matters to someone running ads: spend, performance, what is working, what is fatiguing, and where budget is going.
+
+### Cowork build prompt (copy and customize)
+
+```text
+Build me a simple Live Artifact dashboard to monitor my Meta Ads.
+
+My goal: see how my ads are performing at a glance, without opening Ads Manager.
+
+Pull live data from my connected Meta Ads account. Show only what a Meta Ads person would actually care about — things like spend, reach, clicks, CTR, CPC, and which campaigns or ads are performing best vs. worst.
+
+Keep it clean and minimal. Use a timeframe I can switch (7d / 14d / 30d). Add a short plain-language summary of what the data shows and one thing I should pay attention to today.
+
+Before you build, check which ad accounts I have connected and use the right one. Ask me if anything is unclear.
+```
+
+That is the whole prompt. Customize the goal line if you want. For example, "I am focused on e-commerce conversions" or "I mostly run prospecting campaigns." Claude will shape the dashboard around that.
+
+After the first build, iterate in plain English: "Add cost per purchase," "Flag anything with CTR below 2%," or "Change the default window to 30 days." Live Artifacts keep version history, so you can roll back if an edit breaks something.
+
+## Tips after your first build
+
+- **Start read-only.** Keep write tools on "Needs approval" until you trust the setup. Use the dashboard for decisions before you let Claude touch campaigns.
+- **Refresh before meetings.** Hit the reload button in the artifact header to pull hard-fresh data from Meta.
+- **Ask follow-up questions in chat.** The connector works outside Cowork too. "Which ad had the highest CTR last week?" or "Compare spend on my top 3 campaigns" are fair game once you are connected.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [Intro to Claude Live Artifacts](/ai/intro-to-claude-live-artifacts)
+2. [How to Setup Claude for Small Business](/ai/how-to-setup-claude-for-small-business)
+3. [7 New Creative Tools as Claude Connectors](/ai/8-new-creative-tools-as-claude-connectors)
+4. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+5. [Health Coach (MCP + Live Artifact dashboard)](/ai/health-dashboard)
