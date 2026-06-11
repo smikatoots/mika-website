@@ -4,7 +4,7 @@ import path from "node:path";
 
 import matter from "gray-matter";
 
-import type { AiGuideIndexEntry } from "./types";
+import type { AiGuideIndexEntry, AiGuideStatus } from "./types";
 
 export function assertSafeAiGuideSlug(slug: string): boolean {
   if (!slug || slug.length > 200) return false;
@@ -112,6 +112,9 @@ function parseFrontmatter(
   if (!title || !description) {
     return null;
   }
+  const statusRaw = data.status;
+  const status: AiGuideStatus =
+    statusRaw === "coming-soon" ? "coming-soon" : "published";
   return {
     title,
     description,
@@ -119,6 +122,7 @@ function parseFrontmatter(
     published: published || publishedFallback,
     cta: cta || "Open",
     order: Number.isFinite(order) ? order : 999,
+    status,
   };
 }
 

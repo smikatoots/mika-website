@@ -14,13 +14,15 @@ const cardStaticClass =
 
 export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
   const href = `/ai/${guide.slug}`;
-  const comingSoon = AI_GUIDE_COMING_SOON_SLUGS.has(guide.slug);
+  const legacyComingSoon = AI_GUIDE_COMING_SOON_SLUGS.has(guide.slug);
+  const inProgress = guide.status === "coming-soon";
+  const cardMuted = legacyComingSoon;
 
   const inner = (
     <>
       <h2
         className={
-          comingSoon
+          cardMuted
             ? "text-base font-semibold leading-snug text-zinc-800"
             : "text-base font-semibold leading-snug text-zinc-950 group-hover:text-accent"
         }
@@ -41,17 +43,23 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
       ) : null}
       <span
         className={
-          comingSoon
+          cardMuted
             ? "mt-auto pt-4 text-sm font-medium text-zinc-500"
-            : "mt-auto pt-4 text-sm font-medium text-accent group-hover:text-accent-hover"
+            : inProgress
+              ? "mt-auto pt-4 text-sm font-medium text-zinc-600 group-hover:text-accent"
+              : "mt-auto pt-4 text-sm font-medium text-accent group-hover:text-accent-hover"
         }
       >
-        {comingSoon ? "Coming soon..." : `${guide.cta} →`}
+        {legacyComingSoon
+          ? "Coming soon..."
+          : inProgress
+            ? "Preview →"
+            : `${guide.cta} →`}
       </span>
     </>
   );
 
-  if (comingSoon) {
+  if (legacyComingSoon) {
     return (
       <div
         className={cardStaticClass}

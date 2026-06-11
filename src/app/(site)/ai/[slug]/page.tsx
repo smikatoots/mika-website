@@ -2,6 +2,7 @@ import { cache } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+import { AiGuideComingSoonBlock } from "@/components/ai-guides/AiGuideComingSoonBlock";
 import { AiGuideSocialCtaBlock } from "@/components/ai-guides/AiGuideSocialCtaBlock";
 import { renderAiGuideMdx } from "@/components/ai-guides/render-ai-guide-mdx";
 import {
@@ -70,6 +71,7 @@ export default async function AiGuidePage({ params }: Props) {
     slug,
     frontmatter.published,
   );
+  const isComingSoon = frontmatter.status === "coming-soon";
 
   return (
     <article className={mainProse}>
@@ -100,7 +102,11 @@ export default async function AiGuidePage({ params }: Props) {
           ) : null}
         </div>
       </header>
-      <div className="mt-10">{content}</div>
+      {isComingSoon ? (
+        <AiGuideComingSoonBlock description={frontmatter.description} />
+      ) : (
+        <div className="mt-10">{content}</div>
+      )}
       <AiGuideSocialCtaBlock />
     </article>
   );

@@ -1,3 +1,5 @@
+export type AiGuideStatus = "published" | "coming-soon";
+
 export type AiGuideFrontmatter = {
   title: string;
   description: string;
@@ -7,6 +9,8 @@ export type AiGuideFrontmatter = {
   cta: string;
   /** Tie-breaker when publish dates are equal */
   order: number;
+  /** Hub cards stay clickable; the guide page shows an in-progress state */
+  status?: AiGuideStatus;
 };
 
 export type AiGuideIndexEntry = Omit<AiGuideFrontmatter, "published"> & {
