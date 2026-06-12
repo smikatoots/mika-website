@@ -1,0 +1,200 @@
+---
+title: Performance Review Skills (Self, Peer, Manager)
+description: >-
+  Connect Slack to Claude Cowork, save your review voice in reviewtone.md, and
+  run three skills for self-reviews, peer 360s, and upward manager reviews.
+  Copy-paste starter prompts included.
+tags:
+  - claude
+  - skills
+  - productivity
+  - career
+published: "2026-06-12"
+date: "2026-06-12"
+cta: Steal the workflow
+order: 25
+---
+
+Most people treat performance review season like a writing marathon. You sit down with a blank doc, try to remember what you did three months ago, and end up with something that sounds like everyone else's review. The real problem isn't that you're bad at writing. It's that the evidence of your work is scattered across Slack threads, project docs, and half-finished notes you never opened again.
+
+When I was a PM at LinkedIn, perf review season cost me 1.5 to 2 full days every cycle. As a PM, you're not just writing your own review. You're writing peer 360s for people across your org. I built a Claude workflow to fix that. This is part of my **Celibus AI workflow series**, and I call this one the Performance Review workflow. Same receipt pool, three different outputs, and your weekend back.
+
+## Why this matters
+
+Performance reviews reward people who can prove impact with specifics. "Strong collaborator" means nothing without the Slack thread where you unblocked a launch, or the doc where you called out a win nobody else noticed. The work happened. The receipts are already there. You just need a system that pulls them together and writes in your voice, not generic corporate mush.
+
+> **Key insight:** Your best review material isn't in your memory. It's in Slack, where you actually led, unblocked, and shipped.
+
+---
+
+## Part 1: Save your voice first
+
+**Step 1: Create a `reviewtone.md` file with examples of reviews you've already written.**
+
+Pull 2 to 3 past reviews you've written (self-reviews, peer reviews, upward reviews). Paste them into a plain markdown file. Include notes on what you like about your style: how you open, how specific you get, whether you lead with impact or growth areas. This file is what keeps Claude from sounding like a HR template generator.
+
+**Step 2: Add a short voice guide at the top of the file.**
+
+Three to five bullets is enough. Something like: "I write in first person. I lead with outcomes, not activities. I name specific people and projects. I keep growth areas honest but constructive." Claude reads this before every draft.
+
+Don't have past reviews handy, or not sure how to structure the file? Paste the prompt below into Claude Cowork and it will interview you and generate `reviewtone.md` for you.
+
+### Starter prompt: Create your reviewtone.md
+
+```
+Help me create a reviewtone.md file for my performance review workflow.
+
+Interview me briefly:
+1. What role am I in, and who reads my reviews (peers, manager, skip-level)?
+2. Paste or describe 1–2 past reviews I've written that I liked (self, peer, or upward).
+3. How do I want to sound? (e.g. direct, warm, specific, concise, first-person)
+
+Then create a reviewtone.md file with:
+- A "Voice guide" section (5 bullets max) covering tone, structure, and what to avoid
+- A "Examples" section with 1–2 anonymized excerpts from my past reviews
+- A "Format notes" section for how I open, how I handle growth areas, and how specific I get with names and projects
+
+Save it as reviewtone.md in my project folder.
+Keep it under one page. This file will be read by my perf review skills before every draft.
+```
+
+---
+
+## Part 2: Connect the apps where your receipts live
+
+**Step 3: Open Claude Cowork and connect Slack (or Microsoft Teams).**
+
+This is the MCP connector you cannot skip. Email has summaries. Docs have plans. But Slack is where the real evidence lives: the thread where you unblocked a teammate, the message where you called out a win, the back-and-forth where you made a hard call and moved the project forward. If your company runs on Teams, connect that instead.
+
+**Step 4: Connect your other work apps.**
+
+Add whatever else holds context for your role: Google Drive or Notion for docs, Gmail or Outlook for key threads, your calendar for project milestones. Slack is non-negotiable. The rest depends on where you actually work.
+
+**Step 5: Pick a folder Claude can read and write to.**
+
+Create a local folder on your desktop for perf review season. Keep `reviewtone.md` there, plus any role descriptions or competency frameworks your company uses. Claude saves drafts here so every review starts from the same place.
+
+---
+
+## Part 3: Build three skills, not one
+
+One skill won't cut it. Self-reviews, peer 360s, and upward reviews have different audiences and different framing. You want three skills that pull from the same receipt pool but write for different readers.
+
+**Step 6: Build your self-review skill.**
+
+Tell Claude what your company's self-review format looks like. Ask it to search Slack (and your other connected apps) for evidence of your impact over the review period. The output should reference specific moments, not vague strengths.
+
+**Step 7: Build your peer 360 skill.**
+
+This is the one you'll run the most. As a PM or people manager, you might be writing 5 to 10 of these per cycle. The skill should take a person's name, pull Slack threads where you collaborated with them, and draft a review in your voice using `reviewtone.md` as the style reference.
+
+**Step 8: Build your upward review skill.**
+
+Same receipt pool, different lens. You're writing about your manager: how they supported you, where they created clarity, what they could do differently. The tone shifts. The evidence still comes from Slack and your connected apps.
+
+### Starter prompt: Self-review skill
+
+Paste this into Claude Cowork. Update anything in brackets, then ask Claude to turn it into a skill.
+
+```
+Please turn this into a reusable Cowork skill called "self-review".
+
+Before drafting, read reviewtone.md in my project folder for voice and style.
+
+When I say "run my self-review for [review period, e.g. H1 2026]", do the following:
+
+1. Pull evidence from connected sources:
+   - Slack: threads where I led, unblocked others, shipped work, or drove decisions
+   - [Google Drive / Notion]: docs I authored or significantly contributed to
+   - [Gmail / Outlook]: key stakeholder threads if relevant
+   - Calendar: major milestones and launches during the period
+
+2. Organize evidence into:
+   - Top impact moments (with specifics: project, outcome, who benefited)
+   - How I collaborated and supported others
+   - Growth areas (honest, with examples)
+   - Goals for next period
+
+3. Draft my self-review in the voice from reviewtone.md.
+   Save to [my project folder] as self-review-[date].md
+
+Show me the draft. Do not submit anywhere. I will edit before pasting into [Workday / Lattice / our perf system].
+```
+
+### Starter prompt: Peer 360 skill
+
+```
+Please turn this into a reusable Cowork skill called "peer-360-review".
+
+Before drafting, read reviewtone.md in my project folder for voice and style.
+
+When I provide a colleague's name for [review period], do the following:
+
+1. Search Slack for threads where I worked with [name]:
+   - Projects we collaborated on
+   - Moments they unblocked me or I unblocked them
+   - Times they showed leadership, judgment, or craft
+   - Constructive feedback moments (specific, not vague)
+
+2. Pull any relevant context from [Google Drive / Notion / email] if connected.
+
+3. Draft a peer 360 review in my voice covering:
+   - What they do well (with receipts)
+   - Where they could grow (specific, kind, actionable)
+   - Overall recommendation tone matching our company's format
+
+Save to [my project folder] as peer-360-[name]-[date].md
+
+Show me the draft for my review before I paste into [our perf system].
+```
+
+### Starter prompt: Upward review skill
+
+```
+Please turn this into a reusable Cowork skill called "upward-review".
+
+Before drafting, read reviewtone.md in my project folder for voice and style.
+
+When I say "run my upward review for [manager name] for [review period]", do the following:
+
+1. Search Slack and connected apps for evidence of how [manager name] supported me:
+   - Coaching and feedback moments
+   - Times they removed blockers or created clarity
+   - How they handled hard situations
+   - Areas where more support would have helped
+
+2. Draft an upward review in my voice covering:
+   - What they do well as a manager (with specifics)
+   - What I need more or less of from them
+   - Honest growth feedback, framed constructively
+
+Save to [my project folder] as upward-review-[manager-name]-[date].md
+
+Show me the draft. I will edit before submitting.
+```
+
+---
+
+## Part 4: Run it, edit it, paste it
+
+**Step 9: Run each skill with the right context.**
+
+Open Cowork, type slash, pick the skill. For peer reviews, name the person. For self and upward reviews, name the review period. Claude pulls receipts, drafts in your voice, and saves the file to your folder.
+
+**Step 10: Edit before you paste.**
+
+This is the human-in-the-loop step. Read every draft. Add anything Claude missed. Cut anything that doesn't sound like you. The speed comes from drafting with receipts, not from submitting on autopilot.
+
+**Step 11: Paste into your perf review system and move on.**
+
+Copy the final version into Workday, Lattice, Culture Amp, or whatever your company uses. What used to cost you a full weekend now takes an afternoon of review and light editing.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [How Anthropic's Account Executive Preps Sales Calls with Claude Cowork](/ai/how-anthropic-account-executive-preps-sales-calls-with-claude)
+2. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+3. [What is a Skill?](/ai/what-is-a-skill)
+4. [How to Setup Global Context for Claude (CLAUDE.md, USER.md)](/ai/how-to-setup-global-context-claude)
+5. [7 Ways to Find Claude Skill Ideas That Actually Fit Your Work](/ai/7-ways-find-claude-skill-ideas)
