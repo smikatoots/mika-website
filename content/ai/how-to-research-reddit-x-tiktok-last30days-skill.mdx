@@ -1,0 +1,168 @@
+---
+title: How to Research Any Topic Across Reddit, X, and TikTok in 90 Seconds
+description: >-
+  The last30days Claude skill searches Reddit, X, YouTube, TikTok, Hacker News,
+  GitHub, Polymarket, and more in one prompt. Only the last 30 days. Real
+  engagement, not stale SEO. Part 14 of Steal This AI Workflow.
+tags:
+  - skills
+  - claude
+  - claude-code
+  - research
+  - productivity
+published: "2026-06-11"
+date: "2026-06-11"
+cta: Install the skill
+order: 24
+---
+
+You know that feeling when you need to get smart on something fast, and suddenly you're 14 tabs deep in SEO articles from 2023? Reddit threads, X posts, TikTok takes, Hacker News debates. Each tab is a different platform. Each one takes forever. I used to spend hours every week doing exactly this just to keep up with AI news.
+
+Then I found a viral Claude skill called **last30days** that searches a dozen platforms at once and only looks at the last 30 days. Real people. Real engagement. No stale blog posts. One prompt, about 90 seconds.
+
+## Why this matters
+
+Google gives you what editors ranked. This gives you what people actually engaged with this month. Reddit upvotes, X likes, YouTube transcripts, TikTok views, and even Polymarket odds where people bet real money on what they think is true. That last one broke my brain. When thousands of dollars are on the line about whether something will happen, that's a stronger signal than any press release.
+
+I used it three times this week alone: prepping for a meeting with a founder I'd never met, planning a trip to Alaska, and trying to figure out what's actually happening with the Anthropic IPO buzz. Each time, one prompt replaced what used to be an hour of tab-hopping.
+
+> **Key insight:** The best research isn't more sources. It's sources where people vote with their attention and their wallets, not their SEO budget.
+
+## What it actually does
+
+Instead of searching Google, last30days searches Reddit, X, YouTube, TikTok, Instagram Reels, Hacker News, GitHub, Threads, Bluesky, Pinterest, Perplexity, and Polymarket. All at once. Only the last 30 days.
+
+The scoring is what makes it different. Results get ranked by real signal: upvotes on Reddit, likes on tweets, views on TikTok, and actual money on Polymarket. A Reddit thread with 1,500 upvotes beats a blog post nobody read. A Polymarket market with real volume beats a pundit's guess.
+
+You type a topic. A person, company, product, trip destination, anything. The skill figures out which handles, subreddits, and channels matter, searches them in parallel, and synthesizes everything into one brief with citations.
+
+## Install it (takes 2 minutes)
+
+Pick the option that matches how you use Claude.
+
+### **If you use Claude Code (recommended)**
+
+Open Claude Code and run:
+
+```
+/plugin marketplace add mvanhorn/last30days-skill
+/plugin install last30days
+```
+
+The marketplace handles updates automatically. Reddit, Hacker News, Polymarket, and GitHub work immediately with zero config.
+
+### **If you use Cursor, Codex, or another AI coding tool**
+
+Open your terminal and run:
+
+```
+npx skills add mvanhorn/last30days-skill -g
+```
+
+The `-g` flag installs it globally so it's available across all your projects. To target Cursor specifically:
+
+```
+npx skills add mvanhorn/last30days-skill -g -a cursor
+```
+
+### **If you use Claude on the web (claude.ai)**
+
+1. Download the skill file from the [latest release on GitHub](https://github.com/mvanhorn/last30days-skill/releases/latest/download/last30days.skill)
+2. Go to **Settings → Capabilities → Skills**
+3. Click the **+** button and upload the file
+
+Make sure "Code execution and file creation" is enabled under Capabilities first. Skills won't run without it.
+
+**GitHub repo:** [github.com/mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill)
+
+## Run your first search
+
+### **Step 1: Type the slash command with your topic**
+
+In Claude Code or Cursor, type:
+
+```
+/last30days [your topic]
+```
+
+Examples:
+
+```
+/last30days Anthropic IPO
+/last30days Alaska travel tips
+/last30days [founder name]
+```
+
+The skill resolves the right people, subreddits, and channels before it searches. You don't need to know that r/ClaudeAI exists or which X account to check.
+
+### **Step 2: Let it search in parallel**
+
+The skill hits every configured source at once. Reddit threads with top comments. X posts with engagement counts. YouTube transcripts from the last month. Polymarket odds. GitHub activity if you're researching a person or tool.
+
+This takes about 60–90 seconds depending on how broad your topic is.
+
+### **Step 3: Read the synthesized brief**
+
+You get one summary ranked by what real people engaged with. Citations included. Same story from Reddit, X, and YouTube gets merged into one cluster instead of three separate results.
+
+Ask follow-up questions in the same session. The skill becomes your expert on that topic for the rest of the conversation.
+
+## Three ways I actually use it
+
+### **Before a meeting with someone new**
+
+I had a call with a founder I'd never met. Instead of skimming a stale LinkedIn profile, I ran `/last30days [her name]`. In about 30 seconds I had her recent tweets, podcast appearances, Reddit mentions, and what the community was saying about her company. I walked in knowing what she'd been working on this month, not what her bio said two years ago.
+
+### **Planning a trip**
+
+I was planning a trip to Alaska and didn't want affiliate blog posts from 2024. I ran `/last30days Alaska travel June 2026` and got real reviews from people who went in the last few weeks. Which tours were worth it. What the weather was actually like. What Reddit travelers wished they'd known.
+
+### **Cutting through headline noise**
+
+When the Anthropic IPO buzz started, every news site had a different take. I ran `/last30days Anthropic IPO` and went straight to what real people on X, Reddit, and Polymarket were saying. Not headlines. Actual sentiment and betting odds on what might happen.
+
+## Unlock more sources (optional)
+
+Reddit, Hacker News, Polymarket, and GitHub work out of the box. Run `/last30days` once and a setup wizard walks you through unlocking more:
+
+| Source | What you need | Cost |
+|---|---|---|
+| Reddit + HN + Polymarket + GitHub | Nothing | Free |
+| X / Twitter | Log into x.com in any browser | Free |
+| YouTube | `brew install yt-dlp` | Free |
+| TikTok, Instagram, Threads | ScrapeCreators API key | 100 free credits, then pay-as-you-go |
+| Bluesky | App password from bsky.app | Free |
+
+You don't need all of these on day one. Start with the free sources and add more when you hit a topic that needs TikTok or Instagram signal.
+
+## Pro tips once you're rolling
+
+### **Compare tools side by side**
+
+```
+/last30days OpenClaw vs Claude Code
+```
+
+Runs one pass comparing both sides with live GitHub star counts and community takes. Used to take 12+ minutes. Now about 3.
+
+### **Get a shareable HTML brief**
+
+```
+/last30days Anthropic IPO --emit=html
+```
+
+Saves a clean, dark-mode HTML file you can drop into Slack, email, or Notion. No raw markdown leaks.
+
+### **Say "eli5 on" for plain language**
+
+After any research run, say "eli5 on" and the synthesis rewrites in simpler language. Same data, same sources, just clearer.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [What is a Skill?](/ai/what-is-a-skill)
+2. [How to Setup Claude Code (5-Min Guide for Non-Techies)](/ai/how-to-setup-claude-code)
+3. [7 Ways to Find Claude Skill Ideas That Actually Fit Your Work](/ai/7-ways-find-claude-skill-ideas)
+4. [Daily Briefing](/ai/daily-briefing)
+5. [How Anthropic's Account Executive Preps Sales Calls with Claude Cowork](/ai/how-anthropic-account-executive-preps-sales-calls-with-claude)
