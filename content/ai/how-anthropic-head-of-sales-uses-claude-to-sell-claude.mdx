@@ -1,0 +1,211 @@
+---
+title: How Anthropic's Head of Sales Uses Claude to Sell Claude
+description: >-
+  Travis Bryant, Anthropic's head of US mid-market sales, runs call prep,
+  weekly forecasts, and 4,000-account territory scoring on Claude Cowork.
+  Three workflows you can steal, with copy-paste starter prompts.
+tags:
+  - claude
+  - skills
+  - sales
+  - productivity
+published: "2026-06-11"
+date: "2026-06-11"
+cta: Steal the playbook
+order: 22
+---
+
+Anthropic's head of US mid-market sales [just published how he runs his entire team on Claude Cowork](https://claude.com/blog/how-an-anthropic-sales-leader-uses-claude-cowork-to-run-a-4-000-account-book). One workflow scored 4,000 sales accounts overnight. The pattern isn't magic. It's three repeatable setups you can steal today, even if your book is 40 accounts instead of 4,000.
+
+## Why this matters
+
+Travis Bryant runs go-to-market for thousands of mid-market accounts at Anthropic. His job is judgment calls: where reps should spend time, what to tell leadership about the quarter. The work around those decisions used to eat his week. Pulling pipeline from Salesforce, spend from BigQuery, notes from internal docs, then reformatting everything every time a number changed.
+
+Claude Cowork flipped the balance. Travis tried Claude Code first but never got comfortable in the terminal. Cowork wrapped the same engine in an interface he could actually work in. Now scheduled skills handle the data assembly. He shows up to calls prepped, ships forecasts before Monday meetings, and ran territory scoring that used to take cross-functional teams hundreds of hours in a single night.
+
+> **Key insight:** Claude builds the what. You do the why. That's the whole game for sales leaders who want their hours back without hiring a chief of staff.
+
+## Workflow 1: Call prep on a schedule
+
+Every morning, before Travis opens his laptop, a scheduled task inside Claude Cowork scans his calendar and builds a one-page brief for every external meeting that day. Pipeline status from Salesforce. Spend data from BigQuery. Waiting in his inbox when he sits down. Zero manual work.
+
+**Step 1: Connect the tools Claude needs to see your world.**
+
+Open Claude Cowork and connect your calendar (Google Calendar or Outlook), your CRM (Salesforce, HubSpot, or whatever holds your pipeline), and any data source that shows account health or spend. Travis uses Salesforce plus BigQuery. If you don't have a warehouse, a spreadsheet export or your CRM's native reports work fine to start.
+
+Anthropic also ships a Sales plugin for Cowork with baseline skills, including a call prep template. Install it from the Directory and customize from there instead of starting from scratch.
+
+**Step 2: Write the brief format your brain actually wants.**
+
+Don't ask Claude for "a summary." Tell it the exact sections: account name, current pipeline stage, last touchpoint, open opportunities, spend trend, and two suggested talking points. The more specific the output shape, the less editing you do before the call.
+
+Travis's skill also books a conference room for any external meeting missing one. Small win, but that's the point. Stack micro-optimizations that run without you remembering.
+
+**Step 3: Turn the prompt into a Skill.**
+
+Package your call prep instructions as a Cowork Skill so Claude knows the format, data sources, and output every time. If you've never built one, describe the workflow in plain English and ask Claude to create the skill for you. No code required.
+
+**Step 4: Schedule it to run before you wake up.**
+
+This is the unlock Travis keeps coming back to. A skill you have to remember to run is a skill you'll skip on busy mornings. A scheduled task runs itself. Set it to fire every weekday morning, pull that day's calendar, and drop a brief per meeting into your inbox or a shared folder.
+
+**Step 5: Read the brief, add your judgment, get on the call.**
+
+Claude assembles the data. You bring the relationship context no dashboard captures. Show up knowing the numbers. Spend the first five minutes on strategy, not scrambling through tabs.
+
+### Starter prompt
+
+Paste this into Claude Cowork. Update anything in brackets to match your stack, then ask Claude to turn it into a scheduled skill that runs every weekday morning.
+
+```
+Please turn this into a scheduled skill that runs every weekday at 7am.
+
+---
+name: customer-call-prep
+description: Build a one-page brief for every external meeting on today's calendar
+---
+
+Scan my Google Calendar for external meetings today. For each meeting:
+
+1. Pull the account from Salesforce: pipeline stage, open opportunities, last activity date, and assigned AE.
+2. Pull recent spend or usage data from [BigQuery / your analytics source].
+3. Check if a conference room is booked. If not, book one.
+
+For each meeting, write a one-page brief with these sections:
+- Account name and attendees
+- Current pipeline status (stage, deal size, close date)
+- Spend or usage trend (last 30 days vs prior 30 days)
+- Last touchpoint summary
+- Two suggested talking points based on the data
+- One risk or open question to probe on the call
+
+Deliver each brief as a separate doc and email them to me before 8am.
+```
+
+## Workflow 2: Weekly forecast on autopilot
+
+Every Friday, a scheduled skill pulls opportunity records and commit numbers from Salesforce's Forecast tab, token spend from BigQuery, and notes from internal docs. It builds a one-page web report in the exact format Anthropic's sales leadership reads: top-line metrics, top deals, movers and decliners, forecast snapshot rolled up by manager. Deployed to a shared link before Monday's forecast call. Saves Travis about three hours a week.
+
+**Step 1: Steal the report layout from your last good forecast.**
+
+Open the forecast deck or doc your leadership actually liked. List every section: headline numbers, deal table, week-over-week changes, manager rollups, risk flags. That layout becomes the skill's output template. Encoding the format matters more than fancy prompts.
+
+**Step 2: Map where each number lives.**
+
+Write down the source for every field: Salesforce Forecast tab for commits, opportunity objects for pipeline, internal docs for narrative context, BigQuery or your analytics tool for usage or spend metrics. Claude can only pull what it's connected to. Connect those sources in Cowork before you build the skill.
+
+**Step 3: Build the forecast Skill in plain English.**
+
+Tell Claude what to pull and what the finished page should look like. Run it once manually on a Friday afternoon. Check the output against what you'd normally build by hand. Adjust section weights, table columns, or thresholds until it matches what leadership expects.
+
+**Step 4: Schedule it for Friday and deploy to a shared link.**
+
+Set the skill to run every Friday afternoon. Have Claude publish the finished page to an internal link your team already uses (Notion, Google Drive, or a simple hosted page). By Monday morning, the what is done.
+
+**Step 5: Monday is commentary only.**
+
+Walk into the forecast call with the report already live. Your job shifts from spreadsheet jockey to strategist. Add the why behind the numbers: why a deal slipped, why you're confident in a commit, what you're asking leadership for. Travis's line captures it perfectly: "Claude builds the what; I do the why."
+
+### Starter prompt
+
+Paste this into Claude Cowork on a Friday afternoon to test it. Update anything in brackets to match your tools and report format. Once the output looks right, ask Claude to schedule it to run every Friday at 4pm.
+
+```
+Please turn this into a scheduled skill that runs every Friday at 4pm.
+
+---
+name: weekly-forecast-rollup
+description: Build the one-page forecast report leadership reads on Monday
+---
+
+Pull this week's sales data and build a single-page web report:
+
+**Data sources:**
+- Salesforce Forecast tab: submitted commits by rep and manager
+- Salesforce opportunities: all open deals over $10K, sorted by stage and close date
+- [BigQuery / analytics tool]: token spend or product usage by account, week over week
+- [Internal doc or Notion page]: my notes on deal risks and narrative context
+
+**Report sections (in this order):**
+1. Headline metrics: total pipeline, weighted forecast, commit vs target, week-over-week change
+2. Top 10 deals: account, stage, amount, close date, owner, one-line status
+3. Movers: deals that advanced or slipped more than one stage this week
+4. Decliners: deals pushed out or marked at risk
+5. Manager rollup: forecast snapshot from each first-line manager
+6. Spend highlights: accounts with significant usage changes
+
+Format it as a clean, scannable web page. Deploy to a shareable link my leadership team can bookmark. I will add commentary on Monday morning.
+```
+
+## Workflow 3: Score your entire account list overnight
+
+Territory scoring used to run hundreds of hours across RevOps, FP&A, and marketing. Travis defined a scoring rubric with Claude, pointed Cowork at 4,000 accounts, went to bed, and woke up to every account scored with written reasoning. Then he had Claude build an interactive dashboard so reps could actually use it.
+
+**Step 1: Define what "good fit" means for your segment.**
+
+Start with a rubric before you touch the account list. Travis built two five-dimension rubrics: one for tech accounts (agent opportunity, internal transformation, AI commitment, white space against existing spend, industry fit) and one for industries (knowledge-worker density, public AI commitments from job postings, and segment-specific signals).
+
+You don't need five dimensions on day one. Three clear criteria beat ten vague ones. Write each dimension as a question Claude can answer with research: "How committed is this company to AI transformation based on public signals?"
+
+**Step 2: Test on one territory before you run the full book.**
+
+Pick 20 to 50 accounts from a single rep's patch. Run the scoring skill manually. Read the output. Are the scores sensible? Is the reasoning specific enough to trust? Adjust dimension weights in plain English: "D4 feels too heavy, bring it down a bit." Travis iterated territory by territory until the rubric felt right.
+
+**Step 3: Point Claude at the full account list and let it run overnight.**
+
+Export your account list (name, domain, segment, current owner, any CRM fields that matter). Feed it to Claude Cowork with the finalized rubric. Ask for a numerical score per dimension, a composite score, and written rationale for each account. Pull in Salesforce data and web research per account. This is the job you schedule for after hours. Thousands of accounts is hours of work. Overnight is the right cadence.
+
+**Step 4: Build a dashboard reps will actually open.**
+
+A CSV of scores is a data exercise. A dashboard is a sales tool. Travis had Claude build an interactive page where each AE clicks their territory slice, sees accounts ranked by score, and hovers for use-case suggestions and comparable case studies. Ask Claude to turn the scored output into a filterable view your team can bookmark.
+
+**Step 5: Use scores to prioritize, not to replace judgment.**
+
+Propensity scoring tells reps where to start Monday morning. It doesn't replace the conversation that closes the deal. Revisit the rubric quarterly or when your ICP shifts. The overnight run is cheap once the skill exists. Re-running when strategy changes is the whole point.
+
+### Starter prompt
+
+Start with a small test batch (20 to 50 accounts). Update anything in brackets to match your rubric and CRM. Once the scores look right, scale to your full book and schedule it to run overnight.
+
+```
+I need you to score accounts in my territory for sales prioritization.
+
+**Scoring rubric (score each dimension 1-5 with written rationale):**
+
+For tech accounts:
+1. Agent opportunity: likelihood they'd build AI agents on our platform
+2. Internal transformation: signals of company-wide AI adoption initiatives
+3. AI commitment: public statements, hires, or budget signals
+4. White space: gap between their current spend and potential spend
+5. Industry fit: how well their use case maps to our best customers
+
+For non-tech / industry accounts:
+1. Knowledge-worker density: % of employees who could use our product daily
+2. Public AI commitments: mentions of AI in open job postings
+3. Digital maturity: how far along they are in cloud/modern tooling
+4. White space: gap between current spend and potential
+5. Industry fit: alignment with our proven case studies
+
+**For each account:**
+- Pull CRM data from Salesforce (owner, current spend, pipeline stage)
+- Do web research on the company (recent news, job postings, public AI initiatives)
+- Score each dimension 1-5 with a 2-3 sentence rationale
+- Calculate a weighted composite score (weight D1 and D3 at 1.5x, others at 1x)
+- Suggest 1-2 prospecting use cases based on the research
+
+**Output:**
+- A table of all accounts ranked by composite score
+- Then build an interactive dashboard where each AE can filter to their territory, see ranked accounts, and hover for dimension scores and use-case suggestions
+
+Start with these 25 accounts: [paste account list or attach CSV]
+```
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [Daily Briefing](/ai/daily-briefing)
+2. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+3. [What is a Skill?](/ai/what-is-a-skill)
+4. [Chat-Based AI vs Agentic AI (side by side comparison)](/ai/chat-based-ai-vs-agentic-ai)
+5. [7 Ways to Find Claude Skill Ideas That Actually Fit Your Work](/ai/7-ways-find-claude-skill-ideas)
