@@ -1,7 +1,7 @@
 ---
 title: Performance Review Skills (Self, Peer, Manager)
 description: >-
-  Connect Slack to Claude Cowork, save your review voice in reviewtone.md, and
+  Connect Slack to Claude Cowork, save your review voice in review-tone.md, and
   run three skills for self-reviews, peer 360s, and upward manager reviews.
   Copy-paste starter prompts included.
 tags:
@@ -29,7 +29,7 @@ Performance reviews reward people who can prove impact with specifics. "Strong c
 
 ## Part 1: Save your voice first
 
-**Step 1: Create a `reviewtone.md` file with examples of reviews you've already written.**
+**Step 1: Create a `review-tone.md` file with examples of reviews you've already written.**
 
 Pull 2 to 3 past reviews you've written (self-reviews, peer reviews, upward reviews). Paste them into a plain markdown file. Include notes on what you like about your style: how you open, how specific you get, whether you lead with impact or growth areas. This file is what keeps Claude from sounding like a HR template generator.
 
@@ -37,24 +37,24 @@ Pull 2 to 3 past reviews you've written (self-reviews, peer reviews, upward revi
 
 Three to five bullets is enough. Something like: "I write in first person. I lead with outcomes, not activities. I name specific people and projects. I keep growth areas honest but constructive." Claude reads this before every draft.
 
-Don't have past reviews handy, or not sure how to structure the file? Paste the prompt below into Claude Cowork and it will interview you and generate `reviewtone.md` for you.
+Don't have past reviews handy, or not sure how to structure the file? Paste the prompt below into Claude Cowork and it will interview you and generate `review-tone.md` for you.
 
-### Starter prompt: Create your reviewtone.md
+### Starter prompt: Create your review-tone.md
 
 ```
-Help me create a reviewtone.md file for my performance review workflow.
+Help me create a review-tone.md file for my performance review workflow.
 
 Interview me briefly:
 1. What role am I in, and who reads my reviews (peers, manager, skip-level)?
 2. Paste or describe 1–2 past reviews I've written that I liked (self, peer, or upward).
 3. How do I want to sound? (e.g. direct, warm, specific, concise, first-person)
 
-Then create a reviewtone.md file with:
+Then create a review-tone.md file with:
 - A "Voice guide" section (5 bullets max) covering tone, structure, and what to avoid
 - A "Examples" section with 1–2 anonymized excerpts from my past reviews
 - A "Format notes" section for how I open, how I handle growth areas, and how specific I get with names and projects
 
-Save it as reviewtone.md in my project folder.
+Save it as review-tone.md in my project folder.
 Keep it under one page. This file will be read by my perf review skills before every draft.
 ```
 
@@ -72,7 +72,7 @@ Add whatever else holds context for your role: Google Drive or Notion for docs, 
 
 **Step 5: Pick a folder Claude can read and write to.**
 
-Create a local folder on your desktop for perf review season. Keep `reviewtone.md` there, plus any role descriptions or competency frameworks your company uses. Claude saves drafts here so every review starts from the same place.
+Create a local folder on your desktop for perf review season. Keep `review-tone.md` there, plus any role descriptions or competency frameworks your company uses. Claude saves drafts here so every review starts from the same place.
 
 ---
 
@@ -82,15 +82,15 @@ One skill won't cut it. Self-reviews, peer 360s, and upward reviews have differe
 
 **Step 6: Build your self-review skill.**
 
-Tell Claude what your company's self-review format looks like. Ask it to search Slack (and your other connected apps) for evidence of your impact over the review period. The output should reference specific moments, not vague strengths.
+Tell Claude what your company's self-review format looks like. Ask it to search Slack (and your other connected apps) for evidence of your impact over the review period. The output should reference specific moments, not vague strengths, and match the voice in `review-tone.md`.
 
 **Step 7: Build your peer 360 skill.**
 
-This is the one you'll run the most. As a PM or people manager, you might be writing 5 to 10 of these per cycle. The skill should take a person's name, pull Slack threads where you collaborated with them, and draft a review in your voice using `reviewtone.md` as the style reference.
+This is the one you'll run the most. As a PM or people manager, you might be writing 5 to 10 of these per cycle. The skill should take a person's name, pull Slack threads where you collaborated with them, and draft a review in your voice using `review-tone.md` as the style reference.
 
 **Step 8: Build your upward review skill.**
 
-Same receipt pool, different lens. You're writing about your manager: how they supported you, where they created clarity, what they could do differently. The tone shifts. The evidence still comes from Slack and your connected apps.
+Same receipt pool, different lens. You're writing about your manager: how they supported you, where they created clarity, what they could do differently. The tone shifts. The evidence still comes from Slack and your connected apps. Every draft should still match the voice in `review-tone.md`.
 
 ### Starter prompt: Self-review skill
 
@@ -99,7 +99,7 @@ Paste this into Claude Cowork. Update anything in brackets, then ask Claude to t
 ```
 Please turn this into a reusable Cowork skill called "self-review".
 
-Before drafting, read reviewtone.md in my project folder for voice and style.
+Before every run, read review-tone.md in my project folder. Use it as the voice and style reference for the entire draft. Match its tone, structure, and phrasing. Do not use generic corporate language.
 
 When I say "run my self-review for [review period, e.g. H1 2026]", do the following:
 
@@ -115,7 +115,7 @@ When I say "run my self-review for [review period, e.g. H1 2026]", do the follow
    - Growth areas (honest, with examples)
    - Goals for next period
 
-3. Draft my self-review in the voice from reviewtone.md.
+3. Draft my self-review in the voice from review-tone.md.
    Save to [my project folder] as self-review-[date].md
 
 Show me the draft. Do not submit anywhere. I will edit before pasting into [Workday / Lattice / our perf system].
@@ -126,7 +126,7 @@ Show me the draft. Do not submit anywhere. I will edit before pasting into [Work
 ```
 Please turn this into a reusable Cowork skill called "peer-360-review".
 
-Before drafting, read reviewtone.md in my project folder for voice and style.
+Before every run, read review-tone.md in my project folder. Use it as the voice and style reference for the entire draft. Match its tone, structure, and phrasing. Do not use generic corporate language.
 
 When I provide a colleague's name for [review period], do the following:
 
@@ -138,7 +138,7 @@ When I provide a colleague's name for [review period], do the following:
 
 2. Pull any relevant context from [Google Drive / Notion / email] if connected.
 
-3. Draft a peer 360 review in my voice covering:
+3. Draft a peer 360 review in the voice from review-tone.md covering:
    - What they do well (with receipts)
    - Where they could grow (specific, kind, actionable)
    - Overall recommendation tone matching our company's format
@@ -153,7 +153,7 @@ Show me the draft for my review before I paste into [our perf system].
 ```
 Please turn this into a reusable Cowork skill called "upward-review".
 
-Before drafting, read reviewtone.md in my project folder for voice and style.
+Before every run, read review-tone.md in my project folder. Use it as the voice and style reference for the entire draft. Match its tone, structure, and phrasing. Do not use generic corporate language.
 
 When I say "run my upward review for [manager name] for [review period]", do the following:
 
@@ -163,7 +163,7 @@ When I say "run my upward review for [manager name] for [review period]", do the
    - How they handled hard situations
    - Areas where more support would have helped
 
-2. Draft an upward review in my voice covering:
+2. Draft an upward review in the voice from review-tone.md covering:
    - What they do well as a manager (with specifics)
    - What I need more or less of from them
    - Honest growth feedback, framed constructively
