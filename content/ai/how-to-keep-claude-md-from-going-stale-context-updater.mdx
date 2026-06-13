@@ -1,0 +1,157 @@
+---
+title: How to Keep Your CLAUDE.md From Going Stale (Context Updater)
+description: >-
+  A weekly scheduled routine that pulls fresh data from your apps, reviews your
+  recent Claude sessions, and proposes updates to keep your CLAUDE.md current.
+tags:
+  - skills
+  - automation
+  - advanced
+  - setup
+published: "2026-06-13"
+cta: Try this workflow
+order: 27
+---
+
+If Claude keeps getting things wrong, check your `CLAUDE.md` before you blame the model. That file loads before every chat. If it still says you're on a project you dropped two months ago, you'll keep re-explaining yourself.
+
+Karpathy (ex-OpenAI, now at Anthropic) calls it the most important file you own. I agree. Most people write it once and forget it. This is a weekly routine that scans your apps, spots what changed, and proposes updates you approve before anything gets written. Part of my **Steal This AI Workflow** series.
+
+## Part 1: Connect your tools
+
+**Step 1: Connect Google Calendar, Slack, Gmail, and Notion**
+
+Claude needs to see your actual week before it can spot what changed. Connect these as MCP connectors in Claude Code (or Claude Cowork, depending on where you run scheduled tasks):
+
+- **Google Calendar**: meetings, recurring blocks, who you're spending time with
+- **Slack**: channels you're active in, projects you're discussing, people you're collaborating with
+- **Gmail**: recurring email patterns, new contacts, shifting priorities
+- **Notion**: goals, project docs, notes you've been updating
+
+You don't need every connector on day one. Calendar plus one communication tool is enough to start. Add the rest once the routine is running.
+
+## Part 2: Set up the scheduled routine
+
+**Step 2: Create a scheduled routine in Claude Code**
+
+Open Claude Code and set up a recurring scheduled task. I run mine Sunday morning, before my weekly planning. That's when I'm already in review mode and can approve or reject what Claude surfaces.
+
+To create it, customize the prompt from Step 3, then ask Claude to turn it into a scheduled task. Or use `/schedule` with your preferred time. Sunday at 8:00 AM works well if you do weekly planning then. Pick whatever time you actually review your week.
+
+**Step 3: Customize and paste in the Context Updater prompt**
+
+This is the skill. The prompt below is a starter template, not something to copy and paste word for word. Before you use it, update it to match your actual setup:
+
+- Swap in the context files you really use (`USER.md`, `projects.md`, `voice-and-style.md`, etc.)
+- Replace the connectors with the apps you're connected to (Linear, Granola, or whatever you run on)
+- Adjust the schedule time to when you actually do your weekly review
+- Add or remove sections based on what you keep having to re-explain to Claude
+
+Once you've made it yours, paste it into Claude and ask it to create a scheduled task for Sunday morning (or whenever you review your week).
+
+```text
+---
+name: context-updater
+description: Weekly review that proposes updates to my CLAUDE.md and context files based on the last 7 days of activity
+---
+
+You are running a weekly context review to keep my CLAUDE.md and related context files current.
+
+## Your goal
+
+Find patterns from my last 7 days that I haven't documented yet, compare them against my existing context files, and propose specific updates. I will review and approve before anything gets written.
+
+## Step 1: Read my current context
+
+Read my global CLAUDE.md (or claude.md) and any files it references, such as:
+- about-me.md or USER.md
+- projects.md
+- voice-and-style.md
+- team.md or collaborators.md
+
+Note what's already documented so you don't propose duplicates.
+
+## Step 2: Pull fresh data from the last 7 days
+
+Review activity across:
+- Google Calendar (meetings, recurring events, new collaborators)
+- Slack (active channels, projects, people, decisions)
+- Gmail (recurring threads, new contacts, shifting priorities)
+- Notion (updated docs, new pages, goal changes)
+- My Claude session history from the past 7 days (patterns I keep explaining, preferences I repeat, corrections I make)
+
+## Step 3: Find what's missing
+
+Look for:
+- New projects or priorities not in my context files
+- People I'm now collaborating with who aren't documented
+- Preferences or working styles I keep repeating in sessions
+- Things I've stopped doing that should be removed
+- Decisions or context I explain to Claude every week
+- Shifts in role, focus, or goals
+
+## Step 4: Propose updates
+
+For each proposed change, return:
+
+**File:** which context file to update (e.g., projects.md, CLAUDE.md)
+**Section:** where in the file
+**Current text:** what's there now (or "nothing")
+**Proposed text:** the exact addition or edit
+**Evidence:** what from the last 7 days supports this (specific meetings, Slack threads, session patterns)
+**Confidence:** High / Medium / Low
+
+Group proposals into:
+- **Add**: new information to document
+- **Update**: existing info that's outdated
+- **Remove**: info that's no longer true
+
+At the top, include a short summary:
+- Top 3 highest-confidence updates I should approve first
+- Anything that looks contradictory with my current context
+- Questions you need me to answer before proposing changes
+
+## Rules
+
+- Do not write to any files without my explicit approval.
+- Prefer short, high-signal additions over long paragraphs.
+- If CLAUDE.md would get bloated, suggest a new referenced file instead.
+- Flag anything uncertain as Low confidence rather than guessing.
+```
+
+> **Key insight:** The prompt is the product. You're not auditing your own behavior by hand. You're teaching Claude what stale context looks like and letting it run the diff.
+
+## Part 3: Review and approve
+
+**Step 4: Open it on Sunday and approve what fits**
+
+When the routine runs, you'll get a structured report of proposed changes. Don't auto-apply everything. Read through it like a code review:
+
+1. **Approve what's right**: tell Claude to add or update those sections
+2. **Reject what isn't**: skip proposals that are one-off or wrong
+3. **Answer questions**: if Claude flagged uncertainty, clarify once so next week's run is sharper
+
+After you approve, ask Claude to write the changes to the right files. Your `CLAUDE.md` and referenced context files get updated. Next week's sessions start with the current version of you.
+
+**Step 5: Make it a 10-minute habit**
+
+Block 10 minutes every Sunday. Same slot as your weekly planning if you have one. The routine does the scanning. You do the judgment call. That split is what keeps context accurate without eating your weekend.
+
+## What good output looks like
+
+A strong weekly context review gives you:
+
+- Specific file-level edits, not vague suggestions like "update your projects"
+- Evidence tied to real activity (a Slack thread, a recurring meeting, a session where you corrected Claude)
+- Confidence ratings so you know what to trust vs. what to skip
+- Removals, not just additions (stale context hurts as much as missing context)
+- A short top-3 list you can act on in under 10 minutes
+
+## Additional Reading
+
+Here are some related guides to check out:
+1. [How to Setup Global Context for Claude (CLAUDE.md, USER.md)](/ai/how-to-setup-global-context-claude)
+2. [How to Give Claude Memory (Beginner to Advanced)](/ai/how-to-give-claude-memory)
+3. [Weekly Skill Discovery](/ai/weekly-skill-discovery)
+4. [Daily Briefing](/ai/daily-briefing)
+5. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)

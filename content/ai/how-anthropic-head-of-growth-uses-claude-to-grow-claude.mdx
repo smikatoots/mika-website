@@ -1,0 +1,162 @@
+---
+title: How Anthropic's Head of Growth Uses Claude to Grow Claude
+description: >-
+  Amol Avasare, Head of Growth at Anthropic, skips PRDs, monitors 25 dashboards
+  without opening them, and uses Claude as his executive coach. Five workflows
+  from the fastest-growing company in history, with copy-paste starter prompts.
+tags:
+  - claude
+  - skills
+  - productivity
+  - growth
+published: "2026-06-13"
+date: "2026-06-13"
+cta: Steal the playbook
+order: 26
+---
+
+Anthropic went from $1B to $19B in ARR in 14 months. Their growth charts are literally too exponential for normal graphs. [Amol Avasare](https://www.linkedin.com/in/amolavasare), their Head of Growth, just broke down on [Lenny's Podcast](https://www.lennysnewsletter.com/p/anthropics-1b-to-19b-growth-run) exactly how he uses Claude in his day to day. The last workflow is the one I'm stealing this week.
+
+![Amol Avasare and Lenny Rachitsky on Lenny's Podcast](/ai-guides/amol-avasare-lennys-podcast.png "Amol Avasare on Lenny's Podcast — Head of Growth at Anthropic.")
+
+![Amol Avasare, Head of Growth at Anthropic](/ai-guides/amol-avasare-hero.png "Amol Avasare — Head of Growth at Anthropic.")
+
+## Why this matters
+
+I'm Mika, a founder and former product lead at LinkedIn. When someone running growth at the fastest-growing company in history shares their actual stack, I pay attention. Amol isn't using Claude to write nicer emails. He's using it to skip docs, monitor 25 dashboards without opening them, coach himself like his manager would, and automate experiments that used to need a junior PM. These aren't "someday" workflows. You can set them up this week.
+
+> **Key insight:** The best growth leaders aren't asking Claude to do their job. They're asking it to remove the work that keeps them from doing their job.
+
+## Workflow 1: Skip the PRD and prototype instead
+
+Sixty to eighty percent of what Amol's growth team ships has zero documentation. No PRD. No spec doc. No kickoff deck. The default move is prototype with Claude, iterate in motion, ship.
+
+For small bets (anything under two weeks of engineering time), kickoffs happen in Slack. Product-minded engineers push back, ask the right questions, and the team moves. Documents slow down bets that should take days, not weeks.
+
+**What to do:** Next time you have a small growth idea, resist opening a blank doc. Open Claude instead. Describe the bet in plain English: what you want to change, who it's for, and what success looks like. Ask Claude to draft a quick prototype, copy variant, or landing page section. Share it in Slack or your team channel. Get reactions. Iterate. Ship.
+
+**When to still write a doc:** Larger projects with legal, safeguards, or multiple stakeholders still get a proper 30-minute cross-functional kickoff. Amol isn't anti-planning. He's anti-planning for bets that don't need it.
+
+## Workflow 2: Monitor 20 dashboards without opening them
+
+Amol has 20 to 25 Hex dashboards tracking growth metrics. He does not click through them every morning. Instead, he has a Claude scheduled task that scans every chart overnight and tells him only what's worth paying attention to.
+
+This is the time-rich move. You read a five-minute summary instead of spending an hour tab-hopping through dashboards wondering if something moved.
+
+**Step 1: List the dashboards that actually matter.**
+
+Pick the 5 to 10 charts you'd check if you had a gun to your head every morning. Conversion funnels, activation rates, revenue, experiment results. Don't add vanity metrics.
+
+**Step 2: Connect Claude to your data sources.**
+
+In Claude Cowork, connect whatever holds your metrics: Hex, Looker, a spreadsheet, your analytics tool. If you don't have a warehouse, export a weekly CSV into a folder Claude can read. Start scrappy.
+
+**Step 3: Write a briefing prompt that filters for signal.**
+
+Don't ask for "a summary of my dashboards." Tell Claude what anomalies to flag: anything that moved more than 10% week over week, any experiment that hit statistical significance, any metric trending in the wrong direction for three consecutive days. The more specific your alert rules, the less noise you get.
+
+```
+Please turn this into a scheduled skill that runs every weekday at 7am.
+
+---
+name: growth-dashboard-briefing
+description: Scan my growth dashboards and flag only what needs my attention
+---
+
+Check my connected analytics sources [Hex / Looker / spreadsheet folder] and review these dashboards:
+- [Dashboard 1 name or link]
+- [Dashboard 2 name or link]
+- [Dashboard 3 name or link]
+
+Flag only items that meet one of these thresholds:
+- Any metric moved more than 10% week over week
+- Any A/B test reached statistical significance
+- Any metric trending in the wrong direction for 3+ consecutive days
+- Any experiment launched in the last 7 days with early results worth noting
+
+Deliver a short morning briefing with:
+1. **Needs action today** — anomalies that require a decision or follow-up
+2. **Worth watching** — trends that aren't urgent but shouldn't be ignored
+3. **All clear** — one sentence on what's stable
+
+Keep the whole briefing under 300 words. No charts I have to click through. Just signal.
+```
+
+**Step 4: Schedule it to run before you wake up.**
+
+Package the prompt as a Cowork Skill and set it on a daily schedule. Same pattern as a morning briefing. The skill runs. You get a short email or doc with only the items that need your brain.
+
+## Workflow 3: Use Claude as your executive coach
+
+This is the one I'm stealing. Amol asks Claude to simulate his manager's perspective and give him weekly coaching on where he's dropping the ball. A free 1:1 with your own manager, in your voice, every week.
+
+He feeds Claude what his manager has written publicly and said internally. Claude responds as if it were that person reviewing his week: what's going well, what he's avoiding, where he's not thinking big enough.
+
+**Step 1: Collect your manager's (or mentor's) public thinking.**
+
+Grab LinkedIn posts, internal memos they've shared, podcast clips, or all-hands transcripts. The more of their actual voice you have, the better the simulation.
+
+**Step 2: Create a Claude Project for the coaching session.**
+
+Name it something like "Weekly Manager Check-In." Upload the source material as project knowledge. Add a system prompt that tells Claude to respond in that person's voice and coaching style.
+
+```
+You are [Manager Name], [their title] at [company]. You are coaching me in a weekly 1:1.
+
+Use the project knowledge — their LinkedIn posts, internal memos, podcast clips, and all-hands transcripts — to match how they actually think and communicate. Be direct. Push back when I'm playing small or avoiding hard calls.
+
+When I paste my weekly update, respond with:
+
+1. **What's working** — one thing I'm doing well that I should keep doing
+2. **What I'm avoiding** — the conversation, decision, or bet I'm ducking (be specific)
+3. **Where I'm thinking too small** — one area where I should swing bigger given our goals
+4. **One question** — the uncomfortable question they'd ask in a real 1:1
+
+Don't validate me. Coach me like someone who wants me to win but won't let me off the hook.
+```
+
+**Step 3: Run the session every Friday.**
+
+Paste in your week: what you shipped, what you avoided, what's keeping you up. Ask Claude to respond as your manager would. Push back on the answer. Ask "what am I not seeing?" The goal isn't validation. It's the uncomfortable questions you'd get in a real 1:1.
+
+## Workflow 4: Let AI run your small growth experiments
+
+Inside Anthropic, there's an initiative called CASH: Claude Accelerates Sustainable Hypergrowth. It automates growth experimentation across four stages: finding opportunities, building features, testing quality, and analyzing results.
+
+Right now it handles copy changes and minor UI tweaks. The win rate is comparable to a junior PM with two to three years of experience, and it's improving fast. Amol's team doesn't replace PMs with AI. They use AI to clear the queue of small bets so humans can focus on the big ones.
+
+**What to do:** Pick one experiment you've been putting off because it feels too small to justify a full cycle. A headline change. A button label. An onboarding step reorder. Hand it to Claude with your hypothesis, the metric you're watching, and your quality bar. Ask it to draft variants, flag risks, and suggest how you'd measure success. You review. You ship. You learn.
+
+This won't replace your judgment on big bets. It clears the backlog of small ones that eat your calendar anyway.
+
+## Workflow 5: Flip your bet ratio toward bigger swings
+
+Most growth teams spend 60% to 70% of their time on small optimizations and 20% to 30% on big swings. Amol flips that ratio. His argument: if your core product value is driven by AI, future value is orders of magnitude higher than today's value. Model capabilities grow exponentially. Micro-optimizations capture a shrinking share of a growing pie.
+
+**What to do:** Audit your last month. What percentage of your time went to A/B tests on button colors versus bets that could change how people experience your product? Amol isn't saying small tests are worthless. He's saying the default allocation is backwards for AI-native companies.
+
+Ask Claude to help you think bigger. "Given what our product does today and where AI capabilities are heading in 12 months, what are three growth bets we'd regret not making now?" Use the PRD-skipping workflow from step one to prototype the answer instead of debating it in a doc for three weeks.
+
+> **Key insight:** Traditional growth optimizes today's funnel. AI-native growth bets on what the funnel looks like when the product is 10x better.
+
+## What you can steal even without Anthropic's stack
+
+Amol works inside Anthropic. He has Hex, internal Slack, and a growth team of product-minded engineers. You probably don't have all of that. The pattern still works:
+
+- **Skip the doc:** Prototype small bets in Claude, share in Slack, ship fast.
+- **Dashboard briefing:** One scheduled skill that scans your metrics and flags anomalies.
+- **Manager coach:** One Claude Project loaded with your mentor's thinking, run weekly.
+- **Small experiments:** Hand Claude the copy and UI tweaks you've been deprioritizing.
+- **Bigger bets:** Use the time you save to swing at things that actually move the needle.
+
+Start with one workflow. The manager coaching session takes 20 minutes to set up and pays off every Friday.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [How Anthropic's Head of Sales Uses Claude to Sell Claude](/ai/how-anthropic-head-of-sales-uses-claude-to-sell-claude)
+2. [Daily Briefing](/ai/daily-briefing)
+3. [How to Create an AI Coach](/ai/how-to-create-an-ai-coach)
+4. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+5. [Your First Practical Agentic AI Plan](/ai/your-first-practical-agentic-ai-plan)
