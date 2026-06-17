@@ -46,43 +46,19 @@ Once connected, you are done with setup. You will not need to do this again.
 
 **Step 1: Install the skill and fill in your placeholders**
 
-Copy the template at the bottom of this guide. **Before you install it**, find the `[BRACKET]` fields and replace them with your details: where to sync (Google Calendar or Notion), your shared calendar name, your Notion page URL, partner names, and default owner for vendor tasks.
+Find every `[BRACKET]` field in the template below and replace it with your details **before** you install:
 
-Then paste it into Claude:
+| Placeholder | What to put |
+| --- | --- |
+| `[SYNC_DESTINATION]` | `google_calendar` or `notion` — pick one |
+| `[GOOGLE_CALENDAR_NAME]` | Your shared calendar name (only if using Google Calendar) |
+| `[NOTION_PAGE_URL]` | Your Notion page URL (only if using Notion) |
+
+Then paste the filled-in template into Claude:
 
 *"Use /skill-creator to turn the template below into a wedding-timeline-builder skill. Keep the trigger description broad so it fires when I mention wedding timelines, deadlines, or planning checklists."*
 
 Or save it as `SKILL.md` inside a folder called `wedding-timeline-builder` and upload it: **Settings → Capabilities → Skills → Upload**.
-
-**Step 2: Run the skill**
-
-Open a new Cowork session and say something like:
-
-*"Build my wedding timeline."*
-
-The skill will ask you clarifying questions if it needs more info: wedding date, destination or local, guest count, and anything else that would change the timeline. You do not need to front-load every detail. Just answer what it asks.
-
-**Step 3: Review with your partner**
-
-Skim the timeline summary before it syncs. Look for anything specific to your wedding: multi-day events, cultural traditions, a courthouse ceremony, extra travel lead time for guests. Tweak deadlines if something feels off. Five minutes now saves a fight at month eight.
-
-Once you approve, the skill pushes every deadline to your calendar or Notion with owners and reminders already assigned by category. No manual tagging after the fact.
-
-## What you get
-
-- A **12-month wedding timeline** built from real planning templates, not generic AI fluff
-- Every deadline **sequenced correctly** so you are not scrambling at the last minute
-- **Owners and reminders assigned automatically** by task category (vendors, attire, guest comms, legal, etc.)
-- Due dates **synced to Google Calendar or Notion** so you and your partner share one view
-- The whole workflow in **under 60 seconds**
-
-## Coming up in the series
-
-**Part 3** walks through everything we vibecoded for our wedding: the website, our singles mixer, and our thank-you cards, all bundled. [Part 1](/ai/ai-wedding-planning-part-1) covers the full stack if you want the big picture first.
-
-## Copy-paste skill template
-
-Save this as `SKILL.md` or paste it into Claude with the `/skill-creator` prompt above.
 
 ````
 ---
@@ -92,31 +68,19 @@ description: Builds a 12-month wedding planning timeline and syncs every deadlin
 
 # Wedding Timeline Builder
 
-Build a complete 12-month wedding planning timeline, assign owners and reminders by task category, then push every deadline to Google Calendar or Notion.
+Build a complete 12-month wedding planning timeline using real templates from the web, assign owners and reminders by task category, then push every deadline to Google Calendar or Notion.
 
 ## User Configuration (replace before installing)
 
-The person installing this skill must replace every `[BRACKET]` below with their own details:
-
 | Placeholder | What to put |
 | --- | --- |
-| `[SYNC_DESTINATION]` | `google_calendar`, `notion`, or `ask_every_time` |
-| `[GOOGLE_CALENDAR_NAME]` | Name of your shared calendar (e.g. `Wedding Planning`) |
-| `[NOTION_PAGE_URL]` | Full URL of the Notion page or database for tasks |
-| `[PARTNER_1_NAME]` | First partner's name (e.g. `Mika`) — used for owner tags |
-| `[PARTNER_2_NAME]` | Second partner's name (e.g. `Nick`) — used for owner tags |
-| `[DEFAULT_VENDOR_OWNER]` | Who usually handles vendor outreach: `[PARTNER_1_NAME]`, `[PARTNER_2_NAME]`, or `Both` |
-
-If `[SYNC_DESTINATION]` is `ask_every_time`, use AskUserQuestion to let the user pick Google Calendar or Notion at runtime.
+| `[SYNC_DESTINATION]` | `google_calendar` or `notion` |
+| `[GOOGLE_CALENDAR_NAME]` | Shared calendar name (e.g. `Wedding Planning`) — only if using Google Calendar |
+| `[NOTION_PAGE_URL]` | Full Notion page or database URL — only if using Notion |
 
 ## Before You Start
 
-1. **Check connectors first.** The user must have Google Calendar and/or Notion connected in Claude Cowork. If neither is connected, stop and tell them:
-   - Open Claude Cowork → Settings → Connectors
-   - Connect Google Calendar and/or Notion
-   - For Calendar: create or pick a shared calendar named `[GOOGLE_CALENDAR_NAME]`
-   - For Notion: create a page or database at `[NOTION_PAGE_URL]`
-   - Do not build the timeline until the chosen destination is connected.
+1. **Check connectors first.** If `[SYNC_DESTINATION]` is `google_calendar`, Google Calendar must be connected and `[GOOGLE_CALENDAR_NAME]` must exist. If `notion`, Notion must be connected and `[NOTION_PAGE_URL]` must be valid. If not connected, stop and walk the user through Claude Cowork → Settings → Connectors. Do not build until the destination is ready.
 
 2. **Ask clarifying questions before building.** Use AskUserQuestion whenever anything is missing or ambiguous. Do not guess. At minimum, confirm:
    - Wedding date (exact date or target month)
@@ -127,36 +91,52 @@ If `[SYNC_DESTINATION]` is `ask_every_time`, use AskUserQuestion to let the user
    - Ceremony type (church, courthouse, outdoor, multi-faith, etc.)
    - Already-booked vendors (skip or mark complete)
    - Multi-day events or cultural traditions that need extra tasks
-   - Whether `[SYNC_DESTINATION]` is set to `ask_every_time` — if so, ask Google Calendar or Notion now
 
    If the user gives partial info ("we're getting married next fall in Mexico"), ask follow-up questions until you have enough to sequence deadlines correctly.
+
+   **Owner assignment by category.** Ask who owns each type of work. Use AskUserQuestion with the category names below. Default to `Both` if they want to split evenly or skip.
+
+   | Category | Example tasks |
+   | --- | --- |
+   | Venue & vendors | Book venue, photographer, caterer, florist, DJ, officiant |
+   | Guest communications | Save-the-dates, invitations, RSVP tracking, seating chart |
+   | Attire & beauty | Dress/suit shopping, fittings, hair/makeup trials |
+   | Budget & registry | Set budget, set up registry, track payments |
+   | Travel & logistics | Hotel blocks, transportation, guest travel guide |
+   | Ceremony & vows | Write vows, ceremony details, rehearsal dinner |
+   | Legal & admin | Marriage license, final headcount, vendor contracts |
+
+   Record their answers and use those names (or `Both`) as owner tags on every task in that category.
+
+3. **Research existing timelines online.** Before building, use web search to pull 2–3 established wedding planning timelines (e.g. from The Knot, Zola, WeddingWire, Brides, or similar). Search for timelines that match their situation: destination vs. local, guest count range, and months until wedding. Merge the best tasks and lead times from those sources with the milestone table below. Prefer consensus across sources over any single template. Cite which sources influenced key deadlines in a brief note at the end of the summary.
 
 ## Timeline Rules
 
 - Work **backwards from the wedding date**. Every deadline is a specific date, not "month 8."
 - **Sequence dependencies correctly.** Venue before photographer. Save-the-dates before invitations. Tasting before final menu. Never put dependent tasks after their prerequisites.
-- **Adjust lead times** based on inputs:
-  - **Destination or international:** add 2–4 extra weeks for guest travel info, hotel blocks, and vendor research
+- **Adjust lead times** based on inputs and what you found online:
+  - **Destination or international:** invitations must go out **no later than 9 months before** the wedding. Shift the entire timeline earlier to make this work: save-the-dates 10–11 months out, venue and hotel blocks 12+ months out, guest travel info and room blocks well before invites. RSVP deadline should be 4–5 months before (guests need time to book flights). Add tasks for guest travel guides, visa/passport reminders, welcome events.
+  - **Local:** standard milestone table below applies (invitations typically 5 months out).
   - **150+ guests:** earlier venue booking, earlier RSVP deadline, earlier seating chart
   - **Under 50 guests:** some tasks can move later; still keep legal and vendor lead times
-  - **Short timeline (under 9 months):** flag compressed tasks and mark anything at risk in bold
-- Base the structure on standard wedding planning milestones. Merge duplicates. Do not invent fake vendor categories.
+  - **Short timeline (under 9 months):** flag compressed tasks and mark anything at risk in bold. For destination weddings under 12 months, flag that the 9-month invite minimum may not be achievable.
+- Merge online research with the milestone table below. Do not invent fake vendor categories. Deduplicate overlapping tasks.
 
 ## Standard Milestones (adapt dates to the wedding)
 
-Use these categories. Shift dates based on the wedding date and inputs above.
+Use as a baseline for **local** weddings, then refine with online research. For **destination or international** weddings, shift everything earlier per the rules above — especially save-the-dates, invitations (9 months out minimum), hotel blocks, and guest travel tasks.
 
 | Window | Tasks |
 | --- | --- |
 | 12 months out | Set budget · Draft guest list · Define wedding style · Research venues · Book venue |
-| 11 months out | Book photographer/videographer · Book caterer (if separate) · Start attire shopping |
-| 10 months out | Book DJ or band · Book florist · Book officiant · Reserve hotel room blocks |
-| 9 months out | Order save-the-dates · Book hair and makeup · Book transportation/shuttles |
-| 8 months out | Send save-the-dates · Order invitations · Start honeymoon research |
+| 11 months out | Book photographer/videographer · Book caterer (if separate) · Start attire shopping · **Destination: send save-the-dates** |
+| 10 months out | Book DJ or band · Book florist · Book officiant · Reserve hotel room blocks · **Destination: order invitations** |
+| 9 months out | Order save-the-dates · Book hair and makeup · Book transportation/shuttles · **Destination: mail invitations · set RSVP deadline** |
+| 8 months out | Send save-the-dates · Order invitations · Start honeymoon research · **Destination: publish guest travel guide** |
 | 7 months out | Schedule cake/dessert tasting · Book rehearsal dinner venue · Set up registry |
 | 6 months out | Attire ordered (allow time for alterations) · Book rentals · Schedule menu tasting |
 | 5 months out | Mail invitations · RSVP deadline set · Book day-of coordinator if needed |
-| 4 months out | Finalize flowers · Hair/makeup trial · Start writing vows/ceremony |
+| 4 months out | Finalize flowers · Hair/makeup trial · Start writing vows/ceremony · **Destination: track RSVPs · start seating chart** |
 | 3 months out | Track RSVPs · Start seating chart · Confirm all vendor contracts |
 | 2 months out | Final headcount to caterer · Apply for marriage license (check local rules) · Vendor final payments |
 | 1 month out | Final attire fitting · Confirm day-of timeline with vendors · Rehearsal dinner details |
@@ -165,47 +145,30 @@ Use these categories. Shift dates based on the wedding date and inputs above.
 
 Add destination-specific tasks when relevant: guest travel guide, visa/passport reminders, welcome event, post-wedding brunch.
 
-## Owner Assignment (by category)
+## Owner and Reminder Assignment
 
-Assign an owner to every task using `[PARTNER_1_NAME]`, `[PARTNER_2_NAME]`, or `Both`. Use these defaults unless the user specifies otherwise during clarifying questions:
+Assign an **owner** and **reminder** to every task automatically. Do not ask the user to tag these manually after syncing.
 
-| Category | Default owner | Example tasks |
-| --- | --- | --- |
-| **Venue & vendors** | `[DEFAULT_VENDOR_OWNER]` | Book venue, photographer, caterer, florist, DJ, officiant |
-| **Guest communications** | `Both` | Save-the-dates, invitations, RSVP tracking, seating chart |
-| **Attire & beauty** | `[PARTNER_1_NAME]` | Dress/suit shopping, fittings, hair/makeup trials |
-| **Budget & registry** | `Both` | Set budget, set up registry, track payments |
-| **Travel & logistics** | `[DEFAULT_VENDOR_OWNER]` | Hotel blocks, transportation, guest travel guide |
-| **Ceremony & vows** | `Both` | Write vows, ceremony details, rehearsal dinner |
-| **Legal & admin** | `Both` | Marriage license, final headcount, vendor contracts |
+**Owners:** Use the answers from the owner assignment questions above. If a category was not answered, default to `Both`.
 
-If the user says one partner is handling a specific area (e.g. "Nick is doing all vendor calls"), override the defaults for that category.
-
-## Reminder Rules (by category)
-
-Set calendar reminders automatically when syncing. Do not ask the user to set these manually.
-
-| Category | Reminder timing |
-| --- | --- |
-| **Major vendor bookings** (venue, photographer, caterer) | 2 weeks before due date |
-| **Guest communications** (save-the-dates, invitations, RSVP deadline) | 1 week before |
-| **Mid-priority tasks** (attire, tastings, trials, rentals) | 1 week before |
-| **Final-month tasks** (license, headcount, seating chart) | 3 days before |
-| **Week-of tasks** (confirmations, emergency kit, contact list) | 1 day before |
+**Reminders** (set automatically on sync):
+- Major vendor bookings (venue, photographer, caterer): 2 weeks before
+- Guest communications (save-the-dates, invitations, RSVP): 1 week before
+- Mid-priority tasks (attire, tastings, trials, rentals): 1 week before
+- Final-month tasks (license, headcount, seating chart): 3 days before
+- Week-of tasks (confirmations, emergency kit): 1 day before
 
 ## Output Format
 
 ### Phase 1: Show the timeline (before syncing)
 
-Present a scannable summary grouped by month. For each task include:
-- **Task name**
-- **Due date** (specific calendar date)
-- **Category** (from the tables above)
-- **Owner** (`[PARTNER_1_NAME]`, `[PARTNER_2_NAME]`, or `Both`)
-- **Reminder** (from reminder rules above)
-- **Notes** (one line only if needed)
+Present the full timeline as a **markdown table** for easy reading. Group by month if needed (one table per month, or one table with a Month column). Every row must include:
 
-End with a short "at risk" list if the timeline is compressed.
+| Task | Due date | Category | Owner | Reminder | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Book venue | Mar 14, 2027 | Venue & vendors | Both | Feb 28, 2027 | Research 2–3 venues first |
+
+Sort rows chronologically. End with a short "at risk" list if the timeline is compressed, plus a one-line note on which online sources informed the timeline.
 
 Ask: *"Ready for me to push these to [GOOGLE_CALENDAR_NAME / Notion]? Every task will include an owner and a reminder."*
 
@@ -213,48 +176,71 @@ Wait for explicit approval before syncing.
 
 ### Phase 2: Sync to Google Calendar
 
-If `[SYNC_DESTINATION]` is `google_calendar` (or user chose Calendar), create events on `[GOOGLE_CALENDAR_NAME]`:
+If `[SYNC_DESTINATION]` is `google_calendar`, create events on `[GOOGLE_CALENDAR_NAME]`:
 
-- **Title:** `[Wedding] Task name` (e.g. `[Wedding] Book photographer`)
-- **Date:** the due date (all-day event is fine)
+- **Title:** `[Wedding] Task name`
+- **Date:** the due date (all-day event)
 - **Description:** `Owner: [name] · Category: [category] · [one-line note if needed]`
-- **Reminder:** per the reminder rules table above
+- **Reminder:** per reminder rules above
 
-After creating events, share a count: *"Created X deadlines on [GOOGLE_CALENDAR_NAME], each with an owner and reminder."*
+After creating events: *"Created X deadlines on [GOOGLE_CALENDAR_NAME], each with an owner and reminder."*
 
 ### Phase 3: Sync to Notion
 
-If `[SYNC_DESTINATION]` is `notion` (or user chose Notion), create one row/item per task on `[NOTION_PAGE_URL]`:
+If `[SYNC_DESTINATION]` is `notion`, create one row/item per task on `[NOTION_PAGE_URL]`:
 
-- Task name
-- Due date
-- Category
-- Owner (`[PARTNER_1_NAME]`, `[PARTNER_2_NAME]`, or `Both`)
-- Reminder (date, calculated from reminder rules)
-- Status: Not started
-- Notes (optional)
+- Task name · Due date · Category · Owner · Reminder · Status: Not started · Notes (optional)
 
-If no database exists, create a simple table on the page they provided.
-
-After syncing, share the Notion page link back to the user.
+If no database exists, create a simple table on the page provided. Share the Notion link when done.
 
 ## Quality Checklist (run silently before presenting)
 
+- [ ] Researched 2–3 online wedding timelines and merged best practices
 - [ ] Every task has a specific date, not just a month label
-- [ ] Venue is booked before dependent vendors (photographer, caterer, florist)
+- [ ] Venue is booked before dependent vendors
 - [ ] Save-the-dates go out before invitations
-- [ ] RSVP deadline is at least 6–8 weeks before the wedding
-- [ ] Marriage license timing matches the wedding location (flag if unsure)
+- [ ] Destination/international: invitations mailed no later than 9 months before wedding
+- [ ] RSVP deadline is at least 6–8 weeks before the wedding (4–5 months for destination)
 - [ ] Destination weddings include travel and hotel-block tasks
-- [ ] No duplicate tasks
-- [ ] Every task has an owner assigned by category
-- [ ] Every task has a reminder set by category
-- [ ] User approved before anything was pushed to Calendar or Notion
-
-## Tone
-
-Direct and warm. These users are stressed and non-technical. No jargon. If they seem overwhelmed, offer to start with just the next 90 days instead of the full 12 months.
+- [ ] Every task has an owner and reminder
+- [ ] User approved before anything was pushed
 ````
+
+**Step 2: Run the skill**
+
+Open a new Cowork session and say something like:
+
+*"Build my wedding timeline."*
+
+The skill will ask you clarifying questions if it needs more info: wedding date, destination or local, guest count, who owns each category of tasks, and anything else that would change the timeline. You do not need to front-load every detail. Just answer what it asks.
+
+**Step 3: Review with your partner**
+
+Skim the timeline summary before it syncs. Look for anything specific to your wedding: multi-day events, cultural traditions, a courthouse ceremony, extra travel lead time for guests. Tweak deadlines if something feels off. Five minutes now saves a fight at month eight.
+
+Once you approve, the skill pushes every deadline to your calendar or Notion with owners and reminders already assigned by category. No manual tagging after the fact.
+
+## What you get
+
+- A **12-month wedding timeline** built from real online planning templates (The Knot, Zola, WeddingWire, and similar), not generic AI fluff
+- Every deadline **sequenced correctly** so you are not scrambling at the last minute
+- **Owners and reminders assigned automatically** by task category (vendors, attire, guest comms, legal, etc.)
+- Due dates **synced to Google Calendar or Notion** so you and your partner share one view
+- The whole workflow in **under 60 seconds**
+
+## Coming up in the series
+
+**Part 3** walks through everything we vibecoded for our wedding: the website, our singles mixer, and our thank-you cards, all bundled. [Part 1](/ai/ai-wedding-planning-part-1) covers the full stack if you want the big picture first.
+
+## Bonus: my actual wedding planner (Notion template)
+
+If you want a Notion home base beyond the timeline skill, here is the template Nick and I used for our wedding. It has sections for styling, website, prints, attire, guests, venues, program, gifts, and more, plus the big planning questions we asked ourselves upfront (priorities, budget, guest count, how to delegate).
+
+![Wedding Planner Notion template dashboard with sidebar sections and planning questions](/ai-guides/wedding-planner-notion-template.png "Wedding Planner [Mika's Template] — sidebar for Styling, Website, Guests, Venues, and Important Questions toggles.")
+
+**[Duplicate my Wedding Planner template →](https://smikatoots.notion.site/Wedding-Planner-Mika-s-Template-1bfc5bb94aec8069a3cadfff1d833dea?pvs=74)**
+
+Use the timeline skill to generate deadlines, then drop them into this template (or point `[NOTION_PAGE_URL]` at your copy of it).
 
 ## Additional Reading
 
