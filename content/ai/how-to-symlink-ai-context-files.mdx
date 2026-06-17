@@ -1,0 +1,92 @@
+---
+title: How to Symlink Your AI Context Files (Write Once, Use Everywhere)
+description: >-
+  Codex reads AGENTS.md. Claude Code reads CLAUDE.md. Symlink them so you
+  write your AI context once and every tool loads the same brain.
+tags:
+  - setup
+  - claude-code
+  - productivity
+  - advanced
+published: "2026-06-17"
+date: "2026-06-17"
+cta: Set it up once
+order: 29
+---
+
+The smartest AI users I know never type "here's some context about me" twice. They write it once, and every AI tool they use reads from the same place.
+
+You know that moment when you switch from ChatGPT to Claude and have to re-introduce yourself from scratch? Who you are, what your business does, how you like to write. Yeah. Never again.
+
+## Why this matters
+
+Every serious AI tool wants its own memory file. Codex looks for `AGENTS.md`. Claude Code looks for `CLAUDE.md`. Cursor has its own version. They all do the same job: telling the AI who you are and how you work. But none of them read each other.
+
+![Peter Yang tweet: Codex uses AGENTS.md and Claude Code uses CLAUDE.md](/ai-guides/symlink-context-peter-yang-tweet.png "Peter Yang (@petergyang) on the naming split between Codex and Claude Code. Over a million people saw this thread.")
+
+If you use more than one tool, you end up maintaining three or four versions of yourself. Or worse, you stay locked into one platform because switching means rewriting your entire setup from scratch.
+
+The fix is portable instructions. You write your context one time. Every tool reads from the same source of truth. The trick is a **symlink** (a shortcut that makes two filenames point to the same file on disk). My engineer husband Nick showed me this the other day and my jaw actually dropped.
+
+## The basics
+
+**Step 1: Pick one master file**
+
+Choose a single file to own your AI context. I recommend `AGENTS.md`. Roughly 60,000 GitHub projects already use that name, and more tools are adopting it as a standard. Put everything in there: who you are, how you write, what your business does, what good output looks like for you.
+
+If you already have a solid `CLAUDE.md`, you can flip this. Make `CLAUDE.md` the master and symlink everything else to it. The point is one source of truth, not which name wins.
+
+**Step 2: Write your context once**
+
+Open that master file and fill it in. Don't overthink the format. Short sections work fine: About Me, How I Write, Current Projects, Things to Never Do. If you're starting from scratch, [my guide on setting up CLAUDE.md](https://mikareyes.com/ai/how-to-setup-global-context-claude) walks you through what to put in there. You edit it once. That becomes the brain every tool inherits.
+
+> **Key insight:** You're not writing instructions for one app. You're writing a portable profile that any AI can load before you type a single prompt.
+
+**Step 3: Open your project folder in Terminal**
+
+On Mac, right-click your project folder in Finder and choose **New Terminal at Folder**. On Windows, open the folder in File Explorer and type `cmd` in the address bar. You need to be inside the folder where your AI tools look for context files.
+
+**Step 4: Create the symlink**
+
+Run this command, swapping in your actual paths:
+
+```bash
+ln -s /path/to/original /path/to/symlink
+```
+
+If your master file is `AGENTS.md` and you want Claude Code to read it, run:
+
+```bash
+ln -s AGENTS.md CLAUDE.md
+```
+
+Two seconds. Now `CLAUDE.md` is not a separate file. It's a pointer to `AGENTS.md`. Edit one, and both names see the change.
+
+![Nick Cruz tweet: symlink CLAUDE.md to AGENTS.md](/ai-guides/symlink-context-nick-cruz-tweet.png "Nick Cruz (@nickcruz26): 'In practice you just symlink CLAUDE.md to AGENTS.md and call it a day.' The file icon with the arrow is how your editor shows a symlink.")
+
+![Engineers replying with the same symlink command](/ai-guides/symlink-context-engineer-replies.png "Jamie Quint, Larry Engineer, Aniket, and others in the same thread: ln -s AGENTS.md CLAUDE.md. This is the standard move.")
+
+**Step 5: Repeat for every tool you use**
+
+Same move for each tool that expects its own filename. Cursor might want `.cursorrules` or a rules file in `.cursor/`. Codex already reads `AGENTS.md` directly, so you may not need a symlink there at all. The pattern is always the same: one real file, symlinks everywhere else.
+
+**Step 6: Verify it worked**
+
+Open both filenames in your editor. They should show identical content. Edit a line in `AGENTS.md`, save, and check `CLAUDE.md`. If the change shows up in both places, you're done. One file. Every tool. Zero duplication.
+
+## What you get
+
+- **One source of truth.** Update your voice, projects, or preferences in one place.
+- **Zero platform lock-in.** Switch tools without rebuilding your setup.
+- **Consistent AI behavior.** Claude, Codex, and Cursor all start from the same brain.
+
+The people who feel "AI-native" aren't typing better prompts on day one. They set up systems once and let every tool inherit them.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [How to Setup Global Context for Claude (CLAUDE.md, USER.md)](https://mikareyes.com/ai/how-to-setup-global-context-claude)
+2. [How to Keep Your CLAUDE.md From Going Stale (Context Updater)](https://mikareyes.com/ai/how-to-keep-claude-md-from-going-stale-context-updater)
+3. [How to Setup Claude Code (5-Min Guide for Non-Techies)](https://mikareyes.com/ai/how-to-setup-claude-code)
+4. [How to Give Claude Memory (Beginner to Advanced)](https://mikareyes.com/ai/how-to-give-claude-memory)
