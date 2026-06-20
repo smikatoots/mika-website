@@ -87,7 +87,7 @@ export function TextSlide({
     <div className="flex h-full w-full flex-col items-center justify-center px-8 text-center sm:px-16">
       {emoji ? (
         <div
-          className="deck-pop mb-8 text-8xl leading-none sm:text-[9rem]"
+          className="deck-pop mb-8 w-full text-center text-8xl leading-none sm:text-[9rem]"
           style={{ animationDelay: "0.05s" }}
           aria-hidden
         >
@@ -103,7 +103,7 @@ export function TextSlide({
         </div>
       ) : null}
       <h1
-        className={`deck-rise max-w-6xl ${headingBase} ${display ? deckType.display : deckType.statement}`}
+        className={`deck-rise flex w-full max-w-6xl flex-col items-center text-center ${headingBase} ${display ? deckType.display : deckType.statement}`}
         style={{ animationDelay: "0.12s" }}
       >
         {children}
@@ -207,6 +207,7 @@ export function DualImageSlide({
   caption,
   compactCaption = false,
   balancedHeight = false,
+  stacked = false,
   rightScale = 1,
 }: {
   left: { src: string; alt: string };
@@ -216,23 +217,34 @@ export function DualImageSlide({
   compactCaption?: boolean;
   /** Fixed-height image wells so portraits align. */
   balancedHeight?: boolean;
+  /** Stack images vertically and split the slide height evenly. */
+  stacked?: boolean;
   /** Scale the right image down (e.g. 0.85) within its well. */
   rightScale?: number;
 }) {
   const captionGap = compactCaption ? "gap-2 sm:gap-3" : "";
   const captionMargin = compactCaption ? "mb-0" : "mb-5 sm:mb-7";
-  const imageRowClass = balancedHeight
-    ? "flex h-[min(82vh,56rem)] w-full flex-1 flex-col items-stretch justify-center gap-4 sm:flex-row sm:gap-6"
-    : `flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8 ${
-        compactCaption ? "max-h-[70vh]" : "flex-1"
-      }`;
-  const imageWell = balancedHeight
-    ? "relative min-h-0 w-full flex-1 sm:h-full"
-    : "relative h-full w-full sm:flex-1";
+  const imageRowClass = stacked
+    ? "flex min-h-0 w-full flex-1 flex-col items-stretch justify-center gap-2 sm:gap-3"
+    : balancedHeight
+      ? "flex h-[min(82vh,56rem)] w-full flex-1 flex-col items-stretch justify-center gap-4 sm:flex-row sm:gap-6"
+      : `flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8 ${
+          compactCaption ? "max-h-[70vh]" : "flex-1"
+        }`;
+  const imageWell = stacked
+    ? "relative min-h-0 w-full flex-1"
+    : balancedHeight
+      ? "relative min-h-0 w-full flex-1 sm:h-full"
+      : "relative h-full w-full sm:flex-1";
+  const imageSizes = stacked ? "100vw" : "50vw";
 
   return (
     <div
-      className={`deck-fade flex h-full w-full flex-col items-center justify-center px-6 py-8 sm:px-10 sm:py-10 ${captionGap}`}
+      className={`deck-fade flex h-full w-full flex-col items-center ${
+        stacked
+          ? "justify-stretch px-4 py-4 sm:px-6 sm:py-5"
+          : "justify-center px-6 py-8 sm:px-10 sm:py-10"
+      } ${captionGap}`}
     >
       {caption ? (
         <h2
@@ -244,7 +256,7 @@ export function DualImageSlide({
       ) : null}
       <div className={imageRowClass}>
         <div className={imageWell}>
-          <Image src={left.src} alt={left.alt} fill sizes="50vw" className="object-contain" />
+          <Image src={left.src} alt={left.alt} fill sizes={imageSizes} className="object-contain" />
         </div>
         <div className={imageWell}>
           {rightScale < 1 ? (
@@ -252,10 +264,10 @@ export function DualImageSlide({
               className="relative mx-auto h-full w-full"
               style={{ transform: `scale(${rightScale})` }}
             >
-              <Image src={right.src} alt={right.alt} fill sizes="50vw" className="object-contain" />
+              <Image src={right.src} alt={right.alt} fill sizes={imageSizes} className="object-contain" />
             </div>
           ) : (
-            <Image src={right.src} alt={right.alt} fill sizes="50vw" className="object-contain" />
+            <Image src={right.src} alt={right.alt} fill sizes={imageSizes} className="object-contain" />
           )}
         </div>
       </div>
@@ -304,7 +316,7 @@ export function StepsSlide({
                 {i + 1}
               </span>
               {reached ? (
-                <span className="whitespace-nowrap text-5xl font-extrabold leading-[1.05] tracking-tight text-zinc-950 sm:text-6xl">
+                <span className="whitespace-nowrap text-6xl font-extrabold leading-[1.05] tracking-tight text-zinc-950 sm:text-7xl">
                   {label}
                 </span>
               ) : null}

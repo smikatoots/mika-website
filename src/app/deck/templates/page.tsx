@@ -75,7 +75,7 @@ const slides: React.ReactNode[] = [
   </Example>,
 
   <Example key="t2" name="Statement">
-    <TextSlide display>
+    <TextSlide>
       So what do you <HL delay={0.4}>do</HL> about it?
     </TextSlide>
   </Example>,

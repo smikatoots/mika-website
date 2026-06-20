@@ -19,11 +19,11 @@ function StepEmoji({ children }: { children: React.ReactNode }) {
 }
 
 const advisorSteps: React.ReactNode[] = [
-  "Contrarian — what will fail",
-  "Assumption-ripper — tear apart premises",
-  "Expansionist — upside you\u2019re missing",
-  "Outsider — the dumb questions",
-  "Executor — what you\u2019ll do Monday",
+  "Contrarian",
+  "Assumption-ripper",
+  "Expansionist",
+  "Outsider",
+  "Executor",
 ];
 
 const slides: React.ReactNode[] = [
@@ -43,6 +43,7 @@ const slides: React.ReactNode[] = [
   // 2 — Stanford just proved Claude is a yes-man…
   <DualImageSlide
     key="yes-man-stats"
+    stacked
     left={{
       src: `${LIB}/stanford-report-ai-yes-man.png`,
       alt: "Stanford report on Claude agreeing more than humans",

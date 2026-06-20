@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { Deck } from "@/components/deck/Deck";
+import { deckType, headingBase } from "@/components/deck/deck-styles";
 import { HL, DualImageSlide, ImageSlide, TextSlide } from "@/components/deck/slide-parts";
 import { CtaSlide } from "@/components/deck/special-slides";
 
@@ -9,6 +10,30 @@ export const metadata: Metadata = {
 };
 
 const LIB = "/decks/_library";
+
+function ExecutionSlide() {
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center px-8 text-center sm:px-16">
+      <div
+        className="deck-pop mb-8 text-8xl leading-none sm:text-[9rem]"
+        style={{ animationDelay: "0.05s" }}
+        aria-hidden
+      >
+        🏁
+      </div>
+      <div
+        className={`deck-rise flex max-w-6xl flex-col items-center ${headingBase} ${deckType.statement}`}
+        style={{ animationDelay: "0.12s" }}
+      >
+        <span>Win on</span>
+        <span>
+          <HL>execution &amp; distribution</HL>,
+        </span>
+        <span>not product ideas.</span>
+      </div>
+    </div>
+  );
+}
 
 const slides: React.ReactNode[] = [
   // 1 — YC P26 results are in
@@ -57,9 +82,7 @@ const slides: React.ReactNode[] = [
   />,
 
   // 7 — So here's what actually wins instead…
-  <TextSlide key="execution" emoji="🏁">
-    Win on <HL>execution &amp; distribution</HL>, not product ideas.
-  </TextSlide>,
+  <ExecutionSlide key="execution" />,
 
   // 8 — Comment MIKA for links to the YC batch breakdown
   <CtaSlide key="cta" sub="for links to the YC batch breakdown." />,

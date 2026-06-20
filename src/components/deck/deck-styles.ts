@@ -8,9 +8,9 @@
  */
 export const deckType = {
   /** Biggest moment on a slide: hero statements, the CTA, step numbers. */
-  display: "text-8xl sm:text-9xl",
+  display: "text-9xl sm:text-[11rem]",
   /** Default for all headlines + image headers. The minimum for message text. */
-  statement: "text-7xl sm:text-8xl",
+  statement: "text-8xl sm:text-9xl",
   /** Footnotes only — never the message. */
   meta: "text-sm text-zinc-400 sm:text-base",
 } as const;

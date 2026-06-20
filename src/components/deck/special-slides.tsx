@@ -95,12 +95,14 @@ export function CtaSlide({
           : "max-w-4xl items-center text-center"
       }`}
     >
-      <p
-        className={`deck-rise font-bold text-zinc-950 ${deckType.statement}`}
-        style={{ animationDelay: "0.05s" }}
-      >
-        {prompt}
-      </p>
+      {prompt ? (
+        <p
+          className={`deck-rise font-bold text-zinc-950 ${deckType.statement}`}
+          style={{ animationDelay: "0.05s" }}
+        >
+          {prompt}
+        </p>
+      ) : null}
       <div
         className={`deck-cta-pulse my-5 rounded-2xl bg-[var(--deck-accent)] px-9 py-4 font-extrabold tracking-tight text-white shadow-[0_18px_50px_-12px_rgba(253,72,105,0.6)] ${deckType.display}`}
         style={{ animationDelay: "0.15s" }}

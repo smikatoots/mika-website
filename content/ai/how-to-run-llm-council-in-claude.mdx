@@ -1,0 +1,211 @@
+---
+title: How to Run an LLM Council in Claude (Karpathy's Fix for the Yes-Man Problem)
+description: >-
+  Stanford showed Claude agrees with you 49% more than humans. Andrej Karpathy
+  built the fix: five AI advisors that pressure-test each other before you
+  decide. Here's how to run it in a single Claude chat.
+tags:
+  - claude
+  - decision-making
+  - prompts
+  - skills
+published: "2026-06-20"
+date: "2026-06-20"
+cta: Run the council
+---
+
+Stanford just proved Claude is a yes-man. It agrees with you 49% more than a human would. And it makes things up anywhere from 3 to 48% of the time.
+
+So every time you ask Claude for advice on a big decision, you're basically getting your own opinion back in a smarter font. That's fine for drafting emails. It's dangerous for bets that cost you months or money.
+
+![Stanford logo and Andrej Karpathy](/decks/_library/stanford-logo.png "Stanford proved the yes-man problem. Karpathy built the fix.")
+
+## Why this matters
+
+Andrej Karpathy, a founding member of OpenAI who recently joined Anthropic, built something called the LLM Council. The original runs across multiple AI models. But you can run a version inside a single Claude chat, and it changes how you make decisions.
+
+I tried it on a new marketing idea we were experimenting with. The whole council except one advisor told me it was a bad idea. I didn't even try it. Saved weeks of time I could spend testing better ideas.
+
+> **Key insight:** One Claude chat gives you one perspective. Five advisors who review each other blind gives you a boardroom, not a mirror.
+
+![Stanford research on Claude agreeing more than humans](/decks/_library/stanford-report-ai-yes-man.png "Stanford's research on AI sycophancy.")
+
+![Research showing Claude is more agreeable than humans](/decks/_library/ai-agreeable-than-human.png "Claude agrees with you 49% more than a human would.")
+
+## How the LLM Council works
+
+![Karpathy's LLM Council](/decks/_library/llm-council.jpg "Karpathy's LLM Council: multiple models debating before a final answer.")
+
+The council replaces Claude's default "helpful assistant" mode with five sharp voices that pressure-test each other. The full workflow has three beats.
+
+### 1. **Get five independent answers**
+
+Start by asking for five distinct perspectives on your question. Don't ask for one answer. Ask for five, each from a different advisor role (more on those below).
+
+### 2. **Run blind peer review**
+
+After all five respond, have each advisor review the others' answers. No names attached. The ideas get judged, not the people. This is where weak arguments get exposed.
+
+### 3. **Let the Chairman synthesize**
+
+A chairman reads everything and gives you the final call with clear next steps. One verdict. Actionable. No waffling.
+
+![LLM Council chairman synthesizing advisor responses](/decks/_library/chairman.jpg "The chairman reads all five perspectives and delivers the final call.")
+
+## The five advisors
+
+Each advisor attacks your question from a completely different angle. Together they cover what one yes-man Claude chat will never give you on its own.
+
+**Contrarian**
+
+Only looks at what's going to fail. Tears holes in everything you say. If your idea has a fatal flaw, this voice finds it first.
+
+**Assumption-Ripper**
+
+Rips apart every assumption you walked in with. Reframes what you're actually trying to solve. Often the real question isn't the one you asked.
+
+**Expansionist**
+
+Hunts for the upside you're completely missing. Finds the opportunity hidden inside your idea that you didn't see because you were focused on the problem.
+
+**Outsider**
+
+Knows nothing about your industry. Asks the dumb questions that turn out to be the smart ones. Fresh eyes catch obvious things everyone inside the bubble misses.
+
+**Executor**
+
+Only cares about what you'll actually do Monday morning. No theory. No vision. Just: here are the next three steps, and here's what to skip.
+
+## How to download and use Karpathy's LLM Council
+
+Karpathy's [LLM Council repo](https://github.com/karpathy/llm-council) is the full version of this idea. Instead of simulating five advisors inside one Claude chat, it sends your question to multiple real LLMs (GPT, Gemini, Claude, Grok, and others) through [OpenRouter](https://openrouter.ai/), has them review each other's work anonymously, and lets a Chairman model write the final answer. It runs as a local web app on your machine.
+
+### 1. **Download the repo**
+
+Go to [github.com/karpathy/llm-council](https://github.com/karpathy/llm-council) and click **Code → Download ZIP**, or clone it if you use git:
+
+```bash
+git clone https://github.com/karpathy/llm-council.git
+cd llm-council
+```
+
+### 2. **Install dependencies**
+
+The project uses [uv](https://docs.astral.sh/uv/) for the Python backend and npm for the frontend.
+
+Backend:
+
+```bash
+uv sync
+```
+
+Frontend:
+
+```bash
+cd frontend
+npm install
+cd ..
+```
+
+### 3. **Add your OpenRouter API key**
+
+Create a `.env` file in the project root:
+
+```bash
+OPENROUTER_API_KEY=sk-or-v1-...
+```
+
+Get your key at [openrouter.ai](https://openrouter.ai/). You'll need credits on the account (or automatic top-up enabled) since each council query hits multiple models.
+
+### 4. **Pick your council models (optional)**
+
+By default the council uses several frontier models. To customize, edit `backend/config.py`:
+
+```python
+COUNCIL_MODELS = [
+    "openai/gpt-5.1",
+    "google/gemini-3-pro-preview",
+    "anthropic/claude-sonnet-4.5",
+    "x-ai/grok-4",
+]
+
+CHAIRMAN_MODEL = "google/gemini-3-pro-preview"
+```
+
+Swap in whichever models you want debating. The Chairman is the one that writes the final synthesized answer.
+
+### 5. **Run the app**
+
+Easiest path: use the included start script.
+
+```bash
+./start.sh
+```
+
+Or run backend and frontend in two terminals:
+
+```bash
+# Terminal 1
+uv run python -m backend.main
+
+# Terminal 2
+cd frontend && npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser. It looks like ChatGPT, except your question goes to the whole council.
+
+### 6. **Understand the three stages**
+
+When you submit a question, three things happen in order:
+
+**Stage 1: First opinions.** Every model in your council answers independently. You can read each response in a tab view side by side.
+
+**Stage 2: Review.** Each model sees the other models' answers (anonymized, so nobody plays favorites) and ranks them on accuracy and insight.
+
+**Stage 3: Final response.** The Chairman reads all of it and compiles one final answer for you.
+
+Karpathy built this as a weekend hack and doesn't maintain it, but the code is straightforward if you want to tweak it. The repo is a good reference even if you mostly run the single-chat version below.
+
+## The prompt to copy (single Claude chat)
+
+Don't want to run the local app? You can simulate the council inside one Claude chat. Paste this and replace the bracketed section with your actual question:
+
+```
+Run an LLM Council on this decision:
+
+[Your question here]
+
+Step 1: Answer as five advisors:
+1. Contrarian — only focus on what will fail
+2. Assumption-Ripper — challenge every assumption I'm making
+3. Expansionist — find the upside I'm missing
+4. Outsider — you know nothing about my industry; ask the obvious questions
+5. Executor — only care about what I should do Monday morning
+
+Step 2: Each advisor reviews the others' answers blind (no names, judge ideas not people).
+
+Step 3: A Chairman synthesizes everything into one final verdict with clear next steps.
+```
+
+You go from one yes-man to five sharp voices pressure-testing each other. That's how time-rich people make decisions without hiring a board.
+
+## When to use it
+
+Run the council before you:
+
+- Launch a new product or feature
+- Make a hire or fire decision
+- Commit to a partnership or deal
+- Pivot your business direction
+- Spend significant time or money on an experiment
+
+Don't use it for small tasks. This is for decisions where being wrong is expensive.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [What Is a Skill?](/ai/what-is-a-skill)
+2. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+3. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+4. [Chat-Based AI vs Agentic AI (side by side comparison)](/ai/chat-based-ai-vs-agentic-ai)

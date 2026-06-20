@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
+import Script from "next/script";
 
 import { SiteStructuredData } from "@/components/SiteStructuredData";
 import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
@@ -48,27 +49,26 @@ export default function RootLayout({
     >
       <head>
         <SiteStructuredData />
-        {gaMeasurementId ? (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${gaMeasurementId}');
-                `,
-              }}
-            />
-          </>
-        ) : null}
       </head>
       <body className="flex min-h-screen flex-col bg-white text-zinc-950 antialiased">
         {children}
+        {gaMeasurementId ? (
+          <>
+            <Script
+              id="google-analytics-init"
+              strategy="afterInteractive"
+            >{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gaMeasurementId}');
+            `}</Script>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+          </>
+        ) : null}
       </body>
     </html>
   );
