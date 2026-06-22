@@ -1,9 +1,10 @@
 export type Ga4EventParams = {
-  cta_label: string;
-  cta_location: string;
-  destination_url: string;
-  link_type: string;
+  cta_label?: string;
+  cta_location?: string;
+  destination_url?: string;
+  link_type?: string;
   page_path?: string;
+  [key: string]: string | number | boolean | undefined;
 };
 
 declare global {
@@ -11,7 +12,7 @@ declare global {
     gtag?: (
       command: "event" | "config" | "js",
       targetId: string | Date,
-      params?: Record<string, unknown>,
+      params?: Record<string, string | number | boolean | undefined>,
     ) => void;
   }
 }
