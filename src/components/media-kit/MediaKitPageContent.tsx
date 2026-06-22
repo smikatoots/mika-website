@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
+import { Ga4TrackedAnchor, Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
 import { DemographicPieChart } from "@/components/media-kit/DemographicPieChart";
 import { DemographicRanking } from "@/components/media-kit/DemographicRanking";
 import { homeBioLinks } from "@/lib/home-bio-links";
@@ -18,20 +18,46 @@ function ExternalLink({
   href,
   children,
   className,
+  ga4EventName,
+  ctaLocation,
+  linkType,
 }: {
   href: string;
   children: ReactNode;
   className?: string;
+  ga4EventName?: string;
+  ctaLocation?: string;
+  linkType?: string;
 }) {
+  if (!ga4EventName || !ctaLocation || !linkType) {
+    return (
+      <a
+        href={href}
+        className={className ?? siteLink}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <a
+    <Ga4TrackedAnchor
       href={href}
       className={className ?? siteLink}
       rel="noopener noreferrer"
       target="_blank"
+      ga4EventName={ga4EventName}
+      ga4Params={{
+        cta_label: typeof children === "string" ? children : "Media kit link",
+        cta_location: ctaLocation,
+        destination_url: href,
+        link_type: linkType,
+      }}
     >
       {children}
-    </a>
+    </Ga4TrackedAnchor>
   );
 }
 
@@ -135,15 +161,31 @@ export function MediaKitPageContent() {
             back, and stay relevant in the AI age.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-2 text-sm text-zinc-300 sm:flex-row sm:flex-wrap">
-            <ExternalLink href={homeBioLinks.instagram} className={headerLinkClass}>
+            <ExternalLink
+              href={homeBioLinks.instagram}
+              className={headerLinkClass}
+              ga4EventName="media_kit_social_click"
+              ctaLocation="media_kit_header"
+              linkType="social_instagram"
+            >
               Instagram {INSTAGRAM_HANDLE}
             </ExternalLink>
             <span className="hidden text-zinc-600 sm:inline" aria-hidden>
               ·
             </span>
-            <a href={`mailto:${CONTACT_EMAIL}`} className={headerLinkClass}>
+            <Ga4TrackedAnchor
+              href={`mailto:${CONTACT_EMAIL}`}
+              className={headerLinkClass}
+              ga4EventName="media_kit_contact_click"
+              ga4Params={{
+                cta_label: CONTACT_EMAIL,
+                cta_location: "media_kit_header",
+                destination_url: `mailto:${CONTACT_EMAIL}`,
+                link_type: "email_contact",
+              }}
+            >
               {CONTACT_EMAIL}
-            </a>
+            </Ga4TrackedAnchor>
           </div>
           <p className="mt-3 text-xs leading-relaxed text-zinc-500">
             Last updated {STATS_AS_OF}. All metrics reflect the past 30 days.
@@ -394,7 +436,7 @@ export function MediaKitPageContent() {
           <div className="mt-6 w-full space-y-4 text-base leading-relaxed text-zinc-700 sm:text-[1.05rem]">
             <p>
               I&apos;m co-founder of{" "}
-              <ExternalLink href={homeBioLinks.kingsCrossLabs}>
+              <ExternalLink href={homeBioLinks.kingsCrossLabs} ga4EventName="media_kit_reference_click" ctaLocation="media_kit_body" linkType="external_reference">
                 King&apos;s Cross Labs
               </ExternalLink>{" "}
               with my husband: AI tools, training, and education for
@@ -402,10 +444,10 @@ export function MediaKitPageContent() {
             </p>
             <p>
               Before this, I led product at{" "}
-              <ExternalLink href={homeBioLinks.linkedin}>LinkedIn</ExternalLink>{" "}
+              <ExternalLink href={homeBioLinks.linkedin} ga4EventName="media_kit_reference_click" ctaLocation="media_kit_body" linkType="external_reference">LinkedIn</ExternalLink>{" "}
               (launched the &quot;I&apos;m Hiring&quot; ring), then co-founded
               and ran{" "}
-              <ExternalLink href={homeBioLinks.parallax}>Parallax</ExternalLink>{" "}
+              <ExternalLink href={homeBioLinks.parallax} ga4EventName="media_kit_reference_click" ctaLocation="media_kit_body" linkType="external_reference">Parallax</ExternalLink>{" "}
               as CEO, one of the earliest global stablecoin payments products. We
               raised ~$5M from Dragonfly and General Catalyst, hit $100M+ in
               transaction volume in under a year, and were acquired by Phantom, a
@@ -500,6 +542,9 @@ export function MediaKitPageContent() {
                   <ExternalLink
                     href={homeBioLinks.kingsCrossLabs}
                     className="text-zinc-300 underline decoration-zinc-500 underline-offset-[3px] transition-colors hover:text-accent hover:decoration-accent/60"
+                    ga4EventName="speaking_workshop_partner_click"
+                    ctaLocation="media_kit_partnerships"
+                    linkType="external_partner"
                   >
                     kingscrosslabs.com
                   </ExternalLink>
@@ -528,30 +573,47 @@ export function MediaKitPageContent() {
             Let&apos;s work together
           </h2>
           <p className="mt-6 flex flex-col items-center justify-center gap-2 text-sm sm:flex-row sm:flex-wrap sm:gap-x-2 sm:gap-y-1 md:text-base">
-            <a
+            <Ga4TrackedAnchor
               href={`mailto:${CONTACT_EMAIL}`}
               className="font-medium text-zinc-300 underline decoration-zinc-500 underline-offset-[3px] transition-colors hover:text-accent hover:decoration-accent/60"
+              ga4EventName="media_kit_contact_click"
+              ga4Params={{
+                cta_label: CONTACT_EMAIL,
+                cta_location: "media_kit_footer",
+                destination_url: `mailto:${CONTACT_EMAIL}`,
+                link_type: "email_contact",
+              }}
             >
               {CONTACT_EMAIL}
-            </a>
+            </Ga4TrackedAnchor>
             <span className="hidden text-zinc-600 sm:inline" aria-hidden>
               ·
             </span>
             <ExternalLink
               href={homeBioLinks.instagram}
               className="font-medium text-zinc-300 underline decoration-zinc-500 underline-offset-[3px] transition-colors hover:text-accent hover:decoration-accent/60"
+              ga4EventName="media_kit_social_click"
+              ctaLocation="media_kit_footer"
+              linkType="social_instagram"
             >
               {INSTAGRAM_HANDLE}
             </ExternalLink>
             <span className="hidden text-zinc-600 sm:inline" aria-hidden>
               ·
             </span>
-            <Link
+            <Ga4TrackedInternalLink
               href="https://mikareyes.com"
               className="font-medium text-zinc-300 underline decoration-zinc-500 underline-offset-[3px] transition-colors hover:text-accent hover:decoration-accent/60"
+              ga4EventName="media_kit_home_click"
+              ga4Params={{
+                cta_label: "mikareyes.com",
+                cta_location: "media_kit_footer",
+                destination_url: "https://mikareyes.com",
+                link_type: "internal_home",
+              }}
             >
               mikareyes.com
-            </Link>
+            </Ga4TrackedInternalLink>
           </p>
         </div>
       </footer>

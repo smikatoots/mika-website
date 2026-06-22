@@ -13,6 +13,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "scripts/bootstrap-env.cjs",
+    "public/downloads/**",
   ]),
 ]);
 

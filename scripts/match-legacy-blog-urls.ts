@@ -288,7 +288,7 @@ async function main() {
   console.error(`match-legacy-blog: ${posts.length} post(s) in manifest.`);
 
   type NotionRow = { slug: string; path: string; title: string };
-  let notionRows: NotionRow[] = [];
+  const notionRows: NotionRow[] = [];
   if (skipNotion) {
     console.error("Notion: skipped (--skip-notion).");
   } else if (isNotionConfigured()) {

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Ga4TrackedAnchor } from "@/components/analytics/Ga4TrackedLink";
 import { HomeCtaGrid } from "@/components/home/HomeCtaGrid";
 import { homeBioLinks } from "@/lib/home-bio-links";
 import { siteLink, textBody } from "@/lib/ui/site-styles";
@@ -9,9 +10,15 @@ import { siteLink, textBody } from "@/lib/ui/site-styles";
 function BioLink({
   href,
   children,
+  ga4EventName,
+  ctaLocation,
+  linkType,
 }: {
   href: string;
   children: ReactNode;
+  ga4EventName?: string;
+  ctaLocation?: string;
+  linkType?: string;
 }) {
   if (href.startsWith("/")) {
     return (
@@ -20,15 +27,35 @@ function BioLink({
       </Link>
     );
   }
+  if (!ga4EventName || !ctaLocation || !linkType) {
+    return (
+      <a
+        href={href}
+        className={siteLink}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <a
+    <Ga4TrackedAnchor
       href={href}
       className={siteLink}
       rel="noopener noreferrer"
       target="_blank"
+      ga4EventName={ga4EventName}
+      ga4Params={{
+        cta_label: typeof children === "string" ? children : "Bio link",
+        cta_location: ctaLocation,
+        destination_url: href,
+        link_type: linkType,
+      }}
     >
       {children}
-    </a>
+    </Ga4TrackedAnchor>
   );
 }
 
@@ -58,14 +85,24 @@ export function HomeLanding() {
         <p>
           <strong className="font-semibold text-zinc-950">Now:</strong>{" "}
           Building AI products at{" "}
-          <BioLink href={homeBioLinks.kingsCrossLabs}>
+          <BioLink
+            href={homeBioLinks.kingsCrossLabs}
+            ga4EventName="company_link_click"
+            ctaLocation="home_bio"
+            linkType="external_company"
+          >
             King&apos;s Cross Labs
           </BioLink>
-          . Creating on <BioLink href={homeBioLinks.tiktok}>TikTok</BioLink>{" "}
+          . Creating on <BioLink href={homeBioLinks.tiktok} ga4EventName="social_cta_click" ctaLocation="home_bio" linkType="social_tiktok">TikTok</BioLink>{" "}
           &amp;{" "}
-          <BioLink href={homeBioLinks.instagram}>Instagram</BioLink> helping
+          <BioLink href={homeBioLinks.instagram} ga4EventName="social_cta_click" ctaLocation="home_bio" linkType="social_instagram">Instagram</BioLink> helping
           people uplevel with AI. Also doing{" "}
-          <BioLink href={homeBioLinks.lelandCoach}>
+          <BioLink
+            href={homeBioLinks.lelandCoach}
+            ga4EventName="coaching_cta_click"
+            ctaLocation="home_bio"
+            linkType="external_coaching"
+          >
             1:1 coaching on careers &amp; AI
           </BioLink>
           .
@@ -73,31 +110,31 @@ export function HomeLanding() {
         <p>
           <strong className="font-semibold text-zinc-950">Prior:</strong>{" "}
           Co-founder &amp; CEO of{" "}
-          <BioLink href={homeBioLinks.parallax}>Parallax</BioLink>, a
+          <BioLink href={homeBioLinks.parallax} ga4EventName="profile_reference_click" ctaLocation="home_bio" linkType="external_profile_reference">Parallax</BioLink>, a
           venture-backed stablecoin payments startup. Raised ~$5M, scaled the
           company to +$X00M in {'<'}1y in volume, before a successful exit.
           Also: product lead @{" "}
-          <BioLink href={homeBioLinks.linkedin}>LinkedIn</BioLink>,{" "}
-          <BioLink href={homeBioLinks.kumu}>Kumu.ph</BioLink>,{" "}
-          <BioLink href={homeBioLinks.medgrocer}>MedGrocer</BioLink>,{" "}
-          <BioLink href={homeBioLinks.ripcord}>Ripcord</BioLink>.
+          <BioLink href={homeBioLinks.linkedin} ga4EventName="profile_reference_click" ctaLocation="home_bio" linkType="external_profile_reference">LinkedIn</BioLink>,{" "}
+          <BioLink href={homeBioLinks.kumu} ga4EventName="profile_reference_click" ctaLocation="home_bio" linkType="external_profile_reference">Kumu.ph</BioLink>,{" "}
+          <BioLink href={homeBioLinks.medgrocer} ga4EventName="profile_reference_click" ctaLocation="home_bio" linkType="external_profile_reference">MedGrocer</BioLink>,{" "}
+          <BioLink href={homeBioLinks.ripcord} ga4EventName="profile_reference_click" ctaLocation="home_bio" linkType="external_profile_reference">Ripcord</BioLink>.
         </p>
         <p>
           <strong className="font-semibold text-zinc-950">Featured on:</strong>{" "}
-          <BioLink href={p.techcrunch}>TechCrunch</BioLink>,{" "}
-          <BioLink href={p.yahoo}>Yahoo!</BioLink>,{" "}
-          <BioLink href={p.techInAsia}>Tech in Asia</BioLink>,{" "}
-          <BioLink href={p.inquirer}>Inquirer</BioLink>,{" "}
-          <BioLink href={p.forbes}>Forbes</BioLink>
+          <BioLink href={p.techcrunch} ga4EventName="press_reference_click" ctaLocation="home_bio" linkType="external_press">TechCrunch</BioLink>,{" "}
+          <BioLink href={p.yahoo} ga4EventName="press_reference_click" ctaLocation="home_bio" linkType="external_press">Yahoo!</BioLink>,{" "}
+          <BioLink href={p.techInAsia} ga4EventName="press_reference_click" ctaLocation="home_bio" linkType="external_press">Tech in Asia</BioLink>,{" "}
+          <BioLink href={p.inquirer} ga4EventName="press_reference_click" ctaLocation="home_bio" linkType="external_press">Inquirer</BioLink>,{" "}
+          <BioLink href={p.forbes} ga4EventName="press_reference_click" ctaLocation="home_bio" linkType="external_press">Forbes</BioLink>
         </p>
         <p>
           <strong className="font-semibold text-zinc-950">
             Awards &amp; Fellowships:
           </strong>{" "}
-          <BioLink href={a.forbes30}>Forbes 30 Under 30</BioLink>,{" "}
-          <BioLink href={a.tatler}>Tatler Gen.T Leader of Tomorrow</BioLink>,{" "}
-          <BioLink href={a.kleinerPerkins}>Kleiner Perkins Fellow</BioLink>,{" "}
-          <BioLink href={a.spc}>SPC Founder Fellow</BioLink>.
+          <BioLink href={a.forbes30} ga4EventName="award_reference_click" ctaLocation="home_bio" linkType="external_award">Forbes 30 Under 30</BioLink>,{" "}
+          <BioLink href={a.tatler} ga4EventName="award_reference_click" ctaLocation="home_bio" linkType="external_award">Tatler Gen.T Leader of Tomorrow</BioLink>,{" "}
+          <BioLink href={a.kleinerPerkins} ga4EventName="award_reference_click" ctaLocation="home_bio" linkType="external_award">Kleiner Perkins Fellow</BioLink>,{" "}
+          <BioLink href={a.spc} ga4EventName="award_reference_click" ctaLocation="home_bio" linkType="external_award">SPC Founder Fellow</BioLink>.
         </p>
       </div>
 

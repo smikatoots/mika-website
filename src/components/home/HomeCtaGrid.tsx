@@ -2,6 +2,8 @@
 
 import posthog from "posthog-js";
 
+import { trackGa4Event } from "@/lib/analytics/ga4";
+
 const cardClass =
   "group flex h-full min-h-[3.25rem] items-center gap-3 rounded-lg border border-zinc-200 bg-white px-4 py-3.5 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400";
 
@@ -111,31 +113,43 @@ const ctas = [
     label: "Contact",
     href: "https://letterbird.co/mikareyes",
     icon: IconAt,
+    ga4EventName: "contact_cta_click",
+    linkType: "external_contact",
   },
   {
     label: "Connect",
     href: "https://www.linkedin.com/in/itsmikareyes",
     icon: IconLinkedIn,
+    ga4EventName: "social_cta_click",
+    linkType: "social_linkedin",
   },
   {
     label: "Follow",
     href: "https://www.instagram.com/its.mikareyes/",
     icon: IconInstagram,
+    ga4EventName: "social_cta_click",
+    linkType: "social_instagram",
   },
   {
     label: "Tweet",
     href: "https://twitter.com/__mikareyes",
     icon: IconTwitter,
+    ga4EventName: "social_cta_click",
+    linkType: "social_x",
   },
   {
     label: "Watch",
     href: "https://www.tiktok.com/@its.mikareyes",
     icon: IconTikTok,
+    ga4EventName: "social_cta_click",
+    linkType: "social_tiktok",
   },
   {
     label: "Get coached",
     href: "https://www.joinleland.com/coach/mikaela-r",
     icon: IconCoach,
+    ga4EventName: "coaching_cta_click",
+    linkType: "external_coaching",
   },
 ] as const;
 
@@ -145,14 +159,22 @@ export function HomeCtaGrid() {
       className="mt-12 grid grid-cols-1 gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
       aria-label="Social and contact"
     >
-      {ctas.map(({ label, href, icon: Icon }) => (
+      {ctas.map(({ label, href, icon: Icon, ga4EventName, linkType }) => (
         <a
           key={label}
           href={href}
           className={cardClass}
           rel="noopener noreferrer"
           target="_blank"
-          onClick={() => posthog.capture("social_link_clicked", { label, href })}
+          onClick={() => {
+            posthog.capture("social_link_clicked", { label, href });
+            trackGa4Event(ga4EventName, {
+              cta_label: label,
+              cta_location: "home_cta_grid",
+              destination_url: href,
+              link_type: linkType,
+            });
+          }}
         >
           <Icon />
           <span className={labelClass}>{label}</span>

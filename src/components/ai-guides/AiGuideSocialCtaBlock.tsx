@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+
+import { trackGa4Event } from "@/lib/analytics/ga4";
 
 const MAVEN_WORKSHOP_URL =
   "https://maven.com/mika-reyes/master-claude-code-as-a-non-technical-pro";
@@ -32,6 +36,14 @@ export function AiGuideSocialCtaBlock() {
           target="_blank"
           rel="noopener noreferrer"
           className="mt-6 inline-flex items-center justify-center rounded-[10px] bg-accent px-6 py-2.5 text-base font-semibold text-white transition hover:bg-accent-hover"
+          onClick={() =>
+            trackGa4Event("workshop_cta_click", {
+              cta_label: "Learn more",
+              cta_location: "ai_guide_promo_block",
+              destination_url: MAVEN_WORKSHOP_URL,
+              link_type: "external_workshop",
+            })
+          }
         >
           Learn more
         </a>
