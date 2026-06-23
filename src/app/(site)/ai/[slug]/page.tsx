@@ -13,7 +13,7 @@ import {
 import { formatSiteDate } from "@/lib/format-date";
 import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
-import { InternalLink } from "@/components/ui/InternalLink";
+import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -90,12 +90,19 @@ export default async function AiGuidePage({ params }: Props) {
             <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
               {frontmatter.tags.map((t) => (
                 <li key={t}>
-                  <InternalLink
+                  <Ga4TrackedInternalLink
                     href={`/ai?tag=${encodeURIComponent(t)}`}
                     className={tagClass}
+                    ga4EventName="ai_tag_click"
+                    ga4Params={{
+                      cta_label: t,
+                      cta_location: "ai_guide_detail_tags",
+                      destination_url: `/ai?tag=${encodeURIComponent(t)}`,
+                      link_type: "internal_ai_tag",
+                    }}
                   >
                     {t}
-                  </InternalLink>
+                  </Ga4TrackedInternalLink>
                 </li>
               ))}
             </ul>

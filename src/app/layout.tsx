@@ -40,7 +40,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const gaMeasurementId =
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ??
+    process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
 
   return (
     <html

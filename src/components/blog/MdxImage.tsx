@@ -17,7 +17,8 @@ export function MdxImage({ src, alt, title }: Props) {
   const isInlineLogo = title === "inline-logo";
 
   useEffect(() => {
-    setMounted(true);
+    const animationFrame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(animationFrame);
   }, []);
 
   if (!safeSrc) return null;
@@ -70,8 +71,8 @@ export function MdxImage({ src, alt, title }: Props) {
               >
                 Close
               </button>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <span className="inline-block overflow-hidden rounded-[10px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={safeSrc}
                   alt={safeAlt}

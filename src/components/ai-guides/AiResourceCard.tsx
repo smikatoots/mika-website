@@ -1,4 +1,4 @@
-import { InternalLink } from "@/components/ui/InternalLink";
+import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
 
 import { AI_GUIDE_COMING_SOON_SLUGS } from "@/lib/ai-guides/constants";
 import type { AiGuideIndexEntry } from "@/lib/ai-guides/types";
@@ -71,8 +71,18 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
   }
 
   return (
-    <InternalLink href={href} className={cardInteractiveClass}>
+    <Ga4TrackedInternalLink
+      href={href}
+      className={cardInteractiveClass}
+      ga4EventName="ai_guide_card_click"
+      ga4Params={{
+        cta_label: guide.title,
+        cta_location: "ai_guides_index_grid",
+        destination_url: href,
+        link_type: "internal_ai_guide",
+      }}
+    >
       {inner}
-    </InternalLink>
+    </Ga4TrackedInternalLink>
   );
 }

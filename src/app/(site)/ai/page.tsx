@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { Ga4TrackedAnchor } from "@/components/analytics/Ga4TrackedLink";
 import { AiResourceCard } from "@/components/ai-guides/AiResourceCard";
 import { AI_HUB_FILTER_TAGS } from "@/lib/ai-guides/constants";
 import { loadAllAiGuideIndexEntries } from "@/lib/ai-guides/load-guides";
@@ -57,23 +58,37 @@ export default async function AiHubPage({ searchParams }: Props) {
           <>
             Become time-rich and stay ahead in this new age of AI. All my
             guides are explained on my{" "}
-            <a
+            <Ga4TrackedAnchor
               href={homeBioLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className={siteLink}
+              ga4EventName="social_cta_click"
+              ga4Params={{
+                cta_label: "Instagram",
+                cta_location: "ai_guides_index_intro",
+                destination_url: homeBioLinks.instagram,
+                link_type: "social_instagram",
+              }}
             >
               Instagram
-            </a>{" "}
+            </Ga4TrackedAnchor>{" "}
             and{" "}
-            <a
+            <Ga4TrackedAnchor
               href={homeBioLinks.tiktok}
               target="_blank"
               rel="noopener noreferrer"
               className={siteLink}
+              ga4EventName="social_cta_click"
+              ga4Params={{
+                cta_label: "TikTok",
+                cta_location: "ai_guides_index_intro",
+                destination_url: homeBioLinks.tiktok,
+                link_type: "social_tiktok",
+              }}
             >
               TikTok
-            </a>{" "}
+            </Ga4TrackedAnchor>{" "}
             channels. Pick a topic below or filter by tag.
           </>
         }

@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import posthog from "posthog-js";
 
+import { trackGa4Event } from "@/lib/analytics/ga4";
 import { siteLink } from "@/lib/ui/site-styles";
 
 /**
@@ -60,13 +61,20 @@ function PLink({
       className={`font-semibold ${siteLink}`}
       rel="noopener noreferrer"
       target="_blank"
-      onClick={() =>
+      onClick={() => {
+        const label = typeof children === "string" ? children : undefined;
         posthog.capture("referral_link_clicked", {
           href,
-          label: typeof children === "string" ? children : undefined,
+          label,
           link_type: "product",
-        })
-      }
+        });
+        trackGa4Event("affiliate_product_click", {
+          cta_label: label ?? "Product link",
+          cta_location: "product_links_page",
+          destination_url: href,
+          link_type: "affiliate_product",
+        });
+      }}
     >
       {children}
     </a>
@@ -87,13 +95,20 @@ function ILink({
       className={siteLink}
       rel="noopener noreferrer"
       target="_blank"
-      onClick={() =>
+      onClick={() => {
+        const label = typeof children === "string" ? children : undefined;
         posthog.capture("referral_link_clicked", {
           href,
-          label: typeof children === "string" ? children : undefined,
+          label,
           link_type: "inline",
-        })
-      }
+        });
+        trackGa4Event("affiliate_inline_click", {
+          cta_label: label ?? "Inline referral link",
+          cta_location: "product_links_page",
+          destination_url: href,
+          link_type: "affiliate_inline",
+        });
+      }}
     >
       {children}
     </a>

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
 
+import { trackGa4Event } from "@/lib/analytics/ga4";
+
 function textFromNode(node: ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
     return String(node);
@@ -17,14 +19,37 @@ function textFromNode(node: ReactNode): string {
   return "";
 }
 
+function languageFromNode(node: ReactNode): string | undefined {
+  if (Array.isArray(node)) {
+    return node.map((child) => languageFromNode(child)).find(Boolean);
+  }
+  if (!node || typeof node !== "object" || !("props" in node)) {
+    return undefined;
+  }
+
+  const props = node.props as { className?: string; children?: ReactNode };
+  const language = props.className?.match(/(?:^|\s)language-([^\s]+)/)?.[1];
+  return language ?? languageFromNode(props.children ?? "");
+}
+
 export function CodeBlock({ children }: { children: ReactNode }) {
   const [copied, setCopied] = useState(false);
   const codeText = textFromNode(children).trimEnd();
+  const codeLanguage = languageFromNode(children) ?? "unknown";
+  const codeLines = codeText ? codeText.split("\n").length : 0;
 
   async function handleCopy() {
     try {
       await navigator.clipboard.writeText(codeText);
       setCopied(true);
+      trackGa4Event("code_copy_click", {
+        cta_label: "Copy code block",
+        cta_location: "blog_code_block",
+        link_type: "code_copy",
+        code_language: codeLanguage,
+        code_character_count: codeText.length,
+        code_line_count: codeLines,
+      });
       setTimeout(() => setCopied(false), 1400);
     } catch {
       setCopied(false);
