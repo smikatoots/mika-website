@@ -1,24 +1,116 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  /* Brand accent — links, nav, focus states, AI CTA block. */
-  --accent: #fd4869;
-  --accent-hover: #e03b5c;
+  --mr-coral:         #E8425A;
+  --mr-coral-bright:  #FF3D68;
+  --mr-teal:          #0E8C8C;
+  --mr-teal-deep:     #142A2A;
+  --mr-purple:        #6B4DE6;
+
+  --mr-ink:           #111111;
+  --mr-text:          #3A3A3A;
+  --mr-text-soft:     #4A4A4A;
+  --mr-muted:         #6B6B6B;
+  --mr-faint:         #8A8580;
+
+  --mr-bg:            #FFFFFF;
+  --mr-surface:       #FFFFFF;
+  --mr-surface-warm:  #FFFFFF;
+  --mr-surface-rose:  #FCEAEC;
+  --mr-surface-rose-2:#FCE4E2;
+  --mr-surface-cream: #F7F4EF;
+  --mr-surface-sand:  #FBF1E9;
+
+  --mr-border:        #E4E0D8;
+  --mr-border-warm:   #EFEBE4;
+  --mr-border-rose:   #F6D2D7;
+  --mr-border-cream:  #E8E3DA;
+  --mr-border-input:  #E0DBD3;
+
+  --mr-font-display: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  --mr-font-body:    var(--font-hanken), "Hanken Grotesk", sans-serif;
+
+  --mr-text-display: 60px;
+  --mr-text-h1:      54px;
+  --mr-text-h2:      38px;
+  --mr-text-h3:      24px;
+  --mr-text-stat:    42px;
+  --mr-text-lead:    20px;
+  --mr-text-body:    17px;
+  --mr-text-sm:      15px;
+  --mr-text-xs:      13px;
+  --mr-text-eyebrow: 12px;
+
+  --mr-weight-body:    400;
+  --mr-weight-medium:  500;
+  --mr-weight-semi:    600;
+  --mr-weight-display: 700;
+  --mr-weight-heavy:   800;
+
+  --mr-radius-pill:  100px;
+  --mr-radius-card:  18px;
+  --mr-radius-panel: 22px;
+  --mr-radius-input: 10px;
+  --mr-radius-chip:  14px;
+
+  --mr-shadow-card:  0 6px 16px -10px rgba(150,100,40,.30);
+  --mr-shadow-lift:  0 12px 28px -8px rgba(0,0,0,.22);
+  --mr-shadow-cta:   0 12px 24px -8px rgba(232,66,90,.60);
+  --mr-shadow-frame: 0 26px 56px -22px rgba(20,42,42,.45);
+
+  --mr-space-section: 64px;
+  --mr-space-gutter:  40px;
+  --mr-space-gap:     28px;
+
+  --mr-ease:        cubic-bezier(.2,.8,.3,1);
+  --mr-dur-press:   .15s;
+  --mr-dur-lift:    .25s;
+
+  /* legacy compat */
+  --background: var(--mr-bg);
+  --foreground: var(--mr-ink);
+  --accent: var(--mr-coral);
+  --accent-hover: var(--mr-coral-bright);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--mr-bg);
+  --color-foreground: var(--mr-ink);
+  --color-accent: var(--mr-coral);
+  --color-accent-hover: var(--mr-coral-bright);
+  --color-teal: var(--mr-teal);
+  --font-display: var(--mr-font-display);
+  --font-sans: var(--mr-font-body);
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
+@keyframes mr-float      { 0%,100%{transform:translateY(0) rotate(var(--rot,0deg));} 50%{transform:translateY(-10px) rotate(var(--rot,0deg));} }
+@keyframes mr-float-slow { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
+@keyframes mr-wiggle     { 0%,100%{transform:rotate(-4deg);} 50%{transform:rotate(4deg);} }
+@keyframes mr-drift      { 0%,100%{transform:translate(0,0) rotate(0deg);} 33%{transform:translate(6px,-8px) rotate(6deg);} 66%{transform:translate(-5px,4px) rotate(-5deg);} }
+
+.mr-lift {
+  transition: transform var(--mr-dur-lift) var(--mr-ease), box-shadow var(--mr-dur-lift) var(--mr-ease);
+}
+.mr-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--mr-shadow-lift);
+}
+
+.mr-pressable {
+  transition: transform var(--mr-dur-press) var(--mr-ease), box-shadow var(--mr-dur-press) var(--mr-ease);
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mr-pressable:hover { transform: translateY(-3px) scale(1.02); }
+  .mr-pressable:active { transform: scale(0.98); }
+  .mr-float { animation: mr-float 4s ease-in-out infinite; }
+  .mr-float-slow { animation: mr-float-slow 6s ease-in-out infinite; }
+  .mr-drift { animation: mr-drift 8s ease-in-out infinite; }
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  background: var(--mr-bg);
+  color: var(--mr-ink);
+  font-family: var(--mr-font-body);
 }

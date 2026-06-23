@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Geist_Mono, Hanken_Grotesk } from "next/font/google";
 import Script from "next/script";
 
 import { SiteStructuredData } from "@/components/SiteStructuredData";
@@ -13,9 +13,16 @@ import {
 
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
+  axes: ["opsz"],
+});
+
+const hanken = Hanken_Grotesk({
+  variable: "--font-hanken",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const geistMono = Geist_Mono({
@@ -47,12 +54,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${bricolage.variable} ${hanken.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
         <SiteStructuredData />
       </head>
-      <body className="flex min-h-screen flex-col bg-white text-zinc-950 antialiased">
+      <body className="flex min-h-screen flex-col antialiased" style={{ background: "var(--mr-bg)", color: "var(--mr-ink)" }}>
         {children}
         {gaMeasurementId ? (
           <>

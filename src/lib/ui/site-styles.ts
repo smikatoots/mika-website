@@ -1,38 +1,30 @@
 /**
  * Shared Tailwind class strings — single source for typography, links, layout width.
+ * Colors reference design-token CSS variables via --mr-* custom properties.
  */
 
-/** Primary text (body on white). */
-export const textDefault = "text-zinc-950";
+export const textDefault = "text-[var(--mr-ink)]";
 
-/** Body copy — slightly softer than headings. */
-export const textBody = "text-[1.05rem] leading-relaxed text-zinc-800";
+export const textBody = "text-[length:var(--mr-text-body)] leading-relaxed text-[var(--mr-text-soft)]";
 
-/** Page title (hero H1). */
 export const textH1 =
-  "text-4xl font-semibold tracking-tight text-zinc-950 md:text-5xl";
+  "font-[family-name:var(--mr-font-display)] text-4xl font-bold tracking-tight text-[var(--mr-ink)] leading-[1.02] md:text-5xl";
 
-/** Section title on content pages. */
 export const textH2 =
-  "text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl";
+  "font-[family-name:var(--mr-font-display)] text-2xl font-bold tracking-tight text-[var(--mr-ink)] leading-[1.05] md:text-3xl";
 
-/** Subsection title. */
-export const textH3 = "text-xl font-semibold tracking-tight text-zinc-950";
+export const textH3 = "font-[family-name:var(--mr-font-display)] text-xl font-bold text-[var(--mr-ink)] leading-[1.2]";
 
-/** Muted / metadata. */
-export const textMuted = "text-sm text-zinc-500";
+export const textMuted = "text-[length:var(--mr-text-xs)] text-[var(--mr-muted)]";
 
-/** Inline & nav links (accent + hover). */
 export const siteLink =
-  "font-medium text-accent underline decoration-accent/45 underline-offset-[3px] transition-colors hover:text-accent-hover hover:decoration-accent-hover/60";
+  "font-semibold text-[var(--mr-coral)] underline decoration-[var(--mr-border-rose)] underline-offset-[3px] transition-colors hover:text-[var(--mr-coral-bright)]";
 
-/** Simpler link (e.g. back link). */
 export const siteLinkSubtle =
-  "text-sm font-medium text-accent underline decoration-accent/40 underline-offset-[3px] transition-colors hover:text-accent-hover";
+  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-coral)] underline decoration-[var(--mr-coral)]/40 underline-offset-[3px] transition-colors hover:text-[var(--mr-coral-bright)]";
 
-/** Header nav: same accent as body links, no underline (dense horizontal nav). */
 export const siteNavLink =
-  "text-sm font-medium text-accent transition-colors hover:text-accent-hover";
+  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-text-soft)] transition-colors hover:text-[var(--mr-coral)]";
 
 /** Article-width main column. */
 export const mainProse =

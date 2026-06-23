@@ -3,15 +3,6 @@ import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
 import { AI_GUIDE_COMING_SOON_SLUGS } from "@/lib/ai-guides/constants";
 import type { AiGuideIndexEntry } from "@/lib/ai-guides/types";
 
-const listTagClass =
-  "rounded-full border border-zinc-200 bg-zinc-50 px-2 py-0.5 text-xs text-zinc-600";
-
-const cardInteractiveClass =
-  "group flex flex-col rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:border-accent/35 hover:shadow-md";
-
-const cardStaticClass =
-  "flex flex-col rounded-xl border border-zinc-200 bg-zinc-100/60 p-5 shadow-sm";
-
 export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
   const href = `/ai/${guide.slug}`;
   const legacyComingSoon = AI_GUIDE_COMING_SOON_SLUGS.has(guide.slug);
@@ -21,34 +12,59 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
   const inner = (
     <>
       <h2
-        className={
-          cardMuted
-            ? "text-base font-semibold leading-snug text-zinc-800"
-            : "text-base font-semibold leading-snug text-zinc-950 group-hover:text-accent"
-        }
+        style={{
+          fontFamily: "var(--mr-font-display)",
+          fontSize: "var(--mr-text-h3)",
+          fontWeight: "var(--mr-weight-display)",
+          letterSpacing: "-0.01em",
+          lineHeight: 1.2,
+          color: cardMuted ? "var(--mr-muted)" : "var(--mr-ink)",
+        }}
       >
         {guide.title}
       </h2>
-      <p className="mt-2 line-clamp-5 text-sm leading-relaxed text-zinc-600">
+      <p
+        className="mt-2 line-clamp-4"
+        style={{
+          fontFamily: "var(--mr-font-body)",
+          fontSize: "var(--mr-text-sm)",
+          lineHeight: 1.55,
+          color: "var(--mr-text-soft)",
+        }}
+      >
         {guide.description}
       </p>
       {guide.tags.length > 0 ? (
         <div className="mt-3 flex flex-wrap gap-1.5">
           {guide.tags.map((t) => (
-            <span key={t} className={listTagClass}>
+            <span
+              key={t}
+              style={{
+                fontFamily: "var(--mr-font-body)",
+                fontSize: "var(--mr-text-xs)",
+                fontWeight: "var(--mr-weight-semi)",
+                color: "var(--mr-muted)",
+                background: "transparent",
+                border: "1px solid var(--mr-border)",
+                borderRadius: "var(--mr-radius-pill)",
+                padding: "2px 10px",
+              }}
+            >
               {t}
             </span>
           ))}
         </div>
       ) : null}
       <span
-        className={
-          cardMuted
-            ? "mt-auto pt-4 text-sm font-medium text-zinc-500"
-            : inProgress
-              ? "mt-auto pt-4 text-sm font-medium text-zinc-600 group-hover:text-accent"
-              : "mt-auto pt-4 text-sm font-medium text-accent group-hover:text-accent-hover"
-        }
+        className="mt-auto pt-4"
+        style={{
+          fontFamily: "var(--mr-font-body)",
+          fontSize: "var(--mr-text-sm)",
+          fontWeight: "var(--mr-weight-semi)",
+          color: cardMuted
+            ? "var(--mr-faint)"
+            : "var(--mr-coral)",
+        }}
       >
         {legacyComingSoon
           ? "Coming soon..."
@@ -62,8 +78,16 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
   if (legacyComingSoon) {
     return (
       <div
-        className={cardStaticClass}
         aria-label={`${guide.title} — coming soon`}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          background: "var(--mr-surface-warm)",
+          border: "1px solid var(--mr-border)",
+          borderRadius: "var(--mr-radius-card)",
+          padding: "24px",
+          opacity: 0.7,
+        }}
       >
         {inner}
       </div>
@@ -73,7 +97,16 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
   return (
     <Ga4TrackedInternalLink
       href={href}
-      className={cardInteractiveClass}
+      className="mr-lift flex flex-col"
+      style={{
+        background: "var(--mr-surface)",
+        border: "1px solid var(--mr-border)",
+        borderRadius: "var(--mr-radius-card)",
+        padding: "24px",
+        boxShadow: "var(--mr-shadow-card)",
+        textDecoration: "none",
+        color: "inherit",
+      }}
       ga4EventName="ai_guide_card_click"
       ga4Params={{
         cta_label: guide.title,

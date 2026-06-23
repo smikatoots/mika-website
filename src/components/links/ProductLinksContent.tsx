@@ -117,11 +117,28 @@ function ILink({
 
 function LinkCard({ icon, children }: { icon: string; children: ReactNode }) {
   return (
-    <div className="flex gap-3 rounded-lg border border-zinc-200 bg-zinc-50/80 px-4 py-3.5">
+    <div
+      className="mr-lift flex gap-3"
+      style={{
+        background: "var(--mr-surface)",
+        border: "1px solid var(--mr-border)",
+        borderRadius: "var(--mr-radius-card)",
+        padding: "16px 20px",
+        boxShadow: "var(--mr-shadow-card)",
+      }}
+    >
       <span className="shrink-0 text-lg leading-6" aria-hidden>
         {icon}
       </span>
-      <div className="min-w-0 flex-1 text-[0.95rem] leading-relaxed text-zinc-800">
+      <div
+        className="min-w-0 flex-1"
+        style={{
+          fontFamily: "var(--mr-font-body)",
+          fontSize: "var(--mr-text-sm)",
+          lineHeight: 1.6,
+          color: "var(--mr-text-soft)",
+        }}
+      >
         {children}
       </div>
     </div>
@@ -136,11 +153,38 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="border-t border-zinc-200 pt-10 first:border-t-0 first:pt-0">
+    <section
+      className="pt-10"
+      style={{ borderTop: "1px solid var(--mr-border-warm)" }}
+    >
       <div className="grid gap-6 md:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] md:items-start md:gap-10 lg:gap-14">
-        <h2 className="text-base font-bold tracking-tight text-zinc-950 md:pt-0.5">
-          {title}
-        </h2>
+        <div className="md:pt-1">
+          <span
+            style={{
+              display: "inline-block",
+              fontFamily: "var(--mr-font-body)",
+              fontSize: "var(--mr-text-eyebrow)",
+              fontWeight: "var(--mr-weight-display)",
+              color: "var(--mr-coral)",
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              marginBottom: "4px",
+            }}
+          >
+            ✦
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--mr-font-display)",
+              fontSize: "var(--mr-text-h3)",
+              fontWeight: "var(--mr-weight-display)",
+              letterSpacing: "-0.01em",
+              color: "var(--mr-ink)",
+            }}
+          >
+            {title}
+          </h2>
+        </div>
         <div className="space-y-3">{children}</div>
       </div>
     </section>

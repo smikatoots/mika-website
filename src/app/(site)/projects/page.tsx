@@ -24,6 +24,7 @@ export default async function ProjectsIndexPage() {
         <BackLink href="/" label="Home" />
       </div>
       <PageHero
+        eyebrow="✦ Side projects"
         title="Projects"
         subtitle={
           <>

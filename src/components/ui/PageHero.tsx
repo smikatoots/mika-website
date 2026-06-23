@@ -1,19 +1,56 @@
 import type { ReactNode } from "react";
 
-import { textH1 } from "@/lib/ui/site-styles";
-
 export function PageHero({
   title,
   subtitle,
+  eyebrow,
 }: {
   title: string;
   subtitle?: ReactNode;
+  eyebrow?: string;
 }) {
   return (
     <header className="mx-auto max-w-2xl text-center">
-      <h1 className={textH1}>{title}</h1>
+      {eyebrow ? (
+        <span
+          className="mb-5 inline-flex items-center gap-2"
+          style={{
+            background: "var(--mr-surface-rose-2)",
+            color: "var(--mr-coral)",
+            padding: "7px 16px",
+            borderRadius: "var(--mr-radius-pill)",
+            fontFamily: "var(--mr-font-body)",
+            fontSize: "var(--mr-text-xs)",
+            fontWeight: "var(--mr-weight-display)",
+            display: "inline-flex",
+          }}
+        >
+          {eyebrow}
+        </span>
+      ) : null}
+      <h1
+        style={{
+          fontFamily: "var(--mr-font-display)",
+          fontSize: "clamp(36px, 5vw, var(--mr-text-h1))",
+          fontWeight: "var(--mr-weight-display)",
+          letterSpacing: "-0.025em",
+          lineHeight: 1.02,
+          color: "var(--mr-ink)",
+          marginTop: eyebrow ? "8px" : "0",
+        }}
+      >
+        {title}
+      </h1>
       {subtitle ? (
-        <div className="mt-4 text-base leading-relaxed text-zinc-600">
+        <div
+          className="mt-4"
+          style={{
+            fontFamily: "var(--mr-font-body)",
+            fontSize: "var(--mr-text-body)",
+            lineHeight: 1.6,
+            color: "var(--mr-muted)",
+          }}
+        >
           {subtitle}
         </div>
       ) : null}

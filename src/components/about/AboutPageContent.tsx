@@ -190,8 +190,8 @@ export function AboutPageContent() {
               <li>
                 Consulting on how to integrate AI into your business workflows.
                 Reach out at{" "}
-                <ALink href="mailto:ask@kingscrosslabs.com">
-                  ask@kingscrosslabs.com
+                <ALink href="mailto:mika@kingscrosslabs.com">
+                  mika@kingscrosslabs.com
                 </ALink>
                 .
               </li>

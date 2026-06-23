@@ -17,7 +17,7 @@ type Props = {
 };
 
 const listTagClass =
-  "rounded-full border border-zinc-200 bg-zinc-50 px-2 py-0.5 text-xs text-zinc-600";
+  "rounded-full border border-[var(--mr-border)] px-2 py-0.5 text-xs font-medium text-[var(--mr-muted)]";
 
 export default async function BlogIndexPage({ searchParams }: Props) {
   const { tag: tagRaw } = await searchParams;
@@ -34,16 +34,18 @@ export default async function BlogIndexPage({ searchParams }: Props) {
   const allTags = allTagsFromManifest(posts);
 
   const tagPillActive =
-    "rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-sm font-medium text-accent-hover";
+    "rounded-full border px-3 py-1 text-sm font-semibold transition" +
+    " border-[var(--mr-coral)] bg-[var(--mr-surface-rose-2)] text-[var(--mr-coral)]";
   const tagPillIdle =
-    "rounded-full border border-zinc-200 px-3 py-1 text-sm font-medium text-zinc-600 transition hover:border-zinc-300 hover:text-zinc-900";
+    "rounded-full border px-3 py-1 text-sm font-semibold transition" +
+    " border-[var(--mr-border)] text-[var(--mr-muted)] hover:border-[var(--mr-coral)] hover:text-[var(--mr-coral)]";
 
   return (
     <main className={mainWide}>
       <div className="mb-8">
         <BackLink href="/" label="Home" />
       </div>
-      <PageHero title="Blog" />
+      <PageHero eyebrow="✦ Writing" title="Blog" />
 
       {posts.length === 0 ? (
         <p className="mt-10 rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-950">
@@ -69,7 +71,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
 
       {allTags.length > 0 ? (
         <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
-          <span className="text-sm font-medium text-zinc-500">Filter:</span>
+          <span className="text-sm font-semibold" style={{ color: "var(--mr-muted)" }}>Filter:</span>
           <InternalLink
             href="/blog"
             className={!tag ? tagPillActive : tagPillIdle}
@@ -95,17 +97,40 @@ export default async function BlogIndexPage({ searchParams }: Props) {
         </p>
       ) : null}
 
-      <ul className="mx-auto mt-8 max-w-4xl divide-y divide-zinc-100 border-b border-zinc-100 text-left">
+      <ul
+        className="mx-auto mt-8 max-w-4xl text-left"
+        style={{ borderBottom: "1px solid var(--mr-border)" }}
+      >
         {filtered.map((post) => (
-          <li key={post.slug}>
+          <li key={post.slug} style={{ borderTop: "1px solid var(--mr-border)" }}>
             <InternalLink
               href={`/blog/${post.slug}`}
-              className="group grid grid-cols-1 gap-x-4 gap-y-1 py-2.5 transition hover:bg-zinc-50/80 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline"
+              className="group grid grid-cols-1 gap-x-4 gap-y-1 py-3 transition sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline"
+              style={{ textDecoration: "none" }}
             >
-              <span className="min-w-0 text-left font-medium text-zinc-950 group-hover:text-accent">
-                {post.title}
+              <span
+                className="min-w-0 flex items-center gap-2 text-left transition-colors"
+                style={{
+                  fontFamily: "var(--mr-font-body)",
+                  fontSize: "var(--mr-text-body)",
+                  fontWeight: "var(--mr-weight-semi)",
+                  color: "var(--mr-ink)",
+                }}
+              >
+                <span
+                  className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+                  style={{ color: "var(--mr-coral)" }}
+                >
+                  →
+                </span>
+                <span className="group-hover:text-[var(--mr-coral)] transition-colors">
+                  {post.title}
+                </span>
               </span>
-              <span className="flex flex-wrap items-center justify-start gap-2 text-sm text-zinc-500 sm:justify-end">
+              <span
+                className="flex flex-wrap items-center justify-start gap-2 sm:justify-end"
+                style={{ fontSize: "var(--mr-text-xs)", color: "var(--mr-muted)" }}
+              >
                 {(post.tags?.length ?? 0) > 0 ? (
                   <span className="flex flex-wrap items-center justify-end gap-1">
                     {(post.tags ?? []).map((t) => (

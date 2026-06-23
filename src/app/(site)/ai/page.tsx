@@ -25,9 +25,11 @@ type Props = {
 };
 
 const tagPillActive =
-  "rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-sm font-medium text-accent-hover";
+  "rounded-full border px-3 py-1 text-sm font-semibold transition" +
+  " border-[var(--mr-coral)] bg-[var(--mr-surface-rose-2)] text-[var(--mr-coral)]";
 const tagPillIdle =
-  "rounded-full border border-zinc-200 px-3 py-1 text-sm font-medium text-zinc-600 transition hover:border-zinc-300 hover:text-zinc-900";
+  "rounded-full border px-3 py-1 text-sm font-semibold transition" +
+  " border-[var(--mr-border)] text-[var(--mr-muted)] hover:border-[var(--mr-coral)] hover:text-[var(--mr-coral)]";
 
 function formatFilterTagLabel(raw: string): string {
   const t = raw.toLowerCase();
@@ -53,6 +55,7 @@ export default async function AiHubPage({ searchParams }: Props) {
         <BackLink href="/" label="Home" />
       </div>
       <PageHero
+        eyebrow="✦ Practical guides"
         title="AI Guides"
         subtitle={
           <>
@@ -95,7 +98,7 @@ export default async function AiHubPage({ searchParams }: Props) {
       />
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
-        <span className="text-sm font-medium text-zinc-500">Filter:</span>
+        <span className="text-sm font-semibold" style={{ color: "var(--mr-muted)" }}>Filter:</span>
         <InternalLink
           href="/ai"
           className={!tag ? tagPillActive : tagPillIdle}

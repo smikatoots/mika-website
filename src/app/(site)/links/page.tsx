@@ -25,7 +25,7 @@ export default function ProductLinksPage() {
       <div className="mb-8">
         <BackLink href="/" label="Home" />
       </div>
-      <PageHero title="Links" />
+      <PageHero eyebrow="✦ Things I recommend" title="Links" />
       <div className="mt-12">
         <ProductLinksContent />
       </div>

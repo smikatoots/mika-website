@@ -24,8 +24,16 @@ export function PressCard({ item }: { item: PressManifestEntry }) {
 
   return (
     <GalleryCard href={href} media={media}>
-      <h2 className="line-clamp-3 text-base font-semibold leading-snug text-zinc-950 group-hover:text-accent">
-        📄 {item.title}
+      <h2
+        className="line-clamp-3 leading-snug"
+        style={{
+          fontFamily: "var(--mr-font-display)",
+          fontSize: "var(--mr-text-sm)",
+          fontWeight: "var(--mr-weight-display)",
+          color: "var(--mr-ink)",
+        }}
+      >
+        {item.title}
       </h2>
     </GalleryCard>
   );

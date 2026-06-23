@@ -40,13 +40,22 @@ export function ProjectCard({ project }: { project: ProjectManifestEntry }) {
 
   return (
     <GalleryCard href={href} media={media}>
-      <h2 className="text-base font-semibold leading-snug text-zinc-950 group-hover:text-accent">
-        📄 {project.title}
+      <h2
+        className="leading-snug"
+        style={{
+          fontFamily: "var(--mr-font-display)",
+          fontSize: "var(--mr-text-sm)",
+          fontWeight: "var(--mr-weight-display)",
+          color: "var(--mr-ink)",
+        }}
+      >
+        {project.title}
       </h2>
       {urlLine ? (
         <p
-          className="truncate text-sm text-zinc-500"
+          className="truncate"
           title={project.url ?? ""}
+          style={{ fontSize: "var(--mr-text-xs)", color: "var(--mr-muted)" }}
         >
           {urlLine}
         </p>

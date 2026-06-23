@@ -24,6 +24,7 @@ export default async function PressIndexPage() {
         <BackLink href="/" label="Home" />
       </div>
       <PageHero
+        eyebrow="✦ In the media"
         title="Press"
         subtitle="Articles, podcasts, and appearances."
       />
