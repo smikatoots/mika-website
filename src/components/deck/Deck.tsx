@@ -167,11 +167,6 @@ export function Deck({ slides }: DeckProps) {
           {index + 1} / {total}
         </div>
       </div>
-
-      {/* Brand handle — sits on every slide, like a video watermark */}
-      <div className="pointer-events-none absolute right-5 top-5 z-20 rounded-full bg-[var(--deck-accent)] px-6 py-2.5 text-lg font-bold tracking-tight text-white shadow-[0_6px_20px_-6px_rgba(253,72,105,0.7)] sm:text-xl">
-        @its.mikareyes
-      </div>
     </div>
   );
 }

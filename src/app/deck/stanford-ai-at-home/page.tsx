@@ -22,8 +22,8 @@ const slides: React.ReactNode[] = [
   // 1 — "Stanford just dropped a new AI report."
   <ImageSlide
     key="hero"
-    src={`${LIB}/stanford-report-ai-home-productivity-hero.png`}
-    alt="Stanford SIEPR report on AI and home productivity."
+    src={`${LIB}/stanford-logo.png`}
+    alt="Stanford logo"
     caption={
       <>
         Stanford&apos;s new <A>AI report</A>
@@ -33,20 +33,21 @@ const slides: React.ReactNode[] = [
 
   // 2 — "The catch? It can actually make you poorer."
   <TextSlide key="catch">
-    The catch? It can make you <HL>poorer</HL>.
+    The catch? It can make you <HL>poorer</HL>
   </TextSlide>,
 
-  // TODO: swap in stanford-siepr-article.png ImageSlide(framed) when added
   // 3 — "It's one of the first studies looking at AI at home, not at work."
-  <TextSlide key="at-home">
-    One of the first studies on AI at <HL>home</HL>, not work.
-  </TextSlide>,
+  <ImageSlide
+    key="at-home"
+    src={`${LIB}/stanford-report-ai-home-productivity-hero.png`}
+    alt="Stanford SIEPR report on AI and home productivity."
+  />,
 
   // 4 — "200,000 households — and chores got done 76 to 176% faster."
   <TextSlide key="numbers">
     200,000 households.
     <br />
-    Chores done <HL>76–176% faster</HL>.
+    Chores done <HL>76–176% faster</HL>
   </TextSlide>,
 
   // 5 — "First: AI boosts home productivity."
@@ -108,7 +109,7 @@ const slides: React.ReactNode[] = [
     key="pocket"
     src={`${LIB}/money-in-your-pocket.jpeg`}
     alt="money in a pocket."
-    maxWidth="max-w-md"
+    maxWidth="max-w-4xl"
   />,
 
   // 9 — "So the real question: what are you actually doing with it?"
@@ -119,9 +120,12 @@ const slides: React.ReactNode[] = [
   // 10 — CTA
   <CtaSlide
     key="cta"
-    sub="and I'll send you the study."
+    sub="I'll send you the study."
     preview={`${LIB}/stanford-report-ai-home-productivity-hero.png`}
     previewAlt="Stanford AI report"
+    previewPlain
+    previewLarge
+    size="lg"
   />,
 ];
 
