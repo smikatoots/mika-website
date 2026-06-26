@@ -19,6 +19,7 @@ export const homeBioLinks = {
     techInAsia: "/press/parallax-launch-on-tech-in-asia",
     inquirer: "/press",
     forbes: "/press/forbes-30-under-30-finance-venture-capital-forbes",
+    rappler: "/press/meet-the-filipinos-in-forbes-30-under-30-2024-list-rappler",
   },
   awards: {
     forbes30: "/press/forbes-30-under-30-finance-venture-capital-forbes",

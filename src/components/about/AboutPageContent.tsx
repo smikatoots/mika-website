@@ -168,33 +168,25 @@ export function AboutPageContent() {
             <div className="min-w-0 space-y-2 text-zinc-800">
               <p>Currently:</p>
               <ul className="list-disc space-y-2 pl-5">
-              <li>
-                Building AI products with{" "}
-                <ALink href="https://www.linkedin.com/in/nicolasreyes26/">
-                  Nick
-                </ALink>{" "}
-                (my cofounder &amp; husband) at{" "}
-                <ALink href={homeBioLinks.kingsCrossLabs}>
-                  King&apos;s Cross Labs
-                </ALink>
-                .
-              </li>
-              <li>
-                Creating content to learn about AI on{" "}
-                <ALink href="https://instagram.com/its.mikareyes">
-                  Instagram
-                </ALink>{" "}
-                &amp;{" "}
-                <ALink href={homeBioLinks.tiktok}>TikTok</ALink>.
-              </li>
-              <li>
-                Consulting on how to integrate AI into your business workflows.
-                Reach out at{" "}
-                <ALink href="mailto:mika@kingscrosslabs.com">
-                  mika@kingscrosslabs.com
-                </ALink>
-                .
-              </li>
+                <li>
+                  Running an AI product studio for growth &amp; marketing teams
+                  with my husband{" "}
+                  <ALink href="https://www.linkedin.com/in/nicolasreyes26/">
+                    Nick
+                  </ALink>
+                  . Want to increase website conversions autonomously? Check out{" "}
+                  <ALink href="https://askleda.com">askleda.com</ALink> and get a
+                  site audit!
+                </li>
+                <li>
+                  Teaching AI to 25K+ ambitious founders &amp; professionals on{" "}
+                  <ALink href={homeBioLinks.instagram}>Instagram</ALink>,{" "}
+                  <ALink href={homeBioLinks.linkedinProfile}>LinkedIn</ALink>, and{" "}
+                  <ALink href="https://maven.com/mika-reyes/master-claude-code-as-a-non-technical-pro">
+                    Maven
+                  </ALink>
+                  .
+                </li>
               </ul>
             </div>
           </div>

@@ -5,12 +5,7 @@ import posthog from "posthog-js";
 
 import { trackGa4Event } from "@/lib/analytics/ga4";
 import { homeBioLinks } from "@/lib/home-bio-links";
-
-const stats = [
-  { value: "25K+", label: "Community" },
-  { value: "~$5M+", label: "Raised" },
-  { value: "4", label: "Recognitions" },
-];
+import { MyStoryTimeline } from "@/components/home/MyStoryTimeline";
 
 const awards = [
   { icon: "🏆", label: "Forbes 30 Under 30", href: homeBioLinks.awards.forbes30 },
@@ -20,11 +15,12 @@ const awards = [
 ];
 
 const pressItems = [
-  { label: "Forbes", href: homeBioLinks.press.forbes },
-  { label: "TechCrunch", href: homeBioLinks.press.techcrunch },
-  { label: "Yahoo!", href: homeBioLinks.press.yahoo },
-  { label: "Tech in Asia", href: homeBioLinks.press.techInAsia },
-  { label: "Inquirer", href: homeBioLinks.press.inquirer },
+  { label: "Forbes", href: homeBioLinks.press.forbes, logo: "/press-logos/forbes.svg", logoHeight: 20 },
+  { label: "TechCrunch", href: homeBioLinks.press.techcrunch, logo: "/press-logos/techcrunch-icon.svg", logoHeight: 28 },
+  { label: "Yahoo!", href: homeBioLinks.press.yahoo, logo: "/press-logos/yahoo.svg", logoHeight: 22 },
+  { label: "Tech in Asia", href: homeBioLinks.press.techInAsia, logo: "/press-logos/tech-in-asia.png", logoHeight: 24, logoMaxWidth: 180 },
+  { label: "Rappler", href: homeBioLinks.press.rappler, logo: "/press-logos/rappler.png", logoHeight: 28, logoMaxWidth: 140 },
+  { label: "Inquirer", href: homeBioLinks.press.inquirer, logo: "/press-logos/inquirer.svg", logoHeight: 18 },
 ];
 
 const featuredPress = [
@@ -83,9 +79,9 @@ export function HomeLanding() {
     <main>
       {/* ── Hero ─────────────────────────────────────────── */}
       <section style={{ background: "var(--mr-bg)", padding: "clamp(48px,8vw,80px) 0", overflow: "hidden" }}>
-        <div className="mx-auto max-w-6xl px-6 md:px-10 flex flex-col md:flex-row md:items-center gap-10 md:gap-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-6 text-center md:flex-row md:items-center md:gap-12 md:px-10 md:text-left">
           {/* Text */}
-          <div style={{ flex: "1 1 0", minWidth: 0 }}>
+          <div className="flex w-full flex-col items-center md:items-start" style={{ flex: "1 1 0", minWidth: 0 }}>
             <span
               style={{
                 display: "inline-flex",
@@ -119,6 +115,7 @@ export function HomeLanding() {
             </h1>
 
             <p
+              className="mx-auto md:mx-0"
               style={{
                 fontFamily: "var(--mr-font-body)",
                 fontSize: "clamp(16px, 2vw, var(--mr-text-lead))",
@@ -131,7 +128,7 @@ export function HomeLanding() {
               I teach ambitious, non-technical founders and professionals how to use AI to get ahead in their careers, get time back, and stay relevant in the AI age.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex w-full flex-wrap items-center justify-start gap-3">
               <a
                 href="#contact"
                 className="mr-pressable"
@@ -197,7 +194,10 @@ export function HomeLanding() {
           </div>
 
           {/* Photo */}
-          <div className="hidden md:block" style={{ position: "relative", flexShrink: 0 }}>
+          <div
+            className="-mx-6 w-[calc(100%+3rem)] md:mx-0 md:w-auto"
+            style={{ position: "relative", flexShrink: 0 }}
+          >
             <div className="mr-float-slow" style={{ position: "relative", zIndex: 1 }}>
               <Image
                 src="/about-assets/009.jpg"
@@ -206,19 +206,18 @@ export function HomeLanding() {
                 height={420}
                 priority
                 unoptimized
+                className="aspect-[4/5] w-full md:aspect-auto md:h-[420px] md:w-[340px] md:rounded-[var(--mr-radius-card)]"
                 style={{
-                  borderRadius: "28px",
                   objectFit: "cover",
                   objectPosition: "center 15%",
                   boxShadow: "var(--mr-shadow-frame)",
                   display: "block",
-                  width: "340px",
-                  height: "420px",
                 }}
+                sizes="(max-width: 768px) 100vw, 340px"
               />
             </div>
             <div
-              className="mr-drift"
+              className="mr-drift hidden md:block"
               style={{
                 position: "absolute", top: "-20px", right: "-24px",
                 width: "80px", height: "80px", borderRadius: "50%",
@@ -226,6 +225,7 @@ export function HomeLanding() {
               }}
             />
             <div
+              className="hidden md:block"
               style={{
                 position: "absolute", bottom: "-16px", left: "-20px",
                 width: "48px", height: "48px", borderRadius: "50%",
@@ -237,28 +237,35 @@ export function HomeLanding() {
       </section>
 
       {/* ── Press Bar ────────────────────────────────────── */}
-      <section style={{ background: "var(--mr-surface-warm)", borderTop: "1px solid var(--mr-border-warm)", borderBottom: "1px solid var(--mr-border-warm)", padding: "36px 0" }}>
-        <div className="mx-auto max-w-6xl px-6 md:px-10">
+      <section style={{ background: "var(--mr-coral)", position: "relative", overflow: "hidden", padding: "36px 0" }}>
+        <div
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none",
+            background: "radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 60%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-6xl px-6 md:px-10">
           <p
-            className="mb-6 text-center"
+            className="mb-8 text-center"
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-eyebrow)",
               fontWeight: "var(--mr-weight-display)",
-              color: "var(--mr-muted)",
+              color: "#FBD7DC",
               textTransform: "uppercase",
               letterSpacing: "0.14em",
             }}
           >
             Featured in
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-5 md:gap-10">
-            {pressItems.map(({ label, href }) => (
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
+            {pressItems.map(({ label, href, logo, logoHeight, logoMaxWidth }) => (
               <a
                 key={label}
                 href={href}
                 target={href.startsWith("/") ? undefined : "_blank"}
                 rel={href.startsWith("/") ? undefined : "noopener noreferrer"}
+                aria-label={label}
                 onClick={() =>
                   trackGa4Event("press_reference_click", {
                     cta_label: label,
@@ -267,72 +274,40 @@ export function HomeLanding() {
                     link_type: "external_press",
                   })
                 }
+                className="group transition-opacity hover:opacity-100"
                 style={{
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "17px",
-                  fontWeight: "var(--mr-weight-heavy)",
-                  color: "var(--mr-muted)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  opacity: 0.8,
                   textDecoration: "none",
-                  letterSpacing: "-0.01em",
                 }}
-                className="hover:text-[var(--mr-ink)] transition-colors"
               >
-                {label}
+                <Image
+                  src={logo}
+                  alt={label}
+                  width={140}
+                  height={logoHeight}
+                  unoptimized
+                  style={{
+                    height: `${logoHeight}px`,
+                    width: "auto",
+                    maxWidth: `${logoMaxWidth ?? 140}px`,
+                    filter: "grayscale(100%) brightness(0) invert(1)",
+                  }}
+                  className="transition-[filter] group-hover:brightness-[1.1]"
+                />
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Stat Band ────────────────────────────────────── */}
-      <section style={{ background: "var(--mr-coral)", position: "relative", overflow: "hidden" }}>
-        <div
-          style={{
-            position: "absolute", inset: 0, pointerEvents: "none",
-            background: "radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 60%)",
-          }}
-        />
-        {/* 2-col on mobile, 4-col on md+ */}
-        <div className="mx-auto max-w-6xl px-6 py-12 md:px-10 md:py-14 grid grid-cols-3 gap-6 relative">
-          {stats.map(({ value, label }) => (
-            <div key={label} className="text-center">
-              <p
-                style={{
-                  fontFamily: "var(--mr-font-display)",
-                  fontSize: "clamp(28px, 5vw, var(--mr-text-stat))",
-                  fontWeight: "var(--mr-weight-display)",
-                  color: "#fff",
-                  lineHeight: 1.0,
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                {value}
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-xs)",
-                  color: "#FBD7DC",
-                  marginTop: "8px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  fontWeight: "var(--mr-weight-semi)",
-                }}
-              >
-                {label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── MY WORK ──────────────────────────────────────── */}
+      {/* ── MY STORY ─────────────────────────────────────── */}
       <section style={{ background: "var(--mr-bg)", padding: "clamp(56px,8vw,80px) 0" }}>
         <div className="mx-auto max-w-6xl px-6 md:px-10">
-          {/* Header row: headline left, LinkedIn CTA right */}
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-10 md:mb-12">
+          <div className="flex flex-wrap items-start justify-between gap-4 mb-10 md:mb-12">
             <div>
-              <span style={eyebrow("var(--mr-coral)")}>My Work</span>
+              <span style={eyebrow("var(--mr-coral)")}>My Story</span>
               <h2
                 style={{
                   fontFamily: "var(--mr-font-display)",
@@ -341,11 +316,23 @@ export function HomeLanding() {
                   color: "var(--mr-ink)",
                   letterSpacing: "-0.02em",
                   lineHeight: 1.05,
-                  margin: 0,
+                  margin: "0 0 16px",
                 }}
               >
-                What I do.
+                Building ambitious, time-rich lives with AI
               </h2>
+              <p
+                style={{
+                  fontFamily: "var(--mr-font-body)",
+                  fontSize: "var(--mr-text-lead)",
+                  color: "var(--mr-text-soft)",
+                  lineHeight: 1.55,
+                  margin: 0,
+                  maxWidth: "560px",
+                }}
+              >
+                I&apos;m using AI to rebuild on my own terms and help high-achieving, non-technical professionals stop trading freedom for ambition.
+              </p>
             </div>
             <a
               href={homeBioLinks.linkedinProfile}
@@ -355,7 +342,7 @@ export function HomeLanding() {
               onClick={() =>
                 trackGa4Event("social_cta_click", {
                   cta_label: "Connect on LinkedIn",
-                  cta_location: "my_work_section",
+                  cta_location: "my_story_section",
                   destination_url: homeBioLinks.linkedinProfile,
                   link_type: "social_linkedin",
                 })
@@ -381,78 +368,7 @@ export function HomeLanding() {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-            {/* Now card */}
-            <div
-              className="mr-lift"
-              style={{
-                background: "var(--mr-surface-rose)",
-                border: "1px solid var(--mr-border-rose)",
-                borderRadius: "var(--mr-radius-card)",
-                padding: "clamp(24px,4vw,32px)",
-              }}
-            >
-              <span style={eyebrow("var(--mr-coral)")}>Now</span>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
-                {[
-                  "AI product studio & consulting for growth & marketing teams",
-                  "Teaching AI to 25K+ founders & professionals on Instagram & TikTok",
-                  "1:1 AI & career office hours & coaching",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    style={{
-                      display: "flex",
-                      gap: "10px",
-                      fontFamily: "var(--mr-font-body)",
-                      fontSize: "var(--mr-text-sm)",
-                      color: "var(--mr-text-soft)",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <span style={{ color: "var(--mr-coral)", flexShrink: 0, marginTop: "2px" }}>→</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Prior card */}
-            <div
-              className="mr-lift"
-              style={{
-                background: "var(--mr-surface-cream)",
-                border: "1px solid var(--mr-border-cream)",
-                borderRadius: "var(--mr-radius-card)",
-                padding: "clamp(24px,4vw,32px)",
-              }}
-            >
-              <span style={eyebrow("var(--mr-teal)")}>Prior</span>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
-                {[
-                  "Founded Parallax · Raised ~$5M from Dragonfly & GC · Acquired by Phantom ($3B valuation)",
-                  'Product @ LinkedIn (launched "I\'m Hiring" feature ring)',
-                  "Founded Filipinos @ LinkedIn · Women in Product exec",
-                  "Earlier: Kumu.ph, MedGrocer, Ripcord (via KP Fellowship)",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    style={{
-                      display: "flex",
-                      gap: "10px",
-                      fontFamily: "var(--mr-font-body)",
-                      fontSize: "var(--mr-text-sm)",
-                      color: "var(--mr-text-soft)",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <span style={{ color: "var(--mr-teal)", flexShrink: 0, marginTop: "2px" }}>→</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <MyStoryTimeline />
         </div>
       </section>
 
@@ -539,7 +455,17 @@ export function HomeLanding() {
               style={{
                 position: "absolute",
                 inset: 0,
-                background: "linear-gradient(to right, transparent 55%, var(--mr-teal-deep) 100%)",
+                background:
+                  "linear-gradient(to right, var(--mr-teal-deep) 0%, transparent 22%, transparent 55%, var(--mr-teal-deep) 100%)",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[32%]"
+              style={{
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                maskImage: "linear-gradient(to right, black 0%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to right, black 0%, transparent 100%)",
               }}
             />
           </div>

@@ -1,363 +1,207 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useMemo, useState } from "react";
 import posthog from "posthog-js";
 
 import { trackGa4Event } from "@/lib/analytics/ga4";
-import { siteLink } from "@/lib/ui/site-styles";
+import {
+  categoryLabel,
+  productLinkCategories,
+  productLinks,
+  type ProductLink,
+} from "@/lib/product-links";
 
-/**
- * Referral / affiliate URLs. Granola, Wispr Flow, and Cursor match mikareyes.com AI guides;
- * others from the Notion Links page:
- * https://www.notion.so/smikatoots/Product-Links-6a8f47cf73da4fd1b0245355198ce13a
- */
-const U = {
-  capitalVentureX: "https://capital.one/3nffNQa",
-  chaseFreedomUnlimited: "https://www.referyourchasecard.com/18/X49W5WBKFC",
-  m1Finance: "https://m1.finance/jvVekGKC2na-",
-  monarchMoney: "https://www.monarchmoney.com/referral/pulm2hd82n",
-  facetWealth: "https://facetwealth.referralrock.com/l/1MIKAELAREY71/",
-  etrade: "https://refer.etrade.net/ncruz",
-  coinbase: "https://www.coinbase.com/join/reyes_73f",
-  cadence: "https://share.keepyourcadence.com/mikaela72",
-  remento: "https://to.remento.co/dfb2a7f429551f8723b01210b3a17c78",
-  notion: "https://notion.so/",
-  superSo: "https://app.super.so/signup?ref=coyiuh",
-  /** Notion stores http (not https) for this link. */
-  substack: "http://mikareyes.substack.com/",
-  linkedHelper: "https://www.linkedhelper.com/",
-  phantombuster: "https://phantombuster.com/",
-  deel: "https://get.deel.com/mbs491remo80",
-  ramp: "https://ramp.com/?rc=32UCQH&referral_location=login",
-  gusto: "https://gusto.com/r/mika07e8",
-  /**
-   * In Notion, "Glimpse" points at an in-page block anchor. Same public page + block id.
-   */
-  glimpse:
-    "https://www.notion.so/smikatoots/Product-Links-6a8f47cf73da4fd1b0245355198ce13a#459b66c7fdc84647874ce49582bf6c9d",
-  mercury: "https://mercury.com/r/parallax-labs",
-  cometeer: "https://cometeer.com/get-started?code=T7shdZ",
-  seated: "https://seated.app.link/wWbtCgatjhb",
-  /** Label in Notion is "Studio"; href is Monthly (per Notion). */
-  studio: "https://monthly.com/stevie-mackey-singing?friend=mika-reyes",
-  cora: "https://cora.computer/?ref=wEZMc0H1",
-  glowbar: "https://blvd.app/@glowbar/refer/MIKAELA-717659",
-  granola: "https://join.granola.ai/t/vhhbzajvu7",
-  wisprFlow: "https://wisprflow.ai/r?MIKAELA1",
-  cursor: "https://cursor.com/referral?code=W5VDPGO8R3BO",
-} as const;
+type FilterId = (typeof productLinkCategories)[number]["id"];
 
-/** Product / brand name (bold + underlined). */
-function PLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: ReactNode;
-}) {
-  return (
-    <a
-      href={href}
-      className={`font-semibold ${siteLink}`}
-      rel="noopener noreferrer"
-      target="_blank"
-      onClick={() => {
-        const label = typeof children === "string" ? children : undefined;
-        posthog.capture("referral_link_clicked", {
-          href,
-          label,
-          link_type: "product",
-        });
-        trackGa4Event("affiliate_product_click", {
-          cta_label: label ?? "Product link",
-          cta_location: "product_links_page",
-          destination_url: href,
-          link_type: "affiliate_product",
-        });
-      }}
-    >
-      {children}
-    </a>
-  );
+const filterPillActive =
+  "rounded-full border px-3 py-1.5 text-sm font-semibold transition-[background,border-color,color,transform] duration-300" +
+  " border-[var(--mr-coral)] bg-[var(--mr-surface-rose-2)] text-[var(--mr-coral)] scale-[1.02]";
+
+const filterPillIdle =
+  "rounded-full border px-3 py-1.5 text-sm font-semibold transition-[background,border-color,color,transform] duration-300" +
+  " border-[var(--mr-border)] text-[var(--mr-muted)] hover:border-[var(--mr-coral)] hover:text-[var(--mr-coral)] hover:scale-[1.02]";
+
+function trackLinkClick(link: ProductLink) {
+  posthog.capture("referral_link_clicked", {
+    href: link.href,
+    label: link.name,
+    link_type: "product",
+    category: link.categories.join(","),
+  });
+  trackGa4Event("affiliate_product_click", {
+    cta_label: link.name,
+    cta_location: "product_links_page",
+    destination_url: link.href,
+    link_type: "affiliate_product",
+  });
 }
 
-/** Secondary link in body copy (e.g. "my link", "referral link"). */
-function ILink({
-  href,
-  children,
+function ProductLinkCard({
+  link,
+  visibleIndex,
+  reduceMotion,
 }: {
-  href: string;
-  children: ReactNode;
+  link: ProductLink;
+  visibleIndex: number;
+  reduceMotion: boolean;
 }) {
-  return (
-    <a
-      href={href}
-      className={siteLink}
-      rel="noopener noreferrer"
-      target="_blank"
-      onClick={() => {
-        const label = typeof children === "string" ? children : undefined;
-        posthog.capture("referral_link_clicked", {
-          href,
-          label,
-          link_type: "inline",
-        });
-        trackGa4Event("affiliate_inline_click", {
-          cta_label: label ?? "Inline referral link",
-          cta_location: "product_links_page",
-          destination_url: href,
-          link_type: "affiliate_inline",
-        });
-      }}
-    >
-      {children}
-    </a>
-  );
-}
+  const showDelay = reduceMotion ? "0ms" : `${visibleIndex * 45}ms`;
 
-function LinkCard({ icon, children }: { icon: string; children: ReactNode }) {
   return (
     <div
-      className="mr-lift flex gap-3"
+      className="min-h-0"
       style={{
-        background: "var(--mr-surface)",
-        border: "1px solid var(--mr-border)",
-        borderRadius: "var(--mr-radius-card)",
-        padding: "16px 20px",
-        boxShadow: "var(--mr-shadow-card)",
+        opacity: 1,
+        transform: "translateY(0) scale(1)",
+        animation: reduceMotion
+          ? undefined
+          : "product-link-enter 0.45s var(--mr-ease) both",
+        animationDelay: showDelay,
+        viewTransitionName: reduceMotion ? undefined : `product-link-${link.id}`,
       }}
     >
-      <span className="shrink-0 text-lg leading-6" aria-hidden>
-        {icon}
-      </span>
-      <div
-        className="min-w-0 flex-1"
+      <a
+        href={link.href}
+        className="mr-lift group flex h-full flex-col"
+        rel="noopener noreferrer"
+        target="_blank"
+        onClick={() => trackLinkClick(link)}
         style={{
-          fontFamily: "var(--mr-font-body)",
-          fontSize: "var(--mr-text-sm)",
-          lineHeight: 1.6,
-          color: "var(--mr-text-soft)",
+          background: "var(--mr-surface)",
+          border: "1px solid var(--mr-border)",
+          borderRadius: "var(--mr-radius-card)",
+          padding: "20px 22px",
+          boxShadow: "var(--mr-shadow-card)",
+          textDecoration: "none",
+          minHeight: "148px",
         }}
       >
-        {children}
-      </div>
+        <h3
+          className="transition-colors group-hover:text-[var(--mr-coral)]"
+          style={{
+            fontFamily: "var(--mr-font-display)",
+            fontSize: "var(--mr-text-h3)",
+            fontWeight: "var(--mr-weight-display)",
+            letterSpacing: "-0.01em",
+            color: "var(--mr-ink)",
+            lineHeight: 1.15,
+            margin: "0 0 8px",
+          }}
+        >
+          {link.name}
+        </h3>
+        <p
+          style={{
+            flex: 1,
+            fontFamily: "var(--mr-font-body)",
+            fontSize: "var(--mr-text-sm)",
+            lineHeight: 1.55,
+            color: "var(--mr-text-soft)",
+            margin: 0,
+          }}
+        >
+          {link.description}
+        </p>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "8px",
+            marginTop: "16px",
+          }}
+        >
+          {link.categories.map((category) => (
+            <span
+              key={category}
+              style={{
+                fontFamily: "var(--mr-font-body)",
+                fontSize: "var(--mr-text-xs)",
+                fontWeight: "var(--mr-weight-semi)",
+                color: "var(--mr-coral)",
+                background: "var(--mr-surface-rose)",
+                border: "1px solid var(--mr-border-rose)",
+                borderRadius: "var(--mr-radius-chip)",
+                padding: "4px 10px",
+                letterSpacing: "0.04em",
+                textTransform: "uppercase",
+              }}
+            >
+              {categoryLabel(category)}
+            </span>
+          ))}
+        </div>
+      </a>
     </div>
   );
 }
 
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: ReactNode;
-}) {
-  return (
-    <section
-      className="pt-10"
-      style={{ borderTop: "1px solid var(--mr-border-warm)" }}
-    >
-      <div className="grid gap-6 md:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] md:items-start md:gap-10 lg:gap-14">
-        <div className="md:pt-1">
-          <span
-            style={{
-              display: "inline-block",
-              fontFamily: "var(--mr-font-body)",
-              fontSize: "var(--mr-text-eyebrow)",
-              fontWeight: "var(--mr-weight-display)",
-              color: "var(--mr-coral)",
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
-              marginBottom: "4px",
-            }}
-          >
-            ✦
-          </span>
-          <h2
-            style={{
-              fontFamily: "var(--mr-font-display)",
-              fontSize: "var(--mr-text-h3)",
-              fontWeight: "var(--mr-weight-display)",
-              letterSpacing: "-0.01em",
-              color: "var(--mr-ink)",
-            }}
-          >
-            {title}
-          </h2>
-        </div>
-        <div className="space-y-3">{children}</div>
-      </div>
-    </section>
-  );
-}
-
 export function ProductLinksContent() {
+  const [activeFilter, setActiveFilter] = useState<FilterId>("all");
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduceMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  const visibleLinks = useMemo(() => {
+    if (activeFilter === "all") return productLinks;
+    return productLinks.filter((link) => link.categories.includes(activeFilter));
+  }, [activeFilter]);
+
+  function handleFilterChange(next: FilterId) {
+    if (next === activeFilter) return;
+
+    const apply = () => setActiveFilter(next);
+
+    if (reduceMotion || typeof document === "undefined" || !("startViewTransition" in document)) {
+      apply();
+      return;
+    }
+
+    document.startViewTransition(apply);
+  }
+
   return (
-    <article className="space-y-10">
-      <Section title="AI">
-        <LinkCard icon="🤖">
-          <PLink href={U.granola}>Granola</PLink>
-          {" — "}
-          AI meeting notes with no bot on the call. Two free months of Granola
-          Business when you sign up with my{" "}
-          <ILink href={U.granola}>referral link</ILink>.
-        </LinkCard>
-        <LinkCard icon="🤖">
-          <PLink href={U.wisprFlow}>Wispr Flow</PLink>
-          {" — "}
-          voice dictation into any text field. One free month of Pro with my{" "}
-          <ILink href={U.wisprFlow}>referral link</ILink>.
-        </LinkCard>
-        <LinkCard icon="🤖">
-          <PLink href={U.cursor}>Cursor</PLink>
-          {" — "}
-          AI-native code editor for real projects. $20 credit toward Pro when you
-          sign up with my <ILink href={U.cursor}>referral link</ILink>.
-        </LinkCard>
-        <LinkCard icon="🤖">
-          <PLink href={U.cora}>Cora</PLink>
-          {" — "}email productivity! Honestly, love it so much
-        </LinkCard>
-      </Section>
+    <div className="space-y-8">
+      <div
+        className="flex flex-wrap justify-center gap-2"
+        role="tablist"
+        aria-label="Filter links by category"
+      >
+        {productLinkCategories.map((category) => {
+          const isActive = activeFilter === category.id;
+          return (
+            <button
+              key={category.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              className={isActive ? filterPillActive : filterPillIdle}
+              onClick={() => handleFilterChange(category.id)}
+            >
+              {category.label}
+            </button>
+          );
+        })}
+      </div>
 
-      <Section title="Finance Stack">
-        <LinkCard icon="💳">
-          <PLink href={U.capitalVentureX}>Capital Venture X</PLink>
-          {" — "}
-          I use this now over Chase Sapphire Reserve because the annual fee is
-          cheaper BUT with the same benefits! Use my{" "}
-          <ILink href={U.capitalVentureX}>referral link</ILink> pls!
-        </LinkCard>
-        <LinkCard icon="💳">
-          <PLink href={U.chaseFreedomUnlimited}>Chase Freedom Unlimited</PLink>
-          {" — "}
-          free, great cashbacks that you can pair with Chase Sapphire cards; get
-          a bonus if you use my{" "}
-          <ILink href={U.chaseFreedomUnlimited}>referral link</ILink>!
-        </LinkCard>
-        <LinkCard icon="💳">
-          <PLink href={U.m1Finance}>M1 Finance</PLink>
-          {" — "}Roboadvisor
-        </LinkCard>
-        <LinkCard icon="💳">
-          <PLink href={U.monarchMoney}>Monarch Money</PLink>
-          {" — "}budgeting app (I&apos;ve replaced my spreadsheets!)
-        </LinkCard>
-        <LinkCard icon="💳">
-          <PLink href={U.facetWealth}>FacetWealth</PLink>
-          {" — "}
-          financial planning services that are fiduciary guaranteed (meaning they
-          are legally obligated to support your best financial interests, not the
-          companies&apos;)
-        </LinkCard>
-        <LinkCard icon="💳">
-          <PLink href={U.etrade}>Etrade</PLink>
-          {" — "}best UI for investments and trades
-        </LinkCard>
-        <LinkCard icon="💳">
-          <PLink href={U.coinbase}>Coinbase</PLink>
-          {" — "}get $10 of free Bitcoin!
-        </LinkCard>
-      </Section>
-
-      <Section title="Physical Products">
-        <LinkCard icon="🛍️">
-          <PLink href={U.cadence}>Cadence</PLink>
-          {" — "}best travel buddy ever. Get $15 off your first order with my{" "}
-          <ILink href={U.cadence}>link</ILink>!
-        </LinkCard>
-        <LinkCard icon="🛍️">
-          <PLink href={U.remento}>Remento</PLink>
-          {" — "}
-          I&apos;m using this to send weekly prompts to my parents &amp; have
-          their stories AI-crafted and compiled into a beautiful book. Get $15 off
-          your purchase with <ILink href={U.remento}>my link</ILink>!
-        </LinkCard>
-      </Section>
-
-      <Section title="Work Stack">
-        <LinkCard icon="💼">
-          <PLink href={U.notion}>Notion</PLink>
-          {" — "}where I built this website, and where my second brain lives
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.superSo}>Super.so</PLink>
-          {" — "}
-          the platform that transforms this Notion page into a website
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.substack}>Substack</PLink>
-          {" — "}the home of my newsletter
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.linkedHelper}>LinkedHelper</PLink>
-          {" — "}outbound LinkedIn automation tool
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.phantombuster}>Phantombuster</PLink>
-          {" — "}
-          outbound automation for various social media and other sites
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.deel}>Deel</PLink>
-          {" — "}
-          hire international contractors compliantly. my affiliate link so you
-          can also earn some perks!
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.ramp}>Ramp</PLink>
-          {" — "}
-          expense management system for your business or startup. Get $500 from
-          our referral code
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.gusto}>Gusto</PLink>
-          {" — "}super simple HR management platform
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.glimpse}>Glimpse</PLink>
-          {" — "}
-          know what&apos;s trendy before it&apos;s trendy. Packed with clear
-          insights about future trends from Google &amp; Amazon searches &amp;
-          more.
-        </LinkCard>
-        <LinkCard icon="💼">
-          <PLink href={U.mercury}>Mercury</PLink>
-          {" — "}best biz bank account ever
-        </LinkCard>
-      </Section>
-
-      <Section title="Food & Drinks">
-        <LinkCard icon="🍎">
-          <PLink href={U.cometeer}>Cometeer</PLink>
-          {" — "}
-          THE 👏 BEST 👏 COFFEE 👏 EVER 👏 — you won&apos;t regret it. Get $25 off
-          your first 32 cups (A STEAL?!) with my <ILink href={U.cometeer}>link</ILink>!
-        </LinkCard>
-        <LinkCard icon="🍎">
-          <PLink href={U.seated}>Seated</PLink>
-          {" — "}
-          get free $$$ when you book a reservation through the app! Use this{" "}
-          <ILink href={U.seated}>link</ILink> to get $15 bonus on your first
-          meal
-        </LinkCard>
-      </Section>
-
-      <Section title="Learning">
-        <LinkCard icon="📔">
-          <PLink href={U.studio}>Studio</PLink>
-          {" — "}
-          learn a new creative thing, with a peer group, and an expert, all in
-          one month
-        </LinkCard>
-      </Section>
-
-      <Section title="Services">
-        <LinkCard icon="🍄">
-          <PLink href={U.glowbar}>Glowbar</PLink>
-          {" — "}fast facials in the U.S.
-        </LinkCard>
-      </Section>
-    </article>
+      <div
+        className="product-links-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        style={{ viewTransitionName: reduceMotion ? undefined : "product-links-grid" }}
+      >
+        {visibleLinks.map((link, index) => (
+          <ProductLinkCard
+            key={link.id}
+            link={link}
+            visibleIndex={index}
+            reduceMotion={reduceMotion}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
