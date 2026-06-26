@@ -128,7 +128,7 @@ export function HomeLanding() {
               I teach ambitious, non-technical founders and professionals how to use AI to get ahead in their careers, get time back, and stay relevant in the AI age.
             </p>
 
-            <div className="flex w-full flex-wrap items-center justify-start gap-3">
+            <div className="flex w-full flex-wrap items-center justify-center gap-3 md:justify-start">
               <a
                 href="#contact"
                 className="mr-pressable"

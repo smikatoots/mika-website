@@ -148,6 +148,15 @@ export function MyStoryTimeline() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showDot, setShowDot] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [isDesktopTimeline, setIsDesktopTimeline] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+    const syncViewport = () => setIsDesktopTimeline(media.matches);
+    syncViewport();
+    media.addEventListener("change", syncViewport);
+    return () => media.removeEventListener("change", syncViewport);
+  }, []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -163,7 +172,13 @@ export function MyStoryTimeline() {
     const update = () => {
       const track = trackRef.current;
       const line = lineRef.current;
-      if (!track || !line) return;
+      if (!track) return;
+
+      const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+      if (!isDesktop || !line) {
+        setShowDot(false);
+        return;
+      }
 
       const centerY = window.innerHeight * 0.5;
       const trackRect = track.getBoundingClientRect();
@@ -226,6 +241,12 @@ export function MyStoryTimeline() {
     const line = lineRef.current;
     if (!track || !line) return;
 
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    if (!isDesktop) {
+      setShowDot(false);
+      return;
+    }
+
     const centerY = window.innerHeight * 0.5;
     const trackRect = track.getBoundingClientRect();
     const lineRect = line.getBoundingClientRect();
@@ -265,7 +286,7 @@ export function MyStoryTimeline() {
   };
 
   const milestoneState = (index: number): MilestoneState => {
-    if (reduceMotion) return "past";
+    if (reduceMotion || !isDesktopTimeline) return "past";
     if (index < activeIndex) return "past";
     if (index === activeIndex) return "active";
     return "future";
@@ -276,7 +297,7 @@ export function MyStoryTimeline() {
       <div
         ref={lineRef}
         aria-hidden
-        className="pointer-events-none absolute left-[32px] top-0 bottom-0 w-[3px] -translate-x-1/2 md:left-1/2"
+        className="pointer-events-none absolute left-1/2 top-0 bottom-0 hidden w-[3px] -translate-x-1/2 md:block"
       >
         <div
           className="absolute inset-0 rounded-full"
@@ -294,7 +315,7 @@ export function MyStoryTimeline() {
       {showDot ? (
         <div
           aria-hidden
-          className="pointer-events-none fixed z-20 left-[32px] top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full md:left-1/2"
+          className="pointer-events-none fixed left-1/2 top-1/2 z-20 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full md:block"
           style={{
             background: "var(--mr-coral)",
             border: "3px solid var(--mr-surface)",
@@ -312,37 +333,33 @@ export function MyStoryTimeline() {
           return (
             <div
               key={milestone.id}
-              className="relative grid grid-cols-[32px_1fr] items-start gap-4 py-10 md:grid-cols-[1fr_48px_1fr] md:gap-8 md:py-14"
+              className="py-8 md:relative md:grid md:grid-cols-[1fr_48px_1fr] md:items-start md:gap-8 md:py-14"
             >
-              {isLeft ? (
-                <div className="col-start-2 row-start-1 md:col-start-1 md:pr-4">
-                  <StoryCard
-                    milestone={milestone}
-                    variant={variant}
-                    state={state}
-                    reduceMotion={reduceMotion}
-                  />
-                </div>
-              ) : (
-                <div className="hidden md:col-start-1 md:block" aria-hidden />
-              )}
-
-              <div className="col-start-1 row-start-1 flex justify-center self-start md:col-start-2">
+              <div className="hidden md:col-start-2 md:flex md:justify-center md:self-start">
                 <div
                   ref={(el) => {
                     markerRefs.current[index] = el;
                   }}
                   aria-hidden
-                  className={`relative z-10 shrink-0 rounded-full transition-[transform,box-shadow] duration-300 ${
+                  className={`relative shrink-0 rounded-full transition-[transform,box-shadow] duration-300 ${
                     index === activeIndex ? "h-4 w-4" : "h-3 w-3"
                   }`}
                   style={milestoneMarkerStyle(index)}
                 />
               </div>
 
-              <div
-                className={`col-start-2 row-start-1 md:col-start-3 md:pl-4 ${isLeft ? "md:hidden" : ""}`}
-              >
+              <div className={isLeft ? "md:col-start-1 md:pr-4" : "hidden md:col-start-1 md:block"} aria-hidden={!isLeft}>
+                {isLeft ? (
+                  <StoryCard
+                    milestone={milestone}
+                    variant={variant}
+                    state={state}
+                    reduceMotion={reduceMotion}
+                  />
+                ) : null}
+              </div>
+
+              <div className={isLeft ? "hidden md:col-start-3 md:block" : "md:col-start-3 md:pl-4"} aria-hidden={isLeft}>
                 {!isLeft ? (
                   <StoryCard
                     milestone={milestone}
