@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { type CSSProperties, type ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { type CSSProperties, type ReactElement, type ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import {
   storyMilestonePlaceholder,
@@ -11,23 +11,25 @@ import {
 
 type MilestoneState = "past" | "active" | "future";
 
+type BodyPart = string | ReactElement;
+
 function renderHighlightedBody(body: string, highlights: string[]): ReactNode {
-  let nodes: ReactNode[] = [body];
+  let parts: BodyPart[] = [body];
 
   for (const phrase of highlights) {
-    nodes = nodes.flatMap((node, nodeIndex) => {
-      if (typeof node !== "string") return [node];
+    parts = parts.flatMap((part, partIndex) => {
+      if (typeof part !== "string") return [part];
 
-      const index = node.indexOf(phrase);
-      if (index === -1) return [node];
+      const index = part.indexOf(phrase);
+      if (index === -1) return [part];
 
-      const before = node.slice(0, index);
-      const after = node.slice(index + phrase.length);
+      const before = part.slice(0, index);
+      const after = part.slice(index + phrase.length);
 
       return [
         before,
         <strong
-          key={`${phrase}-${nodeIndex}`}
+          key={`${phrase}-${partIndex}`}
           style={{ fontWeight: "var(--mr-weight-semi)", color: "var(--mr-ink)" }}
         >
           {phrase}
@@ -37,7 +39,7 @@ function renderHighlightedBody(body: string, highlights: string[]): ReactNode {
     });
   }
 
-  return nodes;
+  return parts;
 }
 
 function eyebrow(color: string): React.CSSProperties {
