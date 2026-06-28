@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { AiGuideComingSoonBlock } from "@/components/ai-guides/AiGuideComingSoonBlock";
-import { AiGuideSocialCtaBlock } from "@/components/ai-guides/AiGuideSocialCtaBlock";
 import { renderAiGuideMdx } from "@/components/ai-guides/render-ai-guide-mdx";
 import {
   loadAiGuideMdxPost,
@@ -114,7 +113,6 @@ export default async function AiGuidePage({ params }: Props) {
       ) : (
         <div className="mt-10">{content}</div>
       )}
-      <AiGuideSocialCtaBlock />
     </article>
   );
 }
