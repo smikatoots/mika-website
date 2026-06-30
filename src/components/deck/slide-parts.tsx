@@ -292,9 +292,10 @@ export function StepsSlide({
   visual?: React.ReactNode;
 }) {
   return (
-    <div className="flex h-full w-full flex-col items-center gap-8 px-8 py-12 md:flex-row md:gap-12 md:px-14">
-      <ol className="flex w-full flex-col justify-center gap-6 md:flex-1">
-        {steps.map((label, i) => {
+    <div className="flex h-full w-full flex-col items-center justify-center gap-6 px-8 py-12 md:flex-row md:gap-10 md:px-14">
+      <div className="flex w-full justify-center md:w-auto md:flex-none md:justify-end">
+        <ol className="flex flex-col justify-center gap-6">
+          {steps.map((label, i) => {
           const reached = i <= current;
           const active = i === current;
           const done = i < current;
@@ -315,20 +316,26 @@ export function StepsSlide({
               >
                 {i + 1}
               </span>
-              {reached ? (
-                <span className="whitespace-nowrap text-6xl font-extrabold leading-[1.05] tracking-tight text-zinc-950 sm:text-7xl">
-                  {label}
-                </span>
-              ) : null}
+              {/* Always render the label to reserve a stable box width, so the
+                  steps box doesn't shift as later (longer) steps reveal. */}
+              <span
+                className={`whitespace-nowrap text-6xl font-extrabold leading-[1.05] tracking-tight text-zinc-950 sm:text-7xl ${
+                  reached ? "" : "invisible"
+                }`}
+                aria-hidden={!reached}
+              >
+                {label}
+              </span>
             </li>
           );
         })}
-      </ol>
+        </ol>
+      </div>
 
       {visual ? (
         <div
           key={current}
-          className="deck-pop relative flex w-full items-center justify-center md:flex-[1.25]"
+          className="deck-pop relative flex w-full items-center justify-center md:w-[44rem] md:flex-none"
         >
           {visual}
         </div>

@@ -69,6 +69,7 @@ export function CtaSlide({
   previewAlt = "",
   previewPlain = false,
   previewLarge = false,
+  previewSide = "right",
   size = "lg",
 }: {
   prompt?: React.ReactNode;
@@ -81,6 +82,8 @@ export function CtaSlide({
   previewPlain?: boolean;
   /** Give the preview more horizontal room (pairs well with previewPlain). */
   previewLarge?: boolean;
+  /** Which side the preview image sits on (desktop). */
+  previewSide?: "left" | "right";
   /** Type scale — `sm` for image-heavy slides, `md` in between, `lg` default. */
   size?: "sm" | "md" | "lg";
 }) {
@@ -135,7 +138,11 @@ export function CtaSlide({
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-8 px-8 py-10 md:flex-row md:gap-14 md:px-16">
+    <div
+      className={`flex h-full w-full flex-col items-center justify-center gap-8 px-8 py-10 md:gap-14 md:px-16 ${
+        previewSide === "left" ? "md:flex-row-reverse" : "md:flex-row"
+      }`}
+    >
       {text}
       <div
         className={
