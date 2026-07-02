@@ -5,6 +5,8 @@ import { BackLink } from "@/components/ui/BackLink";
 import { homeBioLinks } from "@/lib/home-bio-links";
 import { siteLink } from "@/lib/ui/site-styles";
 
+import { MyStoryTimeline } from "@/components/home/MyStoryTimeline";
+
 import { AboutPhoto } from "./AboutPhoto";
 
 function ALink({
@@ -300,6 +302,15 @@ export function AboutPageContent() {
             I&apos;m overloading on coffee &amp; funneling my type A energy
             towards wedding planning.
           </p>
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <h2 className="text-xl font-bold text-zinc-950">Timeline</h2>
+        <div className="mt-6 md:relative md:left-1/2 md:-ml-[50vw] md:w-screen md:max-w-[100vw]">
+          <div className="mx-auto max-w-6xl px-6 md:px-10">
+            <MyStoryTimeline />
+          </div>
         </div>
       </section>
 

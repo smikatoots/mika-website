@@ -5,7 +5,6 @@ import posthog from "posthog-js";
 
 import { trackGa4Event } from "@/lib/analytics/ga4";
 import { homeBioLinks } from "@/lib/home-bio-links";
-import { MyStoryTimeline } from "@/components/home/MyStoryTimeline";
 
 const awards = [
   { icon: "🏆", label: "Forbes 30 Under 30", href: homeBioLinks.awards.forbes30 },
@@ -299,76 +298,6 @@ export function HomeLanding() {
               </a>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── MY STORY ─────────────────────────────────────── */}
-      <section style={{ background: "var(--mr-bg)", padding: "clamp(56px,8vw,80px) 0" }}>
-        <div className="mx-auto max-w-6xl px-6 md:px-10">
-          <div className="flex flex-wrap items-start justify-between gap-4 mb-10 md:mb-12">
-            <div>
-              <span style={eyebrow("var(--mr-coral)")}>My Story</span>
-              <h2
-                style={{
-                  fontFamily: "var(--mr-font-display)",
-                  fontSize: "clamp(28px, 4vw, var(--mr-text-h2))",
-                  fontWeight: "var(--mr-weight-display)",
-                  color: "var(--mr-ink)",
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.05,
-                  margin: "0 0 16px",
-                }}
-              >
-                Building ambitious, time-rich lives with AI
-              </h2>
-              <p
-                style={{
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-lead)",
-                  color: "var(--mr-text-soft)",
-                  lineHeight: 1.55,
-                  margin: 0,
-                  maxWidth: "560px",
-                }}
-              >
-                I&apos;m using AI to rebuild on my own terms and help high-achieving, non-technical professionals stop trading freedom for ambition.
-              </p>
-            </div>
-            <a
-              href={homeBioLinks.linkedinProfile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mr-pressable"
-              onClick={() =>
-                trackGa4Event("social_cta_click", {
-                  cta_label: "Connect on LinkedIn",
-                  cta_location: "my_story_section",
-                  destination_url: homeBioLinks.linkedinProfile,
-                  link_type: "social_linkedin",
-                })
-              }
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                background: "var(--mr-surface)",
-                color: "var(--mr-ink)",
-                fontFamily: "var(--mr-font-body)",
-                fontSize: "var(--mr-text-sm)",
-                fontWeight: "var(--mr-weight-semi)",
-                padding: "12px 22px",
-                borderRadius: "var(--mr-radius-pill)",
-                border: "1.5px solid var(--mr-border-input)",
-                textDecoration: "none",
-                flexShrink: 0,
-                whiteSpace: "nowrap",
-              }}
-            >
-              Connect on LinkedIn →
-            </a>
-          </div>
-
-          <MyStoryTimeline />
         </div>
       </section>
 

@@ -11,6 +11,9 @@ import {
 
 type MilestoneState = "past" | "active" | "future";
 
+/** Nudge spine markers down to meet the top edge of each card. */
+const TIMELINE_MARKER_TOP_OFFSET = 20;
+
 type BodyPart = string | ReactElement;
 
 function renderHighlightedBody(body: string, highlights: string[]): ReactNode {
@@ -150,6 +153,7 @@ export function MyStoryTimeline() {
   const [fillPercent, setFillPercent] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [showDot, setShowDot] = useState(false);
+  const [lineBounds, setLineBounds] = useState({ top: 0, height: 0 });
   const [reduceMotion, setReduceMotion] = useState(false);
   const [isDesktopTimeline, setIsDesktopTimeline] = useState(false);
 
@@ -172,6 +176,20 @@ export function MyStoryTimeline() {
   useEffect(() => {
     let frame = 0;
 
+    const measureLineBounds = (track: HTMLDivElement) => {
+      const first = markerRefs.current[0];
+      const last = markerRefs.current[storyMilestones.length - 1];
+      if (!first || !last) return null;
+
+      const trackRect = track.getBoundingClientRect();
+      const firstRect = first.getBoundingClientRect();
+      const lastRect = last.getBoundingClientRect();
+      const top = firstRect.top + firstRect.height / 2 - trackRect.top;
+      const bottom = lastRect.top + lastRect.height / 2 - trackRect.top;
+
+      return { top, height: Math.max(0, bottom - top) };
+    };
+
     const update = () => {
       const track = trackRef.current;
       const line = lineRef.current;
@@ -182,6 +200,9 @@ export function MyStoryTimeline() {
         setShowDot(false);
         return;
       }
+
+      const bounds = measureLineBounds(track);
+      if (bounds) setLineBounds(bounds);
 
       const centerY = window.innerHeight * 0.5;
       const trackRect = track.getBoundingClientRect();
@@ -250,6 +271,17 @@ export function MyStoryTimeline() {
       return;
     }
 
+    const first = markerRefs.current[0];
+    const last = markerRefs.current[storyMilestones.length - 1];
+    if (first && last) {
+      const trackRect = track.getBoundingClientRect();
+      const firstRect = first.getBoundingClientRect();
+      const lastRect = last.getBoundingClientRect();
+      const top = firstRect.top + firstRect.height / 2 - trackRect.top;
+      const bottom = lastRect.top + lastRect.height / 2 - trackRect.top;
+      setLineBounds({ top, height: Math.max(0, bottom - top) });
+    }
+
     const centerY = window.innerHeight * 0.5;
     const trackRect = track.getBoundingClientRect();
     const lineRect = line.getBoundingClientRect();
@@ -300,7 +332,8 @@ export function MyStoryTimeline() {
       <div
         ref={lineRef}
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 bottom-0 hidden w-[3px] -translate-x-1/2 md:block"
+        className="pointer-events-none absolute left-1/2 hidden w-[3px] -translate-x-1/2 md:block"
+        style={{ top: lineBounds.top, height: lineBounds.height }}
       >
         <div
           className="absolute inset-0 rounded-full"
@@ -313,19 +346,19 @@ export function MyStoryTimeline() {
             background: "var(--mr-coral)",
           }}
         />
+        {showDot ? (
+          <div
+            aria-hidden
+            className="absolute left-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{
+              top: `${fillPercent * 100}%`,
+              background: "var(--mr-coral)",
+              border: "3px solid var(--mr-surface)",
+              boxShadow: "0 0 0 1px var(--mr-border)",
+            }}
+          />
+        ) : null}
       </div>
-
-      {showDot ? (
-        <div
-          aria-hidden
-          className="pointer-events-none fixed left-1/2 top-1/2 z-20 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full md:block"
-          style={{
-            background: "var(--mr-coral)",
-            border: "3px solid var(--mr-surface)",
-            boxShadow: "0 0 0 1px var(--mr-border)",
-          }}
-        />
-      ) : null}
 
       <div className="flex flex-col">
         {storyMilestones.map((milestone, index) => {
@@ -336,9 +369,16 @@ export function MyStoryTimeline() {
           return (
             <div
               key={milestone.id}
-              className="py-8 md:relative md:grid md:grid-cols-[1fr_48px_1fr] md:items-start md:gap-8 md:py-14"
+              className={`relative py-2 md:py-0 ${index > 0 ? "md:-mt-56" : ""}`}
+              style={{ zIndex: index === activeIndex ? 20 : index + 1 }}
             >
-              <div className="hidden md:col-start-2 md:flex md:justify-center md:self-start">
+              <div
+                className="pointer-events-none absolute left-1/2 z-30 hidden -translate-x-1/2 md:block"
+                style={{
+                  top: TIMELINE_MARKER_TOP_OFFSET,
+                  ...panelRevealStyle(state, reduceMotion),
+                }}
+              >
                 <div
                   ref={(el) => {
                     markerRefs.current[index] = el;
@@ -351,26 +391,34 @@ export function MyStoryTimeline() {
                 />
               </div>
 
-              <div className={isLeft ? "md:col-start-1 md:pr-4" : "hidden md:col-start-1 md:block"} aria-hidden={!isLeft}>
-                {isLeft ? (
-                  <StoryCard
-                    milestone={milestone}
-                    variant={variant}
-                    state={state}
-                    reduceMotion={reduceMotion}
-                  />
-                ) : null}
-              </div>
+              <div className="md:grid md:grid-cols-[1fr_48px_1fr] md:items-start md:gap-8">
+                <div
+                  className={isLeft ? "md:col-start-1 md:pr-4" : "hidden md:col-start-1 md:block"}
+                  aria-hidden={!isLeft}
+                >
+                  {isLeft ? (
+                    <StoryCard
+                      milestone={milestone}
+                      variant={variant}
+                      state={state}
+                      reduceMotion={reduceMotion}
+                    />
+                  ) : null}
+                </div>
 
-              <div className={isLeft ? "hidden md:col-start-3 md:block" : "md:col-start-3 md:pl-4"} aria-hidden={isLeft}>
-                {!isLeft ? (
-                  <StoryCard
-                    milestone={milestone}
-                    variant={variant}
-                    state={state}
-                    reduceMotion={reduceMotion}
-                  />
-                ) : null}
+                <div
+                  className={isLeft ? "hidden md:col-start-3 md:block" : "md:col-start-3 md:pl-4"}
+                  aria-hidden={isLeft}
+                >
+                  {!isLeft ? (
+                    <StoryCard
+                      milestone={milestone}
+                      variant={variant}
+                      state={state}
+                      reduceMotion={reduceMotion}
+                    />
+                  ) : null}
+                </div>
               </div>
             </div>
           );
