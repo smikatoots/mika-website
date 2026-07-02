@@ -133,6 +133,7 @@ function StoryCard({
             color: "var(--mr-text-soft)",
             lineHeight: 1.6,
             margin: 0,
+            whiteSpace: "pre-line",
           }}
         >
           {renderHighlightedBody(milestone.body, milestone.highlights)}

@@ -2,17 +2,19 @@
 title: Loop Engineering 101
 description: >-
   Boris Cherny and Peter Steinberger say prompting is dead. Here's what loop
-  engineering actually means: /goal, /loop, and the building blocks that let AI
-  work until the job is actually done.
+  engineering actually means: /goal, /loop, /schedule, and the building blocks
+  that let AI work until the job is actually done.
 tags:
   - claude
   - agents
   - workflow
   - productivity
-published: "2026-06-26"
-date: "2026-06-26"
+published: "2026-07-01"
+date: "2026-07-01"
 cta: Build your first loop
 ---
+
+***Updated as of July 1, 2026. This guide will keep getting updated during the Loop Series***
 
 Most people use AI like a vending machine. Ask a question, wait, ask again. You're the one holding it together, turn after turn.
 
@@ -26,7 +28,19 @@ If you've ever asked Claude to fix something, gotten a confident answer, and the
 
 Loop engineering takes you out of that seat. You write the stopping condition once. A separate check runs after every turn. The agent keeps working until the condition is true, or until you tell it to stop. That's the shift from prompt engineering to loop engineering.
 
-## The two commands that make loops real
+## The evolution of AI engineering
+
+Prompt engineering started in 2020. You write an instruction, the AI runs it once, and you're done. You're doing all the thinking.
+
+Then came context engineering. Instead of just writing a prompt, you started managing everything the AI can see: memory files, past outputs, documents, system instructions. The AI does more; you do less.
+
+Then the harness. That's the environment the AI lives inside: the tools it can access, what it can and can't do, the scaffolding around it. Claude Code is the best example. Now the system runs inside a world you've designed.
+
+And now we're at loops. A loop is a system that drives the AI toward a goal without you stepping in at each turn. You define what done looks like, and it plans, acts, checks against real signals like tests or outputs, and keeps going until it's finished. You're not in the seat anymore.
+
+The pattern at every stage is the same. You take one step back, and the system does one step more.
+
+## The three commands to make loops
 
 ### 1. `/goal` — the loop that works until it's done
 
@@ -46,9 +60,9 @@ Codex has the same primitive, also called `/goal`. It keeps working across turns
 
 ### 2. `/loop` — the loop that repeats on its own
 
-Reach for this when the work is not "finish a pile" but "keep checking on something." You type `/loop` with how often and what to do, and Claude re-runs it for you, either on a schedule you set or at a timing it picks itself.
+Reach for this when the work is not "finish a pile" but "keep checking on something." You type `/loop` with how often and what to do, and Claude re-runs it on that interval while your session stays open.
 
-This is the loop for things like watching a deploy, or triaging the same inbox every morning.
+This is the loop for things like watching a deploy, or polling until a site comes back up.
 
 **Try this in Claude Code:**
 
@@ -56,13 +70,25 @@ This is the loop for things like watching a deploy, or triaging the same inbox e
 /loop 30m check whether my live site is back up by loading the homepage, and the moment it returns a normal page, tell me and stop checking.
 ```
 
-The `30m` just means every 30 minutes. You can also lead with a plain instruction like "every morning, triage my inbox" and Claude will schedule it for you. Press Esc to stop a loop that is waiting for its next run.
+The `30m` just means every 30 minutes. Press Esc to stop a loop that is waiting for its next run.
 
-> **Key insight:** `/loop` re-runs on a cadence. `/goal` keeps going until a condition you wrote is actually true. The checker is a separate small model, so the agent that wrote the code isn't the one grading it.
+### 3. `/schedule` — the loop that fires on a clock
+
+Reach for this when you want work to show up without you opening Claude at all. You type `/schedule`, set a time or cadence, and Claude runs the prompt on that trigger. Daily brief at 9am. Weekly digest on Monday. A reminder to review a dashboard every Friday. You define it once and walk away.
+
+This is different from `/loop`. `/loop` keeps checking while your session is open. `/schedule` runs on a calendar trigger, even when you're not sitting in the terminal.
+
+**Try this in Claude Code:**
+
+```text
+/schedule every weekday at 9am, run my daily briefing: check calendar, inbox, and open Linear tasks, then send me a short prioritized list of what to focus on today.
+```
+
+> **Key insight:** `/goal` keeps going until a condition you wrote is actually true. `/loop` re-runs on a cadence while your session is open. `/schedule` fires on a clock you set once. On `/goal`, the checker is a separate small model, so the agent that wrote the code isn't the one grading it.
 
 ## The building blocks of a real loop
 
-Once you understand `/goal` and `/loop`, the rest is about making the loop touch your real world instead of just your filesystem.
+Once you understand `/goal`, `/loop`, and `/schedule`, the rest is about making the loop touch your real world instead of just your filesystem.
 
 ### Automations — the heartbeat
 
@@ -72,7 +98,7 @@ In the Codex app, you make one in the Automations tab: pick the project, the pro
 
 OpenAI uses them internally for boring stuff like daily issue triage, summarizing CI failures, writing commit briefings, and hunting bugs somebody added last week. An automation can call a skill too, so you fire `$skill-name` instead of pasting a giant wall of instructions into a schedule nobody will ever update.
 
-Claude Code gets to the same place through scheduling and hooks. You can run a prompt on an interval with `/loop`, schedule a cron task, fire shell commands at certain points in the agent lifecycle with hooks, or push the whole thing to GitHub Actions if you want it to keep running after you close the laptop. Same idea: define an autonomous task, give it a cadence, and let the findings come to you.
+Claude Code gets to the same place through scheduling and hooks. You can run a prompt on an interval with `/loop`, set recurring work with `/schedule`, fire shell commands at certain points in the agent lifecycle with hooks, or push the whole thing to GitHub Actions if you want it to keep running after you close the laptop. Same idea: define an autonomous task, give it a cadence, and let the findings come to you.
 
 ### Worktrees — so parallel doesn't turn into chaos
 

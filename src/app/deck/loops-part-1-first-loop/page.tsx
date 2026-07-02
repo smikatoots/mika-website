@@ -27,9 +27,13 @@ const slides: React.ReactNode[] = [
   // 3 — Series marker
   <LoopsTitle key="title" part={1} />,
 
-  // 4 — A loop is a prompt that fires itself
+  // 4 — A loop is an automated system where the AI acts as its own prompter until a goal is complete
   <TextSlide key="definition">
-    A loop is a <HL>prompt that fires itself.</HL>
+    <span>A loop is an automated system</span>
+    <span>
+      where the AI <HL>acts as its own prompter</HL>
+    </span>
+    <span>until a goal is complete</span>
   </TextSlide>,
 
   // 5 — It's a job description for the work
