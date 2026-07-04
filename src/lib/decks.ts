@@ -135,9 +135,24 @@ export const decks = [
     title: "Ponytail — Cut Token Spend by 53%",
     date: "June 28",
   },
+  {
+    slug: "claude-gets-dumber-canary",
+    title: "Claude Gets Dumber — The Canary Rule",
+    date: "July 4",
+  },
+  {
+    slug: "llms-but-brainrot-gen-z",
+    title: "LLMs but Brainrot: Gen Z",
+    date: "July 4",
+  },
+  {
+    slug: "fable-before-july-8",
+    title: "Fable-Worthy Use Cases Before July 8",
+    date: "July 4",
+  },
 ] as const;
 
 export type DeckSlug = (typeof decks)[number]["slug"];
 
 /** Deck dates, newest first — drives the grouping on /deck/all. */
-export const deckDates = ["June 28", "June 21"] as const;
+export const deckDates = ["July 4", "June 28", "June 21"] as const;
