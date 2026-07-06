@@ -67,6 +67,25 @@
   }
 }
 
+/* Pop in, hold ~3s, then blink out and pop back in — for looping word clouds. */
+@keyframes deck-loop-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  14% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes deck-pulse {
   0%,
   100% {
@@ -92,6 +111,12 @@
 .deck-tier {
   transform-origin: bottom center;
   animation: deck-grow-tier 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.deck-loop-pop {
+  display: inline-block;
+  transform-origin: center;
+  animation: deck-loop-pop 4s cubic-bezier(0.34, 1.56, 0.64, 1) both infinite;
 }
 
 .deck-cta-pulse {
@@ -126,6 +151,7 @@
   .deck-fade,
   .deck-pop,
   .deck-tier,
+  .deck-loop-pop,
   .deck-cta-pulse,
   .deck-underline-word::after {
     animation-duration: 0.001s;

@@ -136,23 +136,63 @@ export const decks = [
     date: "June 28",
   },
   {
+    slug: "fable-5-prompting-playbook",
+    title: "Anthropic's Fable 5 Prompting Playbook",
+    date: "July 6",
+  },
+  {
     slug: "claude-gets-dumber-canary",
     title: "Claude Gets Dumber — The Canary Rule",
-    date: "July 4",
+    date: "July 6",
   },
   {
     slug: "llms-but-brainrot-gen-z",
     title: "LLMs but Brainrot: Gen Z",
-    date: "July 4",
+    date: "July 6",
   },
   {
     slug: "fable-before-july-8",
     title: "Fable-Worthy Use Cases Before July 8",
-    date: "July 4",
+    date: "July 6",
+  },
+  {
+    slug: "tim-ferriss-ai-nonfiction",
+    title: "Has AI Killed Tim Ferriss's Books?",
+    date: "July 6",
+  },
+  {
+    slug: "what-are-subagents",
+    title: "What Are Subagents?",
+    date: "July 6",
+  },
+  {
+    slug: "claude-concepts-cheat-sheet",
+    title: "The Claude Jargon Cheat Sheet",
+    date: "July 6",
+  },
+  {
+    slug: "ai-acronyms",
+    title: "AI Acronyms You Should Know",
+    date: "July 6",
+  },
+  {
+    slug: "ai-usage-headcount",
+    title: "More AI = Fewer Jobs? Debunked",
+    date: "July 6",
+  },
+  {
+    slug: "three-loops-andrew-ng",
+    title: "Andrew Ng's 3 Loops",
+    date: "July 6",
+  },
+  {
+    slug: "keep-fable-brain",
+    title: "Keep Fable's Brain After You Lose Access",
+    date: "July 6",
   },
 ] as const;
 
 export type DeckSlug = (typeof decks)[number]["slug"];
 
 /** Deck dates, newest first — drives the grouping on /deck/all. */
-export const deckDates = ["July 4", "June 28", "June 21"] as const;
+export const deckDates = ["July 6", "June 28", "June 21"] as const;

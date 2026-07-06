@@ -1,0 +1,118 @@
+---
+title: "How to Keep Fable 5's Brain After it Turns Pay-per-use"
+description: >-
+  Fable goes pay-per-use soon. Two prompts to distill its thinking into skills
+  and upgrade your CLAUDE.md so cheaper models keep performing like Fable.
+tags:
+  - claude
+  - fable
+  - skills
+  - prompts
+published: "2026-07-06"
+date: "2026-07-06"
+cta: Run these prompts
+order: 38
+---
+
+You've got one day left with Fable, but there's a way to keep its brain even after it leaves your plan. If you only do one thing before tomorrow, make it this.
+
+## Why this matters
+
+Think of Fable like a great employee who just handed in their notice. Before they leave, you ask them to write SOPs. You can do the same with Fable. Those SOPs are **skills**: files with repeatable instructions any Claude model can follow later.
+
+You still lose Fable. But cheaper models can think a lot closer to how Fable would, because you asked it to write the manual first.
+
+> **Key insight:** Fable's value isn't just what it does today. It's what it writes down about how it thinks before you lose access.
+
+## Step 1: **Ask Fable to plan your top 10 skills**
+
+Open Claude with Fable selected. Paste the prompt below. It tells Fable to study your context, observe its own behaviors, and return 8–10 skill candidates with explicit judgment rules a weaker model can follow.
+
+Plan only. No building yet.
+
+```text
+IMPORTANT CONTEXT: You are currently the most capable model I have access to (if you are Claude Fable 5 or an equivalent frontier model, say so). Soon I'll be running most sessions on cheaper, weaker models. Your job today is to DISTILL YOUR OWN THINKING into 8–10 custom skills — written playbooks so explicit that a weaker model following them performs close to how YOU would perform. Assume the model reading these skills later is less smart than you: it won't infer, it won't push back unprompted, and it won't fill gaps with judgment. Everything you'd do implicitly must become an explicit instruction.
+
+STEP 1 — BUILD MY PROFILE:
+Study everything you have access to about me — past conversations, memory, context files, documents, connected tools. Write a short evidence-based profile: who I am, what I'm building, workflows I repeat (3+ times), and where I spend time that a documented workflow could absorb. Flag where evidence is thin instead of guessing.
+
+STEP 2 — OBSERVE YOURSELF:
+Before designing skills, list the specific things YOU currently do for me that a weaker model likely won't do on its own. For example: clarifying questions you ask before starting, quality bars you apply before showing me output, times you've pushed back on my framing, how you break my ambiguous requests into options, checks you run before declaring something done. These behaviors are the "brain" I'm trying to keep — each skill must encode the relevant ones.
+
+STEP 3 — GENERATE 8–10 SKILL CANDIDATES:
+For each skill give:
+1. Name (verb-first)
+2. Trigger — when it runs
+3. The distilled reasoning, not just the task steps. Each skill MUST include:
+   - DECOMPOSITION: how you would break this problem down, written as ordered steps
+   - JUDGMENT RUBRIC: the criteria you'd use to evaluate quality, as a checklist with pass/fail bars and 1–2 concrete examples of "good" vs "bad"
+   - PUSHBACK RULES: the specific conditions under which you would challenge my input or refuse to proceed ("if X is missing, stop and ask; do not improvise")
+   - SELF-CHECK: what you would verify before showing me the output
+4. Evidence from my actual history that justifies this skill
+5. Leverage score (1–10): frequency × time saved × how much of YOUR judgment it captures (judgment-heavy skills score higher — they're the ones that degrade most on cheap models)
+
+STEP 4 — RANK BY "DISTILLATION VALUE":
+Order build-first to build-last. Ranking rule: a skill ranks higher the more its quality currently depends on YOUR intelligence rather than on tool access. A skill any model could run equally well ranks last, no matter how frequent.
+
+RULES:
+- Custom to me only — cut anything that could appear on a generic listicle.
+- Write for a literal-minded executor. Ban vague verbs like "analyze thoughtfully"; every instruction must be checkable.
+- End by offering to fully write out my #1 skill, including worked examples of you executing it — because examples of YOUR output are the strongest form of distillation.
+```
+
+Mine came back with an honest business advisor that pressure-tests business plans and marketing ideas for the startup I run with my husband. That was the one I built first.
+
+## Step 2: **Pick which ones to build**
+
+Read the list. Tell Fable to build all of them, or just the few you (or it) think are highest leverage. I'd start with 2–3.
+
+When it offers to fully write out your #1 skill, say yes. Worked examples of Fable's own output are the strongest form of distillation.
+
+## Step 3: **Test before you lose access**
+
+Open a fresh conversation and run the skill. Does it fire when it should? Does the output match what you wanted? Fix it now, while you still have Fable.
+
+## Bonus: **Upgrade your CLAUDE.md or AGENTS.md**
+
+Skills capture *what* to do. Your `CLAUDE.md` or `AGENTS.md` captures *how to think*. Paste this prompt to have Fable upgrade your context files so cheaper models inherit its standards, not just your preferences.
+
+```text
+IMPORTANT CONTEXT: You are currently my most capable model, but I'll soon run daily sessions on cheaper models. My persistent context files (CLAUDE.md, custom instructions, memory) are the only thing that transfers between models. Your job: upgrade them so they don't just describe ME — they encode YOUR standards of work, so a weaker model reading them behaves the way you do now.
+
+STEP 1 — AUDIT WHAT EXISTS:
+Review my current context files and grade them on:
+- Identity: who I am, what I'm building, what I optimize for
+- Rules: are my preferences explicit, testable rules — or vibes?
+- References: does the file route to deeper docs instead of cramming everything in?
+- Staleness: what's outdated or contradictory?
+- NEW — Model-robustness: which parts only work because a smart model interprets them generously? Rewrite those for a literal-minded reader.
+
+STEP 2 — DISTILL YOUR OWN DEFAULTS:
+List the behaviors you exhibit with me that come from your capability, not from my files — e.g. asking clarifying questions before long tasks, refusing to pad output, pushing back when my logic is off, verifying before claiming completion. Convert each into a written rule for the context file, phrased as an if/then a weaker model can follow ("Before any task with 3+ steps, restate the goal in one line and ask for confirmation"). This section is the core deliverable: it's how the file carries your brain.
+
+STEP 3 — INTERVIEW ME (max 7 questions):
+Prioritize questions whose answers would most change a model's behavior: decisions I always make the same way, feedback I give repeatedly, formats I always want, and what past cheap-model sessions got wrong.
+
+STEP 4 — PRODUCE THE UPGRADE:
+1. A rewritten top-level file: WHO I AM → HOW I WORK (my rules) → HOW TO WORK (your distilled standards from Step 2, labeled "Quality bar — apply regardless of which model you are") → WHERE TO LOOK (task-to-file routing table) → CURRENT FOCUS (dated)
+2. A list of reference files to create, each with a one-line purpose — including a "worked examples" file: 2–3 samples of output YOU rate as excellent, with a note on why, so weaker models have a target to imitate
+3. A maintenance loop: a monthly prompt I run on whatever frontier model I have access to at the time — "compare this file against recent conversations, flag stale rules, and re-distill any new judgment patterns"
+
+RULES:
+- Every rule must be behavioral and checkable, written for a literal executor.
+- Keep the top-level file under ~500 words; push depth into referenced files.
+- Plain markdown, no tool-specific syntax — must work in any model's custom instructions.
+```
+
+## What you keep
+
+You lose unlimited Fable. You keep skill files with its best workflows, plus a brain file that teaches cheaper models how it thinks.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [What is a Skill?](/ai/what-is-a-skill)
+2. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+3. [How to Setup Global Context for Claude (CLAUDE.md, USER.md)](/ai/how-to-setup-global-context-claude)
+4. [3 Practical Fable Projects to Run Before July 8](/ai/3-fable-prompts-before-july-8)
