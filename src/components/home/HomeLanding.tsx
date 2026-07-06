@@ -5,6 +5,7 @@ import posthog from "posthog-js";
 
 import { trackGa4Event } from "@/lib/analytics/ga4";
 import { homeBioLinks } from "@/lib/home-bio-links";
+import { HomepageMotion } from "@/components/home/HomepageMotion";
 
 const awards = [
   { icon: "🏆", label: "Forbes 30 Under 30", href: homeBioLinks.awards.forbes30 },
@@ -199,6 +200,7 @@ export function HomeLanding() {
           >
             <div className="mr-float-slow" style={{ position: "relative", zIndex: 1 }}>
               <Image
+                data-hero-photo
                 src="/about-assets/009.jpg"
                 alt="Mika Reyes"
                 width={340}
@@ -257,7 +259,7 @@ export function HomeLanding() {
           >
             Featured in
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
+          <div data-press-row className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
             {pressItems.map(({ label, href, logo, logoHeight, logoMaxWidth }) => (
               <a
                 key={label}
@@ -302,7 +304,7 @@ export function HomeLanding() {
       </section>
 
       {/* ── Awards ───────────────────────────────────────── */}
-      <section style={{ background: "var(--mr-surface-sand)", padding: "clamp(48px,6vw,64px) 0" }}>
+      <section data-awards style={{ background: "var(--mr-surface-sand)", padding: "clamp(48px,6vw,64px) 0" }}>
         <div className="mx-auto max-w-6xl px-6 md:px-10">
           <p
             className="mb-8 text-center"
@@ -346,7 +348,7 @@ export function HomeLanding() {
                   color: "inherit",
                 }}
               >
-                <span style={{ fontSize: "18px", lineHeight: 1 }}>{icon}</span>
+                <span data-award-emoji style={{ fontSize: "18px", lineHeight: 1 }}>{icon}</span>
                 <span
                   style={{
                     fontFamily: "var(--mr-font-body)",
@@ -432,7 +434,7 @@ export function HomeLanding() {
               I speak about AI for non-technical audiences — founders, professionals, and teams who want practical tools, not hype.
             </p>
 
-            <div>
+            <div data-drag-zone>
               {speakingTopics.map(({ num, title }, i) => (
                 <div
                   key={num}
@@ -786,6 +788,8 @@ export function HomeLanding() {
           </div>
         </div>
       </section>
+
+      <HomepageMotion />
     </main>
   );
 }

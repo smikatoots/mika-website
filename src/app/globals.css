@@ -133,3 +133,39 @@ body {
   color: var(--mr-ink);
   font-family: var(--mr-font-body);
 }
+
+/* ── Homepage motion layer (see HomepageMotion.tsx) ──────────────────
+   Keyframes and cursor rules consumed by the client-side motion layer.
+   The layer itself is gated on prefers-reduced-motion + pointer:fine. */
+@keyframes pp-sparkle {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--dx, 0px), var(--dy, 40px)) scale(0.2) rotate(180deg); opacity: 0; }
+}
+@keyframes ke-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes ke-ticker-in {
+  0%   { transform: translateX(60px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes ea-rainbow {
+  0%   { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+@keyframes ea-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes ea-toast {
+  0%   { transform: translate(-50%, 80px); opacity: 0; }
+  12%  { transform: translate(-50%, 0); opacity: 1; }
+  88%  { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 80px); opacity: 0; }
+}
+@keyframes ea-wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg); }
+}
+[data-drag-zone] > * { cursor: grab; touch-action: none; }
+[data-drag-zone] > *:active { cursor: grabbing; }

@@ -14,7 +14,7 @@ date: "2026-07-01"
 cta: Build your first loop
 ---
 
-***Updated as of July 1, 2026. This guide will keep getting updated during the Loop Series***
+***Updated as of July 6, 2026. This guide will keep getting updated during the Loop Series***
 
 Most people use AI like a vending machine. Ask a question, wait, ask again. You're the one holding it together, turn after turn.
 
@@ -153,6 +153,70 @@ With a loop, Claude writes the brief, then goes link by link, actually opening e
 ```
 
 That is the loop doing the part you used to do by hand.
+
+## Six practical loops to run
+
+Each one below is the kind of `/schedule` or `/loop` you wire up once and let run. The prompts are starting points. Swap in your connector names, your CRM, your ticket system, whatever tools you actually use.
+
+### Sales follow-up brief
+
+Every morning, it reads your CRM notes and last week's call logs, flags your three warmest leads, and drafts one follow-up email per lead. What used to take 45 minutes of mental overhead takes you five minutes to review and send.
+
+**Starter prompt:**
+
+```text
+/schedule every weekday at 8am, read my CRM notes and last week's call logs, flag my three warmest leads based on recent engagement, and draft one follow-up email per lead. Output the lead name, why they're warm, and the draft email. Stop after three leads.
+```
+
+### Marketing content planning
+
+Every Friday, it reads your last 90 days of content performance, identifies what overperformed and what flopped, and outputs a ranked list of what to make next week, with reasoning.
+
+**Starter prompt:**
+
+```text
+/schedule every Friday at 4pm, pull my content performance for the last 90 days, identify what overperformed and what flopped, and output a ranked list of five content ideas for next week with reasoning for each pick based on what the data showed.
+```
+
+### Competitive intelligence digest
+
+Weekly, it reads your competitor accounts, summarizes what they posted, and flags new offers, pricing changes, or messaging shifts. That's one person's ongoing research job, automated.
+
+**Starter prompt:**
+
+```text
+/schedule every Monday at 9am, review what [competitor A], [competitor B], and [competitor C] posted last week across their site, social accounts, and pricing pages. Summarize key posts, and flag any new offers, pricing changes, or messaging shifts I should respond to.
+```
+
+### Customer support triage
+
+Fires every 30 minutes, auto-drafts responses to simple tickets, and flags complex ones for a human. First response time went from hours to minutes.
+
+**Starter prompt:**
+
+```text
+/loop 30m check my open support tickets, auto-draft replies for simple requests I can send with minimal editing, and flag complex or escalated tickets that need a human. Show only new drafts and newly flagged tickets since the last run.
+```
+
+### Personal weekly review
+
+Runs Sunday evening, reads your task list and next week's calendar, outputs your top three priorities, and flags any scheduling conflicts.
+
+**Starter prompt:**
+
+```text
+/schedule every Sunday at 7pm, read my task list and next week's calendar, output my top three priorities for the week with a one-line reason for each, and flag any scheduling conflicts or overloaded days.
+```
+
+### Personal finance summary
+
+Runs monthly, reads your transactions export, categorizes spend, compares to last month, flags anything unusual, and outputs a plain-English summary.
+
+**Starter prompt:**
+
+```text
+/schedule on the 1st of every month at 9am, read last month's transactions export, categorize spending, compare totals to the previous month by category, flag anything unusual, and output a plain-English summary I can skim in two minutes.
+```
 
 ## Three honest caveats
 
