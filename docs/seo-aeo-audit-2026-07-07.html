@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEO + AEO Audit — mikareyes.com — July 7, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@300..800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FDF9F3; --ink:#1c1917; --muted:#6b6560; --coral:#E85C4A; --coral-soft:#FBEAE6;
+    --amber:#B45309; --amber-soft:#FEF3E2; --green:#15803d; --green-soft:#E8F5EC;
+    --card:#ffffff; --border:#eae2d8; --code-bg:#211d1a; --code-ink:#f0e9e2;
+    --blue:#1d4ed8; --blue-soft:#e8eefc;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.65;font-size:16.5px}
+  .wrap{max-width:880px;margin:0 auto;padding:56px 24px 96px}
+  h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.15;letter-spacing:-0.02em}
+  h1{font-size:clamp(34px,5vw,52px);margin:8px 0 12px;font-weight:800}
+  h2{font-size:30px;margin:64px 0 8px;font-weight:700}
+  h3{font-size:21px;margin:36px 0 10px;font-weight:700}
+  p{margin:10px 0}
+  a{color:var(--coral)}
+  .eyebrow{color:var(--coral);font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:12.5px}
+  .sub{color:var(--muted);font-size:18px;max-width:64ch}
+  .divider{border:none;border-top:1px solid var(--border);margin:48px 0}
+
+  /* score cards */
+  .scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:32px 0 8px}
+  .score{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px}
+  .score .n{font-family:'Bricolage Grotesque';font-size:38px;font-weight:800;line-height:1}
+  .score .l{color:var(--muted);font-size:13.5px;margin-top:6px}
+  .n.bad{color:var(--coral)} .n.mid{color:var(--amber)} .n.good{color:var(--green)}
+
+  /* badges */
+  .badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 11px;vertical-align:middle}
+  .b-crit{background:var(--coral-soft);color:var(--coral)}
+  .b-struct{background:var(--amber-soft);color:var(--amber)}
+  .b-opp{background:var(--green-soft);color:var(--green)}
+  .b-aeo{background:var(--blue-soft);color:var(--blue)}
+
+  /* finding cards */
+  .finding{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px 28px;margin:22px 0}
+  .finding h3{margin:6px 0 4px}
+  .finding .where{color:var(--muted);font-size:14px;font-family:'JetBrains Mono',monospace}
+  .lesson{background:var(--coral-soft);border-radius:12px;padding:14px 18px;margin:16px 0;font-size:15.5px}
+  .lesson.green{background:var(--green-soft)}
+  .lesson.blue{background:var(--blue-soft)}
+  .lesson b:first-child{display:block;font-family:'Bricolage Grotesque';font-size:14px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .evidence{border-left:3px solid var(--border);padding:2px 16px;margin:14px 0;color:var(--muted);font-size:15px}
+  .evidence code{color:var(--ink)}
+
+  pre{background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:16px 18px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;margin:14px 0}
+  code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:#f2ece3;border-radius:5px;padding:1.5px 6px}
+  pre code{background:none;padding:0}
+  .prompt{background:#fff;border:1.5px dashed var(--coral);border-radius:12px;padding:14px 18px;margin:14px 0;font-size:14.5px}
+  .prompt .plabel{font-family:'Bricolage Grotesque';font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--coral);margin-bottom:6px}
+  .prompt p{font-family:'JetBrains Mono',monospace;font-size:13px;white-space:pre-wrap;margin:0;color:#3d3733}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;background:var(--card);border-radius:12px;overflow:hidden;font-size:15px}
+  th{background:#f6f0e7;text-align:left;padding:10px 14px;font-family:'Bricolage Grotesque';font-size:13.5px;text-transform:uppercase;letter-spacing:.05em}
+  td{padding:10px 14px;border-top:1px solid var(--border);vertical-align:top}
+  .ok{color:var(--green);font-weight:700} .no{color:var(--coral);font-weight:700} .meh{color:var(--amber);font-weight:700}
+
+  .toc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 26px;margin:28px 0}
+  .toc ol{margin:8px 0 0;padding-left:22px}
+  .toc li{margin:4px 0}
+  .check{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 26px;margin:16px 0}
+  .check ul{margin:6px 0;padding-left:4px;list-style:none}
+  .check li{padding-left:30px;position:relative;margin:9px 0}
+  .check li::before{content:"☐";position:absolute;left:2px;color:var(--coral);font-size:18px}
+  .small{font-size:14px;color:var(--muted)}
+  .pill-row{margin:4px 0 12px}
+  kbd{background:#f2ece3;border:1px solid var(--border);border-bottom-width:2px;border-radius:6px;padding:1px 7px;font-family:'JetBrains Mono',monospace;font-size:.85em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="eyebrow">✦ Growth audit · July 7, 2026</div>
+<h1>SEO + AEO Audit<br>mikareyes.com</h1>
+<p class="sub">A teaching-first audit of the <code>mika-website</code> repo and the live site. Every finding explains the <em>principle</em> behind it, shows the evidence in your code, and gives you a copy-paste prompt for Claude. No changes have been made yet.</p>
+
+<div class="scores">
+  <div class="score"><div class="n mid">C+</div><div class="l">Technical SEO — solid rendering foundation, but canonical signals are broken</div></div>
+  <div class="score"><div class="n bad">D</div><div class="l">Metadata quality — ~250 pages use their title as their meta description</div></div>
+  <div class="score"><div class="n mid">C</div><div class="l">AEO readiness — llms.txt exists but misses your best content; no article schema</div></div>
+  <div class="score"><div class="n good">B+</div><div class="l">Content architecture — clean slugs, real internal linking, server-rendered HTML</div></div>
+</div>
+<p class="small">Grades are directional, meant to show where the leverage is — not a formal benchmark.</p>
+
+<div class="toc">
+  <b>In this report</b>
+  <ol>
+    <li><a href="#mental-model">The mental model: how Google and AI engines "read" your site</a></li>
+    <li><a href="#critical">🔴 Critical issues (5) — fix these first</a></li>
+    <li><a href="#structural">🟡 Structural issues (6)</a></li>
+    <li><a href="#aeo">🔵 AEO opportunities (5)</a></li>
+    <li><a href="#playbook">The go-forward playbook — rules to bake into your skills</a></li>
+    <li><a href="#actions">Prioritized action list</a></li>
+  </ol>
+</div>
+
+<!-- ============================================= -->
+<h2 id="mental-model">1 · The mental model</h2>
+<p>Think of your site as a <b>store with two kinds of shoppers</b>:</p>
+<p><b>Googlebot</b> is a meticulous accountant. It doesn't read your site the way a human does — it reads <em>signals</em>: the URL, the <code>&lt;title&gt;</code>, the meta description, canonical tags, structured data, redirect status codes. When two signals disagree (say, your sitemap says <code>mikareyes.com</code> but the server says "actually, go to <code>www.mikareyes.com</code>"), the accountant doesn't pick a side — it discounts <em>both</em>. Consistency is the whole game.</p>
+<p><b>AI answer engines</b> (ChatGPT, Claude, Perplexity, Google AI Overviews) are more like a researcher on deadline. They skim for <em>extractable answers</em>: clear question-shaped headings, direct answers in the first sentence under each heading, an author with verifiable credentials, dates, and machine-readable summaries (schema, llms.txt). AEO = making your pages the easiest source to quote.</p>
+<div class="lesson"><b>The compounding insight</b>Every fix below is a one-time systems fix or a template fix. Because your guides are generated by skills, one line added to a skill improves every future page forever. That's your unfair advantage — most creators fix pages one at a time.</div>
+
+<!-- ============================================= -->
+<h2 id="critical">2 · Critical issues</h2>
+<p class="pill-row"><span class="badge b-crit">Fix first — these suppress everything else</span></p>
+
+<div class="finding">
+  <span class="badge b-crit">Critical #1</span>
+  <h3>Your site lives at two addresses, and they disagree</h3>
+  <div class="where">Vercel domain config · src/lib/site.ts · every generated URL</div>
+  <p>The live site serves from <code>www.mikareyes.com</code>. But <code>SITE_URL</code> in your code is <code>https://mikareyes.com</code> (no www). So your sitemap, Open Graph URLs, structured data, robots.txt and llms.txt all advertise apex URLs — and every single one of them answers with a redirect to www.</p>
+  <div class="evidence"><b>Evidence:</b> <code>curl -I https://mikareyes.com/robots.txt</code> → <code>307 → https://www.mikareyes.com/robots.txt</code>. The sitemap at www lists only apex URLs. <code>site.ts:1-2</code> hardcodes the apex fallback.</div>
+  <div class="lesson"><b>The principle: one canonical host</b>Google treats <code>www.mikareyes.com/ai/x</code> and <code>mikareyes.com/ai/x</code> as <em>different pages</em>. Links, shares, and ranking signals get split between them. A sitemap full of URLs that redirect is a sitemap Google partially ignores ("submitted URL redirects" warnings in Search Console). Pick ONE host and make every signal — sitemap, canonical, schema, internal links — say the same thing.</div>
+  <p><b>Decision you need to make:</b> apex (<code>mikareyes.com</code>) or www. Apex is cleaner for a personal brand and matches everything you've shared socially. On Vercel: set <code>mikareyes.com</code> as the primary domain so www redirects <em>to</em> apex, not the other way around.</p>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: I've set mikareyes.com (apex) as the primary domain in Vercel. Now audit the repo for host consistency: confirm SITE_URL resolves to https://mikareyes.com everywhere (site.ts, env vars in Vercel, llms.txt, any hardcoded www URLs), and verify after deploy that https://www.mikareyes.com/anything 308-redirects to apex and that sitemap.xml, robots.txt and og:url all use apex. Give me a verification checklist with curl commands.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-crit">Critical #2</span>
+  <h3>No canonical tag on any page</h3>
+  <div class="where">src/app/layout.tsx · every page's generateMetadata</div>
+  <p>Not a single page emits <code>&lt;link rel="canonical"&gt;</code>. Combined with #1 (two hosts) and query-param URLs like <code>/ai?tag=claude</code>, Google has no authoritative statement of "this is the one true URL for this content."</p>
+  <div class="lesson"><b>The principle: the canonical tag is your vote</b>Duplicate URLs are inevitable (www vs apex, ?tag= filters, trailing slashes, UTM params from your IG bio links!). The canonical tag tells Google which version accumulates the ranking credit. Without it, every UTM-tagged share from Instagram creates a competing URL. In Next.js this is one line: <code>alternates: &#123; canonical: url &#125;</code> in each page's metadata.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: add canonical URLs to all page metadata. Read node_modules/next/dist/docs first per AGENTS.md. Add `alternates: { canonical: ... }` — in the root layout for static pages and in each generateMetadata for /blog/[slug], /ai/[slug], /press/[slug], /projects/[slug], using SITE_URL + the route path. Also update buildOpenGraph so callers pass the page URL and og:url matches the canonical. Verify with curl on 3 sample pages after build.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-crit">Critical #3</span>
+  <h3>og:url says "homepage" on every single page</h3>
+  <div class="where">src/lib/site-metadata.ts:23 — <code>url: options.url ?? SITE_URL</code></div>
+  <p><code>buildOpenGraph()</code> accepts a <code>url</code> option, but no page ever passes it. So the live effort-levels guide renders <code>&lt;meta property="og:url" content="https://mikareyes.com"/&gt;</code>. When someone shares a guide on LinkedIn or Slack, some scrapers resolve the share to your homepage — you lose both the click and the social signal to the actual article.</p>
+  <div class="lesson"><b>The principle: metadata helpers need safe defaults</b>The bug pattern here is a helper with a fallback that's <em>wrong more often than right</em>. A better design: make <code>url</code> a required parameter for detail pages, or derive it from the route. When Claude builds helpers for you, ask it to make "forgetting" impossible, not just possible-to-remember.</div>
+  <p class="small">Fixed by the same prompt as Critical #2 — they're one change.</p>
+</div>
+
+<div class="finding">
+  <span class="badge b-crit">Critical #4</span>
+  <h3>~250 pages use their title as their meta description</h3>
+  <div class="where">blog/[slug]/page.tsx:42 · press/[slug]/page.tsx:47 · projects/[slug]/page.tsx:45 — all say <code>description: frontmatter.title</code></div>
+  <p>Every blog post (188), press item (~40), and project (~20) literally duplicates the title into the description tag. Your AI guides do this right (they have a real <code>description</code> field) — which proves the pattern works; it just was never extended to the other three content types. The root cause: the Notion → MDX sync doesn't carry a description/excerpt field, so the page template had nothing to use.</p>
+  <div class="evidence"><b>Evidence:</b> <code>content/blog/*.mdx</code> frontmatter has title, slug, dates, tags — no description. Guides in <code>content/ai/*.mdx</code> have proper 140–160 char descriptions. 74 guides ✓, 188 blog posts ✗.</div>
+  <div class="lesson"><b>The principle: the meta description is your ad copy</b>Google shows ~155 characters under your title in results. A duplicated title wastes the single best free ad slot you have, and Google often rewrites it with a random page excerpt instead. Formula for a strong one: <em>[keyword or most specific claim] — [what the reader gets] (140–160 chars)</em>. It doesn't change rankings directly, but it changes click-through rate, which does.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude (two parts)</div><p>Part 1 — pipeline: In mika-website, add a `description` field to the blog/press/projects content pipeline. Check if the Notion databases have a description/summary property; if yes, carry it through scripts/sync-notion-blog.ts (and press/projects syncs) into frontmatter. If a post has none, auto-generate a fallback excerpt from the first ~155 chars of body text (sentence-boundary trimmed). Update the three [slug]/page.tsx files to use frontmatter.description with the excerpt fallback — never the title.
+
+Part 2 — backfill: Then go through content/blog/*.mdx for the 20 most recent posts and write me proposed 140–160 char meta descriptions (keyword-first, says what the reader gets) in a table for my approval before writing anything.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-crit">Critical #5</span>
+  <h3>Permanent moves using temporary redirects</h3>
+  <div class="where">/dreams → /my-dreams responds 307 · apex→www is also 307</div>
+  <p><code>/dreams</code> redirects to <code>/my-dreams</code> with a <b>307 Temporary Redirect</b> (it's a <code>redirect()</code> call in a page component, not a config-level redirect). Your llms.txt even documents this as a permanent canonical move. Same for the domain-level redirect.</p>
+  <div class="lesson"><b>The principle: 308 transfers the equity, 307 hoards it</b>A permanent redirect (301/308) tells Google "move all accumulated ranking signals to the new URL." A temporary one (302/307) says "keep indexing the old URL, this move might be undone" — so the old URL keeps ranking and the new one starts from zero. Rule of thumb: if you'd put it in your llms.txt as "the canonical target," it must be a permanent redirect.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: find every route-level redirect() call used for a permanent URL move (start with src/app/(site)/dreams/page.tsx and my-dreams; check /more → /projects too) and convert them to permanent redirects — either entries in urlRedirects (next.config redirects, permanent: true → 308) or redirect with RedirectType.replace per the Next 16 docs in node_modules/next/dist/docs. Then verify with curl -I that /dreams and /more return 308.</p></div>
+</div>
+
+<!-- ============================================= -->
+<h2 id="structural">3 · Structural issues</h2>
+<p class="pill-row"><span class="badge b-struct">High-leverage template fixes</span></p>
+
+<div class="finding">
+  <span class="badge b-struct">Structural #6</span>
+  <h3>No Article schema on any post or guide</h3>
+  <div class="where">Only site-level WebSite/Person/Organization JSON-LD exists (SiteStructuredData.tsx, root layout)</div>
+  <p>Your guides and blog posts carry zero machine-readable statements of "this is an article, written by Mika Reyes, published on X, updated on Y, about Z." That's the #1 input both Google and AI engines use to attribute and date content.</p>
+  <div class="lesson"><b>The principle: schema is subtitles for machines</b>JSON-LD structured data doesn't change what humans see — it's a parallel channel where you state facts unambiguously. For your content types: <code>TechArticle</code> or <code>Article</code> (guides/posts) with <code>headline</code>, <code>description</code>, <code>datePublished</code>, <code>dateModified</code>, and <code>author</code> pointing at your site-wide <code>#person</code> node. For step-by-step guides, <code>HowTo</code> schema maps each H2 step. This is also how "Published / Updated" dates show up in search results.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: create an ArticleStructuredData component that emits JSON-LD (TechArticle for /ai guides, BlogPosting for /blog posts) with headline, description, datePublished, dateModified, url, and author/publisher referencing the existing https://mikareyes.com/#person node. Wire it into /ai/[slug] and /blog/[slug] pages using frontmatter. Validate the output of 2 sample pages against schema.org with the Rich Results test format and show me the JSON before deploying.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-struct">Structural #7</span>
+  <h3>Your Person schema is anonymous to the knowledge graph</h3>
+  <div class="where">src/components/SiteStructuredData.tsx</div>
+  <p>The Person node has a name, a generic jobTitle, and your <em>logo</em> as the photo. Missing: <code>sameAs</code> links to LinkedIn, Instagram, TikTok, X; a description; alumniOf; awards. This is the single biggest <em>entity SEO</em> gap — and for someone with a Forbes 30u30 profile, press coverage, and 20K+ followers, you have unusually strong entity signals going unused.</p>
+  <div class="lesson"><b>The principle: sameAs stitches your identity together</b>Google and AI models build a graph of entities ("Mika Reyes, the person"). <code>sameAs</code> URLs are how you tell them your site, LinkedIn, IG, TikTok, X, and Forbes profile are the same person. Once the entity is consolidated, every mention anywhere strengthens your site's authority — and AI engines start answering "who is Mika Reyes?" from <em>your</em> bio instead of guessing.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website, enrich the Person node in SiteStructuredData.tsx: add sameAs (LinkedIn, Instagram, TikTok, X — pull the URLs from src/lib/home-bio-links.ts), a one-sentence description (co-founder of King's Cross Labs, previously co-founder/CEO of Parallax acquired by Phantom, ex-LinkedIn PM, Forbes 30 Under 30), knowsAbout topics (AI tools, Claude, product management, startups), and swap image to a real headshot (public/mika-reyes.jpg) instead of icon.png. Show me the final JSON-LD before committing.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-struct">Structural #8</span>
+  <h3>One OG image for every page — at the wrong size</h3>
+  <div class="where">src/lib/site.ts — SITE_OG_IMAGE 1024×537 · used by all pages</div>
+  <p>Every guide, post, and page shares one image, and it's 1024×537 rather than the standard 1200×630. Shares of "How to Use Claude's Effort Levels" and "Building a startup with my husband" look identical in feeds.</p>
+  <div class="lesson"><b>The principle: the OG image is your thumbnail game</b>You already know from IG that the cover frame decides the click. Same on LinkedIn/X/Slack/iMessage. Next.js can generate per-page OG images at build time (an <code>opengraph-image.tsx</code> that renders the guide title over your brand style) — one template, every page gets a unique branded card.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: implement dynamic OG images using Next 16's ImageResponse API (read node_modules/next/dist/docs first). Create opengraph-image.tsx for /ai/[slug] and /blog/[slug] that renders the title in Bricolage Grotesque on my cream background with coral accent (see globals.css tokens) plus "mikareyes.com" and my name. 1200×630. Also resize the site-wide fallback og-image.jpg to 1200×630 with sharp. Show me a rendered sample of each before wiring up.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-struct">Structural #9</span>
+  <h3>Homepage title and site description carry no keywords</h3>
+  <div class="where">site.ts — title "Mika Reyes", description "Mika Reyes — AI, startups, and life."</div>
+  <p>Your homepage <code>&lt;title&gt;</code> is just your name, and the description says "AI, startups, and life" — poetic, but zero searchable intent. Compare with what you actually do: teach founders and professionals to become time-rich with AI.</p>
+  <div class="lesson"><b>The principle: name + what you're the answer for</b>You'll always rank #1 for "Mika Reyes." The question is what <em>else</em> the homepage can rank for and — for AEO — how an AI should complete the sentence "Mika Reyes is…". Pattern: <code>Mika Reyes — [positioning with keywords]</code>. E.g. title: <em>"Mika Reyes — AI Guides for Founders &amp; Professionals"</em>; description: <em>"Practical AI guides and Claude tutorials from a 2x founder (Parallax, acq. by Phantom) and ex-LinkedIn PM. Learn to become time-rich with AI."</em> Keep the poetry in the H1; put the keywords in the metadata.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: propose 3 options (different strategies: creator-brand, educator-authority, founder-story) for SITE_DESCRIPTION and the homepage title/SITE_SEO_NAME in src/lib/site.ts. Constraints: description 140–160 chars, must include "AI" + an audience keyword, must sound like me (check ~/Repos/company-brain/content/ig-content.md for voice). Don't change anything until I pick one.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-struct">Structural #10</span>
+  <h3>Sitemap claims everything changed today, every day</h3>
+  <div class="where">src/app/sitemap.ts — <code>lastModified: new Date()</code> for static, project, and nav routes</div>
+  <p>Static pages and projects report "modified right now" on every regeneration (hourly, via <code>revalidate: 3600</code>). Blog/press/guides use real dates — good.</p>
+  <div class="lesson"><b>The principle: don't cry wolf on freshness</b><code>lastmod</code> tells Google when to re-crawl. If it's always "now" but the content never changes, Google learns your lastmod is noise and starts ignoring it — including for pages that <em>did</em> change. Use real dates or omit the field.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website/src/app/sitemap.ts: stop using new Date() as lastModified. For static routes, omit lastModified (or use a manually-bumped constant). For projects, use the manifest's lastEdited if available. Keep real dates for blog/press/guides.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-struct">Structural #11</span>
+  <h3>Images: missing alt text and no dimensions</h3>
+  <div class="where">content/ai/reduce-claude-tokens-part-1.mdx (9 empty alts) · MdxImage.tsx uses raw &lt;img&gt; with no width/height</div>
+  <p>Mostly good news: your guides have real alt text almost everywhere. One guide has 9 images with empty <code>![]()</code> alts. Bigger systemic issue: <code>MdxImage</code> renders a plain <code>&lt;img&gt;</code> with no width/height, so the page layout jumps as screenshots load (CLS — a Core Web Vitals metric), and no lazy loading below the fold.</p>
+  <div class="lesson"><b>The principle: alt text is your image's search query</b>Write alt text as the search someone would do to find that screenshot: not "screenshot 3" but "Claude effort level selector showing five options from Low to Ultra." Screenshots in how-to guides can rank in image search and get cited by multimodal AI engines — but only if they're described.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: (1) Fix the 9 empty image alts in content/ai/reduce-claude-tokens-part-1.mdx — look at each referenced image in public/ai-guides and write descriptive alt text. (2) In MdxImage.tsx, add loading="lazy" and decoding="async", and read the image dimensions at build time (sharp is already a dep) or set an aspect-ratio wrapper to eliminate layout shift. Check Next 16 docs for the current next/image guidance before deciding between raw img and next/image.</p></div>
+</div>
+
+<!-- ============================================= -->
+<h2 id="aeo">4 · AEO opportunities</h2>
+<p class="pill-row"><span class="badge b-aeo">Answer Engine Optimization — where you can win early</span></p>
+
+<div class="finding">
+  <span class="badge b-aeo">AEO #12</span>
+  <h3>llms.txt exists — but hides your best content</h3>
+  <div class="where">public/llms.txt — no mention of /ai or any of the 74 guides</div>
+  <p>You're ahead of 99% of creators just by having llms.txt. But it lists Home, About, Blog, Projects, Press, Links, Dreams… and never mentions <code>/ai</code> — the 74-guide library that is exactly what an AI engine would want to cite when someone asks "how do I use Claude effort levels?" It's like printing a menu that forgets the signature dish.</p>
+  <div class="lesson"><b>The principle: llms.txt is your pitch to AI crawlers</b>It's a curated map: "here's who I am, here's my most quotable content, here's where to link." Put the AI Guides section first with 8–10 flagship guides listed by title + one-line description. And because your guides are skill-generated, the skill should append each new guide to llms.txt automatically — a compounding system, not a chore.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: rewrite public/llms.txt to lead with an "AI Guides" section — link /ai plus the 10 best guides (pick by breadth of appeal from content/ai/*.mdx) each with its frontmatter description. Keep the existing sections after it. Then generate public/llms-full.txt listing every guide with descriptions. Also update my ~/.claude/skills/generate-guide-generic and generate-guide-prompt skills to add each newly published guide to llms-full.txt as a final step.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-aeo">AEO #13</span>
+  <h3>No FAQ blocks or question-shaped extractable answers</h3>
+  <div class="where">content/ai/*.mdx — zero guides have a FAQ section</div>
+  <p>Your guide headings are good ("Why this matters", "Why this order matters") but conversational rather than query-shaped. None of the 74 guides has a FAQ section.</p>
+  <div class="lesson"><b>The principle: answer engines quote self-contained passages</b>AI engines retrieve <em>chunks</em>, not pages. A chunk wins when: the heading is the question a user would ask ("Which Claude effort level should I use?"), and the first sentence under it is a complete, standalone answer — then the nuance follows. A 3–4 question FAQ at the end of each guide (marked up with FAQPage schema) manufactures exactly these chunks. This is the inverted-pyramid rule journalists use: conclusion first, context after.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>Pick my 5 highest-value guides in content/ai/ and for each, draft a "FAQ" section with 3–4 questions phrased the way people actually ask AI assistants (check the guide topic against real query phrasing), each answered in 2–3 sentences with the direct answer in sentence one. Show me all drafts for approval, then add them to the MDX plus FAQPage JSON-LD support in the guide template.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-aeo">AEO #14</span>
+  <h3>No visible author credibility on guides (E-E-A-T)</h3>
+  <div class="where">/ai/[slug] template — no byline, no author bio, no updated date</div>
+  <p>Guides show a title, date, and tags — no "who wrote this and why should you trust them." For YMYL-adjacent AI advice, both Google's quality raters and AI engines weight author expertise heavily. You have rare credentials for this niche; they're just not on the page.</p>
+  <div class="lesson"><b>The principle: expertise must be on-page, not just true</b>E-E-A-T (Experience, Expertise, Authoritativeness, Trust) is evaluated from what's visible: a byline linking to /about, a one-line bio ("2x founder, ex-LinkedIn PM, Forbes 30 Under 30 — I teach founders to become time-rich with AI"), a "Last updated" date, and first-person experience markers ("I tested this on…") which you already do well in prose.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>In mika-website: add a compact author byline component to the /ai/[slug] and /blog/[slug] templates — headshot (public/mika-reyes.jpg), "Mika Reyes", one-line credential bio, link to /about — shown under the H1 meta row. Also surface "Updated [date]" when lastEdited/dateModified differs from published. Match the existing design system (site-styles.ts, globals.css tokens). Show me a screenshot before committing.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-aeo">AEO #15</span>
+  <h3>Good internal linking — formalize it into topic hubs</h3>
+  <div class="where">261 internal /ai/ links across 74 guides ✓ · but no series/hub pages</div>
+  <p>Your guides link to each other generously (261 cross-links — genuinely good). The next level: you have implicit series (AI wedding planning parts 1–7, Claude Code commands 1–3, token reduction) with no hub page tying them together, and your tag pages are query params (<code>/ai?tag=claude</code>) which — without canonicals — aren't indexable topic pages.</p>
+  <div class="lesson"><b>The principle: hubs concentrate authority</b>Search engines rank <em>sites</em> for topics via hub-and-spoke structure: one pillar page ("The Complete Guide to Claude Code") linking to every spoke, each spoke linking back. It concentrates authority on one URL that can rank for the head term while spokes catch long-tail queries. Your /deck system proves you can generate index pages; this is the same move for guides.</div>
+  <div class="prompt"><div class="plabel">Prompt for Claude</div><p>Analyze content/ai/*.mdx and group the 74 guides into 4–6 topic clusters (e.g. Claude Code, prompts, AI for life/travel/wedding, AI for work). Propose a hub page structure for each (URL like /ai/claude-code-guide, intro copy angle, guide ordering) plus a "Related guides" footer block for the guide template driven by tags. Report only — I'll approve before you build.</p></div>
+</div>
+
+<div class="finding">
+  <span class="badge b-aeo">AEO #16</span>
+  <h3>Repurposing loop: social content → search-shaped titles</h3>
+  <div class="where">Titles like "3 Fun Things to Build in Fable Before July 8" — great hooks, expiring queries</div>
+  <p>Some guide titles inherit their IG hook framing, which is optimized for scroll-stopping, not searching. Date-anchored titles ("before July 8") stop earning traffic after the date passes. The fix isn't to abandon hooks — it's to give each piece two lives: hook framing on social, query framing on the site.</p>
+  <div class="lesson"><b>The principle: hooks expire, queries compound</b>An IG hook competes for 1.5 seconds of attention today. A guide title competes with a search query forever. When your skill repurposes a reel into a guide, it should re-title for the evergreen query ("Fun Projects to Build with Claude Fable 5") and mention the time-sensitive angle in the intro instead. Small skill change, permanent traffic difference.</div>
+  <p class="small">Fix lives in the playbook below — it's a rule for your guide skills, not a code change.</p>
+</div>
+
+<!-- ============================================= -->
+<h2 id="playbook">5 · The go-forward playbook</h2>
+<p class="sub">Rules to bake into <code>generate-guide-generic</code>, <code>generate-guide-prompt</code>, and any future blog skill — so every page ships SEO/AEO-complete by default.</p>
+
+<h3>The frontmatter contract (every new guide/post)</h3>
+<pre><code>---
+title: "How to X in Y"        # ≤60 chars, keyword-first, matches a real query
+description: "..."             # 140–160 chars: keyword/claim + what reader gets
+published: "YYYY-MM-DD"
+updated: "YYYY-MM-DD"          # bump when meaningfully edited
+tags: [claude, beginner]       # from a controlled vocab — no one-off tags
+faq:                           # 3–4 real questions, answer-first
+  - q: "..."
+    a: "..."
+---</code></pre>
+
+<h3>Writing rules that serve both SEO and AEO</h3>
+<div class="check">
+<ul>
+  <li><b>Title = query, hook = intro.</b> Title matches what someone would search or ask an AI; the scroll-stopping hook goes in the opening paragraph.</li>
+  <li><b>Answer in the first 2 sentences.</b> After the H1, state what the guide does and for whom before any story. (Answer engines quote openings.)</li>
+  <li><b>Question-shaped H2s where natural.</b> "Which effort level should I use?" beats "Levels overview." First sentence under each H2 = standalone answer.</li>
+  <li><b>Every image has search-query alt text.</b> "Claude effort level selector showing five levels" — never empty, never "screenshot."</li>
+  <li><b>3+ internal links per guide</b> to related guides, plus one link up to the topic hub once hubs exist.</li>
+  <li><b>No date-anchored titles.</b> Deadlines and news pegs go in the intro; titles stay evergreen.</li>
+  <li><b>Slug = title keywords,</b> short, no dates. (You already do this well — keep it.)</li>
+  <li><b>Cite sources with real links.</b> AI engines trust pages that link out to primary sources; it also earns you entity association.</li>
+  <li><b>Append new guide to llms-full.txt</b> as the skill's final publishing step.</li>
+</ul>
+</div>
+
+<h3>What "done" looks like — page-level checklist</h3>
+<table>
+  <tr><th>Signal</th><th>Today</th><th>Target</th></tr>
+  <tr><td>Canonical URL tag</td><td class="no">Missing</td><td>Every page, matching the one true host</td></tr>
+  <tr><td>Meta description</td><td class="meh">Guides ✓ / blog+press+projects = title copy</td><td>Unique 140–160 chars everywhere</td></tr>
+  <tr><td>og:url / og:type</td><td class="no">Homepage URL, "website" everywhere</td><td>Page URL, "article" for posts</td></tr>
+  <tr><td>OG image</td><td class="meh">One shared 1024×537</td><td>Per-page 1200×630 from template</td></tr>
+  <tr><td>Article schema</td><td class="no">None</td><td>TechArticle/BlogPosting + author on all posts</td></tr>
+  <tr><td>Person schema sameAs</td><td class="no">None</td><td>All socials + rich bio</td></tr>
+  <tr><td>FAQ blocks + schema</td><td class="no">None</td><td>Top guides, then all new guides</td></tr>
+  <tr><td>Author byline (E-E-A-T)</td><td class="no">None</td><td>Byline + credentials on guides/posts</td></tr>
+  <tr><td>llms.txt covers guides</td><td class="no">Omits /ai entirely</td><td>Guides-first + auto-updated llms-full.txt</td></tr>
+  <tr><td>Redirect status codes</td><td class="no">307 temporary</td><td>308 permanent for all canonical moves</td></tr>
+  <tr><td>Server-rendered content</td><td class="ok">✓ Full HTML, no JS wall</td><td>Keep it this way</td></tr>
+  <tr><td>Clean keyword slugs</td><td class="ok">✓ Excellent</td><td>Keep it this way</td></tr>
+  <tr><td>Internal linking</td><td class="ok">✓ 261 cross-links</td><td>Add hubs + related-guides block</td></tr>
+</table>
+
+<h3>Skill patch — paste-ready prompt</h3>
+<div class="prompt"><div class="plabel">Prompt for Claude</div><p>Update ~/.claude/skills/generate-guide-generic/SKILL.md and generate-guide-prompt/SKILL.md with an "SEO/AEO requirements" section enforcing: (1) frontmatter contract — title ≤60 chars keyword-first and never date-anchored, description 140–160 chars keyword-first, published + updated dates, tags from the existing controlled vocab in src/lib/ai-guides/constants.ts; (2) writing rules — direct answer in first two sentences, question-shaped H2s where natural with answer-first paragraphs, a 3–4 item FAQ section, descriptive alt text on every image placeholder, ≥3 internal links to related guides; (3) publishing step — append the new guide (title + description + URL) to public/llms-full.txt. Show me the diff of each SKILL.md before saving.</p></div>
+
+<h3>One measurement habit</h3>
+<p>If you haven't already: verify the site in <b>Google Search Console</b> (both apex and www properties until #1 is fixed — then just the canonical one) and submit the sitemap. It's the only free source of truth for which queries you actually rank for, and it will confirm the fixes here (watch "Duplicate without user-selected canonical" and "Page with redirect" counts fall). Check monthly, not daily — SEO moves on a 6–12 week lag.</p>
+
+<!-- ============================================= -->
+<h2 id="actions">6 · Prioritized action list</h2>
+<table>
+  <tr><th>#</th><th>Action</th><th>Impact</th><th>Effort</th></tr>
+  <tr><td>1</td><td>Pick one host (recommend apex), fix Vercel primary domain + align SITE_URL everywhere</td><td>Very high</td><td>~30 min</td></tr>
+  <tr><td>2</td><td>Add canonical tags + fix og:url in one change (Critical #2 + #3)</td><td>Very high</td><td>Small PR</td></tr>
+  <tr><td>3</td><td>Description pipeline for blog/press/projects + backfill top 20 posts</td><td>High</td><td>Medium PR</td></tr>
+  <tr><td>4</td><td>Article + enriched Person schema (sameAs, real photo, credentials)</td><td>High (AEO)</td><td>Small PR</td></tr>
+  <tr><td>5</td><td>Rewrite llms.txt guides-first; add llms-full.txt with auto-update step in skills</td><td>High (AEO)</td><td>~1 hr</td></tr>
+  <tr><td>6</td><td>Patch guide skills with the frontmatter contract + writing rules</td><td>High (compounding)</td><td>~30 min</td></tr>
+  <tr><td>7</td><td>Convert 307 redirects to 308; fix sitemap lastModified</td><td>Medium</td><td>Tiny PR</td></tr>
+  <tr><td>8</td><td>Author byline + updated-date on guide/post templates</td><td>Medium (E-E-A-T)</td><td>Small PR</td></tr>
+  <tr><td>9</td><td>Dynamic per-page OG images (1200×630)</td><td>Medium (CTR)</td><td>Medium PR</td></tr>
+  <tr><td>10</td><td>FAQ blocks on top 5 guides + FAQPage schema; topic hub proposal</td><td>Medium→High over time</td><td>Content work</td></tr>
+</table>
+
+<hr class="divider">
+<p class="small">Audit of the <code>mika-website</code> repo (branch main, commit 7c8de34) and live site www.mikareyes.com on July 7, 2026. Checked: root/page metadata, sitemap.ts, robots.ts, structured data, redirects, llms.txt, MDX frontmatter across content/ai (74), content/blog (188), content/press, content/projects, image alt coverage, internal link graph, live rendered &lt;head&gt; of sampled pages. Not checked (needs Search Console/analytics access): actual query rankings, crawl stats, Core Web Vitals field data.</p>
+
+</div>
+</body>
+</html>

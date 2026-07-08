@@ -1,0 +1,227 @@
+---
+title: "Stanford's STORM Method: Research Without the Blind Spots"
+description: >-
+  One AI prompt gives you tunnel vision. Stanford's STORM method fixes it with
+  five expert perspectives and a 4-prompt workflow you can run in Claude in
+  five minutes. Plus how to use the official tool or website.
+tags:
+  - claude
+  - research
+  - prompts
+  - productivity
+published: "2026-07-08"
+date: "2026-07-08"
+cta: Run STORM
+---
+
+Stanford just proved that if you use AI for research, you have a blind spot. One prompt gives you one perspective: the majority view. You get the consensus. And when you're doing real research, the last thing you want is everyone thinking the same way. That's how you get tunnel vision.
+
+## Why this matters
+
+The problem isn't that AI is wrong. It's that AI is agreeable. Ask one question, get one angle. Miss the contradictions, the financial incentives, the historical patterns, and the stuff that only practitioners know. PhD students spend 40–60 hours doing multi-perspective research by hand. Stanford built a fix called **STORM** (Synthesis of Topic Outlines through Retrieval and Multi-perspective Question Asking) that compresses that into about five minutes.
+
+> **Key insight:** The best research isn't one smart answer. It's five incompatible experts arguing until the gaps in your thinking have nowhere left to hide.
+
+## The five experts
+
+STORM works by making Claude roleplay five completely different experts on your topic, all at once. Each one sees what the others miss.
+
+**The Practitioner** tells you what actually works day-to-day. The stuff academics never mention. The shortcuts, the workarounds, the "nobody talks about this but..." details.
+
+**The Academic** tells you what the peer-reviewed studies actually say, including where they contradict popular belief. Citations, sample sizes, and the gap between what studies claim and what practitioners do.
+
+**The Skeptic** gives you the strongest argument against the mainstream view. The evidence most people conveniently ignore. The reasons smart people disagree with the consensus.
+
+**The Economist** follows the money. Who profits from the current narrative? What financial incentives are shaping the conversation? Follow the incentives and you find the real story.
+
+**The Historian** finds the pattern. Most "new" ideas have played out before. The ending is usually already in the history books. Context kills hype.
+
+## The 4-prompt workflow (5 minutes in Claude)
+
+You run this in four prompts inside a single Claude chat. Total time: about five minutes. PhD students spend 40–60 hours doing this by hand.
+
+### Prompt 1: Five-perspective scan
+
+Paste this and replace the bracketed section with your research topic:
+
+```
+I'm researching: [YOUR TOPIC]
+
+Answer as five completely different experts. Each expert must disagree with the others where the evidence supports it. Do not smooth over contradictions.
+
+1. The Practitioner — what actually works day-to-day that academics never mention
+2. The Academic — what peer-reviewed studies say, including where they contradict popular belief
+3. The Skeptic — the strongest argument against the mainstream view; evidence most people ignore
+4. The Economist — who profits from the current narrative; what financial incentives shape this conversation
+5. The Historian — how this has played out before; what "new" ideas are actually old patterns
+
+Give each expert 3–5 substantive points. Flag where experts directly contradict each other.
+```
+
+### Prompt 2: Contradiction map
+
+After Prompt 1 finishes, send:
+
+```
+Map every contradiction from the five perspectives above.
+
+For each contradiction:
+- State what Expert A claims vs. what Expert B claims
+- Explain why both could be partially right
+- Rate how much it matters for someone making a real decision on this topic (high / medium / low)
+
+Present as a table.
+```
+
+### Prompt 3: Synthesis
+
+```
+Synthesize a research brief from all five perspectives and the contradiction map.
+
+Structure:
+1. Executive summary (3 sentences max)
+2. What the consensus gets right
+3. What the consensus misses or oversimplifies
+4. The 3 most important open questions someone should investigate further
+5. Practical recommendation: what should I actually do or believe based on this?
+
+Do not flatten contradictions. Name them explicitly.
+```
+
+### Prompt 4: Peer review
+
+```
+Peer-review your own synthesis above.
+
+Act as a harsh reviewer who has read all five expert perspectives. Find:
+- Claims you stated as fact that are actually contested
+- Perspectives you underweighted or ignored
+- Logical leaps or missing evidence
+- One thing a smart skeptic would still push back on
+
+Then rewrite the synthesis fixing every issue you found. Show what changed and why.
+```
+
+Four prompts. Five perspectives. One research brief that doesn't have tunnel vision.
+
+## Via website (no code required)
+
+Not a techie? No worries. If coding isn't your thing, you can still use STORM through Stanford's website at [storm.genie.stanford.edu](https://storm.genie.stanford.edu/). It gives you the full multi-perspective research pipeline without writing a single line of code.
+
+### 1. **Visit the website**
+
+Head to [storm.genie.stanford.edu](https://storm.genie.stanford.edu/) and explore the options available.
+
+### 2. **Select STORM**
+
+Choose the STORM feature if you want to generate a full research article.
+
+### 3. **Search a topic**
+
+Type in whatever you want to research. For example, if you're curious about "large concept models," enter it and start the process. STORM will also ask for the purpose of your search. Give it a sentence or two so it knows what angle matters to you.
+
+### 4. **Watch it work**
+
+STORM runs a step-by-step search. It typically takes 3–4 minutes depending on how complex the topic is. You can follow along as it gathers perspectives and builds the outline.
+
+### 5. **Get your results**
+
+When it's done, you get a full article with references. You can also see how STORM brainstormed along the way: which questions it asked, which perspectives it surfaced, and how it connected the dots. Useful if you want to understand the reasoning, not just read the output.
+
+## When to use this
+
+Run STORM before you:
+
+- Make a big bet on a trend or technology
+- Write content, a pitch deck, or a strategy doc that needs to be credible
+- Prep for a meeting where you need to sound like you've done the reading
+- Evaluate a vendor, tool, or partnership where the marketing is louder than the evidence
+- Decide whether something is actually new or just rebranded history
+
+Skip it for quick lookups. This is for decisions where being wrong costs you time or money.
+
+## Download Stanford's official STORM tool
+
+The prompts above give you the multi-perspective thinking inside Claude. Stanford's full STORM system goes further: it searches the internet, collects citations, and generates Wikipedia-style research reports automatically. Over 70,000 people have used the [live demo](https://storm.genie.stanford.edu/). If you want the real engine running on your machine, here's how to install it from the [GitHub repo](https://github.com/stanford-oval/storm).
+
+### Option A: Quick install (no code)
+
+If you just want the Python package:
+
+```bash
+pip install knowledge-storm
+```
+
+You'll still need API keys for a language model (OpenAI, Anthropic, etc.) and a search engine (Bing, You.com, Tavily, and others are supported). The package uses [litellm](https://github.com/BerriAI/litellm), so most major model providers work out of the box.
+
+### Option B: Full install from source (recommended if you want to customize)
+
+**1. Clone the repo**
+
+```bash
+git clone https://github.com/stanford-oval/storm.git
+cd storm
+```
+
+**2. Set up a Python environment**
+
+```bash
+conda create -n storm python=3.11
+conda activate storm
+pip install -r requirements.txt
+```
+
+**3. Add your API keys**
+
+Create a file called `secrets.toml` in the project root:
+
+```toml
+# Language model
+OPENAI_API_KEY="your_openai_api_key"
+OPENAI_API_TYPE="openai"
+
+# Search (pick one)
+BING_SEARCH_API_KEY="your_bing_search_api_key"
+
+# Encoder
+ENCODER_API_TYPE="openai"
+```
+
+If you use Azure OpenAI instead of direct OpenAI, swap in `OPENAI_API_TYPE="azure"` plus your `AZURE_API_BASE` and `AZURE_API_VERSION`. Other search engines (You.com, Tavily, Serper, Brave, DuckDuckGo) are supported too. Check the [retriever options in the repo](https://github.com/stanford-oval/storm/blob/main/knowledge_storm/rm.py).
+
+**4. Run STORM**
+
+The fastest way to test it:
+
+```bash
+python examples/storm_examples/run_storm_wiki_gpt.py \
+    --output-dir ./output \
+    --retriever bing \
+    --do-research \
+    --do-generate-outline \
+    --do-generate-article \
+    --do-polish-article
+```
+
+It will ask for a topic, then run four stages automatically: research (multi-perspective question asking), outline generation, article writing, and polishing. Output lands in your `--output-dir` folder with citations.
+
+### STORM vs. the 4-prompt Claude version
+
+| | 4-prompt Claude workflow | Official STORM tool |
+|---|---|---|
+| **Time** | ~5 minutes | ~10–20 minutes (depends on topic) |
+| **Internet search** | No (uses Claude's knowledge) | Yes, with citations |
+| **Output** | Research brief in chat | Full article with references |
+| **Setup** | None | Python + API keys |
+| **Best for** | Fast decisions, prep, content planning | Deep dives, publishable research |
+
+Use the Claude prompts when you need speed. Use the official tool or website when you need sources you can cite.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [The LLM Council Skill (by Andrej Karpathy)](/ai/how-to-run-llm-council-in-claude)
+2. [How to Research Any Topic Across Reddit, X, and TikTok in 90 Seconds](/ai/how-to-research-reddit-x-tiktok-last30days-skill)
+3. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+4. [What Is a Skill?](/ai/what-is-a-skill)
