@@ -11,6 +11,40 @@ tags:
 published: "2026-05-31"
 date: "2026-05-31"
 cta: Pick your level
+faq:
+  - question: >-
+      What are Claude's effort levels?
+    answer: >-
+      Effort levels are a dial next to the model selector that controls how hard
+      Claude thinks before answering — Low, Medium, High, Extra high (xHigh),
+      and Max, plus a code-tuned Ultra Code in Claude Code. Higher effort means
+      deeper reasoning, more willingness to read files and run commands, longer
+      responses, and more autonomous persistence. They work on all plans across
+      claude.ai, Cowork, Claude Code, and the API.
+  - question: >-
+      Which Claude effort level should I use?
+    answer: >-
+      Match the level to the task, not just crank it up: Low for lookups,
+      labels, and quick replies; Medium for everyday writing and light planning;
+      High for nuanced analysis and client-facing work; Extra high for coding
+      and agentic workflows; and Max for high-stakes, multi-constraint problems.
+      Defaulting to Max for everything wastes time and money — on a simple task
+      the quality gap over High is negligible but the latency isn't.
+  - question: >-
+      How do I change Claude's effort level?
+    answer: >-
+      In claude.ai, open the model menu at the bottom of the chat and pick a
+      level under Effort (shortcut Shift+Cmd+E). In Claude Code, type /effort to
+      cycle through options, or /effort auto to let Claude pick based on
+      difficulty. In the API, add the effort parameter to your call.
+  - question: >-
+      Does a higher effort level always give better answers?
+    answer: >-
+      No — good context often beats a higher effort level. Low with clear
+      context files and a tight prompt can outperform Max with a vague ask and a
+      messy folder, and Anthropic notes Max can overthink and show diminishing
+      returns on some tasks. Bump effort when a task genuinely needs more
+      reasoning, but fix your prompt and context first.
 ---
 
 Opus 4.8 launched and the benchmarks looked great. You switch to it, paste in a hard question, and get something that feels fine. Not bad. Not great. Then Reddit tells a different story: people getting noticeably better results on the same model, just with a different effort level dialed in.

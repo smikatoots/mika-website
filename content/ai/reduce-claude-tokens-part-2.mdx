@@ -9,6 +9,43 @@ tags:
 published: "2026-04-16"
 cta: Read part 2
 order: 11
+faq:
+  - question: >-
+      What's the most expensive mistake I can make in Claude?
+    answer: >-
+      Sending a vague prompt, getting a wrong answer, and firing off five
+      follow-ups to fix it — because every follow-up stacks on the full
+      conversation history that Claude re-reads on every turn. One developer
+      found that by message 30, 98.5% of his tokens went to re-reading history
+      and only 1.5% to actual output. Writing tighter prompts and structuring
+      sessions is where the real savings are.
+  - question: >-
+      How do I write prompts that use fewer tokens?
+    answer: >-
+      Keep the prompt short and let Claude ask clarifying questions — a 15-word
+      prompt plus clickable answers costs far less than a 500-word prompt
+      re-read every turn. Batch multiple tasks into one message so context loads
+      once, make targeted edits ("only redo section 3") instead of full redos,
+      and reuse the same prompt structure so it gets partially cached.
+      Voice-to-text also helps, since you naturally give more context in one
+      shot.
+  - question: >-
+      Should I edit my Claude message or send a follow-up?
+    answer: >-
+      Edit it — clicking Edit on your original message and regenerating replaces
+      the old exchange instead of stacking it, while every "no, I meant…"
+      follow-up adds to the history Claude re-reads every turn. It's the
+      highest-ROI habit on the list. Use the edit button constantly instead of
+      correcting in a new message.
+  - question: >-
+      How long should a Claude session be?
+    answer: >-
+      Cap it around 15–20 messages — your first message costs a few hundred
+      tokens, but by message 30 you've burned roughly 232,000 tokens re-reading
+      history. When a session gets long, ask Claude to write a short
+      session-notes file with the key decisions, then paste that into a fresh
+      chat to carry context forward without paying to re-read everything. Also
+      start a new chat whenever the topic changes.
 ---
 
 The most expensive thing you do in Claude isn't uploading files or running long sessions. It's sending a vague prompt, getting a wrong answer, and sending five more messages to fix it.

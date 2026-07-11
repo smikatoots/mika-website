@@ -10,6 +10,40 @@ tags:
 published: "2026-04-24"
 cta: Get started
 order: 7
+faq:
+  - question: >-
+      What is a CLAUDE.md file and why do I need one?
+    answer: >-
+      A CLAUDE.md is a markdown file Claude reads at the start of every Cowork
+      or Claude Code session, so it knows who you are, how you work, and what
+      good output looks like before you type anything. Without it, every session
+      starts blank and Claude defaults to generic tone, structure, and
+      assumptions. It's the difference between a teammate who knows your context
+      and a new hire figuring out the basics every day.
+  - question: >-
+      What files should I set up to give Claude context?
+    answer: >-
+      Start with three: an about-me.md (or user.md) for who you are and how you
+      work, a voice-and-style.md for the rules that keep you sounding like you,
+      and a projects.md for what you're actively working on. Then a short
+      claude.md ties them together and loads first. Keep each file short — under
+      2,000 tokens — and have Claude interview you to build them.
+  - question: >-
+      How long should my CLAUDE.md be?
+    answer: >-
+      Short — it loads at the start of every single session, so a bloated one
+      actually makes Claude worse at following your instructions, not better.
+      Keep it under about 2,000 tokens and have it reference other high-signal
+      files rather than cramming everything in. Anything that only applies
+      sometimes belongs in a skill, which loads on demand, not in claude.md.
+  - question: >-
+      How do context files layer or override each other?
+    answer: >-
+      More specific context wins. A global claude.md in your home .claude folder
+      applies to every session, a claude.md in a project folder layers on top of
+      it, and a subfolder's file overrides everything above. Think of it like
+      CSS: the closest, most specific file takes precedence. That lets you keep
+      universal preferences global and project details local.
 ---
 
 Every time you start a new Claude session with no setup, you're asking Claude to help you do your job without telling it anything about you, your company, or what good work looks like. It's like hiring a new team member every single day and making them figure out the basics from scratch. This guide fixes that. It walks you through the exact markdown files I use so Claude knows exactly who I am before I type a single prompt.

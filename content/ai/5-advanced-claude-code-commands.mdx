@@ -12,6 +12,39 @@ published: "2026-06-29"
 date: "2026-06-29"
 cta: Try these commands
 order: 34
+faq:
+  - question: >-
+      What are the most useful advanced Claude Code commands?
+    answer: >-
+      Five that separate power users from people getting by: /plan (writes a
+      full plan and stops before touching anything), /branch (copies your
+      conversation so you can experiment safely), /security-review (scans for
+      issues before you push), /background (runs long jobs without blocking your
+      session), and /agents (spins up parallel subagents). They earn their keep
+      on bigger, riskier work, not beginner tasks.
+  - question: >-
+      How do I stop Claude from making risky changes before I approve them?
+    answer: >-
+      Type /plan before anything big — it writes out the full step-by-step
+      approach and stops, editing no files until you say go. It's built for
+      migrations, big refactors, or anything you'd hate to undo. You get to
+      catch problems and approve the direction before a single line changes.
+  - question: >-
+      Can Claude Code check my code for security issues?
+    answer: >-
+      Yes — run /security-review right before you push and it scans what you're
+      about to ship for injection issues, auth gaps, and exposed data in about
+      30 seconds. It's caught real problems that would have gone straight to
+      production. It's not a full audit, but as a last check it's one of the
+      highest-ROI habits you can build.
+  - question: >-
+      How do I run multiple Claude tasks at once?
+    answer: >-
+      Use /agents to create specialized subagents that work on different pieces
+      at the same time. Instead of doing step one, waiting, then step two, you
+      spin up agents that handle independent workstreams in parallel. For big or
+      repetitive projects it's the closest thing to having a small team inside
+      your terminal.
 ---
 
 If you're using Claude Code every day but you've never typed `/plan`, `/branch`, or `/agents`, you're probably working harder than you need to. Most people learn the basics and stop there. These five commands are what separates people who get by from people who actually move fast.

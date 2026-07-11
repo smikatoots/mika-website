@@ -12,6 +12,33 @@ tags:
 published: "2026-05-31"
 date: "2026-05-31"
 cta: Connect IBKR and review every draft
+faq:
+  - question: >-
+      Can Claude place trades in my Interactive Brokers account?
+    answer: >-
+      No — and that's the point of this connector. Claude can pull your
+      portfolio and write up orders, but it only stages them as drafts in IBKR's
+      AI Instructions queue; you still open the queue and tap Review & Submit or
+      Reject yourself. Nothing hits the market until you click. This isn't
+      financial advice — just how the official connector works.
+  - question: >-
+      How is IBKR's Claude connector different from Robinhood's agentic trading?
+    answer: >-
+      They take opposite approaches. Robinhood lets an agent actually place
+      trades inside a funded sandbox account, while IBKR is draft-only — Claude
+      does the research and paperwork but you keep the final click. IBKR feels
+      more like a sharp analyst handing you a draft than a bot trading while you
+      sleep. Pick based on how much autonomy you're comfortable with.
+  - question: >-
+      How do I connect Interactive Brokers to Claude safely?
+    answer: >-
+      You need an existing IBKR account, then in Claude go to Settings →
+      Connectors, find Interactive Brokers, and click Connect — you log in on
+      IBKR's own site, not inside Claude, so your credentials stay with the
+      broker. Check the Live/Paper toggle before signing in, authorize one
+      account, and set the order-related tools to "ask each time" rather than
+      "always allow." Start with read-only prompts to confirm the numbers match
+      before you draft anything.
 ---
 
 I wanted my broker and my AI in the same conversation without handing over the keys. Interactive Brokers just shipped an official Claude connector, and the part that actually matters is draft-only: Claude can pull your portfolio, write up orders, and park them in a queue while you still tap Review & Submit (or Reject) in IBKR.

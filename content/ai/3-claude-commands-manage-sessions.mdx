@@ -12,6 +12,37 @@ published: "2026-06-29"
 date: "2026-06-29"
 cta: Try these commands
 order: 33
+faq:
+  - question: >-
+      Why does Claude get slower or dumber the longer I chat?
+    answer: >-
+      It's not that Claude got worse — your context window (its working memory)
+      fills up as the session runs, so it slows down and starts forgetting
+      earlier details. You can watch it happen in the status bar. Three commands
+      keep it light: /clear, /compact, and /model.
+  - question: >-
+      What's the difference between /clear and /compact in Claude Code?
+    answer: >-
+      Use /clear when you switch to a new, unrelated task — it wipes the current
+      context and gives Claude a blank slate (the old conversation isn't gone;
+      jump back with /resume). Use /compact when you're mid-task and Claude
+      feels sluggish but you're not done — it summarizes everything so far and
+      keeps going from that summary. Clear between tasks, compact within one.
+  - question: >-
+      How do I make Claude Code cheaper without losing quality?
+    answer: >-
+      Switch models to match the job with /model — use Opus to plan hard things,
+      then drop to Sonnet to build, organize files, or manage GitHub. Opus is
+      for hard thinking; Sonnet is fast and cheap for execution. Switching
+      mid-session means you stop burning premium tokens on tasks that don't need
+      them.
+  - question: >-
+      Can I tell /compact what to keep?
+    answer: >-
+      Yes — point it, like "/compact focus on the auth bug," and it preserves
+      what matters while trimming the rest. That's useful when you've been
+      iterating for an hour but only the last few decisions still matter. It
+      keeps the session moving without dragging the full history along.
 ---
 
 Did you know the longer you chat with Claude, the dumber it gets? There are a few one-word fixes most people never type, and each takes two seconds.

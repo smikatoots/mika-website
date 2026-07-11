@@ -11,6 +11,33 @@ tags:
 published: "2026-06-13"
 cta: Try this workflow
 order: 27
+faq:
+  - question: >-
+      Why does Claude keep getting things about me wrong?
+    answer: >-
+      Check your CLAUDE.md before blaming the model — that file loads before
+      every chat, and if it still references a project you dropped months ago,
+      you'll keep re-explaining yourself. Most people write it once and forget
+      it, so it goes stale. The fix is a weekly routine that scans your apps,
+      spots what changed, and proposes updates you approve.
+  - question: >-
+      How do I keep my CLAUDE.md up to date automatically?
+    answer: >-
+      Set up a weekly scheduled routine in Claude Code that reads your current
+      context files, pulls the last seven days of activity from your calendar,
+      Slack, Gmail, and Notion, finds what's missing or outdated, and proposes
+      specific file-level edits with evidence and confidence ratings. You review
+      it like a code review — approve what's right, reject what isn't — then
+      Claude writes the approved changes. Run it Sunday morning alongside your
+      weekly planning.
+  - question: >-
+      Should Claude update my context files without asking?
+    answer: >-
+      No — the routine is built so nothing gets written without your explicit
+      approval. It proposes changes grouped into add, update, and remove, with
+      the evidence behind each, and you make the judgment call before anything
+      is saved. That split — Claude does the scanning, you do the approving — is
+      what keeps context accurate without eating your weekend.
 ---
 
 If Claude keeps getting things wrong, check your `CLAUDE.md` before you blame the model. That file loads before every chat. If it still says you're on a project you dropped two months ago, you'll keep re-explaining yourself.

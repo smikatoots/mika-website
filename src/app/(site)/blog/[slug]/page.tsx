@@ -13,6 +13,9 @@ import { AuthorByline } from "@/components/ui/AuthorByline";
 import { BlogPostViewTracker } from "@/components/blog/BlogPostViewTracker";
 import { InternalLink } from "@/components/ui/InternalLink";
 import { ArticleStructuredData } from "@/components/ArticleStructuredData";
+import { FaqSection } from "@/components/ai-guides/FaqSection";
+import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
+import { normalizeAiGuideFaq } from "@/lib/ai-guides/faq";
 import { SITE_URL } from "@/lib/site";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -78,6 +81,8 @@ export default async function BlogPostPage({ params }: Props) {
     frontmatter.lastEdited && frontmatter.lastEdited !== publishedAt
       ? frontmatter.lastEdited
       : null;
+  const faq = normalizeAiGuideFaq(frontmatter.faq);
+  const showFaq = faq.length > 0;
 
   return (
     <article className={mainProse}>
@@ -89,6 +94,7 @@ export default async function BlogPostPage({ params }: Props) {
         dateModified={frontmatter.lastEdited}
         url={`${SITE_URL}/blog/${slug}`}
       />
+      {showFaq ? <FaqStructuredData items={faq} /> : null}
       <BlogPostViewTracker slug={slug} title={frontmatter.title} />
       <BackLink href="/blog" label="Blog" />
       <header className="mt-6">
@@ -124,6 +130,7 @@ export default async function BlogPostPage({ params }: Props) {
         <AuthorByline />
       </header>
       <div className="mt-10">{content}</div>
+      {showFaq ? <FaqSection items={faq} /> : null}
     </article>
   );
 }

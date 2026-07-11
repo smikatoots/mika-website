@@ -15,6 +15,42 @@ published: "2026-06-09"
 date: "2026-06-09"
 cta: Connect Meta Ads in 5 minutes
 order: 21
+faq:
+  - question: >-
+      Can I manage my Facebook and Instagram ads from Claude?
+    answer: >-
+      Yes — Meta Ads AI Connectors let you connect Claude directly to your ad
+      account through an official MCP server, so you can ask plain-language
+      questions about spend and performance instead of clicking through Ads
+      Manager. Setup takes about five minutes with no developer app or API keys.
+      You can also build a Cowork dashboard to watch your ads at a glance every
+      morning.
+  - question: >-
+      How do I connect Meta Ads to Claude?
+    answer: >-
+      In Claude, go to Settings → Connectors → Add custom connector, paste
+      Meta's official MCP URL (https://mcp.facebook.com/ads), name it Meta Ads,
+      and authorize with the Facebook profile that has admin access to your ad
+      account. Pick only the ad accounts you actually want Claude to touch, then
+      test with a read-only question like your spend over the last 7 days. Meta
+      hosts the server, so you're not running anything yourself.
+  - question: >-
+      Is it safe to let Claude touch my ad campaigns?
+    answer: >-
+      It's as safe as you configure it — the key step is setting the write tools
+      (anything that creates, edits, or activates ads) to "Needs approval" so
+      Claude has to ask before making changes. That keeps full read access for
+      reporting without risking an accidentally paused campaign. Start read-only
+      and use the dashboard for decisions before you let Claude change anything.
+  - question: >-
+      Why isn't the Meta Ads connector working for me?
+    answer: >-
+      It's in open beta and Meta is rolling it out gradually, so if setup
+      completes but Claude says the connector is disabled, your account may not
+      be enabled yet — check back in a week or two. Also confirm you're logged
+      into the Facebook profile with admin access and that you selected the
+      right ad account during authorization. Meta's Business Help Center has the
+      eligibility details.
 ---
 
 I hate ads.

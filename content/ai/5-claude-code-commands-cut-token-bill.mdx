@@ -12,6 +12,39 @@ published: "2026-06-29"
 date: "2026-06-29"
 cta: Try these commands
 order: 36
+faq:
+  - question: >-
+      How do I lower my Claude Code bill?
+    answer: >-
+      Claude Code bills by tokens, so keep your context clean and match the
+      model to the task. Five commands do it: /usage (see session cost),
+      /context (see what's filling your window), /model (switch to a cheaper
+      model for simple work), /rewind (undo cleanly), and /compact (summarize
+      and keep going). Most surprise charges come from running every task on the
+      priciest model with a bloated context.
+  - question: >-
+      How do I see how much a Claude Code session is costing me?
+    answer: >-
+      Type /usage anytime to see your current session cost, where you stand
+      against your plan limits, and recent activity — no waiting for the
+      invoice. Check it when a session starts feeling expensive or when you're
+      testing something new. Pair it with /context to see exactly what's filling
+      your window.
+  - question: >-
+      What should I do when Claude starts feeling slow or forgetful?
+    answer: >-
+      Run /context to see how full your window is — usually it's nearly full —
+      then /compact to summarize the conversation and free up space without
+      starting over. Claude doesn't get worse over time; your context just fills
+      up. These two commands show you when and fix it.
+  - question: >-
+      How do I undo a mistake in Claude Code without confusing it?
+    answer: >-
+      Use /rewind to roll your conversation and code back to an earlier
+      checkpoint. Don't type "revert back to the previous version" — that
+      phrasing often confuses Claude and burns more tokens as it guesses what
+      you mean. /rewind is explicit: it jumps to a saved point and picks up from
+      there.
 ---
 
 If you use Claude Code every day and your bill keeps climbing, the problem might not be how much you use it. It might be that you never check what's eating your tokens, or you run every task on the most expensive model because you didn't know you could switch.
