@@ -94,6 +94,8 @@ function parseFrontmatter(
   const publishedRaw =
     typeof data.published === "string" ? data.published.trim() : "";
   const published = publishedRaw || publishedFallback;
+  const updatedRaw =
+    typeof data.updated === "string" ? data.updated.trim() : "";
   const cta = typeof data.cta === "string" ? data.cta.trim() : "Open";
   const orderRaw = data.order;
   const order =
@@ -120,6 +122,7 @@ function parseFrontmatter(
     description,
     tags,
     published: published || publishedFallback,
+    ...(updatedRaw ? { updated: updatedRaw } : {}),
     cta: cta || "Open",
     order: Number.isFinite(order) ? order : 999,
     status,

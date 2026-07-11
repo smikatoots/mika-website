@@ -31,10 +31,14 @@ export function SiteStructuredData() {
           "https://twitter.com/__mikareyes",
         ],
         knowsAbout: [
-          "AI tools",
+          "AI",
+          "AI Tools",
           "Claude",
-          "Product management",
+          "ChatGPT",
+          "Entrepreneurship",
           "Startups",
+          "Product management",
+          "Artificial Intelligence",
         ],
       },
       {

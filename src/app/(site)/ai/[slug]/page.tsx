@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { AiGuideComingSoonBlock } from "@/components/ai-guides/AiGuideComingSoonBlock";
+import { FaqSection } from "@/components/ai-guides/FaqSection";
+import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
 import { renderAiGuideMdx } from "@/components/ai-guides/render-ai-guide-mdx";
+import { normalizeAiGuideFaq } from "@/lib/ai-guides/faq";
 import {
   loadAiGuideMdxPost,
   loadAllAiGuideIndexEntries,
@@ -79,8 +82,12 @@ export default async function AiGuidePage({ params }: Props) {
     frontmatter.published,
   );
   const isComingSoon = frontmatter.status === "coming-soon";
+  const updatedAt = frontmatter.updated?.trim() || "";
+  const showUpdated = updatedAt !== "" && updatedAt !== publishedAt;
   const description =
     frontmatter.description.trim() || frontmatter.title;
+  const faq = normalizeAiGuideFaq(frontmatter.faq);
+  const showFaq = !isComingSoon && faq.length > 0;
 
   return (
     <article className={mainProse}>
@@ -94,6 +101,7 @@ export default async function AiGuidePage({ params }: Props) {
           url={`${SITE_URL}/ai/${slug}`}
         />
       ) : null}
+      {showFaq ? <FaqStructuredData items={faq} /> : null}
       <BackLink href="/ai" label="AI Guides" />
       <header className="mt-6">
         <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 md:text-5xl">
@@ -105,6 +113,11 @@ export default async function AiGuidePage({ params }: Props) {
           <time dateTime={publishedAt} className="whitespace-nowrap">
             Published {formatSiteDate(publishedAt)}
           </time>
+          {showUpdated ? (
+            <time dateTime={updatedAt} className="whitespace-nowrap">
+              Updated {formatSiteDate(updatedAt)}
+            </time>
+          ) : null}
           {(frontmatter.tags?.length ?? 0) > 0 ? (
             <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
               {frontmatter.tags.map((t) => (
@@ -134,6 +147,7 @@ export default async function AiGuidePage({ params }: Props) {
       ) : (
         <div className="mt-10">{content}</div>
       )}
+      {showFaq ? <FaqSection items={faq} /> : null}
     </article>
   );
 }

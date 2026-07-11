@@ -13,6 +13,35 @@ published: "2026-07-09"
 date: "2026-07-09"
 cta: Try subagents
 order: 39
+faq:
+  - question: "What are subagents in Claude Code?"
+    answer: >-
+      Subagents are separate Claude instances your main agent spins up to work on
+      different tasks at the same time. Instead of doing ten jobs one after
+      another, Claude fans them out to ten helpers that run in parallel. Each gets
+      its own context window, tools, and focused brief, then reports back to your
+      main session.
+  - question: "What's the difference between a subagent and an agent?"
+    answer: >-
+      A subagent is a temporary, disposable helper the main agent creates on the
+      fly for one task; a custom agent (defined in .claude/agents/) is a
+      persistent specialist you write once and reuse. Think of it as briefing an
+      intern for a single job versus a coworker with a standing job description.
+      The main agent is the one you actually talk to — it orchestrates both.
+  - question: "How do I run subagents in Claude Code?"
+    answer: >-
+      Just ask in plain English — for example, "Spawn a subagent for each of
+      these 10 topics and run them all at the same time." Claude creates one
+      helper per task and kicks them off together. For repeatable roles, use
+      /agents or drop a markdown file in .claude/agents/ to define a reusable
+      specialist.
+  - question: "When should I use subagents instead of one agent?"
+    answer: >-
+      Use them when you have 3+ independent tasks that don't depend on each other
+      — batch research, content, or code review across files. Skip them when
+      tasks build on each other, or when you need one tight, coherent piece of
+      writing. Rule of thumb: if you'd hand it to three different people, use
+      subagents; if you'd do it in one sitting, just ask the main agent.
 ---
 
 You asked Claude to draft hooks for ten topics. It did them one at a time. Topic 1, wait. Topic 2, wait. Topic 3... You sat there for twenty minutes watching a progress bar that was really just you, waiting.

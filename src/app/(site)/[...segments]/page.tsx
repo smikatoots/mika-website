@@ -5,7 +5,7 @@ import { NotionDocument } from "@/components/notion/NotionDocument";
 import { isNotionConfigured } from "@/lib/notion/config";
 import { getPostByPath, getPostSummaries } from "@/lib/notion/posts";
 import { formatSiteDate } from "@/lib/format-date";
-import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -31,10 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   const post = await getPostByPath(pathStr);
   if (!post) return { title: "Not found" };
+  const canonical = canonicalUrl(pathStr);
   return {
     title: post.title,
     description: post.title,
-    openGraph: buildOpenGraph({ title: post.title }),
+    alternates: { canonical },
+    openGraph: buildOpenGraph({ title: post.title, url: canonical }),
     twitter: buildTwitter({ title: post.title }),
   };
 }

@@ -13,6 +13,36 @@ tags:
 published: "2026-05-22"
 date: "2026-05-22"
 cta: Set up flight booking
+faq:
+  - question: "Can Claude actually book flights for me?"
+    answer: >-
+      Yes — Claude can research fares, fill in the booking form, pick your seat,
+      and take it all the way to the payment screen. Boris Cherny, who created
+      Claude Code, had Claude Cowork book 8 flights and 5 hotels this way. It
+      works through the Claude in Chrome extension plus a flight connector like
+      Expedia, and it pauses for your approval before anything is charged.
+  - question: "What do I need to set up before Claude can book a flight?"
+    answer: >-
+      Three things: the Claude in Chrome extension (so Claude can click and fill
+      forms in your browser), a flight connector like Expedia (so it can search
+      fares from inside Claude), and a "Flight Booker" project holding your
+      preferences — home airport, seat rules, loyalty numbers, and hard rules.
+      After that one-time setup, each trip is just a short prompt with your route
+      and dates.
+  - question: "Is it safe to let Claude book travel with my credit card?"
+    answer: >-
+      It can be, but treat payment as the highest-risk step. The workflow uses
+      two approval gates — one before booking starts and one before the purchase
+      button — so nothing charges without your explicit "Go." If you're passing
+      card details, use something like 1Password for agents to hand over
+      credentials safely instead of pasting them into chat; personally I do the
+      research step but still handle payment myself.
+  - question: "Will Claude buy the ticket without asking me first?"
+    answer: >-
+      No — not if you set it up right. The project instructions tell Claude to
+      stop before the final purchase button and show you the total, baggage
+      rules, and cancellation terms first. It only completes the purchase after
+      you reply with an explicit confirmation like "Book it" or "Yes, charge it."
 ---
 
 Boris Cherny, the creator of Claude Code, recently had Claude Cowork book **8 flights and 5 hotels** for him while he kept working in Claude Code. With **Opus 4.7**, he said it one-shotted the whole thing. I'm not promising you'll never touch a booking site again. But you can get close: research in Claude, book in your browser, and approve before anything gets charged.

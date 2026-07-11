@@ -51,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
   const aiGuideEntries: MetadataRoute.Sitemap = aiGuides.map((g) => ({
     url: `${SITE_URL}/ai/${g.slug}`,
-    lastModified: new Date(g.published),
+    lastModified: new Date(g.updated?.trim() || g.published),
   }));
 
   /**
