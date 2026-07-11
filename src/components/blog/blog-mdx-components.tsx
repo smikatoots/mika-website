@@ -12,10 +12,10 @@ type MdxImgProps = {
   title?: string;
 };
 
-// Server component: reads intrinsic image dimensions with sharp at build time
-// so the client <img> can reserve its box and avoid layout shift.
-async function MdxImageWithDimensions({ src, ...rest }: MdxImgProps) {
-  const dimensions = src ? await getPublicImageDimensions(src) : null;
+// Looks up precomputed intrinsic image dimensions so the client <img> can
+// reserve its box and avoid layout shift.
+function MdxImageWithDimensions({ src, ...rest }: MdxImgProps) {
+  const dimensions = src ? getPublicImageDimensions(src) : null;
   return (
     <MdxImage
       src={src}

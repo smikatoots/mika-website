@@ -1,0 +1,2386 @@
+{
+  "/about-assets/000.jpg": {
+    "width": 3227,
+    "height": 3227
+  },
+  "/about-assets/001.jpg": {
+    "width": 3225,
+    "height": 3225
+  },
+  "/about-assets/002.jpg": {
+    "width": 2144,
+    "height": 2144
+  },
+  "/about-assets/003.jpg": {
+    "width": 2684,
+    "height": 2684
+  },
+  "/about-assets/004.jpg": {
+    "width": 512,
+    "height": 512
+  },
+  "/about-assets/005.jpg": {
+    "width": 5914,
+    "height": 3943
+  },
+  "/about-assets/006.jpg": {
+    "width": 6000,
+    "height": 4000
+  },
+  "/about-assets/007.jpg": {
+    "width": 6000,
+    "height": 4000
+  },
+  "/about-assets/008.jpg": {
+    "width": 6000,
+    "height": 4000
+  },
+  "/about-assets/009.jpg": {
+    "width": 6000,
+    "height": 4000
+  },
+  "/about-assets/010.jpg": {
+    "width": 5340,
+    "height": 3560
+  },
+  "/about-assets/011.jpg": {
+    "width": 6000,
+    "height": 4000
+  },
+  "/ai-guides/3-ai-travel-features-ask-maps-button.png": {
+    "width": 281,
+    "height": 536
+  },
+  "/ai-guides/3-ai-travel-features-ask-maps-query.png": {
+    "width": 425,
+    "height": 882
+  },
+  "/ai-guides/3-ai-travel-features-cruise.png": {
+    "width": 1024,
+    "height": 768
+  },
+  "/ai-guides/3-ai-travel-features-notion-cruise-comparison.png": {
+    "width": 1024,
+    "height": 463
+  },
+  "/ai-guides/3-ai-travel-features-notion-cruise-voting.png": {
+    "width": 1024,
+    "height": 454
+  },
+  "/ai-guides/3-ai-travel-features-notion-packing-list.png": {
+    "width": 988,
+    "height": 1018
+  },
+  "/ai-guides/3-ai-travel-features-reddit-ai-sources.png": {
+    "width": 1024,
+    "height": 1002
+  },
+  "/ai-guides/3-ai-travel-features-reddit-ai-summary.png": {
+    "width": 1024,
+    "height": 771
+  },
+  "/ai-guides/8-creative-tools-connectors-directory.png": {
+    "width": 1024,
+    "height": 756
+  },
+  "/ai-guides/8-creative-tools-connectors-steps.png": {
+    "width": 1000,
+    "height": 1000
+  },
+  "/ai-guides/a16z-fde-fellowship.png": {
+    "width": 1024,
+    "height": 518
+  },
+  "/ai-guides/agentic-trading-bring-your-agent-setup.png": {
+    "width": 1024,
+    "height": 701
+  },
+  "/ai-guides/agentic-trading-let-your-agent-trade.png": {
+    "width": 1012,
+    "height": 546
+  },
+  "/ai-guides/agentic-trading-robinhood-news-launch.png": {
+    "width": 773,
+    "height": 592
+  },
+  "/ai-guides/ai-coach-step-1.png": {
+    "width": 1015,
+    "height": 1024
+  },
+  "/ai-guides/ai-coach-step-2.png": {
+    "width": 1024,
+    "height": 159
+  },
+  "/ai-guides/ai-coach-step-3.png": {
+    "width": 726,
+    "height": 1002
+  },
+  "/ai-guides/amol-avasare-hero.png": {
+    "width": 1024,
+    "height": 576
+  },
+  "/ai-guides/amol-avasare-lennys-podcast.png": {
+    "width": 1024,
+    "height": 562
+  },
+  "/ai-guides/amplify-writing-fellowship.png": {
+    "width": 961,
+    "height": 524
+  },
+  "/ai-guides/beauty-prompts-color-1.png": {
+    "width": 724,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-color-2.png": {
+    "width": 724,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-color-3.png": {
+    "width": 724,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-eyewear-glasses.png": {
+    "width": 792,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-eyewear-sunglasses.png": {
+    "width": 792,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-hairstyle.png": {
+    "width": 724,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-hat.png": {
+    "width": 724,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-makeup.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-neckline.png": {
+    "width": 724,
+    "height": 1024
+  },
+  "/ai-guides/beauty-prompts-skincare.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/book-flights-allow-browser-actions.png": {
+    "width": 1024,
+    "height": 500
+  },
+  "/ai-guides/book-flights-boris-cowork-tweet.png": {
+    "width": 1024,
+    "height": 802
+  },
+  "/ai-guides/book-flights-boris-opus-tweet.png": {
+    "width": 977,
+    "height": 1024
+  },
+  "/ai-guides/book-flights-boris-podcast.png": {
+    "width": 1024,
+    "height": 778
+  },
+  "/ai-guides/book-flights-claude-in-chrome.png": {
+    "width": 1024,
+    "height": 397
+  },
+  "/ai-guides/book-flights-expedia-connector.png": {
+    "width": 1024,
+    "height": 662
+  },
+  "/ai-guides/brittney-account-intel-progress.png": {
+    "width": 414,
+    "height": 464
+  },
+  "/ai-guides/brittney-account-intel-slash-command.png": {
+    "width": 1004,
+    "height": 473
+  },
+  "/ai-guides/brittney-call-transcript-output.png": {
+    "width": 845,
+    "height": 389
+  },
+  "/ai-guides/brittney-call-transcript-transition.png": {
+    "width": 571,
+    "height": 913
+  },
+  "/ai-guides/brittney-connectors-setup.png": {
+    "width": 1024,
+    "height": 560
+  },
+  "/ai-guides/brittney-personal-action-items.png": {
+    "width": 1024,
+    "height": 560
+  },
+  "/ai-guides/brittney-risks-watchpoints.png": {
+    "width": 984,
+    "height": 520
+  },
+  "/ai-guides/brittney-slack-approval.png": {
+    "width": 772,
+    "height": 802
+  },
+  "/ai-guides/brittney-slack-debrief.png": {
+    "width": 1024,
+    "height": 560
+  },
+  "/ai-guides/brittney-stakeholder-map.png": {
+    "width": 985,
+    "height": 211
+  },
+  "/ai-guides/brittney-strategy-doc-output.png": {
+    "width": 1000,
+    "height": 336
+  },
+  "/ai-guides/brittney-tier-assessment.png": {
+    "width": 1024,
+    "height": 560
+  },
+  "/ai-guides/brittney-tong-hero.png": {
+    "width": 1024,
+    "height": 555
+  },
+  "/ai-guides/brittney-tong-linkedin.png": {
+    "width": 645,
+    "height": 421
+  },
+  "/ai-guides/carousel-step-1-browse-connectors.png": {
+    "width": 1023,
+    "height": 675
+  },
+  "/ai-guides/carousel-step-2-gamma-connector-capabilities.png": {
+    "width": 1024,
+    "height": 646
+  },
+  "/ai-guides/carousel-step-4-theme-id.png": {
+    "width": 757,
+    "height": 695
+  },
+  "/ai-guides/carousel-step-6-final-output.png": {
+    "width": 1024,
+    "height": 655
+  },
+  "/ai-guides/caveman-before-after.png": {
+    "width": 861,
+    "height": 556
+  },
+  "/ai-guides/caveman-stars-over-time.png": {
+    "width": 818,
+    "height": 543
+  },
+  "/ai-guides/chat-vs-agentic-agent-slack.png": {
+    "width": 1024,
+    "height": 897
+  },
+  "/ai-guides/chat-vs-agentic-chatgpt-example.png": {
+    "width": 929,
+    "height": 1024
+  },
+  "/ai-guides/chat-vs-agentic-comparison-table.png": {
+    "width": 1024,
+    "height": 561
+  },
+  "/ai-guides/claude-code-setup-01.png": {
+    "width": 1024,
+    "height": 747
+  },
+  "/ai-guides/claude-code-setup-02.png": {
+    "width": 1024,
+    "height": 810
+  },
+  "/ai-guides/claude-code-setup-03.png": {
+    "width": 284,
+    "height": 170
+  },
+  "/ai-guides/claude-code-setup-04.png": {
+    "width": 788,
+    "height": 120
+  },
+  "/ai-guides/claude-code-setup-05.png": {
+    "width": 800,
+    "height": 592
+  },
+  "/ai-guides/claude-code-setup-06.png": {
+    "width": 1024,
+    "height": 409
+  },
+  "/ai-guides/claude-code-setup-07.png": {
+    "width": 566,
+    "height": 554
+  },
+  "/ai-guides/claude-code-setup-08.png": {
+    "width": 810,
+    "height": 458
+  },
+  "/ai-guides/claude-code-setup-09.png": {
+    "width": 1024,
+    "height": 490
+  },
+  "/ai-guides/claude-code-setup-10.png": {
+    "width": 1024,
+    "height": 978
+  },
+  "/ai-guides/claude-code-setup-11.png": {
+    "width": 1024,
+    "height": 291
+  },
+  "/ai-guides/claude-corps-fellowship.png": {
+    "width": 1024,
+    "height": 576
+  },
+  "/ai-guides/claude-effort-levels-selector.png": {
+    "width": 242,
+    "height": 423
+  },
+  "/ai-guides/claude-live-artifacts-1.png": {
+    "width": 1024,
+    "height": 859
+  },
+  "/ai-guides/claude-live-artifacts-3.png": {
+    "width": 1024,
+    "height": 322
+  },
+  "/ai-guides/claude-live-artifacts-5.png": {
+    "width": 586,
+    "height": 216
+  },
+  "/ai-guides/claude-live-artifacts-6.png": {
+    "width": 1024,
+    "height": 825
+  },
+  "/ai-guides/claude-memory-step-1-memory-settings.png": {
+    "width": 1274,
+    "height": 396
+  },
+  "/ai-guides/claude-memory-step-2-global-instructions.png": {
+    "width": 1270,
+    "height": 605
+  },
+  "/ai-guides/claude-opus-4-point-8-launch-announcement.png": {
+    "width": 959,
+    "height": 746
+  },
+  "/ai-guides/claude-opus-4-point-8-launch-benchmarks.png": {
+    "width": 1024,
+    "height": 548
+  },
+  "/ai-guides/claude-opus-4-point-8-launch-reddit-comparison.png": {
+    "width": 757,
+    "height": 153
+  },
+  "/ai-guides/claude-opus-4-point-8-launch-reddit-creative.png": {
+    "width": 383,
+    "height": 243
+  },
+  "/ai-guides/claude-opus-4-point-8-launch-reddit-honest.png": {
+    "width": 385,
+    "height": 260
+  },
+  "/ai-guides/claude-setup-step-1-cowork-settings.png": {
+    "width": 1024,
+    "height": 580
+  },
+  "/ai-guides/claude-setup-step-2-clarifying-questions.png": {
+    "width": 640,
+    "height": 445
+  },
+  "/ai-guides/claude-setup-step-3-skills-panel.png": {
+    "width": 270,
+    "height": 430
+  },
+  "/ai-guides/claude-setup-step-4-integrations-panel.png": {
+    "width": 1024,
+    "height": 541
+  },
+  "/ai-guides/claude-setup-step-5-desktop-before.png": {
+    "width": 279,
+    "height": 180
+  },
+  "/ai-guides/claude-smb-directory-search.png": {
+    "width": 1024,
+    "height": 379
+  },
+  "/ai-guides/claude-smb-install.png": {
+    "width": 1024,
+    "height": 289
+  },
+  "/ai-guides/claude-smb-skills.png": {
+    "width": 1024,
+    "height": 1006
+  },
+  "/ai-guides/color-theory-analysis-result.png": {
+    "width": 1024,
+    "height": 682
+  },
+  "/ai-guides/contract-redliner-step-1-create-project.png": {
+    "width": 531,
+    "height": 394
+  },
+  "/ai-guides/contract-redliner-step-2-projects-menu.png": {
+    "width": 284,
+    "height": 162
+  },
+  "/ai-guides/custom-skill-step-4-eval-results.png": {
+    "width": 1024,
+    "height": 762
+  },
+  "/ai-guides/custom-skill-step-5-upload-skill.png": {
+    "width": 774,
+    "height": 496
+  },
+  "/ai-guides/custom-skill-step-6-browse-skills-directory.png": {
+    "width": 1024,
+    "height": 635
+  },
+  "/ai-guides/daily-briefing-step-1-connectors.png": {
+    "width": 1024,
+    "height": 541
+  },
+  "/ai-guides/daily-briefing-step-4-scheduled-task.png": {
+    "width": 804,
+    "height": 586
+  },
+  "/ai-guides/doordash-research-fellowship.png": {
+    "width": 629,
+    "height": 415
+  },
+  "/ai-guides/fable-guide-3d-world-hogwarts.png": {
+    "width": 744,
+    "height": 430
+  },
+  "/ai-guides/fable-guide-claude-design-handoff.png": {
+    "width": 1024,
+    "height": 620
+  },
+  "/ai-guides/fable-guide-game-pioneer-woods.png": {
+    "width": 745,
+    "height": 469
+  },
+  "/ai-guides/fable-guide-pixar-solar-system.png": {
+    "width": 742,
+    "height": 362
+  },
+  "/ai-guides/find-claude-skill-ideas-calendar-blocks.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/find-claude-skill-ideas-github.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/find-claude-skill-ideas-instagram-creators.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/find-claude-skill-ideas-long-convos.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/find-claude-skill-ideas-marketplaces.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/find-claude-skill-ideas-reddit.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/find-claude-skill-ideas-scheduled-auditor.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/five-ai-tools-claude-cowork.png": {
+    "width": 979,
+    "height": 419
+  },
+  "/ai-guides/five-ai-tools-cursor-meta.png": {
+    "width": 1024,
+    "height": 549
+  },
+  "/ai-guides/five-ai-tools-granola-calendar.png": {
+    "width": 789,
+    "height": 597
+  },
+  "/ai-guides/five-ai-tools-granola.png": {
+    "width": 96,
+    "height": 96
+  },
+  "/ai-guides/five-ai-tools-relay-workflow.png": {
+    "width": 639,
+    "height": 678
+  },
+  "/ai-guides/five-ai-tools-wisprflow-insights.png": {
+    "width": 1024,
+    "height": 597
+  },
+  "/ai-guides/five-websites-ai-courses-anthropic.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/five-websites-ai-courses-context.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/five-websites-ai-courses-coursera.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/five-websites-ai-courses-google.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/five-websites-ai-courses-leland.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/five-websites-ai-courses-maven.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/five-websites-ai-courses-title.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/five-websites-maven-trending-workshop.png": {
+    "width": 814,
+    "height": 1024
+  },
+  "/ai-guides/global-context-claude-step-3-user-md.png": {
+    "width": 690,
+    "height": 396
+  },
+  "/ai-guides/global-context-claude-step-4-claude-md-location.png": {
+    "width": 336,
+    "height": 90
+  },
+  "/ai-guides/global-context-claude-step-5-claude-md-short.png": {
+    "width": 818,
+    "height": 650
+  },
+  "/ai-guides/haircut-analysis-result-2.png": {
+    "width": 682,
+    "height": 1024
+  },
+  "/ai-guides/haircut-analysis-result.png": {
+    "width": 682,
+    "height": 1024
+  },
+  "/ai-guides/health-dashboard-claude-config-mcp.png": {
+    "width": 589,
+    "height": 1024
+  },
+  "/ai-guides/health-dashboard-daily-glance.png": {
+    "width": 1024,
+    "height": 975
+  },
+  "/ai-guides/health-dashboard-oura-install.png": {
+    "width": 930,
+    "height": 312
+  },
+  "/ai-guides/health-dashboard-oura-token.png": {
+    "width": 808,
+    "height": 435
+  },
+  "/ai-guides/health-dashboard-weekly-plan.png": {
+    "width": 998,
+    "height": 1024
+  },
+  "/ai-guides/health-dashboard-weekly-view.png": {
+    "width": 1024,
+    "height": 596
+  },
+  "/ai-guides/ibkr-claude-ai-instructions-queue.png": {
+    "width": 800,
+    "height": 995
+  },
+  "/ai-guides/ibkr-claude-connector-directory.png": {
+    "width": 1005,
+    "height": 809
+  },
+  "/ai-guides/ibkr-claude-login-screen.png": {
+    "width": 544,
+    "height": 426
+  },
+  "/ai-guides/instasights-step-1-hero.png": {
+    "width": 1024,
+    "height": 604
+  },
+  "/ai-guides/instasights-step-2-installation.png": {
+    "width": 1024,
+    "height": 735
+  },
+  "/ai-guides/instasights-step-3-examples.png": {
+    "width": 981,
+    "height": 890
+  },
+  "/ai-guides/instasights-step-4-included-data.png": {
+    "width": 981,
+    "height": 507
+  },
+  "/ai-guides/listen-labs-founder-program.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/ai-guides/makeup-consultant-input.png": {
+    "width": 768,
+    "height": 1024
+  },
+  "/ai-guides/makeup-consultant-result.png": {
+    "width": 682,
+    "height": 1024
+  },
+  "/ai-guides/maven-master-claude-may-22-banner.jpg": {
+    "width": 1024,
+    "height": 288
+  },
+  "/ai-guides/meta-ads-add-custom-connector.png": {
+    "width": 1024,
+    "height": 818
+  },
+  "/ai-guides/meta-ads-connect-button.png": {
+    "width": 792,
+    "height": 568
+  },
+  "/ai-guides/meta-ads-oauth-connect.png": {
+    "width": 877,
+    "height": 1024
+  },
+  "/ai-guides/meta-ads-oauth-permissions.png": {
+    "width": 884,
+    "height": 1024
+  },
+  "/ai-guides/meta-ads-tool-permissions.png": {
+    "width": 1024,
+    "height": 916
+  },
+  "/ai-guides/mika-nick-cockpit-wedding-flight.png": {
+    "width": 768,
+    "height": 1024
+  },
+  "/ai-guides/paperclip-agent-adapter-types.png": {
+    "width": 449,
+    "height": 952
+  },
+  "/ai-guides/paperclip-company-mission.png": {
+    "width": 481,
+    "height": 389
+  },
+  "/ai-guides/paperclip-costs-dashboard.png": {
+    "width": 1024,
+    "height": 797
+  },
+  "/ai-guides/paperclip-create-first-agent.png": {
+    "width": 431,
+    "height": 592
+  },
+  "/ai-guides/paperclip-first-task.png": {
+    "width": 430,
+    "height": 448
+  },
+  "/ai-guides/paperclip-install-one-command.png": {
+    "width": 568,
+    "height": 485
+  },
+  "/ai-guides/paperclip-new-goal.png": {
+    "width": 547,
+    "height": 364
+  },
+  "/ai-guides/paperclip-new-routine.png": {
+    "width": 1024,
+    "height": 812
+  },
+  "/ai-guides/paperclip-org-chart.png": {
+    "width": 1024,
+    "height": 802
+  },
+  "/ai-guides/perplexity-research-residency.png": {
+    "width": 741,
+    "height": 462
+  },
+  "/ai-guides/personal-stylist-input.png": {
+    "width": 576,
+    "height": 700
+  },
+  "/ai-guides/personal-stylist-result-men.png": {
+    "width": 682,
+    "height": 1024
+  },
+  "/ai-guides/personal-stylist-result.png": {
+    "width": 682,
+    "height": 1024
+  },
+  "/ai-guides/polsia-dashboard-shipping.png": {
+    "width": 1024,
+    "height": 558
+  },
+  "/ai-guides/polsia-idea-choice.png": {
+    "width": 906,
+    "height": 443
+  },
+  "/ai-guides/polsia-onboarding-path.png": {
+    "width": 914,
+    "height": 440
+  },
+  "/ai-guides/polsia-researching.png": {
+    "width": 389,
+    "height": 440
+  },
+  "/ai-guides/reduce-tokens-p1-01.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p1-02.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p1-03.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p1-04.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p1-05.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p1-06.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p1-07.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p1-08.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p1-09.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-ask-questions.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-batch-tasks.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-edit-button.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-new-chat-topic.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-prompt-structure.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-restart.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-session-cap.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-targeted-edit.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/reduce-tokens-p2-voice-to-text.png": {
+    "width": 819,
+    "height": 1024
+  },
+  "/ai-guides/subagents-background-tasks-menu.png": {
+    "width": 302,
+    "height": 422
+  },
+  "/ai-guides/subagents-parallel-vs-sequential.png": {
+    "width": 1008,
+    "height": 684
+  },
+  "/ai-guides/symlink-context-engineer-replies.png": {
+    "width": 622,
+    "height": 961
+  },
+  "/ai-guides/symlink-context-nick-cruz-tweet.png": {
+    "width": 590,
+    "height": 429
+  },
+  "/ai-guides/symlink-context-peter-yang-tweet.png": {
+    "width": 599,
+    "height": 501
+  },
+  "/ai-guides/tally-ai-info-page-example.png": {
+    "width": 1024,
+    "height": 1014
+  },
+  "/ai-guides/tally-llms-txt-example.png": {
+    "width": 1024,
+    "height": 886
+  },
+  "/ai-guides/vibe-coding-builders.png": {
+    "width": 308,
+    "height": 164
+  },
+  "/ai-guides/wedding-planner-notion-template.png": {
+    "width": 1024,
+    "height": 797
+  },
+  "/ai-guides/wedding-website-attire.png": {
+    "width": 952,
+    "height": 1024
+  },
+  "/ai-guides/wedding-website-homepage.png": {
+    "width": 1024,
+    "height": 655
+  },
+  "/ai-guides/wedding-website-registry-funds.png": {
+    "width": 1024,
+    "height": 847
+  },
+  "/ai-guides/wedding-website-registry-payments.png": {
+    "width": 309,
+    "height": 446
+  },
+  "/ai-guides/wedding-website-travel-guide.png": {
+    "width": 422,
+    "height": 748
+  },
+  "/ai-guides/weekly-skill-discovery-routine.png": {
+    "width": 1024,
+    "height": 890
+  },
+  "/ai-guides/what-is-skill-step-1-skills-list.png": {
+    "width": 269,
+    "height": 436
+  },
+  "/ai-guides/what-is-skill-step-2-examples-md.png": {
+    "width": 1002,
+    "height": 575
+  },
+  "/ai-guides/what-is-skill-step-3-anthropic-guide-cover.png": {
+    "width": 988,
+    "height": 779
+  },
+  "/blog-assets/2018-year-end-review/000.png": {
+    "width": 692,
+    "height": 386
+  },
+  "/blog-assets/a-not-so-lyrical-but-equally-meaningful-ode-to-mentors/000.png": {
+    "width": 1138,
+    "height": 427
+  },
+  "/blog-assets/a-wow-airbnb-words-of-wisdom/000.png": {
+    "width": 690,
+    "height": 381
+  },
+  "/blog-assets/arriving-home/000.png": {
+    "width": 548,
+    "height": 318
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/000.png": {
+    "width": 739,
+    "height": 547
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/001.png": {
+    "width": 1757,
+    "height": 1208
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/002.png": {
+    "width": 1211,
+    "height": 758
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/003.png": {
+    "width": 1206,
+    "height": 596
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/004.png": {
+    "width": 1227,
+    "height": 1188
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/005.png": {
+    "width": 736,
+    "height": 736
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/006.png": {
+    "width": 1385,
+    "height": 752
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/007.png": {
+    "width": 747,
+    "height": 887
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/008.png": {
+    "width": 749,
+    "height": 871
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/009.png": {
+    "width": 471,
+    "height": 293
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/010.png": {
+    "width": 751,
+    "height": 716
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/011.png": {
+    "width": 739,
+    "height": 1028
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/012.png": {
+    "width": 547,
+    "height": 415
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/013.png": {
+    "width": 1035,
+    "height": 153
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/014.png": {
+    "width": 1053,
+    "height": 1195
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/015.png": {
+    "width": 751,
+    "height": 925
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/016.png": {
+    "width": 522,
+    "height": 536
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/017.png": {
+    "width": 618,
+    "height": 309
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/018.png": {
+    "width": 499,
+    "height": 361
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/019.png": {
+    "width": 1157,
+    "height": 1244
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/020.png": {
+    "width": 715,
+    "height": 1141
+  },
+  "/blog-assets/building-mvp-of-an-faq-management-tool/021.png": {
+    "width": 899,
+    "height": 383
+  },
+  "/blog-assets/built-an-app-in-1-hour-with-ai/000.png": {
+    "width": 1640,
+    "height": 1160
+  },
+  "/blog-assets/check-in-30-days-in-my-pm-job/000.png": {
+    "width": 700,
+    "height": 393
+  },
+  "/blog-assets/come-for-the-value-prop-stay-for-the-community/000.png": {
+    "width": 1070,
+    "height": 758
+  },
+  "/blog-assets/come-for-the-value-prop-stay-for-the-community/001.png": {
+    "width": 1030,
+    "height": 710
+  },
+  "/blog-assets/come-for-the-value-prop-stay-for-the-community/002.png": {
+    "width": 480,
+    "height": 853
+  },
+  "/blog-assets/creative-marketing-with-2-cents/000.png": {
+    "width": 885,
+    "height": 1184
+  },
+  "/blog-assets/dehumanization-is-not-the-answer-to-equality/000.png": {
+    "width": 701,
+    "height": 394
+  },
+  "/blog-assets/forced-situations-keep-us-innovative/000.png": {
+    "width": 697,
+    "height": 396
+  },
+  "/blog-assets/from-near-deportation-to-linkedin-pm/000.png": {
+    "width": 701,
+    "height": 392
+  },
+  "/blog-assets/getting-hate-as-a-founder/000.png": {
+    "width": 1320,
+    "height": 1858
+  },
+  "/blog-assets/getting-hate-as-a-founder/001.png": {
+    "width": 1984,
+    "height": 1774
+  },
+  "/blog-assets/getting-hate-as-a-founder/002.png": {
+    "width": 908,
+    "height": 182
+  },
+  "/blog-assets/go-small-to-go-big/000.png": {
+    "width": 1026,
+    "height": 276
+  },
+  "/blog-assets/hacks-for-the-early-career-techie/000.png": {
+    "width": 703,
+    "height": 506
+  },
+  "/blog-assets/horizons-faq-from-a-horizons-fellow/000.png": {
+    "width": 700,
+    "height": 470
+  },
+  "/blog-assets/horizontals-and-verticals-in-a-remote-first-world/000.png": {
+    "width": 1324,
+    "height": 1252
+  },
+  "/blog-assets/horizontals-and-verticals-in-a-remote-first-world/001.png": {
+    "width": 1380,
+    "height": 1274
+  },
+  "/blog-assets/horizontals-and-verticals-in-a-remote-first-world/002.png": {
+    "width": 1336,
+    "height": 1252
+  },
+  "/blog-assets/how-do-we-knowourcustomer/000.png": {
+    "width": 1532,
+    "height": 802
+  },
+  "/blog-assets/how-do-we-knowourcustomer/001.png": {
+    "width": 1262,
+    "height": 510
+  },
+  "/blog-assets/how-i-prepped-for-my-pm-interviews/000.png": {
+    "width": 698,
+    "height": 392
+  },
+  "/blog-assets/how-i-prepped-for-my-pm-interviews/001.png": {
+    "width": 706,
+    "height": 946
+  },
+  "/blog-assets/how-i-prepped-for-my-pm-interviews/002.png": {
+    "width": 709,
+    "height": 947
+  },
+  "/blog-assets/how-i-prepped-for-my-pm-interviews/003.png": {
+    "width": 704,
+    "height": 948
+  },
+  "/blog-assets/how-i-prepped-for-my-pm-interviews/004.png": {
+    "width": 699,
+    "height": 934
+  },
+  "/blog-assets/how-to-build-a-kickass-life-by-kevin-dahlstrom/000.png": {
+    "width": 1619,
+    "height": 1214
+  },
+  "/blog-assets/how-to-build-a-kickass-life-by-kevin-dahlstrom/001.png": {
+    "width": 2608,
+    "height": 1182
+  },
+  "/blog-assets/how-to-get-a-pm-role-out-of-college/000.png": {
+    "width": 701,
+    "height": 393
+  },
+  "/blog-assets/how-to-hard-launch-your-company/000.png": {
+    "width": 894,
+    "height": 1712
+  },
+  "/blog-assets/how-to-hard-launch-your-company/001.png": {
+    "width": 1624,
+    "height": 1214
+  },
+  "/blog-assets/how-to-hard-launch-your-company/002.png": {
+    "width": 1432,
+    "height": 1172
+  },
+  "/blog-assets/how-to-hard-launch-your-company/003.png": {
+    "width": 1722,
+    "height": 1276
+  },
+  "/blog-assets/how-to-not-get-hired/000.png": {
+    "width": 542,
+    "height": 380
+  },
+  "/blog-assets/how-to-prevent-cash-grabs/000.png": {
+    "width": 1536,
+    "height": 1050
+  },
+  "/blog-assets/igtv-vs-youtube-who-will-win-the-fight/000.png": {
+    "width": 701,
+    "height": 393
+  },
+  "/blog-assets/kp-fellowship-faq/000.png": {
+    "width": 768,
+    "height": 432
+  },
+  "/blog-assets/learnings-on-prep-for-press-and-pr/000.png": {
+    "width": 812,
+    "height": 650
+  },
+  "/blog-assets/learnings-on-prep-for-press-and-pr/001.png": {
+    "width": 808,
+    "height": 678
+  },
+  "/blog-assets/life-in-the-time-of-corona/000.png": {
+    "width": 275,
+    "height": 183
+  },
+  "/blog-assets/life-in-the-time-of-corona/001.png": {
+    "width": 2264,
+    "height": 1191
+  },
+  "/blog-assets/life-in-the-time-of-corona/002.png": {
+    "width": 2527,
+    "height": 1002
+  },
+  "/blog-assets/literal-win-placing-at-the-solana-riptide-hackathon-2022/000.png": {
+    "width": 3328,
+    "height": 1852
+  },
+  "/blog-assets/managing-startup-crises/000.png": {
+    "width": 2512,
+    "height": 200
+  },
+  "/blog-assets/managing-startup-crises/001.png": {
+    "width": 1124,
+    "height": 534
+  },
+  "/blog-assets/managing-startup-crises/002.png": {
+    "width": 506,
+    "height": 66
+  },
+  "/blog-assets/managing-startup-crises/003.png": {
+    "width": 1390,
+    "height": 152
+  },
+  "/blog-assets/managing-startup-crises/004.png": {
+    "width": 2466,
+    "height": 268
+  },
+  "/blog-assets/managing-startup-crises/005.png": {
+    "width": 886,
+    "height": 84
+  },
+  "/blog-assets/my-big-decisions-journal/000.png": {
+    "width": 800,
+    "height": 1090
+  },
+  "/blog-assets/my-deep-dive-into-the-cfo-stack/000.png": {
+    "width": 1400,
+    "height": 743
+  },
+  "/blog-assets/my-favorite-products-of-2018/000.png": {
+    "width": 702,
+    "height": 396
+  },
+  "/blog-assets/my-favorite-ted-talk-a-call-for-empathy-in-gender-issues-beyond/000.png": {
+    "width": 702,
+    "height": 392
+  },
+  "/blog-assets/my-real-estate-journey/000.png": {
+    "width": 4076,
+    "height": 1988
+  },
+  "/blog-assets/my-real-estate-journey/001.png": {
+    "width": 4088,
+    "height": 1860
+  },
+  "/blog-assets/on-live-tv/000.png": {
+    "width": 2011,
+    "height": 1071
+  },
+  "/blog-assets/on-live-tv/001.png": {
+    "width": 1014,
+    "height": 544
+  },
+  "/blog-assets/on-opportunity-vs-happiness/000.png": {
+    "width": 692,
+    "height": 454
+  },
+  "/blog-assets/onboarding-users-1-on-1/000.png": {
+    "width": 896,
+    "height": 80
+  },
+  "/blog-assets/one-pretty-badass-woman/000.png": {
+    "width": 1404,
+    "height": 932
+  },
+  "/blog-assets/one-pretty-badass-woman/001.png": {
+    "width": 1388,
+    "height": 568
+  },
+  "/blog-assets/one-pretty-badass-woman/002.png": {
+    "width": 533,
+    "height": 711
+  },
+  "/blog-assets/pricing-page-magic-tricks/000.png": {
+    "width": 678,
+    "height": 417
+  },
+  "/blog-assets/product-interview-tips/000.png": {
+    "width": 696,
+    "height": 539
+  },
+  "/blog-assets/product-management-interviews-for-newbs/000.png": {
+    "width": 714,
+    "height": 397
+  },
+  "/blog-assets/reflections-of-the-lost-and-temporarily-found/000.png": {
+    "width": 701,
+    "height": 439
+  },
+  "/blog-assets/reframing-disadvantage/000.png": {
+    "width": 1188,
+    "height": 818
+  },
+  "/blog-assets/the-great-obsolescence-of-paper/000.png": {
+    "width": 696,
+    "height": 496
+  },
+  "/blog-assets/the-ironic-story-towards-finding-my-north-star/000.png": {
+    "width": 1260,
+    "height": 701
+  },
+  "/blog-assets/the-kp-fellowship-a-how-to-guide/000.png": {
+    "width": 682,
+    "height": 373
+  },
+  "/blog-assets/the-summer-i-turned-adult/000.png": {
+    "width": 697,
+    "height": 390
+  },
+  "/blog-assets/the-ultimate-millenials-personal-finance-guide-part-1-budgeting/000.png": {
+    "width": 703,
+    "height": 375
+  },
+  "/blog-assets/the-ultimate-millenials-personal-finance-guide-part-2-saving/000.png": {
+    "width": 900,
+    "height": 400
+  },
+  "/blog-assets/this-2020-set-yourself-up-for-success/000.png": {
+    "width": 1100,
+    "height": 733
+  },
+  "/blog-assets/to-the-women-who-are-too-nice/000.png": {
+    "width": 689,
+    "height": 640
+  },
+  "/blog-assets/weekly-mtgs/000.png": {
+    "width": 214,
+    "height": 288
+  },
+  "/blog-assets/were-launching-consensus/000.png": {
+    "width": 662,
+    "height": 333
+  },
+  "/blog-assets/what-i-learned-as-an-airbnb-host/000.png": {
+    "width": 564,
+    "height": 420
+  },
+  "/blog-assets/what-would-my-ideal-university-of-the-future-look-like/000.png": {
+    "width": 2000,
+    "height": 1333
+  },
+  "/blog-assets/wishful-longing/000.png": {
+    "width": 707,
+    "height": 398
+  },
+  "/decks/_library/-hbr-agent-managers.png": {
+    "width": 1996,
+    "height": 1858
+  },
+  "/decks/_library/5-things-you-did-this-week.gif": {
+    "width": 498,
+    "height": 498
+  },
+  "/decks/_library/Screenshot 2026-07-04 at 1.56.38 PM.png": {
+    "width": 739,
+    "height": 406
+  },
+  "/decks/_library/Screenshot 2026-07-04 at 1.57.08 PM.png": {
+    "width": 744,
+    "height": 430
+  },
+  "/decks/_library/Screenshot 2026-07-08 at 4.32.43 PM.png": {
+    "width": 1536,
+    "height": 612
+  },
+  "/decks/_library/Screenshot 2026-07-08 at 4.32.47 PM.png": {
+    "width": 1508,
+    "height": 538
+  },
+  "/decks/_library/Screenshot 2026-07-08 at 4.32.51 PM.png": {
+    "width": 1394,
+    "height": 952
+  },
+  "/decks/_library/Screenshot 2026-07-08 at 4.33.22 PM.png": {
+    "width": 1524,
+    "height": 542
+  },
+  "/decks/_library/Screenshot 2026-07-08 at 4.33.57 PM.png": {
+    "width": 1930,
+    "height": 780
+  },
+  "/decks/_library/Screenshot 2026-07-08 at 4.34.04 PM.png": {
+    "width": 1978,
+    "height": 666
+  },
+  "/decks/_library/Screenshot 2026-07-08 at 4.34.14 PM.png": {
+    "width": 1902,
+    "height": 818
+  },
+  "/decks/_library/Screenshot 2026-07-08 at 4.34.19 PM.png": {
+    "width": 1880,
+    "height": 962
+  },
+  "/decks/_library/Screenshot 2026-07-09 at 4.23.54 PM.png": {
+    "width": 814,
+    "height": 477
+  },
+  "/decks/_library/academic.gif": {
+    "width": 245,
+    "height": 200
+  },
+  "/decks/_library/account-brief-output-more.png": {
+    "width": 649,
+    "height": 838
+  },
+  "/decks/_library/account-brief-output.png": {
+    "width": 1024,
+    "height": 560
+  },
+  "/decks/_library/ai-agent.webp": {
+    "width": 958,
+    "height": 538
+  },
+  "/decks/_library/ai-agreeable-than-human.png": {
+    "width": 3200,
+    "height": 1044
+  },
+  "/decks/_library/ai-guides-preview.png": {
+    "width": 842,
+    "height": 968
+  },
+  "/decks/_library/ai-lab-logos.png": {
+    "width": 1600,
+    "height": 900
+  },
+  "/decks/_library/ai-multicolored.gif": {
+    "width": 480,
+    "height": 366
+  },
+  "/decks/_library/altman-dario-jobs-walkback.jpg": {
+    "width": 960,
+    "height": 1200
+  },
+  "/decks/_library/andrej-karpathy.jpg": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/decks/_library/andrew-ng-3-loops-1.jpeg": {
+    "width": 1200,
+    "height": 676
+  },
+  "/decks/_library/andrew-ng-3-loops-2.jpeg": {
+    "width": 1200,
+    "height": 676
+  },
+  "/decks/_library/andrew-ng-3-loops-3.jpeg": {
+    "width": 1200,
+    "height": 676
+  },
+  "/decks/_library/andrew-ng-3-loops-4.jpeg": {
+    "width": 1200,
+    "height": 676
+  },
+  "/decks/_library/andrew-ng-the-batch.png": {
+    "width": 1266,
+    "height": 810
+  },
+  "/decks/_library/andrew-ng.jpeg": {
+    "width": 609,
+    "height": 503
+  },
+  "/decks/_library/anthropic-400k-job-headline.png": {
+    "width": 1692,
+    "height": 1168
+  },
+  "/decks/_library/anthropic-head-of-copy-and-content-jd-1.png": {
+    "width": 3228,
+    "height": 1896
+  },
+  "/decks/_library/anthropic-head-of-copy-and-content-jd-2.png": {
+    "width": 2998,
+    "height": 654
+  },
+  "/decks/_library/anthropic-head-of-copy-and-content.png": {
+    "width": 2622,
+    "height": 1446
+  },
+  "/decks/_library/anthropic-pm-salary.png": {
+    "width": 1570,
+    "height": 679
+  },
+  "/decks/_library/anthropic-salary-400k.png": {
+    "width": 1758,
+    "height": 630
+  },
+  "/decks/_library/april-underwood-intern-tweet.png": {
+    "width": 2880,
+    "height": 1366
+  },
+  "/decks/_library/april-underwood-linkedin.png": {
+    "width": 1464,
+    "height": 1184
+  },
+  "/decks/_library/attention-please.gif": {
+    "width": 480,
+    "height": 268
+  },
+  "/decks/_library/ben-cera.png": {
+    "width": 663,
+    "height": 426
+  },
+  "/decks/_library/block_layoff.png": {
+    "width": 1028,
+    "height": 1300
+  },
+  "/decks/_library/block_layoff_stock_up.jpeg": {
+    "width": 1280,
+    "height": 834
+  },
+  "/decks/_library/boris-cherny.jpeg": {
+    "width": 2000,
+    "height": 1355
+  },
+  "/decks/_library/brittney-action-items.png": {
+    "width": 845,
+    "height": 389
+  },
+  "/decks/_library/brittney-slack-approval.png": {
+    "width": 772,
+    "height": 802
+  },
+  "/decks/_library/brittney-tong-linkedin.png": {
+    "width": 645,
+    "height": 421
+  },
+  "/decks/_library/brittney-tong-video.png": {
+    "width": 1024,
+    "height": 555
+  },
+  "/decks/_library/bussin.gif": {
+    "width": 480,
+    "height": 320
+  },
+  "/decks/_library/canary.jpeg": {
+    "width": 638,
+    "height": 480
+  },
+  "/decks/_library/ceo-starter-kit.png": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/chairman.jpg": {
+    "width": 612,
+    "height": 408
+  },
+  "/decks/_library/claude-context-window.png": {
+    "width": 1301,
+    "height": 507
+  },
+  "/decks/_library/claude-corps-hero.webp": {
+    "width": 3840,
+    "height": 2160
+  },
+  "/decks/_library/claude-corps-nonprofits.png": {
+    "width": 1536,
+    "height": 936
+  },
+  "/decks/_library/claude-logo.png": {
+    "width": 10240,
+    "height": 2199
+  },
+  "/decks/_library/claude-tag-cover.png": {
+    "width": 2400,
+    "height": 1260
+  },
+  "/decks/_library/claude-tag-learns.png": {
+    "width": 662,
+    "height": 477
+  },
+  "/decks/_library/claude-tag-multiplayer.png": {
+    "width": 668,
+    "height": 471
+  },
+  "/decks/_library/claude-tag-proactive.png": {
+    "width": 653,
+    "height": 490
+  },
+  "/decks/_library/clear-command.png": {
+    "width": 1425,
+    "height": 565
+  },
+  "/decks/_library/clock.gif": {
+    "width": 500,
+    "height": 378
+  },
+  "/decks/_library/coding-agents-in-one.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/decks/_library/compact-command.png": {
+    "width": 1564,
+    "height": 738
+  },
+  "/decks/_library/competition-is-fierce.gif": {
+    "width": 498,
+    "height": 498
+  },
+  "/decks/_library/content-scheduled-review.png": {
+    "width": 1280,
+    "height": 973
+  },
+  "/decks/_library/countdown-timer.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/cowork-skill-creation.png": {
+    "width": 797,
+    "height": 337
+  },
+  "/decks/_library/ctos-joining-anthropic.png": {
+    "width": 1554,
+    "height": 1216
+  },
+  "/decks/_library/dario-amodei.jpeg": {
+    "width": 554,
+    "height": 554
+  },
+  "/decks/_library/demo-account-builder-command.png": {
+    "width": 1004,
+    "height": 473
+  },
+  "/decks/_library/demo-call-transcript-command.png": {
+    "width": 1024,
+    "height": 560
+  },
+  "/decks/_library/doctor-with-patient.jpg": {
+    "width": 612,
+    "height": 293
+  },
+  "/decks/_library/dog-and-money.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/doomscrolling.jpg": {
+    "width": 1600,
+    "height": 900
+  },
+  "/decks/_library/dream-team.gif": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/decks/_library/dumb-headbang.gif": {
+    "width": 498,
+    "height": 374
+  },
+  "/decks/_library/dumber.gif": {
+    "width": 498,
+    "height": 374
+  },
+  "/decks/_library/effort-extra-high.png": {
+    "width": 450,
+    "height": 274
+  },
+  "/decks/_library/effort-high.png": {
+    "width": 650,
+    "height": 492
+  },
+  "/decks/_library/effort-low.png": {
+    "width": 652,
+    "height": 490
+  },
+  "/decks/_library/effort-max.png": {
+    "width": 652,
+    "height": 486
+  },
+  "/decks/_library/effort-medium.png": {
+    "width": 652,
+    "height": 494
+  },
+  "/decks/_library/effort-preview.png": {
+    "width": 2564,
+    "height": 1294
+  },
+  "/decks/_library/effort-ultra-code.png": {
+    "width": 452,
+    "height": 214
+  },
+  "/decks/_library/elmo-fire.gif": {
+    "width": 346,
+    "height": 236
+  },
+  "/decks/_library/f30u30-logo.png": {
+    "width": 225,
+    "height": 225
+  },
+  "/decks/_library/fable-5.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/decks/_library/fellowship-perplexity.png": {
+    "width": 741,
+    "height": 462
+  },
+  "/decks/_library/flash-speed-meme.gif": {
+    "width": 498,
+    "height": 373
+  },
+  "/decks/_library/freeman-logo.png": {
+    "width": 225,
+    "height": 225
+  },
+  "/decks/_library/friends-kumbayah.gif": {
+    "width": 480,
+    "height": 270
+  },
+  "/decks/_library/goldman-sachs-logo.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/decks/_library/google-logo.png": {
+    "width": 2400,
+    "height": 811
+  },
+  "/decks/_library/hamster-wheel.webp": {
+    "width": 480,
+    "height": 253
+  },
+  "/decks/_library/headline-jobs.png": {
+    "width": 1710,
+    "height": 1774
+  },
+  "/decks/_library/hello-i-like-money.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/hermes-agent-memory.webp": {
+    "width": 1200,
+    "height": 630
+  },
+  "/decks/_library/history.gif": {
+    "width": 540,
+    "height": 540
+  },
+  "/decks/_library/home-productivity.jpg": {
+    "width": 1500,
+    "height": 1000
+  },
+  "/decks/_library/how-to-books.jpg": {
+    "width": 1000,
+    "height": 800
+  },
+  "/decks/_library/human-evolution.gif": {
+    "width": 500,
+    "height": 500
+  },
+  "/decks/_library/human-vs-ai.gif": {
+    "width": 480,
+    "height": 270
+  },
+  "/decks/_library/i-am-the-practitioner.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/instagram-cto-anthropic.png": {
+    "width": 1768,
+    "height": 1086
+  },
+  "/decks/_library/job-description.webp": {
+    "width": 768,
+    "height": 432
+  },
+  "/decks/_library/just-smile-and-wave.gif": {
+    "width": 498,
+    "height": 370
+  },
+  "/decks/_library/kabuki.jpg": {
+    "width": 1067,
+    "height": 1600
+  },
+  "/decks/_library/kickbacks-homepage.png": {
+    "width": 2212,
+    "height": 1220
+  },
+  "/decks/_library/kickbacks-one-line-setup.png": {
+    "width": 3014,
+    "height": 710
+  },
+  "/decks/_library/kleiner-perkins-logo.png": {
+    "width": 199,
+    "height": 88
+  },
+  "/decks/_library/layoffs.jpg": {
+    "width": 1024,
+    "height": 576
+  },
+  "/decks/_library/lets-build.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/llm-council.jpg": {
+    "width": 1024,
+    "height": 506
+  },
+  "/decks/_library/low-batt.gif": {
+    "width": 480,
+    "height": 271
+  },
+  "/decks/_library/marketing-spongebob.gif": {
+    "width": 400,
+    "height": 258
+  },
+  "/decks/_library/mckinsey-logo.png": {
+    "width": 380,
+    "height": 132
+  },
+  "/decks/_library/messaging-app-logos.webp": {
+    "width": 1050,
+    "height": 600
+  },
+  "/decks/_library/mika-canary-rule.png": {
+    "width": 1201,
+    "height": 482
+  },
+  "/decks/_library/mika-linkedin-hero.png": {
+    "width": 1291,
+    "height": 841
+  },
+  "/decks/_library/model-command.png": {
+    "width": 1099,
+    "height": 415
+  },
+  "/decks/_library/money-in-your-pocket.jpeg": {
+    "width": 299,
+    "height": 169
+  },
+  "/decks/_library/openai-860k-salary.png": {
+    "width": 2466,
+    "height": 928
+  },
+  "/decks/_library/openai-logo.png": {
+    "width": 3840,
+    "height": 1042
+  },
+  "/decks/_library/openclaw-logo.png": {
+    "width": 3840,
+    "height": 789
+  },
+  "/decks/_library/optical-illusion.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/paperclip-logo.png": {
+    "width": 998,
+    "height": 280
+  },
+  "/decks/_library/peter-steinberger.jpg": {
+    "width": 700,
+    "height": 400
+  },
+  "/decks/_library/polsia-homepage.png": {
+    "width": 3380,
+    "height": 1988
+  },
+  "/decks/_library/polsia-logo.png": {
+    "width": 360,
+    "height": 140
+  },
+  "/decks/_library/polsia-team.png": {
+    "width": 2222,
+    "height": 1554
+  },
+  "/decks/_library/ponytail-github.png": {
+    "width": 1578,
+    "height": 1266
+  },
+  "/decks/_library/puppet-strings.jpg": {
+    "width": 574,
+    "height": 360
+  },
+  "/decks/_library/quite-a-gap.gif": {
+    "width": 220,
+    "height": 220
+  },
+  "/decks/_library/ramp-ai-jobs-study.png": {
+    "width": 1362,
+    "height": 985
+  },
+  "/decks/_library/ramp-headcount-study-graph-zoomed.png": {
+    "width": 1218,
+    "height": 486
+  },
+  "/decks/_library/ramp-headcount-study-graph.png": {
+    "width": 1298,
+    "height": 824
+  },
+  "/decks/_library/ramp-logo.png": {
+    "width": 1198,
+    "height": 342
+  },
+  "/decks/_library/ramp-study-takeaways.png": {
+    "width": 1041,
+    "height": 343
+  },
+  "/decks/_library/rohan-linkedin.png": {
+    "width": 667,
+    "height": 419
+  },
+  "/decks/_library/rohan_post_preview.png": {
+    "width": 1952,
+    "height": 1916
+  },
+  "/decks/_library/sales-sales-sales.gif": {
+    "width": 498,
+    "height": 235
+  },
+  "/decks/_library/sam-altman.jpeg": {
+    "width": 640,
+    "height": 480
+  },
+  "/decks/_library/scattered-sales-tools.webp": {
+    "width": 1520,
+    "height": 760
+  },
+  "/decks/_library/sending-good-vibes.gif": {
+    "width": 640,
+    "height": 480
+  },
+  "/decks/_library/skeptic.gif": {
+    "width": 240,
+    "height": 266
+  },
+  "/decks/_library/slash-agents.gif": {
+    "width": 480,
+    "height": 270
+  },
+  "/decks/_library/slash-background.gif": {
+    "width": 334,
+    "height": 480
+  },
+  "/decks/_library/slash-branch.gif": {
+    "width": 343,
+    "height": 480
+  },
+  "/decks/_library/slash-compact.gif": {
+    "width": 270,
+    "height": 480
+  },
+  "/decks/_library/slash-context.gif": {
+    "width": 480,
+    "height": 326
+  },
+  "/decks/_library/slash-goal.gif": {
+    "width": 480,
+    "height": 270
+  },
+  "/decks/_library/slash-loop.gif": {
+    "width": 400,
+    "height": 400
+  },
+  "/decks/_library/slash-memory.gif": {
+    "width": 400,
+    "height": 234
+  },
+  "/decks/_library/slash-model.gif": {
+    "width": 308,
+    "height": 480
+  },
+  "/decks/_library/slash-plan.gif": {
+    "width": 480,
+    "height": 270
+  },
+  "/decks/_library/slash-rewind.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/slash-schedule.gif": {
+    "width": 480,
+    "height": 304
+  },
+  "/decks/_library/slash-security-review.gif": {
+    "width": 271,
+    "height": 480
+  },
+  "/decks/_library/spc-fellowship-logo.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/decks/_library/spongebob-writing-notepad.gif": {
+    "width": 245,
+    "height": 200
+  },
+  "/decks/_library/stanford-logo.png": {
+    "width": 738,
+    "height": 240
+  },
+  "/decks/_library/stanford-report-ai-home-productivity-hero.png": {
+    "width": 1322,
+    "height": 712
+  },
+  "/decks/_library/stanford-report-ai-yes-man.png": {
+    "width": 2252,
+    "height": 982
+  },
+  "/decks/_library/starbucks-ai-inventory-headline.jpeg": {
+    "width": 400,
+    "height": 500
+  },
+  "/decks/_library/subagents-background-task-menu.png": {
+    "width": 302,
+    "height": 422
+  },
+  "/decks/_library/subagents-background-task.png": {
+    "width": 815,
+    "height": 554
+  },
+  "/decks/_library/subagents-boris-announcement.png": {
+    "width": 950,
+    "height": 986
+  },
+  "/decks/_library/subagents-where-is-the-task.png": {
+    "width": 779,
+    "height": 260
+  },
+  "/decks/_library/sweating-a-lot.gif": {
+    "width": 299,
+    "height": 225
+  },
+  "/decks/_library/target-dont-miss.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/throwing-money.gif": {
+    "width": 498,
+    "height": 280
+  },
+  "/decks/_library/tick-tick-timebomb.gif": {
+    "width": 245,
+    "height": 230
+  },
+  "/decks/_library/tim-ferriss-essay.png": {
+    "width": 852,
+    "height": 760
+  },
+  "/decks/_library/tim-ferriss.jpeg": {
+    "width": 611,
+    "height": 502
+  },
+  "/decks/_library/timeline-break.jpeg": {
+    "width": 2177,
+    "height": 1440
+  },
+  "/decks/_library/timeline-breaking-in.jpeg": {
+    "width": 1920,
+    "height": 1440
+  },
+  "/decks/_library/timeline-creating-the-path.jpeg": {
+    "width": 1920,
+    "height": 1440
+  },
+  "/decks/_library/timeline-founder-life.jpeg": {
+    "width": 1170,
+    "height": 1483
+  },
+  "/decks/_library/timeline-origins.jpeg": {
+    "width": 487,
+    "height": 720
+  },
+  "/decks/_library/timeline-scholarship.jpeg": {
+    "width": 2048,
+    "height": 1366
+  },
+  "/decks/_library/timeline-terms.jpg": {
+    "width": 4369,
+    "height": 3277
+  },
+  "/decks/_library/tip-jar.gif": {
+    "width": 500,
+    "height": 277
+  },
+  "/decks/_library/trickle-down-economics.gif": {
+    "width": 500,
+    "height": 281
+  },
+  "/decks/_library/tunnel-vision.gif": {
+    "width": 500,
+    "height": 281
+  },
+  "/decks/_library/two-people-who-annoy-me.png": {
+    "width": 747,
+    "height": 243
+  },
+  "/decks/_library/vending-machine.gif": {
+    "width": 498,
+    "height": 373
+  },
+  "/decks/_library/win-o-clock.gif": {
+    "width": 480,
+    "height": 480
+  },
+  "/decks/_library/workday-cto-anthropic.png": {
+    "width": 1480,
+    "height": 1076
+  },
+  "/decks/_library/working-while-sleeping.webp": {
+    "width": 1376,
+    "height": 768
+  },
+  "/decks/_library/world-cup.gif": {
+    "width": 540,
+    "height": 540
+  },
+  "/decks/_library/yair-coach.png": {
+    "width": 896,
+    "height": 953
+  },
+  "/decks/_library/yc-building-agents.jpeg": {
+    "width": 1902,
+    "height": 1094
+  },
+  "/decks/_library/yc-homepage.png": {
+    "width": 1808,
+    "height": 890
+  },
+  "/decks/_library/yc-p26-business-model.jpeg": {
+    "width": 1926,
+    "height": 1108
+  },
+  "/decks/_library/yc-p26-industry.jpeg": {
+    "width": 1922,
+    "height": 940
+  },
+  "/decks/_library/yc-p26-stats-intro.png": {
+    "width": 2872,
+    "height": 1416
+  },
+  "/decks/_library/you-do-you-boo.gif": {
+    "width": 480,
+    "height": 336
+  },
+  "/decks/_library/you-have-taste.gif": {
+    "width": 480,
+    "height": 360
+  },
+  "/lightning-lesson-may-7-2026.png": {
+    "width": 1024,
+    "height": 576
+  },
+  "/media-kit/mika-reyes.png": {
+    "width": 747,
+    "height": 1024
+  },
+  "/mika-reyes-logo.png": {
+    "width": 130,
+    "height": 130
+  },
+  "/mika-reyes.jpg": {
+    "width": 5340,
+    "height": 3560
+  },
+  "/og-image.jpg": {
+    "width": 1200,
+    "height": 630
+  },
+  "/press-logos/rappler.png": {
+    "width": 786,
+    "height": 198
+  },
+  "/press-logos/tech-in-asia.png": {
+    "width": 934,
+    "height": 176
+  },
+  "/press/covers/abi-marquez-arshie-larga-ez-mil-take-spot-on-forbes-30-under-30-asia-2024-list-when-in-manila-0.png": {
+    "width": 1442,
+    "height": 752
+  },
+  "/press/covers/backscoop-founder-feature-0.png": {
+    "width": 1200,
+    "height": 630
+  },
+  "/press/covers/circle-founder-story-mika-from-parallax-0.png": {
+    "width": 1200,
+    "height": 630
+  },
+  "/press/covers/ez-mil-lumpia-queen-5-other-pinoys-make-it-to-forbes-asia-30-under-30-list-abs-cbn-0.png": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/press/covers/forbes-30-under-30-finance-venture-capital-forbes-0.png": {
+    "width": 1978,
+    "height": 872
+  },
+  "/press/covers/hackernoon-how-mika-reyes-got-her-job-at-linkedin-as-a-product-manager-0.png": {
+    "width": 2502,
+    "height": 1382
+  },
+  "/press/covers/hustleshare-podcast-mika-reyes-the-hustle-of-a-product-manager-0.png": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/press/covers/kumu-kwentuhan-the-making-of-an-app-early-days-at-kumu-0.png": {
+    "width": 1256,
+    "height": 454
+  },
+  "/press/covers/kumu-kwentuhan-the-women-of-kumu-0.png": {
+    "width": 1280,
+    "height": 436
+  },
+  "/press/covers/launching-parallax-linkedin-0.png": {
+    "width": 942,
+    "height": 1028
+  },
+  "/press/covers/launching-parallax-twitter-0.png": {
+    "width": 1080,
+    "height": 1344
+  },
+  "/press/covers/linkedin-product-manager-mika-reyes-on-leaving-home-and-dreaming-big-0.png": {
+    "width": 640,
+    "height": 480
+  },
+  "/press/covers/lumpia-queen-arshie-larga-ez-mil-4-other-pinoys-make-waves-in-forbes-30-under-30-asia-2024-list-ptv-news-0.png": {
+    "width": 1600,
+    "height": 835
+  },
+  "/press/covers/meet-the-30-under-30-fintech-entrepreneurs-facilitating-access-to-capital-forbes-0.png": {
+    "width": 1512,
+    "height": 1524
+  },
+  "/press/covers/meet-the-filipinos-in-forbes-30-under-30-2024-list-rappler-0.png": {
+    "width": 1280,
+    "height": 720
+  },
+  "/press/covers/meet-the-kleiner-perkins-fellows-0.png": {
+    "width": 724,
+    "height": 552
+  },
+  "/press/covers/my-youtube-channel-0.png": {
+    "width": 2718,
+    "height": 1818
+  },
+  "/press/covers/parallax-launch-on-e27-0.png": {
+    "width": 1558,
+    "height": 1548
+  },
+  "/press/covers/parallax-launch-on-tech-in-asia-0.png": {
+    "width": 2384,
+    "height": 1760
+  },
+  "/press/covers/parallax-launch-on-yahoo-0.png": {
+    "width": 2130,
+    "height": 1710
+  },
+  "/press/covers/parallax-on-techcrunch-0.png": {
+    "width": 2560,
+    "height": 1732
+  },
+  "/press/covers/phantom-acquires-parallax-0.png": {
+    "width": 1920,
+    "height": 1080
+  },
+  "/press/covers/product-alliance-course-0.png": {
+    "width": 2010,
+    "height": 1490
+  },
+  "/press/covers/product-ph-getting-your-foot-in-the-product-world-with-mika-reyes-0.png": {
+    "width": 1400,
+    "height": 788
+  },
+  "/press/covers/reyes-17-earns-2-tech-fellowships-0.png": {
+    "width": 2736,
+    "height": 1330
+  },
+  "/press/covers/seven-filipinos-in-the-ninth-edition-of-forbes-30-under-30-asia-business-world-0.png": {
+    "width": 1920,
+    "height": 1920
+  },
+  "/press/covers/speaker-nyc-philippine-consulate-0.png": {
+    "width": 2048,
+    "height": 1151
+  },
+  "/press/covers/speaker-nyc-philippine-consulate-1.png": {
+    "width": 1280,
+    "height": 1706
+  },
+  "/press/covers/stay-stable-podcast-0.png": {
+    "width": 1170,
+    "height": 1166
+  },
+  "/press/covers/swarm-w-product-managers-what-it-takes-to-become-a-product-manager-0.png": {
+    "width": 1600,
+    "height": 879
+  },
+  "/press/covers/the-southpark-commons-community-0.png": {
+    "width": 2488,
+    "height": 1408
+  },
+  "/press/covers/unconventionally-breaking-into-tech-and-impacting-society-by-mika-reyes-pm-linkedin-0.png": {
+    "width": 1028,
+    "height": 476
+  },
+  "/press/covers/wi-tech-feature-mika-reyes-0.png": {
+    "width": 1654,
+    "height": 1204
+  },
+  "/press/covers/women-in-product-on-linkedin-launching-big-hairy-projects-0.png": {
+    "width": 1280,
+    "height": 504
+  },
+  "/press/covers/women-of-silicon-valley-mika-reyes-0.png": {
+    "width": 1720,
+    "height": 1834
+  },
+  "/press/covers/yes-we-can-with-cloudflaretv-hosted-by-michelle-zatlyn-coo-of-cloudflare-0.png": {
+    "width": 1012,
+    "height": 506
+  },
+  "/projects/covers/casa-baltazar-airbnb-0.png": {
+    "width": 1200,
+    "height": 900
+  },
+  "/projects/covers/casa-baltazar-airbnb-1.png": {
+    "width": 1440,
+    "height": 972
+  },
+  "/projects/covers/casa-baltazar-airbnb-2.png": {
+    "width": 1440,
+    "height": 886
+  },
+  "/projects/covers/co-founder-dating-questionnaire-0.png": {
+    "width": 698,
+    "height": 516
+  },
+  "/projects/covers/collection-of-trivia-decks-0.png": {
+    "width": 1070,
+    "height": 961
+  },
+  "/projects/covers/consensus-0.png": {
+    "width": 680,
+    "height": 347
+  },
+  "/projects/covers/magnum-opus-nft-0.png": {
+    "width": 599,
+    "height": 330
+  },
+  "/projects/covers/magnum-opus-nft-1.png": {
+    "width": 1246,
+    "height": 985
+  },
+  "/projects/covers/magnum-opus-nft-2.png": {
+    "width": 1211,
+    "height": 985
+  },
+  "/projects/covers/magnum-opus-nft-3.png": {
+    "width": 1226,
+    "height": 959
+  },
+  "/projects/covers/magnum-opus-nft-4.png": {
+    "width": 1255,
+    "height": 988
+  },
+  "/projects/covers/magnum-opus-nft-5.png": {
+    "width": 1208,
+    "height": 955
+  },
+  "/projects/covers/magnum-opus-nft-6.png": {
+    "width": 1213,
+    "height": 948
+  },
+  "/projects/covers/magnum-opus-nft-7.png": {
+    "width": 1211,
+    "height": 950
+  },
+  "/projects/covers/mint-a-snooty-coffee-nft-0.png": {
+    "width": 2530,
+    "height": 1286
+  },
+  "/projects/covers/nft-playbook-launch-quality-nft-projects-0.png": {
+    "width": 1652,
+    "height": 1136
+  },
+  "/projects/covers/nifty-pay-0.png": {
+    "width": 436,
+    "height": 414
+  },
+  "/projects/covers/notion-dashboard-template-0.png": {
+    "width": 2988,
+    "height": 1788
+  },
+  "/projects/covers/notion-templates-for-startups-small-biz-0.png": {
+    "width": 918,
+    "height": 521
+  },
+  "/projects/covers/online-game-can-you-hear-me-now-0.png": {
+    "width": 1780,
+    "height": 964
+  },
+  "/projects/covers/online-game-can-you-hear-me-now-1.png": {
+    "width": 1768,
+    "height": 900
+  },
+  "/projects/covers/online-game-zoom-background-scavenger-hunt-0.png": {
+    "width": 1746,
+    "height": 949
+  },
+  "/projects/covers/online-game-zoom-background-scavenger-hunt-1.png": {
+    "width": 1771,
+    "height": 797
+  },
+  "/projects/covers/online-game-zoom-background-scavenger-hunt-2.png": {
+    "width": 1307,
+    "height": 827
+  },
+  "/projects/covers/passion-economy-stack-0.png": {
+    "width": 1440,
+    "height": 1024
+  },
+  "/projects/covers/passion-economy-stack-1.png": {
+    "width": 1440,
+    "height": 1024
+  },
+  "/projects/covers/passion-economy-stack-2.png": {
+    "width": 1440,
+    "height": 1024
+  },
+  "/projects/covers/passion-economy-stack-3.png": {
+    "width": 1440,
+    "height": 1024
+  },
+  "/projects/covers/passion-economy-stack-4.png": {
+    "width": 1440,
+    "height": 1024
+  },
+  "/projects/covers/simple-guestbook-0.png": {
+    "width": 1676,
+    "height": 1164
+  },
+  "/projects/covers/template-reunion-update-0.png": {
+    "width": 1858,
+    "height": 1037
+  },
+  "/projects/covers/template-year-end-reflections-goals-0.png": {
+    "width": 2130,
+    "height": 1520
+  },
+  "/projects/covers/time-rich-calculator-0.png": {
+    "width": 1126,
+    "height": 1290
+  }
+}

@@ -1,33 +1,22 @@
-import "server-only";
-
-import path from "node:path";
-import { cache } from "react";
-import sharp from "sharp";
+import dimensions from "./image-dimensions.generated.json";
 
 export type ImageDimensions = { width: number; height: number };
 
-/**
- * Read the intrinsic pixel dimensions of a local image under `public/` at
- * build time so the browser can reserve the correct box and avoid layout
- * shift while the image loads. Returns null for remote or unreadable images.
- * Cached per src for the duration of a render pass.
- */
-export const getPublicImageDimensions = cache(
-  async (src: string): Promise<ImageDimensions | null> => {
-    // Only local, absolute public paths (e.g. "/ai-guides/foo.png").
-    if (!src.startsWith("/") || src.startsWith("//")) {
-      return null;
-    }
+const map = dimensions as Record<string, ImageDimensions>;
 
-    try {
-      const filePath = path.join(process.cwd(), "public", src);
-      const { width, height } = await sharp(filePath).metadata();
-      if (!width || !height) {
-        return null;
-      }
-      return { width, height };
-    } catch {
-      return null;
-    }
-  },
-);
+/**
+ * Intrinsic pixel dimensions of a local image under `public/`, so the browser
+ * can reserve the correct box and avoid layout shift while it loads. Values are
+ * precomputed at build time into `image-dimensions.generated.json` (see
+ * `scripts/generate-image-dimensions.ts`) — reading the file with sharp at
+ * render time would force Vercel to bundle all of public/ into every function.
+ * Returns null for remote or unknown images.
+ */
+export function getPublicImageDimensions(
+  src: string,
+): ImageDimensions | null {
+  if (!src.startsWith("/") || src.startsWith("//")) {
+    return null;
+  }
+  return map[src] ?? null;
+}

@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "gen:image-dims": "tsx scripts/generate-image-dimensions.ts",
+    "prebuild": "tsx scripts/generate-image-dimensions.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
