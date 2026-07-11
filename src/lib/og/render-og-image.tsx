@@ -29,7 +29,7 @@ const loadAssets = (() => {
       promise = Promise.all([
         readFile(join(fontDir, "BricolageGrotesque-700.ttf")),
         readFile(join(fontDir, "BricolageGrotesque-800.ttf")),
-        readFile(join(process.cwd(), "public/mika-reyes-logo.png"), "base64"),
+        readFile(join(process.cwd(), "assets/mika-reyes-logo.png"), "base64"),
       ]).then(([bold, extrabold, logo]) => ({
         bold,
         extrabold,
