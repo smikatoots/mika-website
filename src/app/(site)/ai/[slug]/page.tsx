@@ -90,6 +90,7 @@ export default async function AiGuidePage({ params }: Props) {
           headline={frontmatter.title}
           description={description}
           datePublished={publishedAt}
+          dateModified={frontmatter.updated?.trim() || publishedAt}
           url={`${SITE_URL}/ai/${slug}`}
         />
       ) : null}
