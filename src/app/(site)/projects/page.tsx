@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 
 import { ProjectCard } from "@/components/projects/ProjectCard";
-import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
 import { loadProjectsManifest } from "@/lib/projects/manifest";
 import { BackLink } from "@/components/ui/BackLink";
 import { PageHero } from "@/components/ui/PageHero";
 import { mainWide } from "@/lib/ui/site-styles";
 
+const canonical = canonicalUrl("/projects");
+
 export const metadata: Metadata = {
   title: "Projects",
   description:
     "Side projects, templates, games, and experiments — past and present.",
-  openGraph: buildOpenGraph({ title: "Projects" }),
+  alternates: { canonical },
+  openGraph: buildOpenGraph({ title: "Projects", url: canonical }),
   twitter: buildTwitter({ title: "Projects" }),
 };
 

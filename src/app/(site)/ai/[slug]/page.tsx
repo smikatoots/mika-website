@@ -10,9 +10,12 @@ import {
   resolveAiGuidePublishedDate,
 } from "@/lib/ai-guides/load-guides";
 import { formatSiteDate } from "@/lib/format-date";
-import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
+import { AuthorByline } from "@/components/ui/AuthorByline";
 import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
+import { ArticleStructuredData } from "@/components/ArticleStructuredData";
+import { SITE_URL } from "@/lib/site";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -41,16 +44,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   const description =
     guide.frontmatter.description.trim() || guide.frontmatter.title;
+  const canonical = canonicalUrl(`/ai/${slug}`);
   return {
     title: guide.frontmatter.title,
     description,
+    alternates: { canonical },
     openGraph: buildOpenGraph({
       title: guide.frontmatter.title,
       description,
+      url: canonical,
+      dynamicImage: true,
     }),
     twitter: buildTwitter({
       title: guide.frontmatter.title,
       description,
+      dynamicImage: true,
     }),
   };
 }
@@ -71,9 +79,20 @@ export default async function AiGuidePage({ params }: Props) {
     frontmatter.published,
   );
   const isComingSoon = frontmatter.status === "coming-soon";
+  const description =
+    frontmatter.description.trim() || frontmatter.title;
 
   return (
     <article className={mainProse}>
+      {!isComingSoon ? (
+        <ArticleStructuredData
+          type="TechArticle"
+          headline={frontmatter.title}
+          description={description}
+          datePublished={publishedAt}
+          url={`${SITE_URL}/ai/${slug}`}
+        />
+      ) : null}
       <BackLink href="/ai" label="AI Guides" />
       <header className="mt-6">
         <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 md:text-5xl">
@@ -107,6 +126,7 @@ export default async function AiGuidePage({ params }: Props) {
             </ul>
           ) : null}
         </div>
+        <AuthorByline />
       </header>
       {isComingSoon ? (
         <AiGuideComingSoonBlock description={frontmatter.description} />

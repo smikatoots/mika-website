@@ -25,5 +25,7 @@ export type ProjectFrontmatter = {
   tags: ProjectTag[];
   cover: string | null;
   launchDate: string | null;
+  /** Optional SEO meta description; falls back to a body excerpt. */
+  description?: string;
   notionPageId: string;
 };

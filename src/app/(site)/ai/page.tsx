@@ -5,18 +5,21 @@ import { AiResourceCard } from "@/components/ai-guides/AiResourceCard";
 import { AI_HUB_FILTER_TAGS } from "@/lib/ai-guides/constants";
 import { loadAllAiGuideIndexEntries } from "@/lib/ai-guides/load-guides";
 import { homeBioLinks } from "@/lib/home-bio-links";
-import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
 import { siteLink } from "@/lib/ui/site-styles";
 import { BackLink } from "@/components/ui/BackLink";
 import { InternalLink } from "@/components/ui/InternalLink";
 import { PageHero } from "@/components/ui/PageHero";
 import { mainWide } from "@/lib/ui/site-styles";
 
+const canonical = canonicalUrl("/ai");
+
 export const metadata: Metadata = {
   title: "AI Guides",
   description:
     "Become time-rich and stay ahead in the new age of AI — practical guides aligned with what I share on social.",
-  openGraph: buildOpenGraph({ title: "AI Guides" }),
+  alternates: { canonical },
+  openGraph: buildOpenGraph({ title: "AI Guides", url: canonical }),
   twitter: buildTwitter({ title: "AI Guides" }),
 };
 

@@ -2,14 +2,22 @@ import type { Metadata } from "next";
 
 import { allTagsFromManifest, loadBlogManifest } from "@/lib/blog/manifest";
 import { formatSiteDate } from "@/lib/format-date";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
 import { BackLink } from "@/components/ui/BackLink";
 import { InternalLink } from "@/components/ui/InternalLink";
 import { PageHero } from "@/components/ui/PageHero";
 import { mainWide } from "@/lib/ui/site-styles";
 
+const title = "Blog";
+const description = "Articles and notes";
+const canonical = canonicalUrl("/blog");
+
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Articles and notes",
+  title,
+  description,
+  alternates: { canonical },
+  openGraph: buildOpenGraph({ title, description, url: canonical }),
+  twitter: buildTwitter({ title, description }),
 };
 
 type Props = {

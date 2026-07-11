@@ -6,7 +6,8 @@ import { renderPressMdx } from "@/components/press/render-press-mdx";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { loadPressMdxPost } from "@/lib/press/load-mdx";
 import { formatSiteDate } from "@/lib/format-date";
-import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
+import { excerptFromMdx } from "@/lib/mdx-excerpt";
 import { BackLink } from "@/components/ui/BackLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -35,18 +36,29 @@ const getPressPost = cache(async (slug: string) => {
   }
 
   const { content, frontmatter } = await renderPressMdx(loaded.source);
-  return { content, frontmatter };
+  const description =
+    frontmatter.description?.trim() || excerptFromMdx(loaded.source);
+  return { content, frontmatter, description };
 });
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPressPost(slug);
   if (!post) return { title: "Not found" };
+  const canonical = canonicalUrl(`/press/${slug}`);
   return {
     title: post.frontmatter.title,
-    description: post.frontmatter.title,
-    openGraph: buildOpenGraph({ title: post.frontmatter.title }),
-    twitter: buildTwitter({ title: post.frontmatter.title }),
+    description: post.description,
+    alternates: { canonical },
+    openGraph: buildOpenGraph({
+      title: post.frontmatter.title,
+      description: post.description,
+      url: canonical,
+    }),
+    twitter: buildTwitter({
+      title: post.frontmatter.title,
+      description: post.description,
+    }),
   };
 }
 

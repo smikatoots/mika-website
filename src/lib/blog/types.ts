@@ -21,6 +21,8 @@ export type BlogPostFrontmatter = {
   path: string;
   lastEdited: string;
   published?: string;
+  /** Optional SEO meta description; falls back to a body excerpt. */
+  description?: string;
   notionPageId: string;
   tags: string[];
 };

@@ -292,6 +292,10 @@
     "destination": "/links"
   },
   {
+    "source": "/dreams",
+    "destination": "/my-dreams"
+  },
+  {
     "source": "/more",
     "destination": "/projects"
   }

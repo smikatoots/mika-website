@@ -6,7 +6,8 @@ import { renderProjectMdx } from "@/components/projects/render-project-mdx";
 import { projectTagClass } from "@/components/projects/project-tag-styles";
 import { loadProjectsManifest } from "@/lib/projects/manifest";
 import { loadProjectMdxPost } from "@/lib/projects/load-mdx";
-import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
+import { excerptFromMdx } from "@/lib/mdx-excerpt";
 import { BackLink } from "@/components/ui/BackLink";
 import { ProjectExternalLink } from "@/components/projects/ProjectExternalLink";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
@@ -33,18 +34,29 @@ const getProjectPost = cache(async (slug: string) => {
   }
 
   const { content, frontmatter } = await renderProjectMdx(loaded.source);
-  return { content, frontmatter };
+  const description =
+    frontmatter.description?.trim() || excerptFromMdx(loaded.source);
+  return { content, frontmatter, description };
 });
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = await getProjectPost(slug);
   if (!project) return { title: "Not found" };
+  const canonical = canonicalUrl(`/projects/${slug}`);
   return {
     title: project.frontmatter.title,
-    description: project.frontmatter.title,
-    openGraph: buildOpenGraph({ title: project.frontmatter.title }),
-    twitter: buildTwitter({ title: project.frontmatter.title }),
+    description: project.description,
+    alternates: { canonical },
+    openGraph: buildOpenGraph({
+      title: project.frontmatter.title,
+      description: project.description,
+      url: canonical,
+    }),
+    twitter: buildTwitter({
+      title: project.frontmatter.title,
+      description: project.description,
+    }),
   };
 }
 

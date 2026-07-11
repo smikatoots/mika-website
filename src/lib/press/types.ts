@@ -17,6 +17,8 @@ export type PressFrontmatter = {
   slug: string;
   url: string | null;
   cover: string | null;
+  /** Optional SEO meta description; falls back to a body excerpt. */
+  description?: string;
   notionPageId: string;
   lastEdited: string;
 };

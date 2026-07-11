@@ -222,5 +222,6 @@ export const urlRedirects: { source: string; destination: string }[] = [
   { source: "/strides-beta", destination: "/blog/a-2020-year-in-review" },
   { source: "/parallax", destination: "/press/parallax-on-techcrunch" },
   { source: "/network", destination: "/links" },
+  { source: "/dreams", destination: "/my-dreams" },
   { source: "/more", destination: "/projects" },
 ];

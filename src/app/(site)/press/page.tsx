@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 
 import { PressCard } from "@/components/press/PressCard";
-import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { BackLink } from "@/components/ui/BackLink";
 import { PageHero } from "@/components/ui/PageHero";
 import { mainWide } from "@/lib/ui/site-styles";
 
+const canonical = canonicalUrl("/press");
+
 export const metadata: Metadata = {
   title: "Press",
   description:
     "Press, podcasts, talks, and features — media gallery from the archive.",
-  openGraph: buildOpenGraph({ title: "Press" }),
+  alternates: { canonical },
+  openGraph: buildOpenGraph({ title: "Press", url: canonical }),
   twitter: buildTwitter({ title: "Press" }),
 };
 

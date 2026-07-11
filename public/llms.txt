@@ -4,11 +4,28 @@
 
 This is the canonical marketing site at https://mikareyes.com. Pages are HTML; there are no parallel `.md` URLs. For a full list of indexable URLs, use the sitemap below.
 
+- **AI Guides** are the flagship content: practical how-to guides at `/ai/<slug>`, indexed at `/ai`. The 10 broadest are listed first below; for the complete list with descriptions, see [llms-full.txt](https://mikareyes.com/llms-full.txt).
 - **Blog** posts live under `/blog/<slug>` (MDX synced from Notion; source of truth for paths is the published site and sitemap).
 - **Projects** and **press** use `/projects/<slug>` and `/press/<slug>` with in-repo content and manifests.
 - **Redirects:** `/dreams` → `/my-dreams`; `/more` → `/projects`. Prefer the canonical targets in links and citations.
 
 The homepage expands on current work, prior roles (including Parallax), and featured coverage; start at `/` for the full narrative.
+
+## AI Guides
+
+Flagship content: practical, copy-paste AI how-to guides (mostly Claude, plus prompts that work in any LLM), aligned with what Mika shares on Instagram and TikTok.
+
+- [AI Guides hub](https://mikareyes.com/ai): Full index of every guide, filterable by tag (beginner, advanced, skills, claude).
+- [How to Setup Claude (10 Minute Setup Guide)](https://mikareyes.com/ai/how-to-setup-claude): Most people use Claude like a smarter Google. This 10-minute setup changes that — global instructions, clarifying questions, skills, and app integrations that make every session work for you.
+- [How to Give Claude Memory (Beginner to Advanced)](https://mikareyes.com/ai/how-to-give-claude-memory): By default, Claude starts every session blank. Here are three levels for fixing that — from a 5-minute toggle to a full second brain.
+- [What is a Skill?](https://mikareyes.com/ai/what-is-a-skill): Skills are the Claude feature nobody explains for non-developers. Here's what they actually are, why they're different from prompts and projects, and why they compound the more you use them.
+- [Chat-Based AI vs Agentic AI (side by side comparison)](https://mikareyes.com/ai/chat-based-ai-vs-agentic-ai): Side-by-side comparison of chat-based vs agentic AI: tools, inputs, outputs, memory, and actions. From our Maven Lightning Lesson, plus real ChatGPT and agent examples.
+- [Your First Practical Agentic AI Plan](https://mikareyes.com/ai/your-first-practical-agentic-ai-plan): A beginner-friendly workflow to start using AI at work in one day.
+- [How to Vibe Code for Beginners](https://mikareyes.com/ai/how-to-vibe-code-for-beginners): A beginner-friendly vibe coding workflow from a former PM: vibe-PM first, then build apps with AI one page at a time.
+- [5 AI Tools That Save Me 10+ Hours a Week](https://mikareyes.com/ai/five-ai-tools-save-10-hours-weekly): The five apps I lean on every week: Claude, Granola, Wispr Flow, Relay, and Cursor. All have a free starting tier, and together they cover thinking, meetings, voice input, automation, and coding.
+- [15 Secret Claude Codes](https://mikareyes.com/ai/15-secret-claude-codes): Fifteen short phrases that change how Claude reasons: five to run before every project, five for smarter thinking, and five for big decisions. Pair each code with your situation in Claude or any LLM.
+- [Stanford's STORM Method: Research Without the Blind Spots](https://mikareyes.com/ai/stanford-storm-research-method): One AI prompt gives you tunnel vision. Stanford's STORM method fixes it with five expert perspectives and a 4-prompt workflow you can run in Claude in five minutes. Plus how to use the official tool or website.
+- [10 Practical Ways to Start AEO (So ChatGPT Cites You)](https://mikareyes.com/ai/10-practical-ways-to-start-aeo): Answer Engine Optimization (AEO) is how you get cited inside ChatGPT, Claude, and Perplexity. Ten quick wins for business owners and marketers, plus tools to track where you show up.
 
 ## Primary pages
 
@@ -30,5 +47,6 @@ The homepage expands on current work, prior roles (including Parallax), and feat
 
 ## Optional
 
+- [llms-full.txt](https://mikareyes.com/llms-full.txt): Every AI guide with its description.
 - [Sitemap](https://mikareyes.com/sitemap.xml): Exhaustive list of canonical URLs including all blog, project, and press entries.
 - [Robots](https://mikareyes.com/robots.txt): Crawl policy and sitemap pointer.

@@ -6,10 +6,14 @@ import { renderBlogMdx } from "@/components/blog/render-blog-mdx";
 import { loadBlogManifest } from "@/lib/blog/manifest";
 import { loadBlogMdxPost } from "@/lib/blog/load-mdx-post";
 import { formatSiteDate } from "@/lib/format-date";
-import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
+import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
+import { excerptFromMdx } from "@/lib/mdx-excerpt";
 import { BackLink } from "@/components/ui/BackLink";
+import { AuthorByline } from "@/components/ui/AuthorByline";
 import { BlogPostViewTracker } from "@/components/blog/BlogPostViewTracker";
 import { InternalLink } from "@/components/ui/InternalLink";
+import { ArticleStructuredData } from "@/components/ArticleStructuredData";
+import { SITE_URL } from "@/lib/site";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -28,7 +32,9 @@ const getBlogPost = cache(async (slug: string) => {
   }
 
   const { content, frontmatter } = await renderBlogMdx(loaded.source);
-  return { content, frontmatter };
+  const description =
+    frontmatter.description?.trim() || excerptFromMdx(loaded.source);
+  return { content, frontmatter, description };
 });
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -37,11 +43,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) {
     return { title: "Not found" };
   }
+  const canonical = canonicalUrl(`/blog/${slug}`);
   return {
     title: post.frontmatter.title,
-    description: post.frontmatter.title,
-    openGraph: buildOpenGraph({ title: post.frontmatter.title }),
-    twitter: buildTwitter({ title: post.frontmatter.title }),
+    description: post.description,
+    alternates: { canonical },
+    openGraph: buildOpenGraph({
+      title: post.frontmatter.title,
+      description: post.description,
+      url: canonical,
+      dynamicImage: true,
+    }),
+    twitter: buildTwitter({
+      title: post.frontmatter.title,
+      description: post.description,
+      dynamicImage: true,
+    }),
   };
 }
 
@@ -57,9 +74,21 @@ export default async function BlogPostPage({ params }: Props) {
 
   const { content, frontmatter } = post;
   const publishedAt = frontmatter.published ?? frontmatter.lastEdited;
+  const updatedAt =
+    frontmatter.lastEdited && frontmatter.lastEdited !== publishedAt
+      ? frontmatter.lastEdited
+      : null;
 
   return (
     <article className={mainProse}>
+      <ArticleStructuredData
+        type="BlogPosting"
+        headline={frontmatter.title}
+        description={post.description}
+        datePublished={publishedAt}
+        dateModified={frontmatter.lastEdited}
+        url={`${SITE_URL}/blog/${slug}`}
+      />
       <BlogPostViewTracker slug={slug} title={frontmatter.title} />
       <BackLink href="/blog" label="Blog" />
       <header className="mt-6">
@@ -72,6 +101,11 @@ export default async function BlogPostPage({ params }: Props) {
           <time dateTime={publishedAt} className="whitespace-nowrap">
             Published {formatSiteDate(publishedAt)}
           </time>
+          {updatedAt ? (
+            <time dateTime={updatedAt} className="whitespace-nowrap">
+              Updated {formatSiteDate(updatedAt)}
+            </time>
+          ) : null}
           {(frontmatter.tags?.length ?? 0) > 0 ? (
             <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
               {frontmatter.tags.map((t) => (
@@ -87,6 +121,7 @@ export default async function BlogPostPage({ params }: Props) {
             </ul>
           ) : null}
         </div>
+        <AuthorByline />
       </header>
       <div className="mt-10">{content}</div>
     </article>

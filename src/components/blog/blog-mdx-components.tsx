@@ -4,6 +4,27 @@ import { Children, isValidElement, type ReactNode } from "react";
 import { siteLink } from "@/lib/ui/site-styles";
 import { CodeBlock } from "@/components/blog/CodeBlock";
 import { MdxImage } from "@/components/blog/MdxImage";
+import { getPublicImageDimensions } from "@/lib/blog/image-dimensions";
+
+type MdxImgProps = {
+  src?: string;
+  alt?: string;
+  title?: string;
+};
+
+// Server component: reads intrinsic image dimensions with sharp at build time
+// so the client <img> can reserve its box and avoid layout shift.
+async function MdxImageWithDimensions({ src, ...rest }: MdxImgProps) {
+  const dimensions = src ? await getPublicImageDimensions(src) : null;
+  return (
+    <MdxImage
+      src={src}
+      {...rest}
+      width={dimensions?.width}
+      height={dimensions?.height}
+    />
+  );
+}
 
 function isImageOnlyParagraph(children: ReactNode): boolean {
   const meaningful = Children.toArray(children).filter((child) => {
@@ -93,7 +114,7 @@ export const blogMdxComponents: MDXComponents = {
   },
   pre: (props) => <CodeBlock>{props.children}</CodeBlock>,
   hr: () => <hr className="my-10 border-zinc-200" />,
-  img: (props) => <MdxImage {...props} />,
+  img: (props) => <MdxImageWithDimensions {...props} />,
   strong: (props) => (
     <strong className="font-semibold text-zinc-950" {...props} />
   ),

@@ -7,14 +7,17 @@ type Props = {
   src?: string;
   alt?: string;
   title?: string;
+  width?: number;
+  height?: number;
 };
 
-export function MdxImage({ src, alt, title }: Props) {
+export function MdxImage({ src, alt, title, width, height }: Props) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const safeSrc = src ?? "";
   const safeAlt = alt ?? "";
   const isInlineLogo = title === "inline-logo";
+  const hasDimensions = typeof width === "number" && typeof height === "number";
 
   useEffect(() => {
     const animationFrame = requestAnimationFrame(() => setMounted(true));
@@ -30,6 +33,8 @@ export function MdxImage({ src, alt, title }: Props) {
         <img
           src={safeSrc}
           alt={safeAlt}
+          loading="lazy"
+          decoding="async"
           className="inline-block h-9 w-9 object-contain align-middle"
         />
       </span>
@@ -44,6 +49,15 @@ export function MdxImage({ src, alt, title }: Props) {
           <img
             src={safeSrc}
             alt={safeAlt}
+            width={hasDimensions ? width : undefined}
+            height={hasDimensions ? height : undefined}
+            loading="lazy"
+            decoding="async"
+            style={
+              hasDimensions
+                ? { aspectRatio: `${width} / ${height}` }
+                : undefined
+            }
             className="block max-h-[560px] w-auto max-w-full cursor-zoom-in rounded-[10px]"
             onClick={() => setOpen(true)}
           />
