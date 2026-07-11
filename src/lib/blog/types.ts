@@ -30,6 +30,12 @@ export type BlogPostFrontmatter = {
    * {@link normalizeAiGuideFaq}, so the raw shape is untrusted.
    */
   faq?: unknown;
+  /**
+   * Optional "Related reading" links (blog→blog or blog→guide). Rendered in the
+   * shared post-extras section beneath the FAQ. Normalized via
+   * {@link normalizeRelated}, so the raw shape is untrusted.
+   */
+  related?: unknown;
   notionPageId: string;
   tags: string[];
 };

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { deckType, headingBase } from "@/components/deck/deck-styles";
-import { deckDates, decks } from "@/lib/decks";
+import { deckDates, decks, templateDeck } from "@/lib/decks";
 
 export const metadata: Metadata = {
   title: "All decks",
@@ -12,6 +12,19 @@ export default function AllDecksPage() {
   return (
     <div className="h-full overflow-y-auto px-8 py-12 sm:px-16 sm:py-16">
       <h1 className={`${headingBase} ${deckType.statement} mb-10`}>All decks</h1>
+      <div className="mb-12 max-w-4xl">
+        <Link
+          href={`/deck/${templateDeck.slug}`}
+          className="group flex flex-col gap-1 rounded-2xl border border-[var(--deck-accent)] bg-zinc-50 px-6 py-5 transition-colors hover:bg-zinc-100"
+        >
+          <span
+            className={`${headingBase} text-2xl sm:text-3xl group-hover:text-[var(--deck-accent)]`}
+          >
+            {templateDeck.title}
+          </span>
+          <span className="font-mono text-sm text-zinc-400">/deck/{templateDeck.slug}</span>
+        </Link>
+      </div>
       <div className="flex max-w-4xl flex-col gap-12 pb-16">
         {deckDates.map((date) => (
           <section key={date}>

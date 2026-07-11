@@ -18,7 +18,7 @@ faq:
   - question: >-
       Can Claude use my Strava or Oura data to plan workouts?
     answer: >-
-      Yes — connect Strava and Oura (or Apple Health) to Claude through MCP, and
+      Yes. Connect Strava and Oura (or Apple Health) to Claude through MCP, and
       Claude can read your readiness, sleep, HRV, training load, and activities
       to build a self-updating training and recovery dashboard. It recommends
       how hard to train each day based on how you actually recovered. You set up
@@ -27,7 +27,7 @@ faq:
   - question: >-
       Is building a health dashboard with Claude technical?
     answer: >-
-      It's a step more technical than most guides here — you edit a config file
+      It's a step more technical than most guides here. You edit a config file
       and connect MCP servers so Claude can read your Strava and Oura data. If
       that sounds fine, the guide walks through every step; if not, start with
       the basic Claude setup and come back later. Once the data is connected,
@@ -35,14 +35,14 @@ faq:
   - question: >-
       Do I need both Strava and Oura to build the dashboard?
     answer: >-
-      No — you can start with just one data source. Strava alone gives you
-      volume and pace; add Oura when you want readiness, HRV, and cycle logic
-      layered on top. Start with one, get it working, then expand.
+      No, you can start with just one data source. Strava alone gives you volume
+      and pace; add Oura when you want readiness, HRV, and cycle logic layered
+      on top. Start with one, get it working, then expand.
   - question: >-
       How does the dashboard decide how hard I should train today?
     answer: >-
-      It reads your Oura readiness and adjusts from there — roughly hard above
-      85, moderate above 75, easy above 65, rest below — then downgrades a level
+      It reads your Oura readiness and adjusts from there (roughly hard above
+      85, moderate above 75, easy above 65, rest below), then downgrades a level
       if your HRV is depressed, your training load is too high, you slept under
       six hours, or you're in certain cycle phases. It's built to respect how
       you actually feel on a given day, not a fixed plan. Refresh it before a

@@ -17,16 +17,16 @@ faq:
   - question: >-
       Can an AI actually place trades on Robinhood?
     answer: >-
-      Yes — Robinhood's Agentic Trading (in beta) lets you connect an AI agent
+      Yes. Robinhood's Agentic Trading (in beta) lets you connect an AI agent
       through MCP, and it can place real stock trades, not just talk about them.
       The key safety design is a separate, pre-funded Agentic account: the agent
       can read your whole portfolio for context but can only spend the cash you
-      move into that sandbox. This isn't financial advice — it's how the tool
+      move into that sandbox. This isn't financial advice, just how the tool
       works and how to set it up carefully.
   - question: >-
       How do I keep AI trading from wrecking my main portfolio?
     answer: >-
-      The whole safety model is the separate Agentic account — you fund it with
+      The whole safety model is the separate Agentic account. You fund it with
       cash reserved for the agent, and that balance is the ceiling on what it
       can spend, so your main holdings stay untouched. Fund it with money you'd
       genuinely be fine losing, keep trade notifications on as a real-time audit
@@ -36,8 +36,8 @@ faq:
       How do I connect an AI agent to Robinhood?
     answer: >-
       Once you have access (it's rolling out account by account), add
-      Robinhood's trading MCP link — https://agent.robinhood.com/mcp/trading —
-      to your platform of choice, whether that's Claude Code, Claude Desktop,
+      Robinhood's trading MCP link, https://agent.robinhood.com/mcp/trading, to
+      your platform of choice, whether that's Claude Code, Claude Desktop,
       ChatGPT Developer Mode, Cursor, or Codex, then authenticate. You finish
       opening and funding the Agentic account on desktop. Robinhood's overview
       article has per-platform steps and troubleshooting.
@@ -47,10 +47,10 @@ faq:
       It carries real risk, and Robinhood is blunt about it: you're responsible
       for trades your agent places, an agent can misread you and submit orders
       you didn't intend, and you can lose your entire Agentic account balance.
-      The safeguards — a capped sandbox account, a push notification on every
-      trade, and a one-tap kill switch — are there to contain that. Treat the
-      first week like a pilot with a small balance, and preview or confirm
-      trades until you trust the behavior. This is not financial advice.
+      The safeguards are there to contain that: a capped sandbox account, a push
+      notification on every trade, and a one-tap kill switch. Treat the first
+      week like a pilot with a small balance, and preview or confirm trades
+      until you trust the behavior. This is not financial advice.
 ---
 
 On May 27, 2026, Robinhood launched Agentic Trading in beta. You connect an AI agent to your Robinhood account and it can place trades for you, which is why I'm half intrigued and half nervous. Robinhood's own docs say agents can misread you, screw up, and do stuff you didn't ask for.

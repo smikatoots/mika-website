@@ -17,35 +17,36 @@ faq:
   - question: >-
       Can I make money while using Claude Code?
     answer: >-
-      A little — Kickbacks.ai is a free VS Code extension that drops a small
+      A little. Kickbacks.ai is a free VS Code extension that drops a small
       clickable ad into the Claude Code and Codex CLI spinner while Claude
       thinks, and splits ad revenue with you 50/50. It's passive: install once,
       keep coding, and impressions rack up in the background. Be realistic about
-      the amount, though — it's roughly 50 cents per 1,000 impressions, so
+      the amount, though, since it's roughly 50 cents per 1,000 impressions, so
       coffee money, not a paycheck.
   - question: >-
       Is the Kickbacks extension safe to install?
     answer: >-
       Based on reading the actual code, yes: it doesn't touch your API keys, SSH
       keys, or credential files, doesn't run hidden code, and only sends ad
-      impression and click data — not your prompts or files. The change it makes
+      impression and click data, not your prompts or files. The change it makes
       to your Claude Code setup is reversible. One caveat: it installs from a
       direct download, not the official VS Code Marketplace, so it skips
-      Marketplace review — and a good habit is to have Claude vet any install
+      Marketplace review, and a good habit is to have Claude vet any install
       command before you run it.
   - question: >-
       How do I fully remove Kickbacks?
     answer: >-
-      Order matters — uninstalling the extension alone doesn't undo the change
-      it made to your Claude Code spinner. First run "Kickbacks: Restore Claude
-      Code" from the Command Palette to put your original setup back, then
-      uninstall the extension, then sign out to clear your login. If a restore
-      ever hiccups, Claude Code's next auto-update ships a clean version anyway.
+      Order matters, because uninstalling the extension alone doesn't undo the
+      change it made to your Claude Code spinner. First run "Kickbacks: Restore
+      Claude Code" from the Command Palette to put your original setup back,
+      then uninstall the extension, then sign out to clear your login. If a
+      restore ever hiccups, Claude Code's next auto-update ships a clean version
+      anyway.
   - question: >-
       Where do the Kickbacks ads show up?
     answer: >-
-      Only in the terminal CLI version of Claude Code and Codex — the one you
-      run by typing "claude" in your terminal, including the built-in terminal
+      Only in the terminal CLI version of Claude Code and Codex, the one you run
+      by typing "claude" in your terminal, including the built-in terminal
       inside VS Code or Cursor. They don't appear in the Claude Desktop chat app
       or on claude.ai, which are a different product the extension doesn't
       touch. So it's worth installing only if you actually live in the terminal.

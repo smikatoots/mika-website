@@ -19,13 +19,13 @@ faq:
       Loop engineering is the shift from writing turn-by-turn prompts to
       defining a goal and building a system that plans, acts, verifies against
       real signals like tests or links, and iterates on its own until the job is
-      actually done. Boris Cherny, who built Claude Code, put it as "I don't
-      prompt Claude anymore… my job is to write loops." Instead of holding the
+      actually done. Boris Cherny, who built Claude Code, put it bluntly: his
+      job now is to write loops, not to prompt Claude. Instead of holding the
       AI's hand each turn, you write the stopping condition once and walk away.
   - question: >-
       What's the difference between /goal, /loop, and /schedule?
     answer: >-
-      /goal keeps working until a condition you wrote is actually true — a
+      /goal keeps working until a condition you wrote is actually true: a
       separate checker verifies after every turn and only stops when it passes.
       /loop re-runs a prompt on a cadence while your session stays open, good
       for watching a deploy or polling a site. /schedule fires on a clock you
@@ -34,7 +34,7 @@ faq:
   - question: >-
       Why is a loop better than just asking Claude once?
     answer: >-
-      Because a single prompt can't grade its own homework — it stays confident
+      Because a single prompt can't grade its own homework. It stays confident
       until something external proves it wrong, which is exactly where AI
       quietly burns you with invented sources or fixes that don't work. A loop
       adds a verification step: it checks its output against real signals,
@@ -44,7 +44,7 @@ faq:
   - question: >-
       When should I not use a loop?
     answer: >-
-      Skip loops for one-off tasks — if the work is a single answer like writing
+      Skip loops for one-off tasks. If the work is a single answer like writing
       one email, a plain prompt is faster and cheaper. Loops earn their setup
       cost on repeating or multi-item work, and they burn more usage since they
       run multiple turns per item, so you'll hit plan limits faster. Start with

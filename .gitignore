@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# deck media — presentation decks are local-only (noindexed, recorded from
+# localhost, never linked). Keep the heavy movs/gifs/images out of git and off
+# the Vercel deploy. Deck page source under src/app/deck stays tracked.
+/public/decks/_library/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -1,21 +1,20 @@
 import type { AiGuideFaqItem } from "@/lib/ai-guides/types";
 
+const faqHeadingClass =
+  "text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl";
+
 /**
- * Visible FAQ block appended to a guide. Pairs with {@link FaqStructuredData},
- * which emits the matching FAQPage JSON-LD from the same items.
+ * FAQ heading + list with no surrounding border/section — so it can be composed
+ * inside a shared block alongside other sections (e.g. the blog "Related
+ * reading" list). Pairs with {@link FaqStructuredData}, which emits the matching
+ * FAQPage JSON-LD from the same items.
  */
-export function FaqSection({ items }: { items: AiGuideFaqItem[] }) {
+export function FaqList({ items }: { items: AiGuideFaqItem[] }) {
   if (items.length === 0) return null;
 
   return (
-    <section
-      aria-labelledby="faq-heading"
-      className="mt-16 border-t border-zinc-200 pt-10"
-    >
-      <h2
-        id="faq-heading"
-        className="text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl"
-      >
+    <div aria-labelledby="faq-heading">
+      <h2 id="faq-heading" className={faqHeadingClass}>
         Frequently asked questions
       </h2>
       <dl className="mt-6 space-y-8">
@@ -30,6 +29,22 @@ export function FaqSection({ items }: { items: AiGuideFaqItem[] }) {
           </div>
         ))}
       </dl>
+    </div>
+  );
+}
+
+/**
+ * Standalone FAQ block appended to a guide — {@link FaqList} in its own
+ * top-bordered section.
+ */
+export function FaqSection({ items }: { items: AiGuideFaqItem[] }) {
+  if (items.length === 0) return null;
+
+  return (
+    <section className="mt-16 border-t border-zinc-200 pt-10">
+      <FaqList items={items} />
     </section>
   );
 }
+
+export { faqHeadingClass };

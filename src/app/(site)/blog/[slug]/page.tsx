@@ -13,9 +13,11 @@ import { AuthorByline } from "@/components/ui/AuthorByline";
 import { BlogPostViewTracker } from "@/components/blog/BlogPostViewTracker";
 import { InternalLink } from "@/components/ui/InternalLink";
 import { ArticleStructuredData } from "@/components/ArticleStructuredData";
-import { FaqSection } from "@/components/ai-guides/FaqSection";
+import { FaqList } from "@/components/ai-guides/FaqSection";
 import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
+import { RelatedReading } from "@/components/blog/RelatedReading";
 import { normalizeAiGuideFaq } from "@/lib/ai-guides/faq";
+import { normalizeRelated } from "@/lib/blog/related";
 import { SITE_URL } from "@/lib/site";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -82,7 +84,9 @@ export default async function BlogPostPage({ params }: Props) {
       ? frontmatter.lastEdited
       : null;
   const faq = normalizeAiGuideFaq(frontmatter.faq);
+  const related = normalizeRelated(frontmatter.related);
   const showFaq = faq.length > 0;
+  const showExtras = showFaq || related.length > 0;
 
   return (
     <article className={mainProse}>
@@ -130,7 +134,16 @@ export default async function BlogPostPage({ params }: Props) {
         <AuthorByline />
       </header>
       <div className="mt-10">{content}</div>
-      {showFaq ? <FaqSection items={faq} /> : null}
+      {showExtras ? (
+        <section className="mt-16 border-t border-zinc-200 pt-10">
+          {showFaq ? <FaqList items={faq} /> : null}
+          {related.length > 0 ? (
+            <div className={showFaq ? "mt-12" : ""}>
+              <RelatedReading items={related} />
+            </div>
+          ) : null}
+        </section>
+      ) : null}
     </article>
   );
 }

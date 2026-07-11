@@ -15,34 +15,33 @@ faq:
     answer: >-
       The two biggest levers are your AI stack and your files. Route tasks to
       the right tool instead of running everything on Claude Max, and clean up
-      how you feed Claude information — convert files to plain text or markdown
+      how you feed Claude information: convert files to plain text or markdown
       before uploading, keep context files short, and don't dump your whole
       folder into every session. Doing both drops your token usage and usually
       improves your results too.
   - question: >-
       Do I really need Claude Max, or is there a cheaper setup?
     answer: >-
-      You probably don't need Max — a split stack of ChatGPT ($20), Cursor
-      ($20), and Claude ($20) covers more ground than $200 Claude Max alone.
-      Plan and brainstorm in ChatGPT, do anything code-related in Cursor, and
-      save Claude for the deep analysis and file-building where it genuinely
-      shines. Paying $60 for three specialized tools beats $200 for one tool you
-      overuse.
+      You probably don't need Max. A split stack of ChatGPT ($20), Cursor ($20),
+      and Claude ($20) covers more ground than $200 Claude Max alone. Plan and
+      brainstorm in ChatGPT, do anything code-related in Cursor, and save Claude
+      for the deep analysis and file-building where it genuinely shines. Paying
+      $60 for three specialized tools beats $200 for one tool you overuse.
   - question: >-
       Why is uploading files to Claude so expensive?
     answer: >-
       Because a single PDF page runs 1,500–3,000 tokens, a full screenshot
       around 1,300, and DOCX/PPTX files carry invisible metadata bloat. Extract
       the text into a plain markdown file before uploading, and crop screenshots
-      tight — a tight crop can drop a screenshot from 1,300 tokens to under 100.
+      tight; a tight crop can drop a screenshot from 1,300 tokens to under 100.
       For files you reference often, put them in a Project so Claude doesn't
       reprocess them every chat.
   - question: >-
       Should I use Opus for everything in Claude?
     answer: >-
-      No — Opus is the most capable and most expensive mode, and most tasks
-      don't need it. Use Sonnet for grammar checks, brainstorming, reformatting,
-      and short answers, and Haiku for quick, repetitive lookups; a good rule is
+      No. Opus is the most capable and most expensive mode, and most tasks don't
+      need it. Use Sonnet for grammar checks, brainstorming, reformatting, and
+      short answers, and Haiku for quick, repetitive lookups; a good rule is
       that if a task takes under 30 seconds, it probably doesn't need Opus.
       Match the product (Chat, Cowork, or Code) and the model to the task
       instead of defaulting to the heaviest option.

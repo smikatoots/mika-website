@@ -17,7 +17,7 @@ faq:
       How do I use the same AI context file across ChatGPT, Claude, and Cursor?
     answer: >-
       Symlink them. Codex reads AGENTS.md, Claude Code reads CLAUDE.md, and
-      Cursor has its own — but none read each other, so you pick one master file
+      Cursor has its own, but none read each other, so you pick one master file
       and create symlinks (shortcuts that make two filenames point to the same
       file on disk) for the rest. Edit the master once and every tool sees the
       change. You stop maintaining three or four versions of yourself.
@@ -26,13 +26,13 @@ faq:
     answer: >-
       A symlink is a shortcut that makes two filenames point to the same
       underlying file, so editing one updates both. Open your project folder in
-      Terminal and run "ln -s AGENTS.md CLAUDE.md" — now CLAUDE.md is just a
+      Terminal and run "ln -s AGENTS.md CLAUDE.md". Now CLAUDE.md is just a
       pointer to AGENTS.md, not a separate file. Verify by editing one and
       checking the change shows in both.
   - question: >-
       Which file should be my master AI context file?
     answer: >-
-      AGENTS.md is a good default — around 60,000 GitHub projects already use
+      AGENTS.md is a good default. Around 60,000 GitHub projects already use
       that name and more tools are adopting it as a standard. But if you already
       have a solid CLAUDE.md, flip it and make that the master. The point is one
       source of truth, not which name wins; symlink everything else to whichever
