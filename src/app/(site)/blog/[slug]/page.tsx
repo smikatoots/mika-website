@@ -17,7 +17,7 @@ import { FaqList } from "@/components/ai-guides/FaqSection";
 import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
 import { RelatedReading } from "@/components/blog/RelatedReading";
 import { normalizeAiGuideFaq } from "@/lib/ai-guides/faq";
-import { normalizeRelated } from "@/lib/blog/related";
+import { getAutoRelatedPosts, normalizeRelated } from "@/lib/blog/related";
 import { SITE_URL } from "@/lib/site";
 import { mainProse, textMuted } from "@/lib/ui/site-styles";
 
@@ -84,7 +84,12 @@ export default async function BlogPostPage({ params }: Props) {
       ? frontmatter.lastEdited
       : null;
   const faq = normalizeAiGuideFaq(frontmatter.faq);
-  const related = normalizeRelated(frontmatter.related);
+  // Curated `related` wins; otherwise fall back to tag-driven related posts.
+  let related = normalizeRelated(frontmatter.related);
+  if (related.length === 0) {
+    const { posts } = await loadBlogManifest();
+    related = getAutoRelatedPosts(slug, frontmatter.tags ?? [], posts);
+  }
   const showFaq = faq.length > 0;
   const showExtras = showFaq || related.length > 0;
 

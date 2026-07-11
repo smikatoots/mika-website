@@ -1,3 +1,5 @@
+import type { BlogManifestPost } from "./types";
+
 export type RelatedItem = {
   /** Internal path, e.g. "/blog/product-interview-tips" or "/ai/what-are-subagents". */
   href: string;
@@ -25,4 +27,33 @@ export function normalizeRelated(value: unknown): RelatedItem[] {
     }
   }
   return items;
+}
+
+/**
+ * Tag-driven "Related reading" fallback for posts without a curated `related`
+ * list. Ranks other posts by shared-tag count, tie-broken by recency, and
+ * returns the top few as note-less link items. Blog→blog only, since blog tags
+ * (career, product, startup…) rarely overlap guide tags. Curated `related`
+ * always takes precedence over this.
+ */
+export function getAutoRelatedPosts(
+  slug: string,
+  tags: string[],
+  posts: BlogManifestPost[],
+  limit = 3,
+): RelatedItem[] {
+  const tagSet = new Set(tags);
+  if (tagSet.size === 0) return [];
+  const dateVal = (p: BlogManifestPost) =>
+    Date.parse(p.published ?? p.lastEdited ?? "") || 0;
+  return posts
+    .filter((p) => p.slug !== slug)
+    .map((p) => ({
+      post: p,
+      shared: (p.tags ?? []).filter((t) => tagSet.has(t)).length,
+    }))
+    .filter((x) => x.shared > 0)
+    .sort((a, b) => b.shared - a.shared || dateVal(b.post) - dateVal(a.post))
+    .slice(0, limit)
+    .map(({ post }) => ({ href: `/blog/${post.slug}`, label: post.title }));
 }
