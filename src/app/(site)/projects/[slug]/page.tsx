@@ -52,10 +52,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: project.frontmatter.title,
       description: project.description,
       url: canonical,
+      dynamicImage: true,
     }),
     twitter: buildTwitter({
       title: project.frontmatter.title,
       description: project.description,
+      dynamicImage: true,
     }),
   };
 }
