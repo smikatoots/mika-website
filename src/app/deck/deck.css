@@ -127,7 +127,10 @@
 /* The salmon underline that sweeps under highlighted words. */
 .deck-underline-word {
   position: relative;
-  display: inline-block;
+  /* `inline`, not `inline-block`: an inline-block is an atomic box, which lets
+     the line break between the highlight and a trailing "." or "!", orphaning
+     the punctuation on the next line. Inline keeps it glued to the last word. */
+  display: inline;
   white-space: nowrap;
 }
 

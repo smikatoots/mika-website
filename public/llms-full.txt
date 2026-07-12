@@ -6,6 +6,7 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [Claude Features Cheat Sheet for Power Users](https://mikareyes.com/ai/claude-features-cheat-sheet): Claude features cheat sheet for power users: commands, artifacts, skills, projects, connectors, plugins, and scheduled routines that stack into a system.
 - [What are Subagents?](https://mikareyes.com/ai/what-are-subagents): Subagents let your main Claude spin up helpers that work at the same time. Here's what they are, how they differ from agents, and how to invoke them in Claude Code.
 - [Stanford's STORM Method: Research Without the Blind Spots](https://mikareyes.com/ai/stanford-storm-research-method): One AI prompt gives you tunnel vision. Stanford's STORM method fixes it with five expert perspectives and a 4-prompt workflow you can run in Claude in five minutes. Plus how to use the official tool or website.
 - [How to Keep Fable 5's Brain After it Turns Pay-per-use](https://mikareyes.com/ai/how-to-keep-fable-5-brain-after-pay-per-use): Fable goes pay-per-use soon. Two prompts to distill its thinking into skills and upgrade your CLAUDE.md so cheaper models keep performing like Fable.
