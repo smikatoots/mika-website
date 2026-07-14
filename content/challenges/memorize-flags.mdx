@@ -1,0 +1,145 @@
+---
+title: Memorize 197 flags in 1 week
+description: >-
+  Learning to recognize ~195 country flags on sight, with AI as my only coach.
+published: "2026-07-13"
+---
+
+<details>
+<summary>Rules & Details</summary>
+
+### The goal
+Memorize ~195 country flags on sight. Flag -> country name (one direction only) 
+I'll be using [Sporcle](https://www.sporcle.com/games/g/worldflags) for the baseline & the final. 
+
+### The rules
+1. **AI is my coach.** I must follow its plan daily.
+2. **I document, journal & report daily** to share to my audience but also to feed this data back to AI so it gives me feedback & updates my customized plan based on how well I'm learning & how I best learn. I'll be documenting here and on my [Instagram](https://instagram.com/its.mikareyes) so follow along!
+3. **60-90 minutes max daily.** I'm a startup founder & have other things to do in my day. This also ensures that AI gives me the highest leverage tactics. 
+
+### Why am I doing this challenge series?
+I want to show how AI can help me AND your achieve your goals, no matter how big or small. 
+
+And personally, HONESTLY, I've attempted multiple times to do niche & ridiculously difficult challenges (I like a good challenge).
+
+So I thought public humiliation could be a creative way to stay accountable! If this series flops, it's an asymmetric bet since I get to achieve the goals I want to achieve anyway!
+
+Other things on my list (MAYBE they turn into series videos to, let's see!) 
+- Do 1 proper pull-up
+- Do a front walk (I can't even do a cartwheel)
+- Achieve perfect pitch 
+- Beat my husband at Smash or Chess
+- Split (actually already did this last year!)
+
+Btw, I'm also inspired by a blog by [Max Deutsch who ran "Month to Master"](https://medium.com/@maxdeutsch/m2m-day-1-completing-12-ridiculously-hard-challenges-in-12-months-9843700c741f) almost 9 YEARS AGO now! 
+
+### Why am I doing this specific flag challenge?
+I like games & trivia. In most trivias, there is a flag component. I'd be honored to be the flag girl ⛳ (& actually contribute something meaningful!) 
+
+### Why does AI have to feed into this?
+Well, it's an AI channel, babe, so OF COURSE I have to incorporate AI!
+
+More importantly, in the practice of developing expert skills, "[deliberate practice](https://graphics8.nytimes.com/images/blogs/freakonomics/pdf/DeliberatePractice(PsychologicalReview).pdf)" gets thrown around a lot and turns out...
+`Deliberate practice is most effective when conducted with some kind of coach who can give feedback, point out errors, suggest techniques for improvement, and provide vital motivation.`
+
+In the absence of a paid expert coach who I don't have budget to pay for, in the age of AI, I can learn FASTER & BETTER because instead AI is the coach that gives me the feedback I need to master a ridiculously challenging skill.
+
+### Am I working on this full time?
+Nope! I'm a founder and creator. That's why I constrained the flag challenge to about 90m max daily. Maybe if I do future challenges, it increases depending on the scope. But point is I am doing this for just a couple hours a day. I hope to prove that’s all I’ll need.
+
+</details>
+
+<details>
+<summary>Day 0: Baseline & Planning the Agent</summary>
+
+### My baseline report
+54/197 (about 27%) 
+
+![Flag Sprint Day 0 baseline scorecard: 54 knew, 4 guessed, 140 missed, 27% solid](/challenges/memorize-flags/day-0-scorecard.png "Day 0 cold quiz: 54 solid, 4 lucky guesses, 140 misses — 27%.")
+![Regional progress bars and lookalike cluster table from the Day 0 baseline report](/challenges/memorize-flags/day-0-regions-clusters.png "Oceania, the -stans, and most of Sub-Saharan Africa are basically blank.")
+![Starter mnemonics for the five worst lookalike flag clusters](/challenges/memorize-flags/day-0-starter-mnemonics.png "Starter hooks for my worst 5 clusters.")
+
+### The weekly & daily plan 
+
+On day zero I took a cold test on all 195. I got 27% right 🥲 Everything was built around that (embarrassing) baseline number
+
+Each day focuses on a "family" of flags e.g. European region, Oceania, Central Asian "-stans," most of Africa & frontloads the families I scored the worst in.
+
+My daily ritual looks something like this: 
+- In the morning, I quiz myself cold first, before I re-study anything
+- Then I learn the new batch by "family". Claude gives me a memory mnemonic or hook for each one. If there are fun, new mnemonics that I find are more helpful, I ask Claude to log it to my mnenomics.md 
+- I then take a "quiz" based on the family that I learned for the day AND all the other flags I learned from previous days (so gets harder per day) 
+- I take a break then come back later at night and take the same quiz.
+- I send my results back to the coach. It tells me what I got wrong, why, and rewrites tomorrow's plan accordingly!
+
+![Overview table of the 8-day flag learning plan from plan.md](/challenges/memorize-flags/plan-md.png "Sample of my plan.md")
+
+### How the agent is put together
+
+It's Claude, running out of one project folder (flag-challenge agent). 
+```
+~/flag-challenge/
+├── AGENTS.md            # my operating instructions as coach — the brain of the whole system
+├── CLAUDE.md            # → @AGENTS.md (so Claude Code + any other agent read the same rules)
+├── plan.md              # the living 7-day plan; I rewrite it every night from your results
+├── leeches.md           # your active leech list + confusable pairs, with miss counts
+├── mnemonics.md         # the growing mnemonic library, saved in your own words
+├── log/
+│   └── day-N.md         # daily state I append at session close (score, predicted-vs-actual,
+│                        #   new leeches, retired flags, pace) — this is what a fresh thread
+│                        #   reads each morning to rebuild where I left off
+├── reports/
+│   └── day-N.html       # the 4-section HTML report I output each day (diagnosis, mnemonics,
+│                        #   micro-review schedule, plan changes)
+└── drill/
+    ├── quiz.html        # the local flag quiz — real images, shuffled, confidence buttons,
+    │                    #   leech-weighted, no timer (accuracy over speed)
+    ├── study-dayN.html  # the "just follow this" study sheet I generate when you say "Day X":
+    │                    #   ordered steps + flags shown as images, grouped by visual family
+    └── flags/           # 196 flag images stored locally, so everything works offline
+```
+
+![Flag Drill quiz UI showing a flag card with Knew it / Guessed / Missed grading](/challenges/memorize-flags/quiz-html.png "Sample of my quiz.html")
+
+### The memory principles
+
+- **Testing beats reading.** That's why I quiz myself 2x daily
+- **Drilling!** Especially for flags that I keep forgetting!
+- **Look-alikes** are clustered & studied together so I can tell the differences.
+- **Mnemonics are mine.** Specific, pretty ridiculous, so it's memorable
+- **Little and often,** with sleep in between. Short daily reps > one long cram 
+
+### My prompt 
+In case you want to copy it for yourself. I had a simpler starting prompt, it built a whole agent out based on my goals and I got started in under 1 hour! This prompt below is a reverse-engineered version of my current setup.
+```
+You are the best memory athlete & my flag-learning coach for a 7-day challenge to recognize all ~195 country flags on sight. I have NO human tutor — you are my only coach. Draw principles from the best memory athletes.
+
+Give me a preliminary day to day plan that I can follow to achieve this, based on the best memory learning principles. 
+
+Your job each day:
+- Plan the session and tell me exactly what to do
+- Teach vivid mnemonics for flags that look alike and for all flags so they stick
+- Quiz me and track my misses 
+- Diagnose WHY I'm failing (which pairs I confuse, which regions are weak). Help me run a consistent diagnostic "test" to do this daily. 
+- Rewrite tomorrow's plan based on my daily report
+
+Rules:
+- Primary skill = flag → name (I see a flag, I name the country)
+- Spaced repetition: resurface my misses more often than flags I've nailed.
+- When I confuse two flags, give me ONE vivid, specific way to tell them apart.
+- After each daily report, output exactly: (1) diagnosis of my error patterns,
+  (2) new/updated mnemonics for my worst 3–5 confusions, (3) today's spaced micro-review
+  schedule, (4) any change to tomorrow's plan. Output this into an HTML file 
+- Keep me honest on pace. If I'm behind, tell me what to cut.
+
+Tell me what other rules, daily rituals and things I should be doing based on memory and learning principles that I haven't incorporated in the plan above. 
+
+Give me the proposed plan for how to setup an agent for this flag-learning coach.
+
+Start with the plan and setup first and then let's go from there.
+
+```
+
+See you tomorrow for Day 1!!!
+
+</details>

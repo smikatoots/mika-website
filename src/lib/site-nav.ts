@@ -26,6 +26,11 @@ export const learnAiNavItems = [
     label: "AI Guides",
     description: "Free practical how-tos from my social content",
   },
+  {
+    href: "/challenges",
+    label: "AI Challenges",
+    description: "Difficult skills I'm learning with AI as my only coach",
+  },
 ] as const;
 
 /** Indexed static routes not shown in header nav. */

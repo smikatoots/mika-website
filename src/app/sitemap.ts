@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { loadAllAiGuideIndexEntries } from "@/lib/ai-guides/load-guides";
 import { loadBlogManifest } from "@/lib/blog/manifest";
+import { loadAllChallengeIndexEntries } from "@/lib/challenges/load-challenges";
 import { loadPressManifest } from "@/lib/press/manifest";
 import { loadProjectsManifest } from "@/lib/projects/manifest";
 import { SITE_URL } from "@/lib/site";
@@ -22,6 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/projects` },
     { url: `${SITE_URL}/press` },
     { url: `${SITE_URL}/my-dreams` },
+    { url: `${SITE_URL}/challenges` },
     ...siteRoutesNotInNav.map(({ href }) => ({
       url: `${SITE_URL}${href}`,
     })),
@@ -53,6 +55,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}/ai/${g.slug}`,
     lastModified: new Date(g.updated?.trim() || g.published),
   }));
+  const challenges = await loadAllChallengeIndexEntries();
+  const challengeSitemapEntries: MetadataRoute.Sitemap = challenges.map(
+    (entry) => ({
+      url: `${SITE_URL}/challenges/${entry.slug}`,
+      lastModified: new Date(entry.published),
+    }),
+  );
 
   /**
    * Non-blog URLs are authored in-repo (press/projects/links/etc.); blog posts
@@ -65,5 +74,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...projectEntries,
     ...pressEntries,
     ...aiGuideEntries,
+    ...challengeSitemapEntries,
   ];
 }
