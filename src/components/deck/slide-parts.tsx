@@ -306,7 +306,7 @@ export function StepsSlide({
               style={active ? { animationDelay: "0.1s" } : undefined}
             >
               <span
-                className={`flex h-16 w-16 flex-none items-center justify-center rounded-full font-mono text-3xl font-bold sm:h-20 sm:w-20 sm:text-4xl ${
+                className={`flex h-20 w-20 flex-none items-center justify-center rounded-full font-mono text-4xl font-bold sm:h-24 sm:w-24 sm:text-5xl ${
                   active
                     ? "bg-[var(--deck-accent)] text-white"
                     : done
@@ -317,9 +317,11 @@ export function StepsSlide({
                 {i + 1}
               </span>
               {/* Always render the label to reserve a stable box width, so the
-                  steps box doesn't shift as later (longer) steps reveal. */}
+                  steps box doesn't shift as later (longer) steps reveal.
+                  Sized just under `statement` so it reads nearly as big as
+                  a Text + Image header. */}
               <span
-                className={`whitespace-nowrap text-6xl font-extrabold leading-[1.05] tracking-tight text-zinc-950 sm:text-7xl ${
+                className={`whitespace-nowrap text-7xl font-extrabold leading-[1.05] tracking-tight text-zinc-950 sm:text-8xl ${
                   reached ? "" : "invisible"
                 }`}
                 aria-hidden={!reached}

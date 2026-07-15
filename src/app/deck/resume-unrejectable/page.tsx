@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { Deck } from "@/components/deck/Deck";
-import { A, HL, ImageSlide, StepsSlide, TextSlide } from "@/components/deck/slide-parts";
+import { HL, ImageSlide, StepsSlide, TextSlide } from "@/components/deck/slide-parts";
 import { CtaSlide } from "@/components/deck/special-slides";
 
 export const metadata: Metadata = { title: "Your resume, unrejectable" };
@@ -15,9 +15,9 @@ const slate = "#71717a";
 
 // The 3 prompts, revealed one at a time (StepsSlide increments `current`).
 const promptSteps: React.ReactNode[] = [
-  "The Roaster — scores you against the job + keywords you're missing.",
-  "The Revamper — rewrites bullets as X, measured by Y, by doing Z.",
-  "The Interviewer — asks the 5 questions a recruiter would.",
+  "The Roaster",
+  "The Revamper",
+  "The Interviewer",
 ];
 
 // Slide 3 visual — a resume page on the left with a scanning beam sweeping
@@ -112,56 +112,59 @@ function RoasterScan() {
 // doing Z) linked top-to-bottom by a dotted salmon arrow.
 function XyzStack() {
   const pills = [
-    { y: 60, lead: "Accomplished ", token: "X" },
-    { y: 258, lead: "measured by ", token: "Y" },
-    { y: 456, lead: "by doing ", token: "Z" },
+    { y: 20, lead: "Accomplished ", token: "X" },
+    { y: 340, lead: "measured by ", token: "Y" },
+    { y: 660, lead: "by doing ", token: "Z" },
   ];
-  const pillW = 560;
-  const pillH = 124;
+  const pillW = 680;
+  const pillH = 150;
   const cx = 515;
   const x = cx - pillW / 2;
+  // Leave a wide gap between each pill's bottom and the next pill's top so the
+  // dotted connector's arrowhead lands in open space (not tucked under a pill).
+  const gapPad = 52;
   return (
     <div className="deck-pop flex h-full w-full items-center justify-center p-2">
       <svg
-        viewBox="0 0 1030 640"
+        viewBox="0 0 1030 830"
         className="h-auto w-full max-w-4xl"
         xmlns="http://www.w3.org/2000/svg"
         fontFamily="var(--font-bricolage), system-ui, sans-serif"
       >
         <defs>
-          <marker id="xyz-arrow" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto">
-            <path d="M1 1 L11 6 L1 11 Z" fill={accent} />
+          <marker id="xyz-arrow" markerWidth="14" markerHeight="14" refX="6" refY="7" orient="auto">
+            <path d="M1 1 L13 7 L1 13 Z" fill={accent} />
           </marker>
         </defs>
 
         {/* dotted connectors between pills */}
         <line
           x1={cx}
-          y1={pills[0].y + pillH}
+          y1={pills[0].y + pillH + 6}
           x2={cx}
-          y2={pills[1].y - 8}
+          y2={pills[1].y - gapPad}
           stroke={accent}
-          strokeWidth="6"
-          strokeDasharray="2 18"
+          strokeWidth="7"
+          strokeDasharray="2 20"
           strokeLinecap="round"
           markerEnd="url(#xyz-arrow)"
         />
         <line
           x1={cx}
-          y1={pills[1].y + pillH}
+          y1={pills[1].y + pillH + 6}
           x2={cx}
-          y2={pills[2].y - 8}
+          y2={pills[2].y - gapPad}
           stroke={accent}
-          strokeWidth="6"
-          strokeDasharray="2 18"
+          strokeWidth="7"
+          strokeDasharray="2 20"
           strokeLinecap="round"
           markerEnd="url(#xyz-arrow)"
         />
 
         {pills.map((p) => (
           <g key={p.token}>
-            <rect x={x} y={p.y} width={pillW} height={pillH} rx={pillH / 2} fill="#ffffff" stroke={accent} strokeWidth="4" />
-            <text x={cx} y={p.y + pillH / 2 + 20} textAnchor="middle" fontSize="56" fontWeight="800" fill={ink}>
+            <rect x={x} y={p.y} width={pillW} height={pillH} rx={pillH / 2} fill="#ffffff" stroke={accent} strokeWidth="5" />
+            <text x={cx} y={p.y + pillH / 2 + 24} textAnchor="middle" fontSize="70" fontWeight="800" fill={ink}>
               {p.lead}
               <tspan fill={accent}>{p.token}</tspan>
             </text>
@@ -187,28 +190,32 @@ function InterviewerBubbles() {
         xmlns="http://www.w3.org/2000/svg"
         fontFamily="var(--font-bricolage), system-ui, sans-serif"
       >
-        {/* speech bubble */}
-        <rect x="70" y="150" width="340" height="300" rx="48" fill={accent} />
-        <path d="M150 448 L150 540 L230 448 Z" fill={accent} />
-        {/* mic inside the bubble */}
-        <rect x="212" y="212" width="56" height="120" rx="28" fill="#ffffff" />
-        <path d="M186 300 a54 54 0 0 0 108 0" fill="none" stroke="#ffffff" strokeWidth="14" strokeLinecap="round" />
-        <line x1="240" y1="354" x2="240" y2="392" stroke="#ffffff" strokeWidth="14" strokeLinecap="round" />
-        <line x1="206" y1="392" x2="274" y2="392" stroke="#ffffff" strokeWidth="14" strokeLinecap="round" />
+        {/* speech bubble (nudged right to close the gap with the questions) */}
+        <g transform="translate(80 0)">
+          <rect x="70" y="150" width="340" height="300" rx="48" fill={accent} />
+          <path d="M150 448 L150 540 L230 448 Z" fill={accent} />
+          {/* mic inside the bubble */}
+          <rect x="212" y="212" width="56" height="120" rx="28" fill="#ffffff" />
+          <path d="M186 300 a54 54 0 0 0 108 0" fill="none" stroke="#ffffff" strokeWidth="14" strokeLinecap="round" />
+          <line x1="240" y1="354" x2="240" y2="392" stroke="#ffffff" strokeWidth="14" strokeLinecap="round" />
+          <line x1="206" y1="392" x2="274" y2="392" stroke="#ffffff" strokeWidth="14" strokeLinecap="round" />
+        </g>
 
-        {/* five numbered question bubbles */}
-        {nums.map((n, i) => {
-          const cy = startY + i * stepY + 40;
-          return (
-            <g key={n}>
-              <circle cx={circleX} cy={cy} r="42" fill="#ffffff" stroke={accent} strokeWidth="5" />
-              <text x={circleX} y={cy + 18} textAnchor="middle" fontSize="46" fontWeight="800" fill={accent}>
-                {n}
-              </text>
-              <rect x={circleX + 66} y={cy - 16} width={220 - i * 18} height="32" rx="16" fill={grey} />
-            </g>
-          );
-        })}
+        {/* five numbered question bubbles (nudged left to close the gap) */}
+        <g transform="translate(-110 0)">
+          {nums.map((n, i) => {
+            const cy = startY + i * stepY + 40;
+            return (
+              <g key={n}>
+                <circle cx={circleX} cy={cy} r="42" fill="#ffffff" stroke={accent} strokeWidth="5" />
+                <text x={circleX} y={cy + 18} textAnchor="middle" fontSize="46" fontWeight="800" fill={accent}>
+                  {n}
+                </text>
+                <rect x={circleX + 66} y={cy - 16} width={220 - i * 18} height="32" rx="16" fill={grey} />
+              </g>
+            );
+          })}
+        </g>
       </svg>
     </div>
   );
@@ -222,19 +229,11 @@ const slides: React.ReactNode[] = [
     key="linkedin"
     src={`${LIB}/mika-linkedin-hero.png`}
     alt="Mika at LinkedIn"
-    caption={
-      <>
-        I worked at <A>LinkedIn</A>. Here&apos;s why you&apos;re getting ghosted.
-      </>
-    }
   />,
 
-  // 2 — 3 prompts before your next application
+  // 2 — 3 prompts
   <TextSlide key="three-prompts" display>
-    <span>
-      3 <HL>prompts</HL> before
-    </span>
-    <span>your next application.</span>
+    3 <HL>prompts</HL>
   </TextSlide>,
 
   // 3 — The Roaster: scores you + surfaces missing keywords

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { Deck } from "@/components/deck/Deck";
-import { A, HL, StepsSlide, TextSlide } from "@/components/deck/slide-parts";
+import { A, HL, ImageSlide, TextSlide } from "@/components/deck/slide-parts";
 import { CtaSlide } from "@/components/deck/special-slides";
 import { deckType, headingBase } from "@/components/deck/deck-styles";
 
@@ -9,116 +9,38 @@ export const metadata: Metadata = {
   title: "How I fixed my desktop anxiety with Claude",
 };
 
-// ─── Missing-image fallbacks ─────────────────────────────────────────────────
-// None of the referenced `_library` screenshots exist yet. Rather than ship a
-// broken <img>, each slot renders an on-brand SVG placeholder labelled with the
-// filename Mika should drop into public/decks/_library/. Swap these for the real
-// templates (DualImageSlide / ImageSlide) once the screenshots are added.
+const LIB = "/decks/_library";
 
-function MissingShot({ label }: { label: string }) {
-  return (
-    <div className="relative flex w-full items-center justify-center">
-      <svg
-        viewBox="0 0 640 440"
-        className="h-auto w-full max-w-2xl"
-        role="img"
-        aria-label={`Placeholder for ${label}`}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          x="8"
-          y="8"
-          width="624"
-          height="424"
-          rx="28"
-          fill="#fff5f6"
-          stroke="var(--deck-accent)"
-          strokeWidth="3"
-          strokeDasharray="11 11"
-        />
-        {/* photo glyph */}
-        <rect
-          x="238"
-          y="118"
-          width="164"
-          height="128"
-          rx="14"
-          fill="none"
-          stroke="var(--deck-accent)"
-          strokeWidth="5"
-        />
-        <circle cx="284" cy="160" r="15" fill="var(--deck-accent)" />
-        <path
-          d="M246 240 L300 186 L336 224 L360 200 L394 240 Z"
-          fill="var(--deck-accent)"
-          opacity="0.85"
-        />
-        {/* filename */}
-        <text
-          x="320"
-          y="312"
-          textAnchor="middle"
-          fontFamily="var(--font-bricolage), system-ui, sans-serif"
-          fontSize="30"
-          fontWeight="700"
-          fill="#27272a"
-        >
-          {label}
-        </text>
-        <text
-          x="320"
-          y="352"
-          textAnchor="middle"
-          fontFamily="var(--font-bricolage), system-ui, sans-serif"
-          fontSize="20"
-          fontWeight="600"
-          fill="var(--deck-accent)"
-        >
-          add to /decks/_library
-        </text>
-      </svg>
-    </div>
-  );
-}
+// ─── Co-located components ───────────────────────────────────────────────────
 
-/** Image-only DualImageSlide stand-in — two placeholder tiles side by side. */
-function MissingDualSlide({
-  left,
-  right,
-}: {
-  left: string;
-  right: string;
-}) {
-  return (
-    <div className="deck-fade flex h-full w-full flex-col items-center justify-center gap-4 px-6 py-8 sm:flex-row sm:gap-8 sm:px-10 sm:py-10">
-      <div className="flex w-full items-center justify-center sm:flex-1">
-        <MissingShot label={left} />
-      </div>
-      <div className="flex w-full items-center justify-center sm:flex-1">
-        <MissingShot label={right} />
-      </div>
-    </div>
-  );
-}
-
-/** ImageSlide-with-header stand-in — caption header on top, placeholder below. */
-function MissingImageSlide({
+/** Text + video slide: an optional caption on top, an autoplaying muted loop
+ *  below. Mirrors ImageSlide's shape so image and video steps read as a set. */
+function VideoSlide({
+  src,
   caption,
-  label,
 }: {
-  caption: React.ReactNode;
-  label: string;
+  src: string;
+  caption?: React.ReactNode;
 }) {
   return (
-    <div className="deck-fade flex h-full w-full flex-col items-center justify-center px-6 py-10 sm:px-12 sm:py-12">
-      <h2
-        className={`deck-rise mb-5 text-center sm:mb-7 ${headingBase} ${deckType.statement}`}
-        style={{ animationDelay: "0.05s" }}
-      >
-        {caption}
-      </h2>
-      <div className="flex w-full flex-1 items-center justify-center">
-        <MissingShot label={label} />
+    <div className="deck-fade flex h-full w-full flex-col items-center justify-center gap-3 px-6 py-10 sm:gap-5 sm:px-12 sm:py-12">
+      {caption ? (
+        <h2
+          className={`deck-rise text-center ${headingBase} ${deckType.statement}`}
+          style={{ animationDelay: "0.05s" }}
+        >
+          {caption}
+        </h2>
+      ) : null}
+      <div className="relative flex max-h-[70vh] w-full flex-1 items-center justify-center">
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="max-h-[70vh] max-w-full rounded-2xl object-contain shadow-[0_24px_70px_-24px_rgba(0,0,0,0.3)]"
+        />
       </div>
     </div>
   );
@@ -126,109 +48,90 @@ function MissingImageSlide({
 
 // ─── Slides ──────────────────────────────────────────────────────────────────
 
-const stepLabels: React.ReactNode[] = [
-  "Start in Claude Cowork (or Code)",
-  "Choose your project folder",
-  "Give it the organizing prompt",
-  "Claude analyzes & finds duplicates",
-  "Five folders, everything sorted",
-  "Same for Downloads",
-];
-
 const slides: React.ReactNode[] = [
-  // 1 — This is how I got my desktop from this to this
-  <MissingDualSlide
-    key="desktop-before-after"
-    left="desktop-before.png"
-    right="desktop-after.png"
+  // 1 — This is how I got my downloads from this…
+  <ImageSlide
+    key="downloads-before"
+    src={`${LIB}/desktop-anxiety-downloads.png`}
+    alt="Cluttered, messy Downloads folder full of loose files"
   />,
 
-  // 2 — and my downloads from this to this using Claude
-  <MissingDualSlide
-    key="downloads-before-after"
-    left="downloads-before.png"
-    right="downloads-after.png"
+  // 2 — …to this, using Claude
+  <ImageSlide
+    key="downloads-after"
+    src={`${LIB}/desktop-anxiety-downloads-fixed.png`}
+    alt="Organized Downloads folder after Claude sorted it into folders"
   />,
 
   // 3 — Just looking at my desktop was giving me so much anxiety
   <TextSlide key="anxiety" emoji="😩">
-    My desktop gave me so much <HL>anxiety</HL>.
+    My desktop gave me so much <HL>anxiety</HL>
   </TextSlide>,
 
-  // 4 — My personal first AHA moment. Just like magic!
+  // 4 — My personal first AHA moment
   <TextSlide key="aha" emoji="✨">
-    My first real <HL>AHA</HL> moment. Pure <HL>magic</HL>.
+    My first real <HL>AHA</HL> moment.
   </TextSlide>,
 
-  // 5 — By the way, I'm Mika
-  <MissingImageSlide
+  // 5 — Hi, I'm Mika
+  <ImageSlide
     key="mika"
+    src={`${LIB}/mika-header.jpeg`}
+    alt="Mika, camera-facing"
     caption={
       <>
-        I&apos;m <A>Mika</A> — AI for founders, building a time-rich life.
+        Hi I&apos;m <A>Mika</A>! 👋
       </>
     }
-    label="mika-headshot.jpg"
   />,
 
-  // 6 — Claude helps me become more time-rich with this workflow
+  // 6 — Time-rich workflows
   <TextSlide key="time-rich" emoji="⏳">
-    Claude makes me <HL>time-rich</HL>, not time-poor.
+    <HL>time-rich</HL> workflows
   </TextSlide>,
 
   // 7 — Start in Claude Cowork (or Code)
-  <StepsSlide
+  <ImageSlide
     key="step-cowork"
-    steps={stepLabels}
-    current={0}
-    visual={<MissingShot label="claude-cowork-code-tools.png" />}
+    src={`${LIB}/claude-cowork.png`}
+    alt="Claude Cowork interface"
+    caption="Start in Claude Cowork (or Code)"
   />,
 
-  // 8 — Choose your project folder
-  <StepsSlide
+  // 8 — Select the right project folder
+  <VideoSlide
     key="step-folder"
-    steps={stepLabels}
-    current={1}
-    visual={<MissingShot label="cowork-project-folder-screenshot.png" />}
+    src={`${LIB}/desktop-anxiety-prompt.mov`}
+    caption="Select the right project folder"
   />,
 
-  // 9 — Give it the organizing prompt
-  <StepsSlide
+  // 9 — Give it your prompt
+  <VideoSlide
     key="step-prompt"
-    steps={stepLabels}
-    current={2}
-    visual={<MissingShot label="organize-prompt-screenshot.png" />}
+    src={`${LIB}/desktop-anxiety-prompt.mov`}
+    caption="Give it your prompt"
   />,
 
-  // 10 — Claude analyzes & finds duplicates
-  <StepsSlide
-    key="step-analyze"
-    steps={stepLabels}
-    current={3}
-    visual={<MissingShot label="claude-analysis-screenshot.png" />}
+  // 10 — Let Claude cook
+  <VideoSlide
+    key="step-cook"
+    src={`${LIB}/desktop-anxiety-wip.mov`}
+    caption="Let Claude cook"
   />,
 
-  // 11 — Five folders, everything sorted (reuse desktop-after.png)
-  <StepsSlide
-    key="step-folders"
-    steps={stepLabels}
-    current={4}
-    visual={<MissingShot label="desktop-after.png" />}
+  // 11 — Review Claude's work
+  <VideoSlide
+    key="step-review"
+    src={`${LIB}/desktop-anxiety-folders.mov`}
+    caption="Review Claude's work"
   />,
 
-  // 12 — Same for Downloads (reuse downloads-after.png)
-  <StepsSlide
-    key="step-downloads"
-    steps={stepLabels}
-    current={5}
-    visual={<MissingShot label="downloads-after.png" />}
-  />,
-
-  // 13 — Want my prompts? CTA
+  // 12 — Want my prompt? CTA
   <CtaSlide
     key="cta"
     prompt={null}
-    headline="Want my prompts?"
+    headline="Want my prompt?"
+    size="md"
     sub={
       <>
         Follow &amp; comment <HL>MIKA</HL> below.

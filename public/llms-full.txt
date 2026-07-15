@@ -6,6 +6,7 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Organize Your Messy Desktop & Folders with AI](https://mikareyes.com/ai/organize-messy-desktop-folders-with-ai): Organize a messy Desktop or Downloads folder with Claude Cowork or Claude Code in minutes: paste a prompt, review the plan, and let AI move the files for you.
 - [Claude Features Cheat Sheet for Power Users](https://mikareyes.com/ai/claude-features-cheat-sheet): Claude features cheat sheet for power users: commands, artifacts, skills, projects, connectors, plugins, and scheduled routines that stack into a system.
 - [What are Subagents?](https://mikareyes.com/ai/what-are-subagents): Subagents let your main Claude spin up helpers that work at the same time. Here's what they are, how they differ from agents, and how to invoke them in Claude Code.
 - [Stanford's STORM Method: Research Without the Blind Spots](https://mikareyes.com/ai/stanford-storm-research-method): One AI prompt gives you tunnel vision. Stanford's STORM method fixes it with five expert perspectives and a 4-prompt workflow you can run in Claude in five minutes. Plus how to use the official tool or website.

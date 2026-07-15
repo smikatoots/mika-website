@@ -1,25 +1,60 @@
 import type { Metadata } from "next";
 
 import { Deck } from "@/components/deck/Deck";
-import { CoverSlide, HL, StepsSlide, TextSlide } from "@/components/deck/slide-parts";
+import { CoverSlide, HL, ImageSlide } from "@/components/deck/slide-parts";
 import { CtaSlide } from "@/components/deck/special-slides";
+import { deckType, headingBase } from "@/components/deck/deck-styles";
 
 export const metadata: Metadata = {
   title: "Turn a YouTube playlist into an AI tutor",
 };
 
 const FONT = "var(--font-bricolage)";
+const LIB = "/decks/_library";
+
+/** Text + video slide: an optional caption on top, an autoplaying muted loop
+ *  below. Mirrors ImageSlide's shape so image and video steps read as a set. */
+function VideoSlide({
+  src,
+  caption,
+}: {
+  src: string;
+  caption?: React.ReactNode;
+}) {
+  return (
+    <div className="deck-fade flex h-full w-full flex-col items-center justify-center gap-3 px-6 py-10 sm:gap-5 sm:px-12 sm:py-12">
+      {caption ? (
+        <h2
+          className={`deck-rise text-center ${headingBase} ${deckType.statement}`}
+          style={{ animationDelay: "0.05s" }}
+        >
+          {caption}
+        </h2>
+      ) : null}
+      <div className="relative flex max-h-[70vh] w-full flex-1 items-center justify-center">
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="max-h-[70vh] max-w-full rounded-2xl object-contain shadow-[0_24px_70px_-24px_rgba(0,0,0,0.3)]"
+        />
+      </div>
+    </div>
+  );
+}
 
 /**
  * Slide 1 — flow diagram: a YouTube playlist (stacked video thumbnails) flows
- * right through two labeled circles (NotebookLM, Gemini) into a graduation cap
+ * right through NotebookLM and Gemini (shown as logos) into a graduation cap
  * that stands for the finished "AI tutor."
  */
 function TutorFlowSvg() {
   return (
     <svg
       viewBox="0 0 980 300"
-      className="h-auto w-full max-w-4xl"
+      className="h-auto w-full max-w-[92rem]"
       role="img"
       aria-label="A YouTube playlist flows through NotebookLM and Gemini to become an AI tutor."
     >
@@ -29,8 +64,8 @@ function TutorFlowSvg() {
           viewBox="0 0 10 10"
           refX="8"
           refY="5"
-          markerWidth="7"
-          markerHeight="7"
+          markerWidth="8"
+          markerHeight="8"
           orient="auto-start-reverse"
         >
           <path d="M0,0 L10,5 L0,10 Z" fill="var(--deck-accent)" />
@@ -39,44 +74,54 @@ function TutorFlowSvg() {
 
       {/* Playlist — stacked video thumbnails */}
       <g className="deck-pop" style={{ animationDelay: "0.05s" }}>
-        <rect x="95" y="70" width="150" height="95" rx="12" fill="#e4e4e7" />
-        <rect x="80" y="85" width="150" height="95" rx="12" fill="#f4f4f5" stroke="#d4d4d8" strokeWidth="2" />
-        <rect x="65" y="100" width="150" height="95" rx="12" fill="#ffffff" stroke="#18181b" strokeWidth="2.5" />
-        <polygon points="126,128 126,168 160,148" fill="var(--deck-accent)" />
-        <text x="140" y="232" textAnchor="middle" fill="#18181b" fontSize="22" fontWeight="700" fontFamily={FONT}>
+        <rect x="95" y="66" width="160" height="102" rx="12" fill="#e4e4e7" />
+        <rect x="78" y="83" width="160" height="102" rx="12" fill="#f4f4f5" stroke="#d4d4d8" strokeWidth="2" />
+        <rect x="61" y="100" width="160" height="102" rx="12" fill="#ffffff" stroke="#18181b" strokeWidth="2.5" />
+        <polygon points="123,130 123,172 161,151" fill="var(--deck-accent)" />
+        <text x="141" y="240" textAnchor="middle" fill="#18181b" fontSize="30" fontWeight="700" fontFamily={FONT}>
           YouTube playlist
         </text>
       </g>
 
-      <line x1="236" y1="148" x2="366" y2="148" stroke="var(--deck-accent)" strokeWidth="4" markerEnd="url(#flow-arrow)" />
+      <line x1="244" y1="151" x2="360" y2="151" stroke="var(--deck-accent)" strokeWidth="5" markerEnd="url(#flow-arrow)" />
 
       {/* NotebookLM */}
       <g className="deck-pop" style={{ animationDelay: "0.18s" }}>
-        <circle cx="430" cy="148" r="58" fill="#ffffff" stroke="var(--deck-accent)" strokeWidth="3.5" />
-        <text x="430" y="154" textAnchor="middle" fill="#18181b" fontSize="18" fontWeight="800" fontFamily={FONT}>
-          NotebookLM
-        </text>
+        <circle cx="430" cy="151" r="66" fill="#ffffff" stroke="var(--deck-accent)" strokeWidth="4" />
+        <image
+          href={`${LIB}/notebooklm-logo.png`}
+          x="378"
+          y="99"
+          width="104"
+          height="104"
+          preserveAspectRatio="xMidYMid meet"
+        />
       </g>
 
-      <line x1="490" y1="148" x2="548" y2="148" stroke="var(--deck-accent)" strokeWidth="4" markerEnd="url(#flow-arrow)" />
+      <line x1="500" y1="151" x2="538" y2="151" stroke="var(--deck-accent)" strokeWidth="5" markerEnd="url(#flow-arrow)" />
 
       {/* Gemini */}
       <g className="deck-pop" style={{ animationDelay: "0.3s" }}>
-        <circle cx="610" cy="148" r="58" fill="#ffffff" stroke="var(--deck-accent)" strokeWidth="3.5" />
-        <text x="610" y="154" textAnchor="middle" fill="#18181b" fontSize="24" fontWeight="800" fontFamily={FONT}>
-          Gemini
-        </text>
+        <circle cx="610" cy="151" r="66" fill="#ffffff" stroke="var(--deck-accent)" strokeWidth="4" />
+        <image
+          href={`${LIB}/gemini-logo.png`}
+          x="558"
+          y="99"
+          width="104"
+          height="104"
+          preserveAspectRatio="xMidYMid meet"
+        />
       </g>
 
-      <line x1="670" y1="148" x2="748" y2="148" stroke="var(--deck-accent)" strokeWidth="4" markerEnd="url(#flow-arrow)" />
+      <line x1="680" y1="151" x2="742" y2="151" stroke="var(--deck-accent)" strokeWidth="5" markerEnd="url(#flow-arrow)" />
 
       {/* AI tutor — graduation cap */}
       <g className="deck-pop" style={{ animationDelay: "0.42s" }}>
-        <polygon points="800,108 858,130 800,152 742,130" fill="#18181b" />
-        <path d="M770,139 L770,157 C770,172 830,172 830,157 L830,139 Z" fill="var(--deck-accent)" />
-        <line x1="858" y1="130" x2="858" y2="150" stroke="#18181b" strokeWidth="2.5" />
-        <circle cx="858" cy="154" r="5" fill="var(--deck-accent)" />
-        <text x="800" y="232" textAnchor="middle" fill="#18181b" fontSize="22" fontWeight="700" fontFamily={FONT}>
+        <polygon points="806,102 878,130 806,158 734,130" fill="#18181b" />
+        <path d="M770,142 L770,164 C770,182 842,182 842,164 L842,142 Z" fill="var(--deck-accent)" />
+        <line x1="878" y1="130" x2="878" y2="156" stroke="#18181b" strokeWidth="3" />
+        <circle cx="878" cy="160" r="6" fill="var(--deck-accent)" />
+        <text x="806" y="240" textAnchor="middle" fill="#18181b" fontSize="30" fontWeight="700" fontFamily={FONT}>
           AI tutor
         </text>
       </g>
@@ -87,98 +132,106 @@ function TutorFlowSvg() {
 /**
  * Slide 7 — retention bar chart: a short gray "passive" bar next to a tall
  * salmon "active" bar, with bold percentages above each and a baseline axis.
+ * Enlarged type for legibility.
  */
 function RetentionBarsSvg() {
   return (
     <svg
-      viewBox="0 0 700 470"
-      className="h-auto w-full max-w-2xl"
+      viewBox="0 0 720 520"
+      className="h-auto w-full max-w-3xl"
       role="img"
       aria-label="Passive watching yields about 10% retention; active use yields about 75%."
     >
       {/* Bars */}
       <g className="deck-pop" style={{ animationDelay: "0.1s" }}>
-        <rect x="150" y="368" width="150" height="32" rx="6" fill="#d4d4d8" />
-        <text x="225" y="348" textAnchor="middle" fill="#71717a" fontSize="52" fontWeight="800" fontFamily={FONT}>
+        <rect x="140" y="400" width="180" height="40" rx="8" fill="#d4d4d8" />
+        <text x="230" y="372" textAnchor="middle" fill="#71717a" fontSize="72" fontWeight="800" fontFamily={FONT}>
           10%
         </text>
       </g>
       <g className="deck-pop" style={{ animationDelay: "0.25s" }}>
-        <rect x="400" y="160" width="150" height="240" rx="6" fill="var(--deck-accent)" />
-        <text x="475" y="140" textAnchor="middle" fill="var(--deck-accent)" fontSize="68" fontWeight="800" fontFamily={FONT}>
+        <rect x="400" y="150" width="180" height="290" rx="8" fill="var(--deck-accent)" />
+        <text x="490" y="122" textAnchor="middle" fill="var(--deck-accent)" fontSize="88" fontWeight="800" fontFamily={FONT}>
           75%
         </text>
       </g>
 
       {/* Baseline */}
-      <line x1="70" y1="400" x2="620" y2="400" stroke="#18181b" strokeWidth="3" />
+      <line x1="60" y1="440" x2="660" y2="440" stroke="#18181b" strokeWidth="3" />
 
       {/* Labels */}
-      <text x="225" y="438" textAnchor="middle" fill="#3f3f46" fontSize="26" fontWeight="700" fontFamily={FONT}>
+      <text x="230" y="486" textAnchor="middle" fill="#3f3f46" fontSize="34" fontWeight="700" fontFamily={FONT}>
         Passive watching
       </text>
-      <text x="475" y="438" textAnchor="middle" fill="#18181b" fontSize="26" fontWeight="700" fontFamily={FONT}>
+      <text x="490" y="486" textAnchor="middle" fill="#18181b" fontSize="34" fontWeight="700" fontFamily={FONT}>
         Active use
       </text>
     </svg>
   );
 }
 
-// Shared step roadmap — labels kept to one line; keyword highlighted per step.
-const STEPS: React.ReactNode[] = [
-  <>
-    Paste into <HL>NotebookLM</HL>
-  </>,
-  <>
-    Build an <HL>outline</HL>
-  </>,
-  <>
-    Make an app in <HL>Gemini</HL>
-  </>,
-];
-
 const slides: React.ReactNode[] = [
-  // 1 — Hook: two free Google tools turn a playlist into a personal AI tutor
-  <CoverSlide
-    key="cover"
-    title={
-      <>
-        Turn any YouTube playlist into a <HL>personal AI tutor</HL> — using two Google tools that are{" "}
-        <HL>free</HL>.
-      </>
-    }
-    diagram={<TutorFlowSvg />}
+  // 1 — Hook: the flow diagram, full-bleed, no text
+  <CoverSlide key="cover" diagram={<TutorFlowSvg />} />,
+
+  // 2 — YouTube logo
+  <ImageSlide
+    key="youtube"
+    src={`${LIB}/youtube-logo.png`}
+    alt="YouTube"
+    maxWidth="max-w-2xl"
   />,
 
-  // 2 — The playlist you never finish, fixed in 5 minutes
-  //     (fallback: youtube-watch-later.jpg missing → large-text header slide)
-  <TextSlide key="hook2">
-    That playlist you never finish? Fixed in <HL>5 minutes</HL>.
-  </TextSlide>,
+  // 3 — Step 1: paste the YouTube link on NotebookLM
+  <VideoSlide
+    key="step1"
+    src={`${LIB}/google-tutor-step1.mov`}
+    caption={
+      <>
+        Step 1: Paste YouTube link on <HL>NotebookLM</HL>
+      </>
+    }
+  />,
 
-  // 3 — Three steps, tools you already have
-  <TextSlide key="three">
-    Three steps. Tools you <HL>already have</HL>.
-  </TextSlide>,
+  // 4 — Step 2: explore the overviews & formats
+  <ImageSlide
+    key="step2"
+    src={`${LIB}/google-tutor-step2.png`}
+    alt="Exploring NotebookLM overviews and formats"
+    framed
+    caption={
+      <>
+        Step 2: Explore the <HL>overviews &amp; formats</HL>
+      </>
+    }
+  />,
 
-  // 4 — Step 1: paste the YouTube link into NotebookLM
-  //     (fallback: notebooklm-add-source.png missing → steps without visual)
-  <StepsSlide key="step1" steps={STEPS} current={0} />,
+  // 5 — Step 3: give it to Gemini
+  <ImageSlide
+    key="step3"
+    src={`${LIB}/google-tutor-step3.png`}
+    alt="Handing the outline to Gemini"
+    framed
+    caption={
+      <>
+        Step 3: Give it to <HL>Gemini</HL>
+      </>
+    }
+  />,
 
-  // 5 — Step 2: ask it to build a short outline
-  //     (fallback: notebooklm-outline.png missing → steps without visual)
-  <StepsSlide key="step2" steps={STEPS} current={1} />,
+  // 6 — The finished product: your personal AI tutor (full-bleed, no frame/text)
+  <ImageSlide
+    key="final-product"
+    src={`${LIB}/google-tutor-final-product.png`}
+    alt="The finished AI tutor built from the YouTube playlist"
+  />,
 
-  // 6 — Step 3: turn the outline into an app in Gemini
-  //     (fallback: gemini-app-build.png missing → steps without visual)
-  <StepsSlide key="step3" steps={STEPS} current={2} />,
-
-  // 7 — Retention: 10% passive vs 75% active (custom bar chart)
+  // 7 — Passive vs. active learning (retention bars)
   <CoverSlide
     key="retention"
     title={
       <>
-        Passive watching: <HL>10%</HL> retention. Active use: <HL>75%</HL>.
+        <HL>Passive</HL> vs. <HL>Active</HL> learning
       </>
     }
     diagram={<RetentionBarsSvg />}
@@ -187,9 +240,9 @@ const slides: React.ReactNode[] = [
   // 8 — CTA
   <CtaSlide
     key="cta"
-    prompt="Comment"
+    prompt="Follow me, comment"
     headline="MIKA"
-    sub="and I'll tell you what to use it for"
+    sub="for my guide."
   />,
 ];
 
