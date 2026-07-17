@@ -36,4 +36,5 @@ export const learnAiNavItems = [
 /** Indexed static routes not shown in header nav. */
 export const siteRoutesNotInNav = [
   { href: "/media-kit", label: "Media Kit" },
+  { href: "/events", label: "Events" },
 ] as const;
