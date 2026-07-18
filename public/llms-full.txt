@@ -6,6 +6,7 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Turn a YouTube Playlist into an AI Tutor](https://mikareyes.com/ai/how-to-turn-youtube-playlist-into-ai-tutor): Turn a YouTube playlist into an AI tutor with free NotebookLM and Gemini Canvas. Paste the link, extract the framework, then practice in an interactive app.
 - [What is Claude's Use Cases page?](https://mikareyes.com/ai/what-is-claudes-use-cases-page): Claude's Use Cases page is a free library of real Claude workflows. Filter by industry or feature, then customize one example for your own job with a copy-paste prompt.
 - [How to Organize Your Messy Desktop & Folders with AI](https://mikareyes.com/ai/organize-messy-desktop-folders-with-ai): Organize a messy Desktop or Downloads folder with Claude Cowork or Claude Code in minutes: paste a prompt, review the plan, and let AI move the files for you.
 - [Claude Features Cheat Sheet for Power Users](https://mikareyes.com/ai/claude-features-cheat-sheet): Claude features cheat sheet for power users: commands, artifacts, skills, projects, connectors, plugins, and scheduled routines that stack into a system.
