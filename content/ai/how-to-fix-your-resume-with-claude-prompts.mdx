@@ -1,0 +1,166 @@
+---
+title: How to Fix Your Resume With Claude Prompts
+description: >-
+  Claude resume prompts that score you against a job post, rewrite bullets with
+  missing ATS keywords, and rehearse recruiter interview questions.
+tags:
+  - beginner
+  - claude
+published: "2026-07-20"
+updated: "2026-07-20"
+faq:
+  - question: Can I use the same resume for every job?
+    answer: >-
+      No. Run the Roaster and Revamper against each posting you care about. The
+      base experience stays yours; the keywords and emphasis change per role so
+      ATS and recruiters see a match.
+  - question: Will these prompts make Claude invent fake experience?
+    answer: >-
+      Not if you keep the guardrails. The Roaster and Revamper both tell Claude
+      not to invent work, and to flag metrics you still need to fill in. Only
+      keep language you can defend in the Interviewer prompt.
+  - question: Do I need Claude Pro for this?
+    answer: >-
+      No. Any Claude chat works for paste-in prompts. Pro helps if you're
+      running this across a lot of applications and hitting usage limits.
+  - question: What's Google's XYZ resume format?
+    answer: >-
+      Accomplished X as measured by Y, by doing Z. Lead with the outcome, prove
+      it with a number, then show the method. That's what the Revamper forces
+      into every bullet.
+---
+
+If you're applying to jobs and hearing nothing back, it's usually not you. It's your process and your resume. Run three Claude prompts before the next application: score the gap against the posting, rewrite your bullets with the missing keywords, then rehearse the questions a recruiter would ask.
+
+I worked at LinkedIn, so I've seen how the system decides who gets seen and who gets ignored. Most resumes never reach a human. They hit an applicant tracking system (ATS) first, a filter that scans for keywords from the job post. If those words aren't on your page, you look invisible. These three prompts fix that before you send another application.
+
+> **Key insight:** You're not writing one resume. You're writing a match score for each role, then earning the interview with bullets that prove it.
+
+## What are the three Claude resume prompts?
+
+Three prompts, in order: the Roaster scores you against the job post and lists missing keywords, the Revamper rewrites your bullets around real experience using those keywords, and the Interviewer asks the five questions a recruiter would ask for that role.
+
+### 1. The Roaster: score your resume against the job post
+
+Paste your resume and the full job description. Ask Claude to score you against the role, then list every keyword from the posting you're missing. Keywords matter because ATS software is scanning for those exact words, not vibes.
+
+```text
+You are a ruthless but fair resume screener who has reviewed thousands of applications for competitive roles.
+
+I'm pasting:
+1) My current resume
+2) The full job description for a role I'm applying to
+
+Do the following in order:
+
+1. Score my fit for this role from 1–10. Be honest. One sentence on why that score.
+2. List the must-have requirements from the job post (skills, tools, years, domain, soft skills the posting emphasizes).
+3. For each must-have, mark: MATCH / PARTIAL / MISSING, and quote the line from my resume that supports it (or say "not on resume").
+4. Pull every important keyword and phrase from the job post that does NOT appear on my resume. Group them:
+   - Hard skills / tools
+   - Domain language
+   - Soft skills / leadership language
+   - Metrics or outcomes the posting cares about
+5. Tell me which missing keywords I can honestly claim from my real experience (even if I used different wording), and which ones I should not fake.
+6. End with a 5-bullet "fix this before you apply" list, ranked by impact on ATS + recruiter skim.
+
+Rules:
+- Do not invent experience I don't have.
+- Prefer the employer's exact phrasing when the concept is already true for me.
+- Keep the tone direct. No fluff.
+
+RESUME:
+[paste resume]
+
+JOB DESCRIPTION:
+[paste job description]
+```
+
+### 2. The Revamper: rewrite bullets around real experience + missing keywords
+
+Take the missing keywords from the Roaster and have Claude rewrite your bullets. Force a strong impact structure: what you accomplished, the metric that proves it, and the method you used. That's Google's XYZ format: Accomplished **X** as measured by **Y**, by doing **Z**.
+
+```text
+You are an expert resume writer who rewrites bullets in Google's XYZ format:
+Accomplished [X] as measured by [Y], by doing [Z].
+
+I'm pasting:
+1) My current resume (or the role section to rewrite)
+2) The job description
+3) The missing-keyword list from my Roaster pass (or extract them yourself if missing)
+
+Rewrite my bullets for the target role.
+
+Rules:
+- Only use experience that is already true in my resume or that I confirm in a short clarification question. If something is unclear, ask me before inventing numbers.
+- Weave in missing keywords naturally where they honestly fit. Do not keyword-stuff.
+- Every bullet must follow XYZ: outcome first, then metric, then method.
+- Prefer strong verbs. Cut filler ("responsible for," "helped with," "worked on").
+- Keep bullets scannable: 1–2 lines each.
+- Preserve truth over polish. If I don't have a metric, leave a [METRIC NEEDED] placeholder and tell me what kind of number would strengthen it.
+
+Output:
+1. A revised bullet list for each relevant role (before → after for each bullet).
+2. A short "keywords now covered" checklist.
+3. A "still missing / don't fake" list.
+4. A 3-sentence summary I can paste into LinkedIn About or a cover note, tuned to this job post.
+
+RESUME / BULLETS:
+[paste]
+
+JOB DESCRIPTION:
+[paste]
+
+MISSING KEYWORDS (from Roaster):
+[paste]
+```
+
+### 3. The Interviewer: practice the recruiter screen for that role
+
+Paste the job description and have Claude ask the five questions a recruiter would ask for that role. Use this after your resume is tight, so your stories match the bullets you're sending out.
+
+```text
+You are a recruiter running a 20-minute phone screen for this exact role.
+
+I'm pasting the job description (and optionally my revised resume).
+
+Ask me the 5 questions a real recruiter would ask for this role, one at a time.
+
+For each question:
+1. Ask the question.
+2. Wait for my answer.
+3. Score my answer 1–10 for: clarity, relevance to the posting, proof (metrics/examples), and seniority signal.
+4. Tell me what a stronger answer would include, in 3 bullets max.
+5. Give me a tighter rewritten version of MY answer (don't invent facts I didn't say). Then ask the next question.
+
+After all 5:
+- Summarize my top 3 strengths for this role.
+- Summarize my top 3 risks a recruiter would flag.
+- Give me a 60-second "tell me about yourself" script tailored to this posting, based only on what I shared.
+
+Start with question 1 only.
+
+JOB DESCRIPTION:
+[paste]
+
+REVISED RESUME (optional):
+[paste]
+```
+
+## How do you run the full resume loop?
+
+**Pick one role, not ten.** One posting at a time. The Roaster and Revamper only work when they're matching a specific job.
+
+**Run Roaster → Revamper → Interviewer in that order.** Don't rewrite before you know the gaps. Don't practice interview answers before the bullets match the posting.
+
+**Only ship what you can defend out loud.** If Claude adds a metric you can't explain in the Interviewer prompt, cut it. ATS gets you in the door. The screen decides if you stay.
+
+If you're new to Claude, start with my [How to Setup Claude](https://mikareyes.com/ai/how-to-setup-claude) guide first so Projects and prompts actually stick. Once you're job-searching in earnest, pair this with [Hypermessage](https://mikareyes.com/ai/hypermessage) for outreach that gets replies, and use [How to Create an AI Coach](https://mikareyes.com/ai/how-to-create-an-ai-coach) if you want a longer interview-practice coach beyond the five-question screen.
+
+Here are some related guides to check out:
+
+1. [Performance Review Skills (Self, Peer, Manager)](https://mikareyes.com/ai/performance-review-skills-self-peer-manager)
+2. [Hypermessage](https://mikareyes.com/ai/hypermessage)
+3. [How to Create an AI Coach](https://mikareyes.com/ai/how-to-create-an-ai-coach)
+4. [How to Setup Claude (10 Minute Setup Guide)](https://mikareyes.com/ai/how-to-setup-claude)
+5. [Claude Corps Fellowship: What it is & How to Stand Out](https://mikareyes.com/ai/how-to-stand-out-claude-corps-fellowship)
