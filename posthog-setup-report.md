@@ -2,7 +2,7 @@
 
 The wizard has completed a deep integration of PostHog analytics into mikareyes.com. Here's a summary of what was set up:
 
-**Client initialization** — `instrumentation-client.ts` initialises PostHog on every page load using the Next.js 15.3+ instrumentation API. No provider component needed. Automatic exception capture (`capture_exceptions: true`) is enabled. A reverse proxy via `/ingest` rewrites in `next.config.ts` routes all PostHog traffic through the site's own domain, improving ad-blocker resilience.
+**Client initialization** — `instrumentation-client.ts` initialises PostHog on every page load using the Next.js 15.3+ instrumentation API. No provider component is needed. Automatic exception capture (`capture_exceptions: true`) is enabled, while session recording and surveys are explicitly disabled. Browser analytics traffic uses PostHog's managed reverse proxy at `https://t.kingscrosslabs.com`; it no longer passes through Vercel `/ingest` rewrites.
 
 **Server-side client** — `src/lib/posthog-server.ts` provides a singleton `getPostHogClient()` for use in API routes or Server Actions when server-side event capture is needed.
 
