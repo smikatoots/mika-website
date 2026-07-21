@@ -1,0 +1,222 @@
+---
+title: How to Remove Your Data from the Internet with AI
+description: >-
+  Remove your data from the internet with AI: find data broker listings, draft
+  CCPA opt-out letters, submit requests, and re-check monthly until info is
+  gone.
+tags:
+  - beginner
+published: "2026-07-20"
+updated: "2026-07-20"
+faq:
+  - question: >-
+      Can I do this if I don't live in California?
+    answer: >-
+      Yes. Cite your state's privacy law if you have one, or use GDPR language if
+      you are in the EU or UK. If a site only offers a California or CCPA form,
+      submit it anyway. Many brokers process those requests for non-California
+      residents too.
+  - question: >-
+      Is it safe to let an AI agent submit opt-out forms for me?
+    answer: >-
+      It can be, if you set hard stop rules. Let the AI fill forms and paste
+      letters, but approve anything involving ID uploads, account creation,
+      payments, or one-time passcodes yourself. Start with 5 to 10 sites before
+      you let it run a bigger batch.
+  - question: >-
+      How long until my info actually disappears?
+    answer: >-
+      Often 30 to 45 days after a valid request, sometimes longer. Some sites
+      remove you faster from search but keep a cached page for a while. That is
+      why the monthly re-check matters more than the first send.
+  - question: >-
+      Do I need a lawyer or a paid removal service?
+    answer: >-
+      Usually no for a standard cleanup. A paid service can help if you have
+      hundreds of stubborn listings or a safety risk. For most people, AI plus a
+      tracker plus follow-ups is enough to clear the worst public exposures.
+---
+
+Your name, phone number, and home address are sitting on over 200 websites right now. Data brokers scrape that info and sell it to anyone who’ll pay. I used AI to find every site exposing mine, draft the legal opt-out language, and keep chasing confirmations until the listings actually disappeared.
+
+This is not a “set it and forget it” privacy tip. People-search sites like Spokeo and BeenVerified republish public records, and your info often creeps back even after you opt out once. The unlock is treating it like a workflow: AI builds one master list, writes the CCPA-style requests, helps you submit them (or submits them in agent mode), then checks back monthly until each one is confirmed. If you still need a basic AI chat setup before you try this, start with [How to Setup Claude](/ai/how-to-setup-claude).
+
+> **Key insight:** One opt-out email is not enough. The win is a list plus a follow-up loop, because data brokers re-list you unless you keep pressure on.
+
+## Which privacy law should you cite?
+
+**California residents:** Lead with CCPA / CPRA (opt out of sale/sharing + deletion). California also has a state-run Delete Request and Opt-out Platform (DROP) that can send one deletion request to registered data brokers. Use DROP plus site-by-site opt-outs for brokers that still need a direct request.
+
+**Other US states:** Many states now have similar consumer privacy laws (Virginia VCDPA, Colorado CPA, Connecticut CTDPA, and a growing list of others). Ask AI to cite the law for *your* state in each letter. If a site only has a “California residents” form, still submit it. A lot of brokers honor those requests for everyone.
+
+**EU / UK:** Use GDPR Article 17 (right to erasure) and Article 21 (right to object). Same workflow: list the sites, draft the request, submit, follow up.
+
+This guide is practical workflow, not legal advice. If you’re dealing with stalking, identity theft, or a sensitive safety situation, talk to a lawyer or a specialist privacy service.
+
+## How do you wipe your personal info off data broker sites with AI?
+
+Search yourself, turn the findings into one list, draft opt-out letters, submit them (yourself or with an AI agent), then make AI re-check monthly until every listing is confirmed gone.
+
+### Step 1: Search yourself and build one master list
+
+**1. Google yourself the way a stranger would**
+
+Search your full name, then `"Your Full Name" + city`, then your phone number and email in quotes. Screenshot anything that shows your address, relatives, or phone. You’re collecting evidence for AI, not doomscrolling.
+
+**2. Check the big people-search sites**
+
+Look yourself up on sites like Spokeo, BeenVerified, Whitepages, Radaris, Instant Checkmate, and Intelius. Note the exact URL of any profile that is you. If the site wants a paid report just to see your name, skip the paywall and still log the site as “likely listing me” so you can send an opt-out anyway.
+
+**3. Check whether your email has been in a breach**
+
+Drop your email into haveibeenpwned.com. Breaches are different from data brokers, but they tell you which accounts to rotate passwords on while you’re cleaning house.
+
+**4. Have AI turn the mess into one list**
+
+Paste your screenshot notes, URLs, and anything you found into your AI assistant with this prompt:
+
+```text
+I am cleaning my personal info off data broker and people-search sites.
+
+Here is everything I found so far:
+[PASTE: Google results notes, profile URLs, screenshots descriptions, Have I Been Pwned results]
+
+Build one master tracker table with these columns:
+1. Site name
+2. Profile URL (or "search page only")
+3. What data is exposed (name, phone, address, email, relatives, etc.)
+4. Confidence it is me (high / medium / low)
+5. Opt-out method if known (form / email / mail / unknown)
+6. Status (not started)
+7. Notes
+
+Also give me:
+- A prioritized hit list of the 20 highest-risk sites to knock out first
+- A short list of other major US data brokers I should search next, even if I have not found myself there yet
+- Separate any Have I Been Pwned breaches into an "account security" section, not the broker list
+```
+
+Save that table somewhere you will actually open again (Notes, Notion, Google Sheet, whatever you use). AI can keep updating it as you work.
+
+### Step 2: Write the opt-out requests with AI
+
+**5. Give AI your identity details once**
+
+You need enough detail for the broker to find *your* record, without oversharing. Usually: legal name, any aliases, current city/state, previous city if relevant, email you want them to reply to, and the profile URL if you have it. Do not put your Social Security number in these letters.
+
+**6. Draft a CCPA-style letter for each site**
+
+Use this prompt:
+
+```text
+Draft a privacy opt-out / deletion request for each site in my tracker.
+
+My details:
+- Full legal name:
+- Other names / spellings:
+- Email for replies:
+- City / state (current):
+- Previous cities if useful:
+- Professional background in one line (optional, for credibility):
+- State I live in:
+- Profile URLs if I have them: [paste]
+
+For each site, write:
+1. A short subject line
+2. A paste-ready email or form message
+3. The best legal hook for my situation:
+   - If I am in California: CCPA/CPRA right to delete and opt out of sale/sharing
+   - If I am in another US privacy-law state: cite that state's consumer privacy law
+   - If I am in the EU/UK: GDPR Art. 17 erasure + Art. 21 objection
+   - If unclear: use CCPA-style deletion + "do not sell or share" language, since many brokers already have that workflow
+4. Exact fields I should fill if the site uses a web form instead of email
+
+Rules:
+- Firm, polite, specific
+- Ask them to delete my personal information and stop selling/sharing it
+- Ask for written confirmation
+- Ask them to pass the request to any affiliates or licensees if applicable
+- Do not invent profile URLs I did not give you
+- Keep each letter under 200 words
+```
+
+**7. Customize the top 20 before you mass-send**
+
+AI can draft all of them. You still glance at the highest-risk ones. Make sure the name spelling and profile URL match what the site shows. A wrong URL is the fastest way to get ignored.
+
+### Step 3: Actually opt out (DIY or agent mode)
+
+You have two lanes. Both work. Pick based on how many listings you found and how much patience you have.
+
+**Option A: Do it yourself (default, safest)**
+
+**8. Work the list top to bottom**
+
+Open each site’s privacy / “Do Not Sell” / “Remove my info” page. Paste the AI-drafted letter into the form or email. Mark the tracker: date sent, method, confirmation number if any.
+
+**9. Keep proof**
+
+Save confirmation emails and screenshots of “request received” pages in one folder. When a broker says they need more verification, reply once with exactly what they ask for. No SSN unless you are sure it is required and you are comfortable. Many brokers accept a photo of a redacted ID or just an email confirmation loop.
+
+**Option B: Put AI in agent mode**
+
+This is the [agentic AI](/ai/chat-based-ai-vs-agentic-ai) version of the same chore: an AI that can click through forms in your browser instead of only drafting text. Same idea as workflows like [booking flights with AI](/ai/how-to-book-flights-with-claude): the agent moves, you approve the sensitive steps.
+
+**10. Set the guardrails, then let AI submit**
+
+Use a browser-capable AI agent with a prompt like this:
+
+```text
+You are helping me submit data broker opt-out requests from my approved tracker.
+
+Rules:
+- Only touch sites on my list
+- Use the pre-drafted letter for that site
+- Stop and ask me before: creating accounts, paying anything, uploading ID documents, or entering a phone OTP
+- After each submission, update the tracker with date, method, confirmation text, and next follow-up date
+- If a site requires login, paid removal, or unclear captcha loops, skip it and flag it for me
+- Prefer official privacy / opt-out pages over random support chats
+
+Start with the first 10 "high" priority sites. Show me the plan, wait for my GO, then submit one by one.
+```
+
+Watch the first few. Once you trust the pattern, let it batch more. If a site gets weird (paid “premium removal,” sketchy ID upload, endless CAPTCHA), take that one back to DIY.
+
+### Step 4: Make it a monthly routine
+
+**11. Assume re-listing will happen**
+
+Data brokers re-scrape. A one-week cleanup that you never revisit is how your address shows up again in three months.
+
+**12. Have AI run a monthly re-check**
+
+On a recurring reminder, paste the tracker back in:
+
+```text
+This is my data broker opt-out tracker:
+[PASTE CURRENT TABLE]
+
+Do a monthly privacy maintenance pass:
+1. List every site still "requested" or "pending" for more than 30 days
+2. Draft a short follow-up for each one asking for confirmation of deletion
+3. Tell me which sites to re-search in Google / on the broker site to verify the listing is gone
+4. Move confirmed removals to status = confirmed, with today's date
+5. Flag any site where my info appears to have come back
+6. Suggest the next 10 brokers to attack if the top list is mostly clear
+
+Return an updated tracker and a checklist I can finish in under 30 minutes.
+```
+
+If you already use a [project or memory setup for AI](/ai/how-to-give-claude-memory), keep the tracker and your identity details there so you are not re-explaining your name and state every month.
+
+**13. Close the loop on account security**
+
+While the broker list shrinks, fix the Have I Been Pwned side: unique passwords, a password manager, and 2FA on email and banking first. Removing public listings matters less if the same email is still sitting in old breach dumps with a password you reuse.
+
+Here are some related guides to check out:
+
+1. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+2. [Chat-Based AI vs Agentic AI (side by side comparison)](/ai/chat-based-ai-vs-agentic-ai)
+3. [How to Organize Your Messy Desktop & Folders with AI](/ai/organize-messy-desktop-folders-with-ai)
+4. [Your First Practical Agentic AI Plan](/ai/your-first-practical-agentic-ai-plan)
+5. [5 AI Tools That Save Me 10+ Hours a Week](/ai/five-ai-tools-save-10-hours-weekly)
