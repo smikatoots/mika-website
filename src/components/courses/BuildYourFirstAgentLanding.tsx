@@ -880,7 +880,7 @@ export function BuildYourFirstAgentLanding() {
               >
                 Our live workshop was $499. We designed a self-paced course,
                 with all content from our workshop with a{" "}
-                <strong>$462 discount!</strong>
+                <strong>$461 discount!</strong>
               </p>
 
               <ul className="mt-8 space-y-3">
@@ -975,7 +975,7 @@ export function BuildYourFirstAgentLanding() {
                     padding: "10px 14px",
                   }}
                 >
-                  Save $462!
+                  Save $461!
                 </span>
               </div>
 

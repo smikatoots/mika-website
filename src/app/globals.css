@@ -18,12 +18,14 @@
   --mr-surface-warm:  #FFFFFF;
   --mr-surface-rose:  #FCEAEC;
   --mr-surface-rose-2:#FCE4E2;
+  --mr-surface-teal:  #E8F4F4;
   --mr-surface-cream: #F7F4EF;
   --mr-surface-sand:  #FBF1E9;
 
   --mr-border:        #E4E0D8;
   --mr-border-warm:   #EFEBE4;
   --mr-border-rose:   #F6D2D7;
+  --mr-border-teal:   #B4DBDB;
   --mr-border-cream:  #E8E3DA;
   --mr-border-input:  #E0DBD3;
 
@@ -169,3 +171,13 @@ body {
 }
 [data-drag-zone] > * { cursor: grab; touch-action: none; }
 [data-drag-zone] > *:active { cursor: grabbing; }
+
+/* Horizontal swipe rails (link-in-bio tools carousel) — hide the scrollbar so
+   the peeking next card is the only affordance. */
+.bio-swipe { scrollbar-width: none; overscroll-behavior-x: contain; }
+.bio-swipe::-webkit-scrollbar { display: none; }
+
+/* Pill-shaped hover targets on /link-in-bio: the social icon buttons and the
+   footer link. Shared so the two hover states can never drift apart. */
+.bio-social { transition: color var(--mr-dur-lift) var(--mr-ease), background var(--mr-dur-lift) var(--mr-ease); }
+.bio-social:hover { color: var(--mr-teal); background: var(--mr-surface-teal); }

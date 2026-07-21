@@ -3,7 +3,7 @@ export const BUILD_YOUR_FIRST_AGENT_CHECKOUT_URL =
   "https://buy.stripe.com/14AcN4avC6K08q09WG3ZK01";
 
 export const BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE = 499;
-export const BUILD_YOUR_FIRST_AGENT_PRICE = 37;
+export const BUILD_YOUR_FIRST_AGENT_PRICE = 38;
 
 export const buildYourFirstAgentPainPoints = [
   {
