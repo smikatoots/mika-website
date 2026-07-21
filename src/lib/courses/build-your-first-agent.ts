@@ -201,7 +201,7 @@ export const buildYourFirstAgentInstructors = [
     name: "Mikaela Reyes",
     shortName: "Mika",
     role: "Co-Founder @ King's Cross Labs",
-    image: "/mika-reyes.jpg",
+    image: "/courses/build-your-first-agent/instructors/mika.png",
     initials: "MR",
     previous: [
       {
@@ -209,21 +209,21 @@ export const buildYourFirstAgentInstructors = [
         logo: "/courses/build-your-first-agent/logos/linkedin.svg",
       },
       {
-        name: "South Park Commons",
-        logo: "/courses/build-your-first-agent/logos/south-park-commons.svg",
-      },
-      {
         name: "Microsoft",
         logo: "/courses/build-your-first-agent/logos/microsoft.svg",
       },
+      {
+        name: "South Park Commons",
+        logo: "/courses/build-your-first-agent/logos/south-park-commons.svg",
+      },
     ],
-    bio: "I help founders, business owners, and marketing leaders use AI to accelerate their business and stay time-rich. I run King's Cross Labs with my husband Nick. We figure out how AI can accelerate and lessen the cost of your GTM workflows — and we run our own company on the same stack (Claude, agents, MCPs), so everything we teach is something we use daily. Raised $5M, founded and exited Parallax (fintech) to a $3B acquirer. Shipped products at Microsoft and LinkedIn. 20,000+ audience on Instagram and LinkedIn for practical AI.",
+    bio: "Raised $5M, founded and exited a startup to a $3B acquirer. Shipped products at Microsoft and LinkedIn. 35,000+ followers on socials, teaching AI; 10 years in tech (product & GTM).",
   },
   {
     name: "Nicolas Reyes",
     shortName: "Nick",
     role: "Co-Founder & CTO @ King's Cross Labs",
-    image: null,
+    image: "/courses/build-your-first-agent/instructors/nick.png",
     initials: "NR",
     previous: [
       {
@@ -239,7 +239,7 @@ export const buildYourFirstAgentInstructors = [
         logo: "/courses/build-your-first-agent/logos/phantom.svg",
       },
     ],
-    bio: "Ten years ago I started at Google and Airbnb. More recently, I was at Phantom shipping the safety & authentication layer millions of users rely on. My focus has been security, infrastructure, and systems that run at scale. That's the lens I bring to AI: agent systems, MCPs, guardrails — the parts that make AI dependable enough to run a real business on. Mika and I run King's Cross Labs on the same stack we build for clients. Every tool and agent is battle-tested in our own company first.",
+    bio: "Product engineer with 10 years of experience at Airbnb, Google and Phantom. Expertise in auth, cryptography, security, frontend, and mobile.",
   },
 ] as const;
 

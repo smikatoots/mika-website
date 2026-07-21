@@ -678,8 +678,8 @@ export function BuildYourFirstAgentLanding() {
         <div className={container}>
           <SectionEyebrow>✦ Your instructors</SectionEyebrow>
           <SectionTitle>We&apos;ve clocked 1000+ hours with AI</SectionTitle>
-          <p
-            className="mt-4 max-w-2xl"
+          <div
+            className="mt-4 space-y-4"
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
@@ -687,9 +687,21 @@ export function BuildYourFirstAgentLanding() {
               lineHeight: 1.6,
             }}
           >
-            You get 2 for the price of 1! We&apos;re the couple co-founders of an
-            AI startup. Collectively, we&apos;ve clocked in 1000+ hours with AI.
-          </p>
+            <p>
+              We&apos;re a couple co-founders of an AI company (you get 2 for
+              the price of 1). Our goal is to help non-technical professionals
+              end up on the right side of history, post-AI.
+            </p>
+            <p>
+              We&apos;ve built software at LinkedIn, Microsoft, Airbnb, and
+              Google, raised $4.5M, taken AI and software products to production
+              and millions of users, and sold a company.
+            </p>
+            <p>
+              We&apos;re excited to share our AI obsession and expertise to more
+              people who can benefit!
+            </p>
+          </div>
 
           <div className="mt-10 grid gap-8 md:grid-cols-2">
             {buildYourFirstAgentInstructors.map((instructor) => (
@@ -785,7 +797,11 @@ export function BuildYourFirstAgentLanding() {
                           alt={name}
                           width={160}
                           height={40}
-                          className="h-7 w-auto object-contain object-left"
+                          className={`w-auto object-contain object-left ${
+                            name === "South Park Commons" || name === "Phantom"
+                              ? "h-8"
+                              : "h-7"
+                          }`}
                         />
                       </li>
                     ))}
