@@ -5,8 +5,14 @@ import {
   BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE,
   BUILD_YOUR_FIRST_AGENT_PRICE,
   buildYourFirstAgentFaqs,
+  buildYourFirstAgentForYou,
+  buildYourFirstAgentIncluded,
+  buildYourFirstAgentInstructors,
   buildYourFirstAgentModules,
-  buildYourFirstAgentTestimonials,
+  buildYourFirstAgentNotForYou,
+  buildYourFirstAgentOutcomes,
+  buildYourFirstAgentPainPoints,
+  buildYourFirstAgentProofShots,
   buildYourFirstAgentValueStack,
 } from "@/lib/courses/build-your-first-agent";
 
@@ -14,14 +20,14 @@ const sectionPad = "72px 0";
 const container = "mx-auto max-w-6xl px-6 md:px-10";
 
 const credibility = [
+  { value: "1,300+", label: "Sign ups to our first lesson" },
+  { value: "2", label: "AI instructors with 1,000+ hours of AI" },
   { value: "20K+", label: "Community" },
   { value: "#1", label: "Trending Maven workshop" },
-  { value: "Forbes", label: "30 Under 30" },
-  { value: "$499", label: "Paid by live cohort" },
 ];
 
 function EnrollCta({
-  label = "Enroll for $37",
+  label = "Enroll now",
   location,
 }: {
   label?: string;
@@ -85,6 +91,74 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
+function QualList({
+  title,
+  items,
+  variant,
+}: {
+  title: string;
+  items: readonly string[];
+  variant: "for" | "against";
+}) {
+  const isFor = variant === "for";
+
+  return (
+    <div
+      style={{
+        background: isFor ? "var(--mr-surface)" : "var(--mr-surface-cream)",
+        border: isFor
+          ? "1px solid var(--mr-border)"
+          : "1px solid var(--mr-border-warm)",
+        borderRadius: "var(--mr-radius-panel)",
+        padding: "28px 24px",
+        boxShadow: isFor ? "var(--mr-shadow-card)" : "none",
+      }}
+    >
+      <p
+        style={{
+          fontFamily: "var(--mr-font-body)",
+          fontSize: "var(--mr-text-eyebrow)",
+          fontWeight: "var(--mr-weight-display)",
+          color: "var(--mr-coral)",
+          textTransform: "uppercase",
+          letterSpacing: "0.12em",
+          marginBottom: "20px",
+        }}
+      >
+        {title}
+      </p>
+      <ul>
+        {items.map((item, index) => (
+          <li
+            key={item}
+            className="flex gap-3"
+            style={{
+              fontFamily: "var(--mr-font-body)",
+              fontSize: "var(--mr-text-sm)",
+              color: "var(--mr-text-soft)",
+              lineHeight: 1.55,
+              padding: "14px 0",
+              borderTop: index === 0 ? "none" : "1px solid var(--mr-border-warm)",
+            }}
+          >
+            <span
+              aria-hidden
+              style={{
+                color: isFor ? "var(--mr-coral)" : "var(--mr-muted)",
+                fontWeight: "var(--mr-weight-display)",
+                flexShrink: 0,
+              }}
+            >
+              {isFor ? "✓" : "×"}
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function BuildYourFirstAgentLanding() {
   const valueTotal = buildYourFirstAgentValueStack.reduce(
     (sum, row) => sum + row.value,
@@ -97,39 +171,24 @@ export function BuildYourFirstAgentLanding() {
       {/* Hero */}
       <section style={{ background: "var(--mr-teal-deep)", padding: "80px 0 88px" }}>
         <div className={container}>
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
+          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div>
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  background: "rgba(255,255,255,0.08)",
-                  color: "#F4B8C0",
-                  padding: "7px 16px",
-                  borderRadius: "var(--mr-radius-pill)",
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-xs)",
-                  fontWeight: "var(--mr-weight-display)",
-                  marginBottom: "24px",
-                }}
-              >
-                ✦ Self-paced · Was ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE} live
-              </span>
-
               <h1
                 style={{
                   fontFamily: "var(--mr-font-display)",
-                  fontSize: "clamp(40px, 5.5vw, 64px)",
+                  fontSize: "clamp(36px, 5vw, 58px)",
                   fontWeight: "var(--mr-weight-display)",
-                  lineHeight: 0.98,
+                  lineHeight: 1.02,
                   letterSpacing: "-0.03em",
                   color: "#fff",
                   marginBottom: "20px",
                   maxWidth: "720px",
                 }}
               >
-                Build your first AI agent — without writing code
+                Build your own AI agent in 1 day.{" "}
+                <span style={{ color: "#F4B8C0" }}>
+                  Skip 6 months of trial &amp; error.
+                </span>
               </h1>
 
               <p
@@ -142,9 +201,9 @@ export function BuildYourFirstAgentLanding() {
                   marginBottom: "32px",
                 }}
               >
-                The same curriculum founders paid ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE}{" "}
-                for in a live cohort — now self-paced, templates included, and
-                priced for solo builders who want results this week, not next quarter.
+                The abbreviated, self-paced version of our hands-on workshop.
+                Same build path Mika &amp; Nick teach live — context files,
+                custom skills, MCPs, and a working agent for your role.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -156,10 +215,7 @@ export function BuildYourFirstAgentLanding() {
                     color: "rgba(255,255,255,0.65)",
                   }}
                 >
-                  <s style={{ opacity: 0.7 }}>${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE}</s>
-                  {" → "}
-                  <strong style={{ color: "#fff" }}>${BUILD_YOUR_FIRST_AGENT_PRICE}</strong>
-                  {" · lifetime access"}
+                  Lifetime access · no coding required
                 </span>
               </div>
             </div>
@@ -184,15 +240,10 @@ export function BuildYourFirstAgentLanding() {
                   marginBottom: "16px",
                 }}
               >
-                You&apos;ll ship
+                By the end you&apos;ll have
               </p>
               <ul className="space-y-4">
-                {[
-                  "A working agent on real tasks",
-                  "Reusable context + skill templates",
-                  "A tool-connected workflow (MCP-ready)",
-                  "A playbook to add more agents later",
-                ].map((item) => (
+                {buildYourFirstAgentOutcomes.slice(0, 4).map((item) => (
                   <li
                     key={item}
                     className="flex gap-3"
@@ -244,10 +295,97 @@ export function BuildYourFirstAgentLanding() {
         </div>
       </section>
 
-      {/* Social proof */}
+      {/* Problem */}
       <section style={{ padding: sectionPad }}>
         <div className={container}>
-          <SectionEyebrow>✦ Social proof</SectionEyebrow>
+          <SectionEyebrow>✦ The problem</SectionEyebrow>
+          <h2
+            style={{
+              fontFamily: "var(--mr-font-display)",
+              fontSize: "clamp(28px, 3.4vw, 40px)",
+              fontWeight: "var(--mr-weight-display)",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.15,
+              color: "var(--mr-ink)",
+              maxWidth: "100%",
+            }}
+          >
+            AI is moving fast. For most non-technical professionals, it feels…
+          </h2>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {buildYourFirstAgentPainPoints.map(({ title, body }) => (
+              <div
+                key={title}
+                style={{
+                  background: "var(--mr-surface)",
+                  border: "1px solid var(--mr-border)",
+                  borderRadius: "var(--mr-radius-card)",
+                  padding: "24px",
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "var(--mr-font-display)",
+                    fontSize: "var(--mr-text-h3)",
+                    fontWeight: "var(--mr-weight-display)",
+                    color: "var(--mr-coral)",
+                    marginBottom: "8px",
+                  }}
+                >
+                  {title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "var(--mr-font-body)",
+                    fontSize: "var(--mr-text-sm)",
+                    color: "var(--mr-text-soft)",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p
+            className="mt-10"
+            style={{
+              fontFamily: "var(--mr-font-body)",
+              fontSize: "var(--mr-text-body)",
+              color: "var(--mr-text-soft)",
+              lineHeight: 1.7,
+              maxWidth: "100%",
+            }}
+          >
+            We&apos;ve spent 1,000+ hours learning (and failing) in Claude so you
+            don&apos;t have to. We&apos;ve built and shipped software used by
+            millions, and we&apos;ve sat on both sides of the table: technical and
+            non-technical. We built our own AI-native operating system from
+            scratch. This course is the shortcut we wish we had.
+          </p>
+          <p
+            className="mt-4"
+            style={{
+              fontFamily: "var(--mr-font-body)",
+              fontSize: "var(--mr-text-body)",
+              color: "var(--mr-ink)",
+              fontWeight: "var(--mr-weight-semi)",
+              lineHeight: 1.6,
+              maxWidth: "100%",
+            }}
+          >
+            In one day, you&apos;ll learn more than most people piece together
+            over months of trial and error.
+          </p>
+        </div>
+      </section>
+
+      {/* Social proof */}
+      <section style={{ background: "var(--mr-surface-rose)", padding: sectionPad }}>
+        <div className={container}>
+          <SectionEyebrow>✦ Testimonials</SectionEyebrow>
           <SectionTitle>Built for people who ship, not slide-watch</SectionTitle>
           <p
             className="mt-4 max-w-2xl"
@@ -258,68 +396,115 @@ export function BuildYourFirstAgentLanding() {
               lineHeight: 1.6,
             }}
           >
-            Taught live to operators, founders, and marketers who paid full price.
-            These are representative outcomes from the cohort — swap in your final
-            testimonials when ready.
+            Taught live to founders, operators, and marketers in small cohorts.
           </p>
+        </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {buildYourFirstAgentTestimonials.map(({ quote, name, role }) => (
-              <blockquote
-                key={name}
-                className="mr-lift flex h-full flex-col"
-                style={{
-                  background: "var(--mr-surface)",
-                  border: "1px solid var(--mr-border)",
-                  borderRadius: "var(--mr-radius-card)",
-                  padding: "24px",
-                  boxShadow: "var(--mr-shadow-card)",
-                }}
+        <div className="byfa-proof-marquee mt-10" style={{ overflow: "hidden", width: "100%" }}>
+          <div className="byfa-proof-marquee__track flex w-max">
+            {[0, 1].map((copy) => (
+              <div
+                key={copy}
+                className="flex shrink-0 items-stretch gap-5 pr-5"
+                aria-hidden={copy === 1 ? true : undefined}
               >
-                <p
-                  style={{
-                    fontFamily: "var(--mr-font-body)",
-                    fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
-                    lineHeight: 1.65,
-                    flex: 1,
-                  }}
-                >
-                  &ldquo;{quote}&rdquo;
-                </p>
-                <footer className="mt-5 pt-4" style={{ borderTop: "1px solid var(--mr-border-warm)" }}>
-                  <p
+                {buildYourFirstAgentProofShots.map(({ id, src, alt, width, height }) => (
+                  <figure
+                    key={`${copy}-${id}`}
+                    className="shrink-0"
                     style={{
-                      fontFamily: "var(--mr-font-body)",
-                      fontSize: "var(--mr-text-sm)",
-                      fontWeight: "var(--mr-weight-display)",
-                      color: "var(--mr-ink)",
+                      width: "min(640px, 92vw)",
+                      background: "var(--mr-surface)",
+                      border: "1px solid var(--mr-border)",
+                      borderRadius: "var(--mr-radius-card)",
+                      overflow: "hidden",
+                      boxShadow: "var(--mr-shadow-card)",
+                      display: "flex",
+                      alignItems: "center",
                     }}
                   >
-                    {name}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--mr-font-body)",
-                      fontSize: "var(--mr-text-xs)",
-                      color: "var(--mr-muted)",
-                      marginTop: "2px",
-                    }}
-                  >
-                    {role}
-                  </p>
-                </footer>
-              </blockquote>
+                    <Image
+                      src={src}
+                      alt={alt}
+                      width={width}
+                      height={height}
+                      className="h-auto w-full"
+                      sizes="(max-width: 768px) 92vw, 640px"
+                    />
+                  </figure>
+                ))}
+              </div>
             ))}
           </div>
+          <style>{`
+            .byfa-proof-marquee__track {
+              animation: ke-marquee 50s linear infinite;
+            }
+            .byfa-proof-marquee:hover .byfa-proof-marquee__track {
+              animation-play-state: paused;
+            }
+            @media (prefers-reduced-motion: reduce) {
+              .byfa-proof-marquee__track {
+                animation: none !important;
+              }
+            }
+          `}</style>
         </div>
       </section>
 
-      {/* What's inside */}
+      {/* Outcomes */}
+      <section style={{ padding: sectionPad }}>
+        <div className={container}>
+          <SectionEyebrow>✦ Outcomes</SectionEyebrow>
+          <SectionTitle>By the end of this course, you will have:</SectionTitle>
+          <ul className="mt-10 max-w-3xl space-y-4">
+            {buildYourFirstAgentOutcomes.map((item) => (
+              <li
+                key={item}
+                className="flex gap-3"
+                style={{
+                  fontFamily: "var(--mr-font-body)",
+                  fontSize: "var(--mr-text-body)",
+                  color: "var(--mr-text-soft)",
+                  lineHeight: 1.55,
+                }}
+              >
+                <span
+                  style={{
+                    color: "var(--mr-coral)",
+                    fontWeight: "var(--mr-weight-display)",
+                    flexShrink: 0,
+                  }}
+                >
+                  ✓
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p
+            className="mt-8 max-w-2xl"
+            style={{
+              fontFamily: "var(--mr-font-body)",
+              fontSize: "var(--mr-text-sm)",
+              color: "var(--mr-muted)",
+              lineHeight: 1.6,
+            }}
+          >
+            This is a 101 hands-on build — not a passive webinar. The live
+            version keeps cohorts small and intimate. This self-paced version
+            keeps the same build sequence, on your schedule.
+          </p>
+        </div>
+      </section>
+
+      {/* Curriculum */}
       <section style={{ background: "var(--mr-surface-rose)", padding: sectionPad }}>
         <div className={container}>
-          <SectionEyebrow>✦ What&apos;s inside</SectionEyebrow>
-          <SectionTitle>6 modules. One shipped agent.</SectionTitle>
+          <SectionEyebrow>✦ What you&apos;ll learn</SectionEyebrow>
+          <SectionTitle>
+            Build your own AI agent — and learn how to do it on your own.
+          </SectionTitle>
           <p
             className="mt-4 max-w-2xl"
             style={{
@@ -329,37 +514,104 @@ export function BuildYourFirstAgentLanding() {
               lineHeight: 1.6,
             }}
           >
-            Each module ends with a concrete build block. By the end you have an
-            agent — not a folder of half-finished notes.
+            Five modules. Each one ends with a concrete build block. By the end
+            you have an agent — not a folder of half-finished notes.
           </p>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {buildYourFirstAgentModules.map(({ num, title, description }) => (
+          <div className="mt-10 space-y-4">
+            {buildYourFirstAgentModules.map(
+              ({ num, title, description, bullets }) => (
+                <article
+                  key={num}
+                  className="mr-lift"
+                  style={{
+                    background: "var(--mr-surface)",
+                    border: "1px solid var(--mr-border-rose)",
+                    borderRadius: "var(--mr-radius-card)",
+                    padding: "28px",
+                  }}
+                >
+                  <div>
+                    <span
+                      style={{
+                        display: "inline-block",
+                        fontFamily: "var(--mr-font-body)",
+                        fontSize: "var(--mr-text-eyebrow)",
+                        fontWeight: "var(--mr-weight-display)",
+                        color: "var(--mr-coral)",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.12em",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      Module {num}
+                    </span>
+                    <h3
+                      style={{
+                        fontFamily: "var(--mr-font-display)",
+                        fontSize: "var(--mr-text-h3)",
+                        fontWeight: "var(--mr-weight-display)",
+                        color: "var(--mr-ink)",
+                      }}
+                    >
+                      {title}
+                    </h3>
+                    <p
+                      className="mt-2"
+                      style={{
+                        fontFamily: "var(--mr-font-body)",
+                        fontSize: "var(--mr-text-sm)",
+                        color: "var(--mr-text-soft)",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {description}
+                    </p>
+                    <ul className="mt-4 space-y-2">
+                      {bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="flex gap-2"
+                          style={{
+                            fontFamily: "var(--mr-font-body)",
+                            fontSize: "var(--mr-text-sm)",
+                            color: "var(--mr-muted)",
+                            lineHeight: 1.45,
+                          }}
+                        >
+                          <span style={{ color: "var(--mr-coral)" }}>→</span>
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ),
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* What's included */}
+      <section style={{ padding: sectionPad }}>
+        <div className={container}>
+          <SectionEyebrow>✦ What&apos;s included</SectionEyebrow>
+          <SectionTitle>Everything you need to ship — then keep going.</SectionTitle>
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {buildYourFirstAgentIncluded.map(({ title, body }) => (
               <article
-                key={num}
-                className="mr-lift"
+                key={title}
                 style={{
                   background: "var(--mr-surface)",
-                  border: "1px solid var(--mr-border-rose)",
+                  border: "1px solid var(--mr-border)",
                   borderRadius: "var(--mr-radius-card)",
                   padding: "24px",
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "var(--mr-font-display)",
-                    fontSize: "var(--mr-text-xs)",
-                    fontWeight: "var(--mr-weight-display)",
-                    color: "var(--mr-coral)",
-                  }}
-                >
-                  Module {num}
-                </span>
                 <h3
-                  className="mt-2"
                   style={{
                     fontFamily: "var(--mr-font-display)",
-                    fontSize: "var(--mr-text-h3)",
+                    fontSize: "var(--mr-text-body)",
                     fontWeight: "var(--mr-weight-display)",
                     color: "var(--mr-ink)",
                   }}
@@ -372,10 +624,10 @@ export function BuildYourFirstAgentLanding() {
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
                     color: "var(--mr-text-soft)",
-                    lineHeight: 1.6,
+                    lineHeight: 1.55,
                   }}
                 >
-                  {description}
+                  {body}
                 </p>
               </article>
             ))}
@@ -383,14 +635,177 @@ export function BuildYourFirstAgentLanding() {
         </div>
       </section>
 
-      {/* Price juxtaposition */}
+      {/* Qualification */}
+      <section style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}>
+        <div className={container}>
+          <h2
+            className="text-center"
+            style={{
+              fontFamily: "var(--mr-font-display)",
+              fontSize: "clamp(36px, 5vw, 56px)",
+              fontWeight: "var(--mr-weight-display)",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.05,
+              textTransform: "uppercase",
+              marginBottom: "40px",
+            }}
+          >
+            <span style={{ color: "var(--mr-ink)" }}>Read this </span>
+            <span style={{ color: "var(--mr-coral)" }}>before you join.</span>
+          </h2>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <QualList
+              title="This is for you if"
+              items={buildYourFirstAgentForYou}
+              variant="for"
+            />
+            <QualList
+              title="This is not for you if"
+              items={buildYourFirstAgentNotForYou}
+              variant="against"
+            />
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <EnrollCta location="qualification" label="Enroll now" />
+          </div>
+        </div>
+      </section>
+
+      {/* Instructors */}
       <section style={{ padding: sectionPad }}>
+        <div className={container}>
+          <SectionEyebrow>✦ Your instructors</SectionEyebrow>
+          <SectionTitle>We&apos;ve clocked 1000+ hours with AI</SectionTitle>
+          <p
+            className="mt-4 max-w-2xl"
+            style={{
+              fontFamily: "var(--mr-font-body)",
+              fontSize: "var(--mr-text-body)",
+              color: "var(--mr-text-soft)",
+              lineHeight: 1.6,
+            }}
+          >
+            You get 2 for the price of 1! We&apos;re the couple co-founders of an
+            AI startup. Collectively, we&apos;ve clocked in 1000+ hours with AI.
+          </p>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            {buildYourFirstAgentInstructors.map((instructor) => (
+              <article
+                key={instructor.name}
+                style={{
+                  background: "var(--mr-surface)",
+                  border: "1px solid var(--mr-border)",
+                  borderRadius: "var(--mr-radius-panel)",
+                  padding: "28px",
+                }}
+              >
+                <div className="flex items-center gap-4">
+                  {instructor.image ? (
+                    <Image
+                      src={instructor.image}
+                      alt={instructor.name}
+                      width={72}
+                      height={72}
+                      className="rounded-full"
+                      style={{ boxShadow: "var(--mr-shadow-frame)" }}
+                    />
+                  ) : (
+                    <div
+                      aria-hidden
+                      className="flex items-center justify-center rounded-full"
+                      style={{
+                        width: 72,
+                        height: 72,
+                        background: "var(--mr-surface-cream)",
+                        border: "1px solid var(--mr-border-warm)",
+                        fontFamily: "var(--mr-font-display)",
+                        fontWeight: "var(--mr-weight-display)",
+                        color: "var(--mr-coral)",
+                        fontSize: "18px",
+                      }}
+                    >
+                      {instructor.initials}
+                    </div>
+                  )}
+                  <div>
+                    <h3
+                      style={{
+                        fontFamily: "var(--mr-font-display)",
+                        fontSize: "var(--mr-text-h3)",
+                        fontWeight: "var(--mr-weight-display)",
+                        color: "var(--mr-ink)",
+                      }}
+                    >
+                      {instructor.name}
+                    </h3>
+                    <p
+                      style={{
+                        fontFamily: "var(--mr-font-body)",
+                        fontSize: "var(--mr-text-xs)",
+                        color: "var(--mr-coral)",
+                        marginTop: "4px",
+                      }}
+                    >
+                      {instructor.role}
+                    </p>
+                  </div>
+                </div>
+                <p
+                  className="mt-5"
+                  style={{
+                    fontFamily: "var(--mr-font-body)",
+                    fontSize: "var(--mr-text-sm)",
+                    color: "var(--mr-text-soft)",
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {instructor.bio}
+                </p>
+                <div className="mt-5">
+                  <p
+                    style={{
+                      fontFamily: "var(--mr-font-body)",
+                      fontSize: "var(--mr-text-xs)",
+                      color: "var(--mr-muted)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      marginBottom: "14px",
+                    }}
+                  >
+                    Previously at
+                  </p>
+                  <ul className="flex flex-wrap items-center gap-x-6 gap-y-4">
+                    {instructor.previous.map(({ name, logo }) => (
+                      <li key={name}>
+                        <Image
+                          src={logo}
+                          alt={name}
+                          width={160}
+                          height={40}
+                          className="h-7 w-auto object-contain object-left"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}>
         <div className={container}>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
             <div>
               <SectionEyebrow>✦ The math</SectionEyebrow>
               <SectionTitle>
-                ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE} of value. ${BUILD_YOUR_FIRST_AGENT_PRICE} today.
+                ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE} live workshop value. $
+                {BUILD_YOUR_FIRST_AGENT_PRICE} self-paced today.
               </SectionTitle>
               <p
                 className="mt-4 max-w-xl"
@@ -401,9 +816,10 @@ export function BuildYourFirstAgentLanding() {
                   lineHeight: 1.6,
                 }}
               >
-                Live cohort students paid ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE} for
-                access, accountability, and live builds. You get the core curriculum,
-                templates, and replays — without the cohort schedule.
+                Live cohort students paid ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE}{" "}
+                for a small, intimate build day with Mika &amp; Nick in the room.
+                You get the abbreviated curriculum, templates, and walkthroughs —
+                without the cohort schedule.
               </p>
 
               <ul className="mt-8 space-y-3">
@@ -509,8 +925,8 @@ export function BuildYourFirstAgentLanding() {
                   lineHeight: 1.55,
                 }}
               >
-                One-time payment. Lifetime access. The price of a nice dinner —
-                for a skill that pays back every week.
+                One-time payment. Lifetime access. The shortcut we wish we had —
+                without six months of trial and error.
               </p>
 
               <div className="mt-6">
@@ -521,6 +937,7 @@ export function BuildYourFirstAgentLanding() {
                 {[
                   "Instant access after checkout",
                   "Templates + build walkthroughs",
+                  "Claude Pro/Max + Desktop to follow along",
                   "No coding required",
                 ].map((item) => (
                   <li
@@ -542,56 +959,25 @@ export function BuildYourFirstAgentLanding() {
         </div>
       </section>
 
-      {/* Instructor */}
-      <section style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}>
-        <div className={`${container} grid items-center gap-10 md:grid-cols-[120px_1fr]`}>
-          <Image
-            src="/mika-reyes.jpg"
-            alt="Mika Reyes"
-            width={120}
-            height={120}
-            className="rounded-full"
-            style={{ boxShadow: "var(--mr-shadow-frame)" }}
-          />
-          <div>
-            <SectionEyebrow>✦ Your instructor</SectionEyebrow>
-            <h2
-              style={{
-                fontFamily: "var(--mr-font-display)",
-                fontSize: "var(--mr-text-h2)",
-                fontWeight: "var(--mr-weight-display)",
-                color: "var(--mr-ink)",
-              }}
-            >
-              Mika Reyes
-            </h2>
-            <p
-              className="mt-3 max-w-2xl"
-              style={{
-                fontFamily: "var(--mr-font-body)",
-                fontSize: "var(--mr-text-body)",
-                color: "var(--mr-text-soft)",
-                lineHeight: 1.6,
-              }}
-            >
-              Forbes 30 Under 30 founder and AI educator. I teach non-technical
-              professionals to build with AI — not just chat with it. My live
-              workshops have hit #1 trending on Maven; this course packages that
-              build path for people who learn better on their own schedule.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section style={{ padding: sectionPad }}>
         <div className={`${container} max-w-3xl`}>
           <SectionEyebrow>✦ FAQ</SectionEyebrow>
           <SectionTitle>Questions before you enroll</SectionTitle>
-          <dl className="mt-10 space-y-8">
+          <div className="mt-10 space-y-3">
             {buildYourFirstAgentFaqs.map(({ question, answer }) => (
-              <div key={question}>
-                <dt
+              <details
+                key={question}
+                className="group"
+                style={{
+                  background: "var(--mr-surface)",
+                  border: "1px solid var(--mr-border)",
+                  borderRadius: "var(--mr-radius-card)",
+                  padding: "4px 20px",
+                }}
+              >
+                <summary
+                  className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 marker:content-none [&::-webkit-details-marker]:hidden"
                   style={{
                     fontFamily: "var(--mr-font-display)",
                     fontSize: "var(--mr-text-body)",
@@ -599,61 +985,106 @@ export function BuildYourFirstAgentLanding() {
                     color: "var(--mr-ink)",
                   }}
                 >
-                  {question}
-                </dt>
-                <dd
-                  className="mt-2"
+                  <span>{question}</span>
+                  <span
+                    aria-hidden
+                    className="shrink-0 transition-transform duration-200 group-open:rotate-180"
+                    style={{
+                      color: "var(--mr-coral)",
+                      fontSize: "14px",
+                    }}
+                  >
+                    ▾
+                  </span>
+                </summary>
+                <p
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
                     color: "var(--mr-text-soft)",
                     lineHeight: 1.65,
+                    paddingBottom: "18px",
                   }}
                 >
                   {answer}
-                </dd>
-              </div>
+                </p>
+              </details>
             ))}
-          </dl>
+          </div>
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* P.S. */}
       <section
         style={{
-          background: "var(--mr-surface-rose-2)",
-          padding: "80px 0",
-          borderTop: "1px solid var(--mr-border-rose)",
+          background: "var(--mr-surface-cream)",
+          padding: "88px 0",
+          borderTop: "1px solid var(--mr-border-warm)",
         }}
       >
-        <div className={`${container} text-center`}>
-          <h2
+        <div className={`${container} mx-auto max-w-2xl text-center`}>
+          <p
             style={{
-              fontFamily: "var(--mr-font-display)",
-              fontSize: "clamp(32px, 4vw, 48px)",
+              fontFamily: "var(--mr-font-body)",
+              fontSize: "var(--mr-text-eyebrow)",
               fontWeight: "var(--mr-weight-display)",
-              color: "var(--mr-ink)",
-              letterSpacing: "-0.02em",
-              maxWidth: "640px",
-              margin: "0 auto 16px",
+              color: "var(--mr-coral)",
+              textTransform: "uppercase",
+              letterSpacing: "0.14em",
+              marginBottom: "28px",
             }}
           >
-            Stop prompting. Start building.
-          </h2>
-          <p
-            className="mx-auto max-w-xl"
+            P.S. If you only read one thing
+          </p>
+
+          <div
+            className="space-y-5"
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
               color: "var(--mr-text-soft)",
-              lineHeight: 1.6,
-              marginBottom: "32px",
+              lineHeight: 1.7,
             }}
           >
-            Join the self-paced course — ${BUILD_YOUR_FIRST_AGENT_PRICE} today,
-            was ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE} live.
+            <p>
+              We know what it feels like to open Claude and feel like you&apos;re
+              already supposed to know what to do. We also know what it feels like
+              to watch everyone talk about agents and automations while you&apos;re
+              still stuck in another chat window that doesn&apos;t quite get you.
+            </p>
+            <p>
+              The people who get ahead with AI are not the ones who know every
+              tool. They are the ones who build the reps — better context,
+              clearer skills, real tool connections — until AI stops feeling
+              impressive and starts feeling useful.
+            </p>
+            <p>
+              That&apos;s what this self-paced course is for. We&apos;ll show you
+              how we think about agents, how we build them, and how to ship your
+              first one without writing code. Ready? Let&apos;s go.
+            </p>
+          </div>
+
+          <p
+            className="mt-8"
+            style={{
+              fontFamily: "var(--mr-font-display)",
+              fontSize: "var(--mr-text-body)",
+              fontWeight: "var(--mr-weight-display)",
+              color: "var(--mr-ink)",
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+            }}
+          >
+            Mika &amp; Nick
           </p>
-          <EnrollCta location="footer" label="Enroll now — $37" />
+
+          <div className="mt-10">
+            <EnrollCta
+              location="ps"
+              label={`Enroll now — $${BUILD_YOUR_FIRST_AGENT_PRICE}`}
+            />
+          </div>
         </div>
       </section>
     </main>

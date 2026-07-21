@@ -23,7 +23,7 @@ export const storyMilestones: StoryMilestone[] = [
       "dream BIG",
       "many walks of life",
     ],
-    image: "/decks/_library/timeline-origins.jpeg",
+    image: "/story-timeline/timeline-origins.jpeg",
     imageAlt: "Childhood in Manila and Philippine Science High School",
   },
   {
@@ -36,7 +36,7 @@ export const storyMilestones: StoryMilestone[] = [
       "Freeman Asian Scholarship",
       "education opens doors",
     ],
-    image: "/decks/_library/timeline-scholarship.jpeg",
+    image: "/story-timeline/timeline-scholarship.jpeg",
     imageAlt: "Freeman Asian Scholarship and leaving home for Wesleyan",
   },
   {
@@ -49,7 +49,7 @@ export const storyMilestones: StoryMilestone[] = [
       "built a tech organization from scratch",
       "first tech job",
     ],
-    image: "/decks/_library/timeline-creating-the-path.jpeg",
+    image: "/story-timeline/timeline-creating-the-path.jpeg",
     imageAlt: "Building the tech org and teaching design at Wesleyan",
   },
   {
@@ -62,7 +62,7 @@ export const storyMilestones: StoryMilestone[] = [
       "Kleiner Perkins Fellowship",
       'purple "I\'m Hiring" ring',
     ],
-    image: "/decks/_library/timeline-breaking-in.jpeg",
+    image: "/story-timeline/timeline-breaking-in.jpeg",
     imageAlt: "Kleiner Perkins Fellowship and early Silicon Valley career",
   },
   {
@@ -88,7 +88,7 @@ export const storyMilestones: StoryMilestone[] = [
       "$100M in transaction volume",
       "Forbes 30 Under 30",
     ],
-    image: "/decks/_library/timeline-founder-life.jpeg",
+    image: "/story-timeline/timeline-founder-life.jpeg",
     imageAlt: "Parallax founder era — Forbes, funding, and live TV",
   },
   {
@@ -114,7 +114,7 @@ export const storyMilestones: StoryMilestone[] = [
       "autonomy, freedom & building a time-rich life",
       "getting your time (& life) back",
     ],
-    image: "/decks/_library/timeline-break.jpeg",
+    image: "/story-timeline/timeline-break.jpeg",
     imageAlt: "Sabbatical, marriage, and discovering AI after the exit",
   },
   {
@@ -127,7 +127,7 @@ export const storyMilestones: StoryMilestone[] = [
       "time-rich freedom",
       "big dreams",
     ],
-    image: "/decks/_library/timeline-terms.jpg",
+    image: "/story-timeline/timeline-terms.jpg",
     imageAlt: "King's Cross Labs and building on their own terms",
   },
 ];

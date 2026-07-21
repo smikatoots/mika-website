@@ -5,7 +5,7 @@ import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata"
 
 const title = "Build Your First Agent 101";
 const description =
-  "Self-paced course for non-technical builders. Ship a working AI agent with context files, skills, and tool connections — was $499 live, now $37.";
+  "Build your own AI agent in 1 day. Skip 6 months of trial & error. Self-paced 101 from Mika & Nick — context files, custom skills, MCPs, and a working agent for your role.";
 const canonical = canonicalUrl("/build-your-first-agent-101");
 
 export const metadata: Metadata = {
