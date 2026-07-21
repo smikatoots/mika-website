@@ -190,17 +190,49 @@ export function SiteHeader() {
                   </button>
                   {learnAiOpen ? (
                     <div className="flex flex-col">
-                      {learnAiNavItems.map(({ href, label }) => (
-                        <InternalLink
-                          key={href}
-                          href={href}
-                          className={`${mobileNavLinkClass} pl-8`}
-                          style={{ ...navLinkStyle, textDecoration: "none" }}
-                          onClick={closeMenu}
-                        >
-                          {label}
-                        </InternalLink>
-                      ))}
+                      {learnAiNavItems.map(
+                        ({ href, label, description, featured }) => (
+                          <InternalLink
+                            key={href}
+                            href={href}
+                            className={`${mobileNavLinkClass} pl-8`}
+                            style={{ ...navLinkStyle, textDecoration: "none" }}
+                            onClick={closeMenu}
+                          >
+                            <span className="flex items-center gap-2">
+                              {label}
+                              {featured ? (
+                                <span
+                                  className="rounded-full"
+                                  style={{
+                                    background:
+                                      "color-mix(in srgb, var(--mr-teal) 14%, white)",
+                                    color: "var(--mr-teal)",
+                                    fontSize: "10px",
+                                    fontWeight: "var(--mr-weight-display)",
+                                    letterSpacing: "0.06em",
+                                    padding: "3px 7px",
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  Featured
+                                </span>
+                              ) : null}
+                            </span>
+                            <span
+                              className="mt-1 block"
+                              style={{
+                                fontSize: "var(--mr-text-xs)",
+                                color: "var(--mr-muted)",
+                                fontWeight: 400,
+                                lineHeight: 1.45,
+                              }}
+                            >
+                              {description}
+                            </span>
+                          </InternalLink>
+                        ),
+                      )}
                     </div>
                   ) : null}
                 </div>

@@ -22,14 +22,23 @@ export const siteHeaderNavItems: ReadonlyArray<HeaderNavLink | HeaderNavDropdown
 
 export const learnAiNavItems = [
   {
+    href: "/build-your-first-agent-101",
+    label: "Master Agentic AI",
+    description:
+      "Step by step guide to build your own custom AI agent in 1 day, designed for non-technical pros.",
+    featured: true,
+  },
+  {
     href: "/ai",
     label: "AI Guides",
     description: "Free practical how-tos from my social content",
+    featured: false,
   },
   {
     href: "/challenges",
     label: "AI Challenges",
     description: "Difficult skills I'm learning with AI as my only coach",
+    featured: false,
   },
 ] as const;
 

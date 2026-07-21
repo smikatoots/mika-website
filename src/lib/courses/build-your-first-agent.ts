@@ -1,6 +1,6 @@
 /** Member enrollment on King's Cross Labs. */
 export const BUILD_YOUR_FIRST_AGENT_CHECKOUT_URL =
-  "https://www.kingscrosslabs.com/resources/master-claude-guide/";
+  "https://buy.stripe.com/14AcN4avC6K08q09WG3ZK01";
 
 export const BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE = 499;
 export const BUILD_YOUR_FIRST_AGENT_PRICE = 37;
@@ -25,10 +25,10 @@ export const buildYourFirstAgentPainPoints = [
 ] as const;
 
 export const buildYourFirstAgentOutcomes = [
-  "A working AI agent crafted for your specific role and workflows",
-  "Your own CLAUDE.md and context files — the brain that makes Claude actually know you",
-  "A custom skill built for your needs",
-  "Connected tools or MCPs so your agent can act — not just draft text",
+  "2 working AI agents crafted for your specific role and workflows",
+  "Your own agent brain: CLAUDE.md and context files",
+  "Custom Skills built for your specific needs",
+  "Connected tools or MCPs so your agent can execute work for you",
   "Frameworks and mental models to keep building on your own",
 ] as const;
 
@@ -88,41 +88,48 @@ export const buildYourFirstAgentModules = [
       "A clear path to keep leveling up",
     ],
   },
+  {
+    num: "06",
+    title: "BONUS!",
+    description:
+      "Bonus material to help you keep building after you finish the five core modules.",
+    bullets: [],
+  },
 ] as const;
 
 export const buildYourFirstAgentIncluded = [
   {
+    title: "Lifetime access",
+    body: "Go back to course content and recordings whenever you need to. Future updates included!",
+  },
+  {
     title: "Full self-paced curriculum",
-    body: "The same build path from the live workshop — condensed so you can ship in a focused day (or spread across evenings).",
+    body: "We converted our $499 live workshop to a discounted self-paced course so you can learn at your own time.",
   },
   {
     title: "Build-with-me walkthroughs",
-    body: "Step-by-step guidance with a starter kit, so you leave with a working agent custom to your needs — not a pile of notes.",
+    body: "Step-by-step guidance with starter prompts & video walkthroughs, so you leave with a working agent custom to your needs, not just a pile of notes.",
   },
   {
-    title: "Templates & context starters",
-    body: "CLAUDE.md, USER.md, VOICE.md, skills, and folder patterns you can reuse immediately.",
+    title: "Context file templates, skill starters & prompt examples",
+    body: "CLAUDE.md, USER.md, VOICE.md, skills, and folder patterns you can customize for your needs.",
   },
   {
-    title: "Lifetime access",
-    body: "Go back to course content and recordings whenever you need to. Future updates included.",
+    title: "Engaging formats",
+    body: "Choose video, visuals or text formats for learning, designed for active learning (75% higher retention)",
   },
   {
-    title: "Bonus resource unlock",
-    body: "A paid digital resource we share is made free and available to students after you enroll.",
-  },
-  {
-    title: "Prerequisites that are clear",
-    body: "Claude Pro or Max + Claude Desktop — so you can follow along without guessing the stack.",
+    title: "Access to instructors",
+    body: "Ask Mika or Nick questions about agentic AI or the course material. We'll do our best to support!",
   },
 ] as const;
 
 export const buildYourFirstAgentValueStack = [
-  { item: "5-module self-paced agent curriculum", value: 297 },
-  { item: "Build-with-me walkthroughs + starter kit", value: 149 },
-  { item: "Templates: CLAUDE.md, skills & context files", value: 97 },
-  { item: "Office-hours / workshop replays", value: 79 },
-  { item: "Lifetime access + future updates", value: 49 },
+  "5 core modules + bonus module",
+  "Build-with-me walkthroughs + starter prompts",
+  "Templates: CLAUDE.md, skills & context files",
+  "Access to Mika & Nick for course questions",
+  "Lifetime access + future updates",
 ] as const;
 
 /** Screenshot slots for the social-proof scroller. */
@@ -179,9 +186,10 @@ export const buildYourFirstAgentProofShots = [
 ] as const;
 
 export const buildYourFirstAgentForYou = [
-  "You're a founder, exec, or manager who wants to do the work of a 5-person team without the payroll",
   "You're a non-technical operator who knows AI can save 10+ hours a week — and you need a fast, high-quality way to uplevel",
   "You've been handed the AI mandate (or you're AI-curious) and don't know where to start",
+  "You already use AI, but mostly through one-off prompts and scattered workflows.",
+  "You want step-by-step builds, not another folder of tips.",
   "You want a working agent for your role — not another passive webinar",
   "You're ready to do the hands-on builds, not just collect tips",
   "You want frameworks you can reuse to keep building agents on your own",
@@ -192,6 +200,7 @@ export const buildYourFirstAgentNotForYou = [
   "You want someone else to build every system for you",
   "You're looking for a coding bootcamp or ML theory deep-dive",
   "You're not willing to follow the build steps between modules",
+  "You are not willing to put in the reps.",
   "You only want chat tips — not agents that connect to your tools",
   "You don't have (or won't get) Claude Pro/Max + Claude Desktop to follow along",
 ] as const;
@@ -247,31 +256,35 @@ export const buildYourFirstAgentFaqs = [
   {
     question: "Do I need to know how to code?",
     answer:
-      "No. This is a 101 hands-on build for non-technical founders, operators, and marketers. We sit on both sides of the table — technical and non-technical — and designed the path so you can ship without a CS degree.",
+      "No. This is designed for non-technical founders, operators, business owners, managers and teams.",
   },
   {
     question: "What do I need before I start?",
     answer:
-      "A Claude Pro or Max subscription, and Claude Desktop downloaded — so you can access Claude Code (and Cowork) and follow the builds. We walk you through setup in module 01.",
+      "A Claude Pro or Max subscription, and Claude Desktop downloaded (preferred) OR a ChatGPT Pro subscription with ChatGPT Work so you can follow the builds. Our workshop was designed with Claude in mind but ChatGPT should work as well.",
   },
   {
     question: "How is this different from the live workshop?",
     answer:
-      "The live workshop is a small, intimate day with Mika & Nick in the room. This is the abbreviated, self-paced version of that same curriculum — so you can build on your schedule, with templates and walkthroughs included, at a fraction of the live price.",
+      "The live workshop is a small, intimate day with Mika & Nick in the room, guiding participants through the course, with social accountability, a community of peers, and live debugging or Q&A. This is the abbreviated, self-paced version of that same curriculum so you can build on your schedule, with templates and walkthroughs included, at a fraction of the live price.",
   },
   {
     question: "How long does it take?",
     answer:
-      "The path is designed so you can learn more in one focused day than most people piece together over months of trial and error. Or spread it across evenings — you keep lifetime access.",
+      "Our live workshop was between 3–5 hours long, which included live Q&A and debugging. You might be able to go faster and finish as early as 2 hours.",
   },
   {
-    question: "How is this different from your free AI guides?",
+    question: "How is this different from Mika's free AI guides?",
     answer:
-      "The guides teach one tactic at a time. This course walks you through a full build — context, skills, tools, and a shipped agent — in order, with templates you can reuse.",
+      "The guides teach one tactic at a time and assume you already have some base knowledge of using AI. There is no order or structure in what to learn first, and they do not go in-depth on the foundations and meanings of certain concepts.\n\nThis course assumes you want to learn the basics and foundations of agentic AI and walks you through a full build step by step, in the recommended order. It's designed to help you retain concepts 75% better through active learning and actually building.",
   },
   {
-    question: "Why was the live version $499?",
+    question: "How does it work? What happens after I enroll?",
     answer:
-      "It launched as a live cohort with direct access, live builds, and peer accountability. Students paid $499 and shipped real agents. We turned the core curriculum into this self-paced resource so more people can get the same outcome without the cohort schedule.",
+      "You get immediate access to the course using the email you used to sign up. You can then start going through all 5+1 modules ASAP!",
+  },
+  {
+    question: "How can I ask more questions about the guide?",
+    answer: "Message me at hello@mikareyes.com and I'm happy to help!",
   },
 ] as const;

@@ -54,7 +54,7 @@ export function LearnAiNavDropdown() {
         }}
       >
         <div
-          className="min-w-[272px] overflow-hidden py-2"
+          className="min-w-[320px] overflow-hidden py-2"
           style={{
             background: "var(--mr-surface)",
             border: "1px solid var(--mr-border)",
@@ -62,7 +62,7 @@ export function LearnAiNavDropdown() {
             boxShadow: "var(--mr-shadow-lift)",
           }}
         >
-          {learnAiNavItems.map(({ href, label, description }) => (
+          {learnAiNavItems.map(({ href, label, description, featured }) => (
             <InternalLink
               key={href}
               href={href}
@@ -71,7 +71,7 @@ export function LearnAiNavDropdown() {
               style={{ textDecoration: "none" }}
             >
               <span
-                className="block"
+                className="flex items-center gap-2"
                 style={{
                   fontFamily: "var(--mr-font-body)",
                   fontSize: "var(--mr-text-sm)",
@@ -80,6 +80,23 @@ export function LearnAiNavDropdown() {
                 }}
               >
                 {label}
+                {featured ? (
+                  <span
+                    className="rounded-full"
+                    style={{
+                      background:
+                        "color-mix(in srgb, var(--mr-teal) 14%, white)",
+                      color: "var(--mr-teal)",
+                      fontSize: "10px",
+                      fontWeight: "var(--mr-weight-display)",
+                      letterSpacing: "0.06em",
+                      padding: "3px 7px",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Featured
+                  </span>
+                ) : null}
               </span>
               <span
                 className="mt-1 block"
