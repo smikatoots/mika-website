@@ -183,6 +183,13 @@ export const buildYourFirstAgentProofShots = [
     width: 1024,
     height: 209,
   },
+  {
+    id: "yair",
+    src: "/courses/build-your-first-agent/proof/yair.png",
+    alt: "5-star review from Yair, Commercial Strategy Lead at Yape — Cohort 2",
+    width: 1024,
+    height: 310,
+  },
 ] as const;
 
 export const buildYourFirstAgentForYou = [

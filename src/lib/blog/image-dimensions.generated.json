@@ -871,6 +871,26 @@
     "width": 988,
     "height": 779
   },
+  "/ai-guides/youtube-playlist-ai-tutor-final-app.png": {
+    "width": 3556,
+    "height": 1828
+  },
+  "/ai-guides/youtube-playlist-ai-tutor-flow.png": {
+    "width": 1920,
+    "height": 831
+  },
+  "/ai-guides/youtube-playlist-ai-tutor-gemini-canvas.png": {
+    "width": 2354,
+    "height": 1746
+  },
+  "/ai-guides/youtube-playlist-ai-tutor-notebooklm.png": {
+    "width": 2854,
+    "height": 1808
+  },
+  "/ai-guides/youtube-playlist-ai-tutor-retention.png": {
+    "width": 1920,
+    "height": 885
+  },
   "/blog-assets/2018-year-end-review/000.png": {
     "width": 692,
     "height": 386
@@ -1303,6 +1323,58 @@
     "width": 854,
     "height": 485
   },
+  "/challenges/memorize-flags/day-1-scorecard.png": {
+    "width": 1800,
+    "height": 3648
+  },
+  "/challenges/memorize-flags/day-1-study-sheet.png": {
+    "width": 2000,
+    "height": 12168
+  },
+  "/challenges/memorize-flags/day-2-scorecard.png": {
+    "width": 1800,
+    "height": 3898
+  },
+  "/challenges/memorize-flags/day-2-study-sheet.png": {
+    "width": 2000,
+    "height": 14602
+  },
+  "/challenges/memorize-flags/day-3-scorecard.png": {
+    "width": 1800,
+    "height": 5642
+  },
+  "/challenges/memorize-flags/day-3-study-sheet.png": {
+    "width": 1820,
+    "height": 11729
+  },
+  "/challenges/memorize-flags/day-4-scorecard.png": {
+    "width": 1800,
+    "height": 4130
+  },
+  "/challenges/memorize-flags/day-4-study-sheet.png": {
+    "width": 1820,
+    "height": 16101
+  },
+  "/challenges/memorize-flags/day-5-study-sheet.png": {
+    "width": 1820,
+    "height": 20041
+  },
+  "/challenges/memorize-flags/day-6-scorecard.png": {
+    "width": 1800,
+    "height": 8860
+  },
+  "/challenges/memorize-flags/day-6-study-sheet.png": {
+    "width": 2000,
+    "height": 2654
+  },
+  "/challenges/memorize-flags/day-7-scorecard.png": {
+    "width": 1800,
+    "height": 3606
+  },
+  "/challenges/memorize-flags/day-7-study-sheet.png": {
+    "width": 2000,
+    "height": 5880
+  },
   "/challenges/memorize-flags/plan-md.png": {
     "width": 1005,
     "height": 861
@@ -1310,6 +1382,62 @@
   "/challenges/memorize-flags/quiz-html.png": {
     "width": 780,
     "height": 711
+  },
+  "/courses/build-your-first-agent/guide-preview/course-home.png": {
+    "width": 1189,
+    "height": 648
+  },
+  "/courses/build-your-first-agent/guide-preview/mcp-lesson.png": {
+    "width": 1168,
+    "height": 653
+  },
+  "/courses/build-your-first-agent/guide-preview/skills-lesson.png": {
+    "width": 1457,
+    "height": 905
+  },
+  "/courses/build-your-first-agent/guide-preview/video-lesson.png": {
+    "width": 1024,
+    "height": 636
+  },
+  "/courses/build-your-first-agent/instructors/mika.png": {
+    "width": 256,
+    "height": 256
+  },
+  "/courses/build-your-first-agent/instructors/nick.png": {
+    "width": 256,
+    "height": 256
+  },
+  "/courses/build-your-first-agent/proof/ethan.png": {
+    "width": 1024,
+    "height": 253
+  },
+  "/courses/build-your-first-agent/proof/ferrin.png": {
+    "width": 1024,
+    "height": 210
+  },
+  "/courses/build-your-first-agent/proof/janna.png": {
+    "width": 1024,
+    "height": 403
+  },
+  "/courses/build-your-first-agent/proof/norma.png": {
+    "width": 1024,
+    "height": 246
+  },
+  "/courses/build-your-first-agent/proof/pratik.png": {
+    "width": 1024,
+    "height": 209
+  },
+  "/courses/build-your-first-agent/proof/quinntin.png": {
+    "width": 1024,
+    "height": 322
+  },
+  "/courses/build-your-first-agent/proof/steve.png": {
+    "width": 1024,
+    "height": 252
+  },
+  "/courses/build-your-first-agent/proof/yair.png": {
+    "width": 1024,
+    "height": 310
   },
   "/decks/_library/-hbr-agent-managers.png": {
     "width": 1996,
@@ -1383,6 +1511,86 @@
     "width": 598,
     "height": 449
   },
+  "/decks/_library/Screenshot 2026-07-16 at 8.23.57 PM.png": {
+    "width": 522,
+    "height": 595
+  },
+  "/decks/_library/Screenshot 2026-07-16 at 9.35.06 PM.png": {
+    "width": 761,
+    "height": 673
+  },
+  "/decks/_library/Screenshot 2026-07-19 at 10.43.42 AM.png": {
+    "width": 2,
+    "height": 1
+  },
+  "/decks/_library/Screenshot 2026-07-19 at 10.48.38 AM.png": {
+    "width": 1080,
+    "height": 426
+  },
+  "/decks/_library/Screenshot 2026-07-19 at 10.48.44 AM.png": {
+    "width": 1082,
+    "height": 221
+  },
+  "/decks/_library/Screenshot 2026-07-19 at 10.48.50 AM.png": {
+    "width": 1085,
+    "height": 261
+  },
+  "/decks/_library/Screenshot 2026-07-19 at 10.48.58 AM.png": {
+    "width": 1083,
+    "height": 268
+  },
+  "/decks/_library/Screenshot 2026-07-19 at 10.49.05 AM.png": {
+    "width": 1083,
+    "height": 223
+  },
+  "/decks/_library/Screenshot 2026-07-19 at 10.49.12 AM.png": {
+    "width": 1084,
+    "height": 267
+  },
+  "/decks/_library/Screenshot 2026-07-19 at 10.49.34 AM.png": {
+    "width": 1151,
+    "height": 362
+  },
+  "/decks/_library/Screenshot 2026-07-21 at 10.24.19 AM.png": {
+    "width": 1186,
+    "height": 647
+  },
+  "/decks/_library/Screenshot 2026-07-21 at 10.24.31 AM.png": {
+    "width": 1177,
+    "height": 643
+  },
+  "/decks/_library/Screenshot 2026-07-21 at 10.24.36 AM.png": {
+    "width": 1168,
+    "height": 653
+  },
+  "/decks/_library/Screenshot 2026-07-21 at 10.26.08 AM.png": {
+    "width": 1189,
+    "height": 648
+  },
+  "/decks/_library/Screenshot 2026-07-21 at 11.11.56 AM.png": {
+    "width": 1457,
+    "height": 905
+  },
+  "/decks/_library/Screenshot 2026-07-22 at 3.12.10 PM.png": {
+    "width": 1026,
+    "height": 1550
+  },
+  "/decks/_library/Screenshot 2026-07-22 at 3.21.49 PM.png": {
+    "width": 1238,
+    "height": 1654
+  },
+  "/decks/_library/Screenshot 2026-07-23 at 7.53.14 PM.png": {
+    "width": 957,
+    "height": 330
+  },
+  "/decks/_library/Screenshot 2026-07-23 at 7.53.35 PM.png": {
+    "width": 959,
+    "height": 1007
+  },
+  "/decks/_library/Screenshot 2026-07-23 at 8.00.21 PM.png": {
+    "width": 16,
+    "height": 1
+  },
   "/decks/_library/academic.gif": {
     "width": 245,
     "height": 200
@@ -1394,6 +1602,10 @@
   "/decks/_library/account-brief-output.png": {
     "width": 1024,
     "height": 560
+  },
+  "/decks/_library/adam-mosseri.jpeg": {
+    "width": 447,
+    "height": 447
   },
   "/decks/_library/ai-agent.webp": {
     "width": 958,
@@ -1543,6 +1755,10 @@
     "width": 1536,
     "height": 936
   },
+  "/decks/_library/claude-cowork.png": {
+    "width": 1692,
+    "height": 914
+  },
   "/decks/_library/claude-logo.png": {
     "width": 10240,
     "height": 2199
@@ -1610,6 +1826,14 @@
   "/decks/_library/demo-call-transcript-command.png": {
     "width": 1024,
     "height": 560
+  },
+  "/decks/_library/desktop-anxiety-downloads-fixed.png": {
+    "width": 3440,
+    "height": 2130
+  },
+  "/decks/_library/desktop-anxiety-downloads.png": {
+    "width": 3432,
+    "height": 2150
   },
   "/decks/_library/doctor-with-patient.jpg": {
     "width": 612,
@@ -1691,6 +1915,10 @@
     "width": 480,
     "height": 270
   },
+  "/decks/_library/gemini-logo.png": {
+    "width": 10240,
+    "height": 2307
+  },
   "/decks/_library/goldman-sachs-logo.jpg": {
     "width": 1200,
     "height": 675
@@ -1698,6 +1926,18 @@
   "/decks/_library/google-logo.png": {
     "width": 2400,
     "height": 811
+  },
+  "/decks/_library/google-tutor-final-product.png": {
+    "width": 3556,
+    "height": 1828
+  },
+  "/decks/_library/google-tutor-step2.png": {
+    "width": 2854,
+    "height": 1808
+  },
+  "/decks/_library/google-tutor-step3.png": {
+    "width": 2354,
+    "height": 1746
   },
   "/decks/_library/hamster-wheel.webp": {
     "width": 480,
@@ -1799,6 +2039,10 @@
     "width": 1201,
     "height": 482
   },
+  "/decks/_library/mika-header.jpeg": {
+    "width": 1400,
+    "height": 350
+  },
   "/decks/_library/mika-linkedin-hero.png": {
     "width": 1291,
     "height": 841
@@ -1810,6 +2054,10 @@
   "/decks/_library/money-in-your-pocket.jpeg": {
     "width": 299,
     "height": 169
+  },
+  "/decks/_library/notebooklm-logo.png": {
+    "width": 300,
+    "height": 300
   },
   "/decks/_library/openai-860k-salary.png": {
     "width": 2466,
@@ -2023,33 +2271,33 @@
     "width": 611,
     "height": 502
   },
-  "/story-timeline/timeline-break.jpeg": {
+  "/decks/_library/timeline-break.jpeg": {
     "width": 2177,
     "height": 1440
   },
-  "/story-timeline/timeline-breaking-in.jpeg": {
+  "/decks/_library/timeline-breaking-in.jpeg": {
     "width": 1920,
     "height": 1440
   },
-  "/story-timeline/timeline-creating-the-path.jpeg": {
+  "/decks/_library/timeline-creating-the-path.jpeg": {
     "width": 1920,
     "height": 1440
   },
-  "/story-timeline/timeline-founder-life.jpeg": {
+  "/decks/_library/timeline-founder-life.jpeg": {
     "width": 1170,
     "height": 1483
   },
-  "/story-timeline/timeline-origins.jpeg": {
+  "/decks/_library/timeline-origins.jpeg": {
     "width": 487,
     "height": 720
   },
-  "/story-timeline/timeline-scholarship.jpeg": {
+  "/decks/_library/timeline-scholarship.jpeg": {
     "width": 2048,
     "height": 1366
   },
-  "/story-timeline/timeline-terms.jpg": {
-    "width": 1600,
-    "height": 1200
+  "/decks/_library/timeline-terms.jpg": {
+    "width": 4369,
+    "height": 3277
   },
   "/decks/_library/tip-jar.gif": {
     "width": 500,
@@ -2118,6 +2366,10 @@
   "/decks/_library/you-have-taste.gif": {
     "width": 480,
     "height": 360
+  },
+  "/decks/_library/youtube-logo.png": {
+    "width": 3840,
+    "height": 2160
   },
   "/lightning-lesson-may-7-2026.png": {
     "width": 1024,
@@ -2422,5 +2674,33 @@
   "/projects/covers/time-rich-calculator-0.png": {
     "width": 1126,
     "height": 1290
+  },
+  "/story-timeline/timeline-break.jpeg": {
+    "width": 2177,
+    "height": 1440
+  },
+  "/story-timeline/timeline-breaking-in.jpeg": {
+    "width": 1920,
+    "height": 1440
+  },
+  "/story-timeline/timeline-creating-the-path.jpeg": {
+    "width": 1920,
+    "height": 1440
+  },
+  "/story-timeline/timeline-founder-life.jpeg": {
+    "width": 1170,
+    "height": 1483
+  },
+  "/story-timeline/timeline-origins.jpeg": {
+    "width": 487,
+    "height": 720
+  },
+  "/story-timeline/timeline-scholarship.jpeg": {
+    "width": 2048,
+    "height": 1366
+  },
+  "/story-timeline/timeline-terms.jpg": {
+    "width": 1600,
+    "height": 1200
   }
 }
