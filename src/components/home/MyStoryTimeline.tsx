@@ -260,6 +260,7 @@ export function MyStoryTimeline() {
     };
   }, []);
 
+  /* eslint-disable react-hooks/set-state-in-effect -- Synchronous layout measurement prevents the timeline from flashing in the wrong position. */
   useLayoutEffect(() => {
     const track = trackRef.current;
     const line = lineRef.current;
@@ -292,6 +293,7 @@ export function MyStoryTimeline() {
       setFillPercent(Math.max(0, Math.min(1, progress)));
     }
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const milestoneMarkerStyle = (index: number): CSSProperties => {
     const isPast = index < activeIndex;

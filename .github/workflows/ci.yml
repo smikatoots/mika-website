@@ -1,0 +1,62 @@
+name: SEO CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CI: true
+      NEXT_PUBLIC_SITE_URL: https://mikareyes.com
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint and build production site
+        run: npm run build
+
+      - name: Verify rendered SEO and internal links
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run start -- -H 127.0.0.1 -p 3000 > /tmp/mika-next.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+
+          ready=0
+          for _ in {1..60}; do
+            if node -e "fetch('http://127.0.0.1:3000/sitemap.xml').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+
+          if [[ "$ready" -ne 1 ]]; then
+            cat /tmp/mika-next.log
+            exit 1
+          fi
+
+          SEO_BASE_URL=http://127.0.0.1:3000 npm run verify:seo:site
