@@ -123,7 +123,7 @@ export function SiteHeader() {
             );
           })}
 
-          <a
+          <InternalLink
             href="/#contact"
             className="mr-pressable ml-3 shrink-0 whitespace-nowrap"
             style={{
@@ -142,7 +142,7 @@ export function SiteHeader() {
             }}
           >
             Work with me
-          </a>
+          </InternalLink>
         </nav>
 
         <button
@@ -252,7 +252,7 @@ export function SiteHeader() {
             );
           })}
 
-          <a
+          <InternalLink
             href="/#contact"
             className="mr-pressable mt-3 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center"
             style={{
@@ -267,7 +267,7 @@ export function SiteHeader() {
             onClick={closeMenu}
           >
             Work with me
-          </a>
+          </InternalLink>
         </div>
       </nav>
     </header>

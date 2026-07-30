@@ -130,7 +130,7 @@ export function SiteFooter() {
             </ul>
 
             <div className="mt-8">
-              <a
+              <InternalLink
                 href="/#contact"
                 className="mr-pressable inline-flex items-center gap-2"
                 style={{
@@ -146,7 +146,7 @@ export function SiteFooter() {
                 }}
               >
                 Work with me →
-              </a>
+              </InternalLink>
             </div>
           </div>
         </div>

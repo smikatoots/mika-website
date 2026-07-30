@@ -32,7 +32,7 @@
     {
       "slug": "magnum-opus-nft",
       "title": "Magnum Opus NFT",
-      "url": "magnum-opus.xyz",
+      "url": "https://magnum-opus.xyz",
       "tags": [
         {
           "name": "crypto/web3",
@@ -189,7 +189,7 @@
     {
       "slug": "consensus",
       "title": "Consensus",
-      "url": "playconsensus.com",
+      "url": "https://playconsensus.com",
       "tags": [
         {
           "name": "fun and games",

@@ -11,10 +11,11 @@ export function AuthorByline() {
   return (
     <div className="mt-6 flex items-center gap-3">
       <Image
-        src="/mika-reyes.jpg"
+        src="/mika-reyes-author.jpg"
         alt="Mika Reyes"
         width={44}
         height={44}
+        quality={95}
         className="h-11 w-11 flex-none rounded-full object-cover"
         style={{ boxShadow: "var(--mr-shadow-card)" }}
       />

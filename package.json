@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "gen:image-dims": "tsx scripts/generate-image-dimensions.ts",
-    "prebuild": "tsx scripts/generate-image-dimensions.ts",
+    "prebuild": "npm run lint && tsx scripts/generate-image-dimensions.ts",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint && tsx scripts/verify-seo.ts",
+    "verify:seo": "tsx scripts/verify-seo.ts",
+    "verify:seo:site": "tsx scripts/verify-seo-site.ts",
     "process:logo": "tsx scripts/make-logo-transparent.ts",
     "sync:blog": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-blog.ts",
     "sync:blog:force": "node -r ./scripts/bootstrap-env.cjs node_modules/.bin/tsx scripts/sync-notion-blog.ts --force",
@@ -29,6 +31,7 @@
     "posthog-node": "^5.29.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "zod": "^4.3.6"
   },

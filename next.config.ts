@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 import { urlRedirects } from "./src/lib/url-redirects";
 
 const nextConfig: NextConfig = {
+  images: {
+    qualities: [75, 95],
+  },
   // `src/lib/blog/image-dimensions.ts` reads `public/<dynamic src>` at build
   // time to size images. Because the path is dynamic, Vercel's file tracer
   // can't resolve it and conservatively bundles ALL of public/ (~540MB of

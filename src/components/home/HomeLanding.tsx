@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import posthog from "posthog-js";
+import Link from "next/link";
 
 import { trackGa4Event } from "@/lib/analytics/ga4";
 import { homeBioLinks } from "@/lib/home-bio-links";
@@ -525,7 +525,7 @@ export function HomeLanding() {
                 <span style={{ fontStyle: "italic", color: "var(--mr-teal)" }}>in the media.</span>
               </h2>
             </div>
-            <a
+            <Link
               href="/press"
               className="mr-pressable"
               style={{
@@ -547,7 +547,7 @@ export function HomeLanding() {
               }}
             >
               See all press →
-            </a>
+            </Link>
           </div>
 
           {/* Table — 3 cols on mobile (no date), 4 cols on md+ */}

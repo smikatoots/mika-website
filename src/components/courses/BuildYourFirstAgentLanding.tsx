@@ -146,7 +146,8 @@ function QualList({
               color: "var(--mr-text-soft)",
               lineHeight: 1.55,
               padding: "14px 0",
-              borderTop: index === 0 ? "none" : "1px solid var(--mr-border-warm)",
+              borderTop:
+                index === 0 ? "none" : "1px solid var(--mr-border-warm)",
             }}
           >
             <span
@@ -171,7 +172,9 @@ export function BuildYourFirstAgentLanding() {
   return (
     <main>
       {/* Hero */}
-      <section style={{ background: "var(--mr-teal-deep)", padding: "80px 0 88px" }}>
+      <section
+        style={{ background: "var(--mr-teal-deep)", padding: "80px 0 88px" }}
+      >
         <div className={container}>
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div>
@@ -263,7 +266,9 @@ export function BuildYourFirstAgentLanding() {
       </section>
 
       {/* Credibility strip */}
-      <section style={{ background: "var(--mr-surface-cream)", padding: "32px 0" }}>
+      <section
+        style={{ background: "var(--mr-surface-cream)", padding: "32px 0" }}
+      >
         <div className={`${container} grid grid-cols-2 gap-6 md:grid-cols-4`}>
           {credibility.map(({ value, label }) => (
             <div key={label} className="text-center">
@@ -358,8 +363,10 @@ export function BuildYourFirstAgentLanding() {
             }}
           >
             We&apos;ve spent{" "}
-            <strong>1,000+ hours learning (and failing) with AI</strong> so you
-            don&apos;t have to.
+            <span>
+              <strong>1,000+ hours learning (and failing) with AI</strong>
+            </span>{" "}
+            so you don&apos;t have to.
           </p>
           <p
             className="mt-4"
@@ -373,10 +380,9 @@ export function BuildYourFirstAgentLanding() {
           >
             We&apos;ve built and shipped software used by{" "}
             <strong>millions</strong>, and we&apos;ve sat on both sides of the
-            table (as{" "}
-            <strong>technical and non-technical co-founders</strong>). We built
-            our own AI-native operating system from scratch. This guide is the{" "}
-            <strong>shortcut we wish we had</strong>.
+            table (as <strong>technical and non-technical co-founders</strong>).
+            We built our own AI-native operating system from scratch. This guide
+            is the <strong>shortcut we wish we had</strong>.
           </p>
           <p
             className="mt-4"
@@ -384,7 +390,6 @@ export function BuildYourFirstAgentLanding() {
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
               color: "var(--mr-ink)",
-              fontWeight: "var(--mr-weight-semi)",
               lineHeight: 1.6,
               maxWidth: "100%",
             }}
@@ -397,10 +402,14 @@ export function BuildYourFirstAgentLanding() {
       </section>
 
       {/* Social proof */}
-      <section style={{ background: "var(--mr-surface-rose)", padding: sectionPad }}>
+      <section
+        style={{ background: "var(--mr-surface-rose)", padding: sectionPad }}
+      >
         <div className={container}>
           <SectionEyebrow>✦ Testimonials</SectionEyebrow>
-          <SectionTitle>Built for people who ship, not slide-watch</SectionTitle>
+          <SectionTitle>
+            Built for people who ship, not slide-watch
+          </SectionTitle>
           <p
             className="mt-4 max-w-2xl"
             style={{
@@ -414,7 +423,10 @@ export function BuildYourFirstAgentLanding() {
           </p>
         </div>
 
-        <div className="byfa-proof-marquee mt-10" style={{ overflow: "hidden", width: "100%" }}>
+        <div
+          className="byfa-proof-marquee mt-10"
+          style={{ overflow: "hidden", width: "100%" }}
+        >
           <div className="byfa-proof-marquee__track flex w-max">
             {[0, 1].map((copy) => (
               <div
@@ -422,31 +434,33 @@ export function BuildYourFirstAgentLanding() {
                 className="flex shrink-0 items-stretch gap-5 pr-5"
                 aria-hidden={copy === 1 ? true : undefined}
               >
-                {buildYourFirstAgentProofShots.map(({ id, src, alt, width, height }) => (
-                  <figure
-                    key={`${copy}-${id}`}
-                    className="shrink-0"
-                    style={{
-                      width: "min(640px, 92vw)",
-                      background: "var(--mr-surface)",
-                      border: "1px solid var(--mr-border)",
-                      borderRadius: "var(--mr-radius-card)",
-                      overflow: "hidden",
-                      boxShadow: "var(--mr-shadow-card)",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Image
-                      src={src}
-                      alt={alt}
-                      width={width}
-                      height={height}
-                      className="h-auto w-full"
-                      sizes="(max-width: 768px) 92vw, 640px"
-                    />
-                  </figure>
-                ))}
+                {buildYourFirstAgentProofShots.map(
+                  ({ id, src, alt, width, height }) => (
+                    <figure
+                      key={`${copy}-${id}`}
+                      className="shrink-0"
+                      style={{
+                        width: "min(640px, 92vw)",
+                        background: "var(--mr-surface)",
+                        border: "1px solid var(--mr-border)",
+                        borderRadius: "var(--mr-radius-card)",
+                        overflow: "hidden",
+                        boxShadow: "var(--mr-shadow-card)",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Image
+                        src={src}
+                        alt={alt}
+                        width={width}
+                        height={height}
+                        className="h-auto w-full"
+                        sizes="(max-width: 768px) 92vw, 640px"
+                      />
+                    </figure>
+                  ),
+                )}
               </div>
             ))}
           </div>
@@ -527,10 +541,14 @@ export function BuildYourFirstAgentLanding() {
       </section>
 
       {/* Learning formats */}
-      <section style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}>
+      <section
+        style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}
+      >
         <div className={container}>
           <SectionEyebrow>✦ How you&apos;ll learn</SectionEyebrow>
-          <SectionTitle>Learn in various formats: video, text &amp; visuals</SectionTitle>
+          <SectionTitle>
+            Learn in various formats: video, text &amp; visuals
+          </SectionTitle>
           <p
             className="mt-4 max-w-3xl"
             style={{
@@ -575,7 +593,9 @@ export function BuildYourFirstAgentLanding() {
       </section>
 
       {/* Curriculum */}
-      <section style={{ background: "var(--mr-surface-rose)", padding: sectionPad }}>
+      <section
+        style={{ background: "var(--mr-surface-rose)", padding: sectionPad }}
+      >
         <div className={container}>
           <SectionEyebrow>✦ What you&apos;ll learn</SectionEyebrow>
           <SectionTitle>
@@ -674,7 +694,9 @@ export function BuildYourFirstAgentLanding() {
       <section style={{ padding: sectionPad }}>
         <div className={container}>
           <SectionEyebrow>✦ What&apos;s included</SectionEyebrow>
-          <SectionTitle>Everything you need to build an agent on your own!</SectionTitle>
+          <SectionTitle>
+            Everything you need to build an agent on your own!
+          </SectionTitle>
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {buildYourFirstAgentIncluded.map(({ title, body }) => (
               <article
@@ -714,7 +736,9 @@ export function BuildYourFirstAgentLanding() {
       </section>
 
       {/* Qualification */}
-      <section style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}>
+      <section
+        style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}
+      >
         <div className={container}>
           <SectionEyebrow>✦ Who this is for and not for</SectionEyebrow>
           <SectionTitle>Read this before you join!</SectionTitle>
@@ -860,7 +884,9 @@ export function BuildYourFirstAgentLanding() {
       </section>
 
       {/* Pricing */}
-      <section style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}>
+      <section
+        style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}
+      >
         <div className={container}>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-start">
             <div>
@@ -925,84 +951,88 @@ export function BuildYourFirstAgentLanding() {
                   boxShadow: "var(--mr-shadow-lift)",
                 }}
               >
-              <p
-                style={{
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-xs)",
-                  fontWeight: "var(--mr-weight-display)",
-                  color: "var(--mr-coral)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.12em",
-                }}
-              >
-                Self-paced enrollment
-              </p>
-
-              <div className="mt-4 flex items-end gap-3">
-                <span
-                  style={{
-                    fontFamily: "var(--mr-font-display)",
-                    fontSize: "56px",
-                    fontWeight: "var(--mr-weight-display)",
-                    color: "var(--mr-ink)",
-                    lineHeight: 1,
-                  }}
-                >
-                  ${BUILD_YOUR_FIRST_AGENT_PRICE}
-                </span>
-                <span
+                <p
                   style={{
                     fontFamily: "var(--mr-font-body)",
-                    fontSize: "28px",
-                    color: "var(--mr-muted)",
-                    textDecoration: "line-through",
-                    lineHeight: 1,
-                    marginBottom: "4px",
-                  }}
-                >
-                  ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE}
-                </span>
-                <span
-                  className="inline-flex rounded-full"
-                  style={{
-                    background: "color-mix(in srgb, var(--mr-teal) 14%, white)",
-                    color: "var(--mr-teal)",
-                    fontFamily: "var(--mr-font-body)",
-                    fontSize: "var(--mr-text-sm)",
+                    fontSize: "var(--mr-text-xs)",
                     fontWeight: "var(--mr-weight-display)",
-                    lineHeight: 1,
-                    marginBottom: "1px",
-                    padding: "10px 14px",
+                    color: "var(--mr-coral)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
                   }}
                 >
-                  Save $461!
-                </span>
-              </div>
+                  Self-paced enrollment
+                </p>
 
-              <div className="mt-6">
-                <EnrollCta location="pricing-card" label="Get instant access" />
-              </div>
-
-              <ul className="mt-6 space-y-2">
-                {[
-                  "Instant access after checkout",
-                  "Templates + build walkthroughs",
-                  "No coding required",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-2"
+                <div className="mt-4 flex items-end gap-3">
+                  <span
                     style={{
-                      fontFamily: "var(--mr-font-body)",
-                      fontSize: "var(--mr-text-xs)",
-                      color: "var(--mr-muted)",
+                      fontFamily: "var(--mr-font-display)",
+                      fontSize: "56px",
+                      fontWeight: "var(--mr-weight-display)",
+                      color: "var(--mr-ink)",
+                      lineHeight: 1,
                     }}
                   >
-                    <span style={{ color: "var(--mr-coral)" }}>✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+                    ${BUILD_YOUR_FIRST_AGENT_PRICE}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--mr-font-body)",
+                      fontSize: "28px",
+                      color: "var(--mr-muted)",
+                      textDecoration: "line-through",
+                      lineHeight: 1,
+                      marginBottom: "4px",
+                    }}
+                  >
+                    ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE}
+                  </span>
+                  <span
+                    className="inline-flex rounded-full"
+                    style={{
+                      background:
+                        "color-mix(in srgb, var(--mr-teal) 14%, white)",
+                      color: "var(--mr-teal)",
+                      fontFamily: "var(--mr-font-body)",
+                      fontSize: "var(--mr-text-sm)",
+                      fontWeight: "var(--mr-weight-display)",
+                      lineHeight: 1,
+                      marginBottom: "1px",
+                      padding: "10px 14px",
+                    }}
+                  >
+                    Save $461!
+                  </span>
+                </div>
+
+                <div className="mt-6">
+                  <EnrollCta
+                    location="pricing-card"
+                    label="Get instant access"
+                  />
+                </div>
+
+                <ul className="mt-6 space-y-2">
+                  {[
+                    "Instant access after checkout",
+                    "Templates + build walkthroughs",
+                    "No coding required",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-2"
+                      style={{
+                        fontFamily: "var(--mr-font-body)",
+                        fontSize: "var(--mr-text-xs)",
+                        color: "var(--mr-muted)",
+                      }}
+                    >
+                      <span style={{ color: "var(--mr-coral)" }}>✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </aside>
               <ul className="mt-5 space-y-3">
                 <li
@@ -1014,7 +1044,9 @@ export function BuildYourFirstAgentLanding() {
                     lineHeight: 1.6,
                   }}
                 >
-                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>✓</span>
+                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>
+                    ✓
+                  </span>
                   <span>
                     Everything you build is <strong>yours to keep</strong> and
                     use every day, <strong>for life</strong>.
@@ -1029,7 +1061,9 @@ export function BuildYourFirstAgentLanding() {
                     lineHeight: 1.6,
                   }}
                 >
-                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>✓</span>
+                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>
+                    ✓
+                  </span>
                   <span>
                     At ${BUILD_YOUR_FIRST_AGENT_PRICE}, you{" "}
                     <strong>make that back</strong> once AI saves you an
@@ -1045,7 +1079,9 @@ export function BuildYourFirstAgentLanding() {
                     lineHeight: 1.6,
                   }}
                 >
-                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>✓</span>
+                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>
+                    ✓
+                  </span>
                   <span>
                     No subscription. <strong>Lifetime access</strong> included.
                   </span>

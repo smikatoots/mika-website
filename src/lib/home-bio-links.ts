@@ -24,7 +24,7 @@ export const homeBioLinks = {
   awards: {
     forbes30: "/press/forbes-30-under-30-finance-venture-capital-forbes",
     tatler: "https://www.tatlerasia.com/",
-    kleinerPerkins: "/meet-the-kleiner-perkins-fellows",
-    spc: "/the-southpark-commons-community",
+    kleinerPerkins: "/press/meet-the-kleiner-perkins-fellows",
+    spc: "/press/the-southpark-commons-community",
   },
 } as const;
