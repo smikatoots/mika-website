@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
 
 import { blogMdxComponents } from "@/components/blog/blog-mdx-components";
+import { ImageColumns } from "@/components/challenges/ImageColumns";
 
 function ChallengeDetails({
   children,
@@ -42,4 +43,5 @@ export const challengeMdxComponents: MDXComponents = {
   ...blogMdxComponents,
   details: ChallengeDetails,
   summary: ChallengeSummary,
+  ImageColumns,
 };

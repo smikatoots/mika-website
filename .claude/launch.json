@@ -6,6 +6,10 @@
       "runtimeExecutable": "yarn",
       "runtimeArgs": ["dev"],
       "autoPort": true
+    },
+    {
+      "name": "mika-website-attach",
+      "url": "http://localhost:3002"
     }
   ]
 }

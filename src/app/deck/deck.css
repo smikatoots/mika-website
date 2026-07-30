@@ -124,6 +124,23 @@
     deck-pulse 2.2s ease-in-out 0.8s infinite;
 }
 
+/* A balance scale settling: starts level, then tips toward the heavier pan. */
+@keyframes deck-scale-tilt {
+  0% {
+    transform: rotate(-11deg);
+  }
+  62% {
+    transform: rotate(1.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.deck-scale-tilt {
+  animation: deck-scale-tilt 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s both;
+}
+
 /* The salmon underline that sweeps under highlighted words. */
 .deck-underline-word {
   position: relative;
@@ -156,6 +173,7 @@
   .deck-tier,
   .deck-loop-pop,
   .deck-cta-pulse,
+  .deck-scale-tilt,
   .deck-underline-word::after {
     animation-duration: 0.001s;
     animation-iteration-count: 1;

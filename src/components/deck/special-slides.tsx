@@ -71,6 +71,9 @@ export function CtaSlide({
   previewLarge = false,
   previewSide = "right",
   size = "lg",
+  subSize,
+  headlinePlain = false,
+  textWide = false,
 }: {
   prompt?: React.ReactNode;
   headline?: React.ReactNode;
@@ -84,24 +87,55 @@ export function CtaSlide({
   previewLarge?: boolean;
   /** Which side the preview image sits on (desktop). */
   previewSide?: "left" | "right";
-  /** Type scale — `sm` for image-heavy slides, `md` in between, `lg` default. */
-  size?: "sm" | "md" | "lg";
+  /**
+   * Type scale — `sm` for image-heavy slides, `md` in between, `mlg` a modest
+   * step above `md`, `lg` default.
+   */
+  size?: "sm" | "md" | "mlg" | "lg";
+  /** Independent scale for the `sub` line. Defaults to `size`. */
+  subSize?: "sm" | "md" | "mlg" | "lg";
+  /**
+   * Render the headline as plain heading text (no salmon pill) so only the
+   * words you wrap in `<HL>`/`<A>` get the accent treatment.
+   */
+  headlinePlain?: boolean;
+  /** Widen the text column (pairs with a larger preview). */
+  textWide?: boolean;
 }) {
   const promptSize =
-    size === "sm" ? "text-5xl sm:text-6xl" : size === "md" ? "text-6xl sm:text-7xl" : deckType.statement;
+    size === "sm"
+      ? "text-5xl sm:text-6xl"
+      : size === "md" || size === "mlg"
+        ? "text-6xl sm:text-7xl"
+        : deckType.statement;
   const headlineSize =
-    size === "sm" ? "text-6xl sm:text-7xl" : size === "md" ? "text-7xl sm:text-8xl" : deckType.display;
-  const subSize =
-    size === "sm" ? "text-5xl sm:text-6xl" : size === "md" ? "text-6xl sm:text-7xl" : deckType.statement;
+    size === "sm"
+      ? "text-6xl sm:text-7xl"
+      : size === "md"
+        ? "text-7xl sm:text-8xl"
+        : size === "mlg"
+          ? deckType.statement
+          : deckType.display;
+  const subScale = subSize ?? size;
+  const subSizeClass =
+    subScale === "sm"
+      ? "text-5xl sm:text-6xl"
+      : subScale === "md" || subScale === "mlg"
+        ? "text-6xl sm:text-7xl"
+        : deckType.statement;
   const headlinePad =
-    size === "sm" ? "my-4 px-7 py-3" : size === "md" ? "my-4 px-8 py-3.5" : "my-5 px-9 py-4";
+    size === "sm"
+      ? "my-4 px-7 py-3"
+      : size === "md" || size === "mlg"
+        ? "my-4 px-8 py-3.5"
+        : "my-5 px-9 py-4";
 
   const text = (
     <div
       className={`flex flex-col ${
         preview
-          ? "max-w-xl items-center text-center md:items-start md:text-left"
-          : "max-w-4xl items-center text-center"
+          ? `${textWide ? "max-w-3xl" : "max-w-xl"} items-center text-center md:items-start md:text-left`
+          : `${textWide ? "max-w-5xl" : "max-w-4xl"} items-center text-center`
       }`}
     >
       {prompt ? (
@@ -112,15 +146,24 @@ export function CtaSlide({
           {prompt}
         </p>
       ) : null}
-      <div
-        className={`deck-cta-pulse ${headlinePad} max-w-full text-balance break-words text-center leading-[1.04] rounded-2xl bg-[var(--deck-accent)] font-extrabold tracking-tight text-white shadow-[0_18px_50px_-12px_rgba(253,72,105,0.6)] ${headlineSize}`}
-        style={{ animationDelay: "0.15s" }}
-      >
-        {headline}
-      </div>
+      {headlinePlain ? (
+        <div
+          className={`deck-rise my-5 max-w-full text-balance break-words leading-[1.04] ${headingBase} ${headlineSize}`}
+          style={{ animationDelay: "0.15s" }}
+        >
+          {headline}
+        </div>
+      ) : (
+        <div
+          className={`deck-cta-pulse ${headlinePad} max-w-full text-balance break-words text-center leading-[1.04] rounded-2xl bg-[var(--deck-accent)] font-extrabold tracking-tight text-white shadow-[0_18px_50px_-12px_rgba(253,72,105,0.6)] ${headlineSize}`}
+          style={{ animationDelay: "0.15s" }}
+        >
+          {headline}
+        </div>
+      )}
       {sub ? (
         <p
-          className={`deck-rise ${headingBase} ${subSize}`}
+          className={`deck-rise ${headingBase} ${subSizeClass}`}
           style={{ animationDelay: "0.4s" }}
         >
           {sub}

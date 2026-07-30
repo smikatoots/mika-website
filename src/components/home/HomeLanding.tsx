@@ -125,7 +125,7 @@ export function HomeLanding() {
                 maxWidth: "520px",
               }}
             >
-              I teach ambitious, non-technical founders and professionals how to use AI to get ahead in their careers, get time back, and stay relevant in the AI age.
+              I&apos;m a founder & knowledge creator helping high-achieving professionals leverage AI to build ambitious & time-rich careers, wealth & lives.
             </p>
 
             <div className="flex w-full flex-wrap items-center justify-center gap-3 md:justify-start">

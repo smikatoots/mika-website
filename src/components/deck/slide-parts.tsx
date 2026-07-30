@@ -121,7 +121,8 @@ export function PointSlide({
   emoji,
   children,
 }: {
-  number: string;
+  /** Optional accent step marker. Omit for an emoji + headline point with no badge. */
+  number?: string;
   emoji: string;
   children: React.ReactNode;
 }) {
@@ -138,9 +139,11 @@ export function PointSlide({
         className="deck-rise flex max-w-5xl flex-wrap items-baseline justify-center gap-x-5 gap-y-2"
         style={{ animationDelay: "0.18s" }}
       >
-        <span className={`deck-accent font-mono font-bold ${deckType.statement}`}>
-          {number}
-        </span>
+        {number ? (
+          <span className={`deck-accent font-mono font-bold ${deckType.statement}`}>
+            {number}
+          </span>
+        ) : null}
         <h1 className={`${headingBase} ${deckType.statement}`}>{children}</h1>
       </div>
     </div>

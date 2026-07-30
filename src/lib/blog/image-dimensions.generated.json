@@ -1327,37 +1327,77 @@
     "width": 1800,
     "height": 3648
   },
-  "/challenges/memorize-flags/day-1-study-sheet.png": {
+  "/challenges/memorize-flags/day-1-study-sheet-1.png": {
     "width": 2000,
-    "height": 12168
+    "height": 4056
+  },
+  "/challenges/memorize-flags/day-1-study-sheet-2.png": {
+    "width": 2000,
+    "height": 4056
+  },
+  "/challenges/memorize-flags/day-1-study-sheet-3.png": {
+    "width": 2000,
+    "height": 4056
   },
   "/challenges/memorize-flags/day-2-scorecard.png": {
     "width": 1800,
     "height": 3898
   },
-  "/challenges/memorize-flags/day-2-study-sheet.png": {
+  "/challenges/memorize-flags/day-2-study-sheet-1.png": {
     "width": 2000,
-    "height": 14602
+    "height": 4867
+  },
+  "/challenges/memorize-flags/day-2-study-sheet-2.png": {
+    "width": 2000,
+    "height": 4867
+  },
+  "/challenges/memorize-flags/day-2-study-sheet-3.png": {
+    "width": 2000,
+    "height": 4868
   },
   "/challenges/memorize-flags/day-3-scorecard.png": {
     "width": 1800,
     "height": 5642
   },
-  "/challenges/memorize-flags/day-3-study-sheet.png": {
+  "/challenges/memorize-flags/day-3-study-sheet-1.png": {
     "width": 1820,
-    "height": 11729
+    "height": 3909
+  },
+  "/challenges/memorize-flags/day-3-study-sheet-2.png": {
+    "width": 1820,
+    "height": 3909
+  },
+  "/challenges/memorize-flags/day-3-study-sheet-3.png": {
+    "width": 1820,
+    "height": 3911
   },
   "/challenges/memorize-flags/day-4-scorecard.png": {
     "width": 1800,
     "height": 4130
   },
-  "/challenges/memorize-flags/day-4-study-sheet.png": {
+  "/challenges/memorize-flags/day-4-study-sheet-1.png": {
     "width": 1820,
-    "height": 16101
+    "height": 5367
   },
-  "/challenges/memorize-flags/day-5-study-sheet.png": {
+  "/challenges/memorize-flags/day-4-study-sheet-2.png": {
     "width": 1820,
-    "height": 20041
+    "height": 5367
+  },
+  "/challenges/memorize-flags/day-4-study-sheet-3.png": {
+    "width": 1820,
+    "height": 5367
+  },
+  "/challenges/memorize-flags/day-5-study-sheet-1.png": {
+    "width": 1820,
+    "height": 6680
+  },
+  "/challenges/memorize-flags/day-5-study-sheet-2.png": {
+    "width": 1820,
+    "height": 6680
+  },
+  "/challenges/memorize-flags/day-5-study-sheet-3.png": {
+    "width": 1820,
+    "height": 6681
   },
   "/challenges/memorize-flags/day-6-scorecard.png": {
     "width": 1800,
@@ -1371,9 +1411,13 @@
     "width": 1800,
     "height": 3606
   },
-  "/challenges/memorize-flags/day-7-study-sheet.png": {
+  "/challenges/memorize-flags/day-7-study-sheet-1.png": {
     "width": 2000,
-    "height": 5880
+    "height": 2940
+  },
+  "/challenges/memorize-flags/day-7-study-sheet-2.png": {
+    "width": 2000,
+    "height": 2940
   },
   "/challenges/memorize-flags/plan-md.png": {
     "width": 1005,
