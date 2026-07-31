@@ -103,6 +103,14 @@
     "width": 773,
     "height": 592
   },
+  "/ai-guides/ai-agent.webp": {
+    "width": 958,
+    "height": 538
+  },
+  "/ai-guides/ai-agreeable-than-human.png": {
+    "width": 3200,
+    "height": 1044
+  },
   "/ai-guides/ai-coach-step-1.png": {
     "width": 1015,
     "height": 1024
@@ -166,6 +174,10 @@
   "/ai-guides/beauty-prompts-skincare.png": {
     "width": 819,
     "height": 1024
+  },
+  "/ai-guides/ben-cera.png": {
+    "width": 663,
+    "height": 426
   },
   "/ai-guides/book-flights-allow-browser-actions.png": {
     "width": 1024,
@@ -271,6 +283,10 @@
     "width": 818,
     "height": 543
   },
+  "/ai-guides/chairman.jpg": {
+    "width": 612,
+    "height": 408
+  },
   "/ai-guides/chat-vs-agentic-agent-slack.png": {
     "width": 1024,
     "height": 897
@@ -327,9 +343,21 @@
     "width": 1024,
     "height": 291
   },
+  "/ai-guides/claude-context-window.png": {
+    "width": 1301,
+    "height": 507
+  },
   "/ai-guides/claude-corps-fellowship.png": {
     "width": 1024,
     "height": 576
+  },
+  "/ai-guides/claude-corps-hero.webp": {
+    "width": 3840,
+    "height": 2160
+  },
+  "/ai-guides/claude-cowork.png": {
+    "width": 1692,
+    "height": 914
   },
   "/ai-guides/claude-effort-levels-selector.png": {
     "width": 242,
@@ -350,6 +378,10 @@
   "/ai-guides/claude-live-artifacts-6.png": {
     "width": 1024,
     "height": 825
+  },
+  "/ai-guides/claude-logo.png": {
+    "width": 10240,
+    "height": 2199
   },
   "/ai-guides/claude-memory-step-1-memory-settings.png": {
     "width": 1274,
@@ -411,9 +443,29 @@
     "width": 1024,
     "height": 1006
   },
+  "/ai-guides/claude-tag-learns.png": {
+    "width": 662,
+    "height": 477
+  },
+  "/ai-guides/claude-tag-multiplayer.png": {
+    "width": 668,
+    "height": 471
+  },
+  "/ai-guides/claude-tag-proactive.png": {
+    "width": 653,
+    "height": 490
+  },
+  "/ai-guides/clear-command.png": {
+    "width": 1425,
+    "height": 565
+  },
   "/ai-guides/color-theory-analysis-result.png": {
     "width": 1024,
     "height": 682
+  },
+  "/ai-guides/compact-command.png": {
+    "width": 1564,
+    "height": 738
   },
   "/ai-guides/contract-redliner-step-1-create-project.png": {
     "width": 531,
@@ -443,9 +495,29 @@
     "width": 804,
     "height": 586
   },
+  "/ai-guides/desktop-anxiety-downloads-fixed.png": {
+    "width": 3440,
+    "height": 2130
+  },
+  "/ai-guides/desktop-anxiety-downloads.png": {
+    "width": 3432,
+    "height": 2150
+  },
   "/ai-guides/doordash-research-fellowship.png": {
     "width": 629,
     "height": 415
+  },
+  "/ai-guides/dumb-headbang.gif": {
+    "width": 498,
+    "height": 374
+  },
+  "/ai-guides/dumber.gif": {
+    "width": 498,
+    "height": 374
+  },
+  "/ai-guides/f30u30-logo.png": {
+    "width": 225,
+    "height": 225
   },
   "/ai-guides/fable-guide-3d-world-hogwarts.png": {
     "width": 744,
@@ -619,9 +691,21 @@
     "width": 981,
     "height": 507
   },
+  "/ai-guides/kickbacks-homepage.png": {
+    "width": 2212,
+    "height": 1220
+  },
+  "/ai-guides/kickbacks-one-line-setup.png": {
+    "width": 3014,
+    "height": 710
+  },
   "/ai-guides/listen-labs-founder-program.png": {
     "width": 1024,
     "height": 1024
+  },
+  "/ai-guides/llm-council.jpg": {
+    "width": 1024,
+    "height": 506
   },
   "/ai-guides/makeup-consultant-input.png": {
     "width": 768,
@@ -658,6 +742,18 @@
   "/ai-guides/mika-nick-cockpit-wedding-flight.png": {
     "width": 768,
     "height": 1024
+  },
+  "/ai-guides/model-command.png": {
+    "width": 1099,
+    "height": 415
+  },
+  "/ai-guides/money-in-your-pocket.jpeg": {
+    "width": 299,
+    "height": 169
+  },
+  "/ai-guides/openai-logo.png": {
+    "width": 3840,
+    "height": 1042
   },
   "/ai-guides/paperclip-agent-adapter-types.png": {
     "width": 449,
@@ -715,6 +811,10 @@
     "width": 1024,
     "height": 558
   },
+  "/ai-guides/polsia-homepage.png": {
+    "width": 3380,
+    "height": 1988
+  },
   "/ai-guides/polsia-idea-choice.png": {
     "width": 906,
     "height": 443
@@ -726,6 +826,10 @@
   "/ai-guides/polsia-researching.png": {
     "width": 389,
     "height": 440
+  },
+  "/ai-guides/polsia-team.png": {
+    "width": 2222,
+    "height": 1554
   },
   "/ai-guides/reduce-tokens-p1-01.png": {
     "width": 819,
@@ -799,6 +903,18 @@
     "width": 819,
     "height": 1024
   },
+  "/ai-guides/spc-fellowship-logo.jpg": {
+    "width": 1200,
+    "height": 675
+  },
+  "/ai-guides/stanford-logo.png": {
+    "width": 738,
+    "height": 240
+  },
+  "/ai-guides/stanford-report-ai-yes-man.png": {
+    "width": 2252,
+    "height": 982
+  },
   "/ai-guides/subagents-background-tasks-menu.png": {
     "width": 302,
     "height": 422
@@ -870,6 +986,30 @@
   "/ai-guides/what-is-skill-step-3-anthropic-guide-cover.png": {
     "width": 988,
     "height": 779
+  },
+  "/ai-guides/working-while-sleeping.webp": {
+    "width": 1376,
+    "height": 768
+  },
+  "/ai-guides/yc-building-agents.jpeg": {
+    "width": 1902,
+    "height": 1094
+  },
+  "/ai-guides/yc-homepage.png": {
+    "width": 1808,
+    "height": 890
+  },
+  "/ai-guides/yc-p26-business-model.jpeg": {
+    "width": 1926,
+    "height": 1108
+  },
+  "/ai-guides/yc-p26-industry.jpeg": {
+    "width": 1922,
+    "height": 940
+  },
+  "/ai-guides/yc-p26-stats-intro.png": {
+    "width": 2872,
+    "height": 1416
   },
   "/ai-guides/youtube-playlist-ai-tutor-final-app.png": {
     "width": 3556,
@@ -1635,6 +1775,14 @@
     "width": 16,
     "height": 1
   },
+  "/decks/_library/Screenshot 2026-07-26 at 2.32.21 PM.png": {
+    "width": 691,
+    "height": 301
+  },
+  "/decks/_library/Screenshot 2026-07-27 at 8.30.08 PM.png": {
+    "width": 768,
+    "height": 820
+  },
   "/decks/_library/academic.gif": {
     "width": 245,
     "height": 200
@@ -1658,6 +1806,10 @@
   "/decks/_library/ai-agreeable-than-human.png": {
     "width": 3200,
     "height": 1044
+  },
+  "/decks/_library/ai-companies-hiring-events.png": {
+    "width": 595,
+    "height": 358
   },
   "/decks/_library/ai-guides-preview.png": {
     "width": 842,
@@ -1735,9 +1887,17 @@
     "width": 1464,
     "height": 1184
   },
+  "/decks/_library/atlantic-ai-work-more.png": {
+    "width": 702,
+    "height": 254
+  },
   "/decks/_library/attention-please.gif": {
     "width": 480,
     "height": 268
+  },
+  "/decks/_library/badass-women.gif": {
+    "width": 480,
+    "height": 267
   },
   "/decks/_library/ben-cera.png": {
     "width": 663,
@@ -1846,6 +2006,10 @@
   "/decks/_library/content-scheduled-review.png": {
     "width": 1280,
     "height": 973
+  },
+  "/decks/_library/corgi-insurance-head-of-cafe.png": {
+    "width": 2150,
+    "height": 1332
   },
   "/decks/_library/countdown-timer.gif": {
     "width": 480,
@@ -1959,6 +2123,10 @@
     "width": 480,
     "height": 270
   },
+  "/decks/_library/gary-vee-analog-tweet.png": {
+    "width": 590,
+    "height": 238
+  },
   "/decks/_library/gemini-logo.png": {
     "width": 10240,
     "height": 2307
@@ -1986,6 +2154,14 @@
   "/decks/_library/hamster-wheel.webp": {
     "width": 480,
     "height": 253
+  },
+  "/decks/_library/headline-ai-adopters-hiring.png": {
+    "width": 770,
+    "height": 763
+  },
+  "/decks/_library/headline-ai-killing-jobs.png": {
+    "width": 1088,
+    "height": 809
   },
   "/decks/_library/headline-jobs.png": {
     "width": 1710,
@@ -2027,6 +2203,10 @@
     "width": 1768,
     "height": 1086
   },
+  "/decks/_library/j-curve.jpeg": {
+    "width": 638,
+    "height": 481
+  },
   "/decks/_library/job-description.webp": {
     "width": 768,
     "height": 432
@@ -2055,6 +2235,22 @@
     "width": 1024,
     "height": 576
   },
+  "/decks/_library/lennys-2026-tech-workers-survey.webp": {
+    "width": 1456,
+    "height": 970
+  },
+  "/decks/_library/lennys-burnout.webp": {
+    "width": 1456,
+    "height": 1170
+  },
+  "/decks/_library/lennys-overworked.webp": {
+    "width": 1456,
+    "height": 1299
+  },
+  "/decks/_library/lennys-small-company-happy.webp": {
+    "width": 1456,
+    "height": 1228
+  },
   "/decks/_library/lets-build.gif": {
     "width": 480,
     "height": 480
@@ -2066,6 +2262,10 @@
   "/decks/_library/low-batt.gif": {
     "width": 480,
     "height": 271
+  },
+  "/decks/_library/luma-tastemakers.png": {
+    "width": 1063,
+    "height": 903
   },
   "/decks/_library/marketing-spongebob.gif": {
     "width": 400,
@@ -2091,6 +2291,10 @@
     "width": 1291,
     "height": 841
   },
+  "/decks/_library/mika-with-a-filipino-jeep.jpeg": {
+    "width": 2560,
+    "height": 1440
+  },
   "/decks/_library/model-command.png": {
     "width": 1099,
     "height": 415
@@ -2102,6 +2306,18 @@
   "/decks/_library/notebooklm-logo.png": {
     "width": 300,
     "height": 300
+  },
+  "/decks/_library/notion-logo.png": {
+    "width": 512,
+    "height": 512
+  },
+  "/decks/_library/nyt-ai-economy-headline-2.png": {
+    "width": 1984,
+    "height": 888
+  },
+  "/decks/_library/nyt-article-major-in-human.png": {
+    "width": 979,
+    "height": 711
   },
   "/decks/_library/openai-860k-salary.png": {
     "width": 2466,
@@ -2363,6 +2579,18 @@
     "width": 498,
     "height": 373
   },
+  "/decks/_library/wapo-ai-native-dad.png": {
+    "width": 1062,
+    "height": 1266
+  },
+  "/decks/_library/washington-post-logo.jpeg": {
+    "width": 550,
+    "height": 363
+  },
+  "/decks/_library/wesleyan-college-graduation.jpg": {
+    "width": 2048,
+    "height": 1365
+  },
   "/decks/_library/win-o-clock.gif": {
     "width": 480,
     "height": 480
@@ -2421,6 +2649,10 @@
   },
   "/media-kit/mika-reyes.png": {
     "width": 747,
+    "height": 1024
+  },
+  "/mika-reyes-author.jpg": {
+    "width": 1024,
     "height": 1024
   },
   "/mika-reyes-logo.png": {

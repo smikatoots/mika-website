@@ -54,7 +54,7 @@ faq:
 
 Your team already lives in Slack. But every time someone needs AI help, they open a separate tab, paste context from three channels, and hope the answer still makes sense by the time they copy it back. Claude Tag changes that. Anthropic just turned @Claude into a teammate inside Slack: one shared assistant per channel, with memory, tools, and the ability to work on tasks while you do something else.
 
-<video controls playsInline className="my-8 w-full rounded-xl ring-1 ring-zinc-200" src="/decks/_library/claude-tag-preview.mov" />
+<video controls playsInline className="my-8 w-full rounded-xl ring-1 ring-zinc-200" src="/ai-guides/claude-tag-preview.mov" />
 
 ## Why this matters
 
@@ -74,25 +74,25 @@ If you have used Claude Code or Cowork, the feel is familiar. The difference is 
 
 There is one Claude per channel, shared by everyone. Anyone can see what it is working on and pick up the conversation where someone else left off. That makes it closer to delegating to a teammate than opening a private chat for a one-off task.
 
-![Claude Tag in #eng-triage: Sentry flags a NullPointerException and Claude opens a fix PR for the team](/decks/_library/claude-tag-multiplayer.png "Claude in #eng-triage reproduces a Sentry error, opens PR #1247, and cc's the checkout owner.")
+![Claude Tag in #eng-triage: Sentry flags a NullPointerException and Claude opens a fix PR for the team](/ai-guides/claude-tag-multiplayer.png "Claude in #eng-triage reproduces a Sentry error, opens PR #1247, and cc's the checkout owner.")
 
 ### **2. @Claude learns over time**
 
 Claude builds context from the channels it is in. You do not have to re-explain your product, your customers, or your internal jargon every time. With permission, it can also learn from other Slack channels and connected data sources. It does not report from private channels it was not granted access to.
 
-![Marcus tags @Claude in #checkout-incidents; Claude traces a deploy spike across GitHub and Datadog](/decks/_library/claude-tag-learns.png "Tag @Claude with a plain-language request. It pulls deploy diffs, queries Datadog, and works through root cause in the thread.")
+![Marcus tags @Claude in #checkout-incidents; Claude traces a deploy spike across GitHub and Datadog](/ai-guides/claude-tag-learns.png "Tag @Claude with a plain-language request. It pulls deploy diffs, queries Datadog, and works through root cause in the thread.")
 
 ### **3. @Claude can take initiative**
 
 With "ambient" behavior turned on, Claude proactively surfaces information it thinks you need: relevant updates from connected channels and tools, or follow-ups on threads that went quiet without a resolution.
 
-![Claude schedules a weekly Salesforce pipeline digest and posts it every Monday at 9 AM](/decks/_library/claude-tag-proactive.png "Set a recurring task once. Claude pulls from Salesforce and posts the pipeline update on schedule.")
+![Claude schedules a weekly Salesforce pipeline digest and posts it every Monday at 9 AM](/ai-guides/claude-tag-proactive.png "Set a recurring task once. Claude pulls from Salesforce and posts the pipeline update on schedule.")
 
 ### **4. @Claude works asynchronously**
 
 Tag it with a task and move on. Claude can schedule work for itself and pursue a project over hours or days. Anthropic's teams now run many Claudes in parallel instead of babysitting one chat at a time.
 
-<video controls playsInline className="my-8 w-full rounded-xl ring-1 ring-zinc-200" src="/decks/_library/claude-tag-async.mov" />
+<video controls playsInline className="my-8 w-full rounded-xl ring-1 ring-zinc-200" src="/ai-guides/claude-tag-async.mov" />
 
 You can also DM Claude for private work. DMs use your personal tools and connectors, separate from the shared channel setup.
 
