@@ -1,8 +1,7 @@
 import { homeBioLinks } from "@/lib/home-bio-links";
-import { SITE_SEO_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 export function SiteStructuredData() {
-  const logoUrl = `${SITE_URL}/icon.png`;
   const headshotUrl = `${SITE_URL}/mika-reyes.jpg`;
 
   const structuredData = {
@@ -12,7 +11,7 @@ export function SiteStructuredData() {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
-        name: SITE_SEO_NAME,
+        name: SITE_NAME,
         publisher: { "@id": `${SITE_URL}/#person` },
       },
       {
@@ -20,7 +19,7 @@ export function SiteStructuredData() {
         "@id": `${SITE_URL}/#person`,
         name: "Mika Reyes",
         url: SITE_URL,
-        jobTitle: "AI Founder & Creator",
+        jobTitle: SITE_TAGLINE,
         description:
           "Co-founder of King's Cross Labs, previously co-founder and CEO of Parallax (acquired by Phantom), former LinkedIn product manager, and Forbes 30 Under 30 honoree.",
         image: headshotUrl,
@@ -40,16 +39,6 @@ export function SiteStructuredData() {
           "Product management",
           "Artificial Intelligence",
         ],
-      },
-      {
-        "@type": "Organization",
-        "@id": `${SITE_URL}/#organization`,
-        name: SITE_SEO_NAME,
-        url: SITE_URL,
-        logo: {
-          "@type": "ImageObject",
-          url: logoUrl,
-        },
       },
     ],
   };

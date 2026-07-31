@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import {
   SITE_DESCRIPTION,
+  SITE_NAME,
   SITE_OG_IMAGE,
-  SITE_SEO_NAME,
   SITE_URL,
 } from "@/lib/site";
 
@@ -37,7 +37,7 @@ export function buildOpenGraph(
     type: "website",
     locale: "en_US",
     url: options.url ?? SITE_URL,
-    siteName: SITE_SEO_NAME,
+    siteName: SITE_NAME,
     description: options.description ?? SITE_DESCRIPTION,
     title: options.title,
     ...(options.dynamicImage ? {} : { images: [SITE_OG_IMAGE] }),

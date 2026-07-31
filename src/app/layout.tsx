@@ -7,7 +7,6 @@ import { buildOpenGraph, buildTwitter } from "@/lib/site-metadata";
 import {
   SITE_DESCRIPTION,
   SITE_NAME,
-  SITE_SEO_NAME,
   SITE_URL,
 } from "@/lib/site";
 
@@ -32,7 +31,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  applicationName: SITE_SEO_NAME,
+  applicationName: SITE_NAME,
   title: {
     default: SITE_NAME,
     template: `%s · ${SITE_NAME}`,
