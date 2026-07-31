@@ -114,7 +114,7 @@ The source checker validates:
 
 ### `yarn build`
 
-The `prebuild` script runs `yarn lint` (through the package-manager-neutral `npm run lint`) before generating image dimensions and starting `next build`. Consequently, local and Vercel production builds fail when ESLint or the source SEO policy fails.
+The `prebuild` script runs `yarn lint` before generating image dimensions and starting `next build`. Consequently, local and Vercel production builds fail when ESLint or the source SEO policy fails.
 
 ### `yarn verify:seo:site`
 
@@ -146,7 +146,7 @@ SEO_BASE_URL=http://127.0.0.1:3000 yarn verify:seo:site
 
 `.github/workflows/ci.yml` runs on pull requests and pushes to `main`:
 
-1. Install locked dependencies with `npm ci`.
+1. Install locked dependencies with `yarn install --frozen-lockfile`.
 2. Run the production build. Its `prebuild` hook runs ESLint and the source SEO checker.
 3. Start the production server locally.
 4. Crawl the generated sitemap and run the rendered SEO/link audit.

@@ -36,7 +36,7 @@ export default async function PressIndexPage() {
         <p className="mt-12 text-center text-zinc-600">
           No press items yet. Run{" "}
           <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-zinc-900 ring-1 ring-zinc-200/80">
-            npm run sync:press
+            yarn sync:press
           </code>{" "}
           to pull from Notion.
         </p>

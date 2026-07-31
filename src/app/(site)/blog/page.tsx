@@ -67,7 +67,7 @@ export default async function BlogIndexPage({ searchParams }: Props) {
           </code>{" "}
           set, run{" "}
           <code className="rounded bg-amber-100 px-1 py-0.5 text-amber-900 ring-1 ring-amber-200/80">
-            npm run sync:blog
+            yarn sync:blog
           </code>{" "}
           to export Notion pages into{" "}
           <code className="rounded bg-amber-100 px-1 py-0.5 text-amber-900 ring-1 ring-amber-200/80">

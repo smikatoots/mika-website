@@ -5,9 +5,9 @@
  * Optional: --fetch-live hits mikareyes.com with per-request timeout (no hanging).
  *
  * Run:
- *   npm run match:legacy-blog
- *   npm run match:legacy-blog -- --fetch-live
- *   npm run match:legacy-blog -- --skip-notion   (manifest-only; never waits on Notion API)
+ *   yarn match:legacy-blog
+ *   yarn match:legacy-blog --fetch-live
+ *   yarn match:legacy-blog --skip-notion   (manifest-only; never waits on Notion API)
  *
  * Requires .env.local for Notion branch (same as sync:blog). Notion query is capped by
  * --notion-timeout-ms (default 90s) so the script does not hang indefinitely.
@@ -416,7 +416,7 @@ async function main() {
 
   if (!fetchLive) {
     console.error(
-      "\nTip: run `npm run match:legacy-blog -- --fetch-live` to pull titles from the live site (timeouts prevent hanging).",
+      "\nTip: run `yarn match:legacy-blog --fetch-live` to pull titles from the live site (timeouts prevent hanging).",
     );
   }
 }

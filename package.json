@@ -2,10 +2,11 @@
   "name": "mika-website",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "next dev",
     "gen:image-dims": "tsx scripts/generate-image-dimensions.ts",
-    "prebuild": "npm run lint && tsx scripts/generate-image-dimensions.ts",
+    "prebuild": "yarn lint && tsx scripts/generate-image-dimensions.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint && tsx scripts/verify-seo.ts",
