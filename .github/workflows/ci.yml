@@ -29,19 +29,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          cache: yarn
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Lint and build production site
-        run: npm run build
+        run: yarn build
 
       - name: Verify rendered SEO and internal links
         shell: bash
         run: |
           set -euo pipefail
-          npm run start -- -H 127.0.0.1 -p 3000 > /tmp/mika-next.log 2>&1 &
+          yarn start -H 127.0.0.1 -p 3000 > /tmp/mika-next.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
 
@@ -59,4 +59,4 @@ jobs:
             exit 1
           fi
 
-          SEO_BASE_URL=http://127.0.0.1:3000 npm run verify:seo:site
+          SEO_BASE_URL=http://127.0.0.1:3000 yarn verify:seo:site

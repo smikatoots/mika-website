@@ -1,11 +1,10 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://mikareyes.com";
 
-/** On-site branding (header, footer, page title suffix). */
+/** Concise brand name used consistently for Google's site-name signals. */
 export const SITE_NAME = "Mika Reyes";
 
-/** Site name for search engines and social previews. */
-export const SITE_SEO_NAME = "Mika Reyes - AI Founder & Creator";
+export const SITE_TAGLINE = "AI Founder & Creator";
 
 export const SITE_DESCRIPTION = "Mika Reyes — AI, startups, and life.";
 

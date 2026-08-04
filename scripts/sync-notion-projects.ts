@@ -2,7 +2,7 @@
  * One-shot / occasional sync: Projects Notion DB → content/projects/*.mdx,
  * public/projects/covers/*, and content/projects/manifest.json
  *
- * Run: npm run sync:projects
+ * Run: yarn sync:projects
  * Requires NOTION_API_KEY and access to the Projects database.
  */
 

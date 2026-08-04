@@ -2,7 +2,7 @@
  * One-shot sync: Press Notion DB → content/press/*.mdx,
  * public/press/covers/*, content/press/manifest.json
  *
- * Run: npm run sync:press
+ * Run: yarn sync:press
  */
 
 import { mkdir, writeFile } from "node:fs/promises";
