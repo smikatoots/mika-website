@@ -6,6 +6,7 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Audit Your Website SEO and AEO with AI](https://mikareyes.com/ai/how-to-audit-website-seo-aeo-with-ai): Run an SEO and AEO website audit with Claude Code in about 20 minutes. Get a teaching report, fix issues with agents, then re-audit until your grade jumps.
 - [How to Remove Your Data from the Internet with AI](https://mikareyes.com/ai/how-to-remove-your-data-from-the-internet-with-ai): Remove your data from the internet with AI: find data broker listings, draft CCPA opt-out letters, submit requests, and re-check monthly until info is gone.
 - [How to Fix Your Resume With Claude Prompts](https://mikareyes.com/ai/how-to-fix-your-resume-with-claude-prompts): Claude resume prompts that score you against a job post, rewrite bullets with missing ATS keywords, and rehearse recruiter interview questions.
 - [How to Turn a YouTube Playlist into an AI Tutor](https://mikareyes.com/ai/how-to-turn-youtube-playlist-into-ai-tutor): Turn a YouTube playlist into an AI tutor with free NotebookLM and Gemini Canvas. Paste the link, extract the framework, then practice in an interactive app.
