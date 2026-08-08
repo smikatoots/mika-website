@@ -6,6 +6,10 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Build an AI Running Coach with Garmin](https://mikareyes.com/ai/how-to-build-ai-running-coach-garmin): Build an AI running coach with Garmin, Strava, and Oura. Get a Hansons calendar, weather panel, and safe watch sync that rebuilds from today when you miss runs.
+- [How to Fix AI-Looking Graphic Design and Posters](https://mikareyes.com/ai/how-to-fix-ai-looking-graphic-design-and-posters): Fix AI-looking graphic design and posters by giving ChatGPT real direction: name a design style, lock the layout and palette, and add the text yourself.
+- [How to Spot AI-Made Graphic Design and Posters](https://mikareyes.com/ai/how-to-spot-ai-made-graphic-design-and-posters): Spot AI-made graphic design fast. The six visual tells a trained eye catches, from no white space to mismatched fonts and uncanny details, with real examples.
+- [How to Install Free Marketing Skills for Claude](https://mikareyes.com/ai/how-to-install-free-marketing-skills-claude): Free Claude marketing skills for conversion, social, and design. Install Corey's 49-skill pack, Charlie's social pack, UI UX Pro Max, Taste, and Impeccable.
 - [How to Audit Your Website SEO and AEO with AI](https://mikareyes.com/ai/how-to-audit-website-seo-aeo-with-ai): Run an SEO and AEO website audit with Claude Code in about 20 minutes. Get a teaching report, fix issues with agents, then re-audit until your grade jumps.
 - [How to Remove Your Data from the Internet with AI](https://mikareyes.com/ai/how-to-remove-your-data-from-the-internet-with-ai): Remove your data from the internet with AI: find data broker listings, draft CCPA opt-out letters, submit requests, and re-check monthly until info is gone.
 - [How to Fix Your Resume With Claude Prompts](https://mikareyes.com/ai/how-to-fix-your-resume-with-claude-prompts): Claude resume prompts that score you against a job post, rewrite bullets with missing ATS keywords, and rehearse recruiter interview questions.
