@@ -14,11 +14,12 @@ faq:
   - question: >-
       Can I build an AI running coach if I am not technical?
     answer: >-
-      Yes. You paste product-requirement prompts into an MCP-capable agent
-      (Codex, Claude, or similar) and review what it builds in a browser. The
-      careful part is Garmin sync: always read a dry-run preview and approve a
-      small date range before anything hits your watch. If connecting Strava and
-      Oura is new, do the Health Coach guide first, then come back.
+      Yes, with a little patience. This guide is a step more technical than most
+      on the site, but you mostly paste prompts, fill in brackets, and review
+      results in a browser. The careful part is Garmin sync: always read a
+      preview and approve a small date range before anything hits your watch. If
+      connecting Strava and Oura is new, do the Health Coach guide first, then
+      come back.
   - question: >-
       Do I need Strava, Garmin, and Oura all at once?
     answer: >-
@@ -44,6 +45,8 @@ faq:
       happens so you do not lose historical progress.
 ---
 
+> **Heads up:** This guide is a step more technical than most on this site. You will connect data sources (Strava, Oura, later Garmin), paste longer build prompts into an AI agent, and open a couple of files in your browser to check the result. You do not need to be an engineer. If connecting MCP tools is brand new, start with [Health Coach](/ai/health-dashboard) and [How to Setup Claude](/ai/how-to-setup-claude), then come back. If that sounds fine, keep going. The prompts do the heavy lifting; your job is to fill in the brackets and approve each step.
+
 You do not need to fire a real running coach. But if you do not have the budget for one, you can build an AI running coach that connects to Strava, Garmin, and Oura and trains you for a marathon around your actual fitness, sleep, and life chaos. I built mine with Codex (any MCP-capable agent works), went from zero running to 24 miles a week and counting, and now every workout shows up on my Garmin with the exact pace and distance to hit.
 
 ## Why this matters
@@ -56,12 +59,12 @@ A human coach still wins for form, accountability, and cheering you on at mile 2
 
 ## What you need before you start
 
-- An **MCP-capable AI agent** you can chat with in a project folder (I used Codex; Claude Desktop / Claude Code work too)
-- **Strava and Oura already connected** via MCP ([Health Coach](/ai/health-dashboard) walks through that)
+- An **AI agent that can use MCP tools** (MCP = a plug-in style connection so the AI can talk to apps like Strava). I used Codex; Claude Desktop / Claude Code work too.
+- **Strava and Oura already connected** ([Health Coach](/ai/health-dashboard) walks through that)
 - A **Garmin Connect** account if you want workouts on your watch (can wait until Part 3)
 - A race date and a training method (I used an 18-week Hansons beginner plan for an October marathon)
 
-**How this guide works:** you build in three parts. After each part, you check the result before moving on. Every major part has a **copy-paste prompt**. Fill in the `[brackets]`, paste it into your agent, and only say “yes, continue” when the check passes.
+**How this guide works:** you build in three parts. After each part, you check the result before moving on. Every major part has a **copy-paste prompt**. Fill in the `[brackets]`, paste it into your agent, and only say “yes, continue” when the check passes. If a prompt mentions a file type you do not recognize, you still do not need to edit it by hand. Ask the agent to open or explain it.
 
 ## What does an AI running coach actually do?
 
@@ -77,44 +80,63 @@ Mine does five jobs most generic PDF plans skip:
 
 Ignore the scary filenames for a second. You are building five simple pieces that work together:
 
-1. **A plan file (JSON)** — the official schedule the computer reads. This is the source of truth for Garmin.
-2. **A web page (HTML)** — the calendar you look at, plus weather. It holds its own copy of the plan for display.
-3. **A translator (compiler)** — turns human workout text into Garmin watch steps and a preview you can read before anything goes live.
-4. **A receipt book (sync file)** — remembers what was already sent to Garmin so you do not double-book.
-5. **House rules for the agent** — short instruction files so future chats follow the same safety habits.
+1. **The official schedule** (a `.json` plan file) — what the computer treats as truth when talking to Garmin.
+2. **The calendar page** (an `.html` file) — what you look at in a browser, plus weather later.
+3. **The translator** — turns workout text into Garmin watch steps and a preview you read before anything goes live.
+4. **The receipt book** — remembers what was already sent to Garmin so you do not double-book.
+5. **House rules for the agent** — short notes so future chats follow the same safety habits.
 
 ### Folder layout (what good looks like)
 
-Ask your agent to create something like this inside a project folder. You do not need to hand-write these files; the prompts below ask for them.
+Ask your agent to create a small project folder with files like these. You do not need to hand-write them; the prompts below ask for them. Think of this as a packing list, not homework.
+
+**Use this generic layout** (swap in your race year and a short race slug):
 
 ```text
-MARATHON_PLAN.md                          # what the workouts mean + pace rules
-marathons/AGENTS.md                       # safety rules for this folder
-skills/marathon-training/SKILL.md         # detailed repeatable workflow (path may vary by tool)
-marathons/2026/rockaway-beach.plan.json   # official schedule
-marathons/2026/rockaway-beach.html        # calendar page you open in a browser
-marathons/2026/rockaway-beach.garmin-sync.json  # Garmin receipts
-scripts/garmin/compile-marathon-plan.ts   # translator / preview tool
-marathons/2026/generated/                 # preview files the compiler writes
+MARATHON_PLAN.md                               # what the workouts mean + pace rules
+marathons/AGENTS.md                            # safety rules for this folder
+skills/marathon-training/SKILL.md              # detailed repeatable workflow (path may vary by tool)
+marathons/[year]/[race-slug].plan.json         # official schedule
+marathons/[year]/[race-slug].html              # calendar page you open in a browser
+marathons/[year]/[race-slug].garmin-sync.json  # Garmin receipts
+scripts/garmin/compile-marathon-plan.ts        # translator / preview tool
+marathons/[year]/generated/                    # preview files the translator writes
 ```
+
+Examples of `[race-slug]`: `nyc-marathon`, `chicago-2026`, `berlin`, `local-fall-marathon`. Keep it short, lowercase, and hyphenated.
+
+**Example from my setup** (Rockaway Beach marathon):
+
+```text
+MARATHON_PLAN.md
+marathons/AGENTS.md
+skills/marathon-training/SKILL.md
+marathons/2026/rockaway-beach.plan.json
+marathons/2026/rockaway-beach.html
+marathons/2026/rockaway-beach.garmin-sync.json
+scripts/garmin/compile-marathon-plan.ts
+marathons/2026/generated/
+```
+
+Your files will look the same, just with your year and race name instead of `2026/rockaway-beach`.
 
 ### Who is in charge of what
 
-Memorize this once:
+Memorize this once, in plain English:
 
-- The **JSON plan** decides what can go to Garmin.
-- **MARATHON_PLAN.md** decides what workouts mean and which paces to use.
-- The **HTML page** is for humans. Changing JSON does not auto-update the page unless you ask for that.
-- The **sync file** only stores “we successfully scheduled this,” not “I finished the run.”
+- The **official schedule file** decides what can go to Garmin.
+- The **methodology note** (`MARATHON_PLAN.md`) decides what workouts mean and which paces to use.
+- The **calendar page** is for you. Changing the schedule file does not auto-update the page unless you ask for that.
+- The **receipt book** only stores “we successfully put this on Garmin,” not “I finished the run.”
 - If two files disagree, the agent should **show you the conflict**, not silently pick a winner.
 
-Hardcoded “Week 2 is X miles” shortcuts in agent docs go stale. Always trust the JSON over a remembered shortcut.
+If the agent ever “remembers” an old Week 2 shortcut that does not match your schedule file, trust the schedule file.
 
 ## Part 1: Build the training plan and calendar page
 
 ### What you are making
 
-A methodology note, an official JSON schedule, and one HTML page you can open in Chrome or Safari. No website hosting required. Double-click the HTML file (or use Open With → Browser).
+A short “how we train” note, the official schedule file, and one calendar page you can open in Chrome or Safari. No website hosting required. Ask the agent where the `.html` file landed, then open it (double-click, or right-click → Open With → Browser).
 
 On a big screen: race name, date, and short plan blurb on the left; full Monday–Sunday calendar on the right. Past days fade. Long workouts break into warmup / intervals / cooldown lines so quality days are easy to scan.
 
@@ -183,13 +205,13 @@ Context: Strava and Oura are already connected via MCP. Use them. Do not ask me 
 - Rest / cross-train days called out explicitly
 ```
 
-**Part 1 check:** open the HTML, confirm every week has seven dated days, confirm week 1 matches how much you actually run now, and ask the agent: “Validate the plan JSON parses and spot-check one week against the HTML.”
+**Part 1 check:** open the calendar page. Does every week have seven days? Does week 1 look realistic for how much you run now? Then ask the agent: “Does the official schedule file match the calendar page for one sample week? Fix anything that does not.”
 
 ## Part 2: Add the weather panel
 
 ### What you are making
 
-A small hourly forecast under the race intro on the same HTML page. Mine uses the free Open-Meteo API for Central Park, shows roughly 7am–9pm, fades hours that already passed, and highlights comfortable run windows (about 18–26°C with no rain or storms). No API key. If weather fails, the calendar still works.
+A small hourly forecast under the race intro on the same calendar page. Mine pulls free weather for Central Park, shows roughly 7am–9pm, fades hours that already passed, and highlights comfortable run windows (mild temps, no rain or storms). You do not need an API key or account. If weather fails, the calendar should still work.
 
 📸 *Screenshot placeholder: Weather panel with hourly rows and one highlighted “good running” hour. Alt: Open-Meteo hourly weather panel on AI running coach page highlighting comfortable run hours.*
 
@@ -220,7 +242,7 @@ Add a live weather panel with these requirements:
 Out of scope this turn: Garmin compiler, sync file, and scheduling.
 ```
 
-**Part 2 check:** refresh once. Weather loads or fails gracefully. Calendar still matches the JSON for a sample week.
+**Part 2 check:** refresh the page once. Do you see hourly weather, or a calm “Weather timeline unavailable” message? Either is fine. The calendar should still look correct.
 
 ## Part 3: Translate workouts and send them to Garmin
 
@@ -232,7 +254,7 @@ This is the only part where the agent can change something outside your laptop. 
    - a human-readable preview (Markdown), and
    - a Garmin-ready schedule file (JSON)
 2. A **sync receipt file** that records successful sends
-3. A connected **Garmin workouts MCP** so the agent can list and schedule workouts ([brunosantos/garmin-workouts-mcp](https://github.com/brunosantos/garmin-workouts-mcp) is the open-source server I used)
+3. A connected **Garmin MCP** so the agent can read activities and upload/schedule workouts. Use [taxuspt/garmin_mcp](https://github.com/taxuspt/garmin_mcp) (setup steps below).
 4. Stronger **AGENTS.md / skill** rules so future chats keep the same safety habits (same idea as building a [custom skill](/ai/how-to-create-custom-skill) or any other [AI coach](/ai/how-to-create-an-ai-coach))
 
 ### Plain-English version of the compiler
@@ -263,14 +285,78 @@ Those four states matter:
 
 📸 *Screenshot placeholder: Dry-run preview listing actions for each date. Alt: Garmin marathon plan compiler dry-run showing upload, skip, and review states.*
 
-### How to connect Garmin MCP (non-technical path)
+### How to connect Garmin MCP
 
-1. Install or enable the Garmin workouts MCP server in your agent (follow the GitHub readme for your tool: Codex, Claude Desktop, etc.).
-2. Restart the agent app if the docs say to.
-3. Ask: “List my Garmin MCP tools.” You want listing, scheduling, and activity lookup available.
-4. Complete any Garmin login / MFA the server asks for. Never paste passwords into the chat on purpose, and tell the agent never to print secrets.
+Use the open-source **[Garmin MCP Server](https://github.com/taxuspt/garmin_mcp)**. Full docs live in that repo; here is the non-technical path that works for Codex, Claude Desktop, and other MCP clients.
 
-Garmin does not publish a perfect public API for all of this. Community tools can break after Garmin changes things. If MCP is down, stop at local previews. Do not force a live write.
+**What you need first**
+
+- A Garmin Connect account
+- [uv](https://docs.astral.sh/uv/) installed (gives you the `uvx` command). If you are not sure, ask your agent: “Help me install uv on my Mac.”
+- Python 3.12+ (uv can pull this for you when you run the auth command)
+
+**Step 1: Log into Garmin once in your terminal (do this before adding MCP config)**
+
+Open Terminal and run:
+
+```bash
+uvx --python 3.12 --from git+https://github.com/taxuspt/garmin_mcp garmin-mcp-auth
+```
+
+It will ask for your Garmin email, password, and MFA code if you use one. Tokens save to `~/.garminconnect` (usually good for about six months). Prefer this over putting your password in any config file.
+
+Never paste your Garmin password into the AI chat. Tell the agent never to print secrets.
+
+**Step 2: Add the server to your AI client (no password in the config)**
+
+**Codex** (I used this): add to `~/.codex/config.toml`, then restart Codex:
+
+```toml
+[mcp_servers.garmin]
+command = "uvx"
+args = [
+  "--python",
+  "3.12",
+  "--from",
+  "git+https://github.com/taxuspt/garmin_mcp",
+  "garmin-mcp"
+]
+```
+
+**Claude Desktop:** edit `~/Library/Application Support/Claude/claude_desktop_config.json` on Mac (or `%APPDATA%\Claude\claude_desktop_config.json` on Windows), merge this into your existing `mcpServers` block, then fully quit and reopen Claude:
+
+```json
+{
+  "mcpServers": {
+    "garmin": {
+      "command": "uvx",
+      "args": [
+        "--python",
+        "3.12",
+        "--from",
+        "git+https://github.com/Taxuspt/garmin_mcp",
+        "garmin-mcp"
+      ]
+    }
+  }
+}
+```
+
+If Claude cannot find `uvx`, run `which uvx` in Terminal and put that full path in `"command"` instead of `"uvx"`.
+
+**Easier Claude Desktop option:** download `garmin-mcp.dxt` from the [Garmin MCP Releases page](https://github.com/taxuspt/garmin_mcp/releases), then drag it into Claude or install via **Settings → Extensions**. You still need Step 1 (`garmin-mcp-auth`) once so data can load.
+
+**Or let the agent do the wiring:** paste this after you finish Step 1:
+
+```text
+Install the Garmin MCP server from https://github.com/taxuspt/garmin_mcp, confirm garmin-mcp-auth already saved tokens to ~/.garminconnect, and add it to my MCP configuration without storing my Garmin email or password.
+```
+
+**Step 3: Confirm it works**
+
+Ask: “List my Garmin MCP tools, then show my most recent running activities.” You want activity lookup plus workout upload/schedule tools (this server also has high-level helpers like `upload_workout`, `schedule_workout`, and `schedule_week`).
+
+Garmin does not publish a perfect public API for all of this. Community tools can break after Garmin changes things. If MCP is down, stop at local previews. Do not force a live write. When tokens expire, re-run the `garmin-mcp-auth` command from Step 1.
 
 ### How to use Part 3a (preview only)
 
@@ -307,7 +393,7 @@ Then stop and summarize for me:
 - any changed_requires_review rows
 - proof that every included date is inside the requested range
 
-Wait for my approval before calling schedule_workouts.
+Wait for my approval before calling upload_workout, schedule_workout, or schedule_week.
 ```
 
 If you are comfortable running a command yourself, the shape looks like this (your agent can run it for you):
@@ -319,23 +405,24 @@ node scripts/garmin/compile-marathon-plan.ts \
   --dry-run-out marathons/2026/generated/plan-FROM_TO.garmin-dry-run.md
 ```
 
-Useful local checks before any live write: ask the agent to syntax-check the compiler file, parse the plan JSON, and confirm every scheduled date sits inside your `--from` / `--to` window.
+Useful before any live write: ask the agent, “Double-check the preview only covers my chosen dates, and that rest days are skipped.” You should be able to read the answer in plain English.
 
 ### How to use Part 3b (schedule after you approve)
 
-Only run this after you have read the dry-run and are happy with it.
+Only run this after you have read the dry-run and are happy with it. With [garmin_mcp](https://github.com/taxuspt/garmin_mcp), the live write usually means `upload_workout` (or a builder) then `schedule_workout` / `schedule_week`.
 
 ```text
 I approved this dry-run: [path to the Markdown or JSON preview].
 Date range: [YYYY-MM-DD] → [YYYY-MM-DD].
+Garmin MCP: https://github.com/taxuspt/garmin_mcp
 
 Follow this exact sequence:
-1. Call get_scheduled_workouts for that date range
-2. Compare Garmin’s calendar vs the dry-run vs the sync receipt file. Surface duplicates or conflicts. Do not silently overwrite.
-3. Call schedule_workouts using the generated inline workout_data only (not old library workout IDs)
+1. Inspect what is already on Garmin for that date range (workouts / calendar tools available on the MCP)
+2. Compare Garmin vs the dry-run vs the sync receipt file. Surface duplicates or conflicts. Do not silently overwrite.
+3. Upload and schedule only the approved days using upload_workout + schedule_workout (or schedule_week for a small batch). Prefer the generated workout payloads from the dry-run, not random old library IDs, unless the dry-run explicitly reused an ID.
 4. Check each item’s result. Batches can partly fail.
-5. For successes, append receipts keyed by plan-day id with: date, workout hash, workout_id, scheduled_workout_id when available, sync_mode (inline_workout_data_upload_then_schedule), and an ISO timestamp
-6. Call get_scheduled_workouts again to verify
+5. For successes, append receipts keyed by plan-day id with: date, workout hash, workout_id, scheduled_workout_id when available, sync_mode, and an ISO timestamp
+6. Re-check Garmin for that date range to verify
 7. Report results as: scheduled / skipped / already present / changed-blocked / failed
 
 Hard rules:
@@ -355,42 +442,43 @@ Hard rules:
 
 ```text
 Interpret this as activity reconciliation, not scheduling.
+Garmin MCP: https://github.com/taxuspt/garmin_mcp
 
 I finished my run on [YYYY-MM-DD].
 
-1. Find running activities on Garmin for that date
+1. Find running activities on Garmin for that date (e.g. get_activities / activity tools)
 2. Match on date + the expected plan label (for example RB26 W##). If multiple activities could match, list them and ask me which one
-3. If a matching completed activity exists and a pending scheduled workout is still on the calendar, show me the exact scheduled_workout_id and ask before removing it
+3. If a matching completed activity exists and a pending scheduled workout is still on the calendar, show me the exact scheduled workout ID and ask before removing it
 4. Never delete the completed activity
 5. Do not write completed-activity fields into the scheduling receipt file
 ```
 
-### Lock the habits in agent guidance
+### Lock the habits so future chats stay safe
 
-Ask your agent to finish `marathons/AGENTS.md` and a marathon-training skill so future chats inherit:
+Ask your agent to save short house rules for this project (a skill or `AGENTS.md` is fine) that always:
 
-- load the marathon skill first
-- use narrow date ranges
-- dry-run before any Garmin write
-- inspect Garmin before and after scheduling
-- never expose credentials
-- record only successful receipts
-- report outcomes by category
-- derive weeks from the JSON, never from hardcoded shortcuts
+- start from the marathon workflow notes
+- only touch a small date range (today / this week / next week)
+- show you a preview before any Garmin write
+- check Garmin before and after scheduling
+- never print passwords
+- only log successful sends in the receipt book
+- summarize results in plain categories (scheduled, skipped, already there, needs review, failed)
+- trust the official schedule file over any remembered week shortcut
 
-Plan changes should flow: methodology → JSON → HTML when you care about matching display → new compiler preview → Garmin only after approval. Old receipts stay untouched until a new approved sync succeeds.
+When the plan changes: update the methodology note if needed → update the official schedule → update the calendar page when you care that they match → run a new preview → sync Garmin only after you approve. Old receipts stay put until a new approved sync succeeds.
 
 ## What happens when life ruins the plan?
 
 A couple weeks ago NYC was too smoggy from wildfire smoke to run outside, so we missed days. I told the coach what happened. It rebuilt **from today through race day** and left every past week alone, so I did not lose the record of what I had already done.
 
-**Hard rule for both options below:** only rewrite **today → race day**. Historical calendar days, past JSON entries, and prior progress stay frozen. Missed runs are not revenge-stacked onto tomorrow.
+**Hard rule for both options below:** only rewrite **today → race day**. Past weeks on the calendar stay as history. Missed runs are not revenge-stacked onto tomorrow.
 
 ### Option A: Let Strava show what really happened
 
 Use this when your completed (or skipped) runs are already in Strava.
 
-**How to use it:** paste the prompt, fill the date window, read the future-only diff, approve the JSON + HTML update, then run a fresh Part 3a preview before any Garmin sync.
+**How to use it:** paste the prompt, fill the date window, read the future-only changes, approve the schedule + calendar update, then run a fresh Part 3a preview before any Garmin sync.
 
 ```text
 We got off plan. Rebuild using real Strava data.
@@ -417,7 +505,7 @@ We got off plan. Rebuild using real Strava data.
 
 Use this when Strava does not tell the whole story (treadmill not synced, travel, smoke day, sick day) or you want to dictate the constraint.
 
-**How to use it:** list the dates and reasons, paste the prompt, approve the future-only diff, then Part 3a before Garmin.
+**How to use it:** list the dates and reasons, paste the prompt, approve the future-only changes, then Part 3a before Garmin.
 
 ```text
 We got off plan. My miss list is the source of truth for what did not happen.
@@ -457,18 +545,18 @@ Use AI for calendar building, data-aware adjustments, weather-aware planning, pr
 
 I still cannot believe we are in an era where non-techies can build a custom tool for ambition-maxxing something as personal as marathon training. Start with Part 1 today. Your future race-day self will thank you.
 
-## How do you know the system is sound?
+## How do you know it’s working?
 
-Before you trust it with race week:
+You do not need to run developer commands. Trust what you can see:
 
-- The compiler file syntax-checks
-- The plan JSON parses
-- A dry-run only includes dates inside your chosen range
-- The HTML looks right in a browser, including the weather failure message
-- After any live schedule, you (or the agent) query Garmin’s calendar a second time
-- The final report lists date range, file paths, dry-run counts, MCP calls, sync-file changes, and anything still risky
+1. **The calendar looks right.** Open the page in your browser. Race date, weekly mileage, and today’s workout should make sense for a human athlete, not a random template.
+2. **Weather is helpful or quietly absent.** Hours show up, or you get a simple unavailable message. The page should not break.
+3. **Previews are readable.** Before anything hits Garmin, you get a plain summary of which days will upload, which will skip, and which need your decision.
+4. **Garmin matches what you approved.** After a small sync, open Garmin Connect (or ask the agent to list that week). The workouts on the calendar should match the preview you said yes to. Nothing extra. Nothing missing.
+5. **History stays put after a rebuild.** If you miss days and rebuild, past weeks still look like what you already did. Only today → race day should change.
+6. **You always stay on the approve button.** If the agent cannot reach Garmin, stopping with a good calendar + preview is still a win. Do not force a live write.
 
-If Garmin MCP is unavailable, stopping at validated local files is success. Do not force a live write.
+If any of those fail, paste the symptom back to the agent (“Week 3 Tuesday on the page does not match the schedule file”) and fix that before you move on.
 
 Here are some related guides to check out:
 
