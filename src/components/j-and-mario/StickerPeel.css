@@ -1,0 +1,148 @@
+.jammin-sticker-peel {
+  --sticker-rotate: 30deg;
+  --sticker-p: 56px;
+  --sticker-peelback-hover: 30%;
+  --sticker-peelback-active: 40%;
+  --sticker-peel-easing: power3.out;
+  --sticker-peel-hover-easing: power2.out;
+  --sticker-start: calc(-1 * var(--sticker-p));
+  --sticker-end: calc(100% + var(--sticker-p));
+  --sticker-shadow-opacity: 0.6;
+  --sticker-lighting-constant: 0.1;
+  --peel-direction: 0deg;
+  --sticker-width: 200px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: grab;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  z-index: var(--sticker-z, 1);
+  pointer-events: auto;
+  touch-action: none;
+  overflow: visible;
+  /* Room so rotated / peeled edges aren't clipped by the hit box */
+  padding: var(--sticker-p);
+  margin: calc(-1 * var(--sticker-p));
+}
+
+.jammin-sticker-peel:active {
+  cursor: grabbing;
+}
+
+.jammin-sticker-peel .sticker-container {
+  position: relative;
+  transform: rotate(var(--peel-direction));
+  transform-origin: center;
+  overflow: visible;
+}
+
+.jammin-sticker-peel .sticker-container * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.jammin-sticker-peel .sticker-main {
+  clip-path: polygon(
+    var(--sticker-start) var(--sticker-start),
+    var(--sticker-end) var(--sticker-start),
+    var(--sticker-end) var(--sticker-end),
+    var(--sticker-start) var(--sticker-end)
+  );
+  transition: clip-path 0.6s ease-out;
+  overflow: visible;
+}
+
+.jammin-sticker-peel .sticker-main > * {
+  transform: rotate(calc(-1 * var(--peel-direction)));
+}
+
+.jammin-sticker-peel .sticker-container:hover .sticker-main,
+.jammin-sticker-peel .sticker-container.touch-active .sticker-main {
+  clip-path: polygon(
+    var(--sticker-start) var(--sticker-peelback-hover),
+    var(--sticker-end) var(--sticker-peelback-hover),
+    var(--sticker-end) var(--sticker-end),
+    var(--sticker-start) var(--sticker-end)
+  );
+}
+
+.jammin-sticker-peel .sticker-container:active .sticker-main {
+  clip-path: polygon(
+    var(--sticker-start) var(--sticker-peelback-active),
+    var(--sticker-end) var(--sticker-peelback-active),
+    var(--sticker-end) var(--sticker-end),
+    var(--sticker-start) var(--sticker-end)
+  );
+}
+
+.jammin-sticker-peel .sticker-image {
+  transform: rotate(var(--sticker-rotate));
+  width: var(--sticker-width, 200px);
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+.jammin-sticker-peel .flap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: calc(-100% - var(--sticker-p) - var(--sticker-p));
+  clip-path: polygon(
+    var(--sticker-start) var(--sticker-start),
+    var(--sticker-end) var(--sticker-start),
+    var(--sticker-end) var(--sticker-start),
+    var(--sticker-start) var(--sticker-start)
+  );
+  transform: scaleY(-1);
+  transition: all 0.6s ease-out;
+}
+
+.jammin-sticker-peel .flap > * {
+  transform: rotate(calc(-1 * var(--peel-direction)));
+}
+
+.jammin-sticker-peel .sticker-container:hover .flap,
+.jammin-sticker-peel .sticker-container.touch-active .flap {
+  clip-path: polygon(
+    var(--sticker-start) var(--sticker-start),
+    var(--sticker-end) var(--sticker-start),
+    var(--sticker-end) var(--sticker-peelback-hover),
+    var(--sticker-start) var(--sticker-peelback-hover)
+  );
+  top: calc(-100% + 2 * var(--sticker-peelback-hover) - 1px);
+}
+
+.jammin-sticker-peel .sticker-container:active .flap {
+  clip-path: polygon(
+    var(--sticker-start) var(--sticker-start),
+    var(--sticker-end) var(--sticker-start),
+    var(--sticker-end) var(--sticker-peelback-active),
+    var(--sticker-start) var(--sticker-peelback-active)
+  );
+  top: calc(-100% + 2 * var(--sticker-peelback-active) - 1px);
+}
+
+.jammin-sticker-peel .flap-image {
+  transform: rotate(var(--sticker-rotate));
+  width: var(--sticker-width, 200px);
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+.jammin-sticker-peel .sticker-main,
+.jammin-sticker-peel .flap {
+  will-change: clip-path, transform;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .jammin-sticker-peel {
+    cursor: default;
+  }
+}
