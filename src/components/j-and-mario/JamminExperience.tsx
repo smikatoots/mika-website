@@ -715,11 +715,10 @@ export default function JamminExperience() {
             >
               <h1 id="jammin-modal-title">happy wedding, j &amp; mario!</h1>
               <p className="jammin-modal-body">
-                there is a hidden{" "}
-                <MessageEasterEgg onRevealAll={handleRevealAll} /> on the right
-                side panel. the first note is already waiting for you. to reveal
-                the rest (+ an extra bonus!), you must answer the trivia cards
-                correctly (y&apos;all know we love a good game).
+                there is a hidden message on the right side panel. the first
+                note is already waiting for you. to reveal the rest (+ an extra
+                bonus!), you must answer the trivia cards correctly (y&apos;all
+                know we love a good game).
                 <br />
                 <br />
                 good luck! we love you both!
