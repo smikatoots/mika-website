@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SubscribeModal } from "@/components/SubscribeModal";
 
 export default function MarketingLayout({
   children,
@@ -11,6 +12,7 @@ export default function MarketingLayout({
       <SiteHeader />
       <div className="flex-1">{children}</div>
       <SiteFooter />
+      <SubscribeModal />
     </div>
   );
 }

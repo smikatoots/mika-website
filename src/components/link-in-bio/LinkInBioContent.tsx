@@ -197,18 +197,8 @@ export function LinkInBioContent({
           }}
         />
         <h1 style={{ ...DISPLAY, color: "var(--mr-ink)", marginBottom: "8px" }}>
-          Mika Reyes
+          Mika Reyes | Timerich AI Founder
         </h1>
-        <p
-          style={{
-            ...BODY,
-            color: "var(--mr-text-soft)",
-            marginBottom: "8px",
-          }}
-        >
-          For ambitious non-techies to learn how to thrive &amp; become
-          time-rich in the age of AI
-        </p>
       </header>
 
       {/* ── Primary offer: the course ────────────────────────────── */}
@@ -246,6 +236,43 @@ export function LinkInBioContent({
         </p>
         <CardButton background="var(--mr-coral)">Learn more →</CardButton>
       </Link>
+
+      {/* ── Newsletter subscribe ─────────────────────────────────── */}
+      <div
+        style={{
+          background: "var(--mr-surface-rose)",
+          border: "1px solid var(--mr-border-rose)",
+          borderRadius: "var(--mr-radius-panel)",
+          padding: "22px",
+          marginBottom: "12px",
+          overflow: "hidden",
+        }}
+      >
+        <p style={{ ...DISPLAY, color: "var(--mr-ink)", marginBottom: "8px" }}>
+          Subscribe to my newsletter
+        </p>
+        <p style={{ ...BODY, color: "var(--mr-text-soft)", marginBottom: "12px" }}>
+          For high-achievers leveraging AI to build time-rich &amp; ambitious
+          careers, wealth &amp; lives
+        </p>
+        <iframe
+          src="https://mikareyes.substack.com/embed?transparent=1"
+          title="Subscribe to Mika Reyes on Substack"
+          width={480}
+          height={150}
+          frameBorder={0}
+          scrolling="no"
+          style={{
+            display: "block",
+            width: "100%",
+            maxWidth: "480px",
+            height: "150px",
+            margin: "0 auto",
+            border: 0,
+            background: "transparent",
+          }}
+        />
+      </div>
 
       {/* ── Secondary offer: office hours ────────────────────────── */}
       <a

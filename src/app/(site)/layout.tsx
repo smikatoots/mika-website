@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SubscribeModal } from "@/components/SubscribeModal";
 
 export default function SiteLayout({
   children,
@@ -11,6 +12,7 @@ export default function SiteLayout({
       <SiteHeader />
       <div className="flex-1">{children}</div>
       <SiteFooter />
+      <SubscribeModal />
     </div>
   );
 }
