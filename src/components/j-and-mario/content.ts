@@ -36,7 +36,7 @@ export const TRIVIA_CARDS: TriviaCard[] = [
   },
   {
     id: "q3",
-    question: "What city J and Mika first meet?",
+    question: "What city did J and Mika first meet?",
     options: ["Makati", "Middletown", "Greenhills", "New York"],
     correctIndex: 2,
     imageSrc: "/j-and-mario/card-3.svg",
