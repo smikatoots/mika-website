@@ -19,7 +19,7 @@ import { RelatedReading } from "@/components/blog/RelatedReading";
 import { normalizeAiGuideFaq } from "@/lib/ai-guides/faq";
 import { getAutoRelatedPosts, normalizeRelated } from "@/lib/blog/related";
 import { SITE_URL } from "@/lib/site";
-import { mainProse, textMuted } from "@/lib/ui/site-styles";
+import { mainArticle, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: Props) {
   const showExtras = showFaq || related.length > 0;
 
   return (
-    <article className={mainProse}>
+    <article className={mainArticle}>
       <ArticleStructuredData
         type="BlogPosting"
         headline={frontmatter.title}

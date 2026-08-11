@@ -19,7 +19,7 @@ import { AuthorByline } from "@/components/ui/AuthorByline";
 import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
 import { ArticleStructuredData } from "@/components/ArticleStructuredData";
 import { SITE_URL } from "@/lib/site";
-import { mainProse, textMuted } from "@/lib/ui/site-styles";
+import { mainArticle, textMuted } from "@/lib/ui/site-styles";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -90,7 +90,7 @@ export default async function AiGuidePage({ params }: Props) {
   const showFaq = !isComingSoon && faq.length > 0;
 
   return (
-    <article className={mainProse}>
+    <article className={mainArticle}>
       {!isComingSoon ? (
         <ArticleStructuredData
           type="TechArticle"

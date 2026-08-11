@@ -30,6 +30,10 @@ export const siteNavLink =
 export const mainProse =
   "mx-auto w-full max-w-2xl px-6 py-16 md:px-8";
 
+/** Blog / AI guide detail pages — wider than prose, still under index width. */
+export const mainArticle =
+  "mx-auto w-full max-w-5xl px-6 py-16 md:px-8";
+
 /** Wider index pages (projects, blog list). */
 export const mainWide =
   "mx-auto w-full max-w-6xl px-6 py-16 md:px-8";
