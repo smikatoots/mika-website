@@ -37,13 +37,11 @@ export function SubscribeModal() {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
-  const [eligible, setEligible] = useState(false);
   const shownRef = useRef(false);
 
   const dismiss = useCallback((method: DismissMethod) => {
     rememberDismissal();
     setOpen(false);
-    setEligible(false);
     trackGa4Event("subscribe_modal_dismissed", {
       cta_location: "subscribe_modal",
       dismiss_method: method,
@@ -51,12 +49,7 @@ export function SubscribeModal() {
   }, []);
 
   useEffect(() => {
-    if (wasRecentlyDismissed()) return;
-    setEligible(true);
-  }, []);
-
-  useEffect(() => {
-    if (!eligible || shownRef.current) return;
+    if (wasRecentlyDismissed() || shownRef.current) return;
 
     const show = () => {
       if (shownRef.current || wasRecentlyDismissed()) return;
@@ -79,13 +72,12 @@ export function SubscribeModal() {
 
     const timer = window.setTimeout(show, SHOW_DELAY_MS);
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
 
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [eligible]);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
