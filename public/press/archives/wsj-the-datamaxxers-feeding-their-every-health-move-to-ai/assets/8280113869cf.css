@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+.css-10imcy5 { margin: 0px; padding: 0px; display: inline-grid; column-gap: 8px; grid-template-columns: repeat(1, auto); -webkit-box-pack: center; place-content: center; place-items: center; -webkit-box-align: center; width: 32px; height: 32px; padding-inline: 4px; padding-block: 8px; box-sizing: border-box; text-decoration: none; min-height: auto; min-width: auto; overflow: hidden; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; appearance: none; cursor: pointer; }
+
+.css-10imcy5 svg { width: 16px; height: 16px; }
+
+@media screen and (max-width: 639px) {
+  .css-10imcy5 { background-color: var(--color-transparent); border-radius: var(--borderRadiusDefault); color: var(--color-inkSubtle); }
+  .css-10imcy5 svg { fill: var(--color-inkSubtle); }
+  .css-10imcy5:hover:not(:disabled) { background-color: var(--color-interactiveSecondary010); }
+  .css-10imcy5:active:not(:disabled) { background-color: var(--color-interactiveSecondary020); }
+  .css-10imcy5:disabled { color: var(--color-inkNonEssential); }
+  .css-10imcy5:disabled svg { fill: var(--color-inkNonEssential); }
+  .css-10imcy5:focus-visible:not(:disabled) { outline-color: var(--outlineColorDefault); outline-style: var(--outlineStyleDefault); outline-width: var(--outlineWidthDefault); outline-offset: var(--outlineOffsetDefault); }
+  @media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+  .css-10imcy5:focus-visible:not(:disabled) { outline-style: var(--safariOutlineStyleDefault); }
+}
+}
+}
+
+@media screen and (min-width: 640px) {
+  .css-10imcy5 { background-color: var(--color-transparent); border-radius: var(--borderRadiusDefault); color: var(--color-inkSubtle); }
+  .css-10imcy5 svg { fill: var(--color-inkSubtle); }
+  .css-10imcy5:hover:not(:disabled) { background-color: var(--color-interactiveSecondary010); }
+  .css-10imcy5:active:not(:disabled) { background-color: var(--color-interactiveSecondary020); }
+  .css-10imcy5:disabled { color: var(--color-inkNonEssential); }
+  .css-10imcy5:disabled svg { fill: var(--color-inkNonEssential); }
+  .css-10imcy5:focus-visible:not(:disabled) { outline-color: var(--outlineColorDefault); outline-style: var(--outlineStyleDefault); outline-width: var(--outlineWidthDefault); outline-offset: var(--outlineOffsetDefault); }
+  @media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+  .css-10imcy5:focus-visible:not(:disabled) { outline-style: var(--safariOutlineStyleDefault); }
+}
+}
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .css-10imcy5 { transition-property: background-color; transition-duration: 200ms; transition-timing-function: cubic-bezier(0, 0, 0.5, 1); }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .css-10imcy5 { transition-property: background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0, 0, 0.5, 1); }
+}

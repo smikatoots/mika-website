@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+.css-eroaih-MainContainer:has(> :not(dialog))[data-nav-closed="true"] { content-visibility: hidden; }
+
+@supports not (content-visibility: hidden) {
+  .css-eroaih-MainContainer:has(> :not(dialog))[data-nav-closed="true"] { display: none; }
+}

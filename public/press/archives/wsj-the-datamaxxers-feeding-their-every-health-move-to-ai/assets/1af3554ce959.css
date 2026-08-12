@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+.css-33hx93-LoginWrapper-LoginWrapper-LoginWrapper { background-color: var(--color-white); display: flex; width: 100%; flex-direction: row; min-height: 35px; -webkit-box-pack: center; justify-content: center; margin-inline: 15px; max-width: 620px; }
+
+@media only screen and (min-width: 980px) and (max-width: 1299px) {
+  .css-33hx93-LoginWrapper-LoginWrapper-LoginWrapper { flex-direction: row-reverse; background-color: var(--color-white); margin-inline: unset; }
+}
+
+@media only screen and (min-width: 1300px) {
+  .css-33hx93-LoginWrapper-LoginWrapper-LoginWrapper { flex-direction: row-reverse; background-color: var(--color-white); margin-inline: unset; }
+}

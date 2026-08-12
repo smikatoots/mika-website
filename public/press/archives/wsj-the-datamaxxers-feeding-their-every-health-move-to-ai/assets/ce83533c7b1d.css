@@ -1,0 +1,5 @@
+@charset "utf-8";
+
+.css-w98zcb-SubSectionMoreLinks { list-style: none; background-color: var(--color-snow); border-top-width: 1px; border-top-style: solid; border-bottom-width: 1px; border-bottom-style: solid; border-color: var(--color-silver); padding-bottom: 10px; }
+
+[data-nav-dark="true"] .css-w98zcb-SubSectionMoreLinks { background-color: var(--color-black); border-color: var(--color-nickel); }

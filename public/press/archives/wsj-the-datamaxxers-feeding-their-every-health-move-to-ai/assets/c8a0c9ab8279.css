@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+.css-h0i40e-NavGrid { position: fixed; height: 53px; border-block-end: 1px solid rgb(204, 204, 204); background-color: rgb(255, 255, 255); inset: 0px 0px auto; }
+
+@supports not (inset: 0 0 auto) {
+  .css-h0i40e-NavGrid { top: 0px; left: 0px; right: 0px; }
+}

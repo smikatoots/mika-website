@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.css-1n6j7tk { display: none; }
+
+@media print {
+  .css-1n6j7tk { display: flex; width: 100%; max-width: 728px; flex-direction: column; }
+  .css-1n6j7tk .print-logo-pro { width: 150px; height: 60px; margin-top: 10px; margin-bottom: 10px; }
+  .css-1n6j7tk p { font-size: 10px; line-height: 11px; padding: 0px 10px; font-weight: 400; font-style: normal; vertical-align: baseline; }
+}

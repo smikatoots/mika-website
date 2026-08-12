@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+@media (max-width: 639px) {
+  .css-vzcxmk-UtilityBarWrapper { width: 348px; }
+}
+
+@media (max-width: 374px) {
+  .css-vzcxmk-UtilityBarWrapper { width: 286px; }
+}

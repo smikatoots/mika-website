@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+.css-ocps42 { margin: 0px; padding: 0px; display: inline-grid; column-gap: 8px; grid-template-columns: repeat(1, auto); -webkit-box-pack: center; place-content: center; place-items: center; -webkit-box-align: center; margin-inline-end: 16px; padding-inline: 4px; padding-block: 4px; box-sizing: border-box; text-decoration: none; min-height: auto; min-width: auto; overflow: hidden; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; appearance: none; background-color: var(--color-transparent); border-radius: var(--borderRadiusDefault); color: var(--color-inkBase); cursor: pointer; }
+
+.css-ocps42 svg { width: 32px; height: 32px; }
+
+.css-ocps42 svg { fill: var(--color-inkBase); }
+
+.css-ocps42:hover:not(:disabled) { background-color: var(--color-interactiveSecondary010); }
+
+.css-ocps42:active:not(:disabled) { background-color: var(--color-interactiveSecondary020); }
+
+.css-ocps42:disabled { color: var(--color-inkNonEssential); }
+
+.css-ocps42:disabled svg { fill: var(--color-inkNonEssential); }
+
+.css-ocps42:focus-visible:not(:disabled) { outline-color: var(--outlineColorDefault); outline-style: var(--outlineStyleDefault); outline-width: var(--outlineWidthDefault); outline-offset: var(--outlineOffsetDefault); }
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+  .css-ocps42:focus-visible:not(:disabled) { outline-style: var(--safariOutlineStyleDefault); }
+}
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .css-ocps42 { transition-property: background-color; transition-duration: 200ms; transition-timing-function: cubic-bezier(0, 0, 0.5, 1); }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .css-ocps42 { transition-property: background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0, 0, 0.5, 1); }
+}

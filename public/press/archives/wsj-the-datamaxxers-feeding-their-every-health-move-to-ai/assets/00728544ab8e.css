@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.css-1579sa9-Container { width: 100%; position: relative; display: flow-root; }
+
+.css-1579sa9-Container p:nth-of-type(n+3) { display: none; }
+
+.css-1579sa9-Container::after { content: ""; position: absolute; bottom: 0px; left: 0px; right: 0px; height: 136px; background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0, var(--primary-background-color) 80%); }
+
+@media print {
+  .css-1579sa9-Container::after { height: unset; }
+}
+
+@supports (animation-timeline:view()) {
+  .css-1579sa9-Container { view-timeline: --main-scroll-tracker; }
+}
+
+.css-1579sa9-Container[data-hide-ad-portals] .ad-portal { display: none; }

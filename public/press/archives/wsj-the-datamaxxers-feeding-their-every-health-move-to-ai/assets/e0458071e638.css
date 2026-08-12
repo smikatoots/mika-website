@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.css-1ww3cjk { fill: var(--color-inkBase); vertical-align: unset; display: inline-block; }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .css-1ww3cjk { transition-property: fill; transition-duration: 200ms; transition-timing-function: cubic-bezier(0, 0, 0.5, 1); }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .css-1ww3cjk { transition-property: fill; transition-duration: 0ms; transition-timing-function: cubic-bezier(0, 0, 0.5, 1); }
+}
+
+.css-1ww3cjk.css-1ww3cjk { width: 16px; height: 16px; }

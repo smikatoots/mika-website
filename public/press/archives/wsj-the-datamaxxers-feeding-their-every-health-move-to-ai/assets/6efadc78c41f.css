@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.css-9xr0sa-StyledIconBlock { display: flex; }
+
+@media screen and (max-width: 639px) {
+  .css-9xr0sa-StyledIconBlock { color: var(--color-inkSubtle); }
+}
+
+@media screen and (min-width: 640px) {
+  .css-9xr0sa-StyledIconBlock { color: var(--color-inkSubtle); }
+}
+
+@media (prefers-color-scheme: dark) {
+  .page_supports_browser_dark_mode .css-9xr0sa-StyledIconBlock { border-color: var(--secondary-text-color); color: var(--secondary-text-color); }
+}

@@ -1,0 +1,5 @@
+@charset "utf-8";
+
+.css-1o51lfh-Nav { background: var(--color-white); font-size: 13px; font-style: normal; font-weight: 500; left: 0px; width: 100vw; height: calc(-120px + 100vh); position: absolute; top: 54px; z-index: var(--z-nav-overlay-open); -webkit-font-smoothing: antialiased; }
+
+[data-nav-dark="true"] .css-1o51lfh-Nav { background: var(--color-jet); }

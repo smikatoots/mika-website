@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+.css-1qwvdgf-StyledDivider { border-style: solid; border-color: var(--color-interface040); border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; margin: 0px; border-left-width: var(--borderWidthDefault); display: inline-block; height: 100%; }
+
+@media screen and (max-width: 639px) {
+  .css-1qwvdgf-StyledDivider { border-color: var(--color-interface030, interface030); }
+}
+
+@media screen and (min-width: 640px) {
+  .css-1qwvdgf-StyledDivider { border-color: var(--color-interface030, interface030); }
+}

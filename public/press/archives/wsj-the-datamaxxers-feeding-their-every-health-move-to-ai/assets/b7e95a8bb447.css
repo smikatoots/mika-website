@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+.css-1itx6hy { display: grid; grid-template-columns: 200px 880px 200px; grid-template-rows: auto; grid-template-areas: ". article-header ." ". article-body ." ". article-recs ." "bannerad1 bannerad1 bannerad1" ". wtrn ." ". buyside ." ". realtor ." "bannerad2 bannerad2 bannerad2"; }
+
+@media (max-width: 1299px) {
+  .css-1itx6hy { grid-template-columns: 160px 640px 160px; }
+}
+
+@media (max-width: 979px) {
+  .css-1itx6hy { grid-template-columns: minmax(0px, 640px); grid-template-areas: "article-header" "article-body" "article-recs" "bannerad1" "wtrn" "buyside" "realtor" "bannerad2"; }
+}
+
+@media (max-width: 639px) {
+  .css-1itx6hy { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .css-1itx6hy { display: block; }
+  .css-1itx6hy .media-layout { padding: 0px; margin: 15px 15px 15px 0px; break-after: auto; break-before: auto; break-inside: avoid; }
+  .css-1itx6hy figure img { max-width: 400px; max-height: 100%; margin-right: 20px; margin-left: 0px; break-after: auto; break-before: auto; break-inside: avoid; }
+  .css-1itx6hy [data-inset_type="dynamic"]:not([data-layout="wrap"]):not([data-layout="inline"]):not([data-layout="header"]):not([data-layout="bleed"]), .css-1itx6hy [data-inset_type="newsletterinset"], .css-1itx6hy [data-inset_type="relatedbyarticletype"], .css-1itx6hy [data-inset_type="richtext"], .css-1itx6hy [data-inset_type="slideshow"], .css-1itx6hy [data-inset_type="slideshowembed"], .css-1itx6hy [data-inset_type="tweet"], .css-1itx6hy [data-inset_type="ukraine"], .css-1itx6hy [data-inset_type="roevwade"], .css-1itx6hy [data-sub_type="series-navigation"], .css-1itx6hy [data-type="videobyguid"], .css-1itx6hy [data-type="image"] div, .css-1itx6hy [data-type="image"] figure div, .css-1itx6hy [data-type="media"], .css-1itx6hy [data-type="video"], .css-1itx6hy [data-inset_type="dynamic"] form, .css-1itx6hy .ad-portal { display: none; }
+  .css-1itx6hy div[data-inset_type="dynamic"][data-layout="header"], .css-1itx6hy .ai2html-artboard img { width: 100%; max-width: unset; }
+  .css-1itx6hy [data-inset_type="dynamic"] .origami-photo img { width: 100%; max-width: unset; max-height: unset; margin-right: unset; }
+  .css-1itx6hy .origami-wrapper { width: 90%; }
+  .css-1itx6hy .origami-wrapper div.wrapper { all: initial; }
+  .css-1itx6hy .origami-wrapper div.wrapper + div { display: table; width: 75%; }
+  .css-1itx6hy time { font-size: 12px; }
+  .css-1itx6hy a { color: var(--color-black); border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor; text-decoration: none; content: ""; }
+}

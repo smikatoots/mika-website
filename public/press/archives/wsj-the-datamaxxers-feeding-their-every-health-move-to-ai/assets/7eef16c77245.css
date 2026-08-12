@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.css-wfgsl2-MainHeaderStyled-MainHeaderStyled { visibility: hidden; transform: translateY(-100%); height: var(--header-height); width: 100%; border-bottom: 1px solid var(--color-silver); background-color: var(--color-white); position: unset; top: 0px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); }
+
+[data-header-fixed="true"] .css-wfgsl2-MainHeaderStyled-MainHeaderStyled { position: fixed; }
+
+.css-wfgsl2-MainHeaderStyled-MainHeaderStyled[data-header-dark="true"] { border-bottom: 1px solid var(--color-black); background-color: var(--color-midnight); }
+
+.css-wfgsl2-MainHeaderStyled-MainHeaderStyled[data-header-visible="true"] { visibility: visible; transform: translateY(0px); }
+
+@media only screen and (min-width: 0px) and (max-width: 639px) {
+  .css-wfgsl2-MainHeaderStyled-MainHeaderStyled[data-header-dark="true"] { background-color: var(--color-midnight); }
+}

@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+.css-vqbtcz { position: fixed; left: 0px; bottom: 0px; z-index: 1000000; width: 100%; }
+
+@media print {
+  .css-vqbtcz { display: none; }
+}

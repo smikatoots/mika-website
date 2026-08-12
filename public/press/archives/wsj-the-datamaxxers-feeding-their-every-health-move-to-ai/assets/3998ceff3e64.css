@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+.css-1ht9bl2-BigTopInfoStack { display: flex; height: 100%; -webkit-box-align: center; align-items: center; flex-direction: column; -webkit-box-pack: end; justify-content: flex-end; }
+
+@media print {
+  .css-1ht9bl2-BigTopInfoStack { align-items: flex-start; padding-left: 40px; }
+}

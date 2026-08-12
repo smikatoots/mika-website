@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.css-t7drxh-SkipContainer { position: fixed; top: -1000px; left: 100px; transition: top 0.3s; z-index: var(--z-skip); width: 320px; }
+
+.css-t7drxh-SkipContainer:focus-within { top: 0px; height: auto; width: 320px; background-color: var(--color-white); padding: 10px; box-shadow: rgb(136, 136, 136) 0px 2px 3px -1px; }
+
+@media (max-width: 639px) {
+  .css-t7drxh-SkipContainer:focus-within { position: absolute; max-width: 100%; left: 50%; transform: translateX(-50%); }
+}
+
+@media print {
+  .css-t7drxh-SkipContainer { display: none; }
+}

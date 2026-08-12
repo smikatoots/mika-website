@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+.css-168vrxm-BreadcrumbLink { display: inline-block; color: var(--color-inkSubtle); text-decoration: none; }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .css-168vrxm-BreadcrumbLink { transition-property: color, fill; transition-duration: 200ms, 200ms; transition-timing-function: cubic-bezier(0, 0, 0.5, 1), cubic-bezier(0, 0, 0.5, 1); }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .css-168vrxm-BreadcrumbLink { transition-property: color, fill; transition-duration: 0ms; transition-timing-function: cubic-bezier(0, 0, 0.5, 1), cubic-bezier(0, 0, 0.5, 1); }
+}
+
+.css-168vrxm-BreadcrumbLink svg { fill: var(--color-interactiveLink010); }
+
+.css-168vrxm-BreadcrumbLink:hover:not(:disabled) { color: var(--color-inkSubtle); text-decoration: underline; }
+
+.css-168vrxm-BreadcrumbLink:hover:not(:disabled) svg { fill: var(--color-interactiveLink020); }
+
+.css-168vrxm-BreadcrumbLink:active:not(:disabled) { color: var(--color-interactiveLink030); text-decoration: underline; }
+
+.css-168vrxm-BreadcrumbLink:active:not(:disabled) svg { fill: var(--color-interactiveLink030); }
+
+.css-168vrxm-BreadcrumbLink:focus-visible:not(:disabled) { outline-color: var(--outlineColorDefault); outline-style: var(--outlineStyleDefault); outline-width: var(--outlineWidthDefault); outline-offset: var(--outlineOffsetDefault); }
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+  .css-168vrxm-BreadcrumbLink:focus-visible:not(:disabled) { outline-style: var(--safariOutlineStyleDefault); }
+}
+}
+
+.css-168vrxm-BreadcrumbLink.css-168vrxm-BreadcrumbLink:any-link { color: var(--color-inkSubtle); }
+
+.css-168vrxm-BreadcrumbLink.css-168vrxm-BreadcrumbLink:any-link svg { fill: currentcolor; }
+
+@media screen and (max-width: 639px) {
+  .css-168vrxm-BreadcrumbLink.css-168vrxm-BreadcrumbLink:any-link:hover { color: var(--color-inkBase); }
+}
+
+@media screen and (min-width: 640px) {
+  .css-168vrxm-BreadcrumbLink.css-168vrxm-BreadcrumbLink:any-link:hover { color: var(--color-inkBase); }
+}
+
+.css-168vrxm-BreadcrumbLink.css-168vrxm-BreadcrumbLink:any-link:hover svg { fill: currentcolor; }

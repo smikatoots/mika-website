@@ -1,0 +1,5 @@
+@charset "utf-8";
+
+.css-2a7kr8-SubSectionLabel { padding: 13px 20px 16px; margin: 0px; font-size: 13px; font-weight: 300; line-height: 16px; color: var(--color-coal); }
+
+[data-nav-dark="true"] .css-2a7kr8-SubSectionLabel { color: var(--color-silver); }

@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.css-19myxs5-ScrollbarGridLayoutItem { align-self: end; grid-row: 1; }
+
+@media screen and (max-width: 639px) {
+  .css-19myxs5-ScrollbarGridLayoutItem { grid-column: 1; }
+}
+
+@media screen and (min-width: 640px) and (max-width: 979px) {
+  .css-19myxs5-ScrollbarGridLayoutItem { grid-column: 1 / 3; }
+}
+
+@media screen and (min-width: 980px) {
+  .css-19myxs5-ScrollbarGridLayoutItem { grid-column: 1 / 4; }
+}

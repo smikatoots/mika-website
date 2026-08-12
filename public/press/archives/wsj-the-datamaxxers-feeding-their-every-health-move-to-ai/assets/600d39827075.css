@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.css-1ccvfjb-AuthorLink { color: var(--color-inkBase); text-decoration: underline; }
+
+.css-1ccvfjb-AuthorLink.css-1ccvfjb-AuthorLink:any-link { color: var(--color-inkBase, inkBase); }
+
+.css-1ccvfjb-AuthorLink.css-1ccvfjb-AuthorLink:any-link:hover { text-decoration: none; color: rgb(111, 111, 111); }
+
+.css-1ccvfjb-AuthorLink.css-1ccvfjb-AuthorLink:any-link:active { color: rgb(204, 204, 204); text-decoration: underline; }

@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.css-1gse2c6-HeadlineBlock { margin: 0px; font-family: "Escrow Compressed", "Times New Roman", serif; font-size: 40px; line-height: 42px; font-weight: 700; letter-spacing: 0px; font-style: normal; text-transform: none; font-stretch: normal; padding: 0.5px 0px; }
+
+@media screen and (max-width: 639px) {
+  .css-1gse2c6-HeadlineBlock { color: rgb(17, 17, 17); }
+  .css-1gse2c6-HeadlineBlock svg { fill: rgb(17, 17, 17); }
+}
+
+@media screen and (min-width: 640px) {
+  .css-1gse2c6-HeadlineBlock { color: rgb(17, 17, 17); }
+  .css-1gse2c6-HeadlineBlock svg { fill: rgb(17, 17, 17); }
+}
+
+.css-1gse2c6-HeadlineBlock::before { content: ""; margin-bottom: -0.125em; display: block; }
+
+.css-1gse2c6-HeadlineBlock::after { content: ""; margin-top: -0.225em; display: block; }
+
+@media print {
+  .css-1gse2c6-HeadlineBlock { color: rgb(17, 17, 17); margin-top: 8px; font-family: "DM Sans", sans-serif; font-weight: 700; font-size: 32px; line-height: 1.125; }
+}

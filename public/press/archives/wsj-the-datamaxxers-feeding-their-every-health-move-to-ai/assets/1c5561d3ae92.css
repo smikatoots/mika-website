@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.css-1sjfwcu-BreadcrumbLink.css-1sjfwcu-BreadcrumbLink:any-link { color: var(--color-inkSubtle); }
+
+.css-1sjfwcu-BreadcrumbLink.css-1sjfwcu-BreadcrumbLink:any-link svg { fill: currentcolor; }
+
+@media screen and (max-width: 639px) {
+  .css-1sjfwcu-BreadcrumbLink.css-1sjfwcu-BreadcrumbLink:any-link:hover { color: var(--color-inkBase); }
+}
+
+@media screen and (min-width: 640px) {
+  .css-1sjfwcu-BreadcrumbLink.css-1sjfwcu-BreadcrumbLink:any-link:hover { color: var(--color-inkBase); }
+}
+
+.css-1sjfwcu-BreadcrumbLink.css-1sjfwcu-BreadcrumbLink:any-link:hover svg { fill: currentcolor; }
