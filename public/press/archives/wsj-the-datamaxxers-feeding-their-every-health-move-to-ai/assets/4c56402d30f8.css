@@ -1,5 +1,0 @@
-@charset "utf-8";
-
-.css-1kclcna-SectionsTitle { color: var(--color-coal); cursor: pointer; display: block; font-family: var(--font-font-stack-retina-narrow); font-size: 15px; font-weight: 500; line-height: 1.5; margin: 0px 20px; padding: 15px 0px; position: relative; text-decoration: none; text-transform: uppercase; }
-
-[data-nav-dark="true"] .css-1kclcna-SectionsTitle { color: var(--color-snow); }

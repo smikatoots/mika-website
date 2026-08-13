@@ -1,9 +1,0 @@
-@charset "utf-8";
-
-.css-18vasa4-NavContainer { height: 100%; }
-
-.css-18vasa4-NavContainer[data-is-visible="false"] { content-visibility: hidden; }
-
-@supports not (content-visibility: hidden) {
-  .css-18vasa4-NavContainer[data-is-visible="false"] { display: none; }
-}

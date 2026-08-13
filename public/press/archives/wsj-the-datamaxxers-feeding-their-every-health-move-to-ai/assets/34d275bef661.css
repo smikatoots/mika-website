@@ -1,5 +1,0 @@
-@charset "utf-8";
-
-.css-k0nmz8-HeaderContainer { z-index: var(--z-xbrand-slimline-header); position: relative; }
-
-.css-k0nmz8-HeaderContainer[data-header-fixed="true"]::before { content: ""; height: var(--header-height); display: block; }

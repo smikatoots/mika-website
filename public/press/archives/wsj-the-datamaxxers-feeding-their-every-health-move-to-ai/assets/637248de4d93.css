@@ -1,7 +1,0 @@
-@charset "utf-8";
-
-.css-8gc5ih-NavTabs { background-color: var(--color-snow); display: flex; }
-
-[data-nav-dark="true"] .css-8gc5ih-NavTabs { background-color: var(--color-black); }
-
-.css-8gc5ih-NavTabs[data-transparent="true"] { background-color: transparent; }

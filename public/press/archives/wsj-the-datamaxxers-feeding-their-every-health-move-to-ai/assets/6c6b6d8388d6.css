@@ -1,9 +1,0 @@
-@charset "utf-8";
-
-.css-1qdcdv4-MainStack { min-width: 0px; }
-
-.css-1qdcdv4-MainStack :is(button, a) > * { pointer-events: none; }
-
-.css-1qdcdv4-MainStack:has(:focus-visible) { outline: rgb(10, 102, 216) solid 3px; outline-offset: 1px; }
-
-.css-1qdcdv4-MainStack > * { min-width: 0px; flex-shrink: 1; }

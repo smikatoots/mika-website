@@ -1,7 +1,0 @@
-@charset "utf-8";
-
-.css-xvgygw-ScrollTrackerStyled-scrollTimelineCss { width: 100%; transform-origin: left center; height: var(--sizing010); background-color: var(--color-interfaceBrand010); }
-
-@supports (animation-timeline: view()) {
-  .css-xvgygw-ScrollTrackerStyled-scrollTimelineCss { animation-duration: auto; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: 1; animation-direction: normal; animation-fill-mode: both; animation-play-state: running; animation-name: animation-ufitl6; animation-timeline: --main-scroll-tracker; animation-range: contain var(--scroll-tracker-nav-height) contain; }
-}

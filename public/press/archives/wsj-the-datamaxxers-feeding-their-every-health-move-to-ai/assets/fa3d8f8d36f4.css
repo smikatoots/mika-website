@@ -1,7 +1,0 @@
-@charset "utf-8";
-
-.css-z1t9wv-SpacedGridItem { grid-area: 1 / 2; padding-block: 4px 8px; }
-
-@media (max-width: 979px) {
-  .css-z1t9wv-SpacedGridItem { display: none; }
-}
