@@ -6,6 +6,7 @@ import { AiGuideComingSoonBlock } from "@/components/ai-guides/AiGuideComingSoon
 import { CourseCta } from "@/components/ai-guides/CourseCta";
 import { FaqSection } from "@/components/ai-guides/FaqSection";
 import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
+import { GuideEmailCapture } from "@/components/ai-guides/GuideEmailCapture";
 import { renderAiGuideMdx } from "@/components/ai-guides/render-ai-guide-mdx";
 import { normalizeAiGuideFaq } from "@/lib/ai-guides/faq";
 import {
@@ -92,6 +93,10 @@ export default async function AiGuidePage({ params }: Props) {
 
   return (
     <article className={mainArticle}>
+      <GuideEmailCapture
+        guideSlug={slug}
+        guideTitle={frontmatter.title}
+      />
       {!isComingSoon ? (
         <ArticleStructuredData
           type="TechArticle"
