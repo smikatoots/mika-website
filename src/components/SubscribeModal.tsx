@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { trackGa4Event } from "@/lib/analytics/ga4";
@@ -10,6 +11,7 @@ const SHOW_DELAY_MS = 5_000;
 const SHOW_SCROLL_RATIO = 0.45;
 const EMBED_SRC = "https://mikareyes.substack.com/embed?transparent=1";
 const EMBED_HEIGHT = 150;
+const HIDDEN_PATHS = new Set(["/build-your-first-agent-101"]);
 
 type DismissMethod = "close_button" | "backdrop" | "escape";
 
@@ -33,7 +35,16 @@ function rememberDismissal() {
   }
 }
 
+function normalizePathname(pathname: string) {
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    return pathname.slice(0, -1);
+  }
+  return pathname;
+}
+
 export function SubscribeModal() {
+  const pathname = normalizePathname(usePathname());
+  const hidden = HIDDEN_PATHS.has(pathname);
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
@@ -49,7 +60,7 @@ export function SubscribeModal() {
   }, []);
 
   useEffect(() => {
-    if (wasRecentlyDismissed() || shownRef.current) return;
+    if (hidden || wasRecentlyDismissed() || shownRef.current) return;
 
     const show = () => {
       if (shownRef.current || wasRecentlyDismissed()) return;
@@ -77,7 +88,7 @@ export function SubscribeModal() {
       window.clearTimeout(timer);
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [hidden]);
 
   useEffect(() => {
     if (!open) return;
@@ -99,7 +110,7 @@ export function SubscribeModal() {
     };
   }, [open, dismiss]);
 
-  if (!open) return null;
+  if (hidden || !open) return null;
 
   return (
     <div

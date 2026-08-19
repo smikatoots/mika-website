@@ -174,9 +174,49 @@ export const decks = [
     title: "How Tech Workers Feel in 2026",
     date: "July 26",
   },
+  {
+    slug: "price-of-ambition",
+    title: "The AI Era Belongs to Women — Episode 1",
+    date: "August 18",
+  },
+  {
+    slug: "women-win-ai-stats",
+    title: "The AI Era Belongs to Women — Episode 2",
+    date: "August 18",
+  },
+  {
+    slug: "women-opting-out-of-ai",
+    title: "The AI Era Belongs to Women — Episode 3",
+    date: "August 18",
+  },
+  {
+    slug: "masculinization-of-marketing",
+    title: "The AI Era Belongs to Women — Episode 4",
+    date: "August 18",
+  },
+  {
+    slug: "consequences-of-opting-out",
+    title: "The AI Era Belongs to Women — Episode 5",
+    date: "August 18",
+  },
+  {
+    slug: "how-women-win-in-ai",
+    title: "The AI Era Belongs to Women — Episode 6",
+    date: "August 18",
+  },
+  {
+    slug: "couple-career-combos",
+    title: "Couple Career Combos in the Age of AI",
+    date: "August 18",
+  },
+  {
+    slug: "perils-of-solo-entrepreneurship",
+    title: "Perils of Solo Entrepreneurship",
+    date: "August 18",
+  },
 ] as const;
 
 export type DeckSlug = (typeof decks)[number]["slug"];
 
 /** Deck dates, newest first — drives the grouping on /deck/all. */
-export const deckDates = ["July 26", "July 14", "July 6", "June 28"] as const;
+export const deckDates = ["August 18", "July 26", "July 14", "July 6", "June 28"] as const;

@@ -103,7 +103,7 @@ export function TextSlide({
         </div>
       ) : null}
       <h1
-        className={`deck-rise flex w-full max-w-6xl flex-col items-center text-center ${headingBase} ${display ? deckType.display : deckType.statement}`}
+        className={`deck-rise mx-auto w-full max-w-6xl text-center ${headingBase} ${display ? deckType.display : deckType.statement}`}
         style={{ animationDelay: "0.12s" }}
       >
         {children}

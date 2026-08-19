@@ -6,6 +6,7 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Set Up Grok Bot with 7 Ideas](https://mikareyes.com/ai/how-to-set-up-grok-bot-with-7-ideas): Grok Bot setup: sign in with Cursor Ultra, create one bot per job, then copy 7 real team ideas from Lenny, creators, and a plumbing company.
 - [6 Underrated AI Startup & Founder Programs (Aug 2026)](https://mikareyes.com/ai/6-underrated-ai-startup-founder-programs-aug-2026): Six underrated AI startup and founder programs still open after YC. Deadlines, check sizes, who each is for, and direct apply links from Sequoia Arc to 1517.
 - [How to Build an AI Running Coach with Garmin](https://mikareyes.com/ai/how-to-build-ai-running-coach-garmin): Build an AI running coach with Garmin, Strava, and Oura. Get a Hansons calendar, weather panel, and safe watch sync that rebuilds from today when you miss runs.
 - [How to Fix AI-Looking Graphic Design and Posters](https://mikareyes.com/ai/how-to-fix-ai-looking-graphic-design-and-posters): Fix AI-looking graphic design and posters by giving ChatGPT real direction: name a design style, lock the layout and palette, and add the text yourself.
