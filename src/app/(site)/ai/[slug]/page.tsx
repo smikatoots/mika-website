@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { AiGuideComingSoonBlock } from "@/components/ai-guides/AiGuideComingSoonBlock";
+import { CourseCta } from "@/components/ai-guides/CourseCta";
 import { FaqSection } from "@/components/ai-guides/FaqSection";
 import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
 import { renderAiGuideMdx } from "@/components/ai-guides/render-ai-guide-mdx";
@@ -148,6 +149,7 @@ export default async function AiGuidePage({ params }: Props) {
         <div className="mt-10">{content}</div>
       )}
       {showFaq ? <FaqSection items={faq} /> : null}
+      {!isComingSoon ? <CourseCta /> : null}
     </article>
   );
 }

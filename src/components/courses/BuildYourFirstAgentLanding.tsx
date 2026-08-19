@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import {
-  BUILD_YOUR_FIRST_AGENT_CHECKOUT_URL,
   BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE,
   BUILD_YOUR_FIRST_AGENT_PRICE,
   buildYourFirstAgentFaqs,
@@ -15,6 +14,7 @@ import {
   buildYourFirstAgentProofShots,
   buildYourFirstAgentValueStack,
 } from "@/lib/courses/build-your-first-agent";
+import { EnrollCta } from "./EnrollCta";
 import { GuidePreviewGallery } from "./GuidePreviewGallery";
 
 const sectionPad = "72px 0";
@@ -33,35 +33,6 @@ const learningBenefits = [
   "Sharing starter prompts you can easily copy & paste to Claude or Codex",
   "Offering a mix of formats: video, text & visuals",
 ] as const;
-
-function EnrollCta({
-  label = "Enroll now",
-  location,
-}: {
-  label?: string;
-  location: string;
-}) {
-  return (
-    <a
-      href={BUILD_YOUR_FIRST_AGENT_CHECKOUT_URL}
-      className="mr-pressable inline-flex items-center justify-center"
-      data-cta-location={location}
-      style={{
-        background: "var(--mr-coral)",
-        color: "#fff",
-        fontFamily: "var(--mr-font-body)",
-        fontSize: "var(--mr-text-body)",
-        fontWeight: "var(--mr-weight-semi)",
-        padding: "16px 32px",
-        borderRadius: "var(--mr-radius-pill)",
-        boxShadow: "var(--mr-shadow-cta)",
-        textDecoration: "none",
-      }}
-    >
-      {label} →
-    </a>
-  );
-}
 
 function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return (
