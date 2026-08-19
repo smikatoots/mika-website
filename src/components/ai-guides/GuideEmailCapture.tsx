@@ -3,7 +3,16 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import posthog from "posthog-js";
 
-const STORAGE_KEY = "mr-ai-guide-email-capture-seen";
+import { trackGa4Event } from "@/lib/analytics/ga4";
+
+const STORAGE_KEY_PREFIX = "mr-ai-guide-email-capture-seen:";
+
+type AnalyticsParams = Record<string, string | number | boolean>;
+
+function trackEmailGateEvent(eventName: string, params: AnalyticsParams) {
+  posthog.capture(eventName, params);
+  trackGa4Event(eventName, params);
+}
 
 type GuideEmailCaptureProps = {
   guideSlug: string;
@@ -24,21 +33,26 @@ export function GuideEmailCapture({
   useEffect(() => {
     const forceOpen =
       new URLSearchParams(window.location.search).get("emailGate") === "1";
+    const isMobileViewer = window.matchMedia("(max-width: 767px)").matches;
+
+    if (!forceOpen && !isMobileViewer) return;
 
     if (!forceOpen) {
       try {
-        if (window.localStorage.getItem(STORAGE_KEY)) return;
-        window.localStorage.setItem(STORAGE_KEY, "1");
+        const storageKey = `${STORAGE_KEY_PREFIX}${guideSlug}`;
+        if (window.localStorage.getItem(storageKey)) return;
+        window.localStorage.setItem(storageKey, "1");
       } catch {
         // Storage can be unavailable in private browsing; still show the gate.
       }
     }
 
     setIsOpen(true);
-    posthog.capture("ai_guide_email_gate_viewed", {
+    trackEmailGateEvent("ai_guide_email_gate_viewed", {
       guide_slug: guideSlug,
       guide_title: guideTitle,
       force_opened: forceOpen,
+      mobile_viewer: isMobileViewer,
     });
   }, [guideSlug, guideTitle]);
 
@@ -51,9 +65,11 @@ export function GuideEmailCapture({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
-      posthog.capture("ai_guide_email_gate_dismissed", {
+      trackEmailGateEvent("ai_guide_email_gate_dismissed", {
         guide_slug: guideSlug,
+        guide_title: guideTitle,
         dismiss_method: "escape_key",
+        modal_state: isSent ? "confirmation" : "form",
       });
       setIsOpen(false);
     };
@@ -63,12 +79,14 @@ export function GuideEmailCapture({
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [guideSlug, isOpen]);
+  }, [guideSlug, guideTitle, isOpen, isSent]);
 
   function dismiss(method: "close_button" | "backdrop" | "escape_key") {
-    posthog.capture("ai_guide_email_gate_dismissed", {
+    trackEmailGateEvent("ai_guide_email_gate_dismissed", {
       guide_slug: guideSlug,
+      guide_title: guideTitle,
       dismiss_method: method,
+      modal_state: isSent ? "confirmation" : "form",
     });
     setIsOpen(false);
   }
@@ -77,6 +95,10 @@ export function GuideEmailCapture({
     event.preventDefault();
     setError("");
     setIsSubmitting(true);
+    trackEmailGateEvent("ai_guide_email_gate_submit_started", {
+      guide_slug: guideSlug,
+      guide_title: guideTitle,
+    });
 
     try {
       const response = await fetch("/api/ai-guide-email", {
@@ -87,12 +109,21 @@ export function GuideEmailCapture({
 
       if (!response.ok) throw new Error("Request failed");
 
-      posthog.capture("ai_guide_email_gate_submitted", {
+      trackEmailGateEvent("ai_guide_email_gate_submitted", {
         guide_slug: guideSlug,
+        guide_title: guideTitle,
+      });
+      trackGa4Event("generate_lead", {
+        guide_slug: guideSlug,
+        lead_source: "ai_guide_email_gate",
       });
       setIsSent(true);
     } catch {
       setError("Something went wrong. Please try again.");
+      trackEmailGateEvent("ai_guide_email_gate_submit_failed", {
+        guide_slug: guideSlug,
+        guide_title: guideTitle,
+      });
       posthog.captureException(new Error("AI guide email capture failed"), {
         guide_slug: guideSlug,
       });

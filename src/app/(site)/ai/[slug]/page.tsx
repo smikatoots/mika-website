@@ -94,6 +94,7 @@ export default async function AiGuidePage({ params }: Props) {
   return (
     <article className={mainArticle}>
       <GuideEmailCapture
+        key={slug}
         guideSlug={slug}
         guideTitle={frontmatter.title}
       />
