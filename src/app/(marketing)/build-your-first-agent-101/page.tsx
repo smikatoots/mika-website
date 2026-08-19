@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 
+import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
 import { BuildYourFirstAgentLanding } from "@/components/courses/BuildYourFirstAgentLanding";
+import { CourseStructuredData } from "@/components/courses/CourseStructuredData";
+import {
+  BUILD_YOUR_FIRST_AGENT_PRICE,
+  buildYourFirstAgentFaqs,
+  buildYourFirstAgentInstructors,
+} from "@/lib/courses/build-your-first-agent";
 import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
 
 const title = "Build Your First Agent 101";
@@ -17,5 +24,17 @@ export const metadata: Metadata = {
 };
 
 export default function BuildYourFirstAgentPage() {
-  return <BuildYourFirstAgentLanding />;
+  return (
+    <>
+      <CourseStructuredData
+        name={title}
+        description={description}
+        url={canonical}
+        price={BUILD_YOUR_FIRST_AGENT_PRICE}
+        instructors={buildYourFirstAgentInstructors}
+      />
+      <FaqStructuredData items={[...buildYourFirstAgentFaqs]} />
+      <BuildYourFirstAgentLanding />
+    </>
+  );
 }
