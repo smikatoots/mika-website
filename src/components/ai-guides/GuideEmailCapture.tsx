@@ -33,8 +33,10 @@ export function GuideEmailCapture({
   const emailInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
     const forceOpen =
-      new URLSearchParams(window.location.search).get("emailGate") === "1";
+      searchParams.get("emailgate") === "1" ||
+      searchParams.get("emailGate") === "1";
     const isMobileViewer = window.matchMedia("(max-width: 767px)").matches;
 
     if (!forceOpen && !EMAIL_GATE_ENABLED) return;
