@@ -161,6 +161,7 @@ export function ImageSlide({
   src,
   alt,
   caption,
+  captionSize = deckType.statement,
   credit,
   framed,
   maxWidth,
@@ -168,6 +169,9 @@ export function ImageSlide({
   src: string;
   alt: string;
   caption?: React.ReactNode;
+  /** Header size. Defaults to `deckType.statement`; pass `deckType.statementSm`
+   *  when a full-size header crowds the image. */
+  captionSize?: string;
   credit?: string;
   framed?: boolean;
   /** Cap the (unframed) image width — e.g. "max-w-sm" — and center it. Use for
@@ -178,7 +182,7 @@ export function ImageSlide({
     <div className="deck-fade flex h-full w-full flex-col items-center justify-center px-6 py-10 sm:px-12 sm:py-12">
       {caption ? (
         <h2
-          className={`deck-rise mb-5 text-center sm:mb-7 ${headingBase} ${deckType.statement}`}
+          className={`deck-rise mb-5 text-center sm:mb-7 ${headingBase} ${captionSize}`}
           style={{ animationDelay: "0.05s" }}
         >
           {caption}
@@ -208,6 +212,7 @@ export function DualImageSlide({
   left,
   right,
   caption,
+  captionSize = deckType.statement,
   compactCaption = false,
   balancedHeight = false,
   stacked = false,
@@ -216,6 +221,9 @@ export function DualImageSlide({
   left: { src: string; alt: string };
   right: { src: string; alt: string };
   caption?: React.ReactNode;
+  /** Header size. Defaults to `deckType.statement`; pass `deckType.statementSm`
+   *  when a full-size header crowds the images. */
+  captionSize?: string;
   /** Tighter gap between caption and images. */
   compactCaption?: boolean;
   /** Fixed-height image wells so portraits align. */
@@ -251,7 +259,7 @@ export function DualImageSlide({
     >
       {caption ? (
         <h2
-          className={`deck-rise text-center ${captionMargin} ${headingBase} ${deckType.statement}`}
+          className={`deck-rise text-center ${captionMargin} ${headingBase} ${captionSize}`}
           style={{ animationDelay: "0.05s" }}
         >
           {caption}

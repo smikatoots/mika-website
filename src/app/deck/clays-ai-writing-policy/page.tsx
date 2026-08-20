@@ -67,7 +67,14 @@ const slides: React.ReactNode[] = [
   // 10 — Share this with the other people on your team.
   <CtaSlide
     key="cta"
-    headline="What do you think? Share this with your team"
+    prompt={null}
+    headline={
+      <>
+        What do you think? <HL>Share this</HL> with your team
+      </>
+    }
+    headlinePlain
+    size="sm"
     preview={`${LIB}/clays-ai-writing-policy-overview.png`}
     previewAlt="Clay's AI writing policy"
   />,

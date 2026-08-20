@@ -214,6 +214,26 @@ export const decks = [
     title: "Perils of Solo Entrepreneurship",
     date: "August 18",
   },
+  {
+    slug: "carousel-with-paper",
+    title: "Instagram Carousels in 10 Minutes with Paper",
+    date: "August 18",
+  },
+  {
+    slug: "design-option-iterations",
+    title: "Ask AI for 10 Designs Before You Choose One",
+    date: "August 18",
+  },
+  {
+    slug: "brand-md-consistent-design",
+    title: "BRAND.md — One File, Consistent Design",
+    date: "August 18",
+  },
+  {
+    slug: "cute-expensive-website",
+    title: "Make Your Website Look Cute and Expensive",
+    date: "August 18",
+  },
 ] as const;
 
 export type DeckSlug = (typeof decks)[number]["slug"];

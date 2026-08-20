@@ -11,6 +11,10 @@ export const deckType = {
   display: "text-9xl sm:text-[11rem]",
   /** Default for all headlines + image headers. The minimum for message text. */
   statement: "text-8xl sm:text-9xl",
+  /** One named step below `statement`, for image/step headers only — use when a
+   *  full-size header crowds the screenshot it sits above. Never for a hero
+   *  statement, and never go below this. */
+  statementSm: "text-7xl sm:text-8xl",
   /** Footnotes only — never the message. */
   meta: "text-sm text-zinc-400 sm:text-base",
 } as const;
