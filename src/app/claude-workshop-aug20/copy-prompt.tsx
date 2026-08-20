@@ -7,9 +7,11 @@ import { trackGa4Event } from "@/lib/analytics/ga4";
 export function CopyPrompt({
   text,
   copyable = true,
+  struck = false,
 }: {
   text: string;
   copyable?: boolean;
+  struck?: boolean;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -80,7 +82,9 @@ export function CopyPrompt({
       <pre
         className={`overflow-x-hidden p-4 font-mono text-sm leading-relaxed text-zinc-900 ${copyable ? "pr-14" : ""}`}
       >
-        <code className="whitespace-pre-wrap break-words font-mono text-zinc-900">
+        <code
+          className={`whitespace-pre-wrap break-words font-mono ${struck ? "text-zinc-400 line-through decoration-[1.5px]" : "text-zinc-900"}`}
+        >
           {text}
         </code>
       </pre>

@@ -246,7 +246,7 @@ export default function ClaudeWorkshopAug20Page() {
           }
           body="Attach your brand file in Claude, then paste this prompt so Paper can turn it into a theme."
         >
-          <CopyPrompt text={brandPrompt} copyable={false} />
+          <CopyPrompt text={brandPrompt} copyable={false} struck />
         </Step>
 
         <Step
