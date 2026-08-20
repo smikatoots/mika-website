@@ -6,6 +6,8 @@ import posthog from "posthog-js";
 import { trackGa4Event } from "@/lib/analytics/ga4";
 
 const STORAGE_KEY_PREFIX = "mr-ai-guide-email-capture-seen:";
+const EMAIL_GATE_ENABLED =
+  process.env.NEXT_PUBLIC_AI_GUIDE_EMAIL_GATE_ENABLED === "true";
 
 type AnalyticsParams = Record<string, string | number | boolean>;
 
@@ -35,6 +37,7 @@ export function GuideEmailCapture({
       new URLSearchParams(window.location.search).get("emailGate") === "1";
     const isMobileViewer = window.matchMedia("(max-width: 767px)").matches;
 
+    if (!forceOpen && !EMAIL_GATE_ENABLED) return;
     if (!forceOpen && !isMobileViewer) return;
 
     if (!forceOpen) {
