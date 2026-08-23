@@ -1,0 +1,106 @@
+---
+title: How to Make Instagram Carousels with Paper and Claude
+description: >-
+  Make on-brand Instagram carousels in about 10 minutes with Paper and Claude.
+  Connect the MCP, load your brand as tokens, then let Claude design each slide.
+tags:
+  - beginner
+  - claude
+  - skills
+published: "2026-08-22"
+updated: "2026-08-22"
+faq:
+  - question: >-
+      What is Paper and how is it different from Figma?
+    answer: >-
+      Paper is a design canvas that an AI agent can design inside directly. In
+      Figma, AI can suggest things but you still move the layers yourself. In
+      Paper, Claude writes the layout and Paper renders it as real editable
+      layers you can still nudge by hand.
+  - question: >-
+      Do I need a brand file before I start?
+    answer: >-
+      It helps a lot but it is not required. If you have a brand file, tell
+      Claude to read it and it loads your colors and fonts into Paper as tokens.
+      If you do not have one, drop in a few of your old carousels and ask Claude
+      to pull the tokens from those instead.
+  - question: >-
+      Can I still edit the carousel after Claude builds it?
+    answer: >-
+      Yes. Everything Claude creates lands on the Paper canvas as normal design
+      layers with real IDs. You can move, recolor, or retype anything by hand,
+      and you can ask Claude to change one specific slide without touching the
+      others.
+  - question: >-
+      How long does this actually take?
+    answer: >-
+      About ten minutes once the setup is done. The one-time setup, meaning
+      downloading Paper and connecting the MCP, takes another ten. After that,
+      most of your time goes into writing the slide copy, not designing.
+---
+
+You can build a full on-brand Instagram carousel in about ten minutes using Paper and Claude, without opening a design tool and nudging boxes around. Paper is a design canvas like Figma, except it was built so an AI agent can actually design inside it. You connect Paper to Claude once, load your brand in as tokens, hand over your slide copy, and watch the slides get laid out in real time.
+
+I posted about this workflow and a lot of you asked for the full walkthrough, so here it is.
+
+## Why this matters
+
+I have tried to do this in Canva and in Figma, and both times the AI part was bolted on. It could suggest, but I still had to move every layer myself. The difference with Paper is that the agent has real write access to the canvas, so "make slide 4 match slide 3" takes a sentence instead of twenty minutes of clicking. This is the workflow I wish I had two years ago.
+
+## How do you connect Paper to Claude?
+
+You download the Paper desktop app and connect its MCP to Claude, which is a one-time setup that takes about ten minutes.
+
+**1. Download the Paper desktop app.** The MCP connection only works with the desktop app, not the browser version. Install it and open a blank file so there is a canvas for Claude to look at.
+
+**2. Connect the Paper MCP to Claude.** An MCP is just a connector that lets Claude read from and write to another app. Once it is connected, the loop is simple: you select the artboard or canvas you want to change in Paper, then talk to Claude, and the change appears in Paper.
+
+![Paper desktop app on the left with a canvas of artboards, Claude on the right explaining the MCP connection, annotated with the two halves of the loop: talk to Claude, execute on Paper](/ai-guides/carousels-paper-mcp-connected.png "The whole workflow in one screen. You talk to Claude on the right, and it executes on the Paper canvas on the left.")
+
+When it connects, Claude reports back which file is open, how many artboards, how many nodes, and whether any design tokens exist yet. Mine said zero tokens, which is what the next step fixes.
+
+## How do you get your brand into Paper?
+
+Tell Claude to read your brand file, and it loads your colors, fonts, spacing, and sizes into Paper as design tokens.
+
+**3. Load your brand as tokens.** Point Claude at your [BRAND.md file](/ai/how-to-create-a-brand-md-file) and ask it to set up your tokens in Paper. Tokens are named values, so instead of typing a hex code every time, the design references `color-accent-magenta` and every slide stays consistent automatically.
+
+![Paper's Theme panel showing 40 design tokens grouped into color, radius, spacing, container, breakpoint, font family, and font weight](/ai-guides/carousels-paper-brand-tokens.png "40 tokens loaded into Paper's Theme tab. Note container-slide set to 1080, which is what makes every slide the right size for Instagram.")
+
+If you do not have a brand file yet, drop three or four of your old carousels onto the canvas and ask Claude to pull the tokens out of those. It will read the colors and type off your existing work, which is usually closer to your real brand than anything you would write from scratch.
+
+> **Key insight:** The tokens are the reusable asset. Set them up once and every carousel after this one takes ten minutes instead of an afternoon.
+
+## How do you build the actual carousel?
+
+You write the slide copy first, one idea per slide, then tell Claude to build it in Paper.
+
+**4. Write your slide copy, one idea per slide.** Give each slide a label and a single idea, and keep the hook slide separate from the context slide. A carousel with two ideas on one slide is where people swipe away. I run this through a carousel skill that drafts the copy in my voice and structure, so I am editing rather than starting from a blank page.
+
+![Slide copy drafted as markdown, with slide 1 labeled hook, slide 2 labeled context, and slides 3 through 6 each covering one AI acronym with a plain-English definition](/ai-guides/carousels-paper-slide-copy.png "One idea per slide, labeled by role. Slide 1 hook, slide 2 context, then one concept per slide after that.")
+
+**5. Tell Claude to build it in Paper.** Hand Claude the copy and ask it to build the carousel on the canvas using your tokens. You will watch the artboards appear one at a time, already in your colors and fonts.
+
+![Four finished carousel artboards on the Paper canvas, each 1080 by 1350, in a consistent red brand with a photo hook slide and a handle pill on every slide](/ai-guides/carousels-paper-finished-carousel.png "Finished slides at 1080 by 1350, the Instagram portrait size, with the handle pill applied consistently across every artboard.")
+
+**6. Fix individual slides by asking or clicking.** Everything on the canvas is a real editable layer, so you can nudge things by hand. But it is usually faster to say "slide 3's headline is too long, cut it to six words" and let Claude do the surgical edit without disturbing the rest.
+
+**7. Export at 1080 by 1350.** Paper exports at 2x PNG by default, which is what you want for Instagram. Portrait at 1080 by 1350 takes up more feed real estate than square, so use it unless you have a reason not to.
+
+![A finished Instagram carousel slide with a bold headline over a photo, a subhead, and a comment call to action, all in a consistent red and pink brand](/ai-guides/carousels-paper-finished-post.png "The finished result, posted. Same tokens, so it matches everything else on the grid.")
+
+## Can you turn this into a repeatable workflow?
+
+Yes, and you should. Once you have run this twice, save the whole thing as a Claude skill so it becomes one command instead of a prompt you rewrite every time.
+
+A skill packages the instructions, your brand rules, and your slide structure into something Claude loads on its own. If you have not built one before, [here is how to create a custom skill](/ai/how-to-create-custom-skill), and [here is what a skill actually is](/ai/what-is-a-skill) if the term is new to you.
+
+## Additional reading
+
+Here are some related guides to check out:
+
+1. [How to Create a BRAND.md File for AI Design](/ai/how-to-create-a-brand-md-file)
+2. [How to Create a Custom Claude Skill](/ai/how-to-create-custom-skill)
+3. [How to Get 10 AI Design Options Instead of One](/ai/how-to-get-10-design-options-with-ai)
+4. [How to Fix AI-Looking Graphic Design and Posters](/ai/how-to-fix-ai-looking-graphic-design-and-posters)
+5. [How to Set Up Claude Code](/ai/how-to-setup-claude-code)

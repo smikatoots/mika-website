@@ -1,0 +1,96 @@
+---
+title: How to Make Your Website Look Expensive with AI
+description: >-
+  Make your website look expensive with AI. Build a brand file, copy a design.md
+  from a site you love on Refero, then let Claude redesign your pages to match.
+tags:
+  - beginner
+  - claude
+published: "2026-08-22"
+updated: "2026-08-22"
+faq:
+  - question: >-
+      What is a design.md file?
+    answer: >-
+      A design.md file is a markdown file describing exactly how a website
+      looks: its colors with hex codes, its fonts with weights and sizes, its
+      spacing, and its component style. You hand it to an AI as a reference for
+      what good looks like, the same way you would hand a designer a photo.
+  - question: >-
+      Is it okay to copy another site's design.md?
+    answer: >-
+      You are copying the design language, not the site. Use it as a reference
+      for structure, type scale, and how a good site handles spacing, then let
+      your own brand file supply your actual colors, fonts, and voice.
+  - question: >-
+      Do I need both a brand.md and a design.md?
+    answer: >-
+      Yes, and they do different jobs. Your brand.md holds who you are: your
+      colors, fonts, and voice. The design.md holds what good looks like
+      visually. AI reads both, then applies your brand in the reference file's
+      visual language.
+  - question: >-
+      Does this work with tools other than Claude?
+    answer: >-
+      Yes. Both files are plain markdown, so Codex, Cursor, and ChatGPT can all
+      read them. The workflow is the same regardless of which coding assistant
+      you use to build the page.
+---
+
+You can make your website look like a company that paid for design, using two markdown files and one prompt. The trick is giving the AI a real visual reference instead of adjectives. You build a brand file with your colors and fonts, grab a design.md from a site whose look you actually want, and then every page you generate reads both files first.
+
+At my first startup we paid a design agency ten thousand dollars to redesign our website. I am redesigning mine again right now, and I am doing the whole thing myself with this workflow.
+
+## Why this matters
+
+Telling AI to make a site "modern and clean" gets you the same beige template everyone else has, because those words mean nothing specific to a model. Telling it "match this type scale, this palette, and this component style" gets you something that looks designed. What separates a cheap-looking site from an expensive one is almost always whether the AI had a real reference to match.
+
+## Step 1: Build your brand file first
+
+Start with a brand file, because without one the AI will nail someone else's look and none of your own. A brand.md is a single markdown file holding your colors, your fonts, and your voice, and it is the thing that keeps the output yours instead of a clone of your reference site.
+
+![A BRAND.md file open in an editor showing YAML frontmatter with name, tagline, and version, followed by Strategy, Overview, Promise, and Guardrails sections](/ai-guides/brand-md-file-example.png "A brand file holds who you are. Colors, fonts, voice, and the guardrails for what you refuse to sound like.")
+
+If you do not have one yet, [here is the full guide to creating a BRAND.md file](/ai/how-to-create-a-brand-md-file). It takes about ten minutes with a free plugin, and everything below assumes you have it.
+
+## Step 2: Find a site whose look you actually want
+
+Go to [Refero Design](https://refero.design/) and browse until something makes you stop scrolling. Refero catalogs real websites by visual style, so instead of describing what you want, you can point at it.
+
+![The Refero Styles browse page showing a grid of website screenshots with names and one-line style descriptions like midnight gallery of quiet wealth and clinical blueprint on frosted paper](/ai-guides/expensive-website-refero-browse.png "Refero's style browser. Each entry is a real site with a one-line description of its visual language.")
+
+Pick for design language, not industry. I picked Duolingo and Family, and neither one is remotely in my business. What matters is whether the type, spacing, and color logic are doing something you want.
+
+## Step 3: Copy the design.md
+
+Open the style you picked and copy its design.md. Refero writes these out for you, complete with hex codes, font weights, sizes, line heights, and letter spacing, plus a written description of what the design is doing and why.
+
+![The Refero page for Duolingo showing a style description and color palette on the left, and a DESIGN.md tab on the right with a colors token table listing hex codes and roles, plus a typography section](/ai-guides/expensive-website-design-md.png "Duolingo's design.md. Every color has a hex code and a stated role, and the typography section specifies weights, sizes, line heights, and letter spacing.")
+
+The Role column is why this works. Its entry for green reads "green text accent for links, tags, and emphasized short phrases, do not promote it further," which is the instruction that stops AI from spraying your accent color across the whole page.
+
+> **Key insight:** You are handing the AI a photo of what good looks like, the same way you would before asking it to make an image. Except the photo is a website, and it comes with the exact numbers.
+
+## Step 4: Put it next to your brand file
+
+Save the design.md into your website project, in the same place your brand file lives. Both files need to be inside the folder Claude has open, or Claude will not read either one.
+
+Now you have both halves: your brand file says who you are, and the design.md says what good looks like. The AI applies your brand in the reference file's visual language.
+
+## Step 5: Prompt for the page
+
+Ask Claude or Codex to build the page and reference both files. The prompt is short because the files are doing the work.
+
+![A Claude Code prompt reading use my brand guidelines to make website, deck and graphic, with a diff showing over seven thousand lines added](/ai-guides/expensive-website-design-prompt.png "The prompt is one line, because both files are already in the project. Everything specific lives in the files, not the prompt.")
+
+This is also why the same setup works for decks and graphics, not just landing pages. Anything the AI generates in that folder reads the same two files first, so it all comes out consistent. That is the same principle behind [getting ten design options instead of one](/ai/how-to-get-10-design-options-with-ai).
+
+## Additional reading
+
+Here are some related guides to check out:
+
+1. [How to Create a BRAND.md File for AI Design](/ai/how-to-create-a-brand-md-file)
+2. [How to Get 10 AI Design Options Instead of One](/ai/how-to-get-10-design-options-with-ai)
+3. [How to Fix AI-Looking Graphic Design and Posters](/ai/how-to-fix-ai-looking-graphic-design-and-posters)
+4. [How to Vibe Code for Beginners](/ai/how-to-vibe-code-for-beginners)
+5. [How to Set Up Claude Code](/ai/how-to-setup-claude-code)

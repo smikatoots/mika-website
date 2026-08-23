@@ -6,6 +6,10 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Get 10 AI Design Options Instead of One](https://mikareyes.com/ai/how-to-get-10-design-options-with-ai): Get 10 AI design directions in about five minutes with Paper or Claude Design. Upload a brand file, ask for options, then iterate on only the one you pick.
+- [How to Make Your Website Look Expensive with AI](https://mikareyes.com/ai/how-to-make-your-website-look-expensive-with-ai): Make your website look expensive with AI. Build a brand file, copy a design.md from a site you love on Refero, then let Claude redesign your pages to match.
+- [How to Make Instagram Carousels with Paper and Claude](https://mikareyes.com/ai/how-to-make-instagram-carousels-with-paper): Make on-brand Instagram carousels in about 10 minutes with Paper and Claude. Connect the MCP, load your brand as tokens, then let Claude design each slide.
+- [How to Create a BRAND.md File for AI Design](https://mikareyes.com/ai/how-to-create-a-brand-md-file): A BRAND.md file gives Claude your colors, fonts, and voice so every AI design matches. Install the brand-md plugin with three commands and generate yours.
 - [How to Set Up Grok Bot with 7 Ideas](https://mikareyes.com/ai/how-to-set-up-grok-bot-with-7-ideas): Grok Bot setup: sign in with Cursor Ultra, create one bot per job, then copy 7 real team ideas from Lenny, creators, and a plumbing company.
 - [6 Underrated AI Startup & Founder Programs (Aug 2026)](https://mikareyes.com/ai/6-underrated-ai-startup-founder-programs-aug-2026): Six underrated AI startup and founder programs still open after YC. Deadlines, check sizes, who each is for, and direct apply links from Sequoia Arc to 1517.
 - [How to Build an AI Running Coach with Garmin](https://mikareyes.com/ai/how-to-build-ai-running-coach-garmin): Build an AI running coach with Garmin, Strava, and Oura. Get a Hansons calendar, weather panel, and safe watch sync that rebuilds from today when you miss runs.
