@@ -124,6 +124,61 @@
     deck-pulse 2.2s ease-in-out 0.8s infinite;
 }
 
+/* BRAND.md deck: a quiet, persistent motion layer for diagrams. These classes
+   live beside (rather than replace) the entrance animations above, so every
+   slide keeps moving after its initial reveal. */
+@keyframes brand-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+@keyframes brand-breathe {
+  0%, 100% { scale: 1; box-shadow: 12px 12px 0 0 var(--deck-accent); }
+  50% { scale: 1.025; box-shadow: 17px 17px 0 0 color-mix(in srgb, var(--deck-accent) 78%, white); }
+}
+
+@keyframes brand-scan {
+  0% { translate: 0 -320%; opacity: 0; }
+  12%, 75% { opacity: 0.9; }
+  100% { translate: 0 880%; opacity: 0; }
+}
+
+@keyframes brand-wiggle {
+  0%, 100% { rotate: -1deg; }
+  50% { rotate: 1deg; }
+}
+
+@keyframes brand-arrow-nudge {
+  0%, 100% { translate: 0 0; opacity: 0.55; }
+  50% { translate: 10px 0; opacity: 1; }
+}
+
+@keyframes brand-cursor {
+  0%, 45% { opacity: 1; }
+  46%, 100% { opacity: 0.12; }
+}
+
+@keyframes brand-file-glow {
+  0%, 100% { background-color: rgb(24 24 27); }
+  50% { background-color: rgb(63 63 70); }
+}
+
+.brand-float { animation: brand-float 3.2s ease-in-out infinite; }
+.brand-breathe { animation: brand-breathe 2.8s ease-in-out infinite; }
+.brand-wiggle { animation: brand-wiggle 2.4s ease-in-out infinite; }
+.brand-arrow-nudge { display: inline-block; animation: brand-arrow-nudge 1.4s ease-in-out infinite; }
+.brand-cursor { display: inline-block; animation: brand-cursor 0.9s steps(1) infinite; }
+.brand-file-glow { animation: brand-file-glow 1.7s ease-in-out infinite; }
+.brand-scan-line {
+  position: absolute;
+  inset-inline: 5%;
+  top: 0;
+  height: 3px;
+  background: var(--deck-accent);
+  box-shadow: 0 0 18px 4px color-mix(in srgb, var(--deck-accent) 65%, transparent);
+  animation: brand-scan 4.8s ease-in-out infinite;
+}
+
 /* A balance scale settling: starts level, then tips toward the heavier pan. */
 @keyframes deck-scale-tilt {
   0% {
@@ -174,7 +229,14 @@
   .deck-loop-pop,
   .deck-cta-pulse,
   .deck-scale-tilt,
-  .deck-underline-word::after {
+  .deck-underline-word::after,
+  .brand-float,
+  .brand-breathe,
+  .brand-wiggle,
+  .brand-arrow-nudge,
+  .brand-cursor,
+  .brand-file-glow,
+  .brand-scan-line {
     animation-duration: 0.001s;
     animation-iteration-count: 1;
   }

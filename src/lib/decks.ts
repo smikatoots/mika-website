@@ -10,6 +10,11 @@ export const templateDeck = {
 /** Registry of presentation decks. Add a new entry when creating `/deck/<slug>`. */
 export const decks = [
   {
+    slug: "create-brand-md",
+    title: "How to Create a BRAND.md File",
+    date: "August 25",
+  },
+  {
     slug: "loops-part-1-first-loop",
     title: "Loops, Part 1 — Build Your First Loop",
     date: "June 28",
@@ -239,4 +244,4 @@ export const decks = [
 export type DeckSlug = (typeof decks)[number]["slug"];
 
 /** Deck dates, newest first — drives the grouping on /deck/all. */
-export const deckDates = ["August 18", "July 26", "July 14", "July 6", "June 28"] as const;
+export const deckDates = ["August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;
