@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import { ThankYouPageTracker } from "./ThankYouPageTracker";
 
+import { buttonStyle } from "@/components/ui/buttonStyle";
+
 // Private post-checkout surface — not a page anyone should search for or
 // land on organically. See SEO.md, "When a page should not be indexed."
 export const metadata: Metadata = {
@@ -106,17 +108,7 @@ export default function BuildYourFirstAgentThankYouPage() {
             <Link
               href="/"
               className="mr-pressable inline-flex items-center justify-center"
-              style={{
-                background: "var(--mr-coral)",
-                color: "#fff",
-                fontFamily: "var(--mr-font-body)",
-                fontSize: "var(--mr-text-body)",
-                fontWeight: "var(--mr-weight-semi)",
-                padding: "16px 32px",
-                borderRadius: "var(--mr-radius-pill)",
-                boxShadow: "var(--mr-shadow-cta)",
-                textDecoration: "none",
-              }}
+              style={buttonStyle({ size: "lg" })}
             >
               Keep exploring →
             </Link>

@@ -1,171 +1,143 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+
+import { toSectionProps, type SlideInput } from "./deck-slide";
 
 type DeckProps = {
-  slides: React.ReactNode[];
+  /**
+   * Each entry is either plain content, or a `DeckSlide` object carrying
+   * section-level settings — background, transition, auto-animate. The two
+   * forms mix freely; see `deck-slide.ts`.
+   */
+  slides: SlideInput[];
+  /**
+   * The logical canvas every slide is designed against. Reveal scales this to
+   * fit whatever window it's in, so a slide looks identical at any size and can
+   * never clip.
+   *
+   * 1440x810 is deliberate: it matches the viewport these decks were designed
+   * on, so the locked type scale keeps the exact proportions it already had.
+   * Raising it would shrink every headline relative to the frame. 16:9, which
+   * is what gets recorded.
+   */
+  width?: number;
+  height?: number;
 };
 
+/** The slice of the Reveal API this component holds onto. */
+type RevealDeck = { destroy: () => void };
+
 /**
- * Full-screen, keyboard- and click-navigable presentation deck.
- * One slide is shown at a time. The slide stage is remounted with a fresh
- * `key` on every change so the entrance animations replay.
+ * Full-screen presentation deck, powered by reveal.js.
+ *
+ * Reveal owns the slide DOM once it initializes, so this component renders the
+ * required `.reveal > .slides > section` markup and hands it over. Slides are
+ * static content, which is the easy case: nothing re-renders underneath Reveal
+ * after mount.
+ *
+ * What Reveal gives us that the previous hand-rolled shell did not:
+ *  - **Speaker notes** — `S` opens a second window with notes, the next slide,
+ *    and a timer. Add them with `<aside className="notes">…</aside>`.
+ *  - **Fragments** — reveal parts of one slide in sequence instead of
+ *    duplicating a whole slide per step.
+ *  - **Overview** — `Esc` shows every slide at once.
+ *  - **Scaling** — slides live on a fixed canvas and are scaled to fit, so a
+ *    long line can no longer overflow the window.
+ *  - **PDF export** — append `?print-pdf` to the URL and print.
+ *
+ * Navigation: arrows, space, `Esc` overview, `S` notes, `F` fullscreen, `.`
+ * pause. The current slide lives in the URL hash (`#/3`).
  */
-/** Read the `?slide=` query param (1-based) as a 0-based index. */
-function slideParamToIndex(total: number): number | null {
-  if (typeof window === "undefined") return null;
-  const raw = new URLSearchParams(window.location.search).get("slide");
-  if (raw === null) return null;
-  const n = Number.parseInt(raw, 10);
-  if (Number.isNaN(n)) return null;
-  return Math.min(Math.max(n - 1, 0), total - 1);
-}
+export function Deck({ slides, width = 1440, height = 810 }: DeckProps) {
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const deckRef = useRef<RevealDeck | null>(null);
 
-export function Deck({ slides }: DeckProps) {
-  const total = slides.length;
-  // Initialize from the URL so a deep link like `?slide=3` opens on that slide.
-  const [index, setIndex] = useState(() => slideParamToIndex(total) ?? 0);
-  const touchStartX = useRef<number | null>(null);
+  useEffect(() => {
+    let cancelled = false;
 
-  const go = useCallback(
-    (next: number) => {
-      setIndex((current) => {
-        const target = current + next;
-        if (target < 0 || target > total - 1) return current;
-        return target;
+    // reveal.js and its plugins touch `document` at module scope, so importing
+    // them at the top of the file crashes the server render. Loading them here
+    // keeps them out of the server bundle entirely.
+    void (async () => {
+      const [{ default: Reveal }, { default: RevealNotes }, { default: RevealZoom }] =
+        await Promise.all([
+          import("reveal.js"),
+          import("reveal.js/plugin/notes"),
+          import("reveal.js/plugin/zoom"),
+        ]);
+
+      const root = rootRef.current;
+      if (cancelled || !root || deckRef.current) return;
+
+      const deck = new Reveal(root, {
+        width,
+        height,
+        // The templates fill the slide themselves and are full-bleed by design,
+        // so Reveal must not reserve a margin around them.
+        margin: 0,
+        minScale: 0.2,
+        maxScale: 4,
+        // Slides handle their own vertical centering with flexbox. Letting
+        // Reveal center them as well fights the templates.
+        center: false,
+        hash: true,
+        controls: true,
+        controlsTutorial: false,
+        progress: true,
+        slideNumber: "c/t",
+        transition: "slide",
+        transitionSpeed: "fast",
+        backgroundTransition: "fade",
+        overview: true,
+        touch: true,
+        plugins: [RevealNotes, RevealZoom],
       });
-    },
-    [total],
-  );
 
-  const goTo = useCallback((target: number) => setIndex(target), []);
+      deckRef.current = deck as RevealDeck;
+      await deck.initialize();
 
-  // Keep the URL in sync with the current slide (1-based), without scrolling or
-  // pushing history entries — each slide is reachable/shareable as `?slide=N`.
-  useEffect(() => {
-    const url = new URL(window.location.href);
-    url.searchParams.set("slide", String(index + 1));
-    window.history.replaceState(window.history.state, "", url);
-  }, [index]);
+      // Replay the `deck-*` entrance animations each time a slide is reached.
+      // Without this they run once at load, while every slide is still hidden,
+      // so navigating to slide 6 would show it already settled. Filming means
+      // stepping back and forth over the same slide, and a retake has to look
+      // identical to the take before it.
+      const replayEntrance = (slide?: Element | null) => {
+        if (!(slide instanceof HTMLElement)) return;
+        slide.classList.add("deck-replay");
+        // Reading a layout property forces the style change to flush, which is
+        // what actually restarts the animations.
+        void slide.offsetHeight;
+        slide.classList.remove("deck-replay");
+      };
 
-  // Sync when the user navigates with the browser back/forward buttons.
-  useEffect(() => {
-    const onPop = () => {
-      const fromUrl = slideParamToIndex(total);
-      if (fromUrl !== null) setIndex(fromUrl);
-    };
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, [total]);
+      deck.on("slidechanged", (event) => {
+        replayEntrance((event as { currentSlide?: Element }).currentSlide);
+      });
+    })();
 
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight" || event.key === " " || event.key === "PageDown") {
-        event.preventDefault();
-        go(1);
-      } else if (event.key === "ArrowLeft" || event.key === "PageUp") {
-        event.preventDefault();
-        go(-1);
-      } else if (event.key === "Home") {
-        goTo(0);
-      } else if (event.key === "End") {
-        goTo(total - 1);
+    return () => {
+      cancelled = true;
+      try {
+        deckRef.current?.destroy();
+      } catch {
+        // Reveal throws if it never finished initializing. Nothing to clean up.
       }
+      deckRef.current = null;
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [go, goTo, total]);
-
-  const atStart = index === 0;
-  const atEnd = index === total - 1;
+  }, [width, height]);
 
   return (
-    <div
-      className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden"
-      onTouchStart={(e) => {
-        touchStartX.current = e.touches[0]?.clientX ?? null;
-      }}
-      onTouchEnd={(e) => {
-        if (touchStartX.current === null) return;
-        const dx = (e.changedTouches[0]?.clientX ?? 0) - touchStartX.current;
-        if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
-        touchStartX.current = null;
-      }}
-    >
-      {/* Slide stage */}
-      <div
-        key={index}
-        className="flex h-full w-full items-center justify-center"
-      >
-        {slides[index]}
-      </div>
-
-      {/* Click zones for advancing without aiming at the arrows */}
-      <button
-        type="button"
-        aria-label="Previous slide"
-        onClick={() => go(-1)}
-        disabled={atStart}
-        className="absolute left-0 top-0 h-full w-[18%] cursor-w-resize disabled:cursor-default"
-      />
-      <button
-        type="button"
-        aria-label="Next slide"
-        onClick={() => go(1)}
-        disabled={atEnd}
-        className="absolute right-0 top-0 h-full w-[18%] cursor-e-resize disabled:cursor-default"
-      />
-
-      {/* Arrow controls + slide counter, stacked at the bottom center */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-5 z-10 flex flex-col items-center gap-2">
-      <div className="flex items-center justify-center gap-4">
-        <button
-          type="button"
-          aria-label="Previous slide"
-          onClick={() => go(-1)}
-          disabled={atStart}
-          className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-zinc-200 bg-white/90 text-zinc-700 shadow-sm backdrop-blur transition hover:border-[var(--deck-accent)] hover:text-[var(--deck-accent)] disabled:opacity-30 disabled:hover:border-zinc-200 disabled:hover:text-zinc-700"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-
-        {/* Progress dots */}
-        <div className="pointer-events-auto flex items-center gap-2">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`Go to slide ${i + 1}`}
-              onClick={() => goTo(i)}
-              className="h-2 rounded-full transition-all"
-              style={{
-                width: i === index ? 22 : 8,
-                background: i === index ? "var(--deck-accent)" : "#d4d4d8",
-              }}
-            />
-          ))}
-        </div>
-
-        <button
-          type="button"
-          aria-label="Next slide"
-          onClick={() => go(1)}
-          disabled={atEnd}
-          className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-zinc-200 bg-white/90 text-zinc-700 shadow-sm backdrop-blur transition hover:border-[var(--deck-accent)] hover:text-[var(--deck-accent)] disabled:opacity-30 disabled:hover:border-zinc-200 disabled:hover:text-zinc-700"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-      </div>
-
-        {/* Slide counter — directly below the indicators so you can see
-            which slide you're on and how many there are. */}
-        <div className="font-mono text-xs tracking-wide text-zinc-400">
-          {index + 1} / {total}
-        </div>
+    <div className="reveal" ref={rootRef}>
+      <div className="slides">
+        {slides.map((slide, index) => {
+          const { content, attrs } = toSectionProps(slide);
+          return (
+            <section key={index} {...attrs}>
+              {content}
+            </section>
+          );
+        })}
       </div>
     </div>
   );

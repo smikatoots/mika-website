@@ -6,6 +6,8 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to use Claude Academy and which courses to take first](https://mikareyes.com/ai/how-to-use-claude-academy): How to use Claude Academy and which courses to take first: start with AI Fluency, then Cowork or Code, then filter Use cases to your job. It's free.
+- [How to Make AI Watch a YouTube Video](https://mikareyes.com/ai/how-to-make-ai-watch-a-youtube-video): Make AI watch a YouTube video with Claude or Codex. Install the watch-video skill from GitHub, paste a URL, and get frame-by-frame hooks or a playbook.
 - [How to Get 10 AI Design Options Instead of One](https://mikareyes.com/ai/how-to-get-10-design-options-with-ai): Get 10 AI design directions in about five minutes with Paper or Claude Design. Upload a brand file, ask for options, then iterate on only the one you pick.
 - [How to Make Your Website Look Expensive with AI](https://mikareyes.com/ai/how-to-make-your-website-look-expensive-with-ai): Make your website look expensive with AI. Build a brand file, copy a design.md from a site you love on Refero, then let Claude redesign your pages to match.
 - [How to Make Instagram Carousels with Paper and Claude](https://mikareyes.com/ai/how-to-make-instagram-carousels-with-paper): Make on-brand Instagram carousels in about 10 minutes with Paper and Claude. Connect the MCP, load your brand as tokens, then let Claude design each slide.

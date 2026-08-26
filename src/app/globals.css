@@ -3,6 +3,11 @@
 :root {
   --mr-coral:         #E8425A;
   --mr-coral-bright:  #FF3D68;
+  /* Coral darkened until white on it clears WCAG AA (5.05:1) and it clears AA
+     as text on white (5.05:1) and on cream (4.60:1). Used for button grounds
+     and for any coral text at reading size. Coral itself is 3.92:1 and fails
+     both. See DESIGN.md > Colors. */
+  --mr-coral-deep:    #CE3149;
   --mr-teal:          #0E8C8C;
   --mr-teal-deep:     #142A2A;
   --mr-purple:        #6B4DE6;
@@ -134,6 +139,20 @@ body {
   background: var(--mr-bg);
   color: var(--mr-ink);
   font-family: var(--mr-font-body);
+}
+
+/* Headings are Bricolage everywhere. `body` is Hanken, so without this rule any
+   heading that doesn't set a family inherits the BODY font — which is exactly
+   how article titles on /blog/<post> and /ai/<guide> drifted off-brand while
+   their index pages (which go through PageHero) stayed correct.
+   See DESIGN.md > Typography. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--mr-font-display);
 }
 
 /* ── Homepage motion layer (see HomepageMotion.tsx) ──────────────────

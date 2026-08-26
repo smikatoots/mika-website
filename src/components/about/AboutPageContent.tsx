@@ -38,7 +38,7 @@ function ALink({
 const bioBoxClass =
   "flex gap-4 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm";
 
-/** Emphasis in the “currently” list — matches global `--accent` (e.g. #fd4869). */
+/** Emphasis in the “currently” list — resolves to the brand Coral via `--accent`. */
 const aboutHighlight = "font-medium text-accent";
 
 /** public/about-assets/ — profile, thumbnails ×4, feature, gallery rows, full-width */

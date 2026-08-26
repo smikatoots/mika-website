@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const LIB = "/decks/_library";
 
-const ACCENT = "#fd4869";
+const ACCENT = "var(--deck-accent)";
 const INK = "#111111";
 
 /**

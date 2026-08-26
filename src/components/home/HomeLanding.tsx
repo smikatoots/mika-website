@@ -7,6 +7,8 @@ import { trackGa4Event } from "@/lib/analytics/ga4";
 import { homeBioLinks } from "@/lib/home-bio-links";
 import { HomepageMotion } from "@/components/home/HomepageMotion";
 
+import { buttonStyle } from "@/components/ui/buttonStyle";
+
 const awards = [
   { icon: "🏆", label: "Forbes 30 Under 30", href: homeBioLinks.awards.forbes30 },
   { icon: "✦", label: "Tatler Gen.T Leader of Tomorrow", href: homeBioLinks.awards.tatler },
@@ -140,21 +142,7 @@ export function HomeLanding() {
                     link_type: "internal_anchor",
                   })
                 }
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  background: "var(--mr-coral)",
-                  color: "#fff",
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-body)",
-                  fontWeight: "var(--mr-weight-semi)",
-                  padding: "16px 30px",
-                  borderRadius: "var(--mr-radius-pill)",
-                  boxShadow: "var(--mr-shadow-cta)",
-                  textDecoration: "none",
-                  whiteSpace: "nowrap",
-                }}
+                style={buttonStyle({ size: "lg" })}
               >
                 Work with me →
               </a>
@@ -172,21 +160,7 @@ export function HomeLanding() {
                     link_type: "social_instagram",
                   })
                 }
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  background: "var(--mr-surface)",
-                  color: "var(--mr-ink)",
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-body)",
-                  fontWeight: "var(--mr-weight-semi)",
-                  padding: "15px 26px",
-                  borderRadius: "var(--mr-radius-pill)",
-                  border: "1.5px solid var(--mr-border-input)",
-                  textDecoration: "none",
-                  whiteSpace: "nowrap",
-                }}
+                style={buttonStyle({ variant: "secondary", size: "lg" })}
               >
                 Follow on Instagram
               </a>
@@ -481,20 +455,7 @@ export function HomeLanding() {
               <a
                 href="#contact"
                 className="mr-pressable"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  background: "var(--mr-coral)",
-                  color: "#fff",
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-sm)",
-                  fontWeight: "var(--mr-weight-semi)",
-                  padding: "14px 26px",
-                  borderRadius: "var(--mr-radius-pill)",
-                  boxShadow: "var(--mr-shadow-cta)",
-                  textDecoration: "none",
-                }}
+                style={buttonStyle({ size: "md" })}
               >
                 Book me to speak →
               </a>
@@ -697,20 +658,7 @@ export function HomeLanding() {
                 <a
                   href="mailto:mika@kingscrosslabs.com"
                   className="mr-pressable"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    background: "var(--mr-coral)",
-                    color: "#fff",
-                    fontFamily: "var(--mr-font-body)",
-                    fontSize: "var(--mr-text-sm)",
-                    fontWeight: "var(--mr-weight-semi)",
-                    padding: "13px 26px",
-                    borderRadius: "var(--mr-radius-pill)",
-                    textDecoration: "none",
-                    boxShadow: "var(--mr-shadow-cta)",
-                  }}
+                  style={buttonStyle({ size: "md" })}
                 >
                   Send an email →
                 </a>

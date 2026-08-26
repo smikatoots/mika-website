@@ -3,8 +3,27 @@
    because the slide wrapper is remounted with a fresh `key`. */
 
 .deck-root {
-  --deck-accent: #fd4869;
-  font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  /* Mirrors the approved brand Coral. See BRAND.md > Visual > Core Colors
+     and src/app/deck/DESIGN.md. Never fork this value: the deck is one
+     surface expressing one identity, so the hex lives in globals.css only.
+     The literal is a fallback for when globals.css has not loaded. */
+  --deck-accent: var(--mr-coral, #E8425A);
+  /* Mirrors the approved brand Ink. Same rule as the accent: the hex lives in
+     globals.css, this only points at it. Replaces the previous `zinc-950`
+     (#09090B), which was a different value for the same meaning. */
+  --deck-ink: var(--mr-ink, #111111);
+  /* Around thirty existing deck pages hardcode `var(--font-bricolage)` inside
+     SVG `fontFamily` attributes. Aliasing it here re-points all of them at the
+     deck typeface at once, instead of editing thirty files. New slides should
+     use `--font-deck`. */
+  --font-bricolage: var(--font-deck);
+  /* Inter reads loose at display sizes, so headings get negative tracking and
+     tight leading. Two tokens: nudge them here and every slide retunes.
+     Less negative = looser letters. Larger = more space between lines. */
+  --deck-tracking: -0.035em;
+  --deck-leading: 0.88;
+  font-family: var(--font-deck), ui-sans-serif, system-ui, sans-serif;
+  font-optical-sizing: auto;
 }
 
 .deck-accent {
@@ -141,7 +160,7 @@
   animation: deck-scale-tilt 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s both;
 }
 
-/* The salmon underline that sweeps under highlighted words. */
+/* The coral underline that sweeps under highlighted words. */
 .deck-underline-word {
   position: relative;
   /* `inline`, not `inline-block`: an inline-block is an atomic box, which lets

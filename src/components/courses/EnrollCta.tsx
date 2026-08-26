@@ -5,6 +5,8 @@ import posthog from "posthog-js";
 import { Ga4TrackedAnchor } from "@/components/analytics/Ga4TrackedLink";
 import { BUILD_YOUR_FIRST_AGENT_CHECKOUT_URL } from "@/lib/courses/build-your-first-agent";
 
+import { buttonStyle } from "@/components/ui/buttonStyle";
+
 /**
  * The only conversion action on the course page. Fires both GA4 and PostHog
  * so CTA location performance (hero vs. pricing card vs. P.S., etc.) is
@@ -36,17 +38,7 @@ export function EnrollCta({
           destination_url: BUILD_YOUR_FIRST_AGENT_CHECKOUT_URL,
         });
       }}
-      style={{
-        background: "var(--mr-coral)",
-        color: "#fff",
-        fontFamily: "var(--mr-font-body)",
-        fontSize: "var(--mr-text-body)",
-        fontWeight: "var(--mr-weight-semi)",
-        padding: "16px 32px",
-        borderRadius: "var(--mr-radius-pill)",
-        boxShadow: "var(--mr-shadow-cta)",
-        textDecoration: "none",
-      }}
+      style={buttonStyle({ size: "lg" })}
     >
       {label} →
     </Ga4TrackedAnchor>

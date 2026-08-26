@@ -3,6 +3,8 @@ import { SITE_NAME } from "@/lib/site";
 import { siteNavItems } from "@/lib/site-nav";
 import { InternalLink } from "@/components/ui/InternalLink";
 
+import { buttonStyle } from "@/components/ui/buttonStyle";
+
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/its.mikareyes/" },
   { label: "TikTok", href: "https://www.tiktok.com/@its.mikareyes" },
@@ -133,17 +135,7 @@ export function SiteFooter() {
               <InternalLink
                 href="/#contact"
                 className="mr-pressable inline-flex items-center gap-2"
-                style={{
-                  background: "var(--mr-coral)",
-                  color: "#fff",
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-sm)",
-                  fontWeight: "var(--mr-weight-semi)",
-                  padding: "10px 20px",
-                  borderRadius: "var(--mr-radius-pill)",
-                  boxShadow: "var(--mr-shadow-cta)",
-                  textDecoration: "none",
-                }}
+                style={buttonStyle({ size: "sm" })}
               >
                 Work with me →
               </InternalLink>

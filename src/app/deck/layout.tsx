@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Inter } from "next/font/google";
 
+// reveal.css must come first: it is the engine's layout. `reveal-theme.css`
+// is our own theme and overrides it. Never add a stock reveal theme here —
+// the two would fight over the same `--r-*` variables.
+import "reveal.js/reveal.css";
+import "./reveal-theme.css";
 import "./deck.css";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+// The deck's typeface. Named `--font-deck` rather than `--font-inter` so the
+// surface can be re-typed later without touching every slide. Variable font,
+// so every weight in the scale comes from one file.
+const deckFont = Inter({
+  variable: "--font-deck",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  axes: ["opsz"],
 });
 
 export const metadata: Metadata = {
@@ -19,7 +27,7 @@ export default function DeckLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className={`${bricolage.variable} deck-root fixed inset-0 bg-white`}>
+    <div className={`${deckFont.variable} deck-root fixed inset-0 bg-white`}>
       {children}
     </div>
   );

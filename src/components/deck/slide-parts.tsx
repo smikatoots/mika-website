@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { deckType, headingBase } from "./deck-styles";
 
-/** A salmon-highlighted run of words inside a text slide. */
+/** A coral-highlighted run of words inside a text slide. */
 export function HL({
   children,
   delay = 0,
@@ -20,7 +20,7 @@ export function HL({
   );
 }
 
-/** Inline salmon accent for slide headers (no underline sweep — cleaner big). */
+/** Inline coral accent for slide headers (no underline sweep — cleaner big). */
 export function A({ children }: { children: React.ReactNode }) {
   return <span className="deck-accent">{children}</span>;
 }
@@ -113,15 +113,20 @@ export function TextSlide({
 }
 
 /**
- * A numbered "point" slide — big emoji, accent step number, and a headline.
- * Shared by the solution steps so they read as a matched set.
+ * A "point" slide — big emoji above a headline. The matched set for a run of
+ * related beats.
  */
 export function PointSlide({
   number,
   emoji,
   children,
 }: {
-  /** Optional accent step marker. Omit for an emoji + headline point with no badge. */
+  /**
+   * @deprecated Not part of the template any more — a Point is an emoji and a
+   * headline. Kept only because eleven already-filmed slides pass it
+   * (`ai-acronyms` uses it for "GPT", "LLM", and so on). Do not use it on
+   * anything new.
+   */
   number?: string;
   emoji: string;
   children: React.ReactNode;
@@ -303,9 +308,9 @@ export function StepsSlide({
   visual?: React.ReactNode;
 }) {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-6 px-8 py-12 md:flex-row md:gap-10 md:px-14">
-      <div className="flex w-full justify-center md:w-auto md:flex-none md:justify-end">
-        <ol className="flex flex-col justify-center gap-6">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-6 overflow-hidden px-8 py-12 md:flex-row md:gap-8 md:px-10">
+      <div className="flex w-full min-w-0 justify-center md:w-auto md:flex-1 md:justify-end">
+        <ol className="flex min-w-0 flex-col justify-center gap-6">
           {steps.map((label, i) => {
           const reached = i <= current;
           const active = i === current;
@@ -317,7 +322,7 @@ export function StepsSlide({
               style={active ? { animationDelay: "0.1s" } : undefined}
             >
               <span
-                className={`flex h-20 w-20 flex-none items-center justify-center rounded-full font-mono text-4xl font-bold sm:h-24 sm:w-24 sm:text-5xl ${
+                className={`flex h-16 w-16 flex-none items-center justify-center rounded-full font-mono text-3xl font-bold ${
                   active
                     ? "bg-[var(--deck-accent)] text-white"
                     : done
@@ -332,7 +337,7 @@ export function StepsSlide({
                   Sized just under `statement` so it reads nearly as big as
                   a Text + Image header. */}
               <span
-                className={`whitespace-nowrap text-7xl font-extrabold leading-[1.05] tracking-tight text-zinc-950 sm:text-8xl ${
+                className={`whitespace-nowrap text-5xl font-extrabold leading-[var(--deck-leading)] tracking-[var(--deck-tracking)] text-[var(--deck-ink)] ${
                   reached ? "" : "invisible"
                 }`}
                 aria-hidden={!reached}
@@ -345,14 +350,18 @@ export function StepsSlide({
         </ol>
       </div>
 
-      {visual ? (
-        <div
-          key={current}
-          className="deck-pop relative flex w-full items-center justify-center md:w-[44rem] md:flex-none"
-        >
-          {visual}
-        </div>
-      ) : null}
+      {/* The column is always rendered, even with no visual. Without it the
+          steps list re-centres on the frame that has none, so the numbers jump
+          sideways between "0 of 4" and "1 of 4". */}
+      <div
+        key={current}
+        className={`relative flex w-full items-center justify-center md:w-[36rem] md:flex-none ${
+          visual ? "deck-pop" : "invisible"
+        }`}
+        aria-hidden={!visual}
+      >
+        {visual}
+      </div>
     </div>
   );
 }

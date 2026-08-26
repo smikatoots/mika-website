@@ -193,7 +193,7 @@ export function GuideEmailCapture({
               Your guide is on its way to <strong>{email}</strong>.
             </p>
             <button
-              className="mt-7 min-h-12 w-full rounded-full bg-[var(--mr-coral)] px-6 py-3 font-semibold text-white transition hover:bg-[var(--mr-coral-bright)]"
+              className="mr-pressable mt-7 min-h-12 w-full rounded-[var(--mr-radius-pill)] bg-[var(--mr-coral-deep)] px-6 py-3 font-bold text-white"
               onClick={() => dismiss("close_button")}
               type="button"
             >
@@ -232,7 +232,7 @@ export function GuideEmailCapture({
                 value={email}
               />
               <button
-                className="mt-3 min-h-12 w-full rounded-full bg-[var(--mr-coral)] px-6 py-3 font-semibold text-white transition hover:bg-[var(--mr-coral-bright)] disabled:cursor-wait disabled:opacity-65"
+                className="mr-pressable mt-3 min-h-12 w-full rounded-[var(--mr-radius-pill)] bg-[var(--mr-coral-deep)] px-6 py-3 font-bold text-white transition disabled:cursor-wait disabled:opacity-65"
                 disabled={isSubmitting}
                 type="submit"
               >

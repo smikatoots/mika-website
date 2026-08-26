@@ -28,7 +28,7 @@ export function CourseCta() {
       </p>
       <Ga4TrackedInternalLink
         href={COURSE_HREF}
-        className="mt-6 inline-flex items-center justify-center rounded-full bg-[var(--mr-coral)] px-8 py-3 text-sm font-semibold text-white transition hover:bg-[var(--mr-coral-bright)]"
+        className="mr-pressable mt-6 inline-flex items-center justify-center rounded-[var(--mr-radius-pill)] bg-[var(--mr-coral-deep)] px-8 py-3 text-sm font-bold text-white"
         ga4EventName="course_cta_clicked"
         ga4Params={{
           cta_label: "Learn more",

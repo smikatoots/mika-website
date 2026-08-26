@@ -1,0 +1,178 @@
+/* ── Mika Reyes deck theme for reveal.js ──────────────────────────────────
+   Replaces the stock reveal themes entirely. Every value here mirrors
+   src/app/deck/DESIGN.md, which mirrors BRAND.md. Do not import a stock theme
+   alongside this file; they fight over the same `--r-*` variables.
+
+   Scoped under `.deck-root` so nothing leaks into the rest of the site. */
+
+.deck-root .reveal,
+.reveal-viewport {
+  /* Identity primitives, mirrored. The hexes live in globals.css. */
+  --r-background-color: var(--mr-bg, #fff);
+  --r-main-color: var(--deck-ink);
+  --r-heading-color: var(--deck-ink);
+
+  --r-main-font: var(--font-deck), ui-sans-serif, system-ui, sans-serif;
+  --r-heading-font: var(--font-deck), ui-sans-serif, system-ui, sans-serif;
+  --r-code-font: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* The templates set their own sizes from the locked scale in
+     deck-styles.ts. This is only the inherited default. */
+  --r-main-font-size: 32px;
+
+  --r-heading-font-weight: 800;
+  --r-heading-line-height: var(--deck-leading);
+  --r-heading-letter-spacing: var(--deck-tracking);
+  --r-heading-text-transform: none;
+  --r-heading-text-shadow: none;
+  --r-heading-margin: 0;
+  --r-block-margin: 0;
+
+  --r-link-color: var(--deck-accent);
+  --r-link-color-hover: var(--deck-accent);
+  --r-link-color-dark: var(--deck-accent);
+
+  --r-selection-background-color: color-mix(
+    in srgb,
+    var(--deck-accent) 24%,
+    transparent
+  );
+  --r-selection-color: var(--deck-ink);
+
+  --r-overlay-element-bg-color: 17, 17, 17;
+  --r-overlay-element-fg-color: 255, 255, 255;
+}
+
+.reveal-viewport {
+  background: var(--mr-bg, #fff);
+}
+
+/* globals.css sets `h1..h6 { font-family: var(--mr-font-display) }` so the
+   website's article headings stay on brand. That rule also reaches into the
+   deck, which is a different surface with its own typeface, so it has to be
+   overridden here. `.deck-root h1` outranks a bare `h1`. */
+
+.deck-root h1,
+.deck-root h2,
+.deck-root h3,
+.deck-root h4,
+.deck-root h5,
+.deck-root h6 {
+  font-family: var(--font-deck), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: var(--deck-tracking);
+  line-height: var(--deck-leading);
+}
+
+/* ── Slide box ──────────────────────────────────────────────────────────
+   The templates are written as full-bleed flex layouts that fill their slide,
+   so each section has to be a full-size box with no padding of its own. Reveal
+   positions sections absolutely; `center: false` keeps them top-left anchored
+   and the templates handle their own centering. */
+
+.deck-root .reveal .slides {
+  text-align: left;
+}
+
+.deck-root .reveal .slides > section,
+.deck-root .reveal .slides > section > section {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* A slide's single child is the template, which expects to own the box. */
+.deck-root .reveal .slides > section > * {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Reveal's `.fragment` sets `visibility: hidden` while keeping layout, which is
+   what we want for step reveals: the box never reflows as steps appear. */
+.deck-root .reveal .fragment {
+  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* A step marker in StepsBuildSlide flips to the accent once its step is
+   reached. Reveal adds `.visible` to a fragment when it has been revealed, so
+   the "reached" look is expressible in CSS with no extra React state. */
+.deck-root .reveal .fragment[data-fragment-style="reached"] {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.deck-root .reveal .fragment.visible[data-fragment-style="reached"] {
+  background: var(--deck-accent);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Reveal hides an un-revealed fragment with `visibility: hidden`, which keeps
+   its box. That is what stops the steps list from reflowing as steps appear. */
+
+/* ── Entrance animation replay ──────────────────────────────────────────
+   The old hand-rolled shell remounted each slide with a fresh `key`, so the
+   `deck-*` entrance animations replayed every time a slide was reached — which
+   is what makes a retake look identical to the take before it.
+
+   Reveal keeps every slide in the DOM at once, so those animations would
+   otherwise run once at page load, while the slide is still hidden, and never
+   again. `Deck.tsx` adds this class on slide change and removes it a frame
+   later, which restarts them. */
+
+.deck-root .reveal .slides section.deck-replay *,
+.deck-root .reveal .slides section.deck-replay *::before,
+.deck-root .reveal .slides section.deck-replay *::after {
+  animation: none !important;
+}
+
+/* ── Chrome ─────────────────────────────────────────────────────────────
+   Controls, progress bar, and slide number, restyled from the stock grey to
+   the deck's own palette. See DESIGN.md > Components. */
+
+.deck-root .reveal .controls {
+  color: var(--deck-accent);
+}
+
+.deck-root .reveal .progress {
+  height: 4px;
+  color: var(--deck-accent);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.deck-root .reveal .slide-number {
+  background: transparent;
+  color: #71717a; /* meta — 4.83:1 on white, passes AA. */
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+/* Reveal fades chrome out during a transition; keep it steady so a retake
+   always looks the same. */
+.deck-root .reveal .controls,
+.deck-root .reveal .progress,
+.deck-root .reveal .slide-number {
+  opacity: 1 !important;
+}
+
+/* ── Print / PDF export ────────────────────────────────────────────────
+   `?print-pdf` puts Reveal into a paged layout. Keep the ink true and drop the
+   on-screen chrome from the exported file. */
+
+@media print {
+  .deck-root .reveal .controls,
+  .deck-root .reveal .progress {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-root .reveal .fragment,
+  .deck-root .reveal .slides section {
+    transition-duration: 0.001s !important;
+  }
+}

@@ -1,0 +1,147 @@
+---
+title: How to Make AI Watch a YouTube Video
+description: >-
+  Make AI watch a YouTube video with Claude or Codex. Install the watch-video
+  skill from GitHub, paste a URL, and get frame-by-frame hooks or a playbook.
+tags:
+  - beginner
+  - skills
+  - claude
+published: "2026-08-25"
+updated: "2026-08-25"
+faq:
+  - question: >-
+      Can I do this if I'm not technical?
+    answer: >-
+      Yes. You need Claude Code or Codex, then two plugin commands from the
+      GitHub repo and a setup wizard that checks ffmpeg and yt-dlp for you. You
+      paste a YouTube link and ask a real question. You do not write any code.
+  - question: >-
+      How is this different from pasting a YouTube transcript into Claude?
+    answer: >-
+      A transcript is the spoken words. This skill extracts frames and audio,
+      so Claude can see the on-screen text, the jump cuts, and the first three
+      seconds. Use /watch-video when the visual is part of why the video works.
+  - question: >-
+      Does /watch-video work with TikTok or Instagram, or only YouTube?
+    answer: >-
+      YouTube URLs work as a paste-a-link path. Local video files work too, so
+      you can download a TikTok or Reel as an mp4 and pass the file path. I
+      would not count on pasting an Instagram or TikTok URL the same way you
+      paste a YouTube link.
+  - question: >-
+      Do I need Claude Code, or does this work in regular Claude chat?
+    answer: >-
+      You need an agent that can install the plugin and run the video tools,
+      which for me is Claude Code and Codex. Regular claude.ai chat cannot
+      install this plugin or extract frames off a YouTube URL on its own. Set
+      up Claude Code first, then come back to this.
+---
+
+This is a skill that lets Claude or Codex watch long videos for me. I paste a YouTube link instead of spending the entire hour watching the full thing.
+
+If you're a creator, marketer, founder, or just someone who wants to learn better, this is for you. I use it when I want to analyze other creators in the space, or learn something new for my business or my life.
+
+Need Claude Code first? Here's the [5-minute setup](/ai/how-to-setup-claude-code). New to skills? Start with [What is a Skill?](/ai/what-is-a-skill).
+
+## How do you download it from GitHub?
+
+The skill lives here: [github.com/jordanrendric/claude-video-vision](https://github.com/jordanrendric/claude-video-vision)
+
+Skip the zip download. Point Claude Code at that GitHub repo and install it as a plugin, the same way you'd [install a marketing skill pack](/ai/how-to-install-free-marketing-skills-claude).
+
+**1. Open the GitHub repo.**
+
+Go to [github.com/jordanrendric/claude-video-vision](https://github.com/jordanrendric/claude-video-vision) and copy the URL. That's the source you'll add in Claude Code.
+
+**2. Open Claude Code.**
+
+If you don't have it yet, [set up Claude Code](/ai/how-to-setup-claude-code) first. Regular claude.ai chat cannot install this plugin.
+
+**3. Add the GitHub repo as a plugin marketplace.**
+
+In Claude Code, run this by itself, then wait for it to finish:
+
+```
+/plugin marketplace add https://github.com/jordanrendric/claude-video-vision
+```
+
+This tells Claude Code it can install plugins from that GitHub repo. Don't paste the next command in the same message.
+
+**4. Install the plugin.**
+
+```
+/plugin install claude-video-vision
+```
+
+Run that by itself too. The first time you use it, the video server installs in the background via npm. You don't build anything.
+
+**5. Run the setup wizard.**
+
+```
+/setup-video-vision
+```
+
+It checks for ffmpeg (pulls the frames) and yt-dlp (lets you paste a YouTube URL instead of a file on your computer). If either is missing, the wizard tells you what to install. On a Mac that's usually `brew install ffmpeg` and `brew install yt-dlp`.
+
+It also asks which audio backend you want. Gemini is the easiest free start. You need an API key from [ai.google.dev](https://ai.google.dev/gemini-api/docs/api-key). Local Whisper stays on your machine. OpenAI Whisper is paid.
+
+I also run `/watch-video` in Codex once the skill is on that machine. The two `/plugin` commands above are the Claude Code path, which is how this GitHub repo is meant to be installed.
+
+If you already clone repos: `git clone` that URL, then start Claude Code with `--plugin-dir` pointed at the folder. Most people should use the `/plugin` commands instead.
+
+## What do you type after it's installed?
+
+```
+/watch-video [youtube URL]
+```
+
+One command, one link. A question after the URL gets a better answer:
+
+```
+/watch-video https://www.youtube.com/watch?v=... "tell me why the opening works"
+```
+
+You can pass a local file too, like `~/Downloads/tutorial.mp4`, if you already have the video.
+
+It analyzes frame by frame what's happening. That's how it can tell me which spoken and visual hooks work, why the editing works, or turn the video into a playbook so I learn faster.
+
+If you want a study loop from a playlist (outline, quiz, tutor), that's [How to Turn a YouTube Playlist into an AI Tutor](/ai/how-to-turn-youtube-playlist-into-ai-tutor). That one is sources and practice. This one watches, including what was on screen.
+
+> **Key insight:** It looks at frames and audio together, so it can talk about the visual hook and the cut.
+
+## What can you use watch-video for?
+
+Three jobs I use it for, with the prompt I'd paste.
+
+### Analyze other creators
+
+This is the one I reach for first. Paste a competitor or a creator you respect. Ask for the parts a caption file never mentions: what's on screen in the first three seconds, where they cut, what the text overlay says.
+
+```
+/watch-video [YouTube URL] "Break down the spoken hooks and the visual hooks. What is on screen in the first 3 seconds? Why does the editing work? What would I steal for my own content?"
+```
+
+### Learn something without sitting through the hour
+
+Long tutorial, lecture, product demo, conference talk. Tell it what you need to walk away with. Ask for the framework and what to try this week, not a recap of the whole video.
+
+```
+/watch-video [YouTube URL] "I don't need a recap. Give me the framework, the steps in order, and what I should try this week."
+```
+
+### Turn a video into a playbook
+
+Once it has watched, ask it to package the useful parts into something you can run again, instead of a summary you won't reopen.
+
+```
+/watch-video [YouTube URL] "Turn what you watched into a playbook I can run: steps, the prompts I'd reuse, and what good looks like at each stage."
+```
+
+Here are some related guides to check out:
+
+1. [What is a Skill?](/ai/what-is-a-skill)
+2. [How to Setup Claude Code (5-Min Guide for Non-Techies)](/ai/how-to-setup-claude-code)
+3. [How to Turn a YouTube Playlist into an AI Tutor](/ai/how-to-turn-youtube-playlist-into-ai-tutor)
+4. [How to Install Free Marketing Skills for Claude](/ai/how-to-install-free-marketing-skills-claude)
+5. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)

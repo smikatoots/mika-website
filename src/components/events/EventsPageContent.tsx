@@ -5,6 +5,8 @@ import type { CSSProperties, ReactNode } from "react";
 import { trackGa4Event } from "@/lib/analytics/ga4";
 import { siteLink } from "@/lib/ui/site-styles";
 
+import { buttonStyle } from "@/components/ui/buttonStyle";
+
 const HOST_HREF =
   "mailto:mika@kingscrosslabs.com?subject=" +
   encodeURIComponent("Host an event");
@@ -47,21 +49,7 @@ const faqs: { question: string; answer: ReactNode }[] = [
   },
 ];
 
-const ctaButtonStyle: CSSProperties = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: "8px",
-  background: "var(--mr-coral)",
-  color: "#fff",
-  fontFamily: "var(--mr-font-body)",
-  fontSize: "var(--mr-text-body)",
-  fontWeight: "var(--mr-weight-semi)",
-  padding: "16px 30px",
-  borderRadius: "var(--mr-radius-pill)",
-  boxShadow: "var(--mr-shadow-cta)",
-  textDecoration: "none",
-  whiteSpace: "nowrap",
-};
+const ctaButtonStyle: CSSProperties = buttonStyle({ size: "lg" });
 
 function HostCta({ location }: { location: string }) {
   return (

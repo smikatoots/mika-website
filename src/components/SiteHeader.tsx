@@ -7,6 +7,8 @@ import { LearnAiNavDropdown } from "@/components/LearnAiNavDropdown";
 import { learnAiNavItems, siteHeaderNavItems } from "@/lib/site-nav";
 import { InternalLink } from "@/components/ui/InternalLink";
 
+import { buttonStyle } from "@/components/ui/buttonStyle";
+
 const navLinkStyle = {
   fontFamily: "var(--mr-font-body)",
   fontSize: "var(--mr-text-sm)",
@@ -126,20 +128,7 @@ export function SiteHeader() {
           <InternalLink
             href="/#contact"
             className="mr-pressable ml-3 shrink-0 whitespace-nowrap"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              background: "var(--mr-coral)",
-              color: "#fff",
-              fontFamily: "var(--mr-font-body)",
-              fontSize: "var(--mr-text-sm)",
-              fontWeight: "var(--mr-weight-semi)",
-              padding: "8px 18px",
-              borderRadius: "var(--mr-radius-pill)",
-              boxShadow: "var(--mr-shadow-cta)",
-              textDecoration: "none",
-            }}
+            style={buttonStyle({ size: "xs" })}
           >
             Work with me
           </InternalLink>
@@ -254,16 +243,8 @@ export function SiteHeader() {
 
           <InternalLink
             href="/#contact"
-            className="mr-pressable mt-3 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center"
-            style={{
-              background: "var(--mr-coral)",
-              color: "#fff",
-              fontFamily: "var(--mr-font-body)",
-              fontSize: "var(--mr-text-sm)",
-              fontWeight: "var(--mr-weight-semi)",
-              boxShadow: "var(--mr-shadow-cta)",
-              textDecoration: "none",
-            }}
+            className="mr-pressable mt-3 text-center"
+            style={buttonStyle({ size: "sm", fullWidth: true })}
             onClick={closeMenu}
           >
             Work with me

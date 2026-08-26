@@ -7,9 +7,10 @@ type DemographicSlice = {
   percent: number;
 };
 
-/** Bright, distinct slices — accent pink first, then bold complements. */
+/** Categorical data palette. Brand Coral leads; the rest are chart-only hues
+ *  chosen for separability, not brand colors. See DESIGN.md > Colors. */
 const PIE_COLORS = [
-  "#fd4869",
+  "#E8425A",
   "#2563eb",
   "#f59e0b",
   "#10b981",

@@ -51,7 +51,7 @@ export function PyramidSvg({ className }: { className?: string }) {
 export function PyramidSlide() {
   return (
     <div className="deck-fade flex h-full w-full items-center justify-center px-4 py-4">
-      <PyramidSvg className="h-[min(94vh,58rem)] w-auto max-w-[96vw]" />
+      <PyramidSvg className="h-[44rem] w-auto max-w-[84rem]" />
     </div>
   );
 }
@@ -95,34 +95,29 @@ export function CtaSlide({
   /** Independent scale for the `sub` line. Defaults to `size`. */
   subSize?: "sm" | "md" | "mlg" | "lg";
   /**
-   * Render the headline as plain heading text (no salmon pill) so only the
+   * Render the headline as plain heading text (no coral pill) so only the
    * words you wrap in `<HL>`/`<A>` get the accent treatment.
    */
   headlinePlain?: boolean;
   /** Widen the text column (pairs with a larger preview). */
   textWide?: boolean;
 }) {
-  const promptSize =
-    size === "sm"
-      ? "text-5xl sm:text-6xl"
-      : size === "md" || size === "mlg"
-        ? "text-6xl sm:text-7xl"
-        : deckType.statement;
-  const headlineSize =
-    size === "sm"
-      ? "text-6xl sm:text-7xl"
-      : size === "md"
-        ? "text-7xl sm:text-8xl"
-        : size === "mlg"
-          ? deckType.statement
-          : deckType.display;
-  const subScale = subSize ?? size;
-  const subSizeClass =
-    subScale === "sm"
-      ? "text-5xl sm:text-6xl"
-      : subScale === "md" || subScale === "mlg"
-        ? "text-6xl sm:text-7xl"
-        : deckType.statement;
+  // One size per variant, and the headline pill is that size too. The pill
+  // used to run a step larger than the words around it; matching them lets the
+  // coral do the emphasising instead of the scale.
+  //
+  // Fixed sizes with no `sm:` variants: slides live on Reveal's fixed canvas,
+  // where a responsive variant keys off the window rather than the slide.
+  const SIZES = {
+    sm: "text-6xl",
+    md: "text-7xl",
+    mlg: "text-8xl",
+    lg: deckType.statement,
+  } as const;
+
+  const promptSize = SIZES[size];
+  const headlineSize = SIZES[size];
+  const subSizeClass = SIZES[subSize ?? size];
   const headlinePad =
     size === "sm"
       ? "my-4 px-7 py-3"
@@ -140,7 +135,7 @@ export function CtaSlide({
     >
       {prompt ? (
         <p
-          className={`deck-rise font-bold text-zinc-950 ${promptSize}`}
+          className={`deck-rise font-bold text-[var(--deck-ink)] ${promptSize}`}
           style={{ animationDelay: "0.05s" }}
         >
           {prompt}
@@ -155,7 +150,7 @@ export function CtaSlide({
         </div>
       ) : (
         <div
-          className={`deck-cta-pulse ${headlinePad} max-w-full text-balance break-words text-center leading-[1.04] rounded-2xl bg-[var(--deck-accent)] font-extrabold tracking-tight text-white shadow-[0_18px_50px_-12px_rgba(253,72,105,0.6)] ${headlineSize}`}
+          className={`deck-cta-pulse ${headlinePad} max-w-full text-balance break-words text-center leading-[1.04] rounded-2xl bg-[var(--deck-accent)] font-extrabold tracking-tight text-white shadow-[0_18px_50px_-12px_rgba(232,66,90,0.6)] ${headlineSize}`}
           style={{ animationDelay: "0.15s" }}
         >
           {headline}
