@@ -8,6 +8,16 @@ reasoning below, or the stated "revisit" condition has been met.
 Format per entry: what was raised, her decision, why, and (if relevant) when
 to revisit it.
 
+## Standing format preferences for future audit reports
+
+- **Include a weekly traffic timeline.** A line chart of weekly pageviews and
+  unique visitors over the trailing 180 days (PostHog `query-trends` on
+  `$pageview`, `total` + `dau` math, `interval: week`), styled to match the
+  audit report. Trim leading weeks with no tracking data rather than showing
+  them as zero, and mark the current (partial) week visually distinct — don't
+  let it read as a real drop-off. Added 2026-08-26; keep doing this on every
+  future audit without being asked again.
+
 ## 2026-08-26 audit — Build Your First Agent 101 revenue funnel
 
 - **Mobile visitors and the "Claude Desktop" requirement.** Raised as
