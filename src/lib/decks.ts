@@ -10,6 +10,61 @@ export const templateDeck = {
 /** Registry of presentation decks. Add a new entry when creating `/deck/<slug>`. */
 export const decks = [
   {
+    slug: "remotion-explainer-concept",
+    title: "Remotion Explainer — Explain a Concept",
+    date: "August 26",
+  },
+  {
+    slug: "remotion-explainer-product",
+    title: "Remotion Explainer — Explain a Product",
+    date: "August 26",
+  },
+  {
+    slug: "watch-video-skill",
+    title: "I Use a /watch-video Skill",
+    date: "August 26",
+  },
+  {
+    slug: "claude-academy",
+    title: "Claude Academy",
+    date: "August 26",
+  },
+  {
+    slug: "agents-skills-workflows",
+    title: "Agents vs. Skills vs. Workflows",
+    date: "August 26",
+  },
+  {
+    slug: "elon-musk-money-irrelevant",
+    title: "Elon Musk: AI Makes Money Irrelevant",
+    date: "August 26",
+  },
+  {
+    slug: "anthropic-president-degree",
+    title: "Anthropic President: The #1 Degree",
+    date: "August 26",
+  },
+  {
+    slug: "linkedin-economist-skill",
+    title: "LinkedIn's Chief Economist: What Matters More",
+    date: "August 26",
+  },
+  {
+    slug: "mark-cuban-philosophy",
+    title: "Mark Cuban: Don't Study Computer Science",
+    date: "August 26",
+  },
+  {
+    slug: "humanize-ai-text",
+    title: "How to Humanize Your AI Text",
+    date: "August 26",
+  },
+  {
+    slug: "sam-altman-right-question",
+    title: "The New No. 1 Ability — Sam Altman",
+    date: "August 26",
+  },
+  {
     slug: "create-brand-md",
     title: "How to Create a BRAND.md File",
     date: "August 25",
@@ -244,4 +299,4 @@ export const decks = [
 export type DeckSlug = (typeof decks)[number]["slug"];
 
 /** Deck dates, newest first — drives the grouping on /deck/all. */
-export const deckDates = ["August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;
+export const deckDates = ["August 26", "August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;

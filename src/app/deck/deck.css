@@ -115,6 +115,73 @@
   }
 }
 
+@keyframes deck-cycle-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  78% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  88% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+@keyframes deck-cycle-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  8% {
+    transform: scale(1.04);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  88% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+}
+
+@keyframes deck-cycle-fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .deck-rise {
   animation: deck-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -136,6 +203,30 @@
   display: inline-block;
   transform-origin: center;
   animation: deck-loop-pop 4s cubic-bezier(0.34, 1.56, 0.64, 1) both infinite;
+}
+
+/* Looping variants of the entrance animations: reveal, hold, clear, then a
+   beat of empty before restarting — so a diagram keeps re-explaining itself
+   while the slide is up instead of animating once and going static.
+   `transform-box: fill-box` keeps the transforms sane on SVG groups; a group
+   that already carries a `transform` attribute must be wrapped, since a CSS
+   transform would otherwise replace it. */
+.deck-cycle-rise,
+.deck-cycle-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.deck-cycle-rise {
+  animation: deck-cycle-rise 5s cubic-bezier(0.22, 1, 0.36, 1) both infinite;
+}
+
+.deck-cycle-pop {
+  animation: deck-cycle-pop 5s cubic-bezier(0.34, 1.56, 0.64, 1) both infinite;
+}
+
+.deck-cycle-fade {
+  animation: deck-cycle-fade 5s ease both infinite;
 }
 
 .deck-cta-pulse {
@@ -246,6 +337,9 @@
   .deck-pop,
   .deck-tier,
   .deck-loop-pop,
+  .deck-cycle-rise,
+  .deck-cycle-pop,
+  .deck-cycle-fade,
   .deck-cta-pulse,
   .deck-scale-tilt,
   .deck-underline-word::after,
