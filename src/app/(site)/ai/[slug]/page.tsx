@@ -93,11 +93,6 @@ export default async function AiGuidePage({ params }: Props) {
 
   return (
     <article className={mainArticle}>
-      <GuideEmailCapture
-        key={slug}
-        guideSlug={slug}
-        guideTitle={frontmatter.title}
-      />
       {!isComingSoon ? (
         <ArticleStructuredData
           type="TechArticle"
@@ -148,6 +143,11 @@ export default async function AiGuidePage({ params }: Props) {
           ) : null}
         </div>
         <AuthorByline />
+        <GuideEmailCapture
+          key={slug}
+          guideSlug={slug}
+          guideTitle={frontmatter.title}
+        />
       </header>
       {isComingSoon ? (
         <AiGuideComingSoonBlock description={frontmatter.description} />

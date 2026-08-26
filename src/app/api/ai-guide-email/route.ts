@@ -42,15 +42,25 @@ export async function POST(request: Request) {
 
     const resend = new Resend(requiredEnv("RESEND_API_KEY"));
     const guideUrl = `${SITE_URL}/ai/${guideSlug}`;
+    const replyTo =
+      process.env.RESEND_REPLY_TO_EMAIL?.trim() || "mika@kingscrosslabs.com";
     const sentEmail = await resend.emails.send({
       from:
         process.env.RESEND_FROM_EMAIL?.trim() ||
         "Mika Reyes <guides@updates.mikareyes.com>",
       to: email,
-      replyTo:
-        process.env.RESEND_REPLY_TO_EMAIL?.trim() ||
-        "mika@kingscrosslabs.com",
-      ...buildAiGuideEmail({ guideTitle: guide.title, guideUrl }),
+      replyTo,
+      // mailto rather than a URL: the newsletter import is manual, so an
+      // unsubscribe endpoint would have nothing to write to. A reply lands in
+      // the same inbox that already handles these by hand.
+      headers: {
+        "List-Unsubscribe": `<mailto:${replyTo}?subject=Unsubscribe>`,
+      },
+      ...buildAiGuideEmail({
+        guideTitle: guide.title,
+        guideUrl,
+        unsubscribeEmail: replyTo,
+      }),
     });
     if (sentEmail.error) throw new Error(sentEmail.error.message);
 
