@@ -3,9 +3,15 @@
 import Image from "next/image";
 import { useEffect, useId, useState } from "react";
 
+import posthog from "posthog-js";
+
 import { LearnAiNavDropdown } from "@/components/LearnAiNavDropdown";
 import { learnAiNavItems, siteHeaderNavItems } from "@/lib/site-nav";
 import { InternalLink } from "@/components/ui/InternalLink";
+import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
+
+const HEADER_CTA_HREF = "/build-your-first-agent-101";
+const HEADER_CTA_LABEL = "Build Your First Agent";
 
 const navLinkStyle = {
   fontFamily: "var(--mr-font-body)",
@@ -123,8 +129,8 @@ export function SiteHeader() {
             );
           })}
 
-          <InternalLink
-            href="/#contact"
+          <Ga4TrackedInternalLink
+            href={HEADER_CTA_HREF}
             className="mr-pressable ml-3 shrink-0 whitespace-nowrap"
             style={{
               display: "inline-flex",
@@ -140,9 +146,22 @@ export function SiteHeader() {
               boxShadow: "var(--mr-shadow-cta)",
               textDecoration: "none",
             }}
+            ga4EventName="header_cta_clicked"
+            ga4Params={{
+              cta_label: HEADER_CTA_LABEL,
+              cta_location: "header_desktop",
+              destination_url: HEADER_CTA_HREF,
+              link_type: "internal_course_cta",
+            }}
+            onClick={() => {
+              posthog.capture("header_cta_clicked", {
+                cta_label: HEADER_CTA_LABEL,
+                cta_location: "header_desktop",
+              });
+            }}
           >
-            Work with me
-          </InternalLink>
+            {HEADER_CTA_LABEL}
+          </Ga4TrackedInternalLink>
         </nav>
 
         <button
@@ -252,8 +271,8 @@ export function SiteHeader() {
             );
           })}
 
-          <InternalLink
-            href="/#contact"
+          <Ga4TrackedInternalLink
+            href={HEADER_CTA_HREF}
             className="mr-pressable mt-3 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center"
             style={{
               background: "var(--mr-coral)",
@@ -264,10 +283,23 @@ export function SiteHeader() {
               boxShadow: "var(--mr-shadow-cta)",
               textDecoration: "none",
             }}
-            onClick={closeMenu}
+            ga4EventName="header_cta_clicked"
+            ga4Params={{
+              cta_label: HEADER_CTA_LABEL,
+              cta_location: "header_mobile",
+              destination_url: HEADER_CTA_HREF,
+              link_type: "internal_course_cta",
+            }}
+            onClick={() => {
+              closeMenu();
+              posthog.capture("header_cta_clicked", {
+                cta_label: HEADER_CTA_LABEL,
+                cta_location: "header_mobile",
+              });
+            }}
           >
-            Work with me
-          </InternalLink>
+            {HEADER_CTA_LABEL}
+          </Ga4TrackedInternalLink>
         </div>
       </nav>
     </header>
