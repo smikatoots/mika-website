@@ -1,0 +1,96 @@
+/*
+ * Scoped to the /experiments/motionsites-sparkform recreation. Everything here
+ * hangs off `.sparkform`, so importing this file cannot leak into another page.
+ *
+ * Palette maps the reference's orange/green/blue poster to this brand:
+ * teal ground, white display type, one coral stripe as the single point of
+ * heat, ink as the back stripe. See DESIGN.md > colors.
+ */
+.sparkform {
+  --sf-ground: #0e8c8c; /* teal — the flood */
+  --sf-ink: #111111; /* back stripe + page ground */
+  --sf-coral: #e8425a; /* the one point of heat */
+  --sf-white: #ffffff;
+  /* One loop of the marquee. Lower is faster — see the track rule below. */
+  --sf-marquee-duration: 7s;
+
+  background: var(--sf-ink);
+  /* Deliberately NOT `overflow-x: hidden`. Any overflow value other than
+     `visible` turns an element into a scroll container, and `position: sticky`
+     inside a scroll container sticks to THAT box rather than the viewport — so
+     the pinned title would quietly scroll away. The reference gets away with it
+     because it sets the rule on `body`, whose overflow propagates to the
+     viewport. Here the sideways bleed is clipped by the two wrappers inside the
+     hero instead, neither of which is an ancestor of the sticky element. */
+}
+
+.sparkform-title {
+  font-family: var(--mr-font-display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 0.85;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.sparkform-word {
+  font-family: var(--mr-font-body);
+  font-weight: 500;
+  line-height: 1.1;
+  /* Matches the reference: short enough to feel welded to the scroll position
+     rather than animated, long enough to smooth per-frame jitter. */
+  transition: transform 0.05s linear;
+}
+
+/*
+ * The figure is sized off the section's height (115% of 120vh) so it always
+ * overhangs the viewport and stays welded to the bottom edge. That is right on
+ * a landscape screen and wrong on a phone: at a 375×812 viewport, 138vh is
+ * 1121px tall, which puts the subject at roughly 1.5× the screen WIDTH and
+ * swallows the title and the word columns. Below the breakpoint we size off the
+ * width instead, so the figure bleeds just past both edges and no further.
+ */
+.sparkform-figure {
+  height: 115%;
+  max-height: 115%;
+  min-height: 80%;
+}
+
+@media (max-width: 767px) {
+  .sparkform-figure {
+    height: 258vw;
+    max-height: 115%;
+    min-height: 0;
+  }
+}
+
+@keyframes sparkform-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/*
+ * Perceived speed is pixels per second, not the duration on its own: the
+ * keyframe travels -50% of the track, so a shorter phrase covers less ground
+ * and reads SLOWER at the same duration. Retune this whenever the marquee
+ * wording changes rather than assuming the old number still holds.
+ */
+.sparkform-marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: sparkform-marquee-scroll var(--sf-marquee-duration, 7s) linear
+    infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkform-marquee-track {
+    animation: none;
+  }
+  .sparkform-word {
+    transition: none;
+  }
+}
