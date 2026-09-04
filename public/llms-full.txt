@@ -6,6 +6,7 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Make an Explainer Video with AI in 5 Minutes](https://mikareyes.com/ai/how-to-make-explainer-video-with-ai): Make an explainer video with AI in about 5 minutes. Install the Remotion plugin in Claude Code or Codex, paste one website link, and get a rendered MP4.
 - [How to Humanize AI Text and Make It Sound Like You](https://mikareyes.com/ai/how-to-humanize-ai-text): Humanize AI text with two editing skills, real writing samples, and a better drafting setup so your scripts, emails, and DMs sound like you.
 
 - [How to use Claude Academy and which courses to take first](https://mikareyes.com/ai/how-to-use-claude-academy): How to use Claude Academy and which courses to take first: start with AI Fluency, then Cowork or Code, then filter Use cases to your job. It's free.
