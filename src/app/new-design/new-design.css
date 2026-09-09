@@ -1,0 +1,367 @@
+/* ─────────────────────────────────────────────────────────────
+   New design prototype — "designer scrapbook desk"
+
+   Scoped entirely under `.nd-root` so nothing here can leak into
+   the live site. Tokens follow the Streamtime reference with two
+   substitutions to Mika's approved identity colors:
+     Hot Pink    → Coral / salmon  #E8425A
+     Spring Green → Teal / turquoise #0E8C8C
+
+   Typography keeps the reference's mechanism — one weight (400),
+   hierarchy built from scale and tight negative tracking — but
+   uses the brand's own website faces (Bricolage + Hanken) rather
+   than Inter, which BRAND.md reserves for the decks.
+   ───────────────────────────────────────────────────────────── */
+
+.nd-root {
+  /* Colors */
+  --nd-sun-yellow:  #ffde3b;
+  --nd-salmon:      #E8425A;   /* was Hot Pink */
+  --nd-salmon-deep: #CE3149;
+  --nd-lime:        #c1f32b;
+  --nd-periwinkle:  #6483ff;
+  --nd-turquoise:   #0E8C8C;   /* was Spring Green */
+  --nd-soft-salmon: #F4A6AE;   /* was Bubblegum */
+  --nd-linen:       #f1e8de;
+  --nd-paper:       #fbf8f5;
+  --nd-white:       #ffffff;
+  --nd-charcoal:    #2f2c29;
+  --nd-stone:       #c3b7ac;
+  --nd-sand:        #eadcce;
+  --nd-ink:         #000000;
+  --nd-fog:         #999999;
+
+  /* Type families */
+  --nd-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --nd-standard: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale — every size is 400 weight */
+  --nd-text-caption: 12px;
+  --nd-text-body: 16px;
+  --nd-text-body-lg: 18px;
+  --nd-text-subheading: 28px;
+  --nd-text-heading: 30px;
+  --nd-text-heading-lg: 68px;
+  --nd-text-display: 100px;
+
+  /* Radii — 5px is structural, pills are button-exclusive */
+  --nd-radius: 5px;
+  --nd-radius-button: 96px;
+  --nd-radius-cta: 160px;
+
+  /* Elevation — nav and floating panels only */
+  --nd-shadow-nav: rgba(0, 0, 0, 0.13) 1px 0 5px 0, rgba(0, 0, 0, 0.08) 2px 2px 4px 1px;
+
+  --nd-max: 1200px;
+
+  min-height: 100vh;
+  background: var(--nd-linen);
+  color: var(--nd-ink);
+  font-family: var(--nd-standard);
+  font-weight: 400;
+  font-size: var(--nd-text-body);
+  line-height: 1.2;
+  letter-spacing: -0.08em;
+  /* The whole system is 400. Nothing below may reintroduce a bold. */
+  font-synthesis-weight: none;
+}
+
+.nd-root *,
+.nd-root *::before,
+.nd-root *::after {
+  box-sizing: border-box;
+}
+
+.nd-root h1,
+.nd-root h2,
+.nd-root h3,
+.nd-root p,
+.nd-root figure {
+  margin: 0;
+  font-weight: 400;
+}
+
+.nd-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nd-root img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Type roles ─────────────────────────────────────────── */
+
+.nd-display {
+  font-family: var(--nd-display);
+  font-size: clamp(52px, 11vw, var(--nd-text-display));
+  line-height: 1;
+  letter-spacing: -0.014em;
+}
+
+.nd-heading-lg {
+  font-family: var(--nd-display);
+  font-size: clamp(38px, 7vw, var(--nd-text-heading-lg));
+  line-height: 1;
+  letter-spacing: -0.034em;
+}
+
+.nd-heading {
+  font-family: var(--nd-display);
+  font-size: clamp(24px, 4vw, var(--nd-text-heading));
+  line-height: 1.1;
+  letter-spacing: -0.034em;
+}
+
+.nd-subheading {
+  font-family: var(--nd-display);
+  font-size: clamp(22px, 3.4vw, var(--nd-text-subheading));
+  line-height: 1.1;
+  letter-spacing: -0.057em;
+}
+
+.nd-body-lg {
+  font-size: var(--nd-text-body-lg);
+  line-height: 1.35;
+  letter-spacing: -0.05em;
+}
+
+.nd-body {
+  font-size: var(--nd-text-body);
+  line-height: 1.35;
+  letter-spacing: -0.05em;
+}
+
+.nd-caption {
+  font-size: var(--nd-text-caption);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Layout ─────────────────────────────────────────────── */
+
+.nd-wrap {
+  max-width: var(--nd-max);
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+.nd-section {
+  padding-block: clamp(56px, 9vw, 96px);
+}
+
+/* ── Nav ────────────────────────────────────────────────── */
+
+.nd-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--nd-linen);
+  box-shadow: var(--nd-shadow-nav);
+}
+
+.nd-nav-inner {
+  max-width: var(--nd-max);
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nd-navmark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nd-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--nd-sun-yellow);
+  border: 1px solid var(--nd-ink);
+  display: grid;
+  place-items: center;
+  font-family: var(--nd-display);
+  font-size: 15px;
+  letter-spacing: -0.05em;
+  flex-shrink: 0;
+}
+
+.nd-menu-btn {
+  background: var(--nd-ink);
+  color: var(--nd-white);
+  border: none;
+  border-radius: var(--nd-radius); /* the only squared nav element */
+  padding: 8px 18px;
+  font-family: inherit;
+  font-size: var(--nd-text-body);
+  letter-spacing: -0.08em;
+  cursor: pointer;
+}
+
+.nd-navlinks {
+  display: none;
+  gap: 6px;
+  align-items: center;
+}
+
+.nd-navlink {
+  padding: 8px 14px;
+  border-radius: var(--nd-radius-button);
+  letter-spacing: -0.06em;
+  transition: background 0.15s ease;
+}
+
+.nd-navlink:hover {
+  background: var(--nd-turquoise);
+  color: var(--nd-ink);
+}
+
+.nd-navactions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+
+.nd-cta {
+  display: inline-block;
+  background: var(--nd-sun-yellow);
+  color: var(--nd-ink);
+  border: 1px solid var(--nd-ink);
+  border-radius: var(--nd-radius-cta);
+  padding: 16px 24px;
+  font-size: var(--nd-text-body);
+  letter-spacing: -0.08em;
+  transition: transform 0.15s ease;
+}
+
+.nd-cta:hover {
+  transform: translateY(-2px);
+}
+
+.nd-ghost {
+  display: inline-block;
+  background: var(--nd-white);
+  color: var(--nd-ink);
+  border: 1px solid var(--nd-ink);
+  border-radius: var(--nd-radius-button);
+  padding: 8px 20px;
+  font-size: var(--nd-text-body);
+  letter-spacing: -0.08em;
+  transition: transform 0.15s ease;
+}
+
+.nd-ghost:hover {
+  transform: translateY(-2px);
+}
+
+.nd-ghost-dark {
+  background: transparent;
+  color: var(--nd-white);
+  border-color: var(--nd-white);
+}
+
+/* ── Cards ──────────────────────────────────────────────── */
+
+.nd-card {
+  border-radius: var(--nd-radius);
+  padding: 24px;
+}
+
+.nd-card-paper {
+  background: var(--nd-paper);
+}
+
+.nd-card img {
+  border-radius: var(--nd-radius);
+}
+
+/* ── Tag pill ───────────────────────────────────────────── */
+
+.nd-tag {
+  display: inline-block;
+  border-radius: var(--nd-radius);
+  padding: 5px 8px;
+  font-size: var(--nd-text-caption);
+  letter-spacing: -0.04em;
+}
+
+/* ── Hairline ───────────────────────────────────────────── */
+
+.nd-rule {
+  height: 1px;
+  background: var(--nd-ink);
+  border: 0;
+  margin: 0;
+}
+
+/* ── Decorative shapes — atmosphere, not icons ──────────── */
+
+.nd-shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.nd-circle {
+  border-radius: 50%;
+}
+
+.nd-triangle {
+  width: 0;
+  height: 0;
+  border-left: var(--s, 40px) solid transparent;
+  border-right: var(--s, 40px) solid transparent;
+  border-bottom: calc(var(--s, 40px) * 1.6) solid var(--c, var(--nd-salmon));
+}
+
+/* ── Dark editorial band ────────────────────────────────── */
+
+.nd-dark {
+  background: var(--nd-charcoal);
+  color: var(--nd-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Grids ──────────────────────────────────────────────── */
+
+.nd-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .nd-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1000px) {
+  .nd-grid { grid-template-columns: repeat(4, 1fr); }
+  .nd-navlinks { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nd-root * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Two-up editorial split — stacks on small screens. */
+.nd-split {
+  display: grid;
+  gap: clamp(24px, 4vw, 40px);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .nd-split { grid-template-columns: 1fr 1fr; }
+}
