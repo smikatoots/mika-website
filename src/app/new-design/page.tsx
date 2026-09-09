@@ -103,55 +103,30 @@ const contactTypes = [
 ];
 
 /** One wordmark letter, with an optional cut-paper shape tucked behind it.
-    The shape is deliberately smaller than the glyph and offset, so it reads as
-    a sticker pressed onto the page rather than a highlight over the letter. */
+    Placement is driven by the ink-band tokens on `.nd-display`, so the shapes
+    stay on the glyphs if the display face is ever swapped again. */
 function Letter({
   char,
   shape,
+  color,
 }: {
   char: string;
-  shape?: React.ReactNode;
+  shape?: "dot" | "swatch";
+  color?: string;
 }) {
   return (
-    <span style={{ position: "relative", display: "inline-block" }}>
+    <span className="nd-letter">
       {shape ? (
-        <span aria-hidden="true" style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-          {shape}
-        </span>
+        <span
+          aria-hidden="true"
+          className={`nd-letter-shape nd-letter-${shape}`}
+          style={{ ["--c" as string]: color }}
+        />
       ) : null}
-      <span style={{ position: "relative", zIndex: 1 }}>{char}</span>
+      <span className="nd-letter-glyph">{char}</span>
     </span>
   );
 }
-
-const dot = (color: string) => (
-  <span
-    className="nd-circle"
-    style={{
-      position: "absolute",
-      width: "0.44em",
-      height: "0.44em",
-      background: color,
-      top: "-0.04em",
-      left: "-0.14em",
-    }}
-  />
-);
-
-const swatch = (color: string) => (
-  <span
-    style={{
-      position: "absolute",
-      width: "0.46em",
-      height: "0.34em",
-      background: color,
-      borderRadius: "var(--nd-radius)",
-      bottom: "0.02em",
-      right: "-0.12em",
-      transform: "rotate(-7deg)",
-    }}
-  />
-);
 
 export default function NewDesignPage() {
   return (
@@ -169,16 +144,16 @@ export default function NewDesignPage() {
             className="nd-display"
             style={{ textAlign: "center", marginTop: "clamp(24px,4vw,40px)" }}
           >
-            <Letter char="M" shape={dot("var(--nd-sun-yellow)")} />
+            <Letter char="M" shape="dot" color="var(--nd-sun-yellow)" />
             <Letter char="I" />
-            <Letter char="K" shape={swatch("var(--nd-turquoise)")} />
+            <Letter char="K" shape="swatch" color="var(--nd-turquoise)" />
             <Letter char="A" />
             <span style={{ display: "inline-block", width: "0.3em" }} />
-            <Letter char="R" shape={dot("var(--nd-soft-salmon)")} />
+            <Letter char="R" shape="dot" color="var(--nd-soft-salmon)" />
             <Letter char="E" />
-            <Letter char="Y" shape={swatch("var(--nd-lime)")} />
+            <Letter char="Y" shape="swatch" color="var(--nd-lime)" />
             <Letter char="E" />
-            <Letter char="S" shape={dot("var(--nd-periwinkle)")} />
+            <Letter char="S" shape="dot" color="var(--nd-periwinkle)" />
           </h1>
 
           <p
@@ -314,39 +289,38 @@ export default function NewDesignPage() {
       <section className="nd-dark nd-section">
         {/* Collage atmosphere */}
         <span
-          className="nd-shape nd-circle"
+          className="nd-shape nd-circle nd-atmos"
           aria-hidden="true"
-          style={{ width: "120px", height: "120px", background: "var(--nd-sun-yellow)", top: "8%", left: "4%" }}
+          style={{ width: "110px", height: "110px", background: "var(--nd-sun-yellow)", top: "10%", left: "20px" }}
         />
         <span
-          className="nd-shape nd-triangle"
+          className="nd-shape nd-triangle nd-atmos"
           aria-hidden="true"
-          style={{ ["--s" as string]: "42px", ["--c" as string]: "var(--nd-salmon)", top: "18%", right: "8%", transform: "rotate(-14deg)" }}
+          style={{ ["--s" as string]: "40px", ["--c" as string]: "var(--nd-salmon)", top: "20%", right: "28px", transform: "rotate(-14deg)" }}
         />
         <span
-          className="nd-shape"
+          className="nd-shape nd-atmos"
           aria-hidden="true"
           style={{
-            width: "150px",
-            height: "90px",
+            width: "140px",
+            height: "86px",
             background: "var(--nd-periwinkle)",
             borderRadius: "var(--nd-radius)",
-            bottom: "10%",
-            left: "7%",
+            bottom: "12%",
+            left: "24px",
             transform: "rotate(-8deg)",
-            opacity: 0.9,
           }}
         />
         <span
-          className="nd-shape"
+          className="nd-shape nd-atmos"
           aria-hidden="true"
           style={{
             width: "110px",
             height: "70px",
             background: "var(--nd-turquoise)",
             borderRadius: "var(--nd-radius)",
-            bottom: "16%",
-            right: "6%",
+            bottom: "18%",
+            right: "24px",
             transform: "rotate(11deg)",
           }}
         />

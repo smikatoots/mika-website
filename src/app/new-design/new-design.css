@@ -8,9 +8,9 @@
      Spring Green → Teal / turquoise #0E8C8C
 
    Typography keeps the reference's mechanism — one weight (400),
-   hierarchy built from scale and tight negative tracking — but
-   uses the brand's own website faces (Bricolage + Hanken) rather
-   than Inter, which BRAND.md reserves for the decks.
+   hierarchy built from scale and tight negative tracking. Headings
+   are set in Satoshi, body copy in Hanken Grotesk. Satoshi is not
+   yet an approved website face in BRAND.md; see layout.tsx.
    ───────────────────────────────────────────────────────────── */
 
 .nd-root {
@@ -31,8 +31,9 @@
   --nd-ink:         #000000;
   --nd-fog:         #999999;
 
-  /* Type families */
-  --nd-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  /* Type families — Satoshi carries every heading, Hanken every paragraph.
+     Both run at 400 only; hierarchy comes from scale and tracking. */
+  --nd-display: var(--nd-font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --nd-standard: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale — every size is 400 weight */
@@ -364,4 +365,65 @@
 
 @media (min-width: 900px) {
   .nd-split { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Wordmark letter decoration ─────────────────────────────
+   The shapes tuck behind individual glyphs, so they have to be
+   anchored to the ink, not to the line box — a line box includes
+   ascender and descender slack that shifts with every typeface.
+
+   These two numbers are the whole contract, measured for Satoshi
+   at the display size: where the cap top and the baseline sit,
+   as a fraction of the em, below the letter span's top edge.
+   Re-measure them if the display face changes and every shape
+   follows automatically. */
+.nd-display {
+  --nd-cap-top: 0.114em;
+  --nd-baseline: 0.83em;
+}
+
+.nd-letter {
+  position: relative;
+  display: inline-block;
+}
+
+.nd-letter-shape {
+  position: absolute;
+  z-index: 0;
+  background: var(--c);
+}
+
+/* Sticker straddling the glyph's top-left corner. */
+.nd-letter-dot {
+  width: 0.44em;
+  height: 0.44em;
+  border-radius: 50%;
+  top: calc(var(--nd-cap-top) - 0.16em);
+  left: -0.15em;
+}
+
+/* Torn swatch sitting on the baseline at the glyph's right edge. */
+.nd-letter-swatch {
+  width: 0.48em;
+  height: 0.34em;
+  border-radius: var(--nd-radius);
+  top: calc(var(--nd-baseline) - 0.19em);
+  right: -0.12em;
+  transform: rotate(-7deg);
+}
+
+.nd-letter-glyph {
+  position: relative;
+  z-index: 1;
+}
+
+/* Collage atmosphere in the dark band. These are decoration, so they must
+   never land on the headline — white text over a yellow circle is
+   unreadable. The heading column is capped at 820px inside a 1152px wrap,
+   which only leaves real margin to place them in from ~1200px up. Below
+   that there is no safe gutter, so they are simply not drawn. */
+.nd-atmos { display: none; }
+
+@media (min-width: 1200px) {
+  .nd-atmos { display: block; }
 }
