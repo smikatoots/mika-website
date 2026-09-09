@@ -34,6 +34,7 @@
   --nd-sand:        #eadcce;
   --nd-ink:         #000000;
   --nd-fog:         #999999;
+  --nd-purple:      #6B4DE6;   /* white type only — black is 3.89:1 on it */
 
   /* Type families — Satoshi carries every heading, Hanken every paragraph.
      Headings run semibold; 600 resolves to Satoshi Bold, since the family
@@ -187,6 +188,7 @@
   gap: 16px;
 }
 
+/* Footer lockup: mark plus wordline. */
 .nd-navmark {
   display: flex;
   align-items: center;
@@ -216,17 +218,51 @@
   object-fit: cover;
 }
 
-.nd-menu-btn {
-  background: var(--nd-ink);
-  color: var(--nd-white);
-  border: none;
-  border-radius: var(--nd-radius); /* the only squared nav element */
-  padding: 8px 18px;
-  font-family: inherit;
-  font-size: var(--nd-text-body);
-  letter-spacing: -0.08em;
-  cursor: pointer;
+.nd-navright {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
+
+/* Hamburger. Replaces the old text button, and hard right like everything
+   else in the bar. The three bars fold into a cross when the panel opens. */
+.nd-hamburger {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--nd-ink);
+  border-radius: var(--nd-radius);
+  background: var(--nd-ink);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nd-hamburger-bars {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 12px;
+}
+
+.nd-hamburger-bars span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--nd-paper);
+  transition: transform 0.2s ease, opacity 0.15s ease;
+}
+
+.nd-hamburger-bars span:nth-child(1) { top: 0; }
+.nd-hamburger-bars span:nth-child(2) { top: 5px; }
+.nd-hamburger-bars span:nth-child(3) { top: 10px; }
+
+.nd-hamburger-bars[data-open] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.nd-hamburger-bars[data-open] span:nth-child(2) { opacity: 0; }
+.nd-hamburger-bars[data-open] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
 .nd-navlinks {
   display: none;
@@ -352,9 +388,9 @@
 @media (min-width: 1000px) {
   .nd-grid { grid-template-columns: repeat(4, 1fr); }
   .nd-navlinks { display: flex; }
-  /* Once the links sit inline there is nothing left for the button to
+  /* Once the links sit inline there is nothing left for the hamburger to
      reveal, so it goes away rather than duplicating the nav. */
-  .nd-menu-btn { display: none; }
+  .nd-hamburger { display: none; }
   .nd-navactions { display: flex; }
 }
 
@@ -493,9 +529,20 @@
 
 /* ── Learn AI dropdown ──────────────────────────────────────── */
 
+.nd-menupanel {
+  width: 340px;
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  background: var(--nd-paper);
+  border: 1px solid var(--nd-ink);
+  border-radius: var(--nd-radius);
+  box-shadow: var(--nd-shadow-nav);
+}
+
 .nd-menuitem {
   display: block;
-  padding: 10px 12px;
+  padding: 14px 14px 15px;
   border-radius: var(--nd-radius);
   transition: background 0.15s ease;
 }
@@ -511,10 +558,10 @@
 
 .nd-menuitem-desc {
   display: block;
-  margin-top: 3px;
+  margin-top: 6px;
   text-transform: none;
   opacity: 0.72;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 /* ── Collapsed nav ──────────────────────────────────────────
@@ -562,14 +609,14 @@
 
 .nd-mobilesub {
   display: block;
-  padding: 12px 4px 12px 20px;
+  padding: 15px 4px 16px 20px;
   border-bottom: 1px solid var(--nd-border, rgba(0, 0, 0, 0.12));
   background: var(--nd-paper);
 }
 
 .nd-mobilesub-desc {
   display: block;
-  margin-top: 3px;
+  margin-top: 6px;
   text-transform: none;
   opacity: 0.72;
   line-height: 1.35;
@@ -585,4 +632,16 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   vertical-align: middle;
+}
+
+/* Award pills. Links, not labels — each one points at the coverage. */
+.nd-award {
+  display: inline-block;
+  border-radius: var(--nd-radius);
+  padding: 12px 18px;
+  transition: transform 0.15s ease;
+}
+
+.nd-award:hover {
+  transform: translateY(-3px);
 }

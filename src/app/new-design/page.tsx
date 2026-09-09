@@ -18,11 +18,14 @@ import { NewDesignNav } from "./NewDesignNav";
    `/` is like-for-like.
    ──────────────────────────────────────────────────────────── */
 
+// Destinations come from the live homepage's link map, same as the press
+// strip. `ink: false` marks a fill dark enough that black type fails on it —
+// only the purple, at 3.89:1 black versus 5.40:1 white.
 const awards = [
-  { label: "Forbes 30 Under 30", bg: "var(--nd-sun-yellow)" },
-  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--nd-turquoise)" },
-  { label: "Kleiner Perkins Fellow", bg: "var(--nd-lime)" },
-  { label: "SPC Founder Fellow", bg: "var(--nd-salmon-pink)" },
+  { label: "Forbes 30 Under 30", bg: "var(--nd-sun-yellow)", href: homeBioLinks.awards.forbes30 },
+  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--nd-purple)", href: homeBioLinks.awards.tatler, ink: false },
+  { label: "Kleiner Perkins Fellow", bg: "var(--nd-lime)", href: homeBioLinks.awards.kleinerPerkins },
+  { label: "SPC Founder Fellow", bg: "var(--nd-salmon-pink)", href: homeBioLinks.awards.spc },
 ];
 
 // Destinations come from the live homepage's link map, so the prototype
@@ -125,58 +128,52 @@ const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
 ];
 
 const HERO_CONFETTI: ConfettiPlacement[] = [
-  { shape: "sparkle", color: "var(--nd-salmon)", size: 44, motion: "bob", duration: 5, at: { top: "14%", left: "6%" }, narrow: { top: "8px", left: "8%" } },
-  { shape: "zigzag", color: "var(--nd-periwinkle)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 0.4, at: { top: "30%", left: "3%" }, narrow: { top: "46%", left: "-40px" } },
-  { shape: "ring", color: "var(--nd-turquoise)", size: 58, motion: "sway", duration: 9, delay: 1.2, at: { bottom: "26%", left: "8%" }, narrow: { bottom: "8px", left: "6%" } },
-  { shape: "squiggle", color: "var(--nd-lime)", size: 96, rotate: 6, motion: "drift", duration: 11, at: { top: "18%", right: "4%" }, narrow: { top: "40%", right: "-40px" } },
-  { shape: "burst", color: "var(--nd-sun-yellow)", size: 46, motion: "spin", duration: 24, at: { top: "38%", right: "9%" }, narrow: { top: "10px", right: "10%" } },
-  { shape: "dots", color: "var(--nd-salmon-pink)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.9, at: { bottom: "30%", right: "5%" }, narrow: { bottom: "10px", right: "6%" } },
+  { shape: "sparkle", color: "var(--nd-salmon)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: "6%" }, narrow: { top: "8px", left: "8%" } },
+  { shape: "squiggle", color: "var(--nd-lime)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: "4%" }, narrow: { top: "34%", right: "-58px" } },
+  { shape: "zigzag", color: "var(--nd-periwinkle)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: "3%" }, narrow: { top: "62%", left: "-40px" } },
+  { shape: "dots", color: "var(--nd-salmon-pink)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: "5%" }, narrow: { bottom: "10px", right: "6%" } },
 ];
 
 const PRESS_STRIP_CONFETTI: ConfettiPlacement[] = [
-  { shape: "cross", color: "var(--nd-salmon)", size: 26, motion: "twist", duration: 5.5, at: { top: "34%", left: "3%" }, narrow: { top: "30%", left: "-6px" } },
-  { shape: "dots", color: "var(--nd-turquoise)", size: 46, motion: "shake", duration: 7, delay: 0.5, at: { top: "40%", right: "3%" }, narrow: { top: "34%", right: "-8px" } },
+  { shape: "dots", color: "var(--nd-turquoise)", size: 46, motion: "shake", duration: 7, at: { top: "38%", right: "3%" }, narrow: { top: "34%", right: "-8px" } },
 ];
 
 const DARK_CONFETTI: ConfettiPlacement[] = [
   // The headline column runs to 820px and white type over a yellow disc is
   // unreadable, so every one of these stays in the gutters.
   { shape: "disc", color: "var(--nd-sun-yellow)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: "20px" }, narrow: { top: "1%", left: "-48px" } },
-  { shape: "triangle", color: "var(--nd-salmon)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "26%", right: "28px" }, narrow: { top: "2%", right: "-27px" } },
-  { shape: "sparkle", color: "var(--nd-lime)", size: 40, motion: "spin", duration: 20, at: { top: "6%", right: "12%" }, narrow: { top: "8px", right: "6%" } },
-  { shape: "arc", color: "var(--nd-salmon-pink)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "44%", left: "6%" }, narrow: { top: "40%", left: "-46px" } },
-  { shape: "blob", color: "var(--nd-periwinkle)", size: 132, rotate: -8, motion: "drift", duration: 12, at: { bottom: "12%", left: "24px" }, narrow: { bottom: "20%", left: "-64px" } },
-  { shape: "capsule", color: "var(--nd-turquoise)", size: 104, rotate: 11, motion: "shake", duration: 7.5, delay: 0.3, at: { bottom: "18%", right: "24px" }, narrow: { bottom: "26%", right: "-46px" } },
-  { shape: "cross", color: "var(--nd-sun-yellow)", size: 34, motion: "bob", duration: 5, delay: 1.8, at: { bottom: "34%", right: "11%" }, narrow: { bottom: "8px", right: "8%" } },
-  { shape: "ring", color: "var(--nd-lime)", size: 52, motion: "pulse", duration: 6.5, delay: 0.2, at: { bottom: "6%", left: "13%" }, narrow: { bottom: "10px", left: "8%" } },
+  { shape: "triangle", color: "var(--nd-salmon)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "30%", right: "28px" }, narrow: { top: "22%", right: "-27px" } },
+  { shape: "arc", color: "var(--nd-salmon-pink)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "52%", left: "24px" }, narrow: { top: "46%", left: "-46px" } },
+  { shape: "blob", color: "var(--nd-periwinkle)", size: 132, rotate: -8, motion: "drift", duration: 12, delay: 0.2, at: { top: "70%", right: "24px" }, narrow: { top: "70%", right: "-64px" } },
+  { shape: "ring", color: "var(--nd-lime)", size: 52, motion: "pulse", duration: 6.5, delay: 1.9, at: { bottom: "6%", left: "10%" }, narrow: { bottom: "10px", left: "8%" } },
 ];
 
 const AWARDS_CONFETTI: ConfettiPlacement[] = [
-  { shape: "sparkle", color: "var(--nd-sun-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "22%", left: "5%" }, narrow: { top: "6px", left: "4%" } },
-  { shape: "squiggle", color: "var(--nd-periwinkle)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { bottom: "18%", right: "4%" }, narrow: { bottom: "30%", right: "-32px" } },
+  { shape: "sparkle", color: "var(--nd-sun-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "20%", left: "5%" }, narrow: { top: "6px", left: "4%" } },
+  { shape: "squiggle", color: "var(--nd-periwinkle)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { bottom: "20%", right: "4%" }, narrow: { bottom: "30%", right: "-32px" } },
 ];
 
 const START_HERE_CONFETTI: ConfettiPlacement[] = [
-  { shape: "zigzag", color: "var(--nd-lime)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "6%", left: "2%" }, narrow: { top: "2%", left: "-34px" } },
-  { shape: "ring", color: "var(--nd-salmon)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "4%", right: "3%" }, narrow: { top: "1%", right: "-16px" } },
-  { shape: "blob", color: "var(--nd-salmon-pink)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { bottom: "8%", left: "1%" }, narrow: { bottom: "10px", left: "-38px" } },
-  { shape: "burst", color: "var(--nd-turquoise)", size: 40, motion: "spin", duration: 22, at: { bottom: "14%", right: "2%" }, narrow: { bottom: "12px", right: "-8px" } },
+  { shape: "zigzag", color: "var(--nd-lime)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "8%", left: "2%" }, narrow: { top: "2%", left: "-34px" } },
+  { shape: "ring", color: "var(--nd-salmon)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "34%", right: "3%" }, narrow: { top: "30%", right: "-18px" } },
+  { shape: "blob", color: "var(--nd-salmon-pink)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { top: "62%", left: "1%" }, narrow: { top: "62%", left: "-38px" } },
+  { shape: "burst", color: "var(--nd-turquoise)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: "2%" }, narrow: { bottom: "12px", right: "-8px" } },
 ];
 
 const SPEAKING_CONFETTI: ConfettiPlacement[] = [
-  { shape: "arc", color: "var(--nd-sun-yellow)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "8%", left: "2%" }, narrow: { top: "2%", left: "-26px" } },
-  { shape: "capsule", color: "var(--nd-salmon-pink)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { bottom: "16%", right: "2%" }, narrow: { bottom: "8%", right: "-30px" } },
+  { shape: "arc", color: "var(--nd-sun-yellow)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: "2%" }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "capsule", color: "var(--nd-salmon-pink)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: "2%" }, narrow: { bottom: "8%", right: "-30px" } },
 ];
 
 const PRESS_PREVIEW_CONFETTI: ConfettiPlacement[] = [
-  { shape: "dots", color: "var(--nd-lime)", size: 54, rotate: 8, motion: "shake", duration: 6.5, at: { top: "4%", left: "1%" }, narrow: { top: "2%", left: "-26px" } },
-  { shape: "sparkle", color: "var(--nd-salmon)", size: 36, motion: "twist", duration: 5.5, delay: 0.7, at: { bottom: "10%", right: "2%" }, narrow: { bottom: "6%", right: "-4px" } },
+  { shape: "dots", color: "var(--nd-lime)", size: 54, rotate: 8, motion: "shake", duration: 6.5, at: { top: "18%", left: "1%" }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "sparkle", color: "var(--nd-salmon)", size: 36, motion: "twist", duration: 5.5, delay: 0.7, at: { top: "78%", right: "2%" }, narrow: { bottom: "6%", right: "-4px" } },
 ];
 
 const CONTACT_CONFETTI: ConfettiPlacement[] = [
-  { shape: "zigzag", color: "var(--nd-turquoise)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "4%", left: "1%" }, narrow: { top: "1%", left: "-36px" } },
-  { shape: "cross", color: "var(--nd-periwinkle)", size: 34, motion: "spin", duration: 26, at: { bottom: "12%", left: "3%" }, narrow: { bottom: "6%", left: "-3px" } },
-  { shape: "ring", color: "var(--nd-salmon)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "8%", right: "1%" }, narrow: { top: "4%", right: "-18px" } },
+  { shape: "zigzag", color: "var(--nd-turquoise)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "12%", left: "1%" }, narrow: { top: "1%", left: "-36px" } },
+  { shape: "ring", color: "var(--nd-salmon)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "48%", right: "1%" }, narrow: { top: "44%", right: "-22px" } },
+  { shape: "cross", color: "var(--nd-periwinkle)", size: 34, motion: "spin", duration: 26, at: { top: "85%", left: "3%" }, narrow: { bottom: "6%", left: "-3px" } },
 ];
 
 export default function NewDesignPage() {
@@ -394,20 +391,24 @@ export default function NewDesignPage() {
               marginTop: "20px",
             }}
           >
-            {awards.map(({ label, bg }) => (
-              <span
-                key={label}
-                className="nd-body"
-                style={{
-                  background: bg,
-                  color: "var(--nd-ink)",
-                  borderRadius: "var(--nd-radius)",
-                  padding: "12px 18px",
-                }}
-              >
-                {label}
-              </span>
-            ))}
+            {awards.map(({ label, bg, href, ink = true }) => {
+              const external = !href.startsWith("/");
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  className="nd-award nd-body"
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  style={{
+                    background: bg,
+                    color: ink ? "var(--nd-ink)" : "var(--nd-paper)",
+                  }}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

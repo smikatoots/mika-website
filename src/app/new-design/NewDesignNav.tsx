@@ -62,16 +62,7 @@ function LearnAiMenu() {
           zIndex: 60,
         }}
       >
-        <div
-          style={{
-            width: "320px",
-            background: "var(--nd-paper)",
-            border: "1px solid var(--nd-ink)",
-            borderRadius: "var(--nd-radius)",
-            padding: "8px",
-            boxShadow: "var(--nd-shadow-nav)",
-          }}
-        >
+        <div className="nd-menupanel">
           {learnAiNavItems.map(({ href, label, description, featured }) => (
             <Link
               key={href}
@@ -102,50 +93,57 @@ export function NewDesignNav() {
   return (
     <nav className="nd-nav">
       <div className="nd-nav-inner">
-        <div className="nd-navmark">
-          <Link href="/" aria-label="Mika Reyes, home" className="nd-badge">
-            <Image
-              src="/mika-reyes-logo.png"
-              alt="Mika Reyes"
-              width={36}
-              height={36}
-              priority
-            />
-          </Link>
+        <Link href="/" aria-label="Mika Reyes, home" className="nd-badge">
+          <Image
+            src="/mika-reyes-logo.png"
+            alt="Mika Reyes"
+            width={36}
+            height={36}
+            priority
+          />
+        </Link>
+
+        {/* Everything but the mark sits hard right. */}
+        <div className="nd-navright">
+          <div className="nd-navlinks">
+            {siteHeaderNavItems.map((item) =>
+              item.type === "learn-ai-dropdown" ? (
+                <LearnAiMenu key="learn-ai" />
+              ) : (
+                <Link key={item.href} href={item.href} className="nd-navlink">
+                  {item.label}
+                </Link>
+              ),
+            )}
+          </div>
+
+          <div className="nd-navactions">
+            <a
+              href="https://instagram.com/its.mikareyes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nd-ghost"
+            >
+              Instagram
+            </a>
+            <a href="#contact" className="nd-cta" style={{ padding: "10px 22px" }}>
+              Work with me
+            </a>
+          </div>
+
           <button
             type="button"
-            className="nd-menu-btn"
+            className="nd-hamburger"
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => (open ? closeAll() : setOpen(true))}
           >
-            {open ? "Close" : "Menu"}
+            <span className="nd-hamburger-bars" data-open={open || undefined}>
+              <span />
+              <span />
+              <span />
+            </span>
           </button>
-        </div>
-
-        <div className="nd-navlinks">
-          {siteHeaderNavItems.map((item) =>
-            item.type === "learn-ai-dropdown" ? (
-              <LearnAiMenu key="learn-ai" />
-            ) : (
-              <Link key={item.href} href={item.href} className="nd-navlink">
-                {item.label}
-              </Link>
-            ),
-          )}
-        </div>
-
-        <div className="nd-navactions">
-          <a
-            href="https://instagram.com/its.mikareyes"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nd-ghost"
-          >
-            Instagram
-          </a>
-          <a href="#contact" className="nd-cta" style={{ padding: "10px 22px" }}>
-            Work with me
-          </a>
         </div>
       </div>
 
