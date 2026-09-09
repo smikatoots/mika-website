@@ -130,10 +130,10 @@ export function SubscribeModal() {
         aria-labelledby={titleId}
         className="relative w-full max-w-[520px] overflow-hidden"
         style={{
-          background: "var(--mr-surface-rose)",
+          background: "var(--mr-sun-yellow)",
           borderRadius: "var(--mr-radius-panel)",
-          boxShadow: "var(--mr-shadow-frame)",
-          border: "1px solid var(--mr-border-rose)",
+          // A hairline, not a shadow — the frame shadow token is `none` now.
+          border: "1px solid var(--mr-border-ink)",
         }}
       >
         <button
@@ -141,7 +141,7 @@ export function SubscribeModal() {
           type="button"
           aria-label="Close"
           onClick={() => dismiss("close_button")}
-          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center text-[var(--mr-faint)] transition-colors hover:text-[var(--mr-muted)]"
+          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center text-[var(--mr-ink)] opacity-60 transition-opacity hover:opacity-100"
         >
           <span aria-hidden style={{ fontSize: 22, lineHeight: 1, fontWeight: 300 }}>
             ×

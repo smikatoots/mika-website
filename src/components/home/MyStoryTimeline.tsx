@@ -72,26 +72,38 @@ function panelRevealStyle(
   };
 }
 
+/* Timeline card grounds. Every one of these clears AA with black type — the
+   check that matters, since the card sets ink on the colour. Ten milestones
+   cycle through six grounds, so no two adjacent cards repeat. */
+const STORY_CARD_GROUNDS = [
+  "var(--mr-sun-yellow)",
+  "var(--mr-teal)",
+  "var(--mr-coral-soft)",
+  "var(--mr-lime)",
+  "var(--mr-periwinkle)",
+  "var(--mr-sand)",
+] as const;
+
 function StoryCard({
   milestone,
-  variant,
+  colorIndex,
   state,
   reduceMotion,
 }: {
   milestone: StoryMilestone;
-  variant: "rose" | "cream";
+  colorIndex: number;
   state: MilestoneState;
   reduceMotion: boolean;
 }) {
-  const isRose = variant === "rose";
+  const ground = STORY_CARD_GROUNDS[colorIndex % STORY_CARD_GROUNDS.length];
   const [imageSrc, setImageSrc] = useState(milestone.image);
 
   return (
     <div
       className="mr-lift overflow-hidden"
       style={{
-        background: isRose ? "var(--mr-surface-rose)" : "var(--mr-surface-cream)",
-        border: isRose ? "1px solid var(--mr-border-rose)" : "1px solid var(--mr-border-cream)",
+        // Colour is the container here — no border. See DESIGN.md > Colors.
+        background: ground,
         borderRadius: "var(--mr-radius-card)",
         ...panelRevealStyle(state, reduceMotion),
       }}
@@ -101,7 +113,9 @@ function StoryCard({
           position: "relative",
           width: "100%",
           aspectRatio: "16 / 10",
-          background: isRose ? "var(--mr-surface-rose-2)" : "var(--mr-border-cream)",
+          // Placeholder tint while the photo loads. Translucent so it reads
+          // correctly on every ground rather than needing a value per colour.
+          background: "rgba(0, 0, 0, 0.08)",
         }}
       >
         <Image
@@ -115,7 +129,7 @@ function StoryCard({
         />
       </div>
       <div style={{ padding: "clamp(20px, 3vw, 28px)" }}>
-        <span style={eyebrow(isRose ? "var(--mr-coral)" : "var(--mr-teal)")}>{milestone.eyebrow}</span>
+        <span style={eyebrow("var(--mr-ink)")}>{milestone.eyebrow}</span>
         <h3
           style={{
             fontFamily: "var(--mr-font-display)",
@@ -365,7 +379,7 @@ export function MyStoryTimeline() {
       <div className="flex flex-col">
         {storyMilestones.map((milestone, index) => {
           const isLeft = index % 2 === 0;
-          const variant = index % 2 === 0 ? "rose" : "cream";
+
           const state = milestoneState(index);
 
           return (
@@ -401,7 +415,7 @@ export function MyStoryTimeline() {
                   {isLeft ? (
                     <StoryCard
                       milestone={milestone}
-                      variant={variant}
+                      colorIndex={index}
                       state={state}
                       reduceMotion={reduceMotion}
                     />
@@ -415,7 +429,7 @@ export function MyStoryTimeline() {
                   {!isLeft ? (
                     <StoryCard
                       milestone={milestone}
-                      variant={variant}
+                      colorIndex={index}
                       state={state}
                       reduceMotion={reduceMotion}
                     />

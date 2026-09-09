@@ -3,7 +3,12 @@ import Link from "next/link";
 
 import { homeBioLinks } from "@/lib/home-bio-links";
 
-import { ConfettiField, type ConfettiPlacement } from "@/components/ui/Confetti";
+import {
+  ConfettiField,
+  insideEdge as inside,
+  outsideEdge as outside,
+  type ConfettiPlacement,
+} from "@/components/ui/Confetti";
 
 /* ────────────────────────────────────────────────────────────
    The mikareyes.com landing page — "designer scrapbook desk".
@@ -109,21 +114,6 @@ const contactTypes = [
    Nothing is switched off when the layout narrows, and nothing is
    static. Durations are deliberately coprime-ish so the field never
    falls into step. */
-
-/* Past 1200px the gutter keeps growing, so a shape pinned to a percentage of
-   the section drifts further and further from the content it decorates. These
-   two anchor to the content column's edge instead, holding the same distance
-   at any width. Sections whose text is capped narrower than the wrap — the
-   hero, the dark band — can pull their shapes inside that edge; sections whose
-   content fills the wrap have to stay outside it. */
-const inside = (px: number) => `calc(var(--mr-edge) + ${px}px)`;
-
-/* The `max()` is a floor, not a preference: at 1200px the gutter is only 24px
-   wide, so the plain calc pushes a shape clean off the page. It clamps at 18px
-   still showing, which keeps the "nothing disappears" rule true at every width
-   rather than only below the breakpoint. */
-const outside = (px: number) =>
-  `max(calc(18px - var(--w)), calc(var(--mr-edge) - var(--w) - ${px}px))`;
 
 const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
   // Salmon carries the buttons now, so the big masses beside the CTA are

@@ -37,7 +37,9 @@
   --mr-text:          #1C1A17;
   --mr-text-soft:     #2E2A26;
   --mr-muted:         #6E655C;
-  --mr-faint:         #8A8078;
+  /* Darkened until 14px on paper white clears AA (4.79:1). The old value
+     was 3.65:1, which the footer credit line sat on across every page. */
+  --mr-faint:         #776D63;
 
   /* ── Surfaces ─────────────────────────────────────────────────────
      Warm linen is the page. Paper white is a single tonal step up for

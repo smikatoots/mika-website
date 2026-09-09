@@ -67,6 +67,27 @@ export type ConfettiPlacement = {
   narrow?: ConfettiPos;
 };
 
+/* Wide placements anchor to `--mr-edge`, the content column's own edge, rather
+   than to a percentage of the section. Past the column's max width the gutter
+   keeps growing, and a shape pinned to a percentage drifts further from the
+   content it decorates with every extra pixel.
+
+   A page whose column is narrower than the default can override `--mr-edge`
+   on its own wrapper, and every shape inside follows. */
+
+/** Sits `px` inside the column edge — for sections whose text is capped
+    narrower than the column itself. */
+export const insideEdge = (px: number) => `calc(var(--mr-edge) + ${px}px)`;
+
+/** Sits `px` outside the column edge.
+
+    The `max()` is a floor, not a preference: where the gutter is only as wide
+    as the page padding, the plain calc pushes a shape clean off the page. It
+    clamps at 18px still showing, so "nothing disappears" holds at every width
+    rather than only below the breakpoint. */
+export const outsideEdge = (px: number) =>
+  `max(calc(18px - var(--w)), calc(var(--mr-edge) - var(--w) - ${px}px))`;
+
 const paths: Record<ConfettiShape, React.ReactNode> = {
   zigzag: (
     <polyline

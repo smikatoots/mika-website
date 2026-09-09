@@ -2,6 +2,11 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { BackLink } from "@/components/ui/BackLink";
+import {
+  ConfettiField,
+  outsideEdge as outside,
+  type ConfettiPlacement,
+} from "@/components/ui/Confetti";
 import { homeBioLinks } from "@/lib/home-bio-links";
 import { siteLink } from "@/lib/ui/site-styles";
 
@@ -57,6 +62,20 @@ const ABOUT_IMAGE_PATHS: readonly string[] = [
   "/about-assets/011.jpg",
 ];
 
+/* The about column is capped far narrower than the home page's, so its shapes
+   anchor to its own edge — the wrapper below overrides `--mr-edge` and every
+   placement follows. Narrow widths leave no gutter beside a single column, so
+   those positions hug the page edge inside the article's own padding. */
+const ABOUT_CONFETTI: ConfettiPlacement[] = [
+  { shape: "sparkle", color: "var(--mr-coral)", size: 42, motion: "bob", duration: 5, at: { top: "4%", left: outside(16) }, narrow: { top: "10px", left: "-14px" } },
+  { shape: "squiggle", color: "var(--mr-lime)", size: 88, rotate: 6, motion: "drift", duration: 11, delay: 0.6, at: { top: "17%", right: outside(14) }, narrow: { top: "16%", right: "-40px" } },
+  { shape: "ring", color: "var(--mr-teal)", size: 54, motion: "sway", duration: 9, delay: 1.2, at: { top: "31%", left: outside(20) }, narrow: { top: "30%", left: "-22px" } },
+  { shape: "burst", color: "var(--mr-sun-yellow)", size: 44, motion: "spin", duration: 22, at: { top: "45%", right: outside(22) }, narrow: { top: "44%", right: "-16px" } },
+  { shape: "blob", color: "var(--mr-coral-soft)", size: 92, rotate: 14, motion: "drift", duration: 12.5, delay: 0.4, at: { top: "59%", left: outside(12) }, narrow: { top: "58%", left: "-42px" } },
+  { shape: "capsule", color: "var(--mr-periwinkle)", size: 76, rotate: -12, motion: "twist", duration: 8, delay: 1.5, at: { top: "73%", right: outside(16) }, narrow: { top: "72%", right: "-34px" } },
+  { shape: "dots", color: "var(--mr-teal)", size: 52, rotate: 8, motion: "shake", duration: 6.5, delay: 0.9, at: { top: "87%", left: outside(18) }, narrow: { top: "86%", left: "-20px" } },
+];
+
 export function AboutPageContent() {
   const [
     profileImg,
@@ -81,7 +100,17 @@ export function AboutPageContent() {
   const a = homeBioLinks.awards;
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-14 md:max-w-4xl md:px-10 md:py-20">
+    <div
+      style={{
+        position: "relative",
+        // Shapes track this column, not the site's wider one.
+        ["--mr-edge" as string]: "max(24px, calc((100% - 896px) / 2 + 24px))",
+        overflow: "hidden",
+      }}
+    >
+      <ConfettiField items={ABOUT_CONFETTI} />
+
+      <article className="relative mx-auto max-w-3xl px-6 py-14 md:max-w-4xl md:px-10 md:py-20">
       <BackLink href="/" label="Home" />
 
       <header className="mt-8 text-center">
@@ -274,7 +303,7 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      <section className="mt-12 space-y-4">
+      <section className="mt-4 space-y-4">
         <div className={bioBoxClass}>
           <span className="text-xl leading-none" aria-hidden>
             🇵🇭
@@ -300,7 +329,11 @@ export function AboutPageContent() {
             (as an NFT) &amp; launched{" "}
             <ALink href="/links">a fun social card game</ALink>. Nowadays,
             I&apos;m overloading on coffee &amp; funneling my type A energy
-            towards wedding planning.
+            towards{" "}
+            <ALink href="https://instagram.com/its.mikareyes">
+              growing my startup &amp; creator business
+            </ALink>
+            .
           </p>
         </div>
       </section>
@@ -393,6 +426,7 @@ export function AboutPageContent() {
           ) : null}
         </section>
       ) : null}
-    </article>
+      </article>
+    </div>
   );
 }

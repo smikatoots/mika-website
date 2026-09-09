@@ -42,7 +42,9 @@ function SectionEyebrow({ children }: { children: React.ReactNode }) {
         fontFamily: "var(--mr-font-body)",
         fontSize: "var(--mr-text-eyebrow)",
         fontWeight: "var(--mr-weight-display)",
-        color: "var(--mr-coral)",
+        // Ink, not coral: an accent is never text, and coral on the
+        // bright grounds this page now uses is unreadable.
+        color: "var(--mr-ink)",
         textTransform: "uppercase",
         letterSpacing: "0.14em",
         marginBottom: "16px",
@@ -84,7 +86,7 @@ function QualList({
   return (
     <div
       style={{
-        background: isFor ? "var(--mr-surface)" : "var(--mr-surface-cream)",
+        background: isFor ? "var(--mr-lime)" : "var(--mr-sand)",
         border: isFor
           ? "1px solid var(--mr-border)"
           : "1px solid var(--mr-border-warm)",
@@ -98,7 +100,7 @@ function QualList({
           fontFamily: "var(--mr-font-body)",
           fontSize: "var(--mr-text-eyebrow)",
           fontWeight: "var(--mr-weight-display)",
-          color: "var(--mr-coral)",
+          color: "var(--mr-ink)",
           textTransform: "uppercase",
           letterSpacing: "0.12em",
           marginBottom: "20px",
@@ -114,7 +116,7 @@ function QualList({
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-sm)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-ink)",
               lineHeight: 1.55,
               padding: "14px 0",
               borderTop:
@@ -124,7 +126,7 @@ function QualList({
             <span
               aria-hidden
               style={{
-                color: isFor ? "var(--mr-coral)" : "var(--mr-muted)",
+                color: "var(--mr-ink)",
                 fontWeight: "var(--mr-weight-display)",
                 flexShrink: 0,
               }}
@@ -226,7 +228,7 @@ export function BuildYourFirstAgentLanding() {
                       lineHeight: 1.45,
                     }}
                   >
-                    <span style={{ color: "var(--mr-coral-bright)" }}>✓</span>
+                    <span style={{ color: "var(--mr-white)" }}>✓</span>
                     {item}
                   </li>
                 ))}
@@ -238,7 +240,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Credibility strip */}
       <section
-        style={{ background: "var(--mr-surface-cream)", padding: "32px 0" }}
+        style={{ background: "var(--mr-sand)", padding: "32px 0" }}
       >
         <div className={`${container} grid grid-cols-2 gap-6 md:grid-cols-4`}>
           {credibility.map(({ value, label }) => (
@@ -258,7 +260,7 @@ export function BuildYourFirstAgentLanding() {
                 style={{
                   fontFamily: "var(--mr-font-body)",
                   fontSize: "var(--mr-text-xs)",
-                  color: "var(--mr-muted)",
+                  color: "var(--mr-ink)",
                   marginTop: "8px",
                 }}
               >
@@ -303,7 +305,7 @@ export function BuildYourFirstAgentLanding() {
                     fontFamily: "var(--mr-font-display)",
                     fontSize: "var(--mr-text-h3)",
                     fontWeight: "var(--mr-weight-display)",
-                    color: "var(--mr-coral)",
+                    color: "var(--mr-ink)",
                     marginBottom: "8px",
                   }}
                 >
@@ -313,7 +315,7 @@ export function BuildYourFirstAgentLanding() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-ink)",
                     lineHeight: 1.55,
                   }}
                 >
@@ -328,7 +330,7 @@ export function BuildYourFirstAgentLanding() {
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-ink)",
               lineHeight: 1.7,
               maxWidth: "100%",
             }}
@@ -344,7 +346,7 @@ export function BuildYourFirstAgentLanding() {
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-ink)",
               lineHeight: 1.7,
               maxWidth: "100%",
             }}
@@ -374,7 +376,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Social proof */}
       <section
-        style={{ background: "var(--mr-surface-rose)", padding: sectionPad }}
+        style={{ background: "var(--mr-periwinkle)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ Testimonials</SectionEyebrow>
@@ -386,7 +388,7 @@ export function BuildYourFirstAgentLanding() {
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-ink)",
               lineHeight: 1.6,
             }}
           >
@@ -466,13 +468,13 @@ export function BuildYourFirstAgentLanding() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-body)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-ink)",
                     lineHeight: 1.55,
                   }}
                 >
                   <span
                     style={{
-                      color: "var(--mr-coral)",
+                      color: "var(--mr-ink)",
                       fontWeight: "var(--mr-weight-display)",
                       flexShrink: 0,
                     }}
@@ -486,7 +488,7 @@ export function BuildYourFirstAgentLanding() {
             <div
               className="flex items-center"
               style={{
-                background: "var(--mr-surface-cream)",
+                background: "var(--mr-paper)",
                 border: "1px solid var(--mr-border-warm)",
                 borderRadius: "var(--mr-radius-card)",
                 padding: "24px",
@@ -497,7 +499,7 @@ export function BuildYourFirstAgentLanding() {
                 style={{
                   fontFamily: "var(--mr-font-body)",
                   fontSize: "var(--mr-text-sm)",
-                  color: "var(--mr-text-soft)",
+                  color: "var(--mr-ink)",
                   lineHeight: 1.65,
                 }}
               >
@@ -513,7 +515,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Learning formats */}
       <section
-        style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}
+        style={{ background: "var(--mr-lime)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ How you&apos;ll learn</SectionEyebrow>
@@ -525,7 +527,7 @@ export function BuildYourFirstAgentLanding() {
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-ink)",
               lineHeight: 1.6,
             }}
           >
@@ -540,14 +542,14 @@ export function BuildYourFirstAgentLanding() {
                 style={{
                   fontFamily: "var(--mr-font-body)",
                   fontSize: "var(--mr-text-body)",
-                  color: "var(--mr-text-soft)",
+                  color: "var(--mr-ink)",
                   lineHeight: 1.55,
                 }}
               >
                 <span
                   aria-hidden
                   style={{
-                    color: "var(--mr-coral)",
+                    color: "var(--mr-ink)",
                     fontWeight: "var(--mr-weight-display)",
                     flexShrink: 0,
                   }}
@@ -565,7 +567,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Curriculum */}
       <section
-        style={{ background: "var(--mr-surface-rose)", padding: sectionPad }}
+        style={{ background: "var(--mr-coral-soft)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ What you&apos;ll learn</SectionEyebrow>
@@ -577,7 +579,7 @@ export function BuildYourFirstAgentLanding() {
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-ink)",
               lineHeight: 1.6,
             }}
           >
@@ -607,7 +609,7 @@ export function BuildYourFirstAgentLanding() {
                         fontFamily: "var(--mr-font-body)",
                         fontSize: "var(--mr-text-eyebrow)",
                         fontWeight: "var(--mr-weight-display)",
-                        color: "var(--mr-coral)",
+                        color: "var(--mr-ink)",
                         textTransform: "uppercase",
                         letterSpacing: "0.12em",
                         marginBottom: "10px",
@@ -630,7 +632,7 @@ export function BuildYourFirstAgentLanding() {
                       style={{
                         fontFamily: "var(--mr-font-body)",
                         fontSize: "var(--mr-text-sm)",
-                        color: "var(--mr-text-soft)",
+                        color: "var(--mr-ink)",
                         lineHeight: 1.6,
                       }}
                     >
@@ -644,11 +646,11 @@ export function BuildYourFirstAgentLanding() {
                           style={{
                             fontFamily: "var(--mr-font-body)",
                             fontSize: "var(--mr-text-sm)",
-                            color: "var(--mr-muted)",
+                            color: "var(--mr-ink)",
                             lineHeight: 1.45,
                           }}
                         >
-                          <span style={{ color: "var(--mr-coral)" }}>→</span>
+                          <span style={{ color: "var(--mr-ink)" }}>→</span>
                           {bullet}
                         </li>
                       ))}
@@ -694,7 +696,7 @@ export function BuildYourFirstAgentLanding() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-ink)",
                     lineHeight: 1.55,
                   }}
                 >
@@ -708,7 +710,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Qualification */}
       <section
-        style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}
+        style={{ background: "var(--mr-sun-yellow)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ Who this is for and not for</SectionEyebrow>
@@ -743,7 +745,7 @@ export function BuildYourFirstAgentLanding() {
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-ink)",
               lineHeight: 1.6,
             }}
           >
@@ -798,7 +800,7 @@ export function BuildYourFirstAgentLanding() {
                       style={{
                         fontFamily: "var(--mr-font-body)",
                         fontSize: "var(--mr-text-xs)",
-                        color: "var(--mr-coral)",
+                        color: "var(--mr-ink)",
                         marginTop: "4px",
                       }}
                     >
@@ -811,7 +813,7 @@ export function BuildYourFirstAgentLanding() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-ink)",
                     lineHeight: 1.65,
                   }}
                 >
@@ -822,7 +824,7 @@ export function BuildYourFirstAgentLanding() {
                     style={{
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "var(--mr-text-xs)",
-                      color: "var(--mr-muted)",
+                      color: "var(--mr-ink)",
                       textTransform: "uppercase",
                       letterSpacing: "0.08em",
                       marginBottom: "14px",
@@ -856,7 +858,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Pricing */}
       <section
-        style={{ background: "var(--mr-surface-cream)", padding: sectionPad }}
+        style={{ background: "var(--mr-teal)", padding: sectionPad }}
       >
         <div className={container}>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-start">
@@ -871,7 +873,7 @@ export function BuildYourFirstAgentLanding() {
                 style={{
                   fontFamily: "var(--mr-font-body)",
                   fontSize: "var(--mr-text-body)",
-                  color: "var(--mr-text-soft)",
+                  color: "var(--mr-ink)",
                   lineHeight: 1.6,
                 }}
               >
@@ -888,12 +890,12 @@ export function BuildYourFirstAgentLanding() {
                     style={{
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "var(--mr-text-sm)",
-                      color: "var(--mr-text-soft)",
+                      color: "var(--mr-ink)",
                       paddingBottom: "12px",
                       borderBottom: "1px solid var(--mr-border-warm)",
                     }}
                   >
-                    <span style={{ color: "var(--mr-coral)" }}>✓</span>
+                    <span style={{ color: "var(--mr-ink)" }}>✓</span>
                     {item}
                   </li>
                 ))}
@@ -927,7 +929,7 @@ export function BuildYourFirstAgentLanding() {
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-xs)",
                     fontWeight: "var(--mr-weight-display)",
-                    color: "var(--mr-coral)",
+                    color: "var(--mr-ink)",
                     textTransform: "uppercase",
                     letterSpacing: "0.12em",
                   }}
@@ -951,7 +953,7 @@ export function BuildYourFirstAgentLanding() {
                     style={{
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "28px",
-                      color: "var(--mr-muted)",
+                      color: "var(--mr-ink)",
                       textDecoration: "line-through",
                       lineHeight: 1,
                       marginBottom: "4px",
@@ -964,7 +966,7 @@ export function BuildYourFirstAgentLanding() {
                     style={{
                       background:
                         "color-mix(in srgb, var(--mr-teal) 14%, white)",
-                      color: "var(--mr-teal)",
+                      color: "var(--mr-ink)",
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "var(--mr-text-sm)",
                       fontWeight: "var(--mr-weight-display)",
@@ -996,10 +998,10 @@ export function BuildYourFirstAgentLanding() {
                       style={{
                         fontFamily: "var(--mr-font-body)",
                         fontSize: "var(--mr-text-xs)",
-                        color: "var(--mr-muted)",
+                        color: "var(--mr-ink)",
                       }}
                     >
-                      <span style={{ color: "var(--mr-coral)" }}>✓</span>
+                      <span style={{ color: "var(--mr-ink)" }}>✓</span>
                       {item}
                     </li>
                   ))}
@@ -1011,11 +1013,11 @@ export function BuildYourFirstAgentLanding() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-ink)",
                     lineHeight: 1.6,
                   }}
                 >
-                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>
+                  <span style={{ color: "var(--mr-ink)", flexShrink: 0 }}>
                     ✓
                   </span>
                   <span>
@@ -1028,11 +1030,11 @@ export function BuildYourFirstAgentLanding() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-ink)",
                     lineHeight: 1.6,
                   }}
                 >
-                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>
+                  <span style={{ color: "var(--mr-ink)", flexShrink: 0 }}>
                     ✓
                   </span>
                   <span>
@@ -1046,11 +1048,11 @@ export function BuildYourFirstAgentLanding() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-ink)",
                     lineHeight: 1.6,
                   }}
                 >
-                  <span style={{ color: "var(--mr-teal)", flexShrink: 0 }}>
+                  <span style={{ color: "var(--mr-ink)", flexShrink: 0 }}>
                     ✓
                   </span>
                   <span>
@@ -1094,7 +1096,7 @@ export function BuildYourFirstAgentLanding() {
                     aria-hidden
                     className="shrink-0 transition-transform duration-200 group-open:rotate-180"
                     style={{
-                      color: "var(--mr-coral)",
+                      color: "var(--mr-ink)",
                       fontSize: "14px",
                     }}
                   >
@@ -1105,7 +1107,7 @@ export function BuildYourFirstAgentLanding() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-ink)",
                     lineHeight: 1.65,
                     paddingBottom: "18px",
                     whiteSpace: "pre-line",
@@ -1122,7 +1124,7 @@ export function BuildYourFirstAgentLanding() {
       {/* P.S. */}
       <section
         style={{
-          background: "var(--mr-surface-cream)",
+          background: "var(--mr-sand)",
           padding: "88px 0",
           borderTop: "1px solid var(--mr-border-warm)",
         }}
@@ -1133,7 +1135,7 @@ export function BuildYourFirstAgentLanding() {
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-eyebrow)",
               fontWeight: "var(--mr-weight-display)",
-              color: "var(--mr-coral)",
+              color: "var(--mr-ink)",
               textTransform: "uppercase",
               letterSpacing: "0.14em",
               marginBottom: "28px",
@@ -1147,7 +1149,7 @@ export function BuildYourFirstAgentLanding() {
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-ink)",
               lineHeight: 1.7,
             }}
           >
