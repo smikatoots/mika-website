@@ -144,7 +144,7 @@ const DARK_CONFETTI: ConfettiPlacement[] = [
   { shape: "disc", color: "var(--nd-sun-yellow)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: "20px" }, narrow: { top: "1%", left: "-48px" } },
   { shape: "triangle", color: "var(--nd-salmon)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "26%", right: "28px" }, narrow: { top: "2%", right: "-27px" } },
   { shape: "sparkle", color: "var(--nd-lime)", size: 40, motion: "spin", duration: 20, at: { top: "6%", right: "12%" }, narrow: { top: "8px", right: "6%" } },
-  { shape: "arc", color: "var(--nd-salmon-pink)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "44%", left: "6%" }, narrow: { top: "40%", left: "-30px" } },
+  { shape: "arc", color: "var(--nd-salmon-pink)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "44%", left: "6%" }, narrow: { top: "40%", left: "-46px" } },
   { shape: "blob", color: "var(--nd-periwinkle)", size: 132, rotate: -8, motion: "drift", duration: 12, at: { bottom: "12%", left: "24px" }, narrow: { bottom: "20%", left: "-64px" } },
   { shape: "capsule", color: "var(--nd-turquoise)", size: 104, rotate: 11, motion: "shake", duration: 7.5, delay: 0.3, at: { bottom: "18%", right: "24px" }, narrow: { bottom: "26%", right: "-46px" } },
   { shape: "cross", color: "var(--nd-sun-yellow)", size: 34, motion: "bob", duration: 5, delay: 1.8, at: { bottom: "34%", right: "11%" }, narrow: { bottom: "8px", right: "8%" } },
@@ -179,41 +179,6 @@ const CONTACT_CONFETTI: ConfettiPlacement[] = [
   { shape: "ring", color: "var(--nd-salmon)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "8%", right: "1%" }, narrow: { top: "4%", right: "-18px" } },
 ];
 
-/** One wordmark letter, with an optional cut-paper shape tucked behind it.
-    Placement is driven by the ink-band tokens on `.nd-display`, so the shapes
-    stay on the glyphs if the display face is ever swapped again. */
-function Letter({
-  char,
-  shape,
-  color,
-  anchor = "cap",
-}: {
-  char: string;
-  shape?: "dot" | "swatch";
-  color?: string;
-  /** Lowercase letters with no ascender hang off the x-height, not the cap. */
-  anchor?: "cap" | "x";
-}) {
-  return (
-    <span className="nd-letter">
-      {shape ? (
-        <span
-          aria-hidden="true"
-          className={[
-            "nd-letter-shape",
-            `nd-letter-${shape}`,
-            shape === "dot" && anchor === "x" ? "nd-letter-dot--x" : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
-          style={{ ["--c" as string]: color }}
-        />
-      ) : null}
-      <span className="nd-letter-glyph">{char}</span>
-    </span>
-  );
-}
-
 export default function NewDesignPage() {
   return (
     <>
@@ -232,15 +197,7 @@ export default function NewDesignPage() {
             className="nd-display"
             style={{ textAlign: "center", marginTop: "clamp(24px,4vw,40px)" }}
           >
-            <Letter char="M" shape="dot" color="var(--nd-sun-yellow)" />
-            <Letter char="i" />
-            <Letter char="k" shape="swatch" color="var(--nd-turquoise)" />
-            <Letter char="a" />{" "}
-            <Letter char="R" shape="dot" color="var(--nd-salmon-pink)" />
-            <Letter char="e" />
-            <Letter char="y" shape="swatch" color="var(--nd-lime)" />
-            <Letter char="e" />
-            <Letter char="s" shape="dot" color="var(--nd-periwinkle)" anchor="x" />
+            Mika Reyes
           </h1>
 
           <p
@@ -455,13 +412,13 @@ export default function NewDesignPage() {
         </div>
       </section>
 
-      {/* ── Start here: 4-column card grid ──────────────── */}
+      {/* ── Time for some adventure: 4-column card grid ──────────────── */}
       <section className="nd-section" style={{ paddingTop: 0 }}>
         <ConfettiField items={START_HERE_CONFETTI} />
 
         <div className="nd-wrap">
           <h2 className="nd-heading" style={{ textAlign: "center", marginBottom: "36px" }}>
-            Start here
+            Time for some adventure
           </h2>
 
           <div className="nd-grid">

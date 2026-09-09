@@ -4,15 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-import { learnAiNavItems } from "@/lib/site-nav";
-
-const links = [
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/press", label: "Press" },
-  { href: "/projects", label: "Projects" },
-  { href: "/links", label: "Links" },
-];
+import { learnAiNavItems, siteHeaderNavItems } from "@/lib/site-nav";
 
 /* The Learn AI dropdown, in the prototype's idiom: a paper-white panel with a
    hairline black edge and the system's 5px radius, rather than the rounded
@@ -100,6 +92,12 @@ function LearnAiMenu() {
 
 export function NewDesignNav() {
   const [open, setOpen] = useState(false);
+  const [learnAiOpen, setLearnAiOpen] = useState(false);
+
+  const closeAll = () => {
+    setOpen(false);
+    setLearnAiOpen(false);
+  };
 
   return (
     <nav className="nd-nav">
@@ -118,24 +116,22 @@ export function NewDesignNav() {
             type="button"
             className="nd-menu-btn"
             aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => (open ? closeAll() : setOpen(true))}
           >
             {open ? "Close" : "Menu"}
           </button>
         </div>
 
         <div className="nd-navlinks">
-          <Link href="/about" className="nd-navlink">
-            About
-          </Link>
-          <LearnAiMenu />
-          {links
-            .filter((l) => l.href !== "/about")
-            .map(({ href, label }) => (
-              <Link key={href} href={href} className="nd-navlink">
-                {label}
+          {siteHeaderNavItems.map((item) =>
+            item.type === "learn-ai-dropdown" ? (
+              <LearnAiMenu key="learn-ai" />
+            ) : (
+              <Link key={item.href} href={item.href} className="nd-navlink">
+                {item.label}
               </Link>
-            ))}
+            ),
+          )}
         </div>
 
         <div className="nd-navactions">
@@ -158,42 +154,79 @@ export function NewDesignNav() {
           style={{
             borderTop: "1px solid var(--nd-ink)",
             background: "var(--nd-paper)",
-            padding: "20px 24px",
+            padding: "8px 24px 20px",
           }}
         >
-          <div style={{ maxWidth: "var(--nd-max)", margin: "0 auto" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-              {links.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="nd-ghost"
-                  onClick={() => setOpen(false)}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
+          <div className="nd-mobilenav" style={{ maxWidth: "var(--nd-max)", margin: "0 auto" }}>
+            {siteHeaderNavItems.map((item) =>
+              item.type === "learn-ai-dropdown" ? (
+                <div key="learn-ai">
+                  <button
+                    type="button"
+                    className="nd-mobilerow"
+                    aria-expanded={learnAiOpen}
+                    onClick={() => setLearnAiOpen((v) => !v)}
+                  >
+                    Learn AI
+                    <span aria-hidden="true" className="nd-mobilechevron">
+                      ▼
+                    </span>
+                  </button>
 
-            {/* The dropdown's contents have to be reachable here too — the
-                collapsed nav is the only way to them on a phone. */}
-            <p className="nd-caption" style={{ margin: "20px 0 10px", letterSpacing: "0.04em" }}>
-              Learn AI
-            </p>
-            <div style={{ display: "grid", gap: "8px" }}>
-              {learnAiNavItems.map(({ href, label, description, featured }) => (
+                  {learnAiOpen
+                    ? learnAiNavItems.map(({ href, label, description, featured }) => (
+                        <Link
+                          key={href}
+                          href={href}
+                          className="nd-mobilesub"
+                          onClick={closeAll}
+                        >
+                          <span className="nd-body">
+                            {label}
+                            {featured ? <span className="nd-featured">Featured</span> : null}
+                          </span>
+                          <span className="nd-caption nd-mobilesub-desc">{description}</span>
+                        </Link>
+                      ))
+                    : null}
+                </div>
+              ) : (
                 <Link
-                  key={href}
-                  href={href}
-                  className="nd-menuitem"
-                  onClick={() => setOpen(false)}
-                  style={featured ? { background: "var(--nd-sun-yellow)" } : undefined}
+                  key={item.href}
+                  href={item.href}
+                  className="nd-mobilerow"
+                  onClick={closeAll}
                 >
-                  <span className="nd-body">{label}</span>
-                  <span className="nd-caption nd-menuitem-desc">{description}</span>
+                  {item.label}
                 </Link>
-              ))}
-            </div>
+              ),
+            )}
+          </div>
+
+          {/* The bar drops these when it compresses, so the panel is the
+              only place left to reach them. */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "10px",
+              marginTop: "20px",
+              maxWidth: "var(--nd-max)",
+            }}
+          >
+            <a href="#contact" className="nd-cta" onClick={closeAll}>
+              Work with me
+            </a>
+            <a
+              href="https://instagram.com/its.mikareyes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nd-ghost"
+              style={{ padding: "16px 24px" }}
+              onClick={closeAll}
+            >
+              Instagram
+            </a>
           </div>
         </div>
       ) : null}

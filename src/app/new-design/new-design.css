@@ -43,9 +43,9 @@
   --nd-display-weight: 600;
 
   /* Type scale — every size is 400 weight */
-  --nd-text-caption: 12px;
-  --nd-text-body: 16px;
-  --nd-text-body-lg: 18px;
+  --nd-text-caption: 13px;
+  --nd-text-body: 17px;
+  --nd-text-body-lg: 20px;
   --nd-text-subheading: 28px;
   --nd-text-heading: 30px;
   --nd-text-heading-lg: 68px;
@@ -247,7 +247,9 @@
 }
 
 .nd-navactions {
-  display: flex;
+  /* Compressed, these move into the Menu panel rather than crowding the
+     bar next to the logo. */
+  display: none;
   align-items: center;
   gap: 8px;
 }
@@ -350,6 +352,10 @@
 @media (min-width: 1000px) {
   .nd-grid { grid-template-columns: repeat(4, 1fr); }
   .nd-navlinks { display: flex; }
+  /* Once the links sit inline there is nothing left for the button to
+     reveal, so it goes away rather than duplicating the nav. */
+  .nd-menu-btn { display: none; }
+  .nd-navactions { display: flex; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -369,65 +375,6 @@
 
 @media (min-width: 900px) {
   .nd-split { grid-template-columns: 1fr 1fr; }
-}
-
-/* ── Wordmark letter decoration ─────────────────────────────
-   The shapes tuck behind individual glyphs, so they have to be
-   anchored to the ink, not to the line box — a line box includes
-   ascender and descender slack that shifts with every typeface.
-
-   These three numbers are the whole contract, measured off the
-   rendered page for Satoshi at 600: where the cap top, the x-height
-   top, and the baseline sit, as a fraction of the em, below the
-   letter span's top edge. They shift with BOTH the face and the
-   weight — going 400 to 600 moved every one of them — so re-measure
-   after either change and every shape follows automatically. */
-.nd-display {
-  --nd-cap-top: 0.154em;
-  --nd-x-top: 0.376em;
-  --nd-baseline: 0.885em;
-}
-
-.nd-letter {
-  position: relative;
-  display: inline-block;
-}
-
-.nd-letter-shape {
-  position: absolute;
-  z-index: 0;
-  background: var(--c);
-}
-
-/* Sticker straddling the glyph's top-left corner. */
-.nd-letter-dot {
-  width: 0.44em;
-  height: 0.44em;
-  border-radius: 50%;
-  top: calc(var(--nd-cap-top) - 0.16em);
-  left: -0.15em;
-}
-
-/* Lowercase letters with no ascender hang off the x-height instead. This
-   has to come after the base rule: same specificity, so source order is
-   what decides it. */
-.nd-letter-dot--x {
-  top: calc(var(--nd-x-top) - 0.16em);
-}
-
-/* Torn swatch sitting on the baseline at the glyph's right edge. */
-.nd-letter-swatch {
-  width: 0.48em;
-  height: 0.34em;
-  border-radius: var(--nd-radius);
-  top: calc(var(--nd-baseline) - 0.19em);
-  right: -0.12em;
-  transform: rotate(-7deg);
-}
-
-.nd-letter-glyph {
-  position: relative;
-  z-index: 1;
 }
 
 /* ── Confetti: the cut-paper shape library ──────────────────
@@ -568,4 +515,74 @@
   text-transform: none;
   opacity: 0.72;
   line-height: 1.35;
+}
+
+/* ── Collapsed nav ──────────────────────────────────────────
+   A stacked list, mirroring the live site's mobile header: one row
+   per nav item, with Learn AI expanding in place to its sub-items
+   rather than pushing anyone to a second screen. */
+
+.nd-mobilenav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nd-mobilerow {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--nd-border, rgba(0, 0, 0, 0.12));
+  background: none;
+  font: inherit;
+  font-size: var(--nd-text-body-lg);
+  letter-spacing: -0.05em;
+  color: var(--nd-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: padding-left 0.15s ease;
+}
+
+.nd-mobilerow:hover {
+  padding-left: 10px;
+}
+
+.nd-mobilechevron {
+  font-size: 10px;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.nd-mobilerow[aria-expanded="true"] .nd-mobilechevron {
+  transform: rotate(180deg);
+}
+
+.nd-mobilesub {
+  display: block;
+  padding: 12px 4px 12px 20px;
+  border-bottom: 1px solid var(--nd-border, rgba(0, 0, 0, 0.12));
+  background: var(--nd-paper);
+}
+
+.nd-mobilesub-desc {
+  display: block;
+  margin-top: 3px;
+  text-transform: none;
+  opacity: 0.72;
+  line-height: 1.35;
+}
+
+.nd-featured {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 7px;
+  border-radius: var(--nd-radius);
+  background: var(--nd-sun-yellow);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
