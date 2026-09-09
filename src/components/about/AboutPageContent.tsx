@@ -74,6 +74,13 @@ const ABOUT_CONFETTI: ConfettiPlacement[] = [
   { shape: "blob", color: "var(--mr-coral-soft)", size: 92, rotate: 14, motion: "drift", duration: 12.5, delay: 0.4, at: { top: "59%", left: outside(12) }, narrow: { top: "58%", left: "-42px" } },
   { shape: "capsule", color: "var(--mr-periwinkle)", size: 76, rotate: -12, motion: "twist", duration: 8, delay: 1.5, at: { top: "73%", right: outside(16) }, narrow: { top: "72%", right: "-34px" } },
   { shape: "dots", color: "var(--mr-teal)", size: 52, rotate: 8, motion: "shake", duration: 6.5, delay: 0.9, at: { top: "87%", left: outside(18) }, narrow: { top: "86%", left: "-20px" } },
+  // Filling the gaps between the seven above, so the column reads as evenly
+  // scattered rather than as one shape per screenful.
+  { shape: "cross", color: "var(--mr-periwinkle)", size: 34, motion: "spin", duration: 24, delay: 0.2, at: { top: "10%", right: outside(24) }, narrow: { top: "9%", right: "-8px" } },
+  { shape: "triangle", color: "var(--mr-sun-yellow)", size: 58, rotate: -12, motion: "twist", duration: 8.5, delay: 1.1, at: { top: "24%", left: outside(24) }, narrow: { top: "23%", left: "-26px" } },
+  { shape: "arc", color: "var(--mr-lime)", size: 70, rotate: 16, motion: "bob", duration: 7, delay: 0.5, at: { top: "38%", right: outside(18) }, narrow: { top: "37%", right: "-30px" } },
+  { shape: "zigzag", color: "var(--mr-coral)", size: 80, rotate: -6, motion: "twist", duration: 9.5, delay: 1.8, at: { top: "52%", left: outside(16) }, narrow: { top: "51%", left: "-36px" } },
+  { shape: "sparkle", color: "var(--mr-teal)", size: 40, motion: "pulse", duration: 6, delay: 0.7, at: { top: "94%", right: outside(26) }, narrow: { top: "93%", right: "-12px" } },
 ];
 
 export function AboutPageContent() {
@@ -205,12 +212,14 @@ export function AboutPageContent() {
                   <ALink href="https://www.linkedin.com/in/nicolasreyes26/">
                     Nick
                   </ALink>
-                  . Want to increase website conversions autonomously? Check out{" "}
-                  <ALink href="https://askleda.com">askleda.com</ALink> and get a
-                  site audit!
+                  . We&apos;re helping teams build products connected to social
+                  media or ads platforms with one unified API. You can also
+                  connect it to your AI agents via our MCP.{" "}
+                  <ALink href="http://tryadeli.com/">Check out Adeli!</ALink>
                 </li>
                 <li>
-                  Teaching AI to 25K+ ambitious founders &amp; professionals on{" "}
+                  Teaching AI to 35K+ ambitious founders, creators &amp;
+                  professionals on{" "}
                   <ALink href={homeBioLinks.instagram}>Instagram</ALink>,{" "}
                   <ALink href={homeBioLinks.linkedinProfile}>LinkedIn</ALink>, and{" "}
                   <ALink href="https://maven.com/mika-reyes/master-claude-code-as-a-non-technical-pro">

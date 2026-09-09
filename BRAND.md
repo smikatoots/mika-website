@@ -431,7 +431,7 @@ see colour loses nothing.
 - **Lime** `#C1F32B`. Energetic counterweight to the yellow.
 - **Periwinkle** `#6483FF`. The one cool accent in a warm-first palette.
 - **Purple** `#6B4DE6`. White type only — black on it is 3.89:1 and fails.
-- **Coral Soft** `#F4A6AE`. The coral's tint, for softer grounds.
+- **Coral Soft** `#F79086`. The coral's tint, for softer grounds.
 - **Sand** `#EADCCE` and **Stone** `#C3B7AC`. Warm neutral fills.
 
 **Ink**

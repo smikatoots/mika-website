@@ -46,3 +46,26 @@ export const mainWide =
 /** Press-style dense grid container. */
 export const mainGallery =
   "mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 md:px-8 md:py-16";
+
+/* Card grounds for the colour-cycled grids on /links and /ai. Shared so the
+   two pages cannot drift into different palettes.
+
+   Each ground carries its own type colour rather than assuming ink. Purple is
+   the reason: black on it is 3.89:1 and fails AA, where paper white is 5.40:1.
+   It is the only ground in the palette that inverts, and hard-coding ink would
+   have made it the one unreadable card.
+
+   Cycle these by grid position, not by item id, so a filtered grid still shows
+   the full spread. */
+export const CARD_GROUNDS = [
+  { bg: "var(--mr-purple)", fg: "var(--mr-paper)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-lime)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-teal)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-coral-soft)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+] as const;
+
+/** The white pill CTA that sits inside a coloured card. */
+export const cardButton =
+  "mt-auto inline-flex w-fit items-center gap-1.5 rounded-[var(--mr-radius-pill)]" +
+  " border border-[var(--mr-border-ink)] bg-white px-4 py-2" +
+  " text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-ink)]";

@@ -29,10 +29,10 @@ type Props = {
 
 const tagPillActive =
   "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-  " border-[var(--mr-coral)] bg-[var(--mr-surface-rose-2)] text-[var(--mr-coral)]";
+  " border-[var(--mr-border-ink)] bg-[var(--mr-coral)] text-[var(--mr-ink)]";
 const tagPillIdle =
   "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-  " border-[var(--mr-border)] text-[var(--mr-muted)] hover:border-[var(--mr-coral)] hover:text-[var(--mr-coral)]";
+  " border-[var(--mr-border)] text-[var(--mr-ink)] hover:border-[var(--mr-border-ink)] hover:bg-[var(--mr-paper)]";
 
 function formatFilterTagLabel(raw: string): string {
   const t = raw.toLowerCase();
@@ -136,8 +136,8 @@ export default async function AiHubPage({ searchParams }: Props) {
         </p>
       ) : (
         <div className="mx-auto mt-12 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((g) => (
-            <AiResourceCard key={g.slug} guide={g} />
+          {filtered.map((g, i) => (
+            <AiResourceCard key={g.slug} guide={g} index={i} />
           ))}
         </div>
       )}

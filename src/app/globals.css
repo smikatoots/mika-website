@@ -22,7 +22,7 @@
   --mr-lime:          #C1F32B;
   --mr-periwinkle:    #6483FF;
   --mr-purple:        #6B4DE6;   /* white type only — black is 3.89:1 */
-  --mr-coral-soft:    #F4A6AE;
+  --mr-coral-soft:    #F79086;
 
   /* The one dark ground. Warmer than black, and used sparingly — one
      dark band per page, never two stacked. */
@@ -365,6 +365,23 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   border: 0;
   background: var(--mr-border-ink);
   margin: 0;
+}
+
+/* `.mr-root a { color: inherit }` is (0,1,1) and lands after these rules, so it
+   was overriding the buttons' own colour. On a light ground that is invisible —
+   inherited colour is ink anyway — but inside the charcoal band the CTA came
+   out white on coral at 3.92:1. Doubling the class outranks the reset without
+   weakening it for ordinary links. */
+.mr-cta.mr-cta {
+  color: var(--mr-ink);
+}
+
+.mr-ghost.mr-ghost {
+  color: var(--mr-ink);
+}
+
+.mr-ghost-dark.mr-ghost-dark {
+  color: var(--mr-white);
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -393,7 +393,7 @@ export function HomeLanding() {
       </section>
 
       {/* ── Press & awards ──────────────────────────────── */}
-      <section className="mr-section">
+      <section className="mr-section" style={{ paddingTop: "clamp(44px,5vw,56px)" }}>
         <ConfettiField items={PRESS_AWARDS_CONFETTI} />
 
         <div className="mr-wrap">
@@ -441,8 +441,8 @@ export function HomeLanding() {
             </p>
             <div
               style={{
-                display: "flex",
-                flexWrap: "wrap",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
                 gap: "12px",
                 marginTop: "16px",
               }}
@@ -456,7 +456,7 @@ export function HomeLanding() {
                     className="mr-award mr-body"
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
-                    style={{ background: bg, color: "var(--mr-ink)" }}
+                    style={{ background: bg, color: "var(--mr-ink)", textAlign: "center" }}
                   >
                     {label}
                   </Link>
@@ -475,7 +475,7 @@ export function HomeLanding() {
           <div
             className="mr-card mr-split"
             style={{
-              background: "var(--mr-teal)",
+              background: "var(--mr-lime)",
               padding: "clamp(24px,4vw,32px)",
             }}
           >

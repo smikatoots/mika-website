@@ -10,7 +10,7 @@ colors:
   muted: "#6E655C"
   accent: "#E8425A"
   accent-deep: "#CE3149"
-  accent-soft: "#F4A6AE"
+  accent-soft: "#F79086"
   teal: "#0E8C8C"
   sun-yellow: "#FFDE3B"
   lime: "#C1F32B"
@@ -208,7 +208,7 @@ Contrast for black type, since these are card grounds:
 |---|---|---|
 | Sun Yellow `#FFDE3B` | 16.4:1 | fine |
 | Lime `#C1F32B` | 14.9:1 | fine |
-| Coral Soft `#F4A6AE` | 10.6:1 | fine |
+| Coral Soft `#F79086` | 9.2:1 | fine |
 | Sand `#EADCCE` | 13.6:1 | fine |
 | Teal `#0E8C8C` | 5.09:1 | passes AA |
 | Coral `#E8425A` | 5.42:1 | passes AA |
