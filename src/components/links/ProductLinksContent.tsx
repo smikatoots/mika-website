@@ -36,6 +36,22 @@ function trackLinkClick(link: ProductLink) {
   });
 }
 
+/* Card grounds, cycled so no two neighbours in the grid repeat. Every one
+   clears AA with black type, which is what the cards set — an accent is never
+   text here, so nothing on a card is coloured.
+
+   These key off position rather than off the link, so the grid always reads as
+   a full spread; filtering reshuffles the colours, which lands with the enter
+   animation the grid already plays. */
+const LINK_CARD_GROUNDS = [
+  "var(--mr-sun-yellow)",
+  "var(--mr-teal)",
+  "var(--mr-coral-soft)",
+  "var(--mr-lime)",
+  "var(--mr-periwinkle)",
+  "var(--mr-sand)",
+] as const;
+
 function ProductLinkCard({
   link,
   visibleIndex,
@@ -46,6 +62,7 @@ function ProductLinkCard({
   reduceMotion: boolean;
 }) {
   const showDelay = reduceMotion ? "0ms" : `${visibleIndex * 45}ms`;
+  const ground = LINK_CARD_GROUNDS[visibleIndex % LINK_CARD_GROUNDS.length];
 
   return (
     <div
@@ -67,17 +84,15 @@ function ProductLinkCard({
         target="_blank"
         onClick={() => trackLinkClick(link)}
         style={{
-          background: "var(--mr-surface)",
-          border: "1px solid var(--mr-border)",
+          // Colour is the container — no border, no shadow.
+          background: ground,
           borderRadius: "var(--mr-radius-card)",
           padding: "20px 22px",
-          boxShadow: "var(--mr-shadow-card)",
           textDecoration: "none",
           minHeight: "148px",
         }}
       >
         <h3
-          className="transition-colors group-hover:text-[var(--mr-coral)]"
           style={{
             fontFamily: "var(--mr-font-display)",
             fontSize: "var(--mr-text-h3)",
@@ -96,7 +111,7 @@ function ProductLinkCard({
             fontFamily: "var(--mr-font-body)",
             fontSize: "var(--mr-text-sm)",
             lineHeight: 1.55,
-            color: "var(--mr-text-soft)",
+            color: "var(--mr-ink)",
             margin: 0,
           }}
         >
@@ -117,9 +132,8 @@ function ProductLinkCard({
                 fontFamily: "var(--mr-font-body)",
                 fontSize: "var(--mr-text-xs)",
                 fontWeight: "var(--mr-weight-semi)",
-                color: "var(--mr-coral)",
-                background: "var(--mr-surface-rose)",
-                border: "1px solid var(--mr-border-rose)",
+                color: "var(--mr-ink)",
+                background: "var(--mr-paper)",
                 borderRadius: "var(--mr-radius-chip)",
                 padding: "4px 10px",
                 letterSpacing: "0.04em",

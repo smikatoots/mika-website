@@ -17,14 +17,19 @@ export const textH3 = "font-[family-name:var(--mr-font-display)] text-xl font-bo
 
 export const textMuted = "text-[length:var(--mr-text-xs)] text-[var(--mr-muted)]";
 
+/* Links stay coral — they should look like links — but at the deepened value.
+   Plain coral as text is 3.7:1 on paper white and fails AA; `--mr-coral-deep`
+   is 4.79:1 and exists for exactly this. Hover brightens to full coral, where
+   the contrast requirement no longer applies because it is a transient state
+   on text the reader has already found. */
 export const siteLink =
-  "font-semibold text-[var(--mr-coral)] underline decoration-[var(--mr-border-rose)] underline-offset-[3px] transition-colors hover:text-[var(--mr-coral-bright)]";
+  "font-semibold text-[var(--mr-coral-deep)] underline decoration-[var(--mr-border-rose)] underline-offset-[3px] transition-colors hover:text-[var(--mr-coral)]";
 
 export const siteLinkSubtle =
-  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-coral)] underline decoration-[var(--mr-coral)]/40 underline-offset-[3px] transition-colors hover:text-[var(--mr-coral-bright)]";
+  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-coral-deep)] underline decoration-[var(--mr-coral-deep)]/40 underline-offset-[3px] transition-colors hover:text-[var(--mr-coral)]";
 
 export const siteNavLink =
-  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-text-soft)] transition-colors hover:text-[var(--mr-coral)]";
+  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-text-soft)] transition-colors hover:text-[var(--mr-coral-deep)]";
 
 /** Article-width main column. */
 export const mainProse =
