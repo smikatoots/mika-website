@@ -14,14 +14,18 @@
    ───────────────────────────────────────────────────────────── */
 
 .nd-root {
-  /* Colors */
+  /* Colors.
+     Salmon is the emphasis color: the one filled-action fill, carrying the
+     whole conversion hierarchy. Black on it is 5.42:1, so it clears AA —
+     white would be 3.87:1 and does not, which is why the buttons set ink.
+     Sun yellow keeps its energy but is now decoration, not an action. */
   --nd-sun-yellow:  #ffde3b;
   --nd-salmon:      #E8425A;   /* was Hot Pink */
   --nd-salmon-deep: #CE3149;
   --nd-lime:        #c1f32b;
   --nd-periwinkle:  #6483ff;
   --nd-turquoise:   #0E8C8C;   /* was Spring Green */
-  --nd-soft-salmon: #F4A6AE;   /* was Bubblegum */
+  --nd-salmon-pink: #F4A6AE;  /* was Bubblegum — the salmon's soft tint */
   --nd-linen:       #f1e8de;
   --nd-paper:       #fbf8f5;
   --nd-white:       #ffffff;
@@ -32,9 +36,11 @@
   --nd-fog:         #999999;
 
   /* Type families — Satoshi carries every heading, Hanken every paragraph.
-     Both run at 400 only; hierarchy comes from scale and tracking. */
+     Headings run semibold; 600 resolves to Satoshi Bold, since the family
+     has no true 600. Set this to 500 for Medium instead. */
   --nd-display: var(--nd-font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --nd-standard: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --nd-display-weight: 600;
 
   /* Type scale — every size is 400 weight */
   --nd-text-caption: 12px;
@@ -79,7 +85,6 @@
 .nd-root p,
 .nd-root figure {
   margin: 0;
-  font-weight: 400;
 }
 
 .nd-root a {
@@ -96,6 +101,7 @@
 
 .nd-display {
   font-family: var(--nd-display);
+  font-weight: var(--nd-display-weight);
   font-size: clamp(52px, 11vw, var(--nd-text-display));
   line-height: 1;
   letter-spacing: -0.014em;
@@ -103,6 +109,7 @@
 
 .nd-heading-lg {
   font-family: var(--nd-display);
+  font-weight: var(--nd-display-weight);
   font-size: clamp(38px, 7vw, var(--nd-text-heading-lg));
   line-height: 1;
   letter-spacing: -0.034em;
@@ -110,6 +117,7 @@
 
 .nd-heading {
   font-family: var(--nd-display);
+  font-weight: var(--nd-display-weight);
   font-size: clamp(24px, 4vw, var(--nd-text-heading));
   line-height: 1.1;
   letter-spacing: -0.034em;
@@ -117,6 +125,7 @@
 
 .nd-subheading {
   font-family: var(--nd-display);
+  font-weight: var(--nd-display-weight);
   font-size: clamp(22px, 3.4vw, var(--nd-text-subheading));
   line-height: 1.1;
   letter-spacing: -0.057em;
@@ -151,6 +160,8 @@
 
 .nd-section {
   padding-block: clamp(56px, 9vw, 96px);
+  /* Positioning context for the confetti layer. */
+  position: relative;
 }
 
 /* ── Nav ────────────────────────────────────────────────── */
@@ -183,11 +194,12 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--nd-sun-yellow);
+  background: var(--nd-salmon);
   border: 1px solid var(--nd-ink);
   display: grid;
   place-items: center;
   font-family: var(--nd-display);
+  font-weight: var(--nd-display-weight);
   font-size: 15px;
   letter-spacing: -0.05em;
   flex-shrink: 0;
@@ -233,7 +245,7 @@
 
 .nd-cta {
   display: inline-block;
-  background: var(--nd-sun-yellow);
+  background: var(--nd-salmon);
   color: var(--nd-ink);
   border: 1px solid var(--nd-ink);
   border-radius: var(--nd-radius-cta);
@@ -303,25 +315,6 @@
   margin: 0;
 }
 
-/* ── Decorative shapes — atmosphere, not icons ──────────── */
-
-.nd-shape {
-  position: absolute;
-  pointer-events: none;
-}
-
-.nd-circle {
-  border-radius: 50%;
-}
-
-.nd-triangle {
-  width: 0;
-  height: 0;
-  border-left: var(--s, 40px) solid transparent;
-  border-right: var(--s, 40px) solid transparent;
-  border-bottom: calc(var(--s, 40px) * 1.6) solid var(--c, var(--nd-salmon));
-}
-
 /* ── Dark editorial band ────────────────────────────────── */
 
 .nd-dark {
@@ -372,14 +365,16 @@
    anchored to the ink, not to the line box — a line box includes
    ascender and descender slack that shifts with every typeface.
 
-   These two numbers are the whole contract, measured for Satoshi
-   at the display size: where the cap top and the baseline sit,
-   as a fraction of the em, below the letter span's top edge.
-   Re-measure them if the display face changes and every shape
-   follows automatically. */
+   These three numbers are the whole contract, measured off the
+   rendered page for Satoshi at 600: where the cap top, the x-height
+   top, and the baseline sit, as a fraction of the em, below the
+   letter span's top edge. They shift with BOTH the face and the
+   weight — going 400 to 600 moved every one of them — so re-measure
+   after either change and every shape follows automatically. */
 .nd-display {
-  --nd-cap-top: 0.114em;
-  --nd-baseline: 0.83em;
+  --nd-cap-top: 0.154em;
+  --nd-x-top: 0.376em;
+  --nd-baseline: 0.885em;
 }
 
 .nd-letter {
@@ -402,6 +397,13 @@
   left: -0.15em;
 }
 
+/* Lowercase letters with no ascender hang off the x-height instead. This
+   has to come after the base rule: same specificity, so source order is
+   what decides it. */
+.nd-letter-dot--x {
+  top: calc(var(--nd-x-top) - 0.16em);
+}
+
 /* Torn swatch sitting on the baseline at the glyph's right edge. */
 .nd-letter-swatch {
   width: 0.48em;
@@ -417,13 +419,69 @@
   z-index: 1;
 }
 
-/* Collage atmosphere in the dark band. These are decoration, so they must
-   never land on the headline — white text over a yellow circle is
-   unreadable. The heading column is capped at 820px inside a 1152px wrap,
-   which only leaves real margin to place them in from ~1200px up. Below
-   that there is no safe gutter, so they are simply not drawn. */
-.nd-atmos { display: none; }
+/* ── Confetti: the cut-paper shape library ──────────────────
+   Atmosphere, not iconography. Every one of these is decorative
+   and aria-hidden; none of them may ever carry meaning, and none
+   may sit where it can land on running text.
+
+   `.nd-confetti` is the positioning wrapper — each instance sets
+   its own top/left/right/bottom and rotation inline. Below the
+   gutter breakpoint they are not drawn at all, because narrow
+   layouts have no margin to hold them. */
+.nd-confetti {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--c, var(--nd-salmon));
+}
 
 @media (min-width: 1200px) {
-  .nd-atmos { display: block; }
+  .nd-confetti { display: block; }
+}
+
+/* A few are load-bearing to the composition rather than the margins —
+   hero and dark band — and are sized to survive narrow widths. */
+.nd-confetti--always { display: block; }
+
+.nd-confetti svg {
+  display: block;
+  overflow: visible;
+}
+
+@keyframes nd-bob {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50%      { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+}
+
+@keyframes nd-sway {
+  0%, 100% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+  33%      { transform: translate(7px, -9px) rotate(calc(var(--r, 0deg) + 6deg)); }
+  66%      { transform: translate(-6px, 5px) rotate(calc(var(--r, 0deg) - 5deg)); }
+}
+
+@keyframes nd-spin {
+  from { transform: rotate(var(--r, 0deg)); }
+  to   { transform: rotate(calc(var(--r, 0deg) + 360deg)); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nd-bob   { animation: nd-bob 5s ease-in-out infinite; }
+  .nd-sway  { animation: nd-sway 9s ease-in-out infinite; }
+  .nd-spin  { animation: nd-spin 26s linear infinite; }
+}
+
+/* Static rotation for anything that does not animate. */
+.nd-confetti[style*="--r"] { transform: rotate(var(--r, 0deg)); }
+
+/* Press logos sit back until hovered, so the strip reads as one texture
+   rather than six competing marks. */
+.nd-presslogo {
+  opacity: 0.72;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.nd-presslogo:hover {
+  opacity: 1;
+  transform: translateY(-2px);
 }

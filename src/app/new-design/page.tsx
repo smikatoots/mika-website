@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { homeBioLinks } from "@/lib/home-bio-links";
+
+import { Confetti } from "./Confetti";
 import { NewDesignNav } from "./NewDesignNav";
 
 /* ────────────────────────────────────────────────────────────
@@ -19,16 +22,18 @@ const awards = [
   { label: "Forbes 30 Under 30", bg: "var(--nd-sun-yellow)" },
   { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--nd-turquoise)" },
   { label: "Kleiner Perkins Fellow", bg: "var(--nd-lime)" },
-  { label: "SPC Founder Fellow", bg: "var(--nd-soft-salmon)" },
+  { label: "SPC Founder Fellow", bg: "var(--nd-salmon-pink)" },
 ];
 
+// Destinations come from the live homepage's link map, so the prototype
+// points at the same coverage rather than a second copy that can drift.
 const pressLogos = [
-  { label: "Forbes", logo: "/press-logos/forbes.svg", h: 20 },
-  { label: "TechCrunch", logo: "/press-logos/techcrunch-icon.svg", h: 26 },
-  { label: "Yahoo!", logo: "/press-logos/yahoo.svg", h: 22 },
-  { label: "Tech in Asia", logo: "/press-logos/tech-in-asia.png", h: 22 },
-  { label: "Rappler", logo: "/press-logos/rappler.png", h: 26 },
-  { label: "Inquirer", logo: "/press-logos/inquirer.svg", h: 18 },
+  { label: "Forbes", logo: "/press-logos/forbes.svg", h: 20, href: homeBioLinks.press.forbes },
+  { label: "TechCrunch", logo: "/press-logos/techcrunch-icon.svg", h: 26, href: homeBioLinks.press.techcrunch },
+  { label: "Yahoo!", logo: "/press-logos/yahoo.svg", h: 22, href: homeBioLinks.press.yahoo },
+  { label: "Tech in Asia", logo: "/press-logos/tech-in-asia.png", h: 22, href: homeBioLinks.press.techInAsia },
+  { label: "Rappler", logo: "/press-logos/rappler.png", h: 26, href: homeBioLinks.press.rappler },
+  { label: "Inquirer", logo: "/press-logos/inquirer.svg", h: 18, href: homeBioLinks.press.inquirer },
 ];
 
 const startHere = [
@@ -62,7 +67,7 @@ const startHere = [
     blurb: "Longer thinking on building small, staying time-rich.",
     href: "/blog",
     img: "/about-assets/008.jpg",
-    bg: "var(--nd-sand)",
+    bg: "var(--nd-salmon-pink)",
   },
 ];
 
@@ -109,17 +114,26 @@ function Letter({
   char,
   shape,
   color,
+  anchor = "cap",
 }: {
   char: string;
   shape?: "dot" | "swatch";
   color?: string;
+  /** Lowercase letters with no ascender hang off the x-height, not the cap. */
+  anchor?: "cap" | "x";
 }) {
   return (
     <span className="nd-letter">
       {shape ? (
         <span
           aria-hidden="true"
-          className={`nd-letter-shape nd-letter-${shape}`}
+          className={[
+            "nd-letter-shape",
+            `nd-letter-${shape}`,
+            shape === "dot" && anchor === "x" ? "nd-letter-dot--x" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
           style={{ ["--c" as string]: color }}
         />
       ) : null}
@@ -134,10 +148,17 @@ export default function NewDesignPage() {
       <NewDesignNav />
 
       {/* ── Hero ────────────────────────────────────────── */}
-      <header className="nd-section" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="nd-wrap">
+      <header className="nd-section" style={{ overflow: "hidden" }}>
+        <Confetti shape="sparkle" color="var(--nd-salmon)" size={44} motion="bob" style={{ top: "14%", left: "6%" }} />
+        <Confetti shape="zigzag" color="var(--nd-periwinkle)" size={92} rotate={-8} style={{ top: "30%", left: "3%" }} />
+        <Confetti shape="ring" color="var(--nd-turquoise)" size={58} motion="sway" style={{ bottom: "26%", left: "8%" }} />
+        <Confetti shape="squiggle" color="var(--nd-lime)" size={96} rotate={6} style={{ top: "18%", right: "4%" }} />
+        <Confetti shape="burst" color="var(--nd-sun-yellow)" size={46} motion="spin" style={{ top: "38%", right: "9%" }} />
+        <Confetti shape="dots" color="var(--nd-salmon-pink)" size={64} rotate={-12} style={{ bottom: "30%", right: "5%" }} />
+
+        <div className="nd-wrap" style={{ position: "relative", zIndex: 1 }}>
           <p className="nd-heading" style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto" }}>
-            A way better way of working.
+            ✦ AI Educator · Founder · Creator ✦
           </p>
 
           <h1
@@ -145,15 +166,14 @@ export default function NewDesignPage() {
             style={{ textAlign: "center", marginTop: "clamp(24px,4vw,40px)" }}
           >
             <Letter char="M" shape="dot" color="var(--nd-sun-yellow)" />
-            <Letter char="I" />
-            <Letter char="K" shape="swatch" color="var(--nd-turquoise)" />
-            <Letter char="A" />
-            <span style={{ display: "inline-block", width: "0.3em" }} />
-            <Letter char="R" shape="dot" color="var(--nd-soft-salmon)" />
-            <Letter char="E" />
-            <Letter char="Y" shape="swatch" color="var(--nd-lime)" />
-            <Letter char="E" />
-            <Letter char="S" shape="dot" color="var(--nd-periwinkle)" />
+            <Letter char="i" />
+            <Letter char="k" shape="swatch" color="var(--nd-turquoise)" />
+            <Letter char="a" />{" "}
+            <Letter char="R" shape="dot" color="var(--nd-salmon-pink)" />
+            <Letter char="e" />
+            <Letter char="y" shape="swatch" color="var(--nd-lime)" />
+            <Letter char="e" />
+            <Letter char="s" shape="dot" color="var(--nd-periwinkle)" anchor="x" />
           </h1>
 
           <p
@@ -214,47 +234,43 @@ export default function NewDesignPage() {
                 borderRadius: "var(--nd-radius)",
               }}
             />
-            <span
-              className="nd-shape nd-circle"
-              aria-hidden="true"
-              style={{
-                width: "96px",
-                height: "96px",
-                background: "var(--nd-salmon)",
-                top: "-34px",
-                left: "-34px",
-              }}
+            {/* Salmon now carries the buttons, so the big decorative masses
+                here are yellow and turquoise — a salmon blob this size would
+                pull rank on the CTA sitting right above it. */}
+            <Confetti
+              shape="disc"
+              color="var(--nd-sun-yellow)"
+              size={104}
+              motion="bob"
+              always
+              style={{ top: "-38px", left: "-38px" }}
             />
-            <span
-              className="nd-shape nd-triangle"
-              aria-hidden="true"
-              style={{
-                ["--s" as string]: "34px",
-                ["--c" as string]: "var(--nd-sun-yellow)",
-                bottom: "-28px",
-                right: "24px",
-                transform: "rotate(18deg)",
-              }}
+            <Confetti
+              shape="triangle"
+              color="var(--nd-lime)"
+              size={66}
+              rotate={18}
+              motion="sway"
+              always
+              style={{ bottom: "-30px", right: "34px" }}
             />
-            <span
-              className="nd-shape"
-              aria-hidden="true"
-              style={{
-                width: "72px",
-                height: "56px",
-                background: "var(--nd-turquoise)",
-                borderRadius: "var(--nd-radius)",
-                top: "-24px",
-                right: "-22px",
-                transform: "rotate(9deg)",
-              }}
+            <Confetti
+              shape="capsule"
+              color="var(--nd-turquoise)"
+              size={78}
+              rotate={12}
+              always
+              style={{ top: "-30px", right: "-26px" }}
             />
           </figure>
         </div>
       </header>
 
       {/* ── Press strip ─────────────────────────────────── */}
-      <section aria-label="Press coverage">
+      <section aria-label="Press coverage" style={{ position: "relative" }}>
+        <Confetti shape="cross" color="var(--nd-salmon)" size={26} motion="bob" style={{ top: "34%", left: "3%" }} />
+        <Confetti shape="dots" color="var(--nd-turquoise)" size={46} style={{ top: "40%", right: "3%" }} />
+
         <hr className="nd-rule" />
         <div
           className="nd-wrap"
@@ -270,16 +286,18 @@ export default function NewDesignPage() {
           <span className="nd-caption" style={{ letterSpacing: "0.04em" }}>
             As seen in
           </span>
-          {pressLogos.map(({ label, logo, h }) => (
-            <Image
-              key={label}
-              src={logo}
-              alt={label}
-              width={140}
-              height={h}
-              unoptimized
-              style={{ height: `${h}px`, width: "auto", opacity: 0.72 }}
-            />
+          {pressLogos.map(({ label, logo, h, href }) => (
+            <Link key={label} href={href} aria-label={`${label} coverage`}>
+              <Image
+                src={logo}
+                alt={label}
+                width={140}
+                height={h}
+                unoptimized
+                className="nd-presslogo"
+                style={{ height: `${h}px`, width: "auto" }}
+              />
+            </Link>
           ))}
         </div>
         <hr className="nd-rule" />
@@ -287,43 +305,17 @@ export default function NewDesignPage() {
 
       {/* ── Dark editorial band — the one per page ──────── */}
       <section className="nd-dark nd-section">
-        {/* Collage atmosphere */}
-        <span
-          className="nd-shape nd-circle nd-atmos"
-          aria-hidden="true"
-          style={{ width: "110px", height: "110px", background: "var(--nd-sun-yellow)", top: "10%", left: "20px" }}
-        />
-        <span
-          className="nd-shape nd-triangle nd-atmos"
-          aria-hidden="true"
-          style={{ ["--s" as string]: "40px", ["--c" as string]: "var(--nd-salmon)", top: "20%", right: "28px", transform: "rotate(-14deg)" }}
-        />
-        <span
-          className="nd-shape nd-atmos"
-          aria-hidden="true"
-          style={{
-            width: "140px",
-            height: "86px",
-            background: "var(--nd-periwinkle)",
-            borderRadius: "var(--nd-radius)",
-            bottom: "12%",
-            left: "24px",
-            transform: "rotate(-8deg)",
-          }}
-        />
-        <span
-          className="nd-shape nd-atmos"
-          aria-hidden="true"
-          style={{
-            width: "110px",
-            height: "70px",
-            background: "var(--nd-turquoise)",
-            borderRadius: "var(--nd-radius)",
-            bottom: "18%",
-            right: "24px",
-            transform: "rotate(11deg)",
-          }}
-        />
+        {/* Collage atmosphere. Everything here lives in the gutters — the
+            headline column runs to 820px and white type over a yellow disc
+            is unreadable, so nothing may drift inward. */}
+        <Confetti shape="disc" color="var(--nd-sun-yellow)" size={110} motion="bob" style={{ top: "10%", left: "20px" }} />
+        <Confetti shape="triangle" color="var(--nd-salmon)" size={72} rotate={-14} style={{ top: "26%", right: "28px" }} />
+        <Confetti shape="sparkle" color="var(--nd-lime)" size={40} motion="spin" style={{ top: "6%", right: "12%" }} />
+        <Confetti shape="arc" color="var(--nd-salmon-pink)" size={78} rotate={-18} motion="sway" style={{ top: "44%", left: "6%" }} />
+        <Confetti shape="blob" color="var(--nd-periwinkle)" size={132} rotate={-8} style={{ bottom: "12%", left: "24px" }} />
+        <Confetti shape="capsule" color="var(--nd-turquoise)" size={104} rotate={11} style={{ bottom: "18%", right: "24px" }} />
+        <Confetti shape="cross" color="var(--nd-sun-yellow)" size={34} motion="bob" style={{ bottom: "34%", right: "11%" }} />
+        <Confetti shape="ring" color="var(--nd-lime)" size={52} style={{ bottom: "6%", left: "13%" }} />
 
         <div className="nd-wrap" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
           <span
@@ -398,6 +390,9 @@ export default function NewDesignPage() {
 
       {/* ── Awards ──────────────────────────────────────── */}
       <section className="nd-section" style={{ paddingBlock: "clamp(40px,6vw,64px)" }}>
+        <Confetti shape="sparkle" color="var(--nd-sun-yellow)" size={38} motion="spin" style={{ top: "22%", left: "5%" }} />
+        <Confetti shape="squiggle" color="var(--nd-periwinkle)" size={80} rotate={-10} style={{ bottom: "18%", right: "4%" }} />
+
         <div className="nd-wrap">
           <p className="nd-caption" style={{ textAlign: "center", letterSpacing: "0.04em" }}>
             Awards &amp; fellowships
@@ -431,6 +426,11 @@ export default function NewDesignPage() {
 
       {/* ── Start here: 4-column card grid ──────────────── */}
       <section className="nd-section" style={{ paddingTop: 0 }}>
+        <Confetti shape="zigzag" color="var(--nd-lime)" size={84} rotate={6} style={{ top: "6%", left: "2%" }} />
+        <Confetti shape="ring" color="var(--nd-salmon)" size={54} motion="sway" style={{ top: "4%", right: "3%" }} />
+        <Confetti shape="blob" color="var(--nd-salmon-pink)" size={96} rotate={14} style={{ bottom: "8%", left: "1%" }} />
+        <Confetti shape="burst" color="var(--nd-turquoise)" size={40} motion="spin" style={{ bottom: "14%", right: "2%" }} />
+
         <div className="nd-wrap">
           <h2 className="nd-heading" style={{ textAlign: "center", marginBottom: "36px" }}>
             Start here
@@ -473,6 +473,9 @@ export default function NewDesignPage() {
 
       {/* ── Speaking ────────────────────────────────────── */}
       <section className="nd-section" style={{ paddingTop: 0 }}>
+        <Confetti shape="arc" color="var(--nd-sun-yellow)" size={72} rotate={12} motion="bob" style={{ top: "8%", left: "2%" }} />
+        <Confetti shape="capsule" color="var(--nd-salmon-pink)" size={78} rotate={-14} style={{ bottom: "16%", right: "2%" }} />
+
         <div className="nd-wrap">
           <div
             className="nd-card nd-split"
@@ -543,6 +546,9 @@ export default function NewDesignPage() {
 
         {/* ── Press preview ───────────────────────────────── */}
         <section className="nd-section" style={{ paddingTop: 0 }}>
+          <Confetti shape="dots" color="var(--nd-lime)" size={54} rotate={8} style={{ top: "4%", left: "1%" }} />
+          <Confetti shape="sparkle" color="var(--nd-salmon)" size={36} motion="bob" style={{ bottom: "10%", right: "2%" }} />
+
           <div className="nd-wrap">
             <div
               style={{
@@ -588,6 +594,10 @@ export default function NewDesignPage() {
 
         {/* ── Contact ─────────────────────────────────────── */}
         <section id="contact" className="nd-section" style={{ paddingTop: 0 }}>
+          <Confetti shape="zigzag" color="var(--nd-turquoise)" size={88} rotate={-6} style={{ top: "4%", left: "1%" }} />
+          <Confetti shape="cross" color="var(--nd-periwinkle)" size={34} motion="spin" style={{ bottom: "12%", left: "3%" }} />
+          <Confetti shape="ring" color="var(--nd-salmon)" size={58} motion="sway" style={{ top: "8%", right: "1%" }} />
+
           <div className="nd-wrap">
             <div
               className="nd-card"

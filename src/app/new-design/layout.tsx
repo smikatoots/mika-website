@@ -4,16 +4,20 @@ import localFont from "next/font/local";
 import "./new-design.css";
 
 // Satoshi (Indian Type Foundry, via Fontshare) is the prototype's display
-// face. Only the 400 weight is shipped: the reference system builds every
-// bit of hierarchy from scale and tracking, so having no bold available is
-// the point, not an oversight.
+// face, set semibold per Mika's direction.
+//
+// The family has no true 600: it runs 300/400/500/700/900. Both neighbours
+// are shipped so the choice stays open — CSS weight matching resolves a
+// requested 600 to Bold (700), and dropping `--nd-display-weight` to 500
+// switches every heading to Medium in one edit.
 //
 // Not an approved website typeface in BRAND.md — this is a prototype route
 // only. Promoting this direction means adding Satoshi to BRAND.md first.
 const satoshi = localFont({
-  src: "./fonts/Satoshi-Regular.woff2",
-  weight: "400",
-  style: "normal",
+  src: [
+    { path: "./fonts/Satoshi-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/Satoshi-Bold.woff2", weight: "700", style: "normal" },
+  ],
   display: "swap",
   variable: "--nd-font-satoshi",
   fallback: ["ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
