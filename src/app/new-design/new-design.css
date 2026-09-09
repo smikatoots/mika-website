@@ -44,9 +44,9 @@
   --nd-display-weight: 600;
 
   /* Type scale — every size is 400 weight */
-  --nd-text-caption: 13px;
-  --nd-text-body: 17px;
-  --nd-text-body-lg: 20px;
+  --nd-text-caption: 14px;
+  --nd-text-body: 18px;
+  --nd-text-body-lg: 21px;
   --nd-text-subheading: 28px;
   --nd-text-heading: 30px;
   --nd-text-heading-lg: 68px;
@@ -61,6 +61,13 @@
   --nd-shadow-nav: rgba(0, 0, 0, 0.13) 1px 0 5px 0, rgba(0, 0, 0, 0.08) 2px 2px 4px 1px;
 
   --nd-max: 1200px;
+
+  /* Where the content column's edge falls inside a full-bleed section.
+     Confetti anchors to this instead of to the viewport edge: past 1200px
+     the gutter keeps growing, and a shape pinned to a percentage of the
+     section drifts further and further from the content it is meant to
+     decorate. Anchored here it holds the same distance at any width. */
+  --nd-edge: max(24px, calc((100% - 1200px) / 2 + 24px));
 
   min-height: 100vh;
   background: var(--nd-linen);
@@ -644,4 +651,27 @@
 
 .nd-award:hover {
   transform: translateY(-3px);
+}
+
+/* ── Press & awards panel ───────────────────────────────────
+   The one purple mass on the page. Black type fails on this fill
+   (3.89:1), so the panel sets paper white throughout and the cards
+   inside it carry their own light ground. It sits directly under the
+   charcoal band, which is two heavy blocks in a row — the linen gap
+   between them is doing the separating, so keep that padding. */
+.nd-panel-purple {
+  background: var(--nd-purple);
+  color: var(--nd-paper);
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.nd-panel-purple .nd-card-paper {
+  color: var(--nd-ink);
+}
+
+.nd-panel-rule {
+  height: 1px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.28);
+  margin: clamp(32px, 4vw, 44px) 0 clamp(20px, 3vw, 28px);
 }

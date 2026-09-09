@@ -45,7 +45,6 @@ const startHere = [
     title: "Master Agentic AI",
     blurb: "Build your own custom AI agent in a day. No engineering degree.",
     href: "/build-your-first-agent-101",
-    img: "/about-assets/003.jpg",
     bg: "var(--nd-lime)",
   },
   {
@@ -53,7 +52,6 @@ const startHere = [
     title: "AI Guides",
     blurb: "Practical how-tos pulled straight from the videos.",
     href: "/ai",
-    img: "/about-assets/006.jpg",
     bg: "var(--nd-sun-yellow)",
   },
   {
@@ -61,7 +59,6 @@ const startHere = [
     title: "AI Challenges",
     blurb: "Hard skills learned with AI as the only coach.",
     href: "/challenges",
-    img: "/about-assets/010.jpg",
     bg: "var(--nd-periwinkle)",
   },
   {
@@ -69,7 +66,6 @@ const startHere = [
     title: "The Blog",
     blurb: "Longer thinking on building small, staying time-rich.",
     href: "/blog",
-    img: "/about-assets/008.jpg",
     bg: "var(--nd-salmon-pink)",
   },
 ];
@@ -119,6 +115,21 @@ const contactTypes = [
    static. Durations are deliberately coprime-ish so the field never
    falls into step. */
 
+/* Past 1200px the gutter keeps growing, so a shape pinned to a percentage of
+   the section drifts further and further from the content it decorates. These
+   two anchor to the content column's edge instead, holding the same distance
+   at any width. Sections whose text is capped narrower than the wrap — the
+   hero, the dark band — can pull their shapes inside that edge; sections whose
+   content fills the wrap have to stay outside it. */
+const inside = (px: number) => `calc(var(--nd-edge) + ${px}px)`;
+
+/* The `max()` is a floor, not a preference: at 1200px the gutter is only 24px
+   wide, so the plain calc pushes a shape clean off the page. It clamps at 18px
+   still showing, which keeps the "nothing disappears" rule true at every width
+   rather than only below the breakpoint. */
+const outside = (px: number) =>
+  `max(calc(18px - var(--w)), calc(var(--nd-edge) - var(--w) - ${px}px))`;
+
 const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
   // Salmon carries the buttons now, so the big masses beside the CTA are
   // yellow and turquoise — a salmon blob here would pull rank on it.
@@ -128,52 +139,48 @@ const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
 ];
 
 const HERO_CONFETTI: ConfettiPlacement[] = [
-  { shape: "sparkle", color: "var(--nd-salmon)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: "6%" }, narrow: { top: "8px", left: "8%" } },
-  { shape: "squiggle", color: "var(--nd-lime)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: "4%" }, narrow: { top: "34%", right: "-58px" } },
-  { shape: "zigzag", color: "var(--nd-periwinkle)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: "3%" }, narrow: { top: "62%", left: "-40px" } },
-  { shape: "dots", color: "var(--nd-salmon-pink)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: "5%" }, narrow: { bottom: "10px", right: "6%" } },
+  { shape: "sparkle", color: "var(--nd-salmon)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: inside(30) }, narrow: { top: "8px", left: "8%" } },
+  { shape: "squiggle", color: "var(--nd-lime)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: inside(16) }, narrow: { bottom: "6px", left: "8%" } },
+  { shape: "zigzag", color: "var(--nd-periwinkle)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: inside(14) }, narrow: { top: "62%", left: "-40px" } },
+  { shape: "dots", color: "var(--nd-salmon-pink)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: inside(26) }, narrow: { bottom: "10px", right: "6%" } },
 ];
 
 const PRESS_STRIP_CONFETTI: ConfettiPlacement[] = [
-  { shape: "dots", color: "var(--nd-turquoise)", size: 46, motion: "shake", duration: 7, at: { top: "38%", right: "3%" }, narrow: { top: "34%", right: "-8px" } },
+  { shape: "dots", color: "var(--nd-turquoise)", size: 46, motion: "shake", duration: 7, at: { top: "38%", right: outside(16) }, narrow: { top: "34%", right: "-8px" } },
 ];
 
 const DARK_CONFETTI: ConfettiPlacement[] = [
-  // The headline column runs to 820px and white type over a yellow disc is
-  // unreadable, so every one of these stays in the gutters.
-  { shape: "disc", color: "var(--nd-sun-yellow)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: "20px" }, narrow: { top: "1%", left: "-48px" } },
-  { shape: "triangle", color: "var(--nd-salmon)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "30%", right: "28px" }, narrow: { top: "22%", right: "-27px" } },
-  { shape: "arc", color: "var(--nd-salmon-pink)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "52%", left: "24px" }, narrow: { top: "46%", left: "-46px" } },
-  { shape: "blob", color: "var(--nd-periwinkle)", size: 132, rotate: -8, motion: "drift", duration: 12, delay: 0.2, at: { top: "70%", right: "24px" }, narrow: { top: "70%", right: "-64px" } },
-  { shape: "ring", color: "var(--nd-lime)", size: 52, motion: "pulse", duration: 6.5, delay: 1.9, at: { bottom: "6%", left: "10%" }, narrow: { bottom: "10px", left: "8%" } },
+  // The headline column stops at 820px, so there is room inside the wrap here
+  // that the card-grid sections do not have.
+  { shape: "disc", color: "var(--nd-sun-yellow)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: inside(18) }, narrow: { top: "1%", left: "-48px" } },
+  { shape: "triangle", color: "var(--nd-salmon)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "30%", right: inside(30) }, narrow: { top: "22%", right: "-27px" } },
+  { shape: "arc", color: "var(--nd-salmon-pink)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "52%", left: inside(26) }, narrow: { bottom: "12px", right: "8%" } },
+  { shape: "blob", color: "var(--nd-periwinkle)", size: 132, rotate: -8, motion: "drift", duration: 12, delay: 0.2, at: { top: "70%", right: inside(14) }, narrow: { top: "70%", right: "-64px" } },
+  { shape: "ring", color: "var(--nd-lime)", size: 52, motion: "pulse", duration: 6.5, delay: 1.9, at: { bottom: "6%", left: inside(70) }, narrow: { bottom: "10px", left: "8%" } },
 ];
 
-const AWARDS_CONFETTI: ConfettiPlacement[] = [
-  { shape: "sparkle", color: "var(--nd-sun-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "20%", left: "5%" }, narrow: { top: "6px", left: "4%" } },
-  { shape: "squiggle", color: "var(--nd-periwinkle)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { bottom: "20%", right: "4%" }, narrow: { bottom: "30%", right: "-32px" } },
+const PRESS_AWARDS_CONFETTI: ConfettiPlacement[] = [
+  { shape: "sparkle", color: "var(--nd-sun-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "14%", left: outside(14) }, narrow: { top: "6px", left: "4%" } },
+  { shape: "squiggle", color: "var(--nd-periwinkle)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "30%", right: "-32px" } },
+  { shape: "dots", color: "var(--nd-lime)", size: 54, rotate: 8, motion: "shake", duration: 6.5, delay: 1.4, at: { top: "86%", left: outside(20) }, narrow: { top: "6px", right: "6%" } },
 ];
 
-const START_HERE_CONFETTI: ConfettiPlacement[] = [
-  { shape: "zigzag", color: "var(--nd-lime)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "8%", left: "2%" }, narrow: { top: "2%", left: "-34px" } },
-  { shape: "ring", color: "var(--nd-salmon)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "34%", right: "3%" }, narrow: { top: "30%", right: "-18px" } },
-  { shape: "blob", color: "var(--nd-salmon-pink)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { top: "62%", left: "1%" }, narrow: { top: "62%", left: "-38px" } },
-  { shape: "burst", color: "var(--nd-turquoise)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: "2%" }, narrow: { bottom: "12px", right: "-8px" } },
+const ADVENTURE_CONFETTI: ConfettiPlacement[] = [
+  { shape: "zigzag", color: "var(--nd-lime)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "8%", left: outside(12) }, narrow: { top: "2%", left: "-34px" } },
+  { shape: "ring", color: "var(--nd-salmon)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "34%", right: outside(16) }, narrow: { top: "30%", right: "-18px" } },
+  { shape: "blob", color: "var(--nd-salmon-pink)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { top: "62%", left: outside(10) }, narrow: { top: "62%", left: "-38px" } },
+  { shape: "burst", color: "var(--nd-turquoise)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: outside(22) }, narrow: { bottom: "12px", right: "-8px" } },
 ];
 
 const SPEAKING_CONFETTI: ConfettiPlacement[] = [
-  { shape: "arc", color: "var(--nd-sun-yellow)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: "2%" }, narrow: { top: "2%", left: "-26px" } },
-  { shape: "capsule", color: "var(--nd-salmon-pink)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: "2%" }, narrow: { bottom: "8%", right: "-30px" } },
-];
-
-const PRESS_PREVIEW_CONFETTI: ConfettiPlacement[] = [
-  { shape: "dots", color: "var(--nd-lime)", size: 54, rotate: 8, motion: "shake", duration: 6.5, at: { top: "18%", left: "1%" }, narrow: { top: "2%", left: "-26px" } },
-  { shape: "sparkle", color: "var(--nd-salmon)", size: 36, motion: "twist", duration: 5.5, delay: 0.7, at: { top: "78%", right: "2%" }, narrow: { bottom: "6%", right: "-4px" } },
+  { shape: "arc", color: "var(--nd-sun-yellow)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "capsule", color: "var(--nd-salmon-pink)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: outside(12) }, narrow: { bottom: "8%", right: "-30px" } },
 ];
 
 const CONTACT_CONFETTI: ConfettiPlacement[] = [
-  { shape: "zigzag", color: "var(--nd-turquoise)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "12%", left: "1%" }, narrow: { top: "1%", left: "-36px" } },
-  { shape: "ring", color: "var(--nd-salmon)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "48%", right: "1%" }, narrow: { top: "44%", right: "-22px" } },
-  { shape: "cross", color: "var(--nd-periwinkle)", size: 34, motion: "spin", duration: 26, at: { top: "85%", left: "3%" }, narrow: { bottom: "6%", left: "-3px" } },
+  { shape: "zigzag", color: "var(--nd-turquoise)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "12%", left: outside(10) }, narrow: { top: "1%", left: "-36px" } },
+  { shape: "ring", color: "var(--nd-salmon)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "48%", right: outside(14) }, narrow: { top: "44%", right: "-22px" } },
+  { shape: "cross", color: "var(--nd-periwinkle)", size: 34, motion: "spin", duration: 26, at: { top: "85%", left: outside(24) }, narrow: { bottom: "6%", left: "-3px" } },
 ];
 
 export default function NewDesignPage() {
@@ -374,48 +381,94 @@ export default function NewDesignPage() {
         </div>
       </section>
 
-      {/* ── Awards ──────────────────────────────────────── */}
-      <section className="nd-section" style={{ paddingBlock: "clamp(40px,6vw,64px)" }}>
-        <ConfettiField items={AWARDS_CONFETTI} />
+      {/* ── Press & awards ──────────────────────────────── */}
+      <section className="nd-section" style={{ paddingBottom: 0 }}>
+        <ConfettiField items={PRESS_AWARDS_CONFETTI} />
 
         <div className="nd-wrap">
-          <p className="nd-caption" style={{ textAlign: "center", letterSpacing: "0.04em" }}>
-            Awards &amp; fellowships
-          </p>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              gap: "12px",
-              marginTop: "20px",
-            }}
-          >
-            {awards.map(({ label, bg, href, ink = true }) => {
-              const external = !href.startsWith("/");
-              return (
+          <div className="nd-card nd-panel-purple">
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "flex-end",
+                justifyContent: "space-between",
+                gap: "20px",
+              }}
+            >
+              <div>
+                <span className="nd-tag" style={{ background: "var(--nd-paper)", color: "var(--nd-ink)" }}>
+                  PRESS
+                </span>
+                <h2 className="nd-heading-lg" style={{ marginTop: "18px" }}>
+                  In the press
+                </h2>
+              </div>
+              <Link href="/press" className="nd-ghost nd-ghost-dark">
+                All coverage
+              </Link>
+            </div>
+
+            <div className="nd-grid" style={{ marginTop: "36px" }}>
+              {featuredPress.map(({ outlet, title, href }) => (
                 <Link
-                  key={label}
+                  key={href}
                   href={href}
-                  className="nd-award nd-body"
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  style={{
-                    background: bg,
-                    color: ink ? "var(--nd-ink)" : "var(--nd-paper)",
-                  }}
+                  className="nd-card nd-card-paper"
+                  style={{ display: "block" }}
                 >
-                  {label}
+                  <span className="nd-caption" style={{ letterSpacing: "0.04em" }}>
+                    {outlet}
+                  </span>
+                  <p className="nd-body-lg" style={{ marginTop: "12px" }}>
+                    {title}
+                  </p>
+                  <span className="nd-tag" style={{ background: "var(--nd-sand)", marginTop: "20px" }}>
+                    READ →
+                  </span>
                 </Link>
-              );
-            })}
+              ))}
+            </div>
+
+            <hr className="nd-panel-rule" />
+
+            <p className="nd-caption" style={{ letterSpacing: "0.04em" }}>
+              Awards &amp; fellowships
+            </p>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "12px",
+                marginTop: "16px",
+              }}
+            >
+              {awards.map(({ label, bg, href, ink = true }) => {
+                const external = !href.startsWith("/");
+                return (
+                  <Link
+                    key={label}
+                    href={href}
+                    className="nd-award nd-body"
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                    style={{
+                      background: bg,
+                      color: ink ? "var(--nd-ink)" : "var(--nd-paper)",
+                    }}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Time for some adventure: 4-column card grid ──────────────── */}
       <section className="nd-section" style={{ paddingTop: 0 }}>
-        <ConfettiField items={START_HERE_CONFETTI} />
+        <ConfettiField items={ADVENTURE_CONFETTI} />
 
         <div className="nd-wrap">
           <h2 className="nd-heading" style={{ textAlign: "center", marginBottom: "36px" }}>
@@ -423,26 +476,14 @@ export default function NewDesignPage() {
           </h2>
 
           <div className="nd-grid">
-            {startHere.map(({ tag, title, blurb, href, img, bg }) => (
+            {startHere.map(({ tag, title, blurb, href, bg }) => (
               <Link
                 key={href}
                 href={href}
                 className="nd-card"
                 style={{ background: bg, display: "block" }}
               >
-                <Image
-                  src={img}
-                  alt=""
-                  aria-hidden="true"
-                  width={400}
-                  height={220}
-                  unoptimized
-                  style={{ width: "100%", height: "160px", objectFit: "cover" }}
-                />
-                <span
-                  className="nd-tag"
-                  style={{ background: "var(--nd-paper)", marginTop: "16px" }}
-                >
+                <span className="nd-tag" style={{ background: "var(--nd-paper)" }}>
                   {tag.toUpperCase()}
                 </span>
                 <h3 className="nd-subheading" style={{ marginTop: "10px" }}>
@@ -526,53 +567,6 @@ export default function NewDesignPage() {
               </div>
             </div>
           </div>
-          </div>
-        </section>
-
-        {/* ── Press preview ───────────────────────────────── */}
-        <section className="nd-section" style={{ paddingTop: 0 }}>
-          <ConfettiField items={PRESS_PREVIEW_CONFETTI} />
-
-          <div className="nd-wrap">
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                gap: "16px",
-                marginBottom: "28px",
-              }}
-            >
-              <h2 className="nd-heading">In the press</h2>
-              <Link href="/press" className="nd-ghost">
-                All coverage
-              </Link>
-            </div>
-
-            <div className="nd-grid">
-              {featuredPress.map(({ outlet, title, href }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="nd-card nd-card-paper"
-                  style={{ display: "block" }}
-                >
-                  <span className="nd-caption" style={{ letterSpacing: "0.04em" }}>
-                    {outlet}
-                  </span>
-                  <p className="nd-body-lg" style={{ marginTop: "12px" }}>
-                    {title}
-                  </p>
-                  <span
-                    className="nd-tag"
-                    style={{ background: "var(--nd-sand)", marginTop: "20px" }}
-                  >
-                    READ →
-                  </span>
-                </Link>
-              ))}
-            </div>
           </div>
         </section>
 

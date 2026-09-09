@@ -134,16 +134,26 @@ const paths: Record<ConfettiShape, React.ReactNode> = {
 
 /* Offsets travel as custom properties rather than real CSS properties, so a
    media query can swap the whole placement without the component knowing
-   which breakpoint won. */
+   which breakpoint won.
+
+   Every edge is emitted, `auto` included. That matters for the narrow tier:
+   it falls back to the wide value per edge, so a narrow placement anchored to
+   different edges than its wide one would otherwise inherit the wide offsets
+   on the axes it did not name, end up with all four edges set, and land
+   somewhere neither placement asked for. Writing `auto` cancels the fallback.
+
+   When no narrow placement is given at all, nothing is emitted and the wide
+   one applies at every width, which is the intended fallback. */
 function posVars(pos: ConfettiPos | undefined, narrow: boolean) {
   if (!pos) return {};
   const key = narrow
     ? { top: "--nt", right: "--nr", bottom: "--nb", left: "--nl" }
     : { top: "--t", right: "--rr", bottom: "--b", left: "--l" };
   return Object.fromEntries(
-    (["top", "right", "bottom", "left"] as const)
-      .filter((edge) => pos[edge] !== undefined)
-      .map((edge) => [key[edge], pos[edge]]),
+    (["top", "right", "bottom", "left"] as const).map((edge) => [
+      key[edge],
+      pos[edge] ?? "auto",
+    ]),
   );
 }
 
