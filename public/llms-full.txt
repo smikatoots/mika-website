@@ -6,6 +6,9 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [7 Things to Do with Meta Muse](https://mikareyes.com/ai/7-things-to-do-with-meta-muse): 7 things to do with Meta Muse: hunt Marketplace, triage Messenger, and watch housing groups, with copy-paste prompts for Meta's personal AI agent.
+- [8 Meta Muse Use Cases for Content Creators](https://mikareyes.com/ai/8-meta-muse-use-cases-for-content-creators): 8 Meta Muse use cases for content creators: study insights, turn Saves into Reels, write captions, and triage brand DMs with copy-paste prompts.
+- [8 Meta Muse Use Cases for Business Owners](https://mikareyes.com/ai/8-meta-muse-use-cases-for-business-owners): 8 Meta Muse use cases for business owners: watch Groups, ads, reviews, and DMs, then turn that customer talk into revenue with copy-paste prompts.
 - [How to Make an Explainer Video with AI in 5 Minutes](https://mikareyes.com/ai/how-to-make-explainer-video-with-ai): Make an explainer video with AI in about 5 minutes. Install the Remotion plugin in Claude Code or Codex, paste one website link, and get a rendered MP4.
 - [How to Humanize AI Text and Make It Sound Like You](https://mikareyes.com/ai/how-to-humanize-ai-text): Humanize AI text with two editing skills, real writing samples, and a better drafting setup so your scripts, emails, and DMs sound like you.
 
