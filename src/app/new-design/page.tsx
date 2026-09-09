@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { homeBioLinks } from "@/lib/home-bio-links";
 
-import { Confetti } from "./Confetti";
+import { ConfettiField, type ConfettiPlacement } from "./Confetti";
 import { NewDesignNav } from "./NewDesignNav";
 
 /* ────────────────────────────────────────────────────────────
@@ -107,6 +107,78 @@ const contactTypes = [
   { num: "04", title: "AI workshops", desc: "Classes, tutorials and team training." },
 ];
 
+/* ── Confetti placements ──────────────────────────────────────────────
+   One entry per shape. `at` is the wide placement; `narrow` takes over
+   below 1200px and goes where a compressed layout actually has room —
+   hugging the page edge inside the 24px wrap padding, or inside a
+   section's vertical padding band, which is empty across the width.
+   Nothing is switched off when the layout narrows, and nothing is
+   static. Durations are deliberately coprime-ish so the field never
+   falls into step. */
+
+const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
+  // Salmon carries the buttons now, so the big masses beside the CTA are
+  // yellow and turquoise — a salmon blob here would pull rank on it.
+  { shape: "disc", color: "var(--nd-sun-yellow)", size: 104, motion: "bob", duration: 5.5, at: { top: "-38px", left: "-38px" } },
+  { shape: "triangle", color: "var(--nd-lime)", size: 66, rotate: 18, motion: "sway", duration: 7.5, delay: 0.6, at: { bottom: "-30px", right: "34px" } },
+  { shape: "capsule", color: "var(--nd-turquoise)", size: 78, rotate: 12, motion: "twist", duration: 6.5, delay: 1.1, at: { top: "-30px", right: "-26px" } },
+];
+
+const HERO_CONFETTI: ConfettiPlacement[] = [
+  { shape: "sparkle", color: "var(--nd-salmon)", size: 44, motion: "bob", duration: 5, at: { top: "14%", left: "6%" }, narrow: { top: "8px", left: "8%" } },
+  { shape: "zigzag", color: "var(--nd-periwinkle)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 0.4, at: { top: "30%", left: "3%" }, narrow: { top: "46%", left: "-40px" } },
+  { shape: "ring", color: "var(--nd-turquoise)", size: 58, motion: "sway", duration: 9, delay: 1.2, at: { bottom: "26%", left: "8%" }, narrow: { bottom: "8px", left: "6%" } },
+  { shape: "squiggle", color: "var(--nd-lime)", size: 96, rotate: 6, motion: "drift", duration: 11, at: { top: "18%", right: "4%" }, narrow: { top: "40%", right: "-40px" } },
+  { shape: "burst", color: "var(--nd-sun-yellow)", size: 46, motion: "spin", duration: 24, at: { top: "38%", right: "9%" }, narrow: { top: "10px", right: "10%" } },
+  { shape: "dots", color: "var(--nd-salmon-pink)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.9, at: { bottom: "30%", right: "5%" }, narrow: { bottom: "10px", right: "6%" } },
+];
+
+const PRESS_STRIP_CONFETTI: ConfettiPlacement[] = [
+  { shape: "cross", color: "var(--nd-salmon)", size: 26, motion: "twist", duration: 5.5, at: { top: "34%", left: "3%" }, narrow: { top: "30%", left: "-6px" } },
+  { shape: "dots", color: "var(--nd-turquoise)", size: 46, motion: "shake", duration: 7, delay: 0.5, at: { top: "40%", right: "3%" }, narrow: { top: "34%", right: "-8px" } },
+];
+
+const DARK_CONFETTI: ConfettiPlacement[] = [
+  // The headline column runs to 820px and white type over a yellow disc is
+  // unreadable, so every one of these stays in the gutters.
+  { shape: "disc", color: "var(--nd-sun-yellow)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: "20px" }, narrow: { top: "1%", left: "-48px" } },
+  { shape: "triangle", color: "var(--nd-salmon)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "26%", right: "28px" }, narrow: { top: "2%", right: "-27px" } },
+  { shape: "sparkle", color: "var(--nd-lime)", size: 40, motion: "spin", duration: 20, at: { top: "6%", right: "12%" }, narrow: { top: "8px", right: "6%" } },
+  { shape: "arc", color: "var(--nd-salmon-pink)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "44%", left: "6%" }, narrow: { top: "40%", left: "-30px" } },
+  { shape: "blob", color: "var(--nd-periwinkle)", size: 132, rotate: -8, motion: "drift", duration: 12, at: { bottom: "12%", left: "24px" }, narrow: { bottom: "20%", left: "-64px" } },
+  { shape: "capsule", color: "var(--nd-turquoise)", size: 104, rotate: 11, motion: "shake", duration: 7.5, delay: 0.3, at: { bottom: "18%", right: "24px" }, narrow: { bottom: "26%", right: "-46px" } },
+  { shape: "cross", color: "var(--nd-sun-yellow)", size: 34, motion: "bob", duration: 5, delay: 1.8, at: { bottom: "34%", right: "11%" }, narrow: { bottom: "8px", right: "8%" } },
+  { shape: "ring", color: "var(--nd-lime)", size: 52, motion: "pulse", duration: 6.5, delay: 0.2, at: { bottom: "6%", left: "13%" }, narrow: { bottom: "10px", left: "8%" } },
+];
+
+const AWARDS_CONFETTI: ConfettiPlacement[] = [
+  { shape: "sparkle", color: "var(--nd-sun-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "22%", left: "5%" }, narrow: { top: "6px", left: "4%" } },
+  { shape: "squiggle", color: "var(--nd-periwinkle)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { bottom: "18%", right: "4%" }, narrow: { bottom: "30%", right: "-32px" } },
+];
+
+const START_HERE_CONFETTI: ConfettiPlacement[] = [
+  { shape: "zigzag", color: "var(--nd-lime)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "6%", left: "2%" }, narrow: { top: "2%", left: "-34px" } },
+  { shape: "ring", color: "var(--nd-salmon)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "4%", right: "3%" }, narrow: { top: "1%", right: "-16px" } },
+  { shape: "blob", color: "var(--nd-salmon-pink)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { bottom: "8%", left: "1%" }, narrow: { bottom: "10px", left: "-38px" } },
+  { shape: "burst", color: "var(--nd-turquoise)", size: 40, motion: "spin", duration: 22, at: { bottom: "14%", right: "2%" }, narrow: { bottom: "12px", right: "-8px" } },
+];
+
+const SPEAKING_CONFETTI: ConfettiPlacement[] = [
+  { shape: "arc", color: "var(--nd-sun-yellow)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "8%", left: "2%" }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "capsule", color: "var(--nd-salmon-pink)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { bottom: "16%", right: "2%" }, narrow: { bottom: "8%", right: "-30px" } },
+];
+
+const PRESS_PREVIEW_CONFETTI: ConfettiPlacement[] = [
+  { shape: "dots", color: "var(--nd-lime)", size: 54, rotate: 8, motion: "shake", duration: 6.5, at: { top: "4%", left: "1%" }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "sparkle", color: "var(--nd-salmon)", size: 36, motion: "twist", duration: 5.5, delay: 0.7, at: { bottom: "10%", right: "2%" }, narrow: { bottom: "6%", right: "-4px" } },
+];
+
+const CONTACT_CONFETTI: ConfettiPlacement[] = [
+  { shape: "zigzag", color: "var(--nd-turquoise)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "4%", left: "1%" }, narrow: { top: "1%", left: "-36px" } },
+  { shape: "cross", color: "var(--nd-periwinkle)", size: 34, motion: "spin", duration: 26, at: { bottom: "12%", left: "3%" }, narrow: { bottom: "6%", left: "-3px" } },
+  { shape: "ring", color: "var(--nd-salmon)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "8%", right: "1%" }, narrow: { top: "4%", right: "-18px" } },
+];
+
 /** One wordmark letter, with an optional cut-paper shape tucked behind it.
     Placement is driven by the ink-band tokens on `.nd-display`, so the shapes
     stay on the glyphs if the display face is ever swapped again. */
@@ -149,12 +221,7 @@ export default function NewDesignPage() {
 
       {/* ── Hero ────────────────────────────────────────── */}
       <header className="nd-section" style={{ overflow: "hidden" }}>
-        <Confetti shape="sparkle" color="var(--nd-salmon)" size={44} motion="bob" style={{ top: "14%", left: "6%" }} />
-        <Confetti shape="zigzag" color="var(--nd-periwinkle)" size={92} rotate={-8} style={{ top: "30%", left: "3%" }} />
-        <Confetti shape="ring" color="var(--nd-turquoise)" size={58} motion="sway" style={{ bottom: "26%", left: "8%" }} />
-        <Confetti shape="squiggle" color="var(--nd-lime)" size={96} rotate={6} style={{ top: "18%", right: "4%" }} />
-        <Confetti shape="burst" color="var(--nd-sun-yellow)" size={46} motion="spin" style={{ top: "38%", right: "9%" }} />
-        <Confetti shape="dots" color="var(--nd-salmon-pink)" size={64} rotate={-12} style={{ bottom: "30%", right: "5%" }} />
+        <ConfettiField items={HERO_CONFETTI} />
 
         <div className="nd-wrap" style={{ position: "relative", zIndex: 1 }}>
           <p className="nd-heading" style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto" }}>
@@ -184,8 +251,8 @@ export default function NewDesignPage() {
               textAlign: "center",
             }}
           >
-            Founder and knowledge creator. I help high-achieving professionals use AI to
-            build ambitious, time-rich careers, wealth and lives.
+            I help high-achieving founders, creators &amp; professionals use AI to build
+            ambitious, time-rich careers, wealth and lives.
           </p>
 
           <div
@@ -234,42 +301,14 @@ export default function NewDesignPage() {
                 borderRadius: "var(--nd-radius)",
               }}
             />
-            {/* Salmon now carries the buttons, so the big decorative masses
-                here are yellow and turquoise — a salmon blob this size would
-                pull rank on the CTA sitting right above it. */}
-            <Confetti
-              shape="disc"
-              color="var(--nd-sun-yellow)"
-              size={104}
-              motion="bob"
-              always
-              style={{ top: "-38px", left: "-38px" }}
-            />
-            <Confetti
-              shape="triangle"
-              color="var(--nd-lime)"
-              size={66}
-              rotate={18}
-              motion="sway"
-              always
-              style={{ bottom: "-30px", right: "34px" }}
-            />
-            <Confetti
-              shape="capsule"
-              color="var(--nd-turquoise)"
-              size={78}
-              rotate={12}
-              always
-              style={{ top: "-30px", right: "-26px" }}
-            />
+            <ConfettiField items={HERO_PHOTO_CONFETTI} />
           </figure>
         </div>
       </header>
 
       {/* ── Press strip ─────────────────────────────────── */}
-      <section aria-label="Press coverage" style={{ position: "relative" }}>
-        <Confetti shape="cross" color="var(--nd-salmon)" size={26} motion="bob" style={{ top: "34%", left: "3%" }} />
-        <Confetti shape="dots" color="var(--nd-turquoise)" size={46} style={{ top: "40%", right: "3%" }} />
+      <section aria-label="Press coverage" style={{ position: "relative", overflow: "hidden" }}>
+        <ConfettiField items={PRESS_STRIP_CONFETTI} />
 
         <hr className="nd-rule" />
         <div
@@ -308,14 +347,7 @@ export default function NewDesignPage() {
         {/* Collage atmosphere. Everything here lives in the gutters — the
             headline column runs to 820px and white type over a yellow disc
             is unreadable, so nothing may drift inward. */}
-        <Confetti shape="disc" color="var(--nd-sun-yellow)" size={110} motion="bob" style={{ top: "10%", left: "20px" }} />
-        <Confetti shape="triangle" color="var(--nd-salmon)" size={72} rotate={-14} style={{ top: "26%", right: "28px" }} />
-        <Confetti shape="sparkle" color="var(--nd-lime)" size={40} motion="spin" style={{ top: "6%", right: "12%" }} />
-        <Confetti shape="arc" color="var(--nd-salmon-pink)" size={78} rotate={-18} motion="sway" style={{ top: "44%", left: "6%" }} />
-        <Confetti shape="blob" color="var(--nd-periwinkle)" size={132} rotate={-8} style={{ bottom: "12%", left: "24px" }} />
-        <Confetti shape="capsule" color="var(--nd-turquoise)" size={104} rotate={11} style={{ bottom: "18%", right: "24px" }} />
-        <Confetti shape="cross" color="var(--nd-sun-yellow)" size={34} motion="bob" style={{ bottom: "34%", right: "11%" }} />
-        <Confetti shape="ring" color="var(--nd-lime)" size={52} style={{ bottom: "6%", left: "13%" }} />
+        <ConfettiField items={DARK_CONFETTI} />
 
         <div className="nd-wrap" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
           <span
@@ -390,8 +422,7 @@ export default function NewDesignPage() {
 
       {/* ── Awards ──────────────────────────────────────── */}
       <section className="nd-section" style={{ paddingBlock: "clamp(40px,6vw,64px)" }}>
-        <Confetti shape="sparkle" color="var(--nd-sun-yellow)" size={38} motion="spin" style={{ top: "22%", left: "5%" }} />
-        <Confetti shape="squiggle" color="var(--nd-periwinkle)" size={80} rotate={-10} style={{ bottom: "18%", right: "4%" }} />
+        <ConfettiField items={AWARDS_CONFETTI} />
 
         <div className="nd-wrap">
           <p className="nd-caption" style={{ textAlign: "center", letterSpacing: "0.04em" }}>
@@ -426,10 +457,7 @@ export default function NewDesignPage() {
 
       {/* ── Start here: 4-column card grid ──────────────── */}
       <section className="nd-section" style={{ paddingTop: 0 }}>
-        <Confetti shape="zigzag" color="var(--nd-lime)" size={84} rotate={6} style={{ top: "6%", left: "2%" }} />
-        <Confetti shape="ring" color="var(--nd-salmon)" size={54} motion="sway" style={{ top: "4%", right: "3%" }} />
-        <Confetti shape="blob" color="var(--nd-salmon-pink)" size={96} rotate={14} style={{ bottom: "8%", left: "1%" }} />
-        <Confetti shape="burst" color="var(--nd-turquoise)" size={40} motion="spin" style={{ bottom: "14%", right: "2%" }} />
+        <ConfettiField items={START_HERE_CONFETTI} />
 
         <div className="nd-wrap">
           <h2 className="nd-heading" style={{ textAlign: "center", marginBottom: "36px" }}>
@@ -473,8 +501,7 @@ export default function NewDesignPage() {
 
       {/* ── Speaking ────────────────────────────────────── */}
       <section className="nd-section" style={{ paddingTop: 0 }}>
-        <Confetti shape="arc" color="var(--nd-sun-yellow)" size={72} rotate={12} motion="bob" style={{ top: "8%", left: "2%" }} />
-        <Confetti shape="capsule" color="var(--nd-salmon-pink)" size={78} rotate={-14} style={{ bottom: "16%", right: "2%" }} />
+        <ConfettiField items={SPEAKING_CONFETTI} />
 
         <div className="nd-wrap">
           <div
@@ -546,8 +573,7 @@ export default function NewDesignPage() {
 
         {/* ── Press preview ───────────────────────────────── */}
         <section className="nd-section" style={{ paddingTop: 0 }}>
-          <Confetti shape="dots" color="var(--nd-lime)" size={54} rotate={8} style={{ top: "4%", left: "1%" }} />
-          <Confetti shape="sparkle" color="var(--nd-salmon)" size={36} motion="bob" style={{ bottom: "10%", right: "2%" }} />
+          <ConfettiField items={PRESS_PREVIEW_CONFETTI} />
 
           <div className="nd-wrap">
             <div
@@ -594,9 +620,7 @@ export default function NewDesignPage() {
 
         {/* ── Contact ─────────────────────────────────────── */}
         <section id="contact" className="nd-section" style={{ paddingTop: 0 }}>
-          <Confetti shape="zigzag" color="var(--nd-turquoise)" size={88} rotate={-6} style={{ top: "4%", left: "1%" }} />
-          <Confetti shape="cross" color="var(--nd-periwinkle)" size={34} motion="spin" style={{ bottom: "12%", left: "3%" }} />
-          <Confetti shape="ring" color="var(--nd-salmon)" size={58} motion="sway" style={{ top: "8%", right: "1%" }} />
+          <ConfettiField items={CONTACT_CONFETTI} />
 
           <div className="nd-wrap">
             <div
@@ -662,9 +686,9 @@ export default function NewDesignPage() {
             }}
           >
             <div className="nd-navmark">
-              <span className="nd-badge" aria-hidden="true">
-                M
-              </span>
+              <Link href="/" aria-label="Mika Reyes, home" className="nd-badge">
+                <Image src="/mika-reyes-logo.png" alt="Mika Reyes" width={36} height={36} />
+              </Link>
               <span className="nd-body">Mika Reyes · New York City</span>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>

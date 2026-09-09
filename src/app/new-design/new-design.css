@@ -160,8 +160,11 @@
 
 .nd-section {
   padding-block: clamp(56px, 9vw, 96px);
-  /* Positioning context for the confetti layer. */
+  /* Positioning context for the confetti layer. `overflow: hidden` lets the
+     narrow placements hang off the page edge — that bleed is the effect —
+     without any of them opening a horizontal scrollbar. */
   position: relative;
+  overflow: hidden;
 }
 
 /* ── Nav ────────────────────────────────────────────────── */
@@ -191,18 +194,26 @@
 }
 
 .nd-badge {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: var(--nd-salmon);
-  border: 1px solid var(--nd-ink);
-  display: grid;
-  place-items: center;
-  font-family: var(--nd-display);
-  font-weight: var(--nd-display-weight);
-  font-size: 15px;
-  letter-spacing: -0.05em;
+  overflow: hidden;
+  display: block;
   flex-shrink: 0;
+  /* Hairline ring so the mark reads as a pressed sticker on the linen,
+     the same treatment the ghost pills get. */
+  border: 1px solid var(--nd-ink);
+  transition: transform 0.15s ease;
+}
+
+.nd-badge:hover {
+  transform: translateY(-2px) rotate(-6deg);
+}
+
+.nd-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .nd-menu-btn {
@@ -424,55 +435,102 @@
    and aria-hidden; none of them may ever carry meaning, and none
    may sit where it can land on running text.
 
-   `.nd-confetti` is the positioning wrapper — each instance sets
-   its own top/left/right/bottom and rotation inline. Below the
-   gutter breakpoint they are not drawn at all, because narrow
-   layouts have no margin to hold them. */
+   Position and size are driven entirely by custom properties, so
+   a single instance can hold two placements: the wide one, and a
+   narrow one that takes over below the gutter breakpoint. That is
+   what lets them survive a phone instead of being switched off —
+   narrow placements either hug the page edge, where the 24px
+   wrap padding leaves a clear strip, or sit inside a section's
+   vertical padding band, which is empty across the full width.
+
+   Every instance animates. `--dur` and `--delay` are staggered per
+   placement so nothing falls into lockstep. */
 .nd-confetti {
   position: absolute;
-  display: none;
+  display: block;
   pointer-events: none;
   z-index: 0;
   color: var(--c, var(--nd-salmon));
+  width: var(--w);
+  height: var(--w);
+  top: var(--t, auto);
+  right: var(--rr, auto);
+  bottom: var(--b, auto);
+  left: var(--l, auto);
+  animation-duration: var(--dur, 6s);
+  animation-delay: var(--delay, 0s);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  /* Fallback for reduced motion, where no animation applies the tilt. */
+  transform: rotate(var(--rot, 0deg));
 }
 
-@media (min-width: 1200px) {
-  .nd-confetti { display: block; }
+@media (max-width: 1199px) {
+  .nd-confetti {
+    width: calc(var(--w) * 0.62);
+    height: calc(var(--w) * 0.62);
+    top: var(--nt, var(--t, auto));
+    right: var(--nr, var(--rr, auto));
+    bottom: var(--nb, var(--b, auto));
+    left: var(--nl, var(--l, auto));
+  }
 }
-
-/* A few are load-bearing to the composition rather than the margins —
-   hero and dark band — and are sized to survive narrow widths. */
-.nd-confetti--always { display: block; }
 
 .nd-confetti svg {
   display: block;
   overflow: visible;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes nd-bob {
-  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
-  50%      { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50%      { transform: translateY(-14px) rotate(var(--rot, 0deg)); }
 }
 
 @keyframes nd-sway {
-  0%, 100% { transform: translate(0, 0) rotate(var(--r, 0deg)); }
-  33%      { transform: translate(7px, -9px) rotate(calc(var(--r, 0deg) + 6deg)); }
-  66%      { transform: translate(-6px, 5px) rotate(calc(var(--r, 0deg) - 5deg)); }
+  0%, 100% { transform: translate(0, 0) rotate(var(--rot, 0deg)); }
+  33%      { transform: translate(9px, -11px) rotate(calc(var(--rot, 0deg) + 7deg)); }
+  66%      { transform: translate(-8px, 6px) rotate(calc(var(--rot, 0deg) - 6deg)); }
 }
 
 @keyframes nd-spin {
-  from { transform: rotate(var(--r, 0deg)); }
-  to   { transform: rotate(calc(var(--r, 0deg) + 360deg)); }
+  from { transform: rotate(var(--rot, 0deg)); }
+  to   { transform: rotate(calc(var(--rot, 0deg) + 360deg)); }
+}
+
+@keyframes nd-twist {
+  0%, 100% { transform: rotate(calc(var(--rot, 0deg) - 14deg)); }
+  50%      { transform: rotate(calc(var(--rot, 0deg) + 14deg)); }
+}
+
+@keyframes nd-shake {
+  0%, 100%     { transform: translateX(0) rotate(var(--rot, 0deg)); }
+  20%, 60%     { transform: translateX(-6px) rotate(calc(var(--rot, 0deg) - 4deg)); }
+  40%, 80%     { transform: translateX(6px) rotate(calc(var(--rot, 0deg) + 4deg)); }
+}
+
+@keyframes nd-drift {
+  0%, 100% { transform: translate(0, 0) rotate(var(--rot, 0deg)); }
+  25%      { transform: translate(12px, -8px) rotate(calc(var(--rot, 0deg) + 10deg)); }
+  50%      { transform: translate(0, -16px) rotate(var(--rot, 0deg)); }
+  75%      { transform: translate(-12px, -8px) rotate(calc(var(--rot, 0deg) - 10deg)); }
+}
+
+@keyframes nd-pulse {
+  0%, 100% { transform: scale(1) rotate(var(--rot, 0deg)); }
+  50%      { transform: scale(1.18) rotate(calc(var(--rot, 0deg) + 5deg)); }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .nd-bob   { animation: nd-bob 5s ease-in-out infinite; }
-  .nd-sway  { animation: nd-sway 9s ease-in-out infinite; }
-  .nd-spin  { animation: nd-spin 26s linear infinite; }
+  .nd-bob   { animation-name: nd-bob; }
+  .nd-sway  { animation-name: nd-sway; }
+  .nd-spin  { animation-name: nd-spin; animation-timing-function: linear; }
+  .nd-twist { animation-name: nd-twist; }
+  .nd-shake { animation-name: nd-shake; }
+  .nd-drift { animation-name: nd-drift; }
+  .nd-pulse { animation-name: nd-pulse; }
 }
-
-/* Static rotation for anything that does not animate. */
-.nd-confetti[style*="--r"] { transform: rotate(var(--r, 0deg)); }
 
 /* Press logos sit back until hovered, so the strip reads as one texture
    rather than six competing marks. */
@@ -484,4 +542,30 @@
 .nd-presslogo:hover {
   opacity: 1;
   transform: translateY(-2px);
+}
+
+/* ── Learn AI dropdown ──────────────────────────────────────── */
+
+.nd-menuitem {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--nd-radius);
+  transition: background 0.15s ease;
+}
+
+.nd-menuitem:hover {
+  background: var(--nd-turquoise);
+}
+
+/* Featured rows carry their own fill, so the hover has to win over it. */
+.nd-menuitem[style]:hover {
+  background: var(--nd-turquoise);
+}
+
+.nd-menuitem-desc {
+  display: block;
+  margin-top: 3px;
+  text-transform: none;
+  opacity: 0.72;
+  line-height: 1.35;
 }

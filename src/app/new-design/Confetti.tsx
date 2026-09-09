@@ -7,9 +7,17 @@
    inline SVG on a 100x100 viewBox and colored through
    `currentColor`, so one `--c` sets a whole shape.
 
-   Placement is the caller's job. The rule that matters: they live
-   in the gutters. A shape that can land on running text is a bug,
-   not a variation — see the `.nd-confetti` note in the stylesheet.
+   Two rules hold this together:
+
+   1. Nothing is static. Every placement names a motion, and the
+      stylesheet honours prefers-reduced-motion for all of them.
+   2. Nothing lands on running text. A placement carries a wide
+      position and, where the wide one would collide once the
+      layout compresses, a narrow one that takes over below
+      1200px. Narrow placements go where a phone actually has
+      room: hugging the page edge inside the 24px wrap padding,
+      or inside a section's vertical padding band, which is empty
+      across the full width.
    ──────────────────────────────────────────────────────────── */
 
 export type ConfettiShape =
@@ -25,6 +33,39 @@ export type ConfettiShape =
   | "dots"
   | "triangle"
   | "disc";
+
+export type ConfettiMotion =
+  | "bob"
+  | "sway"
+  | "spin"
+  | "twist"
+  | "shake"
+  | "drift"
+  | "pulse";
+
+/** Any subset of the four edge offsets, as CSS lengths or percentages. */
+export type ConfettiPos = {
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+};
+
+export type ConfettiPlacement = {
+  shape: ConfettiShape;
+  color: string;
+  /** Diameter at wide widths. Narrow widths scale it to 62%. */
+  size: number;
+  /** Static tilt in degrees. Every animation composes on top of it. */
+  rotate?: number;
+  motion: ConfettiMotion;
+  /** Seconds. Staggered per placement so the field never pulses in unison. */
+  duration?: number;
+  delay?: number;
+  at: ConfettiPos;
+  /** Placement below 1200px. Falls back to `at` when the wide one is safe. */
+  narrow?: ConfettiPos;
+};
 
 const paths: Record<ConfettiShape, React.ReactNode> = {
   zigzag: (
@@ -61,12 +102,7 @@ const paths: Record<ConfettiShape, React.ReactNode> = {
       strokeLinecap="round"
     />
   ),
-  cross: (
-    <path
-      d="M41 6h18v35h35v18H59v35H41V59H6V41h35V6Z"
-      fill="currentColor"
-    />
-  ),
+  cross: <path d="M41 6h18v35h35v18H59v35H41V59H6V41h35V6Z" fill="currentColor" />,
   ring: (
     <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="14" />
   ),
@@ -96,18 +132,20 @@ const paths: Record<ConfettiShape, React.ReactNode> = {
   disc: <circle cx="50" cy="50" r="46" fill="currentColor" />,
 };
 
-type Props = {
-  shape: ConfettiShape;
-  /** Any CSS color, usually one of the palette tokens. */
-  color: string;
-  size: number;
-  /** Static tilt, in degrees. Animations compose on top of it. */
-  rotate?: number;
-  motion?: "bob" | "sway" | "spin";
-  /** Drawn at every width, not just where there is gutter to spare. */
-  always?: boolean;
-  style?: React.CSSProperties;
-};
+/* Offsets travel as custom properties rather than real CSS properties, so a
+   media query can swap the whole placement without the component knowing
+   which breakpoint won. */
+function posVars(pos: ConfettiPos | undefined, narrow: boolean) {
+  if (!pos) return {};
+  const key = narrow
+    ? { top: "--nt", right: "--nr", bottom: "--nb", left: "--nl" }
+    : { top: "--t", right: "--rr", bottom: "--b", left: "--l" };
+  return Object.fromEntries(
+    (["top", "right", "bottom", "left"] as const)
+      .filter((edge) => pos[edge] !== undefined)
+      .map((edge) => [key[edge], pos[edge]]),
+  );
+}
 
 export function Confetti({
   shape,
@@ -115,30 +153,39 @@ export function Confetti({
   size,
   rotate = 0,
   motion,
-  always = false,
-  style,
-}: Props) {
+  duration,
+  delay,
+  at,
+  narrow,
+}: ConfettiPlacement) {
   return (
     <span
       aria-hidden="true"
-      className={[
-        "nd-confetti",
-        always ? "nd-confetti--always" : "",
-        motion ? `nd-${motion}` : "",
-      ]
-        .filter(Boolean)
-        .join(" ")}
+      className={`nd-confetti nd-${motion}`}
       style={{
         ["--c" as string]: color,
-        ["--r" as string]: `${rotate}deg`,
-        width: size,
-        height: size,
-        ...style,
+        ["--rot" as string]: `${rotate}deg`,
+        ["--w" as string]: `${size}px`,
+        ...(duration ? { ["--dur" as string]: `${duration}s` } : {}),
+        ...(delay ? { ["--delay" as string]: `${delay}s` } : {}),
+        ...posVars(at, false),
+        ...posVars(narrow, true),
       }}
     >
-      <svg viewBox="0 0 100 100" width={size} height={size}>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
         {paths[shape]}
       </svg>
     </span>
+  );
+}
+
+/** Renders one section's worth of placements. */
+export function ConfettiField({ items }: { items: ConfettiPlacement[] }) {
+  return (
+    <>
+      {items.map((p, i) => (
+        <Confetti key={`${p.shape}-${i}`} {...p} />
+      ))}
+    </>
   );
 }
