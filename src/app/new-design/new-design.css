@@ -182,7 +182,9 @@
   top: 0;
   z-index: 40;
   background: var(--nd-linen);
-  box-shadow: var(--nd-shadow-nav);
+  /* A hairline, the same one the pills carry, instead of the reference's
+     nav shadow — the page reads flatter and the bar stops floating. */
+  border-bottom: 1px solid var(--nd-ink);
 }
 
 .nd-nav-inner {

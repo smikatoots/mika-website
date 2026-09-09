@@ -19,11 +19,11 @@ import { NewDesignNav } from "./NewDesignNav";
    ──────────────────────────────────────────────────────────── */
 
 // Destinations come from the live homepage's link map, same as the press
-// strip. `ink: false` marks a fill dark enough that black type fails on it —
-// only the purple, at 3.89:1 black versus 5.40:1 white.
+// strip. Every fill here clears AA with black type, turquoise included at
+// 5.09:1 — so the pills all set ink.
 const awards = [
   { label: "Forbes 30 Under 30", bg: "var(--nd-sun-yellow)", href: homeBioLinks.awards.forbes30 },
-  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--nd-purple)", href: homeBioLinks.awards.tatler, ink: false },
+  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--nd-turquoise)", href: homeBioLinks.awards.tatler },
   { label: "Kleiner Perkins Fellow", bg: "var(--nd-lime)", href: homeBioLinks.awards.kleinerPerkins },
   { label: "SPC Founder Fellow", bg: "var(--nd-salmon-pink)", href: homeBioLinks.awards.spc },
 ];
@@ -161,7 +161,7 @@ const DARK_CONFETTI: ConfettiPlacement[] = [
 
 const PRESS_AWARDS_CONFETTI: ConfettiPlacement[] = [
   { shape: "sparkle", color: "var(--nd-sun-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "14%", left: outside(14) }, narrow: { top: "6px", left: "4%" } },
-  { shape: "squiggle", color: "var(--nd-periwinkle)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "30%", right: "-32px" } },
+  { shape: "squiggle", color: "var(--nd-periwinkle)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "12px", right: "8%" } },
   { shape: "dots", color: "var(--nd-lime)", size: 54, rotate: 8, motion: "shake", duration: 6.5, delay: 1.4, at: { top: "86%", left: outside(20) }, narrow: { top: "6px", right: "6%" } },
 ];
 
@@ -381,8 +381,36 @@ export default function NewDesignPage() {
         </div>
       </section>
 
+      {/* ── Time for some adventure: 4-column card grid ──────────────── */}
+      <section className="nd-section">
+        <ConfettiField items={ADVENTURE_CONFETTI} />
+
+        <div className="nd-wrap">
+          <div className="nd-grid">
+            {startHere.map(({ tag, title, blurb, href, bg }) => (
+              <Link
+                key={href}
+                href={href}
+                className="nd-card"
+                style={{ background: bg, display: "block" }}
+              >
+                <span className="nd-tag" style={{ background: "var(--nd-paper)" }}>
+                  {tag.toUpperCase()}
+                </span>
+                <h3 className="nd-subheading" style={{ marginTop: "10px" }}>
+                  {title}
+                </h3>
+                <p className="nd-body" style={{ marginTop: "8px" }}>
+                  {blurb}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Press & awards ──────────────────────────────── */}
-      <section className="nd-section" style={{ paddingBottom: 0 }}>
+      <section className="nd-section">
         <ConfettiField items={PRESS_AWARDS_CONFETTI} />
 
         <div className="nd-wrap">
@@ -396,14 +424,7 @@ export default function NewDesignPage() {
                 gap: "20px",
               }}
             >
-              <div>
-                <span className="nd-tag" style={{ background: "var(--nd-paper)", color: "var(--nd-ink)" }}>
-                  PRESS
-                </span>
-                <h2 className="nd-heading-lg" style={{ marginTop: "18px" }}>
-                  In the press
-                </h2>
-              </div>
+              <h2 className="nd-heading-lg">In the press</h2>
               <Link href="/press" className="nd-ghost nd-ghost-dark">
                 All coverage
               </Link>
@@ -443,7 +464,7 @@ export default function NewDesignPage() {
                 marginTop: "16px",
               }}
             >
-              {awards.map(({ label, bg, href, ink = true }) => {
+              {awards.map(({ label, bg, href }) => {
                 const external = !href.startsWith("/");
                 return (
                   <Link
@@ -452,48 +473,13 @@ export default function NewDesignPage() {
                     className="nd-award nd-body"
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
-                    style={{
-                      background: bg,
-                      color: ink ? "var(--nd-ink)" : "var(--nd-paper)",
-                    }}
+                    style={{ background: bg, color: "var(--nd-ink)" }}
                   >
                     {label}
                   </Link>
                 );
               })}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Time for some adventure: 4-column card grid ──────────────── */}
-      <section className="nd-section" style={{ paddingTop: 0 }}>
-        <ConfettiField items={ADVENTURE_CONFETTI} />
-
-        <div className="nd-wrap">
-          <h2 className="nd-heading" style={{ textAlign: "center", marginBottom: "36px" }}>
-            Time for some adventure
-          </h2>
-
-          <div className="nd-grid">
-            {startHere.map(({ tag, title, blurb, href, bg }) => (
-              <Link
-                key={href}
-                href={href}
-                className="nd-card"
-                style={{ background: bg, display: "block" }}
-              >
-                <span className="nd-tag" style={{ background: "var(--nd-paper)" }}>
-                  {tag.toUpperCase()}
-                </span>
-                <h3 className="nd-subheading" style={{ marginTop: "10px" }}>
-                  {title}
-                </h3>
-                <p className="nd-body" style={{ marginTop: "8px" }}>
-                  {blurb}
-                </p>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
@@ -518,7 +504,8 @@ export default function NewDesignPage() {
               unoptimized
               style={{
                 width: "100%",
-                height: "clamp(220px,32vw,340px)",
+                maxWidth: "380px",
+                aspectRatio: "4 / 5",
                 objectFit: "cover",
                 objectPosition: "72% center",
                 borderRadius: "var(--nd-radius)",
@@ -526,11 +513,7 @@ export default function NewDesignPage() {
             />
 
             <div>
-              <span className="nd-tag" style={{ background: "var(--nd-paper)" }}>
-                SPEAKING
-              </span>
-
-              <h2 className="nd-heading-lg" style={{ marginTop: "16px" }}>
+              <h2 className="nd-heading-lg">
                 Talks, panels, and workshops.
               </h2>
 
