@@ -1,51 +1,87 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { LearnAiNavDropdown } from "@/components/LearnAiNavDropdown";
 import { learnAiNavItems, siteHeaderNavItems } from "@/lib/site-nav";
 import { InternalLink } from "@/components/ui/InternalLink";
 
-import { buttonStyle } from "@/components/ui/buttonStyle";
+/* The Learn AI dropdown. A paper panel with a hairline edge and the system's
+   5px radius — the one place a shadow is allowed, because it genuinely floats
+   above the page. Opens on hover and on focus so it is reachable by keyboard,
+   and Escape closes it. */
+function LearnAiMenu() {
+  const [open, setOpen] = useState(false);
 
-const navLinkStyle = {
-  fontFamily: "var(--mr-font-body)",
-  fontSize: "var(--mr-text-sm)",
-  fontWeight: "var(--mr-weight-semi)",
-  color: "var(--mr-text-soft)",
-} as const;
-
-const mobileNavLinkClass =
-  "block rounded-xl px-4 py-3 transition-colors hover:bg-[var(--mr-surface-cream)] hover:text-[var(--mr-coral)]";
-
-function MenuIcon({ open }: { open: boolean }) {
   return (
-    <span className="relative block h-4 w-5" aria-hidden>
-      <span
-        className="absolute left-0 block h-0.5 w-5 rounded-full bg-[var(--mr-ink)] transition-all duration-200"
+    <div
+      style={{ position: "relative" }}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Escape") setOpen(false);
+      }}
+    >
+      <button
+        type="button"
+        className="mr-navlink"
+        aria-haspopup="true"
+        aria-expanded={open}
         style={{
-          top: open ? "7px" : "0",
-          transform: open ? "rotate(45deg)" : "none",
+          font: "inherit",
+          background: "none",
+          border: 0,
+          cursor: "pointer",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "5px",
         }}
-      />
-      <span
-        className="absolute left-0 top-[7px] block h-0.5 w-5 rounded-full bg-[var(--mr-ink)] transition-all duration-200"
-        style={{ opacity: open ? 0 : 1 }}
-      />
-      <span
-        className="absolute left-0 block h-0.5 w-5 rounded-full bg-[var(--mr-ink)] transition-all duration-200"
+      >
+        Learn AI
+        <span aria-hidden="true" style={{ fontSize: "9px", opacity: 0.7 }}>
+          ▼
+        </span>
+      </button>
+
+      <div
+        role="menu"
         style={{
-          top: open ? "7px" : "14px",
-          transform: open ? "rotate(-45deg)" : "none",
+          position: "absolute",
+          top: "100%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          paddingTop: "10px",
+          opacity: open ? 1 : 0,
+          visibility: open ? "visible" : "hidden",
+          pointerEvents: open ? "auto" : "none",
+          transition: "opacity 150ms ease, visibility 150ms ease",
+          zIndex: 60,
         }}
-      />
-    </span>
+      >
+        <div className="mr-menupanel">
+          {learnAiNavItems.map(({ href, label, description, featured }) => (
+            <InternalLink
+              key={href}
+              href={href}
+              role="menuitem"
+              className="mr-menuitem"
+              style={featured ? { background: "var(--mr-sun-yellow)" } : undefined}
+            >
+              <span className="mr-body">{label}</span>
+              <span className="mr-caption mr-menuitem-desc">{description}</span>
+            </InternalLink>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
 export function SiteHeader() {
-  const menuId = useId();
   const [menuOpen, setMenuOpen] = useState(false);
   const [learnAiOpen, setLearnAiOpen] = useState(false);
 
@@ -58,11 +94,8 @@ export function SiteHeader() {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMenuOpen(false);
-      }
+      if (event.key === "Escape") setMenuOpen(false);
     };
-
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
@@ -73,184 +106,143 @@ export function SiteHeader() {
   };
 
   return (
-    <header
-      className="relative z-50"
-      style={{ background: "var(--mr-surface)", borderBottom: "1px solid var(--mr-border)" }}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6 md:px-10">
-        <InternalLink
-          href="/"
-          className="flex shrink-0 items-center gap-2.5"
-          style={{ textDecoration: "none" }}
-          onClick={closeMenu}
-        >
+    <nav className="mr-nav">
+      <div className="mr-nav-inner">
+        <InternalLink href="/" aria-label="Mika Reyes, home" className="mr-badge">
           <Image
             src="/mika-reyes-logo.png"
             alt="Mika Reyes"
             width={36}
             height={36}
-            className="rounded-full"
+            priority
           />
-          <span
-            style={{
-              fontFamily: "var(--mr-font-display)",
-              fontSize: "var(--mr-text-sm)",
-              fontWeight: "var(--mr-weight-display)",
-              color: "var(--mr-ink)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Mika Reyes
-          </span>
         </InternalLink>
 
-        <nav
-          className="hidden min-w-0 flex-1 items-center justify-end gap-1 overflow-visible py-1 md:flex"
-          aria-label="Primary navigation"
-        >
-          {siteHeaderNavItems.map((item) => {
-            if (item.type === "learn-ai-dropdown") {
-              return <LearnAiNavDropdown key="learn-ai" />;
-            }
+        {/* Everything but the mark sits hard right. */}
+        <div className="mr-navright">
+          <div className="mr-navlinks">
+            {siteHeaderNavItems.map((item) =>
+              item.type === "learn-ai-dropdown" ? (
+                <LearnAiMenu key="learn-ai" />
+              ) : (
+                <InternalLink key={item.href} href={item.href} className="mr-navlink">
+                  {item.label}
+                </InternalLink>
+              ),
+            )}
+          </div>
 
-            return (
-              <InternalLink
-                key={item.href}
-                href={item.href}
-                className="mr-navlink shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 transition-colors hover:text-[var(--mr-coral)]"
-                style={navLinkStyle}
-              >
-                {item.label}
-              </InternalLink>
-            );
-          })}
+          <div className="mr-navactions">
+            <a
+              href="https://instagram.com/its.mikareyes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mr-ghost"
+            >
+              Instagram
+            </a>
+            <InternalLink href="/#contact" className="mr-cta" style={{ padding: "10px 22px" }}>
+              Work with me
+            </InternalLink>
+          </div>
 
-          <InternalLink
-            href="/#contact"
-            className="mr-pressable ml-3 shrink-0 whitespace-nowrap"
-            style={buttonStyle({ size: "xs" })}
+          <button
+            type="button"
+            className="mr-hamburger"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
           >
-            Work with me
-          </InternalLink>
-        </nav>
-
-        <button
-          type="button"
-          className="mr-pressable flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--mr-border-input)] bg-[var(--mr-surface)] md:hidden"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          aria-controls={menuId}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <MenuIcon open={menuOpen} />
-        </button>
+            <span className="mr-hamburger-bars" data-open={menuOpen || undefined}>
+              <span />
+              <span />
+              <span />
+            </span>
+          </button>
+        </div>
       </div>
 
-      <nav
-        id={menuId}
-        aria-label="Mobile navigation"
-        className="fixed inset-x-0 top-16 z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-[var(--mr-border)] bg-[var(--mr-surface)] px-6 py-4 shadow-[var(--mr-shadow-lift)] transition-[opacity,visibility] duration-200 md:hidden"
-        style={{
-          opacity: menuOpen ? 1 : 0,
-          visibility: menuOpen ? "visible" : "hidden",
-          pointerEvents: menuOpen ? "auto" : "none",
-        }}
-      >
-        <div className="mx-auto flex max-w-6xl flex-col gap-1">
-          {siteHeaderNavItems.map((item) => {
-            if (item.type === "learn-ai-dropdown") {
-              return (
+      {menuOpen ? (
+        <div
+          style={{
+            borderTop: "1px solid var(--mr-border-ink)",
+            background: "var(--mr-paper)",
+            padding: "8px 24px 20px",
+          }}
+        >
+          <div className="mr-mobilenav" style={{ maxWidth: "var(--mr-max)", margin: "0 auto" }}>
+            {siteHeaderNavItems.map((item) =>
+              item.type === "learn-ai-dropdown" ? (
                 <div key="learn-ai">
                   <button
                     type="button"
-                    className={`${mobileNavLinkClass} flex w-full items-center justify-between`}
-                    style={navLinkStyle}
+                    className="mr-mobilerow"
                     aria-expanded={learnAiOpen}
-                    onClick={() => setLearnAiOpen((open) => !open)}
+                    onClick={() => setLearnAiOpen((v) => !v)}
                   >
                     Learn AI
-                    <span
-                      aria-hidden
-                      className="text-[10px] opacity-70 transition-transform duration-200"
-                      style={{ transform: learnAiOpen ? "rotate(180deg)" : "none" }}
-                    >
-                      ▾
+                    <span aria-hidden="true" className="mr-mobilechevron">
+                      ▼
                     </span>
                   </button>
-                  {learnAiOpen ? (
-                    <div className="flex flex-col">
-                      {learnAiNavItems.map(
-                        ({ href, label, description, featured }) => (
-                          <InternalLink
-                            key={href}
-                            href={href}
-                            className={`${mobileNavLinkClass} pl-8`}
-                            style={{ ...navLinkStyle, textDecoration: "none" }}
-                            onClick={closeMenu}
-                          >
-                            <span className="flex items-center gap-2">
-                              {label}
-                              {featured ? (
-                                <span
-                                  className="rounded-full"
-                                  style={{
-                                    background:
-                                      "color-mix(in srgb, var(--mr-teal) 14%, white)",
-                                    color: "var(--mr-teal)",
-                                    fontSize: "10px",
-                                    fontWeight: "var(--mr-weight-display)",
-                                    letterSpacing: "0.06em",
-                                    padding: "3px 7px",
-                                    textTransform: "uppercase",
-                                  }}
-                                >
-                                  Featured
-                                </span>
-                              ) : null}
-                            </span>
-                            <span
-                              className="mt-1 block"
-                              style={{
-                                fontSize: "var(--mr-text-xs)",
-                                color: "var(--mr-muted)",
-                                fontWeight: 400,
-                                lineHeight: 1.45,
-                              }}
-                            >
-                              {description}
-                            </span>
-                          </InternalLink>
-                        ),
-                      )}
-                    </div>
-                  ) : null}
+
+                  {learnAiOpen
+                    ? learnAiNavItems.map(({ href, label, description, featured }) => (
+                        <InternalLink
+                          key={href}
+                          href={href}
+                          className="mr-mobilesub"
+                          onClick={closeMenu}
+                        >
+                          <span className="mr-body">
+                            {label}
+                            {featured ? <span className="mr-featured">Featured</span> : null}
+                          </span>
+                          <span className="mr-caption mr-mobilesub-desc">{description}</span>
+                        </InternalLink>
+                      ))
+                    : null}
                 </div>
-              );
-            }
+              ) : (
+                <InternalLink
+                  key={item.href}
+                  href={item.href}
+                  className="mr-mobilerow"
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </InternalLink>
+              ),
+            )}
+          </div>
 
-            return (
-              <InternalLink
-                key={item.href}
-                href={item.href}
-                className={mobileNavLinkClass}
-                style={navLinkStyle}
-                onClick={closeMenu}
-              >
-                {item.label}
-              </InternalLink>
-            );
-          })}
-
-          <InternalLink
-            href="/#contact"
-            className="mr-pressable mt-3 text-center"
-            style={buttonStyle({ size: "sm", fullWidth: true })}
-            onClick={closeMenu}
+          {/* The bar drops these when it compresses, so the panel is the only
+              place left to reach them. */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "10px",
+              marginTop: "20px",
+              maxWidth: "var(--mr-max)",
+            }}
           >
-            Work with me
-          </InternalLink>
+            <InternalLink href="/#contact" className="mr-cta" onClick={closeMenu}>
+              Work with me
+            </InternalLink>
+            <a
+              href="https://instagram.com/its.mikareyes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mr-ghost"
+              style={{ padding: "16px 24px" }}
+              onClick={closeMenu}
+            >
+              Instagram
+            </a>
+          </div>
         </div>
-      </nav>
-    </header>
+      ) : null}
+    </nav>
   );
 }

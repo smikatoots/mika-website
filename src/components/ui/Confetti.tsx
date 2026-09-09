@@ -171,7 +171,7 @@ export function Confetti({
   return (
     <span
       aria-hidden="true"
-      className={`nd-confetti nd-${motion}`}
+      className={`mr-confetti mr-${motion}`}
       style={{
         ["--c" as string]: color,
         ["--rot" as string]: `${rotate}deg`,

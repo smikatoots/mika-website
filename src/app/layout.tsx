@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist_Mono, Hanken_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 
 import { SiteStructuredData } from "@/components/SiteStructuredData";
@@ -29,6 +30,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Satoshi (Indian Type Foundry, via Fontshare) — the display voice, on the
+// website and on decks made from here on. See BRAND.md > Typefaces.
+//
+// The family has no true 600, so the semibold the system asks for resolves to
+// Bold; Medium ships alongside it so the weight can be dialled back in one
+// token. Only these two weights exist, which is what keeps the type scale
+// honest: hierarchy has to come from size and tracking, not from reaching for
+// a heavier cut.
+const satoshi = localFont({
+  src: [
+    { path: "./fonts/Satoshi-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/Satoshi-Bold.woff2", weight: "700", style: "normal" },
+  ],
+  display: "swap",
+  variable: "--font-satoshi",
+  fallback: ["ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
@@ -53,7 +72,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${hanken.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${satoshi.variable} ${bricolage.variable} ${hanken.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
         <SiteStructuredData />

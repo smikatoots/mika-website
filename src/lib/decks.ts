@@ -10,6 +10,21 @@ export const templateDeck = {
 /** Registry of presentation decks. Add a new entry when creating `/deck/<slug>`. */
 export const decks = [
   {
+    slug: "ai-era-job-travel-advisor",
+    title: "AI Era Job: Travel Advisor",
+    date: "September 4",
+  },
+  {
+    slug: "anthropic-eli5-skill",
+    title: "The Anthropic ELI5 Skill",
+    date: "September 4",
+  },
+  {
+    slug: "events-in-the-age-of-ai",
+    title: "Events in the Age of AI",
+    date: "September 4",
+  },
+  {
     slug: "remotion-explainer-concept",
     title: "Remotion Explainer — Explain a Concept",
     date: "August 26",
@@ -299,4 +314,4 @@ export const decks = [
 export type DeckSlug = (typeof decks)[number]["slug"];
 
 /** Deck dates, newest first — drives the grouping on /deck/all. */
-export const deckDates = ["August 26", "August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;
+export const deckDates = ["September 4", "August 26", "August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;
