@@ -208,12 +208,27 @@ pattern to copy.
 
 ## Typography
 
-**Inter** for everything with a voice, Geist Mono for step numbers.
+**Inter** for everything with a voice, Geist Mono for step numbers — see the
+migration note directly below before adding a new deck.
 
-Inter is an **approved brand voice**, mirrored from BRAND.md `version: 2`, which
-splits the two faces by surface: Bricolage Grotesque for the website, Inter for
-the decks. Bricolage does not belong on a slide, and Inter does not belong on a
-web page — neither is a variation, both are off-brand.
+> **This surface is mid-migration. Read this before making a new deck.**
+>
+> BRAND.md version 2 retired the surface split. **Satoshi is now the display
+> voice everywhere, decks included**, and Inter is retired for new work.
+>
+> `deck.css` has deliberately not been repointed. Every deck shares it, so
+> switching the token would re-type all sixty-odd already-filmed decks at once
+> — and those are finished artefacts with videos recorded against them. They are
+> **grandfathered, not off-brand**: an existing deck set in Inter is correct and
+> should be left alone.
+>
+> What that leaves is a real gap: there is no mechanism yet for a *new* deck to
+> take Satoshi without dragging the old ones with it. Closing it means either a
+> per-deck opt-in or a dated cutover, and that is a decision, not a cleanup.
+> Until it is made, a new deck built today will come out in Inter — which is
+> off-brand under version 2. Flag it rather than quietly shipping it.
+
+The rest of this section describes the surface as it stands today, in Inter.
 
 Inter is more neutral than Bricolage and reads loose at display sizes, so this
 surface tightens both axes. Two tokens in `deck.css`, and everything follows

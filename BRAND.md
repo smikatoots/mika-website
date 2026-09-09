@@ -395,57 +395,110 @@ instance, legitimately shows the `@its.mikareyes` handle instead.
 
 ### Core Colors
 
-- **Ink** `#111111` (mandatory). Nearly all type, on nearly every surface. Not
-  pure black, so it reads as considered rather than default.
-- **Coral** `#E8425A` (mandatory). The single point of heat. It marks the one
-  thing that matters on a screen: the word being emphasized, the action being
-  asked for. Its meaning depends on scarcity, so more of it is always worse.
-- **Teal** `#0E8C8C` (optional). The counterweight. Used where coral would be
-  too loud or would compete with itself, and for the calm, secondary register.
-- **White** `#FFFFFF` (mandatory). The ground. Space is part of the identity,
-  not what's left over.
+The palette widened in version 2. Version 1 held a single point of heat on a
+white ground; the system now runs a warm ground with a small arsenal of vivid
+accents, in the register of a designer's scrapbook rather than a product page.
+Scarcity still governs the *action* colour — it did not transfer to the
+decorative ones, which are meant to be used freely.
 
-**Avoid:** purple and violet of any kind, previously carried in the tokens and
-now retired. Neon. Gradients used as decoration. Dark-mode-first palettes, which
-belong to the developer-tools category this brand is not in.
+**Ground**
 
-Roles are not assigned here. That coral is the call-to-action color on the
-website and the highlight color in the decks are decisions each surface makes in
-its own `DESIGN.md`.
+- **Warm Linen** `#F1E8DE` (mandatory). The page. Space is part of the identity,
+  not what is left over, and warmth is what keeps a page of instructions from
+  reading as a spec sheet.
+- **Paper White** `#FBF8F5` (mandatory). Cards and content blocks — one tonal
+  step up from the ground, never a border.
+- **Pure White** `#FFFFFF` (optional). Inverted elements and pill buttons only.
+  Not a card surface: on warm linen it breaks the paper progression.
+- **Charcoal** `#2F2C29` (optional). The one dark ground, for a single editorial
+  band per page. Warmer than black.
 
-> **Migration note (version 1).** The deck system historically used
-> `#fd4869` as `--deck-accent`, a near-duplicate of Coral. Coral `#E8425A` is
-> now the single approved red. `src/app/deck/deck.css` should be repointed, and
-> `--mr-coral-bright` `#FF3D68` is a hover state, not an identity color: it
-> belongs in the website `DESIGN.md`.
+**Action**
+
+- **Coral** `#E8425A` (mandatory). The single point of heat, and the only colour
+  with filled-button authority. It marks the one thing being asked for. Its
+  meaning depends on scarcity, so more of it is always worse. Black on coral is
+  5.42:1 and clears AA; white is 3.87:1 and does not, so type on coral is ink.
+- **Coral Deep** `#CE3149` (optional). Coral darkened until white on it clears
+  AA at 5.05:1, for the rare case that needs coral behind white type.
+
+**Decoration.** These are card grounds, shape fills, and tag pills. None of them
+is ever a primary action, and none of them carries meaning — a reader who cannot
+see colour loses nothing.
+
+- **Teal** `#0E8C8C`. The calm counterweight. Black on it is 5.09:1.
+- **Sun Yellow** `#FFDE3B`. The signature pop.
+- **Lime** `#C1F32B`. Energetic counterweight to the yellow.
+- **Periwinkle** `#6483FF`. The one cool accent in a warm-first palette.
+- **Purple** `#6B4DE6`. White type only — black on it is 3.89:1 and fails.
+- **Coral Soft** `#F4A6AE`. The coral's tint, for softer grounds.
+- **Sand** `#EADCCE` and **Stone** `#C3B7AC`. Warm neutral fills.
+
+**Ink**
+
+- **Ink** `#000000` (mandatory). Type, hairlines, icon strokes — structural, and
+  used at extreme scale. Long-form body copy steps back to a warm near-black so
+  a full article does not read as harshly as a headline.
+
+**Avoid:** neon. Gradients used as decoration. Dark-mode-first palettes, which
+belong to the developer-tools category this brand is not in. Any accent colour
+used for body text or as a primary action.
+
+Roles are not assigned here. That coral is the call-to-action colour and teal a
+card ground are decisions each surface makes in its own `DESIGN.md`.
+
+> **Migration note (version 2).** Two reversals from version 1, both
+> deliberate, both Mika's call — recorded here so the change is visible rather
+> than inferred.
+>
+> - **White is no longer the ground.** Warm linen is. Version 1 called white
+>   mandatory; a component still setting a white page background is now off.
+> - **Purple is un-retired.** Version 1 said to avoid "purple and violet of any
+>   kind, previously carried in the tokens and now retired." `#6B4DE6` is back
+>   as a decorative ground. If that retirement mattered for a reason not written
+>   down at the time, this is the line to revisit.
+>
+> Version 1's note about `#fd4869` in the deck system still stands: coral
+> `#E8425A` is the single approved red, and `src/app/deck/deck.css` should be
+> repointed. `--mr-coral-bright` `#FF3D68` remains a hover state, not an
+> identity colour.
 
 ### Typefaces
 
-Two approved voices, split by surface. That split is deliberate: a page you
-read and a slide glimpsed for four seconds beside a talking head are different
-jobs, and one face cannot be optimal at both.
+One display voice across both surfaces, and a reading voice on the website.
 
-- **Bricolage Grotesque**, the brand voice **on the website**. Every headline
-  and every display moment there. Its slight irregularity is the point:
-  confident and a little warm rather than neutral and corporate. Fallback:
-  `ui-sans-serif, system-ui, -apple-system, sans-serif`. Licensing: SIL Open
-  Font License 1.1. Verified.
-- **Inter**, the brand voice **on the presentation decks**. Chosen where type is
-  set enormous and read fast: its neutrality is an advantage at 128px, where
-  Bricolage's character starts competing with the message, and its optical size
-  axis keeps the letterforms right from a small credit to a full-bleed hero.
-  Fallback: `ui-sans-serif, system-ui, -apple-system, sans-serif`. Licensing:
-  SIL Open Font License 1.1. Verified.
-- **Hanken Grotesk**, body and long-form reading on the website. Chosen to sit
-  quietly under Bricolage without competing with it. Fallback:
-  `ui-sans-serif, system-ui, -apple-system, sans-serif`. Licensing: SIL Open
-  Font License 1.1. Verified.
+Version 1 split the display face by surface and argued the split was deliberate:
+a page you read and a slide glimpsed for four seconds are different jobs. That
+argument was sound, and version 2 overrides it on purpose. Satoshi is neutral
+enough to hold at 128px on a slide and characterful enough not to go generic at
+reading sizes, so the two surfaces no longer need different faces to stay
+legible — and one voice across everything is worth more than the optimisation
+the split was buying.
+
+- **Satoshi**, the display voice **everywhere**. Every headline, every display
+  moment, on the website and on decks. Two cuts only, Medium and Bold; there is
+  deliberately no third to reach for, which forces hierarchy to come from scale
+  and tight negative tracking instead of weight. Fallback: `ui-sans-serif,
+  system-ui, -apple-system, sans-serif`. Foundry: Indian Type Foundry, via
+  Fontshare. Licensing: ITF Free Font License — **not yet independently
+  verified for commercial use; confirm before any paid placement.**
+- **Hanken Grotesk**, body and long-form reading on the website. Sits quietly
+  under Satoshi without competing with it. Fallback: `ui-sans-serif, system-ui,
+  -apple-system, sans-serif`. Licensing: SIL Open Font License 1.1. Verified.
 - **Geist Mono**, numbers, metadata, step markers, and anything that should read
   as data rather than prose. Fallback: `ui-monospace, monospace`. Licensing:
   SIL Open Font License 1.1. Verified.
 
-Neither voice crosses into the other's surface. A deck set in Bricolage or a
-web page set in Inter is off-brand, not a variation.
+**Retired, and what that means for what already exists.**
+
+- **Bricolage Grotesque** is retired. It was the website display voice in
+  version 1; no new work uses it.
+- **Inter** is retired for new work. Decks built before this change keep it and
+  are not to be re-typed — they are finished artefacts, and re-cutting sixty of
+  them buys nothing. Any deck made from here on uses Satoshi.
+
+A web page or a new deck set in anything but Satoshi is off-brand, not a
+variation. An existing deck set in Inter is grandfathered, not off-brand.
 
 Sizes, weights, line heights, and tracking are a type scale and belong to each
 surface's `DESIGN.md`.
@@ -486,6 +539,19 @@ obviously the most important thing, and everything else gets out of its way.
 to read from across the room, one red pen reserved for what actually matters,
 real screenshots pasted in as evidence, and a few stickers in the margins
 because the person who made it was enjoying themselves.
+
+Version 2 did not change this territory — it sharpened it. The warm paper is
+now literal, the stickers in the margins are a defined element rather than a
+figure of speech, and the accent palette is the scrapbook the direction was
+already describing. If a surface has to choose between the direction statement
+above and a rule further up this file, the direction statement is the older and
+more durable of the two.
+
+**The shape layer.** Hand-cut forms — zigzags, sparkles, arcs, squiggles,
+rings, blobs — scattered as atmosphere. They are decoration and never
+iconography: nothing may depend on one to be understood, and none of them may
+sit where it can land on running text. Their job is to make a page feel made
+rather than generated.
 
 Each surface narrows this rather than repeating it. The deck is the same field
 guide held up at arm's length: one idea per page, type at its largest, nothing

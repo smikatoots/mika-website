@@ -2,168 +2,155 @@
 name: Mika Reyes Website
 description: Visual system for mikareyes.com — the marketing pages, AI guides, blog, and every public content surface.
 brand: ./BRAND.md
-version: alpha
+version: 2
 colors:
-  primary: "#111111"
-  body: "#3A3A3A"
-  muted: "#6B6B6B"
+  ink: "#000000"
+  body: "#1C1A17"
+  soft: "#2E2A26"
+  muted: "#6E655C"
   accent: "#E8425A"
   accent-deep: "#CE3149"
-  secondary: "#0E8C8C"
-  dark: "#142A2A"
-  neutral: "#FFFFFF"
-  surface-rose: "#FCEAEC"
-  surface-rose-strong: "#FCE4E2"
-  surface-cream: "#F7F4EF"
-  surface-sand: "#FBF1E9"
-  surface-teal: "#E8F4F4"
-  border: "#E4E0D8"
-  border-rose: "#F6D2D7"
-  border-input: "#E0DBD3"
-  on-accent: "#FFFFFF"
+  accent-soft: "#F4A6AE"
+  teal: "#0E8C8C"
+  sun-yellow: "#FFDE3B"
+  lime: "#C1F32B"
+  periwinkle: "#6483FF"
+  purple: "#6B4DE6"
+  linen: "#F1E8DE"
+  paper: "#FBF8F5"
+  white: "#FFFFFF"
+  charcoal: "#2F2C29"
+  sand: "#EADCCE"
+  stone: "#C3B7AC"
+  border-ink: "#000000"
+  border: "#D9CFC2"
+  border-warm: "#E4D9CB"
+  on-accent: "#000000"
   on-dark: "#FFFFFF"
+  on-purple: "#FBF8F5"
 typography:
   display:
-    fontFamily: Bricolage Grotesque
-    fontSize: 60px
-    fontWeight: 700
-    lineHeight: 0.95
-    letterSpacing: -0.03em
+    fontFamily: Satoshi
+    fontSize: 100px
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: -0.014em
   h1:
-    fontFamily: Bricolage Grotesque
-    fontSize: 54px
-    fontWeight: 700
-    lineHeight: 1.02
-    letterSpacing: -0.025em
+    fontFamily: Satoshi
+    fontSize: 68px
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: -0.034em
   h2:
-    fontFamily: Bricolage Grotesque
-    fontSize: 38px
-    fontWeight: 700
+    fontFamily: Satoshi
+    fontSize: 44px
+    fontWeight: 600
     lineHeight: 1.1
-    letterSpacing: -0.02em
+    letterSpacing: -0.034em
   h3:
-    fontFamily: Bricolage Grotesque
-    fontSize: 24px
+    fontFamily: Satoshi
+    fontSize: 28px
     fontWeight: 600
     lineHeight: 1.25
+    letterSpacing: -0.057em
   stat:
-    fontFamily: Bricolage Grotesque
-    fontSize: 42px
-    fontWeight: 800
+    fontFamily: Satoshi
+    fontSize: 48px
+    fontWeight: 600
   lead:
     fontFamily: Hanken Grotesk
-    fontSize: 20px
+    fontSize: 21px
     fontWeight: 400
-    lineHeight: 1.55
+    lineHeight: 1.35
+    letterSpacing: -0.05em
   body-md:
     fontFamily: Hanken Grotesk
-    fontSize: 17px
+    fontSize: 18px
     fontWeight: 400
-    lineHeight: 1.65
+    lineHeight: 1.5
+    letterSpacing: -0.05em
   body-sm:
     fontFamily: Hanken Grotesk
-    fontSize: 15px
+    fontSize: 16px
     fontWeight: 400
-    lineHeight: 1.55
+    lineHeight: 1.5
   body-xs:
     fontFamily: Hanken Grotesk
-    fontSize: 13px
+    fontSize: 14px
     fontWeight: 400
   eyebrow:
     fontFamily: Hanken Grotesk
-    fontSize: 12px
-    fontWeight: 700
-    letterSpacing: 0.06em
+    fontSize: 13px
+    fontWeight: 400
+    letterSpacing: 0.04em
 rounded:
-  input: 10px
-  chip: 14px
-  card: 18px
-  panel: 22px
+  input: 5px
+  chip: 5px
+  card: 5px
+  panel: 5px
   pill: 100px
+  cta: 160px
 spacing:
   gap: 28px
   gutter: 40px
   section: 64px
 components:
   button-primary:
-    backgroundColor: "{colors.accent-deep}"
+    backgroundColor: "{colors.accent}"
     textColor: "{colors.on-accent}"
     typography: "{typography.body-md}"
-    rounded: "{rounded.pill}"
+    rounded: "{rounded.cta}"
     padding: 16px
   button-secondary:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.primary}"
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink}"
     typography: "{typography.body-md}"
     rounded: "{rounded.pill}"
     padding: 16px
   card:
-    backgroundColor: "{colors.neutral}"
+    backgroundColor: "{colors.paper}"
     textColor: "{colors.body}"
     rounded: "{rounded.card}"
     padding: 24px
-  panel:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.body}"
-    rounded: "{rounded.panel}"
-    padding: 28px
-  eyebrow-pill:
-    backgroundColor: "{colors.surface-rose-strong}"
-    textColor: "{colors.accent-deep}"
-    typography: "{typography.eyebrow}"
-    rounded: "{rounded.pill}"
-    padding: 8px
+  card-colored:
+    backgroundColor: "{colors.lime}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.card}"
+    padding: 24px
   tag-chip:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.muted}"
-    typography: "{typography.body-xs}"
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.eyebrow}"
     rounded: "{rounded.chip}"
-    padding: 6px
+    padding: 5px
   input:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.primary}"
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ink}"
     typography: "{typography.body-md}"
     rounded: "{rounded.input}"
     padding: 12px
-  link-inline:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.accent-deep}"
-    typography: "{typography.body-md}"
   text-body:
-    backgroundColor: "{colors.neutral}"
+    backgroundColor: "{colors.linen}"
     textColor: "{colors.body}"
     typography: "{typography.body-md}"
   text-muted:
-    backgroundColor: "{colors.neutral}"
+    backgroundColor: "{colors.linen}"
     textColor: "{colors.muted}"
     typography: "{typography.body-sm}"
-  section-rose:
-    backgroundColor: "{colors.surface-rose}"
-    textColor: "{colors.primary}"
-  section-cream:
-    backgroundColor: "{colors.surface-cream}"
-    textColor: "{colors.primary}"
-  section-sand:
-    backgroundColor: "{colors.surface-sand}"
-    textColor: "{colors.primary}"
-  section-teal:
-    backgroundColor: "{colors.surface-teal}"
-    textColor: "{colors.primary}"
+  section-light:
+    backgroundColor: "{colors.linen}"
+    textColor: "{colors.ink}"
   section-dark:
-    backgroundColor: "{colors.dark}"
+    backgroundColor: "{colors.charcoal}"
     textColor: "{colors.on-dark}"
-  section-accent:
-    backgroundColor: "{colors.accent}"
-    textColor: "{colors.on-accent}"
+  panel-purple:
+    backgroundColor: "{colors.purple}"
+    textColor: "{colors.on-purple}"
   divider:
-    backgroundColor: "{colors.border}"
-  divider-rose:
-    backgroundColor: "{colors.border-rose}"
-  field-outline:
-    backgroundColor: "{colors.border-input}"
+    backgroundColor: "{colors.border-ink}"
   brand-secondary-mark:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.secondary}"
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.teal}"
     typography: "{typography.h3}"
 ---
 
@@ -195,160 +182,95 @@ are in Do's and Don'ts.
 
 ## Colors
 
-Values are mirrored from the brand's approved identity colors; the role names
-are assigned here, because a role is a decision this surface makes and not
-something the brand can know in advance.
+Values mirror the brand's approved identity; the role names are assigned here,
+because a role is a decision this surface makes and not something the brand can
+know in advance.
 
-| Role | Brand color | Value | Origin |
-|---|---|---|---|
-| `primary` | Ink (mandatory) | `#111111` | Mirrored |
-| `accent` | Coral (mandatory) | `#E8425A` | Mirrored |
-| `secondary` | Teal (optional) | `#0E8C8C` | Mirrored |
-| `neutral` | White (mandatory) | `#FFFFFF` | Mirrored |
-| `accent-deep` | Coral | `#CE3149` | Derived — darkened to clear AA. `--mr-coral-deep` |
-| `accent-hover` | none | `#FF3D68` | Derived |
-| `body` | none | `#3A3A3A` | Derived |
-| `muted` | none | `#6B6B6B` | Derived |
-| `dark` | none | `#142A2A` | Derived |
-| `surface-rose` / `-rose-strong` | none | `#FCEAEC` / `#FCE4E2` | Derived |
-| `surface-cream` / `-sand` / `-teal` | none | `#F7F4EF` / `#FBF1E9` / `#E8F4F4` | Derived |
-| `border` / `-rose` / `-input` | none | `#E4E0D8` / `#F6D2D7` / `#E0DBD3` | Derived |
+### The one action colour
 
-Mirrored values are copied at their exact approved value and must not be
-reinterpreted here. Everything marked Derived is this surface's own decision and
-carries no identity meaning.
+Coral `#E8425A` fills every primary action and nothing else. It is the whole
+conversion hierarchy, and it only works because it is scarce — a page with two
+coral buttons has none.
 
-### Text
+Type on coral is **ink, not white**. Black on coral is 5.42:1 and clears AA;
+white is 3.87:1 and does not. This is the single most common way to get the
+system wrong, because white-on-red looks right and fails.
 
-- **Primary `#111111`** — headings and anything that must read as structural.
-- **Body `#3A3A3A`** — running prose. 11.37:1 on white.
-- **Muted `#6B6B6B`** — metadata, timestamps, tag chips, captions. 5.33:1,
-  passes AA. This is the floor for text on this surface.
+### Decoration
 
-### Accent
+Teal, sun yellow, lime, periwinkle, purple, coral-soft, sand and stone are
+grounds and shape fills. None is ever a primary action, and none carries
+meaning on its own — a reader who cannot distinguish them loses nothing.
 
-- **Accent `#E8425A`** — the brand Coral, mirrored. Fills and large type only:
-  button backgrounds, the featured-in band, section grounds, the active filter
-  pill, headings at 24px and above.
-- **Accent-deep `#CE3149`** (`--mr-coral-deep`) — the same red darkened until
-  it passes contrast. **Coral itself is 3.92:1 on white and fails WCAG AA**, so
-  Accent-deep carries two jobs: every button ground, and any coral text at
-  reading size. It measures 5.05:1 against white both ways, and 4.60:1 as text
-  on cream.
-**Buttons do not change color on hover.** They lift, via `.mr-pressable`.
-An earlier hover swapped the ground to a lighter red, which dropped the label
-back under AA at the exact moment the user was aiming at it. `--mr-coral-bright
-#FF3D68` (3.43:1) survives in `globals.css` for legacy callers and should be
-retired; it is not part of this system.
-- **Secondary `#0E8C8C`** — the brand Teal. Currently near-unused. It measures
-  4.08:1, so it carries the same rule as Coral: fills and large type, not body
-  text. Darken to `#0B7C7C` (5.01:1) if it is ever needed inline.
+Contrast for black type, since these are card grounds:
 
-### Tracked accessibility exceptions
+| Ground | Black on it | Verdict |
+|---|---|---|
+| Sun Yellow `#FFDE3B` | 16.4:1 | fine |
+| Lime `#C1F32B` | 14.9:1 | fine |
+| Coral Soft `#F4A6AE` | 10.6:1 | fine |
+| Sand `#EADCCE` | 13.6:1 | fine |
+| Teal `#0E8C8C` | 5.09:1 | passes AA |
+| Coral `#E8425A` | 5.42:1 | passes AA |
+| Periwinkle `#6483FF` | 5.9:1 | passes AA |
+| Purple `#6B4DE6` | **3.89:1** | **fails — white only, at 5.40:1** |
 
-**Resolved 2026-08-24: buttons.** Every button ground moved from Coral
-`#E8425A` (3.92:1 with white, failing) to Accent-deep `#CE3149` (5.05:1,
-passing). Raising the label size instead would only have helped the large page
-CTAs — the header and footer buttons are 15px and can never reach WCAG's
-large-text exemption, so the ground had to change. Buttons now hover *up* to
-Coral rather than out to Coral-bright.
-
-**Still open: the featured-in band.** Its "FEATURED IN" label is white on Coral
-at 12px — 3.92:1, same failure as the old button. The band's *ground* is
-legitimately Coral (a brand fill), so the fix is the label, not the section:
-set it in Ink, or darken the band to Accent-deep.
-
-**Still open: the eyebrow pill.** Its label is Coral on Rose-strong at 3.24:1,
-and even Accent-deep only reaches 4.17:1 against that ground. Two remedies:
-`#BE2A41` measures 4.82:1 and passes, or set the label in Primary `#111111`
-(16:1) and let the pill's Coral border carry the accent. **Not applied** — it
-introduces a third red or changes the pill's character, and either is a call for
-a human.
-
-A note for whoever runs a linter here: **white on Coral at 24px and above is
-fine** and will still be flagged. Large display type and the deck's CTA pill sit
-in that allowance legitimately. Only reading-size text is the problem.
+Purple is the exception in the palette and the only ground that inverts its
+type. If a component sets black on purple, that is a bug.
 
 ### Grounds
 
-The site alternates white with warm tints to create section rhythm. Each tint
-has a job; they are not interchangeable.
+Warm linen `#F1E8DE` is the page. Paper white `#FBF8F5` is a card — one tonal
+step up, not a border. Pure white is for pill buttons and inverted elements
+only; a white card on warm linen breaks the paper progression and reads as a
+hole.
 
-| Ground | Value | What it means |
-|---|---|---|
-| Neutral `#FFFFFF` | white | The default. Everything instructional sits here. |
-| Surface-rose `#FCEAEC` | soft pink | Personal and conversion moments: the story timeline, subscribe and course CTAs, link-in-bio. Pairs with `border-rose`. |
-| Surface-rose-strong `#FCE4E2` | deeper pink | Eyebrow pills and active filter pills only. Never a section ground. |
-| Surface-cream `#F7F4EF` | warm neutral | Section alternation and nav hover fills. The workhorse tint. |
-| Surface-sand `#FBF1E9` | warm sand | Reserved for credentials and awards. |
-| Surface-teal `#E8F4F4` | cool tint | The one cool ground, for a calm aside that must not read as a CTA. |
-| Dark `#142A2A` | deep teal-black | The only dark surface: speaking, contact, course and link-in-bio heroes. White on it is 15.06:1. |
-
-**Rules.** Never place a tint on a tint. Never place Coral text on
-Surface-rose-strong at body size (3.24:1). A dark section inverts the whole text
-ramp to white and its own alpha-based borders; do not carry the light borders
-into it.
+Charcoal `#2F2C29` is the one dark band, at most once per page. Two dark
+sections stacked is the failure this rule exists to prevent.
 
 ### Known drift
 
-- `--mr-bg`, `--mr-surface`, and `--mr-surface-warm` are all `#FFFFFF`.
-  `surface-warm` implies a warmth its value does not deliver. Use Neutral.
-- `--mr-purple #6B4DE6` is retired per BRAND.md but still appears as a raw hex
-  in the homepage motion palette. Remove it on next touch.
-- A `zinc-*` neutral ramp shadows this one across article templates
-  (`border-zinc-200` for `border`, `text-zinc-950` for `primary`,
-  `bg-zinc-50` for `surface-cream`). Migrate toward the tokens.
-- `text-accent` and `text-[var(--mr-coral)]` are two names for one color. Prefer
-  the token; and at body size, neither is correct — use Accent-text.
+Two systems still exist in the codebase. The token system above is the intended
+one. A second Tailwind `zinc-*` system runs through the article templates and
+MDX rendering — and is in fact the *larger* of the two, reaching roughly twice
+as many components as the tokens do.
+
+`globals.css` re-points the whole `zinc-*` ramp at warm neutrals so those
+components inherit the right ground instead of sitting cool grey on warm linen.
+**That is a bridge, not a blessing.** It buys coherence today; it does not make
+`zinc-*` correct. Migrating a component means deleting its zinc classes and
+using tokens, not tuning the bridge. Where the two disagree, this file wins.
 
 ## Typography
 
-Two families, both loaded in `src/app/layout.tsx`.
+Satoshi displays, Hanken reads.
 
-- **Bricolage Grotesque** — every heading, every display moment, stats, the
-  logo wordmark. Weight 700 to 800, tight tracking, tight leading.
-- **Hanken Grotesk** — all running text, leads, metadata, buttons, form fields.
-  Weight 400 to 600.
-- **Geist Mono** — declared and available; currently reserved, not in active use.
+**Satoshi ships at two weights, Medium and Bold, and that is the whole point.**
+There is no third cut to reach for, so hierarchy has to come from scale and
+tight negative tracking. A heading that looks insufficiently important is a
+heading at the wrong size, not a heading that needs more weight. The stylesheet
+sets `font-synthesis-weight: none` so no browser can invent one.
 
-The scale is declared as `--mr-text-*` in `globals.css` and mirrored in the
-tokens above.
+Satoshi has no true 600. The `--mr-weight-display: 600` the system asks for
+resolves to Bold; setting it to 500 switches every heading to Medium in one
+edit, which is the intended lever if the page ever reads too heavy.
 
-| Token | Size | Family | Use |
-|---|---|---|---|
-| `display` | 60px | Bricolage | Homepage hero only |
-| `h1` | 54px | Bricolage | Page titles |
-| `h2` | 38px | Bricolage | Section headings |
-| `h3` | 24px | Bricolage | Card titles, sub-sections |
-| `stat` | 42px | Bricolage | Big numbers |
-| `lead` | 20px | Hanken | Intro paragraph under a title |
-| `body-md` | 17px | Hanken | Default prose |
-| `body-sm` | 15px | Hanken | Secondary text, buttons, chips |
-| `body-xs` | 13px | Hanken | Metadata, captions |
-| `eyebrow` | 12px | Hanken, 700, +0.06em | Pill labels above a title |
+**Tracking tightens as type grows.** That negative tracking is what makes the
+system read as editorial rather than as a default sans:
 
-Large headings scale fluidly. The homepage hero is
-`clamp(42px, 6vw, 72px)` and page titles are `clamp(36px, 5vw, 54px)`.
+| Role | Size | Tracking |
+|---|---|---|
+| display | 100px | -0.014em |
+| h1 | 68px | -0.034em |
+| h2 | 44px | -0.034em |
+| h3 | 28px | -0.057em |
+| body | 18px | -0.05em |
 
-### The one rule that is currently broken
-
-**There is no global `h1`–`h6` font-family rule, and `body` is set to Hanken.**
-Any heading that does not explicitly set the display font renders in the *body*
-font. Every article template currently does exactly that, which means:
-
-> `/blog` and `/ai` show their titles in Bricolage, and `/blog/<post>` and
-> `/ai/<guide>` — the flagship content — show theirs in Hanken.
-
-Headings on this site are Bricolage. No exceptions. Any heading must set
-`font-family: var(--mr-font-display)`, whether through `PageHero`, the
-`textH1`/`textH2`/`textH3` helpers in `src/lib/ui/site-styles.ts`, or the
-`font-display` Tailwind utility. The cleanest permanent fix is a global
-`h1,h2,h3,h4,h5,h6 { font-family: var(--mr-font-display) }` rule in
-`globals.css`, which would correct every article template at once.
-
-Article H1s also currently ship at four different sizes (`text-4xl md:text-5xl`,
-`text-3xl md:text-4xl`, `text-2xl sm:text-3xl md:text-4xl`, and one at
-`font-bold`). One page title, one size: `h1`.
+`globals.css` sets family, weight and tracking on `h1`–`h6` globally. All three
+are there for the same reason: a heading that opts out of any one of them stops
+looking like the rest of the site. That is precisely how article titles on
+`/blog/<post>` and `/ai/<guide>` drifted off-brand once already, while their
+index pages stayed correct.
 
 ## Layout
 
@@ -381,45 +303,53 @@ lg:grid-cols-3`.
 
 ## Elevation & Depth
 
-Four shadows, each with a job. Elevation is soft and warm-tinted, never a
-neutral grey drop.
+**The system is flat.** Surfaces separate by tonal step and hairline, never by
+drop shadow. `--mr-shadow-card`, `--mr-shadow-frame`, `--mr-shadow-cta` and
+`--mr-shadow-lift` all resolve to `none` — the names are kept so existing call
+sites resolve, but they contribute nothing.
 
-| Token | Value | Use |
-|---|---|---|
-| `--mr-shadow-card` | `0 6px 16px -10px rgba(150,100,40,.30)` | Resting cards. Warm-tinted so it sits on cream without going grey. |
-| `--mr-shadow-lift` | `0 12px 28px -8px rgba(0,0,0,.22)` | The hover state of a card, paired with `translateY(-4px)`. |
-| `--mr-shadow-cta` | `0 12px 24px -8px rgba(232,66,90,.60)` | Coral glow under a primary button. The only colored shadow. |
-| `--mr-shadow-frame` | `0 26px 56px -22px rgba(20,42,42,.45)` | Large framed imagery: the hero photo, proof screenshots. |
+The one exception is a panel that genuinely floats above the page, like the nav
+dropdown, which uses `--mr-shadow-panel`.
 
-Tailwind's `shadow-sm` / `shadow-lg` / `shadow-2xl` appear across the article and
-media-kit surfaces with no mapping to these. Treat them as drift: `shadow-sm` →
-`--mr-shadow-card`, `shadow-lg`/`shadow-2xl` → `--mr-shadow-frame`.
+The site header carries a 1px ink hairline rather than a shadow — the same line
+the pill buttons carry. Hairlines and tonal steps do all the separating work.
+
+Hover is a 2–3px translate, not a shadow.
 
 ## Shapes
 
-Five radii, and they are semantic rather than decorative:
+5px is the structural radius: cards, tags, images, inputs, panels. Pill radii
+(100px, and 160px on the primary action) are **button-exclusive**. A card with a
+large radius reads as a different system.
 
-| Token | Value | Applies to |
-|---|---|---|
-| `pill` | 100px | Every button, nav link, filter chip, eyebrow |
-| `panel` | 22px | Modals and large containers |
-| `card` | 18px | Cards and tiles |
-| `chip` | 14px | Tag chips |
-| `input` | 10px | Form fields |
+### The confetti layer
 
-**Use `100px`, not `rounded-full`.** They look identical, but the homepage
-motion layer selects magnetic buttons by testing `borderRadius === "100px"`, so
-a `rounded-full` button computes to `9999px` and silently loses the effect. The
-mobile header CTA has this bug today while its desktop twin does not.
+Cut-paper shapes scattered as atmosphere — zigzag, sparkle, arc, squiggle,
+cross, ring, blob, capsule, burst, dots, triangle, disc. `Confetti.tsx` owns
+them. Four rules, all learned the hard way:
 
-Images are the one place a sixth radius has crept in: MDX images use
-`rounded-[10px]` and one gallery uses `rounded-[8px]`. Standardize on `card`
-(18px) for framed imagery and `input` (10px) for inline MDX images.
+1. **Decoration only.** Every instance is `aria-hidden` and
+   `pointer-events: none`. Nothing may depend on one to be understood.
+2. **Nothing is static.** Every placement names one of seven motions, with
+   staggered durations so the field never moves in unison. All of them stop
+   under `prefers-reduced-motion`.
+3. **Nothing lands on running text.** Shapes live in the gutters. A placement
+   carries a wide position and, where the layout compresses past the point of
+   having a gutter, a narrow one — either hugging the page edge inside the 24px
+   wrap padding, or sitting in a section's vertical padding band.
+4. **Nothing disappears.** Not at any width. `outside()` carries a floor so a
+   shape can never be pushed fully off the page, and a shape reduced to a 4px
+   sliver counts as disappeared even though an automated check will pass it.
 
-Borders are 1px and warm (`--mr-border #E4E0D8`), stepping to a tint-matched
-border on tinted grounds (`border-rose` on rose, `border-cream` on cream).
-Form fields use the slightly darker `border-input`, at 1.5px on secondary
-buttons.
+**Checking this properly needs care.** Two traps: measuring an element's *box*
+rather than its glyph rectangles reports centred text as spanning its whole
+column, and measuring a shape *where it currently sits* misses every overlap
+that only happens partway through its animation. A real check samples each
+shape across its own cycle against glyph rects, at every breakpoint.
+
+Wide placements anchor to `--mr-edge`, the content column's edge, rather than to
+a percentage of the section. Past 1200px the gutter keeps growing, and a shape
+pinned to a percentage drifts further from the content with every extra pixel.
 
 ## Components
 
