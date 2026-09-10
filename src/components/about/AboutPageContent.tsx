@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { BackLink } from "@/components/ui/BackLink";
+import { PageHero } from "@/components/ui/PageHero";
 import {
   ConfettiField,
   outsideEdge as outside,
@@ -120,11 +121,11 @@ export function AboutPageContent() {
       <article className="relative mx-auto max-w-3xl px-6 py-14 md:max-w-4xl md:px-10 md:py-20">
       <BackLink href="/" label="Home" />
 
-      <header className="mt-8 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-950 md:text-5xl">
-          About
-        </h1>
-      </header>
+      {/* PageHero, not a hand-rolled heading — that is how this page ended up
+          two sizes smaller than every index page. */}
+      <div className="mt-8">
+        <PageHero title="About" />
+      </div>
 
       <section className="mt-12 grid gap-10 md:grid-cols-2 md:items-start md:gap-12">
         <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm">
