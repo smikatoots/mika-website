@@ -96,18 +96,28 @@ export function StepsBuildSlide({
         <ol className="flex min-w-0 flex-col justify-center gap-6">
           {steps.map((label, i) => (
             <li key={i} className="flex items-center gap-5">
-              {/* The marker is always visible so the shape of the list — and
-                  how many steps are coming — reads from the first frame. */}
+              {/* Step 1 is on screen the moment the slide is reached — arriving
+                  on an empty list reads as a blank slide. Only steps 2..n are
+                  fragments, so their indices run one behind their position. */}
               <span
-                className="fragment fade-in flex h-16 w-16 flex-none items-center justify-center rounded-full border-2 border-zinc-400 font-mono text-3xl font-bold text-zinc-600"
-                data-fragment-index={i}
-                data-fragment-style="reached"
+                className={
+                  i === 0
+                    ? "flex h-16 w-16 flex-none items-center justify-center rounded-full border-2 border-transparent bg-[var(--deck-accent)] font-mono text-3xl font-bold text-white"
+                    : "fragment fade-in flex h-16 w-16 flex-none items-center justify-center rounded-full border-2 border-zinc-400 font-mono text-3xl font-bold text-zinc-600"
+                }
+                {...(i === 0
+                  ? {}
+                  : { "data-fragment-index": i - 1, "data-fragment-style": "reached" })}
               >
                 {i + 1}
               </span>
               <span
-                className="fragment fade-in whitespace-nowrap text-5xl font-extrabold leading-[var(--deck-leading)] tracking-[var(--deck-tracking)] text-[var(--deck-ink)]"
-                data-fragment-index={i}
+                className={
+                  i === 0
+                    ? "whitespace-nowrap text-5xl font-extrabold leading-[var(--deck-leading)] tracking-[var(--deck-tracking)] text-[var(--deck-ink)]"
+                    : "fragment fade-in whitespace-nowrap text-5xl font-extrabold leading-[var(--deck-leading)] tracking-[var(--deck-tracking)] text-[var(--deck-ink)]"
+                }
+                {...(i === 0 ? {} : { "data-fragment-index": i - 1 })}
               >
                 {label}
               </span>
@@ -128,8 +138,19 @@ export function StepsBuildSlide({
               key={i}
               // The arbitrary-variant selector bounds whatever visual is passed
               // in, so a tall aspect-ratio box can't overflow the stack.
-              className="fragment current-visible flex h-full w-full items-center justify-center [&>*]:max-h-full [&>*]:max-w-full"
-              data-fragment-index={i}
+              //
+              // Visual 1 is on screen from the first frame (its step is too).
+              // The rest are plain `fade-in` fragments stacked on top, so each
+              // one covers the previous as its step lands — `bg-white` is what
+              // makes that cover opaque. `current-visible` would be the tidier
+              // mechanism, but reveal's rule for it is unlayered and beats
+              // anything this stylesheet can say, so the swap never painted.
+              className={
+                i === 0
+                  ? "flex h-full w-full items-center justify-center bg-white [&>*]:max-h-full [&>*]:max-w-full"
+                  : "fragment fade-in flex h-full w-full items-center justify-center bg-white [&>*]:max-h-full [&>*]:max-w-full"
+              }
+              {...(i === 0 ? {} : { "data-fragment-index": i - 1 })}
             >
               {visual}
             </div>

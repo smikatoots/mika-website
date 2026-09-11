@@ -10,6 +10,41 @@ export const templateDeck = {
 /** Registry of presentation decks. Add a new entry when creating `/deck/<slug>`. */
 export const decks = [
   {
+    slug: "eli5-skill-learn-anything",
+    title: "Anthropic's ELI5 Skill — Learn Anything",
+    date: "September 10",
+  },
+  {
+    slug: "ai-era-job-travel-advisor",
+    title: "AI Era Job: Travel Advisor",
+    date: "September 10",
+  },
+  {
+    slug: "events-in-the-age-of-ai",
+    title: "Events in the Age of AI",
+    date: "September 10",
+  },
+  {
+    slug: "ai-wash-cycle",
+    title: "The AI Wash Cycle",
+    date: "September 10",
+  },
+  {
+    slug: "yc-summer-2026-trends",
+    title: "YC Summer 2026 Batch Trends",
+    date: "September 10",
+  },
+  {
+    slug: "mdp-over-mvp",
+    title: "VCs Want an MDP, Not an MVP",
+    date: "September 10",
+  },
+  {
+    slug: "apple-designer-techniques",
+    title: "Apple Designer: 8 Techniques for Top 1% AI Design",
+    date: "September 10",
+  },
+  {
     slug: "remotion-explainer-concept",
     title: "Remotion Explainer — Explain a Concept",
     date: "August 26",
@@ -299,4 +334,4 @@ export const decks = [
 export type DeckSlug = (typeof decks)[number]["slug"];
 
 /** Deck dates, newest first — drives the grouping on /deck/all. */
-export const deckDates = ["August 26", "August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;
+export const deckDates = ["September 10", "August 26", "August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;

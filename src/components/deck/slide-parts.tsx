@@ -26,6 +26,18 @@ export function A({ children }: { children: React.ReactNode }) {
 }
 
 /**
+ * A struck-through run of words — the thing being taken away or cancelled.
+ * Carries the accent, because the strike is the point of the line.
+ */
+export function S({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="deck-accent font-extrabold line-through decoration-[0.08em]">
+      {children}
+    </span>
+  );
+}
+
+/**
  * Cover slide with three shapes:
  *  - title only        → big Display statement, centered
  *  - diagram only      → the diagram, centered
