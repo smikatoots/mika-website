@@ -1,0 +1,113 @@
+---
+title: "How to Learn Anything with Anthropic's ELI5 Skill"
+description: >-
+  Learn anything with Anthropic's ELI5 Claude Code skill. Install it from the
+  community marketplace, then type /eli5 plus a topic for a picture-heavy
+  explainer.
+tags:
+  - beginner
+  - skills
+  - claude
+published: "2026-09-13"
+updated: "2026-09-13"
+cta: Install ELI5
+faq:
+  - question: "Can I use the ELI5 skill in regular Claude chat, without Claude Code?"
+    answer: >-
+      No. ELI5 installs as a Claude Code plugin from the community marketplace,
+      so you need Claude Code, not the regular chat box on claude.ai. Once it is
+      installed, you run it with the slash command /eli5 plus your topic. If you
+      are still on chat-only Claude, set up Claude Code first, then come back to
+      these two install commands.
+  - question: "Is the ELI5 skill an official Anthropic plugin?"
+    answer: >-
+      Not yet. It lives in Anthropic's community plugin marketplace, and Thariq,
+      who works on Claude Code, said the team is still debating whether to make
+      it official. People at Anthropic use it internally, which is why it's
+      worth trying, but it is not a preinstalled Claude feature. Install it from
+      anthropics/claude-plugins-community as eli5 at claude-community.
+  - question: "How do I run it after I install it?"
+    answer: >-
+      Type /eli5, then the topic, in a Claude Code session. Example: /eli5 LLMs.
+      Claude builds an HTML artifact with big pictures and few words. If the
+      command does not appear, start a new session after the install, because
+      plugins often load on the next chat.
+  - question: "What if the explanation comes out too simple?"
+    answer: >-
+      That happens. ELI5 is built to strip a topic down to pictures, so it will
+      sometimes oversimplify. Use that first picture to get oriented, then ask a
+      normal follow-up for the details you still need. It is a starting model,
+      not the last word on the subject.
+---
+
+Claude Code's ELI5 skill turns any confusing topic into a picture-heavy HTML explainer. You add Anthropic's community plugin marketplace, install `eli5`, then type `/eli5` plus whatever you want explained.
+
+I keep hitting concepts I need to understand tonight, not after a weekend of documentation. A skill the Claude Code team uses internally does that job in one command, and the output is mostly pictures.
+
+## Why this matters
+
+[Thariq Shihipar](https://x.com/trq212) works on Claude Code at Anthropic. He posted that people there have been using ELI5 a lot to simplify hard concepts: how a module works, why a tradeoff got made, what caused an incident. The post has millions of views, which is usually a yellow flag. This one held up when I ran it.
+
+You don't need to be a developer. You need [Claude Code set up](/ai/how-to-setup-claude-code) and one thing you actually want explained. That's the time it buys you: a first picture of the system, so the dense docs start meaning something.
+
+![Thariq at Anthropic posting about the ELI5 Claude Code skill, with the slash command /eli5 and an example HTML artifact of simple robot diagrams](/ai-guides/how-to-learn-anything-eli5-skill-thariq-tweet.png "The receipt: Thariq's post, the exact command, and the kind of picture explainer it builds.")
+
+A [Claude skill](/ai/what-is-a-skill) is a packaged workflow Claude can run on a trigger. ELI5's trigger is the slash command. Under the hood it is one instruction: explain like someone who knows nothing about this topic, as an HTML artifact with big pictures and few words.
+
+## How do you install the ELI5 skill from the marketplace?
+
+Two slash commands, in order, inside Claude Code. This is not the official Anthropic plugin directory. It lives in the community marketplace Anthropic hosts at `anthropics/claude-plugins-community`. Thariq said they're still debating whether to make it official, so treat it as a team-used community plugin, not a preinstalled Claude feature.
+
+**1. Add the community marketplace.** In Claude Code, type:
+
+```
+/plugin marketplace add anthropics/claude-plugins-community
+```
+
+That points Claude at the catalog. You only do this once.
+
+**2. Install the plugin.** Then type:
+
+```
+/plugin install eli5@claude-community
+```
+
+The `@claude-community` part is the marketplace name, not a username. If `/eli5` doesn't show up after install, start a new Claude Code session. Plugins often don't attach until the next chat.
+
+If you already collect skills this way, it's the same pattern I use for [free marketing skill packs](/ai/how-to-install-free-marketing-skills-claude): add a marketplace, then install the plugin from it.
+
+> **Key insight:** ELI5 is a first picture, not a final briefing. Use it to get oriented, then go read the real docs with a model in your head.
+
+## How do you use ELI5 after it's installed?
+
+Type the slash command, then the topic, in plain English. No special prompt. No extra setup.
+
+**3. Run `/eli5` plus the thing you don't get yet.** I typed `/eli5 LLMs` in a real folder (`company-brain`) with nothing else in the prompt.
+
+![Claude Code prompt box showing the ELI5 skill command /eli5 LLMs typed in, ready to run](/ai-guides/how-to-learn-anything-eli5-skill-eli5-llms-command.png "This is the whole input. Slash command, then the topic.")
+
+**4. Let it build the artifact, then scroll it.** Claude writes an HTML page with big pictures and almost no text. Mine was a visual walkthrough of how LLMs work.
+
+<video controls playsInline className="my-8 w-full rounded-xl ring-1 ring-zinc-200" src="/ai-guides/how-to-learn-anything-eli5-skill-llms-artifact.mov" />
+
+That's the point of the skill. Not a wall of analogy. A simple visual model you can look at.
+
+**5. Start with the prompts Anthropic actually runs.** Thariq named three:
+
+- `/eli5 how does this module work`
+- `/eli5 why did we make this tradeoff`
+- `/eli5 what caused this incident`
+
+Those are work prompts, not toy ones. Swap in your version: how does this campaign work, why did we pick this landing page, what caused this drop in conversions.
+
+**6. Treat "too simple" as a feature you have to watch.** I tried it. It really does simplify hard things. Sometimes it strips a topic so far it comes out a little too simple. If that's what makes a technical thing finally click, the big visuals are worth it. If you need precision, use ELI5 to get the shape, then ask Claude a normal follow-up with the details you still need.
+
+If this becomes a workflow you repeat, you can [package your own custom skill](/ai/how-to-create-custom-skill) the same way. ELI5 is the beginner version of that habit: one trigger, one job, pictures instead of a lecture.
+
+Here are some related guides to check out:
+
+1. [What is a Skill?](/ai/what-is-a-skill)
+2. [How to Setup Claude Code (5-Min Guide for Non-Techies)](/ai/how-to-setup-claude-code)
+3. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
+4. [How to Install Free Marketing Skills for Claude](/ai/how-to-install-free-marketing-skills-claude)
+5. [7 Ways to Find Claude Skill Ideas That Actually Fit Your Work](/ai/7-ways-find-claude-skill-ideas)
