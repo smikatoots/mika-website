@@ -22,16 +22,16 @@ faq:
     answer: >-
       Generate a long random alphanumeric string in a password manager and paste
       it into the prompt, then tell the model to base color, type, and layout on
-      patterns in that string. The point is that the randomness has to come from
-      outside the model. Asking the model to act random still produces the same
-      family of pages.
+      patterns in that string. The randomness has to come from outside the
+      model. Asking the model to act random still produces the same family of
+      pages.
   - question: "What's the difference between cutting elements and removing AI tells?"
     answer: >-
-      Cutting is a function test: if deleting a label, glow, or container loses
-      no information, action, or state, it goes. Removing AI tells is a
-      fingerprint test: purple gradients, three-card rows, and copy patterns
-      that read as generated. Do the cut first, then run Humanizer and No AI
-      Slop on whatever text is left.
+      Cutting asks whether a label, glow, or container loses information, an
+      action, or a state if you delete it. If nothing breaks, it goes. Removing
+      AI tells is a fingerprint hunt: purple gradients, three-card rows, and
+      copy that reads as generated. Do the cut first, then run Humanizer and No
+      AI Slop on whatever text is left.
   - question: "Do I need paid image and video tools to start?"
     answer: >-
       No. The first three techniques and the last three polish steps run on a
@@ -41,33 +41,33 @@ faq:
       still is actually worth moving.
 ---
 
-Most AI designs look the same because the model is doing its job: predicting the next most likely token. Great design does the opposite, which is why [Anshu Chimala](https://x.com/anshuc), who led design and engineering teams at Apple for 12 years, published eight techniques for pushing a model off that average. Tim Ferriss said the piece was the #1 clicked link in his newsletter.
+Most AI designs look the same because the model is predicting the next most likely token. That's the job. Great design bends the rules, which is why [Anshu Chimala](https://x.com/anshuc), who led design and engineering teams at Apple for 12 years, published eight techniques for getting a model off that average. Tim Ferriss said the piece was the #1 clicked link in his newsletter.
 
-This is the abbreviated version, with a starter prompt and a tool I already use for each step. Anshu's full write-up, with the demos, lives on [Lenny's Newsletter](https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world). Read that if you want the long rationale. Use this if you want to run the techniques tonight.
+This is the short version. Each step has a starter prompt and a tool I already use. Anshu's full write-up, with the demos, is on [Lenny's Newsletter](https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world). Read that if you want the long rationale. Use this if you want to run the techniques tonight.
 
 ![Tim Ferriss tweet calling Anshu Chimala's Lenny's Newsletter post How to turn your AI into a world-class designer the number one clicked link in his 5-Bullet Friday](/ai-guides/8-ai-design-techniques-to-break-safe-mode-tim-ferriss-tweet.png "The receipt: Tim Ferriss put Anshu's piece at the top of 5-Bullet Friday.")
 
 ## Why does AI design look so generic?
 
-Large language models fill in whatever token is most likely to please the average rater. Ask for a landing page with no other direction and you get a purple gradient, a headline on the left, a graphic on the right, and a rounded "Get early access" button. Anshu's line: it is design-by-committee, one token at a time.
+Large language models fill in whatever token is most likely to please the average rater. Ask for a landing page with no other direction and you get a purple gradient, a headline on the left, a graphic on the right, and a rounded "Get early access" button. Anshu calls it design-by-committee, one token at a time.
 
-You already know the feeling if you have ever asked for "something unique" and gotten a warmer palette with the same skeleton. Saying "be random" does not work, because the model cannot actually be random. The randomness, the taste, and the cuts have to come from you.
+You've seen this if you've ever asked for "something unique" and gotten a warmer palette with the same skeleton. Telling the model to "be random" fails, because it cannot actually be random. You have to bring the randomness and the taste. You also have to cut.
 
-His process maps to three stages. Discover a wider set of directions. Define one identity with a critic, images, and motion. Deliver by subtracting until it looks like a person made the last calls.
+He groups the work in three stages. Discover a wider set of directions. Define one identity with a critic, images, and motion. Deliver by subtracting until it looks like a person made the last calls.
 
 ## How do you explore more than the default layout?
 
-**1. Inject variety with a random seed string.** Ask the agent to generate a long random alphanumeric string in the shell, then base color, type, and layout on patterns in that string. Do not print the string in the UI. It is only fuel. Anshu is adapting [Sakana AI's String Seed of Thought](https://arxiv.org/abs/2510.21150): true variety has to arrive from outside the model, because the model will otherwise predict "random-looking" tokens that still land on the same pottery-and-purple neighborhood. If you cannot run a shell script, generate the string in a password manager and paste it in.
+**1. Inject variety with a random seed string.** Ask the agent to generate a long random alphanumeric string in the shell, then base color, type, and layout on patterns in that string. Do not print the string in the UI. It is only fuel. Anshu is adapting [Sakana AI's String Seed of Thought](https://arxiv.org/abs/2510.21150). The random string has to come from outside the model. Left alone, the model predicts tokens that sound random and still land in the same pottery-and-purple neighborhood. If you cannot run a shell script, generate the string in a password manager and paste it in.
 
-Same prompt, four runs, no seed: four productivity apps that could be siblings.
+Same prompt, four runs, no seed. You get four productivity apps that could be siblings.
 
 ![Four AI-generated SaaS landing pages in a two-by-two grid, all using a left headline, right card, and purple or teal gradient](/ai-guides/8-ai-design-techniques-to-break-safe-mode-seed-before.png "No seed: Cadence, Lumen Ledger, Driftwood. Different names, same skeleton.")
 
-Same prompt with a seed string: an editorial almanac, a dark terminal, a neon quadrant grid, a lavender focus calendar.
+Same prompt with a seed string, and the four pages split: an editorial almanac, a dark terminal, a neon quadrant grid, a lavender focus calendar.
 
 ![Four AI-generated landing pages after a random seed string, each with a different type, palette, and layout: Meridian, Zylo, Quartz, and Quanta](/ai-guides/8-ai-design-techniques-to-break-safe-mode-seed-after.png "With a seed: four products that no longer share a family.")
 
-This is the visual version of asking for [ten design directions instead of one](/ai/how-to-get-10-design-options-with-ai). You cannot judge a look in isolation. You need a spread.
+This is the visual version of asking for [ten design directions instead of one](/ai/how-to-get-10-design-options-with-ai). Cadence does not look interesting until you put it next to Zylo.
 
 **Starter prompt:**
 
@@ -88,7 +88,7 @@ Don't reveal the string in the design. It's only for your inspiration.
 
 <video controls playsInline className="my-8 w-full rounded-xl ring-1 ring-zinc-200" src="/ai-guides/8-ai-design-techniques-to-break-safe-mode-ambitious.mp4" />
 
-If you freeze at "what world?", run his three-step taste pass: ask for a long list of short, under-specified ideas. React in plain language to two or three (what you like, what feels tacky, what is missing). Then ask the model to write the build prompt from *your* notes, not from its own list. Pasting AI ideas back into AI is how everyone else gets the same page.
+If you freeze at "what world?", run his three-step taste pass. Ask for a long list of short, under-specified ideas. React in plain language to two or three (what you like, what feels tacky, what is missing). Then ask the model to write the build prompt from *your* notes, not from its own list. Pasting AI ideas back into AI is how everyone else gets the same page.
 
 A [BRAND.md](/ai/how-to-create-a-brand-md-file) and a [design.md copied from a site you actually like](/ai/how-to-make-your-website-look-expensive-with-ai) do the same job on a real website: they stop the model inventing a new visual identity every prompt. For posters, naming a real style (Swiss, risograph, one palette, one layout) is the version of this I use in [How to Fix AI-Looking Graphic Design](/ai/how-to-fix-ai-looking-graphic-design-and-posters).
 
@@ -103,13 +103,13 @@ If you need ideas first:
 3. Then write a concise prompt an agent could use to build a first page from my taste, including what to avoid.
 ```
 
-> **Key insight:** The model cannot act randomly, and it will not take a risk you did not ask for. Variety and ambition have to be imported.
+> **Key insight:** The model cannot act randomly. It also will not take a risk you did not ask for. You have to bring both.
 
 ## How do you give an AI design its own identity?
 
-**3. Run a critic subagent, and do not take the first pass as gold.** The agent that wrote the page is a bad reviewer of the page. It remembers the code, the time it spent, and the rationale it already wrote. Anshu's fix: screenshot the current design, send *only* the screenshot to a fresh subagent, and ask that critic to name the aesthetic, imagine how a top studio would execute it, list the biggest gaps, and score it out of 10. The builder keeps going until the critic independently hits 9/10. Do not put that 9/10 in the critic's prompt, or it will grade easy to finish the job.
+**3. Run a critic subagent, and do not take the first pass as gold.** The agent that wrote the page is a bad reviewer of the page. It remembers the code, the time it spent, and the rationale it already wrote. Anshu's fix is to screenshot the current design, send *only* the screenshot to a fresh subagent, and ask that critic to name the aesthetic, imagine how a top studio would execute it, list the biggest gaps, and score it out of 10. The builder keeps going until the critic independently hits 9/10. Do not put that 9/10 in the critic's prompt, or it will grade easy to finish the job.
 
-On Meridian, one critic loop turned a pretty editorial landing page into an almanac masthead with a sundial. Same product. Different identity.
+On Meridian, one critic loop turned a pretty editorial landing page into an almanac masthead with a sundial.
 
 ![Before and after a design-critic subagent loop on the Meridian landing page: a simple editorial layout becomes a newspaper masthead with a sundial](/ai-guides/8-ai-design-techniques-to-break-safe-mode-subagents.png "The critic never saw the code. It only saw the screenshot.")
 
@@ -173,7 +173,7 @@ If I only need an explainer, not a scroll transition: install the Remotion plugi
 
 ## How do you stop an AI design from looking generated?
 
-**6. Cut every element that does not add value.** AI loves to add. It almost never deletes, because deleting feels risky. Anshu's calorie app (Morsel) is the case. First pass had a coral calorie number, macro chips, a chatbot paragraph, and custom inputs. After the cut: the food photos and the day's total. He asked for a "clean, minimalist, Apple-native" pass and still had to push it to remove the glow.
+**6. Cut every element that does not add value.** AI loves to add. It almost never deletes, because deleting feels risky. Anshu's calorie app (Morsel) is the case. First pass had a coral calorie number, macro chips, a chatbot paragraph, and custom inputs. After the cut, what's left is the food photos and the day's total. He asked for a "clean, minimalist, Apple-native" pass and still had to push it to remove the glow.
 
 ![Two iPhone screens of the Morsel calorie app before the cut, with a coral calorie total, macro chips, a chatbot intro, and a chat bubble](/ai-guides/8-ai-design-techniques-to-break-safe-mode-cut-before.png "Before: the app explains itself. The food is competing with the chrome.")
 
@@ -196,7 +196,7 @@ For each leftover element, tell me what happens if we delete it. If the answer i
 
 **7. Remove the AI tells.** Visual tells are the purple-gradient family, three-card feature rows, glow, and that "we could be any startup" layout from step 1. Copy tells are the ones [Humanizer](/ai/humanizer) and Peter Yang's [No AI Slop](https://github.com/petergyang/no-ai-slop) are built to catch: "it's not X, it's Y," throat-clearing openers, fake-depth verbs, perfectly even sentence rhythm. I run them as separate passes so I can see what each one changed. The full workflow is in [How to Humanize AI Text](/ai/how-to-humanize-ai-text).
 
-A [skill](/ai/what-is-a-skill) is a saved set of instructions your agent can run on command. You do not need to memorize the tell list. You need to run the pass before you ship.
+A [skill](/ai/what-is-a-skill) is a saved set of instructions your agent can run on command. You do not need to memorize the tell list. Run the pass before you ship.
 
 **Starter prompt:**
 
@@ -210,9 +210,9 @@ Copy: run /humanizer, then No AI Slop, as two separate passes. Keep my meaning, 
 List each tell, where it is, and the smallest fix. Then apply the fixes.
 ```
 
-**8. Rewrite the copy by hand.** This is the step the model will skip if you let it. Headlines, buttons, empty states, and error text are where AI-average survives longest. Skills can strip the fingerprints. They cannot write the line you would actually say on a call. Read the headline out loud. If you would not say it, type a new one.
+**8. Rewrite the copy by hand.** This is the step the model will skip if you let it. Headlines, buttons, empty states, and error text are where the average survives longest. Skills catch the fingerprints. They will not write the line you would actually say on a call. Read the headline out loud. If you would not say it, type a new one.
 
-Keep a few finished samples next to the skill, same as in the humanize guide, so the draft starts closer to you. Then you still touch the words. Anshu's whole point in the last stage is that your judgment is the product. The agent can explore. You decide what ships.
+Keep a few finished samples next to the skill, same as in the humanize guide, so the draft starts closer to you. Then you still touch the words. Anshu's last stage is still you. Let the agent explore, then decide what ships.
 
 **Starter prompt (for you, not the model):**
 
