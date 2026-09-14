@@ -6,6 +6,7 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [8 AI Design Techniques to Break Safe Mode](https://mikareyes.com/ai/8-ai-design-techniques-to-break-safe-mode): 8 AI design techniques to break safe, generic output. Seed strings, ambitious prompts, and subagent critiques from an Apple designer, then cut the tells.
 - [How to Learn Anything with Anthropic's ELI5 Skill](https://mikareyes.com/ai/how-to-learn-anything-eli5-skill): Learn anything with Anthropic's ELI5 Claude Code skill. Install it from the community marketplace, then type /eli5 plus a topic for a picture-heavy explainer.
 - [9 Prestigious AI Programs & Fellowships (Sept 2026)](https://mikareyes.com/ai/9-prestigious-ai-programs-fellowships-sept-2026): Nine AI fellowships and programs open in September 2026. Deadlines, stipends, who each is for, and apply links from Cambridge ERA to YC Winter 2027.
 - [How to Set Up Meta Muse in 30 Minutes](https://mikareyes.com/ai/how-to-set-up-meta-muse-in-30-minutes): How to set up Meta Muse in 30 minutes. Import memory, connect Meta apps, WhatsApp, a daily feed, and goals. Leave Stripe and password vault for last.
