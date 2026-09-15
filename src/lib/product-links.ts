@@ -23,6 +23,7 @@ export type ProductLink = {
 };
 
 const U = {
+  fishAudio: "https://fish.audio/?fpr=bliknq",
   capitalVentureX: "https://capital.one/3nffNQa",
   chaseFreedomUnlimited: "https://www.referyourchasecard.com/18/X49W5WBKFC",
   m1Finance: "https://m1.finance/jvVekGKC2na-",
@@ -47,6 +48,14 @@ const U = {
 } as const;
 
 export const productLinks: ProductLink[] = [
+  {
+    id: "fish-audio",
+    name: "Fish Audio",
+    description:
+      "Expressive voice AI for real-time text-to-speech and voice cloning in 83 languages.",
+    href: U.fishAudio,
+    categories: ["ai"],
+  },
   {
     id: "granola",
     name: "Granola",
