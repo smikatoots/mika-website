@@ -883,6 +883,38 @@
     "width": 750,
     "height": 1012
   },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-add-connector.png": {
+    "width": 714,
+    "height": 603
+  },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-cloned-voice.png": {
+    "width": 524,
+    "height": 310
+  },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-convert-to-audio.png": {
+    "width": 1045,
+    "height": 957
+  },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-create-project.png": {
+    "width": 647,
+    "height": 577
+  },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-paddington-voice.png": {
+    "width": 447,
+    "height": 176
+  },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-project-instructions.png": {
+    "width": 910,
+    "height": 670
+  },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-script-prompt.png": {
+    "width": 943,
+    "height": 200
+  },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-tool-permissions.png": {
+    "width": 1093,
+    "height": 866
+  },
   "/ai-guides/how-to-use-claude-academy-ai-fluency-courses.png": {
     "width": 1149,
     "height": 782
@@ -2283,6 +2315,18 @@
     "width": 2,
     "height": 1
   },
+  "/decks/_library/Screenshot 2026-09-15 at 12.42.59 PM.png": {
+    "width": 256,
+    "height": 182
+  },
+  "/decks/_library/Screenshot 2026-09-15 at 9.38.02 AM.png": {
+    "width": 896,
+    "height": 412
+  },
+  "/decks/_library/Screenshot 2026-09-15 at 9.42.17 AM.png": {
+    "width": 613,
+    "height": 536
+  },
   "/decks/_library/academic.gif": {
     "width": 245,
     "height": 200
@@ -2350,6 +2394,14 @@
   "/decks/_library/ai-multicolored.gif": {
     "width": 480,
     "height": 366
+  },
+  "/decks/_library/ai-systems-ahead-of-99-ai-skills-list.png": {
+    "width": 687,
+    "height": 397
+  },
+  "/decks/_library/ai-systems-ahead-of-99-grokbot-dr-eggbot.png": {
+    "width": 615,
+    "height": 551
   },
   "/decks/_library/ai-wash-cycle-bloomberg-article.png": {
     "width": 1072,
@@ -2551,6 +2603,54 @@
     "width": 1024,
     "height": 555
   },
+  "/decks/_library/building-ai-agents-simple-1273-students.png": {
+    "width": 1039,
+    "height": 338
+  },
+  "/decks/_library/building-ai-agents-simple-agent-brain-graph.png": {
+    "width": 1432,
+    "height": 1018
+  },
+  "/decks/_library/building-ai-agents-simple-agent-workflow.png": {
+    "width": 640,
+    "height": 293
+  },
+  "/decks/_library/building-ai-agents-simple-apps-tools-mcps.png": {
+    "width": 339,
+    "height": 337
+  },
+  "/decks/_library/building-ai-agents-simple-claude-new-hire.png": {
+    "width": 640,
+    "height": 640
+  },
+  "/decks/_library/building-ai-agents-simple-course-landing.png": {
+    "width": 1041,
+    "height": 443
+  },
+  "/decks/_library/building-ai-agents-simple-mcp-connectors.png": {
+    "width": 1254,
+    "height": 1254
+  },
+  "/decks/_library/building-ai-agents-simple-onboarding-context.png": {
+    "width": 343,
+    "height": 397
+  },
+  "/decks/_library/building-ai-agents-simple-sop-spreadsheet.png": {
+    "width": 600,
+    "height": 540
+  },
+  "/decks/_library/building-ai-agents-simple-teach-skills.png": {
+    "width": 333,
+    "height": 408
+  },
+  "/decks/_library/building-ai-agents-simple-testimonial.png": {
+    "width": 640,
+    "height": 158
+  },
+  "/decks/_library/building-ai-agents-simple-workshop-goals.png": {
+    "width": 938,
+    "height": 530
+  },
   "/decks/_library/bussin.gif": {
     "width": 480,
     "height": 320
@@ -2586,6 +2686,10 @@
   "/decks/_library/ceo-starter-kit.png": {
     "width": 480,
     "height": 480
+  },
+  "/decks/_library/cgptw-1.png": {
+    "width": 1662,
+    "height": 716
   },
   "/decks/_library/chairman.jpg": {
     "width": 612,
@@ -2634,6 +2738,10 @@
   "/decks/_library/claude-logo.png": {
     "width": 10240,
     "height": 2199
+  },
+  "/decks/_library/claude-self-improve-weekly-routine-prompt.png": {
+    "width": 1446,
+    "height": 1008
   },
   "/decks/_library/claude-tag-cover.png": {
     "width": 2400,
@@ -2702,6 +2810,10 @@
   "/decks/_library/companies-banning-chatgpt.png": {
     "width": 875,
     "height": 667
+  },
+  "/decks/_library/company-brain-knowledge-graph-my-agent.png": {
+    "width": 1432,
+    "height": 1018
   },
   "/decks/_library/competition-is-fierce.gif": {
     "width": 498,
@@ -2863,6 +2975,38 @@
     "width": 540,
     "height": 540
   },
+  "/decks/_library/fintech-creators-bhaumik-clay-tweet.png": {
+    "width": 609,
+    "height": 540
+  },
+  "/decks/_library/fintech-creators-bhaumik.png": {
+    "width": 399,
+    "height": 399
+  },
+  "/decks/_library/fintech-creators-catgpt-smooth-linkedin.png": {
+    "width": 718,
+    "height": 479
+  },
+  "/decks/_library/fintech-creators-catgpt.png": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/decks/_library/fintech-creators-natalie-avatar.png": {
+    "width": 1000,
+    "height": 1000
+  },
+  "/decks/_library/fintech-creators-natalie-sofi-post.png": {
+    "width": 800,
+    "height": 1000
+  },
+  "/decks/_library/fintech-creators-vivian-sofi-article.png": {
+    "width": 1028,
+    "height": 721
+  },
+  "/decks/_library/fintech-creators-vivian-tu.png": {
+    "width": 1080,
+    "height": 1080
+  },
   "/decks/_library/flash-speed-meme.gif": {
     "width": 498,
     "height": 373
@@ -2878,6 +3022,10 @@
   "/decks/_library/friends-kumbayah.gif": {
     "width": 480,
     "height": 270
+  },
+  "/decks/_library/garry-tan.jpeg": {
+    "width": 553,
+    "height": 553
   },
   "/decks/_library/gary-vee-analog-tweet.png": {
     "width": 590,
@@ -2906,6 +3054,42 @@
   "/decks/_library/google-tutor-step3.png": {
     "width": 2354,
     "height": 1746
+  },
+  "/decks/_library/grok-bot-agent-own-computer.png": {
+    "width": 1431,
+    "height": 1090
+  },
+  "/decks/_library/grok-bot-chief-of-staff-chat.png": {
+    "width": 725,
+    "height": 520
+  },
+  "/decks/_library/grok-bot-installer.png": {
+    "width": 1498,
+    "height": 1062
+  },
+  "/decks/_library/grok-bot-landing-page.png": {
+    "width": 1772,
+    "height": 1688
+  },
+  "/decks/_library/grok-bot-plugins.png": {
+    "width": 1025,
+    "height": 720
+  },
+  "/decks/_library/grok-bot-pricing.png": {
+    "width": 1604,
+    "height": 1044
+  },
+  "/decks/_library/grok-bot-routine-setup.png": {
+    "width": 780,
+    "height": 706
+  },
+  "/decks/_library/gtm-claudification-job-post.png": {
+    "width": 1100,
+    "height": 747
+  },
+  "/decks/_library/gtm-claudification-title-redacted.png": {
+    "width": 896,
+    "height": 412
   },
   "/decks/_library/hamster-wheel.webp": {
     "width": 480,
@@ -2958,6 +3142,18 @@
   "/decks/_library/human-evolution.gif": {
     "width": 500,
     "height": 500
+  },
+  "/decks/_library/human-review-chat-instructions.png": {
+    "width": 1444,
+    "height": 828
+  },
+  "/decks/_library/human-review-github-stars.png": {
+    "width": 804,
+    "height": 664
+  },
+  "/decks/_library/human-review-readme.png": {
+    "width": 790,
+    "height": 649
   },
   "/decks/_library/human-vs-ai.gif": {
     "width": 480,
@@ -3111,6 +3307,10 @@
     "width": 1050,
     "height": 600
   },
+  "/decks/_library/microsoft-logo.png": {
+    "width": 554,
+    "height": 554
+  },
   "/decks/_library/mika-and-dad.jpeg": {
     "width": 2148,
     "height": 1440
@@ -3142,6 +3342,10 @@
   "/decks/_library/mika-with-a-filipino-jeep.jpeg": {
     "width": 2560,
     "height": 1440
+  },
+  "/decks/_library/mikareyes-homepage.png": {
+    "width": 2095,
+    "height": 1600
   },
   "/decks/_library/model-command.png": {
     "width": 1099,
@@ -3439,6 +3643,18 @@
     "width": 400,
     "height": 500
   },
+  "/decks/_library/stop-collecting-ai-videos-email-guide-form.png": {
+    "width": 385,
+    "height": 341
+  },
+  "/decks/_library/stop-uploading-pdfs-to-claude-cloudconvert-pdf-to-md.png": {
+    "width": 878,
+    "height": 770
+  },
+  "/decks/_library/stop-uploading-pdfs-to-claude-markitdown-github.png": {
+    "width": 715,
+    "height": 418
+  },
   "/decks/_library/stripe-age-of-solopreneur-article.png": {
     "width": 820,
     "height": 323
@@ -3582,6 +3798,30 @@
   "/decks/_library/watch-video-skill-youtube-clairevo.png": {
     "width": 1248,
     "height": 801
+  },
+  "/decks/_library/website-made-with-ai-fixes-ai-tells-before-after.png": {
+    "width": 634,
+    "height": 406
+  },
+  "/decks/_library/website-made-with-ai-fixes-impeccable-detector.png": {
+    "width": 1489,
+    "height": 1025
+  },
+  "/decks/_library/website-made-with-ai-fixes-mengto-handle.png": {
+    "width": 1500,
+    "height": 145
+  },
+  "/decks/_library/website-made-with-ai-fixes-mengto-threeui-tweet.png": {
+    "width": 599,
+    "height": 593
+  },
+  "/decks/_library/website-made-with-ai-fixes-refero-styles.png": {
+    "width": 1968,
+    "height": 1002
+  },
+  "/decks/_library/website-made-with-ai-fixes-taste-skill.png": {
+    "width": 1042,
+    "height": 883
   },
   "/decks/_library/wesleyan-college-graduation.jpg": {
     "width": 2048,

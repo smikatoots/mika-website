@@ -276,7 +276,7 @@ centered, with generous padding that scales at the `sm` breakpoint. Content is
 capped around `max-w-6xl` so a long statement wraps into a readable block rather
 than a single wide line.
 
-Slides are composed, never hand-laid-out. The eight templates in
+Slides are composed, never hand-laid-out. The seven templates in
 `slide-parts.tsx` and `special-slides.tsx` are the complete vocabulary:
 
 | Template | Shape |
@@ -286,7 +286,6 @@ Slides are composed, never hand-laid-out. The eight templates in
 | `PointSlide` | Large emoji, accent number, headline as a matched set |
 | `ImageSlide` | Image filling the slide; optional header above |
 | `DualImageSlide` | Two images side by side under one optional header |
-| `StepsSlide` | Progressive numbered list left, unique visual right |
 | `CtaSlide` | Coral pill, text-only or paired with a preview image |
 | `PyramidSlide` | A bespoke SVG diagram, the pattern for custom diagrams |
 
@@ -301,7 +300,6 @@ slide instead of across several:
 | `TableSlide` | A comparison table. Three columns and five rows is the ceiling before it stops reading on video. |
 | `OverlaySlide` | Type over a full-bleed background, with a scrim on by default. |
 | `Notes` | Speaker notes for a slide. Invisible on screen, shows in `S` view. |
-| `StepsBuildSlide` | The whole numbered build on ONE slide: each step appears on click and its visual swaps in. Replaces rendering `StepsSlide` once per step. |
 | `BuildStatementSlide` | Setup on screen, accented payoff on click. |
 
 ### Slide-level settings
@@ -335,9 +333,11 @@ cutting. Set `autoAnimate` on **both**, and give the element that should travel
 a matching `data-id`. It is the strongest tool here for a number that changes.
 Use it on the beat that matters, not throughout.
 
-Prefer `StepsBuildSlide` over a run of `StepsSlide` frames for anything new. The
-old pattern costs one near-duplicate slide per step and they drift out of sync
-by hand; the fragment version is a single source.
+**The Steps templates are retired.** `StepsSlide` and `StepsBuildSlide` are no
+longer part of the roster and must not be chosen for a new deck. They stay in
+the codebase only because already-filmed decks render them. For a sequence of
+steps, reach for `ListSlide` with `ordered` (each step revealed item by item on
+its own click) or give each step its own image or statement slide.
 
 **Images default to bare.** `ImageSlide` and `DualImageSlide` render the image
 alone unless a header is explicitly requested. A header is an opt-in exception,
@@ -413,7 +413,6 @@ area, so it never collides with a slide.
   genuinely has no home.
 - Build custom diagrams as inline SVG with explicit coordinates. They land
   correctly the first time; HTML and CSS diagrams need a screenshot-tweak loop.
-- Give every step in a `StepsSlide` its own distinct visual.
 - Let an image fill the slide when the image is the argument.
 - Test at phone size. That is where this gets watched.
 

@@ -85,8 +85,11 @@ export function CtaSlide({
   previewPlain?: boolean;
   /** Give the preview more horizontal room (pairs well with previewPlain). */
   previewLarge?: boolean;
-  /** Which side the preview image sits on (desktop). */
-  previewSide?: "left" | "right";
+  /**
+   * Where the preview image sits (desktop). `bottom` keeps the column layout so
+   * the image stacks under the text instead of beside it.
+   */
+  previewSide?: "left" | "right" | "bottom";
   /**
    * Type scale — `sm` for image-heavy slides, `md` in between, `mlg` a modest
    * step above `md`, `lg` default.
@@ -178,7 +181,11 @@ export function CtaSlide({
   return (
     <div
       className={`flex h-full w-full flex-col items-center justify-center gap-8 px-8 py-10 md:gap-14 md:px-16 ${
-        previewSide === "left" ? "md:flex-row-reverse" : "md:flex-row"
+        previewSide === "bottom"
+          ? ""
+          : previewSide === "left"
+            ? "md:flex-row-reverse"
+            : "md:flex-row"
       }`}
     >
       {text}
@@ -186,9 +193,16 @@ export function CtaSlide({
         className={
           previewPlain
             ? `deck-pop relative w-full ${
-                previewLarge
-                  ? "h-[min(72vh,40rem)] md:max-w-3xl md:flex-[1.2]"
-                  : "h-[min(65vh,32rem)] max-w-xl"
+                previewSide === "bottom"
+                  ? // Stacked under the text, so the well is sized in fixed px:
+                    // `vh` keys off the window rather than the scaled 1440x810
+                    // canvas and pushes the image off the bottom edge.
+                    previewLarge
+                    ? "h-[420px] max-w-4xl"
+                    : "h-[300px] max-w-2xl"
+                  : previewLarge
+                    ? "h-[min(72vh,40rem)] md:max-w-3xl md:flex-[1.2]"
+                    : "h-[min(65vh,32rem)] max-w-xl"
               }`
             : `deck-pop relative aspect-square w-full max-w-md overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_70px_-24px_rgba(0,0,0,0.35)]${
                 previewLarge ? " md:max-w-lg" : ""

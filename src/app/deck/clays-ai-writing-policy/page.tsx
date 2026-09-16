@@ -19,15 +19,23 @@ const slides: React.ReactNode[] = [
     alt="Clay's AI writing policy"
   />,
 
-  // 3 — I've seen how this plays out in big companies as someone who's previously worked at LinkedIn.
+  // 3 — And it struck a nerve: 9,939 reactions, 590 comments, 719 reposts.
+  <ImageSlide
+    key="engagement"
+    src={`${LIB}/clay-writing-policy-viral.png`}
+    alt="LinkedIn post engagement: 9,946 reactions, 590 comments, 719 reposts"
+    framed
+  />,
+
+  // 4 — I've seen how this plays out in big companies as someone who's previously worked at LinkedIn.
   <ImageSlide key="linkedin" src={`${LIB}/mika-linkedin-hero.png`} alt="Mika at LinkedIn" />,
 
-  // 4 — Here are Clay's four rules for fixing it.
+  // 5 — Here are Clay's four rules for fixing it.
   <TextSlide key="four-rules">
     Clay&apos;s <HL>4 writing rules</HL>
   </TextSlide>,
 
-  // 5 — First, stand behind every sentence. "AI wrote it" isn't an answer.
+  // 6 — First, stand behind every sentence. "AI wrote it" isn't an answer.
   <ImageSlide
     key="rule-1"
     src={`${LIB}/clays-ai-writing-policy-rule-1-stand-behind-every-sentence.png`}
@@ -35,7 +43,7 @@ const slides: React.ReactNode[] = [
     caption="Stand behind every sentence"
   />,
 
-  // 6 — Second, writing is thinking. Don't outsource the part that shapes your ideas.
+  // 7 — Second, writing is thinking. Don't outsource the part that shapes your ideas.
   <ImageSlide
     key="rule-2"
     src={`${LIB}/clays-ai-writing-policy-rule-2-writing-is-thinking.png`}
@@ -43,7 +51,7 @@ const slides: React.ReactNode[] = [
     caption="Writing is thinking"
   />,
 
-  // 7 — Third, spend more time writing than your readers spend reading.
+  // 8 — Third, spend more time writing than your readers spend reading.
   <ImageSlide
     key="rule-3"
     src={`${LIB}/clays-ai-writing-policy-rule-3-author-time-over-reader-time.png`}
@@ -51,7 +59,7 @@ const slides: React.ReactNode[] = [
     caption="Spend more time writing"
   />,
 
-  // 8 — Fourth, longer isn't better. Cut until every sentence earns its place.
+  // 9 — Fourth, longer isn't better. Cut until every sentence earns its place.
   <ImageSlide
     key="rule-4"
     src={`${LIB}/clays-ai-writing-policy-rule-4-longer-is-not-better.png`}
@@ -59,12 +67,12 @@ const slides: React.ReactNode[] = [
     caption="Longer isn't better"
   />,
 
-  // 9 — The test is simple: did AI help you communicate your thinking, or replace it?
+  // 10 — The test is simple: did AI help you communicate your thinking, or replace it?
   <TextSlide key="test">
     <HL>Communicate</HL> your thinking, or <HL>replace</HL> it?
   </TextSlide>,
 
-  // 10 — Share this with the other people on your team.
+  // 11 — Share this with the other people on your team.
   <CtaSlide
     key="cta"
     prompt={null}

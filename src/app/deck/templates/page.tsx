@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 import { Deck } from "@/components/deck/Deck";
 import {
@@ -9,7 +8,6 @@ import {
   HL,
   ImageSlide,
   PointSlide,
-  StepsSlide,
   TextSlide,
 } from "@/components/deck/slide-parts";
 import { CtaSlide, PyramidSlide, PyramidSvg } from "@/components/deck/special-slides";
@@ -58,30 +56,6 @@ function Example({
   );
 }
 
-/** A big sized box so an Image with `fill` works as a Steps right-side visual. */
-function FramedVisual({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="relative aspect-[4/5] w-full max-w-lg overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_70px_-24px_rgba(0,0,0,0.3)]">
-      <Image src={src} alt={alt} fill sizes="32rem" className="object-cover" />
-    </div>
-  );
-}
-
-const stepLabels = [
-  "Pick one real workflow",
-  "Go deep for a week",
-  "Ship something real",
-  "Teach it back",
-];
-
-// One unique supporting image per step.
-const stepVisuals = [
-  <FramedVisual key="v0" src={`${LIB}/doomscrolling.jpg`} alt="Visual for step 1." />,
-  <FramedVisual key="v1" src={`${LIB}/hamster-wheel.webp`} alt="Visual for step 2." />,
-  <FramedVisual key="v2" src={`${LIB}/layoffs.jpg`} alt="Visual for step 3." />,
-  <FramedVisual key="v3" src={`${LIB}/ai-lab-logos.png`} alt="Visual for step 4." />,
-];
-
 const slides: SlideInput[] = [
   <Example key="c1" name="Diagram">
     <CoverSlide diagram={<PyramidSvg className="w-full max-w-3xl" />} />
@@ -129,24 +103,6 @@ const slides: SlideInput[] = [
         </>
       }
     />
-  </Example>,
-
-  // Steps — first the bare roadmap (no step reached, no visual), then one frame
-  // per step as the list reveals progressively.
-  <Example key="s0" name="Steps · 0 of 4">
-    <StepsSlide steps={stepLabels} current={-1} />
-  </Example>,
-  <Example key="s1" name="Steps · 1 of 4">
-    <StepsSlide steps={stepLabels} current={0} visual={stepVisuals[0]} />
-  </Example>,
-  <Example key="s2" name="Steps · 2 of 4">
-    <StepsSlide steps={stepLabels} current={1} visual={stepVisuals[1]} />
-  </Example>,
-  <Example key="s3" name="Steps · 3 of 4">
-    <StepsSlide steps={stepLabels} current={2} visual={stepVisuals[2]} />
-  </Example>,
-  <Example key="s4" name="Steps · 4 of 4">
-    <StepsSlide steps={stepLabels} current={3} visual={stepVisuals[3]} />
   </Example>,
 
   // ── Reveal-native templates ──────────────────────────────────────────

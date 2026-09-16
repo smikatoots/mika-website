@@ -1,0 +1,145 @@
+---
+title: "How to Turn Anything into a Personal Podcast with AI"
+description: >-
+  Turn anything into a personal podcast with Claude and Fish Audio. Convert
+  newsletters, PDFs, and saved guides into spoken audio you play on the go.
+tags:
+  - beginner
+  - claude
+published: "2026-09-15"
+updated: "2026-09-15"
+cta: Build your podcast
+faq:
+  - question: "Can I do this without cloning my voice?"
+    answer: >-
+      Yes. Cloning is optional. I cloned mine for ads and still picked a
+      British narrator for this podcast, because hearing myself read my inbox
+      felt weird. Search the Fish Audio library for a narration voice, preview
+      it, and use that.
+  - question: "How do I connect Fish Audio to Claude?"
+    answer: >-
+      In Claude, go to Settings, Connectors, Add custom connector. Name it
+      Fish Audio, paste https://api.fish.audio/mcp, then sign in when the
+      browser window opens. Ask Claude if it is connected before you generate
+      a full episode, so you know the connector is live.
+  - question: "Does this work on a plane without wifi?"
+    answer: >-
+      I played an episode on an hour flight with no internet and it worked.
+      Generate the audio while you are online, then play the file from the
+      Claude app once it is saved. Do not count on creating a new episode in
+      the air.
+  - question: "Do I need Claude Code, or is regular Claude enough?"
+    answer: >-
+      Regular Claude is enough. This is a project plus a connector, not a
+      coding setup. Claude Code works too if that is already your habit, but
+      you can run the whole loop from the Claude app.
+---
+
+If your newsletter inbox is where good ideas go to die, turn the pile into a personal podcast you can play on the go. A Claude project rewrites each piece as a spoken script. [Fish Audio](https://fish.audio/?fpr=bliknq) turns that script into audio you hit play on from the Claude app.
+
+I save a lot of AI guides and subscribe to more newsletters than I finish. Sitting down to read them is the part that never happens. I still pick what is worth keeping. AI does the reading.
+
+This is the stack: Claude holds the rewrite rules, [Fish Audio](https://fish.audio/?fpr=bliknq) does text-to-speech, and the Claude app is the player. If Claude is still a blank chat box for you, do the [10-minute setup](/ai/how-to-setup-claude) first. You don't need to be a developer.
+
+Some links on this page are my personal referral links, including [Fish Audio](https://fish.audio/?fpr=bliknq).
+
+> **Key insight:** I kept the save habit. The files just get read to me now.
+
+## How do you turn a saved file into a podcast?
+
+Make a Claude project, paste instructions that write for the ear, connect [Fish Audio](https://fish.audio/?fpr=bliknq), pick a voice, then ask Claude to turn this week's files into audio. It works for newsletters, PDFs, markdown, and saved guides.
+
+### Set up the Claude project
+
+**1. Create a project and name it Personalized Podcast.**
+
+In Claude, make a new project. I called mine Personalized Podcast. Under what you are trying to achieve, I wrote: turn PDFs or markdown files into a personalized podcast I can listen to while I'm on the go.
+
+If you use Claude on the computer that already has your saved issues, point the project at that folder. Mine lives in a local `newsletter-podcast` folder, so Claude can read files from there when I run the project on this machine. A [Claude project](/ai/how-to-give-claude-memory) is a reusable box of instructions and files, so you are not re-explaining the job every week.
+
+![Claude Create a project dialog named Personalized Podcast with a goal to turn PDFs or markdown into a podcast and a local newsletter-podcast folder](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-create-project.png "Name the project, say what it is for, and optionally attach the folder where you drop saved files.")
+
+**2. Paste project instructions that write for the ear, not the eye.**
+
+Open **Set project instructions**. Raw newsletters sound terrible out loud. Headings, bullets, URLs, and markdown all get read as junk.
+
+Here is the instruction I use:
+
+```
+I will upload documents and pull certain newsletters. Rewrite everything as a script that will be read out loud by a text-to-speech model. This is going to become an audiobook, so it has to work for the ear, not the eye.
+
+Rules, follow all of them:
+
+1. Output plain narration text only. No headings, no titles, no section numbers, no markdown, no asterisks, no bullet symbols, no dashes used as list markers, no tables.
+2. Where the original used a heading, replace it with a short spoken transition instead. Something like "Next, the part about pricing." Never read a heading as a label.
+3. Where the original used a list, turn it into a spoken sentence. "There are three things that matter here. First... Second... Third..." Never read symbols aloud.
+4. Remove every URL, link, footnote marker, and citation number. If a link mattered, say the name of the source out loud instead, like "according to their pricing page." Never spell out a web address.
+5. Spell out anything that would be read wrong. Write numbers, dates, currency, and units the way a person would say them.
+6. Add emotion tags in square brackets, like [excited], [sad], or [whimsical], and drop in pauses, so I am not listening to monotone text. Those tags are performed. They are not read aloud.
+```
+
+Save the instructions. They sit next to your profile instructions, which is the same idea as [global context](/ai/how-to-setup-global-context-claude). You say it once and reuse it every episode.
+
+![Claude Set project instructions modal for Personalized Podcast with narration rules for text-to-speech](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-project-instructions.png "These rules stop Claude from reading headings, bullets, and URLs out loud.")
+
+**3. Ask for this week's script.**
+
+Drop in the issues you actually want, or point Claude at the files in the project folder. Then say:
+
+> Can you turn the newsletters I received in the past week into one script based on the instructions I have?
+
+You still choose what is worth an episode. Claude compiles the list and writes one spoken script, with transitions instead of headers.
+
+![Claude chat asking to turn this week's newsletters into one spoken script](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-script-prompt.png "One prompt. The project instructions do the rest.")
+
+## How do you connect Fish Audio to Claude?
+
+An MCP is a plug so Claude can use another product. Same family of setup as [connecting Meta Ads to Claude](/ai/how-to-connect-meta-ads-to-claude), only this one speaks.
+
+**4. Add the [Fish Audio](https://fish.audio/?fpr=bliknq) connector.**
+
+Go to **Settings → Connectors → Add custom connector**. Name it Fish Audio. Paste:
+
+```
+https://api.fish.audio/mcp
+```
+
+Click Continue, then sign in to [Fish Audio](https://fish.audio/?fpr=bliknq) when the browser window opens. Usage comes out of your [Fish Audio](https://fish.audio/?fpr=bliknq) plan credits, not a separate developer API balance. They have run a free window on S2.1 Pro. Check the site when you sign up, because that will not stay true forever.
+
+![Claude Add custom connector modal named Fish Audio with MCP URL https://api.fish.audio/mcp](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-add-connector.png "Name it Fish Audio and paste https://api.fish.audio/mcp.")
+
+**5. Set tool permissions, then confirm it is live.**
+
+You will see tools like Search voices, Text to speech, Studio generate, and Get credit balance. I leave the write tools on **Needs approval** the first time, so Claude has to ask before it spends credits.
+
+Then, in the project, ask Claude if it is connected to [Fish Audio](https://fish.audio/?fpr=bliknq) now. You want it to answer from the connector, not from a guess.
+
+![Fish Audio connector in Claude with interactive tools set to Needs approval](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-tool-permissions.png "Start with Needs approval on text-to-speech until you trust the loop.")
+
+![Claude confirming the Fish Audio connector is live, then converting a newsletter script into audio](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-convert-to-audio.png "Once it is connected, send the script and ask for audio you can play on the go.")
+
+## How do you pick a voice and actually listen?
+
+**6. Pick a voice. Hearing yourself is optional, and a little weird.**
+
+Claude will ask which voice to use. I cloned my own for an ads project. It is sitting there as Friendly Storyteller. I do not use it for this. A personal podcast of my unread inbox, in my own voice, felt off. I use a soothing British narrator instead. In the [Fish Audio](https://fish.audio/?fpr=bliknq) library it shows up as Paddington: English, male, narration.
+
+If you want to browse, ask Claude to search voices. Tap the preview before you commit.
+
+![Fish Audio voice card for Paddington, a British narrator tagged English, male, old, narration](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-paddington-voice.png "The voice I actually use: a calm British narrator, not my clone.")
+
+![Fish Audio search_voices result showing Mika's cloned Friendly Storyteller voice](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-cloned-voice.png "I cloned my voice for ads. I do not use it for the newsletter podcast.")
+
+**7. Convert the script, then play it from the Claude app.**
+
+Once you like the script, ask: "Can you convert this to audio that I can listen to when I'm on the go?"
+
+Claude hands the narration to [Fish Audio](https://fish.audio/?fpr=bliknq) in the voice you picked and gives you an audio file back. Play it from the Claude app whenever your hands are busy. I tested mine on an hour flight with no internet, and it still played.
+
+Here are some related guides to check out:
+
+1. [How to Setup Claude (10 Minute Setup Guide)](/ai/how-to-setup-claude)
+2. [How to Give Claude Memory (Beginner to Advanced)](/ai/how-to-give-claude-memory)
+3. [How to Connect Meta Ads to Claude](/ai/how-to-connect-meta-ads-to-claude)
+4. [7 New Creative Tools as Claude Connectors](/ai/8-new-creative-tools-as-claude-connectors)
+5. [Claude Features Cheat Sheet for Power Users](/ai/claude-features-cheat-sheet)

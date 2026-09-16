@@ -81,6 +81,9 @@ export function Notes({ children }: { children: React.ReactNode }) {
  *   visuals={[<Shot key="a" … />, <Shot key="b" … />]}
  * />
  * ```
+ *
+ * @deprecated Retired 2026-09-15 — do not use in new decks. Existing decks
+ * keep it. Use `ListSlide` (revealed item by item) or one slide per step.
  */
 export function StepsBuildSlide({
   steps,

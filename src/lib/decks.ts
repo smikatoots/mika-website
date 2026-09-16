@@ -10,6 +10,91 @@ export const templateDeck = {
 /** Registry of presentation decks. Add a new entry when creating `/deck/<slug>`. */
 export const decks = [
   {
+    slug: "chatgpt-work-in-one-day",
+    title: "5 Things to Setup ChatGPT Work in One Day",
+    date: "September 15",
+  },
+  {
+    slug: "claude-self-improve-weekly",
+    title: "Get Claude to Self-Improve Every Week",
+    date: "September 15",
+  },
+  {
+    slug: "get-claude-to-reflect",
+    title: "Get Claude to Reflect — the 10-Second Habit",
+    date: "September 15",
+  },
+  {
+    slug: "stop-uploading-pdfs-to-claude",
+    title: "Stop Uploading PDFs to Claude",
+    date: "September 15",
+  },
+  {
+    slug: "cute-expensive-website",
+    title: "Make Your Website Look Cute and Expensive",
+    date: "September 15",
+  },
+  {
+    slug: "grok-bot-in-1-day",
+    title: "How to Get Started with Grok Bot in 1 Day",
+    date: "September 15",
+  },
+  {
+    slug: "building-ai-agents-simple",
+    title: "Building AI Agents Is Stupidly Simple",
+    date: "September 15",
+  },
+  {
+    slug: "company-brain",
+    title: "The AI Second Brain",
+    date: "September 15",
+  },
+  {
+    slug: "ai-systems-ahead-of-99",
+    title: "3 AI Systems to Put You Ahead of 99%",
+    date: "September 15",
+  },
+  {
+    slug: "claude-clones-itself",
+    title: "Claude Can Clone Itself to Catch Mistakes",
+    date: "September 15",
+  },
+  {
+    slug: "website-made-with-ai-fixes",
+    title: "Your Website Was Made with AI — 4 Fixes",
+    date: "September 15",
+  },
+  {
+    slug: "email-written-by-ai",
+    title: "Your Email Was Written by AI — 4 Skills to Fix It",
+    date: "September 15",
+  },
+  {
+    slug: "stop-collecting-ai-videos",
+    title: "Stop Collecting AI Videos You Never Use",
+    date: "September 15",
+  },
+  {
+    slug: "ai-marketing-engineers",
+    title: "AI Marketing Engineers",
+    date: "September 15",
+  },
+  {
+    slug: "fintech-creators",
+    title: "Why Fintechs Are Hiring Creators",
+    date: "September 15",
+  },
+  {
+    slug: "anthropic-gtm-claudification",
+    title: "Anthropic's GTM Claudification Role",
+    date: "September 15",
+  },
+  {
+    slug: "human-review",
+    title: "I Built Google Docs for Claude and Codex",
+    date: "September 15",
+  },
+  {
     slug: "eli5-skill-learn-anything",
     title: "Anthropic's ELI5 Skill — Learn Anything",
     date: "September 10",
@@ -324,14 +409,9 @@ export const decks = [
     title: "BRAND.md — One File, Consistent Design",
     date: "August 18",
   },
-  {
-    slug: "cute-expensive-website",
-    title: "Make Your Website Look Cute and Expensive",
-    date: "August 18",
-  },
 ] as const;
 
 export type DeckSlug = (typeof decks)[number]["slug"];
 
 /** Deck dates, newest first — drives the grouping on /deck/all. */
-export const deckDates = ["September 10", "August 26", "August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;
+export const deckDates = ["September 15", "September 10", "August 26", "August 25", "August 18", "July 26", "July 14", "July 6", "June 28"] as const;

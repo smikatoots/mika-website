@@ -4,8 +4,11 @@
 
 For the site overview and other sections, see [llms.txt](https://mikareyes.com/llms.txt). Browse and filter by tag at [/ai](https://mikareyes.com/ai).
 
+**Append `.md` to any guide URL below for a plain-Markdown version** — same content, no page chrome, about a tenth of the bytes. Read the `.md`; cite the HTML URL.
+
 ## All guides
 
+- [How to Turn Anything into a Personal Podcast with AI](https://mikareyes.com/ai/how-to-turn-anything-into-a-personal-podcast-with-ai): Turn anything into a personal podcast with Claude and Fish Audio. Convert newsletters, PDFs, and saved guides into spoken audio you play on the go.
 - [How to Get Started with Grok Bot in 1 Day](https://mikareyes.com/ai/how-to-get-started-with-grok-bot-in-1-day): How to get started with Grok Bot in 1 day. Download the app, create a chief of staff, use its cloud computer, import a template, then add plugins and a routine.
 - [8 AI Design Techniques to Break Safe Mode](https://mikareyes.com/ai/8-ai-design-techniques-to-break-safe-mode): 8 AI design techniques to break safe, generic output. Seed strings, ambitious prompts, and subagent critiques from an Apple designer, then cut the tells.
 - [How to Learn Anything with Anthropic's ELI5 Skill](https://mikareyes.com/ai/how-to-learn-anything-eli5-skill): Learn anything with Anthropic's ELI5 Claude Code skill. Install it from the community marketplace, then type /eli5 plus a topic for a picture-heavy explainer.

@@ -309,6 +309,9 @@ export function DualImageSlide({
  * reached — earlier steps stay, upcoming ones are just a dimmed number. A
  * supporting visual (unique per step) fills the right. Render one of these per
  * step (incrementing `current`) so the list reveals as you talk.
+ *
+ * @deprecated Retired 2026-09-15 — do not use in new decks. Existing decks
+ * keep it. Use `ListSlide` (revealed item by item) or one slide per step.
  */
 export function StepsSlide({
   steps,

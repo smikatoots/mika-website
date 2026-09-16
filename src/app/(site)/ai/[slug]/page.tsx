@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { AiGuideComingSoonBlock } from "@/components/ai-guides/AiGuideComingSoonBlock";
+import { CopyGuideForAi } from "@/components/ai-guides/CopyGuideForAi";
 import { CourseCta } from "@/components/ai-guides/CourseCta";
 import { FaqSection } from "@/components/ai-guides/FaqSection";
 import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
@@ -53,7 +54,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: guide.frontmatter.title,
     description,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      // Lets an agent that fetched the HTML discover the Markdown twin without
+      // having to guess the `.md` convention. Paired with the same convention
+      // being advertised in /llms.txt.
+      types: { "text/markdown": canonicalUrl(`/ai/${slug}.md`) },
+    },
     openGraph: buildOpenGraph({
       title: guide.frontmatter.title,
       description,
@@ -143,6 +150,9 @@ export default async function AiGuidePage({ params }: Props) {
           ) : null}
         </div>
         <AuthorByline />
+        {!isComingSoon ? (
+          <CopyGuideForAi guideSlug={slug} guideTitle={frontmatter.title} />
+        ) : null}
         <GuideEmailCapture
           key={slug}
           guideSlug={slug}

@@ -2,7 +2,9 @@
 
 > Personal site for Mika Reyes — AI, startups, and life: bio, writing, projects, press, and curated links.
 
-This is the canonical marketing site at https://mikareyes.com. Pages are HTML; there are no parallel `.md` URLs. For a full list of indexable URLs, use the sitemap below.
+This is the canonical marketing site at https://mikareyes.com. For a full list of indexable URLs, use the sitemap below.
+
+**Every AI guide has a plain-Markdown twin: append `.md` to its URL.** `/ai/<slug>` returns the HTML page; `/ai/<slug>.md` returns the same guide as Markdown — no navigation, no markup, headings and fenced commands intact, at roughly a tenth of the bytes. Prefer the `.md` form when reading or citing a guide; cite the HTML URL as the source. The HTML page also advertises its twin via `<link rel="alternate" type="text/markdown">`. Only `/ai/` has this; other sections are HTML only.
 
 - **AI Guides** are the flagship content: practical how-to guides at `/ai/<slug>`, indexed at `/ai`. The 10 broadest are listed first below; for the complete list with descriptions, see [llms-full.txt](https://mikareyes.com/llms-full.txt).
 - **Blog** posts live under `/blog/<slug>` (MDX synced from Notion; source of truth for paths is the published site and sitemap).
@@ -48,5 +50,6 @@ Flagship content: practical, copy-paste AI how-to guides (mostly Claude, plus pr
 ## Optional
 
 - [llms-full.txt](https://mikareyes.com/llms-full.txt): Every AI guide with its description.
+- Markdown twin of any guide: append `.md` to its `/ai/<slug>` URL — e.g. [what-is-a-skill.md](https://mikareyes.com/ai/what-is-a-skill.md).
 - [Sitemap](https://mikareyes.com/sitemap.xml): Exhaustive list of canonical URLs including all blog, project, and press entries.
 - [Robots](https://mikareyes.com/robots.txt): Crawl policy and sitemap pointer.
