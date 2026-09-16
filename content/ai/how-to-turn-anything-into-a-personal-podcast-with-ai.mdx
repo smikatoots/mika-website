@@ -7,7 +7,7 @@ tags:
   - beginner
   - claude
 published: "2026-09-15"
-updated: "2026-09-15"
+updated: "2026-09-16"
 cta: Build your podcast
 faq:
   - question: "Can I do this without cloning my voice?"
@@ -61,26 +61,43 @@ If you use Claude on the computer that already has your saved issues, point the 
 
 **2. Paste project instructions that write for the ear, not the eye.**
 
-Open **Set project instructions**. Raw newsletters sound terrible out loud. Headings, bullets, URLs, and markdown all get read as junk.
+Open **Set project instructions**. Raw newsletters sound terrible out loud. Headings, bullets, URLs, and markdown all get read as junk. The tags at the bottom tell the [Fish Audio](https://fish.audio/?fpr=bliknq) voice how to perform each line.
 
 Here is the instruction I use:
 
 ```
-I will upload documents and pull certain newsletters. Rewrite everything as a script that will be read out loud by a text-to-speech model. This is going to become an audiobook, so it has to work for the ear, not the eye.
+I drop in newsletters, PDFs, markdown files, and saved guides. Rewrite each one as a spoken script for a text-to-speech voice. I listen while I run, walk, or sit on a plane, so write for the ear, not the eye.
 
-Rules, follow all of them:
+Do all of this:
 
-1. Output plain narration text only. No headings, no titles, no section numbers, no markdown, no asterisks, no bullet symbols, no dashes used as list markers, no tables.
-2. Where the original used a heading, replace it with a short spoken transition instead. Something like "Next, the part about pricing." Never read a heading as a label.
-3. Where the original used a list, turn it into a spoken sentence. "There are three things that matter here. First... Second... Third..." Never read symbols aloud.
-4. Remove every URL, link, footnote marker, and citation number. If a link mattered, say the name of the source out loud instead, like "according to their pricing page." Never spell out a web address.
-5. Spell out anything that would be read wrong. Write numbers, dates, currency, and units the way a person would say them.
-6. Add emotion tags in square brackets, like [excited], [sad], or [whimsical], and drop in pauses, so I am not listening to monotone text. Those tags are performed. They are not read aloud.
+1. Return plain narration only. No headings, titles, section numbers, markdown, asterisks, bullets, dash lists, or tables.
+2. If the original used a heading, replace it with a short spoken bridge, like "Next, the part about pricing." Do not read a heading as a label.
+3. If the original used a list, turn it into speech. "Three things matter here. First... Second... Third..." Do not read the symbols out loud.
+4. Remove every URL, link, footnote, and citation number. If the source mattered, say the name out loud, like "according to their pricing page." Never spell a web address.
+5. Write numbers, dates, money, and units the way a person would say them.
+6. Add performance tags in square brackets. The voice acts them. It does not read the brackets aloud.
+
+A tag changes everything that comes after it, so put it right in front of the words it should color. Tags work in 83+ languages, not only English.
+
+Pair a physical cue with an emotion when you can:
+
+[panting] [tired] I've been running...
+[laughing] [excited] Hey! Stop tickling me!
+[clears throat] [angry] How could you?!
+[sighing] [emphasis] I just don't know.
+
+You can also write an open phrase inside the brackets:
+
+[the calm, measured tone of someone who has done this a thousand times]
+[dead tired, end of a very long shift]
+[voice rough from crying, trying to sound normal]
+
+Use tags on jokes, warnings, asides, and pauses. Do not leave long stretches of flat narration.
 ```
 
 Save the instructions. They sit next to your profile instructions, which is the same idea as [global context](/ai/how-to-setup-global-context-claude). You say it once and reuse it every episode.
 
-![Claude Set project instructions modal for Personalized Podcast with narration rules for text-to-speech](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-project-instructions.png "These rules stop Claude from reading headings, bullets, and URLs out loud.")
+![Claude Set project instructions modal for Personalized Podcast, showing the opening line about writing for the ear, not the eye](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-project-instructions.png "The screenshot stops at the opening line.")
 
 **3. Ask for this week's script.**
 
@@ -134,7 +151,11 @@ If you want to browse, ask Claude to search voices. Tap the preview before you c
 
 Once you like the script, ask: "Can you convert this to audio that I can listen to when I'm on the go?"
 
-Claude hands the narration to [Fish Audio](https://fish.audio/?fpr=bliknq) in the voice you picked and gives you an audio file back. Play it from the Claude app whenever your hands are busy. I tested mine on an hour flight with no internet, and it still played.
+Claude hands the narration to [Fish Audio](https://fish.audio/?fpr=bliknq) in the voice you picked and gives you an audio file back. Play it from the Claude app whenever your hands are busy. I tested mine on an hour flight with no internet, and it still played. I also listen on runs. The file shows up on the lock screen like any other audio.
+
+![Mika running outside in a pink cap and tank, AirPods in, with a black running belt](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-on-a-run.png "This is me ACTUALLY using the newsletter podcast in my run.")
+
+![iPhone lock screen showing a fish.audio player with pause and skip controls](/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-lock-screen.png "How the podcast shows up on my screen")
 
 Here are some related guides to check out:
 
@@ -143,3 +164,5 @@ Here are some related guides to check out:
 3. [How to Connect Meta Ads to Claude](/ai/how-to-connect-meta-ads-to-claude)
 4. [7 New Creative Tools as Claude Connectors](/ai/8-new-creative-tools-as-claude-connectors)
 5. [Claude Features Cheat Sheet for Power Users](/ai/claude-features-cheat-sheet)
+
+This post is sponsored by [Fish Audio](https://fish.audio/?fpr=bliknq). I only share products that I've actually used and vetted. In this case, I actually built this whole workflow out and am excited to share it more broadly. Thank you for supporting me and my channel!

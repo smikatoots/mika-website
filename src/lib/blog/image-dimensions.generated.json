@@ -899,6 +899,14 @@
     "width": 647,
     "height": 577
   },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-lock-screen.png": {
+    "width": 502,
+    "height": 1024
+  },
+  "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-on-a-run.png": {
+    "width": 862,
+    "height": 1024
+  },
   "/ai-guides/how-to-turn-anything-into-a-personal-podcast-with-ai-paddington-voice.png": {
     "width": 447,
     "height": 176
@@ -2391,6 +2399,10 @@
     "width": 1600,
     "height": 900
   },
+  "/decks/_library/ai-marketing-engineers-greg-isenberg-youtube.png": {
+    "width": 1200,
+    "height": 385
+  },
   "/decks/_library/ai-multicolored.gif": {
     "width": 480,
     "height": 366
@@ -2687,13 +2699,33 @@
     "width": 480,
     "height": 480
   },
-  "/decks/_library/cgptw-1.png": {
-    "width": 1662,
-    "height": 716
-  },
   "/decks/_library/chairman.jpg": {
     "width": 612,
     "height": 408
+  },
+  "/decks/_library/chatgpt-work-audience-dashboard.png": {
+    "width": 1746,
+    "height": 1986
+  },
+  "/decks/_library/chatgpt-work-new-folder-desktop.png": {
+    "width": 861,
+    "height": 543
+  },
+  "/decks/_library/chatgpt-work-plugins.png": {
+    "width": 2018,
+    "height": 1722
+  },
+  "/decks/_library/chatgpt-work-project-picker.png": {
+    "width": 1570,
+    "height": 1148
+  },
+  "/decks/_library/chatgpt-work-scheduled-tasks.png": {
+    "width": 1662,
+    "height": 716
+  },
+  "/decks/_library/chatgpt-work.webp": {
+    "width": 1024,
+    "height": 576
   },
   "/decks/_library/clashing-design.jpeg": {
     "width": 447,
@@ -2766,6 +2798,10 @@
   "/decks/_library/clay-logo.png": {
     "width": 1024,
     "height": 548
+  },
+  "/decks/_library/clay-writing-policy-viral.png": {
+    "width": 1440,
+    "height": 716
   },
   "/decks/_library/clays-ai-writing-policy-full-policy.png": {
     "width": 1091,
@@ -3055,6 +3091,10 @@
     "width": 2354,
     "height": 1746
   },
+  "/decks/_library/greg-isenberg.png": {
+    "width": 2718,
+    "height": 1274
+  },
   "/decks/_library/grok-bot-agent-own-computer.png": {
     "width": 1431,
     "height": 1090
@@ -3082,6 +3122,10 @@
   "/decks/_library/grok-bot-routine-setup.png": {
     "width": 780,
     "height": 706
+  },
+  "/decks/_library/growth-loop.png": {
+    "width": 1024,
+    "height": 909
   },
   "/decks/_library/gtm-claudification-job-post.png": {
     "width": 1100,
@@ -3279,6 +3323,10 @@
     "width": 1440,
     "height": 960
   },
+  "/decks/_library/mark-zuckerberg.webp": {
+    "width": 2207,
+    "height": 1241
+  },
   "/decks/_library/marketing-engineer-job-board.png": {
     "width": 1103,
     "height": 898
@@ -3355,6 +3403,10 @@
     "width": 299,
     "height": 169
   },
+  "/decks/_library/muse-ai-logo.webp": {
+    "width": 800,
+    "height": 418
+  },
   "/decks/_library/nerd.gif": {
     "width": 600,
     "height": 600
@@ -3366,6 +3418,10 @@
   "/decks/_library/notion-logo.png": {
     "width": 512,
     "height": 512
+  },
+  "/decks/_library/nuggets-of-lessons-notion.png": {
+    "width": 1656,
+    "height": 1040
   },
   "/decks/_library/nyt-ai-economy-headline-2.png": {
     "width": 1984,
@@ -3391,6 +3447,10 @@
     "width": 480,
     "height": 480
   },
+  "/decks/_library/overwhelmed.gif": {
+    "width": 384,
+    "height": 299
+  },
   "/decks/_library/paper-design-directions.png": {
     "width": 1127,
     "height": 946
@@ -3406,6 +3466,10 @@
   "/decks/_library/paypal-mafia.jpg": {
     "width": 578,
     "height": 522
+  },
+  "/decks/_library/pdf-logo.jpg": {
+    "width": 510,
+    "height": 612
   },
   "/decks/_library/peter-steinberger.jpg": {
     "width": 700,
@@ -3466,6 +3530,10 @@
   "/decks/_library/refero-browse-grid.png": {
     "width": 1910,
     "height": 978
+  },
+  "/decks/_library/reflect-prompt.png": {
+    "width": 1452,
+    "height": 958
   },
   "/decks/_library/remotion-explainer-concept-claude-code-add-marketplace.png": {
     "width": 760,
@@ -3822,6 +3890,10 @@
   "/decks/_library/website-made-with-ai-fixes-taste-skill.png": {
     "width": 1042,
     "height": 883
+  },
+  "/decks/_library/weekly-improve-audit.png": {
+    "width": 1446,
+    "height": 1008
   },
   "/decks/_library/wesleyan-college-graduation.jpg": {
     "width": 2048,
