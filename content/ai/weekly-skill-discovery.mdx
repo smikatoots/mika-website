@@ -8,6 +8,7 @@ tags:
   - automation
   - productivity
 published: "2026-04-29"
+updated: "2026-09-18"
 cta: Try this workflow
 order: 14
 faq:
@@ -28,62 +29,115 @@ faq:
       output format strict so you can compare weeks and see which patterns keep
       coming back, and only act on the top three each time. Ship one skill
       before chasing new ideas; that's where the compounding happens.
+  - question: >-
+      What should Claude change about itself each week?
+    answer: >-
+      Two things: the skills it has, and the context it reads before every
+      session. Skills come from work you repeated. Context updates come from
+      things you had to explain again. Everything else is a summary, and
+      summaries do not make next week better.
+  - question: >-
+      Should Claude update my context files without asking me?
+    answer: >-
+      No. Have the review propose changes with evidence and a confidence
+      rating, then approve them yourself. The split is what keeps the files
+      accurate: Claude does the scanning, you make the judgment call, and
+      nothing gets written because you said it once in passing.
+  - question: >-
+      Do I need to know how to code to run a weekly review like this?
+    answer: >-
+      No. A routine is a name, an instructions box, a model, an optional
+      repository, and a repeating trigger. You paste the prompt in once and set
+      it to run every week. If you already work in Claude Code, you can create
+      the same recurring task there and point it at your local context files
+      instead.
+  - question: >-
+      How long before a weekly skill review is worth it?
+    answer: >-
+      About three or four weeks. The first report is noisy because there is no
+      history to compare against. By the third run it starts catching the same
+      pattern twice, which is the signal that something is genuinely repeatable
+      and worth packaging.
 ---
 
 I like workflows that get better every week.
 
 This is one of my favorites because it is a machine for creating more machines. Instead of manually auditing my own behavior, I run one weekly review that spots repeated work and tells me what to turn into a skill next.
 
+It now hands me two lists, not one. The first is skills to build. The second is edits to the context files Claude reads before every session: preferences I repeated, corrections I made, projects that changed, things I have stopped doing that are still written down. The first list makes Claude more capable. The second makes it know me better. Together they are the difference between a weekly summary and a self-improvement loop.
+
 If you are trying to become more AI-native, this helps a lot. You stop guessing what to automate and start building from real evidence in your day-to-day work.
+
+## Set up the routine
+
+Put this wherever you already look backwards at your week. For me that is Sunday morning. I run mine at 5:00 AM EDT so the report is sitting there before I open anything.
+
+Creating it takes about ten minutes. You name the routine, paste the instructions, pick a model, optionally point it at a repository, and set a trigger that repeats weekly. Give it a boring name you will still recognize in a list six months from now.
+
+![Claude Edit routine modal showing a routine named Weekly skills discovery, an instructions box with the weekly analysis prompt, a Sonnet 4.6 model picker, a repository selector, and a trigger reading Runs every Sunday at 5:00 AM EDT](/ai-guides/weekly-skill-discovery-edit-routine.png "The Edit routine screen: name, instructions, model, repository, and a trigger set to run every Sunday at 5:00 AM EDT.")
+
+Then connect the tools that hold your actual week. The review can only spot patterns in what it can see. Mine reads Gmail, Google Calendar, Google Drive, Granola, Linear, Notion, and Slack, which between them cover almost everything I touch. You do not need all of that on day one. A calendar plus one place you communicate is enough for a real first report, and you can add connectors later without rewriting the prompt.
 
 ## The prompt I use
 
+This asks for both outputs: skills to build, and context to update. Swap in your own tools, your own context file names, and your own bar for what is worth automating.
+
 ```text
-You are running a weekly analysis for Mikaela Reyes to identify repeatable processes that should be turned into Cowork skills.
+You are running a weekly self-improvement review for me. Your job is to make
+yourself more useful to me next week than you were this week.
 
-Run a proactive review across my Linear, Notion, Slack, Gmail, and Cowork session history from the past 7 days to identify repeatable work that should become reusable skills.
+## Step 1: Read what you already know
 
-Your goal is to help me become more AI-native without requiring me to manually audit my own workflows.
+Read my global context files (CLAUDE.md and anything it points to, such as
+about-me.md, projects.md, voice.md). Note what is already documented so you
+do not propose duplicates.
 
-Look for patterns such as:
+## Step 2: Look at my last 7 days
 
-tasks I repeat multiple times across the week
-similar requests I make in different tools or contexts
-workflows with clear inputs, steps, and outputs
-research, writing, synthesis, triage, planning, or coordination work that follows a repeatable structure
-things I do manually that could be standardized, templated, or automated
-processes where a skill could save time, improve consistency, or help me delegate better to AI
+Review my activity across the tools you are connected to: calendar, email,
+Slack, Notion, my task tracker, and my own session history with you. You are
+looking for evidence, not vibes.
 
-For each potential skill candidate, return:
+## Step 3: Find the repeated work
+
+List the tasks I did more than once this week, or that follow the same shape
+each time. For each one, return:
 
 * Skill name
 * What repeated process it captures
-* Why it should become a skill
-* Signals observed across my tools
-   * relevant Linear issues
-   * Notion docs or pages
-   * Slack threads or channels
-   * Gmail patterns or recurring email types
-   * Cowork sessions or transcripts
-* Suggested trigger
-   * when I would use this skill
-* Suggested inputs
-   * what I would need to provide
-* Suggested outputs
-   * what the skill should produce
-* Recommended priority
-   * High: frequent and high leverage
-   * Medium: useful but less frequent
-   * Low: interesting but not yet worth formalizing
+* Where you saw it (specific threads, docs, meetings, or sessions)
+* Suggested trigger, inputs, and outputs
+* Priority: High (frequent and saves real time), Medium, or Low
 
-Also include a short section at the top:
+## Step 4: Find what you keep not knowing
 
-This Week’s Best Opportunities
-List the top 3 skills I should create first based on frequency, leverage, and ease of implementation.
+List things I explained to you this week that should have already been in my
+context files. Look for preferences I repeated, corrections I made, new
+projects or people, and anything I have stopped doing that is still written
+down. For each one, return:
 
-Focus on practical, high-ROI opportunities. Prefer skills that reduce recurring cognitive load, context switching, and manual busywork. Avoid suggesting one-off tasks unless they are clearly becoming recurring patterns.
+* File and section to change
+* Current text (or "nothing")
+* Proposed text
+* Evidence from the last 7 days
+* Confidence: High / Medium / Low
+* Whether it is an Add, an Update, or a Remove
 
-The final output should feel like an operating review for how I work, with the aim of gradually building a library of skills that compounds over time.
+## Step 5: Give me a short top of the report
+
+Before everything else, put:
+
+* The top 3 skills I should build first
+* The top 3 context updates I should approve first
+* Anything you found that contradicts what my context files currently say
+* Any question you need me to answer so next week's run is sharper
+
+## Rules
+
+Do not write to any file without my explicit approval. Prefer short,
+high-signal additions over long paragraphs. Flag anything uncertain as Low
+confidence instead of guessing. Skip one-off tasks unless they are clearly
+becoming a pattern.
 ```
 
 ![Weekly Skill Discovery routine setup](/ai-guides/weekly-skill-discovery-routine.png "Set this once: a weekly routine that audits your tools and proposes skills automatically.")
@@ -93,29 +147,40 @@ The final output should feel like an operating review for how I work, with the a
 1. Block this as a recurring scheduled run.
 I run it every Sunday at 5:00 AM so I start Monday with a clean list of what to automate next.
 
-2. Keep the output format strict.
-I ask for the same fields every time so I can compare weeks and see what keeps coming back.
+2. Read the report like a code review, not a newsletter.
+The routine's job is scanning. Mine is approving. I go line by line: approve what is right, reject what was a one-off, and answer any question it flagged. Skip this and the whole thing becomes another unread digest, which is the most common way these die.
 
-3. Prioritize only the top three.
-I pick the candidates with the best mix of frequency, leverage, and ease. Everything else goes into a backlog.
+3. Keep the output format strict.
+I ask for the same fields every time so I can compare weeks and see what keeps coming back. If the signals show up across multiple tools, it is usually a real pattern worth packaging.
 
-4. Build from evidence, not vibes.
-If the signals show up across multiple tools, it is usually a real pattern worth packaging.
+4. Prioritize only the top three of each list.
+Best mix of frequency, leverage, and ease wins. Everything else goes into a backlog.
 
-5. Ship one skill before chasing new ideas.
-The compounding happens when you turn insights into working skills, then feed results back into next week's run.
+5. Ship one improvement per week, not five.
+I pick the single highest-value skill candidate and actually build it. If you have never packaged one before, [the walkthrough for creating a custom skill](/ai/how-to-create-custom-skill) covers the format. Five half-built skills are worth less than one you use every day.
 
-> **Key insight:** A repeated workflow is already a draft skill. Weekly discovery just makes it obvious.
+6. Let Claude write the approved context changes.
+Once I have approved the Step 4 items, I tell it to write them into the right files. This is where [your second brain](/ai/how-to-give-claude-memory) stops being a folder you made once and starts being something that updates itself with your sign-off. Next week's sessions open already knowing the current version of you.
+
+7. Audit the routine itself once a month.
+I look at the last four reports together. If the same skill candidate keeps appearing and I keep not building it, either I build it or I tell the prompt to stop suggesting it. If the reports are vague, the fix is almost always a tighter prompt or a missing connector, not a different model.
+
+> **Key insight:** A repeated workflow is already a draft skill, and a thing you explained twice is already a missing line in your context file. Weekly discovery just makes both obvious.
 
 ## What "good" output looks like
 
 A strong weekly report gives you:
 
-- A top 3 shortlist you can act on immediately
-- Clear evidence across Linear, Notion, Slack, Gmail, and Cowork sessions
+- A top 3 shortlist of skills you can act on immediately
+- A top 3 shortlist of context updates, each one an Add, an Update, or a Remove
+- Clear evidence across Linear, Notion, Slack, Gmail, and your session history
 - Trigger suggestions so you know exactly when to use the skill
 - Input and output specs so implementation is fast
-- A priority rating that keeps you focused on high-ROI wins first
+- A priority rating on skills and a confidence rating on context edits
+
+Removals matter as much as additions. Stale context costs you about what missing context costs you, and it is harder to notice.
+
+If your report reads like a summary of your week, the prompt is too soft. Push it toward proposals with file names and trigger conditions, closer to [the context updater routine](/ai/how-to-keep-claude-md-from-going-stale-context-updater), which asks for exact file-level edits instead of suggestions.
 
 ## Additional Reading
 
@@ -123,4 +188,7 @@ Here are some related guides to check out:
 1. [What is a Skill?](/ai/what-is-a-skill)
 2. [How to Create Your Own Custom Skill](/ai/how-to-create-custom-skill)
 3. [How to Setup Global Context for Claude (CLAUDE.md, USER.md)](/ai/how-to-setup-global-context-claude)
-4. [Daily Briefing](/ai/daily-briefing)
+4. [How to Keep Your CLAUDE.md From Going Stale (Context Updater)](/ai/how-to-keep-claude-md-from-going-stale-context-updater)
+5. [How to Give Claude Memory (Beginner to Advanced)](/ai/how-to-give-claude-memory)
+6. [Loop Engineering 101](/ai/loop-engineering-101)
+7. [Daily Briefing](/ai/daily-briefing)
