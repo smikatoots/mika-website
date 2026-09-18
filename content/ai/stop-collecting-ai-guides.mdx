@@ -1,0 +1,135 @@
+---
+title: How to Stop Collecting AI Guides You Never Use
+description: >-
+  Stop saving AI guides you never use. A 3-step system: let Meta Muse sweep your Instagram Saves, email yourself the guide, then turn it into a Claude skill.
+tags:
+  - beginner
+  - skills
+  - claude
+published: "2026-09-18"
+updated: "2026-09-18"
+cta: Get started
+faq:
+  - question: >-
+      Can I do this without Meta Muse?
+    answer: >-
+      Yes. Muse is only the collection step, and you can do that by hand in ten
+      minutes: open your Instagram Saves, write each one into your to-do app
+      with a next action and a time estimate, then clear the folder. The
+      email-to-yourself step and the Claude step both work on their own with no
+      Muse account at all.
+  - question: >-
+      How do I email a guide to myself if I am on my laptop?
+    answer: >-
+      The email box only appears on mobile, so on a laptop you already have the
+      guide open where you can act on it. If you want it in your inbox anyway,
+      copy the URL and send yourself a one-line email. The point of the box is
+      the phone-to-desk handoff, not the email itself.
+  - question: >-
+      What does the Copy for AI button actually copy?
+    answer: >-
+      The full text of the guide in plain Markdown, with no navigation or page
+      formatting, which is about a tenth the size of the web page. Paste it into
+      Claude or ChatGPT and the assistant reads the steps and commands cleanly.
+      If the button does nothing, you are probably in an in-app browser that
+      blocks clipboard access, so use View as Markdown instead.
+  - question: >-
+      Do I need to know how to code to turn a guide into a skill?
+    answer: >-
+      No. You need Claude Code installed, which is a five-minute setup, and then
+      you paste the guide and ask Claude to build the skill and hand you the
+      install commands one at a time. Claude writes the files and tells you what
+      to run. You are copying and pasting, not writing code.
+---
+
+You don't have a motivation problem. You have a handoff problem. Saving happens on your phone inside Instagram, and doing happens on your laptop inside your actual work, and nothing carries the item from one to the other. This fixes that with three moves: have Meta Muse sweep your Instagram Saves on a schedule, email yourself the written guide so it lands where you work, then paste that guide into Claude and let it build the thing for you.
+
+My own Saves folder is full of AI tips I genuinely wanted to try. I saved them, felt productive, and never put a single one on a to-do list. That's not laziness. That's a broken conveyor belt.
+
+### Move 1: Get the saves out of Instagram
+
+**1. Connect Meta Muse to your Instagram account**
+
+Meta Muse is Meta's personal AI agent, and the important part here is that it sits inside the Meta apps, so it can read your Instagram Saves directly instead of asking you to screenshot them. Connect Instagram during setup, or add it later from the apps screen. If you haven't set it up yet, the [30-minute Meta Muse setup](/ai/how-to-set-up-meta-muse-in-30-minutes) covers memory, apps, WhatsApp, feed, and goals in order.
+
+You only need Instagram connected for this. Skip Stripe and the password vault.
+
+**2. Send Muse a standing prompt that sweeps your Saves**
+
+Muse keeps working after you close the app, so write the prompt as a recurring instruction with a day and time in it rather than a one-off question. Put the delivery target in the prompt too, because a digest that stays inside Muse is just a second Saves folder.
+
+```
+Every Sunday at 6pm, open my Instagram Saves from the last 7 days.
+
+For each save, give me:
+- the creator and the one-sentence promise of the video
+- the single next action it would take to try it
+- how long that action would take (5 min / 30 min / a real afternoon)
+
+Sort by shortest action first. Email me the list.
+Flag anything I saved more than 30 days ago and still have not done.
+```
+
+Two details make this work. Asking for the next action turns a bookmark into a task, and asking for a time estimate lets you slot it into a calendar gap instead of a vague "someday."
+
+**3. Route the output into the tool you already open**
+
+The digest has to land where you already look: your inbox, your to-do app, your notes. Tell Muse exactly where in the prompt. Muse asks before it sends messages on your behalf, so expect an approval step the first few times.
+
+If you make content, there's a second version of this worth running. Muse can take a stale Saves list and turn the keepers into post ideas with hooks attached, which is one of the [8 Meta Muse use cases for content creators](/ai/8-meta-muse-use-cases-for-content-creators).
+
+> **Key insight:** A save becomes a task the moment it has a next action and a time estimate attached. Everything else is filing.
+
+---
+
+### Move 2: Move the guide from your phone to your desk
+
+**4. Email the guide to yourself while you're still on your phone**
+
+Almost every video I make has a free written guide behind it. Most of you open those guides on your phone, standing in a line somewhere, which is the worst possible moment to follow install steps. So on mobile, every guide on this site has a box right under my byline at the top of the page that emails you the link.
+
+![Send this guide to yourself email box on a mikareyes.com AI guide, with an email field and a Send me the guide button](/ai-guides/stop-collecting-ai-guides-email-box.png "The email box sits under the byline on mobile. Type your email, tap Send me the guide, and the link is waiting on your laptop.")
+
+Type your email, tap "Send me the guide," and it shows up in your inbox. Now the thing you meant to try is sitting in work mode instead of buried in an app you only open at night. The box is mobile-only by design, since on desktop you're already where you can do the work.
+
+**5. Batch the inbox, don't drip it**
+
+Once guides start arriving by email, give them one recurring slot instead of reacting to each one. Mine is a single block where I open whatever came in that week and do exactly one of them start to finish.
+
+One finished beats five skimmed. A guide you half-read is functionally identical to a video you never watched.
+
+---
+
+### Move 3: Turn the guide into something that runs
+
+**6. Hit "Copy for AI" at the top of the guide**
+
+Near the top of every guide on this site there are two buttons: **Copy for AI** and **View as Markdown**. Copy for AI puts the entire guide on your clipboard as clean plain text, no navigation, no page clutter, which is the format an AI assistant reads best.
+
+View as Markdown does the same thing in a browser tab. Use that one if you're reading inside the Instagram in-app browser, where clipboard access is often blocked. You can also just append `.md` to any guide URL yourself.
+
+**7. Paste it into Claude and ask for the runnable version**
+
+Open Claude, paste the guide, and ask for the artifact instead of a summary. A summary puts you back where you started.
+
+```
+Here is a guide I want to actually use.
+
+Turn it into a Claude Code skill I can install: a SKILL.md with a name,
+a description that says when to trigger it, and the steps as instructions.
+
+Then give me the exact install commands for my machine, one at a time,
+and wait for me to confirm each one worked before you give me the next.
+```
+
+A skill is a knowledge package Claude pulls in by itself whenever it recognizes you're doing that task, so you build it once and stop re-explaining. If that's new, start with [what a skill actually is](/ai/what-is-a-skill), then [how to create your own custom skill](/ai/how-to-create-custom-skill). You'll need [Claude Code set up](/ai/how-to-setup-claude-code) to install one, which takes about five minutes and no coding.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [How to Turn a YouTube Playlist into an AI Tutor](https://mikareyes.com/ai/how-to-turn-youtube-playlist-into-ai-tutor)
+2. [How to Set Up Meta Muse in 30 Minutes](https://mikareyes.com/ai/how-to-set-up-meta-muse-in-30-minutes)
+3. [8 Meta Muse Use Cases for Content Creators](https://mikareyes.com/ai/8-meta-muse-use-cases-for-content-creators)
+4. [What is a Skill?](https://mikareyes.com/ai/what-is-a-skill)
+5. [Weekly Skill Discovery](https://mikareyes.com/ai/weekly-skill-discovery)

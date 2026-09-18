@@ -8,6 +8,12 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Stop Collecting AI Guides You Never Use](https://mikareyes.com/ai/stop-collecting-ai-guides): Stop saving AI guides you never use. A 3-step system: let Meta Muse sweep your Instagram Saves, email yourself the guide, then turn it into a Claude skill.
+- [How to Make AI-Written Emails Sound Human](https://mikareyes.com/ai/how-to-make-ai-emails-sound-human): AI-written emails have six obvious tells. Here is the checklist I run before sending, plus the four AI editing skills that fix the draft in two minutes.
+- [AI Reflection Prompt for Storing Memory](https://mikareyes.com/ai/ai-reflection-prompt-storing-memory): Claude reflection prompt that digs through your chat history, builds a profile of you from evidence, and saves it to memory plus a file you own.
+- [How to Use Subagents to Catch AI Mistakes](https://mikareyes.com/ai/use-subagents-to-catch-ai-mistakes): Subagents catch AI mistakes your main chat misses. Here's the one-sentence prompt, plus six reviewer perspectives to pick from, from skeptic to economist.
+- [How to Convert PDFs to Markdown for AI](https://mikareyes.com/ai/convert-pdf-to-markdown-for-ai): Claude charges you twice for every PDF page: once as an image, once as text. Convert the PDF to markdown first. Two ways to do it, one with no install.
+- [How to Edit AI Drafts Like a Google Doc with Human Review](https://mikareyes.com/ai/human-review): Human Review is a free tool that opens any HTML or Markdown file in your browser so you can edit it like a Google Doc and send every fix to your AI agent.
 - [How to Turn Anything into a Personal Podcast with AI](https://mikareyes.com/ai/how-to-turn-anything-into-a-personal-podcast-with-ai): Turn anything into a personal podcast with Claude and Fish Audio. Convert newsletters, PDFs, and saved guides into spoken audio you play on the go.
 - [How to Get Started with Grok Bot in 1 Day](https://mikareyes.com/ai/how-to-get-started-with-grok-bot-in-1-day): How to get started with Grok Bot in 1 day. Download the app, create a chief of staff, use its cloud computer, import a template, then add plugins and a routine.
 - [8 AI Design Techniques to Break Safe Mode](https://mikareyes.com/ai/8-ai-design-techniques-to-break-safe-mode): 8 AI design techniques to break safe, generic output. Seed strings, ambitious prompts, and subagent critiques from an Apple designer, then cut the tells.

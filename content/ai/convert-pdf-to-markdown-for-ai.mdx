@@ -1,0 +1,128 @@
+---
+title: How to Convert PDFs to Markdown for AI
+description: >-
+  Claude charges you twice for every PDF page: once as an image, once as text. Convert the PDF to markdown first. Two ways to do it, one with no install.
+tags:
+  - beginner
+  - claude
+  - skills
+published: "2026-09-18"
+updated: "2026-09-18"
+cta: Get started
+faq:
+  - question: >-
+      Why does uploading a PDF to Claude use so many tokens?
+    answer: >-
+      Because Claude processes every page twice. Anthropic's documentation says
+      the system converts each page into an image and also extracts the text,
+      then analyzes both together, so you pay image tokens and text tokens for
+      the same page. Text alone runs about 1,500 to 3,000 tokens per page, with
+      the image cost on top.
+  - question: >-
+      How do I convert a PDF to markdown without installing anything?
+    answer: >-
+      Use CloudConvert. Go to cloudconvert.com/pdf-to-md, drop in your PDF, and
+      download the .md file, then upload that to Claude instead of the original.
+      The free tier gives you 10 conversions a day with no card required.
+  - question: >-
+      Does this work with ChatGPT, or only Claude?
+    answer: >-
+      The conversion works anywhere. CloudConvert runs in your browser and hands
+      you a .md file you can upload to ChatGPT, Gemini, or any assistant that
+      takes file attachments, and it will cost fewer tokens there for the same
+      reason it does in Claude. The part that is Claude-only is the
+      slash-command skill, because skills are a Claude Code feature.
+  - question: >-
+      Should I ever upload the PDF instead of converting it?
+    answer: >-
+      Yes, when the visuals are the point. Charts, diagrams, scanned documents,
+      signatures and anything where the layout carries meaning should stay as a
+      PDF, because markdown is text only and drops all of that. A good test is
+      whether you could read the document out loud and lose nothing.
+---
+
+Stop uploading PDFs to Claude. Convert the file to markdown first, then upload that instead, and the same document costs you a fraction of the tokens. Markdown is just plain text with a few formatting marks, saved as a `.md` file, and it is the cheapest format an AI can read.
+
+There are two ways to do the conversion. One takes 60 seconds in your browser with nothing to install. The other runs inside Claude using a tool Microsoft open-sourced. The browser route is not Claude-specific, so the markdown file it gives you works just as well in ChatGPT or any other assistant you paste it into.
+
+---
+
+## Why does uploading a PDF to Claude cost so much?
+
+Because you get charged twice for the same page. Anthropic's own PDF documentation spells out the process: the system converts each page of the document into an image, then extracts the text from that page and sends both to Claude together. You pay image tokens for the picture of the page and text tokens for the words on it.
+
+The numbers are not small. Anthropic estimates 1,500 to 3,000 text tokens per page depending on how dense the page is, and the image cost sits on top of that. A 20-page report can eat 40,000 to 60,000 tokens before Claude answers a single question. That is a meaningful chunk of your window, and it is why file uploads are one of the biggest levers in [how to stop hitting Claude usage limits](/ai/reduce-claude-tokens-part-1).
+
+> **Key insight:** A PDF makes Claude pay for a picture of your words and for the words themselves. Markdown is only the words.
+
+---
+
+## How do you convert a PDF to markdown?
+
+Pick based on how often you do this. If it is a one-off, use the browser. If you are converting files every week, set up the tool once and call it from inside Claude.
+
+### The 60-second fix: CloudConvert
+
+**1. Open the PDF to Markdown converter.** Go to [cloudconvert.com/pdf-to-md](https://cloudconvert.com/pdf-to-md). It is a single-purpose page, already set to PDF on the left and MD on the right, so there is nothing to configure.
+
+![CloudConvert PDF to Markdown converter page with a PDF to MD selector and a Select File upload button](/ai-guides/convert-pdf-to-markdown-for-ai-cloudconvert.png "The CloudConvert PDF to Markdown page: PDF in, MD out, nothing to configure.")
+
+**2. Drop in your PDF.** Click Select File or drag the file onto the page. The free tier gives you 10 conversion credits a day with no card required, and a 1 GB file size limit, which covers almost anything a normal person uploads to Claude.
+
+**3. Download the .md file.** You get a plain text file back with headings, lists and structure preserved where the original had them. Open it once and skim it before you use it, which takes about ten seconds.
+
+**4. Upload the .md to Claude instead of the PDF.** Same document, same information, without the per-page image. If the file is short, you can skip the upload entirely and paste the text straight into the chat.
+
+**5. If you do this constantly, use their API.** CloudConvert exposes the same conversion as an API endpoint, so you or Claude Code can wire it into a script and convert a folder of files without touching the website. This only pays off at volume, so do not build the automation until you have felt the manual version get annoying.
+
+### The repeatable fix: MarkItDown from Microsoft
+
+**6. Know what MarkItDown actually is.** MarkItDown is a free, open-source tool from Microsoft that converts PDFs, Word docs, PowerPoint decks, Excel sheets, HTML and more into markdown. It was built specifically so the output feeds cleanly into an AI, not so it looks pretty for a human. The repo sits at [github.com/microsoft/markitdown](https://github.com/microsoft/markitdown).
+
+![The microsoft slash markitdown GitHub repository page showing 184k stars and the description Python tool for converting files and office documents to Markdown](/ai-guides/convert-pdf-to-markdown-for-ai-markitdown-repo.png "MarkItDown: Microsoft's file-to-markdown converter, and the reason you never have to upload a raw PDF again.")
+
+**7. Install it the way that matches your setup.** Three routes, easiest first. If you use Claude Code, there is a community-built skill that wraps MarkItDown and installs the tool for you in one line:
+
+```
+curl -fsSL https://raw.githubusercontent.com/yitianlian/markitdown-skill/main/install.sh | bash
+```
+
+If you would rather run it yourself, install the tool directly with Python:
+
+```
+pip install 'markitdown[all]'
+```
+
+There is also an official MCP server from Microsoft, `markitdown-mcp`, that plugs MarkItDown into Claude Desktop. I would skip it unless you specifically want it, because MCP servers load their full definition into your context on every call, which is the kind of quiet tax covered in [the Claude Code habits that keep sessions lean](/ai/reduce-claude-tokens-part-3).
+
+**8. Convert the file.** With the skill installed, you type a slash command in Claude Code and it handles the rest:
+
+```
+/markitdown report.pdf
+/markitdown slides.pptx -o slides.md
+/markitdown ./documents/
+```
+
+With the plain tool, it is one line in your terminal: `markitdown report.pdf -o report.md`. Either way you can point it at a whole folder and convert everything at once, which is the real reason to set this up.
+
+**9. Check the output before you trust it.** Microsoft is upfront that MarkItDown is built for text analysis and is not the best option for high-fidelity conversion. Tables usually survive. Complex layouts and multi-column pages sometimes scramble. A scanned PDF, meaning a photo of a page rather than real text, needs the separate OCR plugin or it comes back close to empty. Skim the markdown once and you will know immediately.
+
+---
+
+## When should you still upload the PDF?
+
+When the document is visual! Markdown throws away images, so a pitch deck where the chart carries the argument, a scanned contract with signatures, a design spec, or anything where layout is the meaning should go in as a PDF. That is exactly what Claude's image processing is for, and in those cases you are paying for something you actually need.
+
+---
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [How to Stop Hitting Claude Usage Limits (part 1)](https://mikareyes.com/ai/reduce-claude-tokens-part-1)
+2. [How to Stop Hitting Claude Usage Limits (part 3)](https://mikareyes.com/ai/reduce-claude-tokens-part-3)
+3. [What is a Skill?](https://mikareyes.com/ai/what-is-a-skill)
+4. [How to Create a Custom Skill](https://mikareyes.com/ai/how-to-create-custom-skill)
+5. [How to Give Claude Memory](https://mikareyes.com/ai/how-to-give-claude-memory)
+
+---

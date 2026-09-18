@@ -1,0 +1,145 @@
+---
+title: AI Reflection Prompt for Storing Memory
+description: >-
+  Claude reflection prompt that digs through your chat history, builds a profile of you from evidence, and saves it to memory plus a file you own.
+tags:
+  - beginner
+  - skills
+  - claude
+published: "2026-09-18"
+updated: "2026-09-18"
+cta: Get started
+faq:
+  - question: >-
+      Can Claude actually read my past conversations?
+    answer: >-
+      Only if you turn it on. In Settings under Capabilities there are two
+      toggles, "Search and reference chats" and "Generate memory from chat
+      history," and both need to be on before Claude can look past the session
+      you are in. In Claude Code your sessions are already stored on disk, so
+      no toggle is needed there. Without either, the reflect prompt still works
+      but it only sees the current conversation.
+  - question: >-
+      How often should I ask Claude to reflect?
+    answer: >-
+      Right after something substantial, not on a fixed schedule. The end of a
+      long working session, the end of a project, or any time you corrected
+      Claude twice on the same thing. The value comes from the details being
+      fresh, which is why a weekly calendar reminder tends to produce vaguer
+      output than reflecting in the moment.
+  - question: >-
+      Why does the prompt ask Claude to cite evidence for every item?
+    answer: >-
+      Because otherwise it will fill in gaps with things that sound right.
+      Asking for a quote or a described exchange behind every claim, plus a
+      high or low confidence tag, gives you something you can check in about a
+      minute. Anything with no evidence behind it gets dropped before it
+      reaches your memory.
+  - question: >-
+      Do I need to save the output to a file if Claude already has memory?
+    answer: >-
+      Yes, and that is deliberate. Built-in memory is convenient but you do not
+      fully control what it keeps or how long it keeps it. A plain markdown
+      file in a folder you own is the portable copy that survives a memory
+      reset or a move to a different tool, and you can read and edit it
+      yourself.
+---
+
+The fix for Claude forgetting who you are is a reflection prompt you run at the end of a session, not a better memory setting. You ask Claude to dig back through your conversations, pull out what it actually learned about you with evidence attached, critique where it got you wrong, and then save the result somewhere you control. It takes about ten seconds to paste. It is the single highest-return Claude habit I have, and it is also the one I skip the most.
+
+## Why this matters
+
+Every session you have with Claude is full of information about you. Your role, your constraints, the format you keep asking for, the approach you rejected twice. Most of that evaporates. Claude's built-in memory catches some of it, but you do not control what it keeps and it sometimes does not carry over to the next session. A reflection pass at the end of a session is how you catch that context before it disappears, and it is the same compounding idea behind [loop engineering](https://mikareyes.com/ai/loop-engineering-101) that Boris Cherny and Andrej Karpathy both talk about: every run should make the next run better.
+
+## What do you need before Claude can look back?
+
+**1. Turn on chat history and memory**
+
+Go to Settings, then Capabilities. Switch on both "Search and reference chats" and "Generate memory from chat history." Without the first one, Claude can only reflect on the conversation you are currently in. With it on, the prompt below can reach across your past sessions too. If you have not set any of this up yet, start with [the beginner walkthrough for giving Claude memory](https://mikareyes.com/ai/how-to-give-claude-memory) and come back.
+
+If you work in Claude Code instead, you do not need a toggle. Your sessions are already saved on disk, so Claude can read back through them when you ask.
+
+**2. Pick the moment to reflect**
+
+Reflection works best right after something real happened. The end of a long working session. The end of a project. Any time you had to correct Claude twice on the same thing. Do not save it for a weekly ritual, because by then you have forgotten the specifics that make the output good. This is in-the-moment reflection, and the freshness is the point.
+
+## What do you actually paste in?
+
+**3. Run the reflect prompt**
+
+This is the prompt. Paste it as-is, or trim the sections that do not apply to you.
+
+```text
+Before you answer, go dig through our conversation history: this session and
+every past session you can access. I want you to build a profile of me from
+evidence, not vibes.
+
+Extract and organize everything you can find about:
+
+1. IDENTITY: who I am, what I do, my background, my company, my role
+2. CONTEXT: what I'm currently working on, my goals, constraints, what stage
+   I'm at
+3. PREFERENCES: how I like you to work with me, including format, tone,
+   length, what I've pushed back on, what I've praised, what I've asked you
+   to stop doing
+4. DECISIONS: positions I've taken that should hold in future sessions
+   (tools I've chosen, approaches I've rejected, standards I've set)
+5. PEOPLE & PROJECTS: recurring names, clients, collaborators, project
+   codenames
+
+Rules:
+- Every item must cite where it came from. Quote the message or describe the
+  exchange. If you can't point to evidence, don't include it.
+- Mark each item as [HIGH] or [LOW] confidence.
+- Separate durable facts (true in 6 months) from session-specific noise
+  (delete that).
+- Flag anything sensitive I might not want written down.
+
+Show me the list first. Don't save anything yet.
+
+Once I approve, save it two ways:
+(a) into your memory, and
+(b) as a plain markdown file I own, one fact per section, so I have a
+    portable copy that survives if your memory resets.
+```
+
+Three lines in that prompt are doing most of the work. "Evidence, not vibes" plus the citation rule stops Claude from filling gaps with plausible guesses. The [HIGH] and [LOW] tags give you something to scan instead of reading every line at the same weight. And "show me the list first" is what keeps a bad inference from getting written into memory permanently.
+
+**4. Read it for what Claude got wrong**
+
+This is the step people skip, and it is the whole reason the prompt asks for citations. Scan the [LOW] confidence items first. You will usually find two or three things that are stale (a project you finished), overfit (a one-off request it read as a standing preference), or flatly wrong. Delete those. Then check the [HIGH] items, because an incorrect fact marked high confidence is the expensive kind.
+
+**5. Approve, then let it save both ways**
+
+Only after you have cut the wrong items do you tell Claude to save. Both destinations matter. Memory is convenient and gets used automatically. The markdown file is the one you own, and it is the copy that survives a memory reset, a model change, or a move to a different tool. Ask for it as a plain file in a folder you control.
+
+## How do you stop repeating yourself every session?
+
+**6. Turn the prompt into a skill called /reflect**
+
+Once you have run this twice, stop pasting it. Say to Claude: "please turn this prompt into a skill and call it reflect." A skill is a saved process with a trigger phrase attached, so from then on you type `/reflect` and the whole thing runs. If you have never built one, [What is a Skill?](https://mikareyes.com/ai/what-is-a-skill) covers the concept and [How to Create Your Own Custom Skill](https://mikareyes.com/ai/how-to-create-custom-skill) walks through the skill-creator, the eval step, and where the folder goes.
+
+Keep the approval gate inside the skill. A reflect skill that writes to memory without showing you the list first will bake in its own mistakes without telling you.
+
+**7. Point the output at your second brain (advanced)**
+
+If you keep context files, tell the skill where to write instead of letting it pick a folder. Mine goes into a specific folder in the repo Nick and I share, which means Claude can read it back alongside everything else we have saved and make connections across it. I wrote about [turning six years of stale notes into a second brain](https://mikareyes.substack.com/p/how-i-turned-6-years-of-stale-notes) if you want the longer version of why this compounds. [Setting up global context files like CLAUDE.md and USER.md](https://mikareyes.com/ai/how-to-setup-global-context-claude) is the prerequisite here, and it is worth doing before you automate anything.
+
+![A knowledge graph of connected context notes with one dense cluster highlighted](/ai-guides/ai-reflection-prompt-storing-memory-second-brain-graph.png "Reflection output landing in a second brain, where Claude can connect it to everything else")
+
+**8. Check next session that it took**
+
+Open a fresh session the next day and ask Claude what it knows about you and where it learned it. If it can point at the file or the memory entry, the loop is closed. If it comes back blank, your save step did not work and you want to find that out now rather than three weeks from now.
+
+> **Key insight:** Reflection is only worth doing if you read the output and delete things. A reflection prompt you approve without reading is a very efficient way to make Claude confidently wrong about you.
+
+## Additional Reading
+
+Here are some related guides to check out:
+1. [How to Give Claude Memory (Beginner to Advanced)](https://mikareyes.com/ai/how-to-give-claude-memory)
+2. [How to Create Your Own Custom Skill](https://mikareyes.com/ai/how-to-create-custom-skill)
+3. [How to Setup Global Context for Claude (CLAUDE.md, USER.md)](https://mikareyes.com/ai/how-to-setup-global-context-claude)
+4. [How to Keep Your CLAUDE.md From Going Stale (Context Updater)](https://mikareyes.com/ai/how-to-keep-claude-md-from-going-stale-context-updater)
+5. [Loop Engineering 101](https://mikareyes.com/ai/loop-engineering-101)
+
+---

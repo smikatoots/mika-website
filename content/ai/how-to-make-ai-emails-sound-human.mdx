@@ -1,0 +1,95 @@
+---
+title: How to Make AI-Written Emails Sound Human
+description: >-
+  AI-written emails have six obvious tells. Here is the checklist I run before sending, plus the four AI editing skills that fix the draft in two minutes.
+tags:
+  - beginner
+  - skills
+  - claude
+published: "2026-09-18"
+updated: "2026-09-18"
+cta: Get started
+faq:
+  - question: >-
+      How can people tell my email was written by AI?
+    answer: >-
+      Six patterns give it away: the "it's not X, it's Y" flip, em dashes in
+      clusters, polished business jargon like "leverage" and "circle back",
+      three-item lists where one specific detail belongs, opening lines like "I
+      hope this email finds you well", and sentences that are all the same
+      length. Most AI drafts have several of these in the first paragraph.
+  - question: >-
+      What is the fastest way to make an AI email sound like me?
+    answer: >-
+      Run two editing passes back to back: Humanizer to strip the structural AI
+      patterns, then No AI Slop to sharpen the draft while protecting your
+      vocabulary and cadence. Then add one specific detail only you would know,
+      such as something the person said on your last call. The whole pass takes
+      under two minutes.
+  - question: >-
+      Should I just stop using AI for emails?
+    answer: >-
+      No, because the draft is where the time savings live. The problem is
+      sending the first draft, not generating it. Keep the AI for drafting and
+      add a short editing pass plus your own read-through before anything goes
+      out.
+  - question: >-
+      What does the Human Review skill actually do?
+    answer: >-
+      It opens your draft in a browser so you can edit the text directly and
+      highlight any sentence to leave a comment on it, the way you would in a
+      Google Doc. When you send the batch, every edit and comment goes back to
+      your AI at once and it applies them to the original file. It works on
+      Markdown files, HTML files, and pages running on your local machine.
+---
+
+Most AI-written emails get spotted in the first line, usually before the reader even reaches the ask. The fix is two-part: learn the six tells that give an email away, then run every draft through a short stack of AI editing skills before you send it. I use four of them, and the whole pass takes under two minutes.
+
+You do not have to stop writing with AI to stop sounding like AI. That would cost you the time savings, which is the entire reason you started.
+
+I write a lot of cold emails, client follow-ups, and partnership pitches. AI gets me to a draft fast, and a fast draft is worth a lot. What it does not get me is a draft anyone would believe I wrote, so I built a repeatable editing pass instead of rewriting from scratch every time.
+
+## What gives away an email written by AI?
+
+Six patterns show up in almost every AI-drafted email. Once you can name them, you can find them in ten seconds.
+
+1. **The "it's not X, it's Y" flip.** "This isn't just a tool, it's a workflow." AI reaches for this structure constantly because it sounds insightful while saying very little.
+2. **Em dashes everywhere.** One is fine. Three in a five-sentence email is a signature.
+3. **Polished business jargon.** "Leverage," "streamline," "circle back," "align on next steps," "seamless." Nobody talks like this in a real email to one person.
+4. **The rule of three.** "Faster, cleaner, and more reliable." AI loves a three-item list where a human would have written one specific thing.
+5. **Throat-clearing openers.** "I hope this email finds you well." "Just wanted to reach out." Two sentences before the actual reason you are writing.
+6. **Identical sentence rhythm.** Every sentence roughly the same length, every paragraph roughly the same shape. Human email is lumpier than that.
+
+> **Key insight:** Readers rarely think "an AI wrote this." They think "this person did not actually write to me." That is the thing costing you the reply.
+
+## How do you fix an AI-written email before you send it?
+
+Run the draft past the tell list, then through four editing skills in order. A skill is a saved set of instructions your AI runs on command, so you are not retyping the same editing brief every time. If that is new to you, start with [what a skill actually is](/ai/what-is-a-skill).
+
+**1. Do the tell check yourself first.** Read the draft once looking only for the six patterns above. This takes ten seconds and it teaches you the patterns faster than any tool will. Most drafts have three or four of them in the first paragraph.
+
+**2. Run the Humanizer pass.** Humanizer is built from Wikipedia's "Signs of AI writing" page, which the volunteers cleaning up AI text on Wikipedia maintain. It hunts the structural tells: inflated significance, fake-depth verbs like "highlighting" and "underscoring," the rule of three, and em dash clusters. The install steps and the full tell list are in my [Humanizer skill guide](/ai/humanizer).
+
+**3. Run No AI Slop as a second, separate pass.** This one is from my friend Peter Yang, and it does a different job. Install it by pasting this into Claude Code: `Install the no-ai-slop skill globally from https://github.com/petergyang/no-ai-slop`. Then run it on your draft by asking for a no-ai-slop pass. Humanizer removes AI patterns. No AI Slop removes them while protecting your voice: your blunt lines, your jokes, your uncertainty, the specific numbers you put in. Run it after Humanizer rather than merging the two into one prompt, so you can see what each pass changed and undo anything that got too smooth. My full two-pass workflow, including how to feed it samples of your own writing, is in [how to humanize AI text](/ai/how-to-humanize-ai-text).
+
+**4. Review the draft like a Google Doc with Human Review.** This is the step most people skip, and it is also the one that fixes the tone problems no editing skill can catch. Human Review is a free, open-source tool my friend [Peter Yang](https://github.com/petergyang/human-review) built. It opens your draft in a browser where you can edit text directly and highlight any sentence to leave a comment on it. When you hit send, every edit and comment goes back to your AI as one batch, and it applies them to the source file.
+
+![Claude Code chat showing Human Review feedback arriving as a batch: a quoted line with the note "Can you please delete this line?" and a second comment asking to shorten section three](/ai-guides/how-to-make-ai-emails-sound-human-human-review-batch.png "Your inline edits and comments come back to the agent as one batch, quoted line by line, so nothing gets lost in a long chat thread.")
+
+The reason this matters for email: you know what you would never say out loud. Highlighting the exact sentence and typing "I would never say this" is faster than describing the problem in chat and hoping the model finds the line.
+
+**5. Use Content Research Writer when the email needs real substance.** Cold pitches, investor updates, and newsletters fail on thin content more often than on tone. [Content Research Writer](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/content-research-writer) works the draft as a writing partner: it helps you outline, researches the claim you are making, adds citations, sharpens the opening line, and gives you feedback section by section while keeping your voice. Use it before the humanizing passes, not after, because it is a drafting tool and the other two are editing tools. If you want to build something like it for your own formats, my guide on [creating a custom skill](/ai/how-to-create-custom-skill) walks through the structure.
+
+**6. Put back the one detail only you could have written.** Every AI draft is missing something specific: the thing they said on the call, the number from last quarter, the reason you actually thought of them this week. One concrete detail does more for believability than any amount of editing. Storing your standing context so the AI already knows your business and audience cuts down how often you have to add it back manually, which is what [your second brain](https://mikareyes.substack.com/p/how-i-turned-6-years-of-stale-notes) is for.
+
+**7. Read it out loud before you hit send.** If you would not say the sentence to the person's face, it does not go out. Check names, numbers, and links yourself. This is thirty seconds and it catches the last thing the skills missed.
+
+## Additional Reading
+
+Here are some related guides to check out:
+
+1. [Humanizer](https://mikareyes.com/ai/humanizer)
+2. [How to Humanize AI Text and Make It Sound Like You](https://mikareyes.com/ai/how-to-humanize-ai-text)
+3. [How to Edit AI Drafts Like a Google Doc with Human Review](https://mikareyes.com/ai/human-review)
+4. [How to Give Claude Memory (Beginner to Advanced)](https://mikareyes.com/ai/how-to-give-claude-memory)
+5. [How to Create Your Own Custom Skill](https://mikareyes.com/ai/how-to-create-custom-skill)
