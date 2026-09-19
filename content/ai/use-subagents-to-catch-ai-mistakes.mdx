@@ -43,109 +43,119 @@ faq:
       time by default, so three costs you nothing but a little reading.
 ---
 
-Claude can't catch its own mistakes in the same chat, but it can catch them in a second one. You ask it to spawn a subagent, which is a fresh copy of Claude with a blank memory, and you tell that copy whose perspective to read your work from. The setup is one sentence. The part that actually decides whether the review is any good is which perspective you pick, so most of this guide is a library of them.
+Claude can't catch its own mistakes in the same chat. It can catch them in a second one. You ask it to spawn a subagent, a fresh copy of Claude with a blank memory, and tell that copy whose perspective to read your work from. The setup is one sentence. Which perspective you pick decides whether the review is any good, so most of this guide is a library of them.
 
 ## Why Claude can't catch its own mistakes
 
-Asking Claude to double-check itself in the same thread is like asking the same biased person the same question and hoping for a different answer. It has the same notes, the same half-formed plan you agreed to forty messages ago, and the same reason it went wrong the first time. On top of that, models are agreeable by default. Stanford found they endorse the user's position about 49% more often than a human would, which means "does this look right?" is close to a leading question.
+Asking Claude to double-check itself in the same thread is asking the same biased person the same question twice.
+
+- **It still has your context.** Same notes, same half-formed plan you agreed to forty messages ago, same reason it went wrong the first time.
+- **It's agreeable by default.** Stanford found models endorse the user's position about 49% more often than a human would, which makes "does this look right?" close to a leading question.
+- **A subagent has neither.** None of your conversation is in its memory, so it never sees the thing you already talked yourself into. It reads the output cold and reports back.
 
 ![Research finding that AI models endorsed the user's position 49% more often than humans did](/ai-guides/use-subagents-to-catch-ai-mistakes-sycophancy-study.png "Stanford: models endorsed the user 49% more often than humans.")
 
-A subagent sidesteps both problems at once. It starts with none of your conversation in its memory, so it never sees the back-and-forth, your earlier reasoning, or the thing you already talked yourself into. It reads the output cold and reports back. If the concept is new to you, I wrote a separate guide on [what subagents are and how they run in parallel](/ai/what-are-subagents). This one is about pointing one back at your own work.
+If subagents are new to you, I wrote a separate guide on [what they are and how they run in parallel](/ai/what-are-subagents). This one is about pointing one back at your own work.
 
-> **Key insight:** A reviewer that shares your context shares your blind spot. The value isn't the second opinion, it's the empty memory behind it.
+> **Key insight:** A reviewer that shares your context shares your blind spot. The empty memory is what makes the second opinion worth anything.
 
 ## The setup is one sentence
 
-There's no config file, no install, and no menu to find. When Claude finishes something, you ask for the review in plain English and name the perspective you want it read from. Claude creates the helper, hands it the work, and brings the report back into your session. Paste this and fill in the bracket:
+No config file, no install, no menu to find. When Claude finishes something, ask for the review in plain English and name the perspective. Paste this and fill in the bracket:
 
 ```text
 Create a subagent with [PERSPECTIVE] to double check that the answer is correct.
 ```
 
-The two words doing the work are "subagent" and "double check." Without them Claude rereads its own answer in place, which is the thing you're trying to avoid. The one way to ruin it is to put your own opinion in the brief. The reviewer only knows what the brief tells it, so "check this, I think section three is weak" hands it the exact bias you were escaping. Give it the work and the standard to judge against, and keep your conclusion to yourself.
+- **"Subagent" and "double check" are the two words doing the work.** Without them Claude rereads its own answer in place, which is the thing you're avoiding.
+- **Keep your opinion out of the brief.** "I think section three is weak" hands the reviewer the exact bias you were escaping.
 
 ## This is the same idea behind LLM Council and STORM
 
-If that prompt feels too simple to be a real technique, it's the same mechanic two much bigger frameworks are built on. Andrej Karpathy's [LLM Council](/ai/how-to-run-llm-council-in-claude) puts your question to five advisors with fixed roles, has them review each other's answers blind, and lets a chairman write the final verdict. Stanford's [STORM research method](/ai/stanford-storm-research-method) does the same thing for research, making five incompatible experts argue so the contradictions stay visible instead of getting flattened into a consensus.
+If one sentence feels too simple to be a real technique, it's the mechanic two much bigger frameworks are built on.
 
-Strip both down and you get one idea: one answer, several independent perspectives, none of which can see the others' reasoning or yours. The council and STORM are the full workflows for decisions and research. A single reviewer subagent is the pocket-size version you can use twenty times a day.
+- **[LLM Council](/ai/how-to-run-llm-council-in-claude).** Karpathy's version: five advisors with fixed roles answer, review each other blind, and a chairman writes the verdict.
+- **[STORM](/ai/stanford-storm-research-method).** Stanford's research method makes five incompatible experts argue, so contradictions stay visible instead of getting flattened into consensus.
+- **Same mechanic underneath.** One answer, several perspectives, none of which can see the others' reasoning or yours. Those two are the full workflows. A single reviewer subagent is the pocket-size version.
 
 ## The perspectives library
 
-Each of these is a different failure the reviewer is hunting for. Pick by what would actually hurt if you got it wrong, not by which one sounds smartest.
+Each one hunts a different failure. Pick by what would actually hurt if you got it wrong, not by which one sounds smartest.
 
 ### The skeptical coworker
 
-Reach for this one when you're about to send something to a person who has a reason to say no: a client, an investor, your boss, a skeptical customer. It attacks the weakest claim in the work before the real skeptic gets to.
+- **Reach for it** before you send something to a person with a reason to say no: a client, an investor, your boss, a skeptical customer. It attacks the weakest claim before the real skeptic gets to it.
 
 ```text
 Create a subagent with the perspective of a skeptical coworker to double check that the answer above is correct. It hasn't seen our conversation, so give it the full brief. Have it find the weakest claim, quote the exact line, and say what evidence would change its mind. If the work holds up, say so instead of inventing problems.
 ```
 
-That last sentence matters. A reviewer under standing orders to find problems will manufacture them, and then you spend an hour fixing things that were never broken.
+- **"If the work holds up, say so."** A reviewer under standing orders to find problems will manufacture them, and you spend an hour fixing things that were never broken.
 
 ### A named expert in the topic
 
-This is the one that pays off most, and the one people underuse. Instead of asking for "an expert," name a real person whose approach you want applied, plus the work they're known for. The name pulls in a specific method rather than a generic professional tone.
-
-Say you're negotiating a rate and Claude has drafted your reply:
+- **Reach for it** when one person's method is what would catch the problem. Name a real person and the work they're known for instead of asking for "an expert." Say you're negotiating a rate and Claude drafted your reply:
 
 ```text
 Create a subagent with the perspective of Chris Voss, the FBI hostage negotiator who wrote Never Split the Difference, to double check that this counteroffer email is correct. Have it flag every line that gives away leverage, then rewrite the two weakest sentences the way he would.
 ```
 
-Swap the bracket for whoever owns your problem. A pricing page gets a direct-response copywriter you actually read. A financial model gets an investor known for tearing them apart. The pattern is always the same: name the person, name the work they're known for, then name the specific thing they should catch. Vague gets you flattery, specific gets you notes.
+- **Name the person, the work they're known for, then the specific thing to catch.** A pricing page gets a direct-response copywriter you actually read. Vague gets you flattery, specific gets you notes.
 
 ### The historian
 
-Use this before anything that looks like a new idea, a new trend, or a new strategy. Most "new" things have run before, and the ending is usually already written down somewhere.
+- **Reach for it** on anything that looks like a new idea or a new strategy. Most "new" things have run before and the ending is written down somewhere.
 
 ```text
 Create a subagent with the perspective of a historian to double check that this plan is correct. Ask it: has this been tried before, how did it end, and what am I treating as new that's actually a repeat? Make it name specific precedents with dates, not general patterns.
 ```
 
-The "with dates" instruction is there for a reason. Without it you get a vague gesture at history. With it you get real cases you can go read.
+- **"With dates."** Without it you get a gesture at history. With it you get cases you can go read.
 
 ### The economist
 
-This one follows the money. Use it on any plan where someone else profits from you believing it, which includes most vendor research, most trend pieces, and most advice you got for free.
+- **Reach for it** when someone else profits from you believing the plan. That covers most vendor research, most trend pieces, and most advice you got for free.
 
 ```text
 Create a subagent with the perspective of an economist to double check that this is correct. Have it follow the incentives: who profits if this is true, what's shaping the numbers I'm quoting, what does this cost me if I'm wrong, and what am I giving up by choosing this over the alternative.
 ```
 
-The last question is the one people skip. Whatever you're saying yes to, you're saying no to something else, and Claude almost never volunteers that on its own.
+- **"What am I giving up by choosing this over the alternative."** People skip that question. Every yes is a no to something else, and Claude rarely volunteers it.
 
 ### The practical person
 
-The reality check. Use this when the plan sounds great and you suspect it needs a team, a budget, or a month you don't have.
+- **Reach for it** when the plan sounds great and you suspect it needs a team, a budget, or a month you don't have.
 
 ```text
 Create a subagent with the perspective of a very practical person to double check that this is correct. It should only judge whether I can actually do this on Monday with the time, money, and people I already have. Flag anything that needs a resource I didn't mention, and tell me the smallest version I could do this week instead.
 ```
 
-I run this one most often, and it's usually the one that saves me the week.
+- **"Only judge whether I can do this on Monday."** I run this one most often, and it's usually the one that saves me the week.
 
 ### The first-time reader
 
-The only one on this list that isn't looking for errors. It's looking for the places you lost someone, which is a different problem and invisible to you because you already know what you meant.
+- **Reach for it** to find where you lost someone. It's the only one here not hunting errors, and it's the problem you can't see yourself because you know what you meant.
 
 ```text
 Create a subagent with the perspective of a smart person who knows nothing about this topic to double check that the answer is clear. Have it read the draft once and mark every sentence it had to reread, every term it didn't know, and the first point where it would have stopped reading.
 ```
 
+- **"The first point where it would have stopped reading."** That's the sentence where you lose people.
+
 ### Stack two or three of them
 
-One reviewer gives you one lens. Three cheap ones give you coverage, and you can spawn them in a single sentence: "Create three subagents, one skeptical coworker, one economist, one first-time reader, to double check that this is correct." Claude Code runs up to 20 at once by default, so three costs you nothing but a little reading.
-
-They run in the background, so your session stays free while they work. Type `/tasks` to see what's still going and what finished.
+- **One reviewer is one lens. Three is coverage,** in one sentence: "Create three subagents, one skeptical coworker, one economist, one first-time reader, to double check that this is correct."
+- **Three costs nothing but a little reading.** Claude Code runs up to 20 at once by default, and they run in the background, so your session stays free. Type `/tasks` to see what's still going.
 
 ![Claude Code Background tasks panel listing completed agents with their runtime and token counts](/ai-guides/use-subagents-to-catch-ai-mistakes-background-tasks.png "The Background tasks panel: each finished reviewer with its runtime, and a transcript you can open.")
 
-Then do the part you can't hand off. Read the critiques and pick what's right. Two reviewers will contradict each other, and that disagreement is usually pointing straight at the thing worth fixing. You're the editor, they're the notes.
+- **Then do the part you can't hand off.** Read the critiques and pick what's right. Where two reviewers contradict each other is usually the thing worth fixing. You're the editor, they're the notes.
 
-One more thing worth knowing if you're in Claude Code. Older tutorials tell you to type `/agents` to build a permanent reviewer, and that panel was removed in recent versions. Ask instead: "Create a subagent called skeptical-reviewer that checks my drafts the way a skeptical coworker would, and save it to my agents folder." Claude writes the file, and you edit it in plain English whenever the reviewer gets something wrong. Once you've written the same brief three times, that's your signal to [package it into a skill](/ai/how-to-create-custom-skill) instead. And if you're not set up yet, start with [how to set up Claude Code](/ai/how-to-setup-claude-code) and come back.
+### One correction if you're in Claude Code
+
+- Older tutorials tell you to type `/agents` to build a permanent reviewer. That panel was removed in recent versions.
+- Ask instead: "Create a subagent called skeptical-reviewer that checks my drafts the way a skeptical coworker would, and save it to my agents folder." Claude writes the file, and you edit it in plain English whenever the reviewer gets something wrong.
+- Once you've written the same brief three times, [package it into a skill](/ai/how-to-create-custom-skill). If you're not set up yet, start with [how to set up Claude Code](/ai/how-to-setup-claude-code) and come back.
 
 ## Additional Reading
 

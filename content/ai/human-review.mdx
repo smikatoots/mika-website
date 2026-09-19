@@ -44,11 +44,15 @@ I use it every day now for PRDs, content scripts, and my Substack drafts. Here i
 
 ## Why is giving AI feedback in chat so frustrating?
 
-Because chat makes you describe an edit instead of just making it. I would end up typing something like "in the third paragraph, change X to Y, cut the third card because it repeats the first one, also rewrite the CTA," and then the agent would rewrite the entire file. Now I have to reread all of it to check whether it understood any of my three requests.
+Because chat makes you describe an edit instead of just making it. I would type "in the third paragraph, change X to Y, cut the third card because it repeats the first one, also rewrite the CTA," and the agent would rewrite the entire file. Then I reread all of it to check whether it caught any of my three requests.
 
 ![Claude Code prompt box with a typed request to delete one line and shorten section three, next to a 349-line diff](/ai-guides/human-review-chat-instructions.png "The old way: quoting a line in chat and hoping the agent only touches that line")
 
-It gets worse the longer the document is. A 20-page plan, a landing page, or a multi-page site turns every small fix into a paragraph of instructions. Human Review flips that around: you make the small fixes yourself, and you only write instructions for the things you actually want the AI to think about.
+It gets worse the longer the document is.
+
+- A 20-page plan or a multi-page site turns every small fix into a paragraph of instructions.
+- Writing the instruction takes longer than the edit would have.
+- Human Review flips that around. You make the small fixes yourself, and only write instructions for what you actually want the AI to think about.
 
 ---
 
@@ -56,15 +60,18 @@ It gets worse the longer the document is. A 20-page plan, a landing page, or a m
 
 **1. Install the Human Review skill**
 
-The easiest install is to paste this one line into Claude Code, Codex, or whatever coding agent you use: `Install the /human-review skill globally from https://github.com/petergyang/human-review`. If you prefer to run it yourself, open your terminal and run `npx -y human-review setup --global`.
-
-A skill is just a markdown instruction file your agent reads when it recognizes the task. If that is new to you, start with [what a Claude skill actually is](/ai/what-is-a-skill). The global setup writes that file into your Claude Code, Codex, and shared agent folders, so every project knows the commands without you explaining them again.
+- Paste this one line into Claude Code, Codex, or whatever coding agent you use: `Install the /human-review skill globally from https://github.com/petergyang/human-review`
+- Or run `npx -y human-review setup --global` in your terminal.
+- The global setup writes the skill into your Claude Code, Codex, and shared agent folders, so every project knows the commands.
+- A skill is a markdown instruction file your agent reads when it recognizes the task. If that is new to you, start with [what a Claude skill actually is](/ai/what-is-a-skill).
 
 ![GitHub sidebar for the Human Review repo showing 1.3k stars and the About description about editing HTML and Markdown files](/ai-guides/human-review-github-repo.png "Human Review lives on GitHub, is MIT licensed, and works inside whichever AI harness you already use")
 
 **2. Open the file you want to review**
 
-Ask your agent to open the draft: `/human-review drafts/newsletter.md`. It spins up a local page in your browser with your file rendered like a document, plus a Feedback panel down the right side.
+- Ask your agent to open the draft: `/human-review drafts/newsletter.md`
+- It spins up a local page in your browser with your file rendered like a document.
+- The Feedback panel sits down the right side.
 
 > **Key insight:** For HTML files, your direct edits and image resizes save to the file automatically. For Markdown files and localhost pages, nothing is written until you hit Send, because your agent has to translate your changes back into the source.
 
@@ -72,65 +79,77 @@ Ask your agent to open the draft: `/human-review drafts/newsletter.md`. It spins
 
 ### Edit it like a document
 
+Everything below happens in the page itself.
+
 **3. Type your fixes straight into the page**
 
-Click into any text and start typing. Bold and italic work the way they do everywhere else, so ⌘B and ⌘I do what you expect. These are the edits you should never be describing in chat: a wrong name, a clunky opening line, a number that changed.
-
-The tool records each one as a before-and-after pair, so the agent gets your exact wording rather than a paraphrase of it. That is what stops the "I only wanted one sentence changed" problem.
+- Click into any text and start typing. ⌘B and ⌘I work the way they do everywhere else.
+- Use it for the edits you should never describe in chat: a wrong name, a clunky opening line, a number that changed.
+- The tool records each one as a before-and-after pair, so the agent gets your exact wording, not a paraphrase. That is what stops the "I only wanted one sentence changed" problem.
 
 **4. Build lists and links without typing syntax**
 
-Type `- ` or `1. ` at the start of a line to start a bulleted or numbered list, or press ⌘⇧8 and ⌘⇧7. Tab indents a list item and Shift+Tab pulls it back out.
-
-For links, select the text and press ⌘K. Pressing ⌘K again while your cursor is inside an existing link lets you edit or remove it.
+- Type `- ` or `1. ` at the start of a line to start a bulleted or numbered list, or press ⌘⇧8 and ⌘⇧7.
+- Tab indents a list item and Shift+Tab pulls it back out.
+- For links, select the text and press ⌘K. ⌘K again inside an existing link edits or removes it.
 
 **5. Resize, move, and paste images**
 
-Drag an image by its corner to resize it, or drag the image itself to a new spot in the document. You can also paste an image straight from your clipboard: on a file review it gets saved into an `assets/` folder next to your document and dropped in at your cursor, and on a localhost review it gets staged for the agent to place in the app source.
+- Drag an image by its corner to resize it, or drag the image itself to a new spot in the document.
+- Paste an image straight from your clipboard. On a file review it saves into an `assets/` folder next to your document and drops in at your cursor.
+- On a localhost review, a pasted image gets staged for the agent to place in the app source.
 
 **6. Drag whole blocks around, and delete what you do not want**
 
-Hover over any block and a handle appears on its left edge. Drag that handle to move the entire block somewhere else, and the agent repositions it in the source without rewriting the words inside it.
-
-You can also just delete elements. No explanation needed in chat, no "please remove the second testimonial card." This one is my favorite for cutting the extra copy AI likes to sprinkle into UX, and it pairs well with [making AI text sound like you](/ai/how-to-humanize-ai-text).
+- Hover over any block and a handle appears on its left edge. Drag it to move the whole block, and the agent repositions it in the source without rewriting the words inside.
+- You can also just delete elements. No explanation needed in chat, no "please remove the second testimonial card."
+- This one is my favorite for cutting the extra copy AI sprinkles into UX, and it pairs well with [making AI text sound like you](/ai/how-to-humanize-ai-text).
 
 ---
 
 ### Comment, send, and review again
 
+Direct edits cover what you already know. Comments cover the rest.
+
 **7. Select a phrase and comment on exactly that text**
 
-Highlight any phrase and the Feedback panel opens a compose box asking "What should change?" Type your note and press Enter, or click Add comment. Esc dismisses it if you change your mind.
-
-Your comment is anchored to that exact string, along with the text before and after it, so the agent finds the right spot even in a long file. Use comments for judgment calls, and direct edits for anything you already know the answer to.
+- Highlight any phrase and the Feedback panel opens a compose box asking "What should change?"
+- Type your note and press Enter, or click Add comment. Esc dismisses it if you change your mind.
+- Your comment is anchored to that exact string plus the text around it, so the agent finds the right spot even in a long file.
+- Use comments for judgment calls, and direct edits for anything you already know the answer to.
 
 **8. Click an image, chart, or whole section to comment on it**
 
-Not everything is a sentence. Click an image, a chart, or a section and the compose box labels it as an Element instead of a Selection, so you can say "this chart is the wrong metric" or "this whole card repeats the one above it."
-
-Each saved comment shows up in the panel with a Jump to button that scrolls you back to the anchor, which is useful once you have a dozen of them stacked up.
+- Not everything is a sentence. Click an image, a chart, or a section and the compose box labels it as an Element instead of a Selection.
+- That is how you say "this chart is the wrong metric" or "this card repeats the one above it."
+- Each saved comment gets a Jump to button that scrolls you back to the anchor, useful once you have a dozen stacked up.
 
 **9. Add an overall note and hit Send**
 
-At the bottom of the panel there is an "Overall note…" field for feedback that is not tied to any one spot, like "the whole thing is too long, cut 20 percent." Then hit the send button, which counts your items for you and reads something like "Send 5 to agent." ⌘⏎ does the same thing.
-
-Everything ships in one batch: every edit, every comment, the overall note, and any other pages you opened along the way. Command-click links inside the document to review a multi-page site without losing anything you have already marked up.
+- The "Overall note…" field at the bottom of the panel takes feedback that is not tied to any one spot, like "the whole thing is too long, cut 20 percent."
+- The send button counts your items for you and reads something like "Send 5 to agent." ⌘⏎ does the same thing.
+- Everything ships in one batch: every edit, every comment, the overall note, and any other pages you opened.
+- Command-click links inside the document to review a multi-page site without losing your markup.
 
 ![Human Review's GitHub README with the demo video showing a landing page under review, highlighted text, and a Send 2 to agent button in the feedback panel](/ai-guides/human-review-feedback-panel.png "The review screen: your document on the left, comments and the Send button on the right")
 
 **10. Watch your agent apply the batch, then review again**
 
-Your agent is sitting on a poll command, waiting. The moment you send, it receives the batch as structured JSON, applies your exact wording to the source file, and saves. The page reloads on its own, so the fixed version is in front of you without you touching anything.
-
-There is no reply message and no chat back and forth. You look at the new version, mark up whatever is still wrong, and send again. When you are finished, click End review at the bottom of the panel to release the waiting agent. Anything you typed but did not send is saved and ships the next time you review that page.
+- Your agent is waiting on a poll command. The moment you send, it receives the batch as structured JSON, applies your exact wording to the source, and saves.
+- The page reloads on its own, so the fixed version is in front of you.
+- There is no reply message and no chat back and forth. You look at the new version, mark up whatever is still wrong, and send again.
+- When you are done, click End review at the bottom of the panel to release the agent. Anything you typed but did not send is saved for the next review.
 
 ---
 
 ## Who is this actually for?
 
-Anyone who reviews written work an AI produced, which by now is most of us. You do not need to know how to code to use it, though you do need a coding agent installed to receive the feedback. If that part is the blocker, my [5-minute Claude Code setup for non-techies](/ai/how-to-setup-claude-code) gets you there.
+Anyone who reviews written work an AI produced, which by now is most of us.
 
-The shift for me was small but it changed my week. I stopped writing paragraphs describing edits and started making them, which means the AI only handles the parts that need thinking. I still decide what is off, what stays, and what ships.
+- You do not need to know how to code.
+- You do need a coding agent installed to receive the feedback. If that part is the blocker, my [5-minute Claude Code setup for non-techies](/ai/how-to-setup-claude-code) gets you there.
+
+The shift was small but it changed my week. I stopped writing paragraphs describing edits and started making them, so the AI only handles the parts that need thinking. I still decide what is off, what stays, and what ships.
 
 ## Additional Reading
 
