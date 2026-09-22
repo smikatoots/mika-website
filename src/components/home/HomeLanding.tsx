@@ -8,10 +8,6 @@ import { trackGa4Event } from "@/lib/analytics/ga4";
 import { homeBioLinks } from "@/lib/home-bio-links";
 import { HomepageMotion } from "@/components/home/HomepageMotion";
 import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
-import {
-  BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE,
-  BUILD_YOUR_FIRST_AGENT_PRICE,
-} from "@/lib/courses/build-your-first-agent";
 
 import { buttonStyle } from "@/components/ui/buttonStyle";
 
@@ -220,90 +216,6 @@ export function HomeLanding() {
         </div>
       </section>
 
-      {/* ── Course band ──────────────────────────────────── */}
-      <section
-        style={{ background: "var(--mr-surface-rose)", padding: "clamp(40px,6vw,56px) 0" }}
-      >
-        <div className="mx-auto max-w-6xl px-6 md:px-10">
-          <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:text-left">
-            <div>
-              <span
-                style={{
-                  display: "inline-block",
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-eyebrow)",
-                  fontWeight: "var(--mr-weight-display)",
-                  color: "var(--mr-coral)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.14em",
-                  marginBottom: "10px",
-                }}
-              >
-                ✦ Learn AI with me
-              </span>
-              <h2
-                style={{
-                  fontFamily: "var(--mr-font-display)",
-                  fontSize: "clamp(24px, 3vw, 32px)",
-                  fontWeight: "var(--mr-weight-display)",
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.15,
-                  color: "var(--mr-ink)",
-                  marginBottom: "10px",
-                }}
-              >
-                Want to build your own AI agent?
-              </h2>
-              <p
-                className="mx-auto lg:mx-0"
-                style={{
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-body)",
-                  color: "var(--mr-text-soft)",
-                  lineHeight: 1.6,
-                  maxWidth: "520px",
-                }}
-              >
-                Build Your First Agent 101 is my self-paced course for non-technical
-                professionals — build 2 working agents in about a day, for $
-                {BUILD_YOUR_FIRST_AGENT_PRICE} (down from ${BUILD_YOUR_FIRST_AGENT_ORIGINAL_PRICE}).
-              </p>
-            </div>
-
-            <div className="flex shrink-0 flex-col items-center gap-2 lg:items-end">
-              <Ga4TrackedInternalLink
-                href={COURSE_HREF}
-                className="mr-pressable inline-flex items-center justify-center"
-                style={buttonStyle({ size: "lg" })}
-                ga4EventName="course_teaser_clicked"
-                ga4Params={{
-                  cta_label: "See the course",
-                  cta_location: COURSE_CTA_LOCATION,
-                  destination_url: COURSE_HREF,
-                  link_type: "internal_course_teaser",
-                }}
-                onClick={() =>
-                  posthog.capture("course_teaser_clicked", {
-                    cta_location: COURSE_CTA_LOCATION,
-                  })
-                }
-              >
-                See the course →
-              </Ga4TrackedInternalLink>
-              <span
-                style={{
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-xs)",
-                  color: "var(--mr-muted)",
-                }}
-              >
-                Lifetime access · no coding required
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── Press Bar ────────────────────────────────────── */}
       <section style={{ background: "var(--mr-coral)", position: "relative", overflow: "hidden", padding: "36px 0" }}>
         <div
@@ -366,6 +278,76 @@ export function HomeLanding() {
                 />
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Course band ──────────────────────────────────── */}
+      <section
+        style={{ background: "var(--mr-surface-rose)", padding: "clamp(40px,6vw,56px) 0" }}
+      >
+        <div className="mx-auto max-w-6xl px-6 md:px-10">
+          <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:text-left">
+            <div>
+              <h2
+                style={{
+                  fontFamily: "var(--mr-font-display)",
+                  fontSize: "clamp(24px, 3vw, 32px)",
+                  fontWeight: "var(--mr-weight-display)",
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.15,
+                  color: "var(--mr-ink)",
+                  marginBottom: "10px",
+                }}
+              >
+                Want to build your own AI agent?
+              </h2>
+              <p
+                className="mx-auto lg:mx-0"
+                style={{
+                  fontFamily: "var(--mr-font-body)",
+                  fontSize: "var(--mr-text-body)",
+                  color: "var(--mr-text-soft)",
+                  lineHeight: 1.6,
+                  maxWidth: "520px",
+                }}
+              >
+                I taught a class with 1000 sign-ups and turned it into a
+                self-paced guide so you can build your first AI agent in one
+                afternoon.
+              </p>
+            </div>
+
+            <div className="flex shrink-0 flex-col items-center gap-2 lg:items-end">
+              <Ga4TrackedInternalLink
+                href={COURSE_HREF}
+                className="mr-pressable inline-flex items-center justify-center"
+                style={buttonStyle({ size: "lg" })}
+                ga4EventName="course_teaser_clicked"
+                ga4Params={{
+                  cta_label: "Learn more",
+                  cta_location: COURSE_CTA_LOCATION,
+                  destination_url: COURSE_HREF,
+                  link_type: "internal_course_teaser",
+                }}
+                onClick={() =>
+                  posthog.capture("course_teaser_clicked", {
+                    cta_location: COURSE_CTA_LOCATION,
+                  })
+                }
+              >
+                Learn more →
+              </Ga4TrackedInternalLink>
+              <span
+                style={{
+                  fontFamily: "var(--mr-font-body)",
+                  fontSize: "var(--mr-text-xs)",
+                  color: "var(--mr-muted)",
+                }}
+              >
+                Lifetime access · no coding required
+              </span>
+            </div>
           </div>
         </div>
       </section>
