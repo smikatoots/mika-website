@@ -2,10 +2,21 @@
 
 import Image from "next/image";
 import { useEffect, useId, useState } from "react";
+import posthog from "posthog-js";
 
 import { LearnAiNavDropdown } from "@/components/LearnAiNavDropdown";
 import { learnAiNavItems, siteHeaderNavItems } from "@/lib/site-nav";
 import { InternalLink } from "@/components/ui/InternalLink";
+import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
+
+function trackWorkWithMeClick(location: string) {
+  const params = {
+    cta_label: "Work with me",
+    cta_location: location,
+    destination_url: "/#contact",
+  };
+  posthog.capture("work_with_me_nav_clicked", params);
+}
 
 import { buttonStyle } from "@/components/ui/buttonStyle";
 
@@ -125,13 +136,20 @@ export function SiteHeader() {
             );
           })}
 
-          <InternalLink
+          <Ga4TrackedInternalLink
             href="/#contact"
             className="mr-pressable ml-3 shrink-0 whitespace-nowrap"
             style={buttonStyle({ size: "xs" })}
+            ga4EventName="work_with_me_nav_clicked"
+            ga4Params={{
+              cta_label: "Work with me",
+              cta_location: "header_desktop",
+              destination_url: "/#contact",
+            }}
+            onClick={() => trackWorkWithMeClick("header_desktop")}
           >
             Work with me
-          </InternalLink>
+          </Ga4TrackedInternalLink>
         </nav>
 
         <button
@@ -181,12 +199,27 @@ export function SiteHeader() {
                     <div className="flex flex-col">
                       {learnAiNavItems.map(
                         ({ href, label, description, featured }) => (
-                          <InternalLink
+                          <Ga4TrackedInternalLink
                             key={href}
                             href={href}
                             className={`${mobileNavLinkClass} pl-8`}
                             style={{ ...navLinkStyle, textDecoration: "none" }}
-                            onClick={closeMenu}
+                            ga4EventName="learn_ai_nav_link_clicked"
+                            ga4Params={{
+                              cta_label: label,
+                              cta_location: "header_mobile_dropdown",
+                              destination_url: href,
+                              featured: Boolean(featured),
+                            }}
+                            onClick={() => {
+                              posthog.capture("learn_ai_nav_link_clicked", {
+                                cta_label: label,
+                                cta_location: "header_mobile_dropdown",
+                                destination_url: href,
+                                featured: Boolean(featured),
+                              });
+                              closeMenu();
+                            }}
                           >
                             <span className="flex items-center gap-2">
                               {label}
@@ -219,7 +252,7 @@ export function SiteHeader() {
                             >
                               {description}
                             </span>
-                          </InternalLink>
+                          </Ga4TrackedInternalLink>
                         ),
                       )}
                     </div>
@@ -241,14 +274,23 @@ export function SiteHeader() {
             );
           })}
 
-          <InternalLink
+          <Ga4TrackedInternalLink
             href="/#contact"
             className="mr-pressable mt-3 text-center"
             style={buttonStyle({ size: "sm", fullWidth: true })}
-            onClick={closeMenu}
+            ga4EventName="work_with_me_nav_clicked"
+            ga4Params={{
+              cta_label: "Work with me",
+              cta_location: "header_mobile",
+              destination_url: "/#contact",
+            }}
+            onClick={() => {
+              trackWorkWithMeClick("header_mobile");
+              closeMenu();
+            }}
           >
             Work with me
-          </InternalLink>
+          </Ga4TrackedInternalLink>
         </div>
       </nav>
     </header>

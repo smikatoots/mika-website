@@ -1,9 +1,10 @@
 "use client";
 
 import { useId, useState } from "react";
+import posthog from "posthog-js";
 
 import { learnAiNavItems } from "@/lib/site-nav";
-import { InternalLink } from "@/components/ui/InternalLink";
+import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
 
 const navLinkStyle = {
   fontFamily: "var(--mr-font-body)",
@@ -63,12 +64,27 @@ export function LearnAiNavDropdown() {
           }}
         >
           {learnAiNavItems.map(({ href, label, description, featured }) => (
-            <InternalLink
+            <Ga4TrackedInternalLink
               key={href}
               href={href}
               role="menuitem"
               className="block px-4 py-3 transition-colors hover:bg-[var(--mr-surface-cream)]"
               style={{ textDecoration: "none" }}
+              ga4EventName="learn_ai_nav_link_clicked"
+              ga4Params={{
+                cta_label: label,
+                cta_location: "header_dropdown",
+                destination_url: href,
+                featured: Boolean(featured),
+              }}
+              onClick={() =>
+                posthog.capture("learn_ai_nav_link_clicked", {
+                  cta_label: label,
+                  cta_location: "header_dropdown",
+                  destination_url: href,
+                  featured: Boolean(featured),
+                })
+              }
             >
               <span
                 className="flex items-center gap-2"
@@ -109,7 +125,7 @@ export function LearnAiNavDropdown() {
               >
                 {description}
               </span>
-            </InternalLink>
+            </Ga4TrackedInternalLink>
           ))}
         </div>
       </div>

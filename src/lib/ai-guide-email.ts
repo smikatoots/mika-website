@@ -41,7 +41,7 @@ export function buildAiGuideEmail({
   const campaign = toCampaignSlug(guideUrl);
 
   const trackedGuideUrl = withUtm(guideUrl, campaign);
-  const newsletterUrl = withUtm("http://mikareyes.substack.com/", campaign);
+  const newsletterUrl = withUtm("https://mikareyes.substack.com/", campaign);
   const agentGuideUrl = withUtm(
     "https://mikareyes.com/build-your-first-agent-101",
     campaign,

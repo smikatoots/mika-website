@@ -522,7 +522,7 @@ or method, and any use of the wordmark outside mikareyes.com surfaces.
 | Raised roughly $5M from investors including Dragonfly and General Catalyst | Company record |
 | Scaled past $100M in transaction volume in under a year | Company record |
 | Product Lead at LinkedIn; launched the "I'm Hiring" profile ring | Employment record |
-| 20,000+ followers across Instagram and TikTok | Platform analytics; **re-verify before each use, this number moves** |
+| 40,000+ followers across Instagram and TikTok | Platform analytics; **re-verify before each use, this number moves** |
 | B.A. Wesleyan University, Phi Beta Kappa, summa cum laude | Transcript |
 
 **Requires review before use.** Any specific revenue, profit, or KCL financial

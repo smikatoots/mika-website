@@ -233,7 +233,7 @@ export const buildYourFirstAgentInstructors = [
         logo: "/courses/build-your-first-agent/logos/south-park-commons.svg",
       },
     ],
-    bio: "Raised $5M, founded and exited a startup to a $3B acquirer. Shipped products at Microsoft and LinkedIn. 35,000+ followers on socials, teaching AI; 10 years in tech (product & GTM).",
+    bio: "Raised $5M, founded and exited a startup to a $3B acquirer. Shipped products at Microsoft and LinkedIn. 40,000+ followers on socials, teaching AI; 10 years in tech (product & GTM).",
   },
   {
     name: "Nicolas Reyes",

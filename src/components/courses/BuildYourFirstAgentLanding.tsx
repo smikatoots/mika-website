@@ -754,7 +754,7 @@ export function BuildYourFirstAgentLanding() {
             </p>
             <p>
               We&apos;ve built software at LinkedIn, Microsoft, Airbnb, and
-              Google, raised $4.5M, taken AI and software products to production
+              Google, raised $5M, taken AI and software products to production
               and millions of users, and sold a company.
             </p>
             <p>
@@ -1170,7 +1170,7 @@ export function BuildYourFirstAgentLanding() {
               time-rich.
             </p>
             <p>
-              I teach 30k+ followers on socials everything about AI and I keep
+              I teach 40k+ followers on socials everything about AI and I keep
               hearing how overwhelmed folks are with it. We created this course
               to help more people out. We&apos;re so grateful it got raving
               reviews &amp; we&apos;re excited to make it more accessible to
