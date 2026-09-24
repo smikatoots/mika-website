@@ -8,6 +8,7 @@ For the site overview and other sections, see [llms.txt](https://mikareyes.com/l
 
 ## All guides
 
+- [How to Create Bulk Ad Voiceovers with Claude and Fish Audio](https://mikareyes.com/ai/how-to-create-bulk-ad-voiceovers-claude-fish-audio): Create bulk ad voiceovers with Claude and Fish Audio: 20 ad reads in about an hour, with emotion tags, generated from one Claude chat. No mic or studio.
 - [How to Stop Collecting AI Guides You Never Use](https://mikareyes.com/ai/stop-collecting-ai-guides): Stop saving AI guides you never use. A 3-step system: let Meta Muse sweep your Instagram Saves, email yourself the guide, then turn it into a Claude skill.
 - [How to Make AI-Written Emails Sound Human](https://mikareyes.com/ai/how-to-make-ai-emails-sound-human): AI-written emails have six obvious tells. Here is the checklist I run before sending, plus the four AI editing skills that fix the draft in two minutes.
 - [AI Reflection Prompt for Storing Memory](https://mikareyes.com/ai/ai-reflection-prompt-storing-memory): Claude reflection prompt that digs through your chat history, builds a profile of you from evidence, and saves it to memory plus a file you own.
