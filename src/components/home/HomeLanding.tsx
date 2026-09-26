@@ -20,12 +20,12 @@ import {
    ──────────────────────────────────────────────────────────── */
 
 // Destinations come from the live homepage's link map, same as the press
-// strip. The pills sit on the sapphire band, so sapphire is the one accent
+// strip. The pills sit on the blue band, so blue is the one accent
 // they cannot use; paper stands in as the fourth. Every fill clears AA with
 // black type, so the pills all set ink.
 const awards = [
   { label: "Forbes 30 Under 30", bg: "var(--mr-gold)", href: homeBioLinks.awards.forbes30 },
-  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--mr-verdigris)", href: homeBioLinks.awards.tatler },
+  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--mr-mint)", href: homeBioLinks.awards.tatler },
   { label: "Kleiner Perkins Fellow", bg: "var(--mr-watermelon)", href: homeBioLinks.awards.kleinerPerkins },
   { label: "SPC Founder Fellow", bg: "var(--mr-paper)", href: homeBioLinks.awards.spc },
 ];
@@ -50,7 +50,7 @@ const startHere = [
     title: "Master Agentic AI",
     blurb: "Build your own custom AI agent in a day. No engineering degree.",
     href: "/build-your-first-agent-101",
-    bg: "var(--mr-verdigris)",
+    bg: "var(--mr-mint)",
     fg: "var(--mr-ink)",
   },
   {
@@ -66,7 +66,7 @@ const startHere = [
     title: "AI Challenges",
     blurb: "Hard skills learned with AI as the only coach.",
     href: "/challenges",
-    bg: "var(--mr-sapphire)",
+    bg: "var(--mr-blue)",
     fg: "var(--mr-paper)",
   },
   {
@@ -128,19 +128,19 @@ const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
   // Salmon carries the buttons now, so the big masses beside the CTA are
   // yellow and turquoise — a salmon blob here would pull rank on it.
   { shape: "disc", color: "var(--mr-gold)", size: 104, motion: "bob", duration: 5.5, at: { top: "-38px", left: "-38px" } },
-  { shape: "triangle", color: "var(--mr-verdigris)", size: 66, rotate: 18, motion: "sway", duration: 7.5, delay: 0.6, at: { bottom: "-30px", right: "34px" } },
-  { shape: "capsule", color: "var(--mr-sapphire)", size: 78, rotate: 12, motion: "twist", duration: 6.5, delay: 1.1, at: { top: "-30px", right: "-26px" } },
+  { shape: "triangle", color: "var(--mr-mint)", size: 66, rotate: 18, motion: "sway", duration: 7.5, delay: 0.6, at: { bottom: "-30px", right: "34px" } },
+  { shape: "capsule", color: "var(--mr-blue)", size: 78, rotate: 12, motion: "twist", duration: 6.5, delay: 1.1, at: { top: "-30px", right: "-26px" } },
 ];
 
 const HERO_CONFETTI: ConfettiPlacement[] = [
   { shape: "sparkle", color: "var(--mr-watermelon)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: outside(18) }, narrow: { top: "8px", left: "8%" } },
-  { shape: "squiggle", color: "var(--mr-verdigris)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: outside(14) }, narrow: { bottom: "6px", left: "8%" } },
-  { shape: "zigzag", color: "var(--mr-sapphire)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: outside(12) }, narrow: { top: "62%", left: "-40px" } },
+  { shape: "squiggle", color: "var(--mr-mint)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: outside(14) }, narrow: { bottom: "6px", left: "8%" } },
+  { shape: "zigzag", color: "var(--mr-blue)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: outside(12) }, narrow: { top: "62%", left: "-40px" } },
   { shape: "dots", color: "var(--mr-watermelon)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: outside(22) }, narrow: { bottom: "10px", right: "6%" } },
 ];
 
 const PRESS_STRIP_CONFETTI: ConfettiPlacement[] = [
-  { shape: "dots", color: "var(--mr-verdigris)", size: 46, motion: "shake", duration: 7, at: { top: "38%", right: outside(16) }, narrow: { top: "34%", right: "-8px" } },
+  { shape: "dots", color: "var(--mr-mint)", size: 46, motion: "shake", duration: 7, at: { top: "38%", right: outside(16) }, narrow: { top: "34%", right: "-8px" } },
 ];
 
 const DARK_CONFETTI: ConfettiPlacement[] = [
@@ -149,32 +149,32 @@ const DARK_CONFETTI: ConfettiPlacement[] = [
   { shape: "disc", color: "var(--mr-gold)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: inside(18) }, narrow: { top: "1%", left: "-48px" } },
   { shape: "triangle", color: "var(--mr-watermelon)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "30%", right: inside(30) }, narrow: { top: "22%", right: "-27px" } },
   { shape: "arc", color: "var(--mr-gold)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "52%", left: inside(26) }, narrow: { bottom: "12px", right: "8%" } },
-  { shape: "blob", color: "var(--mr-sapphire)", size: 132, rotate: -8, motion: "drift", duration: 12, delay: 0.2, at: { top: "70%", right: inside(14) }, narrow: { top: "70%", right: "-64px" } },
-  { shape: "ring", color: "var(--mr-verdigris)", size: 52, motion: "pulse", duration: 6.5, delay: 1.9, at: { bottom: "6%", left: inside(70) }, narrow: { bottom: "10px", left: "8%" } },
+  { shape: "blob", color: "var(--mr-blue)", size: 132, rotate: -8, motion: "drift", duration: 12, delay: 0.2, at: { top: "70%", right: inside(14) }, narrow: { top: "70%", right: "-64px" } },
+  { shape: "ring", color: "var(--mr-mint)", size: 52, motion: "pulse", duration: 6.5, delay: 1.9, at: { bottom: "6%", left: inside(70) }, narrow: { bottom: "10px", left: "8%" } },
 ];
 
 const PRESS_AWARDS_CONFETTI: ConfettiPlacement[] = [
   { shape: "sparkle", color: "var(--mr-gold)", size: 38, motion: "spin", duration: 18, at: { top: "14%", left: outside(14) }, narrow: { top: "6px", left: "4%" } },
   { shape: "squiggle", color: "var(--mr-watermelon)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "12px", right: "8%" } },
-  { shape: "dots", color: "var(--mr-verdigris)", size: 54, rotate: 8, motion: "shake", duration: 6.5, delay: 1.4, at: { top: "86%", left: outside(20) }, narrow: { top: "6px", right: "6%" } },
+  { shape: "dots", color: "var(--mr-mint)", size: 54, rotate: 8, motion: "shake", duration: 6.5, delay: 1.4, at: { top: "86%", left: outside(20) }, narrow: { top: "6px", right: "6%" } },
 ];
 
 const ADVENTURE_CONFETTI: ConfettiPlacement[] = [
-  { shape: "zigzag", color: "var(--mr-verdigris)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "8%", left: outside(12) }, narrow: { top: "2%", left: "-34px" } },
+  { shape: "zigzag", color: "var(--mr-mint)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "8%", left: outside(12) }, narrow: { top: "2%", left: "-34px" } },
   { shape: "ring", color: "var(--mr-watermelon)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "34%", right: outside(16) }, narrow: { top: "30%", right: "-18px" } },
   { shape: "blob", color: "var(--mr-gold)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { top: "62%", left: outside(10) }, narrow: { top: "62%", left: "-38px" } },
-  { shape: "burst", color: "var(--mr-sapphire)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: outside(22) }, narrow: { bottom: "12px", right: "-8px" } },
+  { shape: "burst", color: "var(--mr-blue)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: outside(22) }, narrow: { bottom: "12px", right: "-8px" } },
 ];
 
 const SPEAKING_CONFETTI: ConfettiPlacement[] = [
-  { shape: "arc", color: "var(--mr-sapphire)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "arc", color: "var(--mr-blue)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
   { shape: "capsule", color: "var(--mr-watermelon)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: outside(12) }, narrow: { bottom: "8%", right: "-30px" } },
 ];
 
 const CONTACT_CONFETTI: ConfettiPlacement[] = [
-  { shape: "zigzag", color: "var(--mr-verdigris)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "12%", left: outside(10) }, narrow: { top: "1%", left: "-36px" } },
+  { shape: "zigzag", color: "var(--mr-mint)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "12%", left: outside(10) }, narrow: { top: "1%", left: "-36px" } },
   { shape: "ring", color: "var(--mr-watermelon)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "48%", right: outside(14) }, narrow: { top: "44%", right: "-22px" } },
-  { shape: "cross", color: "var(--mr-sapphire)", size: 34, motion: "spin", duration: 26, at: { top: "85%", left: outside(24) }, narrow: { bottom: "6%", left: "-3px" } },
+  { shape: "cross", color: "var(--mr-blue)", size: 34, motion: "spin", duration: 26, at: { top: "85%", left: outside(24) }, narrow: { bottom: "6%", left: "-3px" } },
 ];
 
 export function HomeLanding() {
@@ -284,7 +284,7 @@ export function HomeLanding() {
         <div className="mr-wrap" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
           <span
             className="mr-tag"
-            style={{ background: "var(--mr-verdigris)", color: "var(--mr-ink)" }}
+            style={{ background: "var(--mr-mint)", color: "var(--mr-ink)" }}
           >
             THE THESIS
           </span>
@@ -336,7 +336,7 @@ export function HomeLanding() {
                     objectFit: "cover",
                     marginLeft: i === 0 ? 0 : "-22px",
                     border: `3px solid ${
-                      ["var(--mr-gold)", "var(--mr-watermelon)", "var(--mr-verdigris)"][i]
+                      ["var(--mr-gold)", "var(--mr-watermelon)", "var(--mr-mint)"][i]
                     }`,
                   }}
                 />
@@ -454,7 +454,7 @@ export function HomeLanding() {
       </section>
 
       {/* ── Speaking ────────────────────────────────────── */}
-      <section className="mr-section" style={{ background: "var(--mr-verdigris)" }}>
+      <section className="mr-section" style={{ background: "var(--mr-mint)" }}>
         <ConfettiField items={SPEAKING_CONFETTI} />
 
         <div className="mr-wrap">

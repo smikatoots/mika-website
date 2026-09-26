@@ -50,17 +50,17 @@ export const mainGallery =
 /* Card grounds for the colour-cycled grids on /links and /ai. Shared so the
    two pages cannot drift into different palettes.
 
-   Each ground carries its own type colour rather than assuming ink. Sapphire
-   is the reason: black on it is 4.40:1 and fails AA, where paper white is
-   4.51:1. It is the only ground in the palette that inverts, and hard-coding
+   Each ground carries its own type colour rather than assuming ink. Blue is
+   the reason: black on it is 3.46:1 and fails AA, where paper white is
+   5.73:1. It is the only ground in the palette that inverts, and hard-coding
    ink would have made it the one unreadable card.
 
    Cycle these by grid position, not by item id, so a filtered grid still shows
    the full spread. */
 export const CARD_GROUNDS = [
-  { bg: "var(--mr-sapphire)", fg: "var(--mr-paper)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-blue)", fg: "var(--mr-paper)", chip: "var(--mr-paper)" },
   { bg: "var(--mr-gold)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
-  { bg: "var(--mr-verdigris)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-mint)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
   { bg: "var(--mr-watermelon)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
 ] as const;
 

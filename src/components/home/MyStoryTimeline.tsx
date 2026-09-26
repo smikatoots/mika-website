@@ -73,12 +73,12 @@ function panelRevealStyle(
 }
 
 /* Timeline card grounds. Every one of these clears AA with black type — the
-   check that matters, since the card sets ink on the colour. Sapphire is left
-   out for that reason (black on it is 4.40:1). Ten milestones cycle through
+   check that matters, since the card sets ink on the colour. Blue is left
+   out for that reason (black on it is 3.46:1). Ten milestones cycle through
    four grounds, so no two adjacent cards repeat. */
 const STORY_CARD_GROUNDS = [
   "var(--mr-gold)",
-  "var(--mr-verdigris)",
+  "var(--mr-mint)",
   "var(--mr-watermelon)",
   "var(--mr-line)",
 ] as const;

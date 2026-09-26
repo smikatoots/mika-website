@@ -407,10 +407,11 @@ not apply to the other three, which are meant to be used freely.
   Black on it is 5.36:1 and clears AA; white is 3.92:1 and does not, so type on
   watermelon is ink. It may also appear as decoration, but never as a second
   button.
-- **Sunflower Gold** `#FFBD4B`. The signature warm pop. Black type (12.63:1).
-- **Verdigris** `#109180`. The calm counterweight. Black type (5.38:1).
-- **Electric Sapphire** `#555DFF`. The one cool accent. **White type only** —
-  black on it is 4.40:1 and fails AA; white is 4.78:1.
+- **Golden Pollen** `#FFD043`. The signature warm pop. Black type (14.36:1).
+- **Mint Leaf** `#00C68D`. The fresh counterweight. Black type (9.46:1).
+- **Laser Blue** `#005AD9`. The one cool accent. **White type only** — black on
+  it is 3.46:1 and fails AA; white is 6.06:1. It is also the only accent that
+  can be used as text on a light ground (5.73:1 on paper white).
 
 Two interaction states of watermelon exist and are not palette colours in their
 own right: a hover lift `#FF3D68`, and a deepened `#CE3149` for the rare case
@@ -440,9 +441,11 @@ Roles are not assigned here. Which accent grounds a card or a section is a
 decision each surface makes in its own `DESIGN.md`.
 
 > **Migration note (version 3).** Mika's call. Nine accents became four:
-> coral stays as Watermelon (same value); Sun Yellow becomes Sunflower Gold;
-> Teal becomes Verdigris; Periwinkle and Purple both become Electric Sapphire;
-> Lime and Coral Soft are retired. The neutrals collapsed from sixteen to
+> coral stays as Watermelon (same value); Sun Yellow becomes Golden Pollen;
+> Teal and Lime become Mint Leaf; Periwinkle and Purple become Laser Blue;
+> Coral Soft is retired. (An interim draft of v3 used Sunflower Gold
+> `#FFBD4B`, Verdigris `#109180` and Electric Sapphire `#555DFF`; those were
+> replaced the same week.) The neutrals collapsed from sixteen to
 > seven: the body and soft text colours merge into Charcoal, Faint into Muted,
 > Sand, Stone and every border tone into Line, and the rose and teal surface
 > tints into Paper White.

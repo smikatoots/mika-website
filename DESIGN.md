@@ -6,9 +6,9 @@ version: 3
 colors:
   watermelon: "#E8425A"
   watermelon-deep: "#CE3149"
-  gold: "#FFBD4B"
-  verdigris: "#109180"
-  sapphire: "#555DFF"
+  gold: "#FFD043"
+  mint: "#00C68D"
+  blue: "#005AD9"
   ink: "#000000"
   charcoal: "#2F2C29"
   muted: "#6E655C"
@@ -18,7 +18,7 @@ colors:
   white: "#FFFFFF"
   on-watermelon: "#000000"
   on-dark: "#FFFFFF"
-  on-sapphire: "#FBF8F5"
+  on-blue: "#FBF8F5"
 typography:
   display:
     fontFamily: Satoshi
@@ -104,7 +104,7 @@ components:
     rounded: "{rounded.card}"
     padding: 24px
   card-colored:
-    backgroundColor: "{colors.verdigris}"
+    backgroundColor: "{colors.mint}"
     textColor: "{colors.ink}"
     rounded: "{rounded.card}"
     padding: 24px
@@ -134,14 +134,14 @@ components:
   section-dark:
     backgroundColor: "{colors.charcoal}"
     textColor: "{colors.on-dark}"
-  band-sapphire:
-    backgroundColor: "{colors.sapphire}"
-    textColor: "{colors.on-sapphire}"
+  band-blue:
+    backgroundColor: "{colors.blue}"
+    textColor: "{colors.on-blue}"
   divider:
     backgroundColor: "{colors.ink}"
   brand-secondary-mark:
     backgroundColor: "{colors.paper}"
-    textColor: "{colors.verdigris}"
+    textColor: "{colors.blue}"
     typography: "{typography.h3}"
 ---
 
@@ -193,22 +193,26 @@ system wrong, because white-on-red looks right and fails.
 
 ### Decoration
 
-Sunflower gold, verdigris and electric sapphire are grounds, section bands and
-shape fills. None is ever a primary action, and none carries meaning on its own
+Golden pollen, mint leaf and laser blue are grounds, section bands and shape
+fills. None is ever a primary action, and none carries meaning on its own
 — a reader who cannot distinguish them loses nothing.
 
 | Ground | Black on it | White on it | Type |
 |---|---|---|---|
-| Sunflower Gold `#FFBD4B` | 12.63:1 | 1.66:1 | ink |
-| Verdigris `#109180` | 5.38:1 | 3.90:1 | ink |
+| Golden Pollen `#FFD043` | 14.36:1 | 1.46:1 | ink |
+| Mint Leaf `#00C68D` | 9.46:1 | 2.22:1 | ink |
 | Watermelon `#E8425A` | 5.36:1 | 3.92:1 | ink |
-| Electric Sapphire `#555DFF` | **4.40:1** | 4.78:1 | **paper white only** |
+| Laser Blue `#005AD9` | **3.46:1** | 6.06:1 | **paper white only** |
 | Line `#D9CFC2` | 13.6:1 | — | ink |
 
-Sapphire is the exception in the palette and the only ground that inverts its
-type. If a component sets black on sapphire, that is a bug. A paper chip or tag
-sitting on sapphire sets its own ink, since it would otherwise inherit paper
-type and vanish.
+Blue is the exception in the palette and the only ground that inverts its
+type. If a component sets black on blue, that is a bug. A paper chip or tag
+sitting on blue sets its own ink, since it would otherwise inherit paper type
+and vanish.
+
+Blue is also the only accent that works as **text** on a light ground (5.73:1
+on paper). Mint and gold as text are unreadable (2.10:1 and 1.38:1); a link or
+label that wants colour uses blue.
 
 ### Neutrals
 
@@ -384,7 +388,7 @@ for you when you spread it manually, so pair it with `className="mr-pressable"`;
 `border-cream` footer rule.
 
 **Eyebrow pills** sit above a page title in `eyebrow` type, often prefixed
-`✦`, on a paper or accent ground with ink type (paper type on sapphire).
+`✦`, on a paper or accent ground with ink type (paper type on blue).
 
 **Modals** use `panel` radius, `--mr-shadow-frame`, and a
 `rgba(17,17,17,0.45)` scrim. Three different modal shells exist today
@@ -442,7 +446,8 @@ asset needs it.
 
 - Don't add a `zinc-*` color. The warm neutral ramp is the site's; `zinc` is a
   cool grey that quietly makes pages look like a different product.
-- Don't use Watermelon, Verdigris, Gold or Sapphire for body-size text.
+- Don't use Watermelon, Mint or Gold for text at any size on a light ground.
+  Blue is the one accent allowed as text.
   All four fail WCAG AA on white.
 - Don't put a tint on a tint, or carry light borders into a dark section.
 - Don't use `rounded-full` on a button.

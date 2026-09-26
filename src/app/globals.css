@@ -13,13 +13,15 @@
 
      Type on each, checked against WCAG AA (4.5:1):
        Watermelon  black 5.36  white 3.92  -> ink
-       Gold        black 12.63 white 1.66  -> ink
-       Verdigris   black 5.38  white 3.90  -> ink
-       Sapphire    black 4.40  white 4.78  -> white/paper, the one inversion */
+       Gold        black 14.36 white 1.46  -> ink
+       Mint        black 9.46  white 2.22  -> ink
+       Blue        black 3.46  white 6.06  -> white/paper, the one inversion
+     Blue is also the only accent that reads as text on a light ground
+     (5.73:1 on paper); mint and gold never do. */
   --mr-watermelon:        #E8425A;
-  --mr-gold:              #FFBD4B;
-  --mr-verdigris:         #109180;
-  --mr-sapphire:          #555DFF;
+  --mr-gold:              #FFD043;
+  --mr-mint:              #00C68D;
+  --mr-blue:              #005AD9;
   /* Interaction states of Watermelon, not palette colours in their own
      right: the hover lift, and a deepened shade for the rare case that
      needs white type on it (5.05:1). */
@@ -119,7 +121,7 @@
   --color-foreground: var(--mr-ink);
   --color-accent: var(--mr-watermelon);
   --color-accent-hover: var(--mr-watermelon-bright);
-  --color-teal: var(--mr-verdigris);
+  --color-teal: var(--mr-mint);
   --font-display: var(--mr-font-display);
   --font-sans: var(--mr-font-body);
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -268,7 +270,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 /* Pill-shaped hover targets on /link-in-bio: the social icon buttons and the
    footer link. Shared so the two hover states can never drift apart. */
 .bio-social { transition: color var(--mr-dur-lift) var(--mr-ease), background var(--mr-dur-lift) var(--mr-ease); }
-.bio-social:hover { color: var(--mr-verdigris); background: var(--mr-paper); }
+.bio-social:hover { color: var(--mr-blue); background: var(--mr-paper); }
 
 /* ── Shared surface primitives ──────────────────────────────────────
    The applied system, available to every page. DESIGN.md documents the
@@ -590,7 +592,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 }
 
 .mr-navlink:hover {
-  background: var(--mr-verdigris);
+  background: var(--mr-mint);
   color: var(--mr-ink);
 }
 
@@ -807,12 +809,12 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 }
 
 .mr-menuitem:hover {
-  background: var(--mr-verdigris);
+  background: var(--mr-mint);
 }
 
 /* Featured rows carry their own fill, so the hover has to win over it. */
 .mr-menuitem[style]:hover {
-  background: var(--mr-verdigris);
+  background: var(--mr-mint);
 }
 
 .mr-menuitem-desc {
@@ -911,7 +913,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
    throughout and the cards inside it carry their own light ground. The
    linen card-grid section keeps it apart from the charcoal band above. */
 .mr-panel-purple {
-  background: var(--mr-sapphire);
+  background: var(--mr-blue);
   color: var(--mr-paper);
 }
 

@@ -86,7 +86,7 @@ function QualList({
   return (
     <div
       style={{
-        background: isFor ? "var(--mr-verdigris)" : "var(--mr-line)",
+        background: isFor ? "var(--mr-mint)" : "var(--mr-line)",
         border: isFor
           ? "1px solid var(--mr-line)"
           : "1px solid var(--mr-line)",
@@ -515,7 +515,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Learning formats */}
       <section
-        style={{ background: "var(--mr-verdigris)", padding: sectionPad }}
+        style={{ background: "var(--mr-mint)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ How you&apos;ll learn</SectionEyebrow>
@@ -858,7 +858,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Pricing */}
       <section
-        style={{ background: "var(--mr-verdigris)", padding: sectionPad }}
+        style={{ background: "var(--mr-mint)", padding: sectionPad }}
       >
         <div className={container}>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-start">
@@ -964,8 +964,7 @@ export function BuildYourFirstAgentLanding() {
                   <span
                     className="inline-flex rounded-full"
                     style={{
-                      background:
-                        "color-mix(in srgb, var(--mr-verdigris) 14%, white)",
+                      background: "var(--mr-mint)",
                       color: "var(--mr-ink)",
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "var(--mr-text-sm)",

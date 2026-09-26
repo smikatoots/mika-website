@@ -84,9 +84,8 @@ export function LearnAiNavDropdown() {
                   <span
                     className="rounded-full"
                     style={{
-                      background:
-                        "color-mix(in srgb, var(--mr-verdigris) 14%, white)",
-                      color: "var(--mr-verdigris)",
+                      background: "var(--mr-mint)",
+                      color: "var(--mr-ink)",
                       fontSize: "10px",
                       fontWeight: "var(--mr-weight-display)",
                       letterSpacing: "0.06em",

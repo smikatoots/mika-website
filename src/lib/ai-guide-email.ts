@@ -70,7 +70,7 @@ export function buildAiGuideEmail({
   <body style="margin:0;padding:0;background:#F1E8DE;color:#000000;">
     <div style="max-width:560px;margin:0 auto;padding:40px 20px;font-family:${FONT_STACK};">
       <div style="overflow:hidden;border:1px solid #D9CFC2;border-radius:18px;background:#FFFFFF;">
-        <div style="background:#109180;padding:20px 32px;">
+        <div style="background:#00C68D;padding:20px 32px;">
           <p style="margin:0;font-family:${FONT_STACK};font-size:26px;font-weight:400;line-height:1.1;letter-spacing:-.03em;color:#FFFFFF;"><span style="font-weight:700;">Mika Reyes</span> &middot; Time Rich AI</p>
         </div>
         <div style="padding:32px;">

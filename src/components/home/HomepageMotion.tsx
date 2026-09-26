@@ -13,7 +13,7 @@ import { useEffect } from "react";
  * pointer:fine, and fully cleaned up on unmount.
  */
 
-const COLORS = ["#E8425A", "#FFBD4B", "#109180", "#555DFF"];
+const COLORS = ["#E8425A", "#FFD043", "#00C68D", "#005AD9"];
 const SCRAMBLE_CHARS = "!<>-_\\/[]{}—=+*^?#·✦";
 const AWARD_EMOJI = ["🏆", "✦", "🌱", "🚀"];
 
