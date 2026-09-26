@@ -179,6 +179,10 @@
     "width": 1080,
     "height": 1404
   },
+  "/ai-guides/ai-reflection-prompt-storing-memory-second-brain-graph.png": {
+    "width": 1432,
+    "height": 1018
+  },
   "/ai-guides/amol-avasare-hero.png": {
     "width": 1024,
     "height": 576
@@ -563,6 +567,14 @@
     "width": 284,
     "height": 162
   },
+  "/ai-guides/convert-pdf-to-markdown-for-ai-cloudconvert.png": {
+    "width": 878,
+    "height": 770
+  },
+  "/ai-guides/convert-pdf-to-markdown-for-ai-markitdown-repo.png": {
+    "width": 715,
+    "height": 418
+  },
   "/ai-guides/custom-skill-step-4-eval-results.png": {
     "width": 1024,
     "height": 762
@@ -819,6 +831,26 @@
     "width": 1024,
     "height": 596
   },
+  "/ai-guides/how-to-create-bulk-ad-voiceovers-claude-fish-audio-api-keys.png": {
+    "width": 911,
+    "height": 424
+  },
+  "/ai-guides/how-to-create-bulk-ad-voiceovers-claude-fish-audio-claude-mcp-paste.png": {
+    "width": 831,
+    "height": 415
+  },
+  "/ai-guides/how-to-create-bulk-ad-voiceovers-claude-fish-audio-create-api-key.png": {
+    "width": 516,
+    "height": 346
+  },
+  "/ai-guides/how-to-create-bulk-ad-voiceovers-claude-fish-audio-mcp-docs.png": {
+    "width": 1116,
+    "height": 981
+  },
+  "/ai-guides/how-to-create-bulk-ad-voiceovers-claude-fish-audio-storyteller-voice.png": {
+    "width": 696,
+    "height": 602
+  },
   "/ai-guides/how-to-get-started-with-grok-bot-in-1-day-agent-computer-chrome.png": {
     "width": 1431,
     "height": 1090
@@ -858,6 +890,10 @@
   "/ai-guides/how-to-learn-anything-eli5-skill-thariq-tweet.png": {
     "width": 628,
     "height": 694
+  },
+  "/ai-guides/how-to-make-ai-emails-sound-human-human-review-batch.png": {
+    "width": 1444,
+    "height": 828
   },
   "/ai-guides/how-to-set-up-grok-bot-with-7-ideas-debbie-chief-of-staff.png": {
     "width": 1600,
@@ -942,6 +978,18 @@
   "/ai-guides/how-to-use-claude-academy-use-cases-role-filter.png": {
     "width": 1158,
     "height": 851
+  },
+  "/ai-guides/human-review-chat-instructions.png": {
+    "width": 1444,
+    "height": 828
+  },
+  "/ai-guides/human-review-feedback-panel.png": {
+    "width": 790,
+    "height": 649
+  },
+  "/ai-guides/human-review-github-repo.png": {
+    "width": 804,
+    "height": 664
   },
   "/ai-guides/ibkr-claude-ai-instructions-queue.png": {
     "width": 800,
@@ -1239,6 +1287,10 @@
     "width": 2252,
     "height": 982
   },
+  "/ai-guides/stop-collecting-ai-guides-email-box.png": {
+    "width": 385,
+    "height": 341
+  },
   "/ai-guides/subagents-background-tasks-menu.png": {
     "width": 302,
     "height": 422
@@ -1267,6 +1319,14 @@
     "width": 1024,
     "height": 886
   },
+  "/ai-guides/use-subagents-to-catch-ai-mistakes-background-tasks.png": {
+    "width": 815,
+    "height": 554
+  },
+  "/ai-guides/use-subagents-to-catch-ai-mistakes-sycophancy-study.png": {
+    "width": 3200,
+    "height": 1044
+  },
   "/ai-guides/vibe-coding-builders.png": {
     "width": 308,
     "height": 164
@@ -1294,6 +1354,10 @@
   "/ai-guides/wedding-website-travel-guide.png": {
     "width": 422,
     "height": 748
+  },
+  "/ai-guides/weekly-skill-discovery-edit-routine.png": {
+    "width": 1446,
+    "height": 1008
   },
   "/ai-guides/weekly-skill-discovery-routine.png": {
     "width": 1024,
@@ -2334,6 +2398,50 @@
   "/decks/_library/Screenshot 2026-09-15 at 9.42.17 AM.png": {
     "width": 613,
     "height": 536
+  },
+  "/decks/_library/Screenshot 2026-09-23 at 3.21.59 PM.png": {
+    "width": 951,
+    "height": 502
+  },
+  "/decks/_library/Screenshot 2026-09-23 at 3.22.22 PM.png": {
+    "width": 860,
+    "height": 257
+  },
+  "/decks/_library/Screenshot 2026-09-23 at 3.22.29 PM.png": {
+    "width": 924,
+    "height": 291
+  },
+  "/decks/_library/Screenshot 2026-09-23 at 3.23.09 PM.png": {
+    "width": 518,
+    "height": 127
+  },
+  "/decks/_library/Screenshot 2026-09-23 at 3.23.15 PM.png": {
+    "width": 386,
+    "height": 389
+  },
+  "/decks/_library/Screenshot 2026-09-25 at 2.37.51 PM.png": {
+    "width": 2846,
+    "height": 294
+  },
+  "/decks/_library/Screenshot 2026-09-25 at 2.37.57 PM.png": {
+    "width": 2262,
+    "height": 1872
+  },
+  "/decks/_library/Screenshot 2026-09-25 at 4.18.33 PM.png": {
+    "width": 1110,
+    "height": 1620
+  },
+  "/decks/_library/Screenshot 2026-09-25 at 5.36.27 PM.png": {
+    "width": 1230,
+    "height": 964
+  },
+  "/decks/_library/Screenshot 2026-09-26 at 2.55.47 PM.png": {
+    "width": 1320,
+    "height": 1488
+  },
+  "/decks/_library/Screenshot 2026-09-26 at 4.48.39 PM.png": {
+    "width": 2656,
+    "height": 1476
   },
   "/decks/_library/academic.gif": {
     "width": 245,
@@ -4474,5 +4582,45 @@
   "/story-timeline/timeline-terms.jpg": {
     "width": 1600,
     "height": 1200
+  },
+  "/time-rich-club/banner.webp": {
+    "width": 2000,
+    "height": 1000
+  },
+  "/time-rich-club/buildbetter.png": {
+    "width": 511,
+    "height": 137
+  },
+  "/time-rich-club/claude.png": {
+    "width": 1876,
+    "height": 404
+  },
+  "/time-rich-club/dinner.webp": {
+    "width": 1440,
+    "height": 1920
+  },
+  "/time-rich-club/group.webp": {
+    "width": 1920,
+    "height": 1440
+  },
+  "/time-rich-club/milled.png": {
+    "width": 831,
+    "height": 212
+  },
+  "/time-rich-club/presenting.webp": {
+    "width": 1280,
+    "height": 1706
+  },
+  "/time-rich-club/room.webp": {
+    "width": 1920,
+    "height": 1440
+  },
+  "/time-rich-club/selfie.webp": {
+    "width": 2000,
+    "height": 1500
+  },
+  "/time-rich-club/workshop.webp": {
+    "width": 1440,
+    "height": 1920
   }
 }

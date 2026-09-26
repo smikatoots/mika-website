@@ -6,6 +6,11 @@ import { useEffect, useState } from "react";
 import { learnAiNavItems, siteHeaderNavItems } from "@/lib/site-nav";
 import { InternalLink } from "@/components/ui/InternalLink";
 
+// The nav's secondary action sends readers to the newsletter, tagged so
+// Substack's traffic report shows the menu as its own source.
+const SUBSTACK_NAV_URL =
+  "https://mikareyes.substack.com/?utm_source=mikareyes.com&utm_medium=website&utm_campaign=site_nav";
+
 /* The Learn AI dropdown. A paper panel with a hairline edge and the system's
    5px radius — the one place a shadow is allowed, because it genuinely floats
    above the page. Opens on hover and on focus so it is reachable by keyboard,
@@ -134,12 +139,12 @@ export function SiteHeader() {
 
           <div className="mr-navactions">
             <a
-              href="https://instagram.com/its.mikareyes"
+              href={SUBSTACK_NAV_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mr-ghost"
             >
-              Instagram
+              Subscribe
             </a>
             <InternalLink href="/#contact" className="mr-cta" style={{ padding: "10px 22px" }}>
               Work with me
@@ -231,14 +236,14 @@ export function SiteHeader() {
               Work with me
             </InternalLink>
             <a
-              href="https://instagram.com/its.mikareyes"
+              href={SUBSTACK_NAV_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mr-ghost"
               style={{ padding: "16px 24px" }}
               onClick={closeMenu}
             >
-              Instagram
+              Subscribe
             </a>
           </div>
         </div>
