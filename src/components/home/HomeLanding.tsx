@@ -31,13 +31,16 @@ const awards = [
 
 // Destinations come from the live homepage's link map, so the prototype
 // points at the same coverage rather than a second copy that can drift.
+// `ratio` is each file's intrinsic width / height. Width is set from it
+// rather than left to `auto`, because next/image warns whenever the
+// rendered size drifts from the width/height attributes on only one axis.
 const pressLogos = [
-  { label: "Forbes", logo: "/press-logos/forbes.svg", h: 20, href: homeBioLinks.press.forbes },
-  { label: "TechCrunch", logo: "/press-logos/techcrunch-icon.svg", h: 26, href: homeBioLinks.press.techcrunch },
-  { label: "Yahoo!", logo: "/press-logos/yahoo.svg", h: 22, href: homeBioLinks.press.yahoo },
-  { label: "Tech in Asia", logo: "/press-logos/tech-in-asia.png", h: 22, href: homeBioLinks.press.techInAsia },
-  { label: "Rappler", logo: "/press-logos/rappler.png", h: 26, href: homeBioLinks.press.rappler },
-  { label: "Inquirer", logo: "/press-logos/inquirer.svg", h: 18, href: homeBioLinks.press.inquirer },
+  { label: "Forbes", logo: "/press-logos/forbes.svg", h: 20, ratio: 3.818, href: homeBioLinks.press.forbes },
+  { label: "TechCrunch", logo: "/press-logos/techcrunch-icon.svg", h: 26, ratio: 1, href: homeBioLinks.press.techcrunch },
+  { label: "Yahoo!", logo: "/press-logos/yahoo.svg", h: 22, ratio: 3.606, href: homeBioLinks.press.yahoo },
+  { label: "Tech in Asia", logo: "/press-logos/tech-in-asia.png", h: 22, ratio: 5.307, href: homeBioLinks.press.techInAsia },
+  { label: "Rappler", logo: "/press-logos/rappler.png", h: 26, ratio: 3.97, href: homeBioLinks.press.rappler },
+  { label: "Inquirer", logo: "/press-logos/inquirer.svg", h: 18, ratio: 5.364, href: homeBioLinks.press.inquirer },
 ];
 
 const startHere = [
@@ -246,19 +249,22 @@ export function HomeLanding() {
           <span className="mr-caption" style={{ letterSpacing: "0.04em" }}>
             As seen in
           </span>
-          {pressLogos.map(({ label, logo, h, href }) => (
-            <Link key={label} href={href} aria-label={`${label} coverage`}>
-              <Image
-                src={logo}
-                alt={label}
-                width={140}
-                height={h}
-                unoptimized
-                className="mr-presslogo"
-                style={{ height: `${h}px`, width: "auto" }}
-              />
-            </Link>
-          ))}
+          {pressLogos.map(({ label, logo, h, ratio, href }) => {
+            const w = Math.round(h * ratio);
+            return (
+              <Link key={label} href={href} aria-label={`${label} coverage`}>
+                <Image
+                  src={logo}
+                  alt={label}
+                  width={w}
+                  height={h}
+                  unoptimized
+                  className="mr-presslogo"
+                  style={{ height: `${h}px`, width: `${w}px` }}
+                />
+              </Link>
+            );
+          })}
         </div>
         <hr className="mr-rule" />
       </section>
