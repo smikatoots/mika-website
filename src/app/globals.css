@@ -682,6 +682,27 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   .mr-split { grid-template-columns: 1fr 1fr; }
 }
 
+/* Homepage hero — copy left, photo right; stacks copy-first on small
+   screens. The name steps down from full display size inside the column
+   so "Mika Reyes" holds on one line beside the photo. */
+.mr-hero {
+  display: grid;
+  gap: clamp(40px, 6vw, 64px);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+.mr-hero-photo {
+  aspect-ratio: 4 / 3;
+  height: auto;
+}
+
+@media (min-width: 900px) {
+  .mr-hero { grid-template-columns: 1.1fr 0.9fr; }
+  .mr-hero-name { font-size: clamp(52px, 7.2vw, var(--mr-text-display)); }
+  .mr-hero-photo { aspect-ratio: 4 / 5; }
+}
+
 /* ── Confetti: the cut-paper shape library ──────────────────
    Atmosphere, not iconography. Every one of these is decorative
    and aria-hidden; none of them may ever carry meaning, and none
@@ -915,16 +936,14 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   transform: translateY(-3px);
 }
 
-/* ── Press & awards panel ───────────────────────────────────
-   The one purple mass on the page. Black type fails on this fill
-   (3.89:1), so the panel sets paper white throughout and the cards
-   inside it carry their own light ground. It sits directly under the
-   charcoal band, which is two heavy blocks in a row — the linen gap
-   between them is doing the separating, so keep that padding. */
+/* ── Press & awards band ────────────────────────────────────
+   The one purple mass on the page, run full-bleed as a section ground.
+   Black type fails on this fill (3.89:1), so the band sets paper white
+   throughout and the cards inside it carry their own light ground. The
+   linen card-grid section keeps it apart from the charcoal band above. */
 .mr-panel-purple {
   background: var(--mr-purple);
   color: var(--mr-paper);
-  padding: clamp(28px, 4vw, 44px);
 }
 
 .mr-panel-purple .mr-card-paper {

@@ -13,7 +13,8 @@ import {
 /* ────────────────────────────────────────────────────────────
    The mikareyes.com landing page — "designer scrapbook desk".
 
-   Sections run light -> charcoal -> light, one dark band only. The
+   Sections run light -> charcoal -> light, one dark band only, then
+   close on full-bleed purple, lime and yellow bands that butt together. The
    confetti layer lives in the gutters; see DESIGN.md for the rules it
    follows and `Confetti.tsx` for why placements come in pairs.
    ──────────────────────────────────────────────────────────── */
@@ -124,10 +125,10 @@ const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
 ];
 
 const HERO_CONFETTI: ConfettiPlacement[] = [
-  { shape: "sparkle", color: "var(--mr-coral)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: inside(30) }, narrow: { top: "8px", left: "8%" } },
-  { shape: "squiggle", color: "var(--mr-lime)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: inside(16) }, narrow: { bottom: "6px", left: "8%" } },
-  { shape: "zigzag", color: "var(--mr-periwinkle)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: inside(14) }, narrow: { top: "62%", left: "-40px" } },
-  { shape: "dots", color: "var(--mr-coral-soft)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: inside(26) }, narrow: { bottom: "10px", right: "6%" } },
+  { shape: "sparkle", color: "var(--mr-coral)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: outside(18) }, narrow: { top: "8px", left: "8%" } },
+  { shape: "squiggle", color: "var(--mr-lime)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: outside(14) }, narrow: { bottom: "6px", left: "8%" } },
+  { shape: "zigzag", color: "var(--mr-periwinkle)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: outside(12) }, narrow: { top: "62%", left: "-40px" } },
+  { shape: "dots", color: "var(--mr-coral-soft)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: outside(22) }, narrow: { bottom: "10px", right: "6%" } },
 ];
 
 const PRESS_STRIP_CONFETTI: ConfettiPlacement[] = [
@@ -146,7 +147,7 @@ const DARK_CONFETTI: ConfettiPlacement[] = [
 
 const PRESS_AWARDS_CONFETTI: ConfettiPlacement[] = [
   { shape: "sparkle", color: "var(--mr-sun-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "14%", left: outside(14) }, narrow: { top: "6px", left: "4%" } },
-  { shape: "squiggle", color: "var(--mr-periwinkle)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "12px", right: "8%" } },
+  { shape: "squiggle", color: "var(--mr-coral-soft)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "12px", right: "8%" } },
   { shape: "dots", color: "var(--mr-lime)", size: 54, rotate: 8, motion: "shake", duration: 6.5, delay: 1.4, at: { top: "86%", left: outside(20) }, narrow: { top: "6px", right: "6%" } },
 ];
 
@@ -158,7 +159,7 @@ const ADVENTURE_CONFETTI: ConfettiPlacement[] = [
 ];
 
 const SPEAKING_CONFETTI: ConfettiPlacement[] = [
-  { shape: "arc", color: "var(--mr-sun-yellow)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "arc", color: "var(--mr-periwinkle)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
   { shape: "capsule", color: "var(--mr-coral-soft)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: outside(12) }, narrow: { bottom: "8%", right: "-30px" } },
 ];
 
@@ -175,71 +176,47 @@ export function HomeLanding() {
       <header className="mr-section" style={{ overflow: "hidden" }}>
         <ConfettiField items={HERO_CONFETTI} />
 
-        <div className="mr-wrap" style={{ position: "relative", zIndex: 1 }}>
-          <p className="mr-heading" style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto" }}>
-            ✦ AI Educator · Founder · Creator ✦
-          </p>
+        <div className="mr-wrap mr-hero" style={{ position: "relative", zIndex: 1 }}>
+          <div>
+            <p className="mr-subheading">✦ AI Educator · Founder · Creator ✦</p>
 
-          <h1
-            className="mr-display"
-            style={{ textAlign: "center", marginTop: "clamp(24px,4vw,40px)" }}
-          >
-            Mika Reyes
-          </h1>
+            <h1 className="mr-display mr-hero-name" style={{ marginTop: "clamp(16px,3vw,28px)" }}>
+              Mika Reyes
+            </h1>
 
-          <p
-            className="mr-body-lg"
-            style={{
-              maxWidth: "640px",
-              margin: "clamp(24px,4vw,36px) auto 0",
-              textAlign: "center",
-            }}
-          >
-            I help high-achieving founders, creators &amp; professionals use AI to build
-            ambitious, time-rich careers, wealth and lives.
-          </p>
+            <p className="mr-body-lg" style={{ maxWidth: "520px", marginTop: "clamp(20px,3vw,32px)" }}>
+              I help high-achieving founders, creators &amp; professionals use AI to build
+              ambitious, time-rich careers, wealth and lives.
+            </p>
 
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "12px",
-              justifyContent: "center",
-              marginTop: "32px",
-            }}
-          >
-            <a href="#contact" className="mr-cta">
-              Work with me
-            </a>
-            <a
-              href="https://instagram.com/its.mikareyes"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mr-ghost"
-              style={{ padding: "16px 24px" }}
-            >
-              Follow on Instagram
-            </a>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginTop: "32px" }}>
+              <a href="#contact" className="mr-cta">
+                Work with me
+              </a>
+              <a
+                href="https://instagram.com/its.mikareyes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mr-ghost"
+                style={{ padding: "16px 24px" }}
+              >
+                Follow on Instagram
+              </a>
+            </div>
           </div>
 
           {/* Photo, framed as a paper cutout with shapes around it */}
-          <figure
-            style={{
-              position: "relative",
-              width: "min(100%, 720px)",
-              margin: "clamp(48px,7vw,72px) auto 0",
-            }}
-          >
+          <figure style={{ position: "relative" }}>
             <Image
               src="/about-assets/009.jpg"
               alt="Mika Reyes"
               width={720}
-              height={420}
+              height={900}
               priority
               unoptimized
+              className="mr-hero-photo"
               style={{
                 width: "100%",
-                height: "clamp(240px, 42vw, 420px)",
                 objectFit: "cover",
                 objectPosition: "center 18%",
                 borderRadius: "var(--mr-radius-card)",
@@ -393,92 +370,84 @@ export function HomeLanding() {
       </section>
 
       {/* ── Press & awards ──────────────────────────────── */}
-      <section className="mr-section" style={{ paddingTop: "clamp(44px,5vw,56px)" }}>
+      <section className="mr-section mr-panel-purple">
         <ConfettiField items={PRESS_AWARDS_CONFETTI} />
 
         <div className="mr-wrap">
-          <div className="mr-card mr-panel-purple">
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "flex-end",
-                justifyContent: "space-between",
-                gap: "20px",
-              }}
-            >
-              <h2 className="mr-heading-lg">In the press</h2>
-              <Link href="/press" className="mr-ghost mr-ghost-dark">
-                All coverage
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              gap: "20px",
+            }}
+          >
+            <h2 className="mr-heading-lg">In the press</h2>
+            <Link href="/press" className="mr-ghost mr-ghost-dark">
+              All coverage
+            </Link>
+          </div>
+
+          <div className="mr-grid" style={{ marginTop: "36px" }}>
+            {featuredPress.map(({ outlet, title, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="mr-card mr-card-paper"
+                style={{ display: "block" }}
+              >
+                <span className="mr-caption" style={{ letterSpacing: "0.04em" }}>
+                  {outlet}
+                </span>
+                <p className="mr-body-lg" style={{ marginTop: "12px" }}>
+                  {title}
+                </p>
+                <span className="mr-tag" style={{ background: "var(--mr-sand)", marginTop: "20px" }}>
+                  READ →
+                </span>
               </Link>
-            </div>
+            ))}
+          </div>
 
-            <div className="mr-grid" style={{ marginTop: "36px" }}>
-              {featuredPress.map(({ outlet, title, href }) => (
+          <hr className="mr-panel-rule" />
+
+          <p className="mr-caption" style={{ letterSpacing: "0.04em" }}>
+            Awards &amp; fellowships
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
+              gap: "12px",
+              marginTop: "16px",
+            }}
+          >
+            {awards.map(({ label, bg, href }) => {
+              const external = !href.startsWith("/");
+              return (
                 <Link
-                  key={href}
+                  key={label}
                   href={href}
-                  className="mr-card mr-card-paper"
-                  style={{ display: "block" }}
+                  className="mr-award mr-body"
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  style={{ background: bg, color: "var(--mr-ink)", textAlign: "center" }}
                 >
-                  <span className="mr-caption" style={{ letterSpacing: "0.04em" }}>
-                    {outlet}
-                  </span>
-                  <p className="mr-body-lg" style={{ marginTop: "12px" }}>
-                    {title}
-                  </p>
-                  <span className="mr-tag" style={{ background: "var(--mr-sand)", marginTop: "20px" }}>
-                    READ →
-                  </span>
+                  {label}
                 </Link>
-              ))}
-            </div>
-
-            <hr className="mr-panel-rule" />
-
-            <p className="mr-caption" style={{ letterSpacing: "0.04em" }}>
-              Awards &amp; fellowships
-            </p>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
-                gap: "12px",
-                marginTop: "16px",
-              }}
-            >
-              {awards.map(({ label, bg, href }) => {
-                const external = !href.startsWith("/");
-                return (
-                  <Link
-                    key={label}
-                    href={href}
-                    className="mr-award mr-body"
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    style={{ background: bg, color: "var(--mr-ink)", textAlign: "center" }}
-                  >
-                    {label}
-                  </Link>
-                );
-              })}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ── Speaking ────────────────────────────────────── */}
-      <section className="mr-section" style={{ paddingTop: 0 }}>
+      <section className="mr-section" style={{ background: "var(--mr-lime)" }}>
         <ConfettiField items={SPEAKING_CONFETTI} />
 
         <div className="mr-wrap">
-          <div
-            className="mr-card mr-split"
-            style={{
-              background: "var(--mr-lime)",
-              padding: "clamp(24px,4vw,32px)",
-            }}
-          >
+          <div className="mr-split">
             <Image
               src="/about-assets/005.jpg"
               alt="Mika Reyes speaking"
@@ -533,62 +502,56 @@ export function HomeLanding() {
               </div>
             </div>
           </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── Contact ─────────────────────────────────────── */}
-        <section id="contact" className="mr-section" style={{ paddingTop: 0 }}>
-          <ConfettiField items={CONTACT_CONFETTI} />
+      {/* ── Contact ─────────────────────────────────────── */}
+      <section id="contact" className="mr-section" style={{ background: "var(--mr-sun-yellow)" }}>
+        <ConfettiField items={CONTACT_CONFETTI} />
 
-          <div className="mr-wrap">
-            <div
-              className="mr-card"
-              style={{ background: "var(--mr-sun-yellow)", padding: "clamp(28px,5vw,48px)" }}
-            >
-              <div className="mr-split">
-                <div>
-                  <h2 className="mr-heading-lg">Work with me</h2>
-                  <p className="mr-body-lg" style={{ marginTop: "16px", maxWidth: "420px" }}>
-                    Tell me what you&apos;re building and what you need. I read every note
-                    myself.
-                  </p>
-                  <div style={{ marginTop: "28px" }}>
-                    <a href="mailto:ask@kingscrosslabs.com" className="mr-ghost" style={{ padding: "16px 24px" }}>
-                      ask@kingscrosslabs.com
-                    </a>
-                  </div>
-                </div>
-
-                <div>
-                  {contactTypes.map(({ num, title, desc }, i) => (
-                    <div
-                      key={num}
-                      style={{
-                        borderTop: "1px solid var(--mr-ink)",
-                        borderBottom:
-                          i === contactTypes.length - 1 ? "1px solid var(--mr-ink)" : undefined,
-                        paddingBlock: "14px",
-                        display: "flex",
-                        gap: "16px",
-                      }}
-                    >
-                      <span className="mr-caption" style={{ width: "24px", flexShrink: 0 }}>
-                        {num}
-                      </span>
-                      <div>
-                        <p className="mr-body-lg">{title}</p>
-                        <p className="mr-body" style={{ marginTop: "4px" }}>
-                          {desc}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+        <div className="mr-wrap">
+          <div className="mr-split">
+            <div>
+              <h2 className="mr-heading-lg">Work with me</h2>
+              <p className="mr-body-lg" style={{ marginTop: "16px", maxWidth: "420px" }}>
+                Tell me what you&apos;re building and what you need. I read every note
+                myself.
+              </p>
+              <div style={{ marginTop: "28px" }}>
+                <a href="mailto:ask@kingscrosslabs.com" className="mr-ghost" style={{ padding: "16px 24px" }}>
+                  ask@kingscrosslabs.com
+                </a>
               </div>
             </div>
-          </div>
-        </section>
 
-      </div>
+            <div>
+              {contactTypes.map(({ num, title, desc }, i) => (
+                <div
+                  key={num}
+                  style={{
+                    borderTop: "1px solid var(--mr-ink)",
+                    borderBottom:
+                      i === contactTypes.length - 1 ? "1px solid var(--mr-ink)" : undefined,
+                    paddingBlock: "14px",
+                    display: "flex",
+                    gap: "16px",
+                  }}
+                >
+                  <span className="mr-caption" style={{ width: "24px", flexShrink: 0 }}>
+                    {num}
+                  </span>
+                  <div>
+                    <p className="mr-body-lg">{title}</p>
+                    <p className="mr-body" style={{ marginTop: "4px" }}>
+                      {desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
