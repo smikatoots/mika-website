@@ -57,11 +57,11 @@ export function CodeBlock({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="relative my-4 rounded-lg bg-zinc-50">
+    <div className="relative my-6 overflow-hidden rounded-[var(--mr-radius-card)] border border-[var(--mr-ink)] bg-[var(--mr-line)]">
       <button
         type="button"
         onClick={handleCopy}
-        className="absolute right-3 top-3 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-white/90 text-zinc-700 shadow-sm transition hover:bg-white"
+        className="absolute right-3 top-3 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-[var(--mr-radius-card)] border border-[var(--mr-ink)] bg-[var(--mr-paper)] text-[var(--mr-ink)] transition hover:bg-white"
         aria-label="Copy code block"
         title={copied ? "Copied" : "Copy"}
       >
@@ -101,8 +101,8 @@ export function CodeBlock({ children }: { children: ReactNode }) {
           </svg>
         )}
       </button>
-      <pre className="overflow-x-hidden p-4 pr-14 text-sm text-zinc-900">
-        <code className="whitespace-pre-wrap break-words text-zinc-900">
+      <pre className="overflow-x-auto p-4 pr-14 text-sm text-[var(--mr-ink)]">
+        <code className="whitespace-pre-wrap break-words text-[var(--mr-ink)]">
           {codeText}
         </code>
       </pre>

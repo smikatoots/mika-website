@@ -72,20 +72,20 @@ export function buttonStyle({
   if (variant === "secondary") {
     return {
       ...base,
-      background: "var(--mr-surface)",
+      background: "var(--mr-paper)",
       color: "var(--mr-ink)",
-      border: "1.5px solid var(--mr-border-input)",
+      border: "1.5px solid var(--mr-line)",
     };
   }
 
-  // `--mr-coral-deep`, not `--mr-coral`. White on Coral is 3.92:1 and fails
+  // `--mr-red-deep`, not `--mr-red`. White on red is 3.08:1 and fails
   // WCAG AA at every button size on this site; the chrome buttons are 15px and
   // can never reach the large-text exemption. The deepened value measures
-  // 5.05:1 and passes everywhere. Coral remains the approved brand color for
+  // 5.75:1 and passes everywhere. Red remains the approved brand color for
   // every other fill. See DESIGN.md > Colors.
   return {
     ...base,
-    background: "var(--mr-coral-deep)",
+    background: "var(--mr-red-deep)",
     color: "#fff",
     boxShadow: "var(--mr-shadow-cta)",
   };

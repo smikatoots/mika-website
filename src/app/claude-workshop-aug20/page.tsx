@@ -44,25 +44,25 @@ const iteratePrompt =
   "For the selected page/carousel on Paper, can you give me three different iterations of that page? I want you to still use the photo and the text, but you can change the design and the layout. I want to see different versions to see what I like in terms of style. Still use my brand guidelines.";
 
 const secondaryButtonStyle: CSSProperties = {
-  background: "var(--mr-surface)",
+  background: "var(--mr-paper)",
   color: "var(--mr-ink)",
   fontFamily: "var(--mr-font-body)",
   fontSize: "var(--mr-text-sm)",
   fontWeight: "var(--mr-weight-semi)",
   padding: "13px 24px",
   borderRadius: "var(--mr-radius-pill)",
-  border: "1.5px solid var(--mr-border-input)",
+  border: "1.5px solid var(--mr-line)",
 };
 
 function StepLabel({ n, name }: { n?: string; name: string }) {
   return (
     <div className="mb-4 flex items-center gap-2.5">
       <span
-        className="h-3.5 w-0.5 shrink-0 rounded-full bg-[var(--mr-coral)]"
+        className="h-3.5 w-0.5 shrink-0 rounded-full bg-[var(--mr-red)]"
         aria-hidden
       />
       <span
-        className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-coral)]"
+        className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-red-deep)]"
         style={{ fontFamily: "var(--mr-font-body)" }}
       >
         {n ? `${n} · ${name}` : name}
@@ -85,7 +85,7 @@ function Step({
   children: ReactNode;
 }) {
   return (
-    <section className="grid gap-10 border-t border-[var(--mr-border-cream)] py-16 md:grid-cols-[minmax(0,38%)_minmax(0,1fr)] md:gap-16 lg:gap-20">
+    <section className="grid gap-10 border-t border-[var(--mr-line)] py-16 md:grid-cols-[minmax(0,38%)_minmax(0,1fr)] md:gap-16 lg:gap-20">
       <div>
         <StepLabel n={n} name={name} />
         <h2
@@ -95,7 +95,7 @@ function Step({
           {headline}
         </h2>
         <p
-          className="mt-4 max-w-sm text-[length:var(--mr-text-body)] leading-relaxed text-[var(--mr-text-soft)]"
+          className="mt-4 max-w-sm text-[length:var(--mr-text-body)] leading-relaxed text-[var(--mr-charcoal)]"
           style={{ fontFamily: "var(--mr-font-body)" }}
         >
           {body}
@@ -123,14 +123,14 @@ function LinkCard({
 }) {
   return (
     <div
-      className="flex h-full flex-col border border-[var(--mr-border-cream)] bg-white p-6"
+      className="flex h-full flex-col border border-[var(--mr-line)] bg-white p-6"
       style={{
         borderRadius: "var(--mr-radius-card)",
         boxShadow: "var(--mr-shadow-card)",
       }}
     >
       <p
-        className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-coral)]"
+        className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-red-deep)]"
         style={{ fontFamily: "var(--mr-font-body)" }}
       >
         {label}
@@ -151,7 +151,7 @@ function LinkCard({
         {cardTitle}
       </h3>
       <p
-        className="mt-3 mb-6 flex-1 text-[length:var(--mr-text-sm)] leading-relaxed text-[var(--mr-text-soft)]"
+        className="mt-3 mb-6 flex-1 text-[length:var(--mr-text-sm)] leading-relaxed text-[var(--mr-charcoal)]"
         style={{ fontFamily: "var(--mr-font-body)" }}
       >
         {body}
@@ -181,7 +181,7 @@ export default function ClaudeWorkshopAug20Page() {
     <div
       className="min-h-dvh"
       style={{
-        background: "var(--mr-surface-cream)",
+        background: "var(--mr-paper)",
         color: "var(--mr-ink)",
         fontFamily: "var(--mr-font-body)",
       }}
@@ -195,7 +195,7 @@ export default function ClaudeWorkshopAug20Page() {
             Claude Content Workshop
           </h1>
           <p
-            className="mt-5 text-[clamp(18px,2.2vw,24px)] leading-snug text-[var(--mr-text-soft)]"
+            className="mt-5 text-[clamp(18px,2.2vw,24px)] leading-snug text-[var(--mr-charcoal)]"
             style={{ fontFamily: "var(--mr-font-body)" }}
           >
             August 20
@@ -289,14 +289,14 @@ export default function ClaudeWorkshopAug20Page() {
           body="Follow my Substack. Next post is about all my content creation skills, systems, and how I got started to 20k followers."
         >
           <div
-            className="border border-[var(--mr-border-cream)] bg-white p-6"
+            className="border border-[var(--mr-line)] bg-white p-6"
             style={{
               borderRadius: "var(--mr-radius-card)",
               boxShadow: "var(--mr-shadow-card)",
             }}
           >
             <p
-              className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-coral)]"
+              className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-red-deep)]"
               style={{ fontFamily: "var(--mr-font-body)" }}
             >
               Substack

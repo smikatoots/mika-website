@@ -10,16 +10,17 @@ import {
   productLinks,
   type ProductLink,
 } from "@/lib/product-links";
+import { CARD_GROUNDS } from "@/lib/ui/site-styles";
 
 type FilterId = (typeof productLinkCategories)[number]["id"];
 
 const filterPillActive =
   "rounded-full border px-3 py-1.5 text-sm font-semibold transition-[background,border-color,color,transform] duration-300" +
-  " border-[var(--mr-coral)] bg-[var(--mr-surface-rose-2)] text-[var(--mr-coral)] scale-[1.02]";
+  " border-[var(--mr-ink)] bg-[var(--mr-red)] text-[var(--mr-ink)] scale-[1.02]";
 
 const filterPillIdle =
   "rounded-full border px-3 py-1.5 text-sm font-semibold transition-[background,border-color,color,transform] duration-300" +
-  " border-[var(--mr-border)] text-[var(--mr-muted)] hover:border-[var(--mr-coral)] hover:text-[var(--mr-coral)] hover:scale-[1.02]";
+  " border-[var(--mr-line)] text-[var(--mr-ink)] hover:border-[var(--mr-ink)] hover:bg-[var(--mr-paper)] hover:scale-[1.02]";
 
 function trackLinkClick(link: ProductLink) {
   posthog.capture("referral_link_clicked", {
@@ -46,6 +47,7 @@ function ProductLinkCard({
   reduceMotion: boolean;
 }) {
   const showDelay = reduceMotion ? "0ms" : `${visibleIndex * 45}ms`;
+  const ground = CARD_GROUNDS[visibleIndex % CARD_GROUNDS.length];
 
   return (
     <div
@@ -67,23 +69,22 @@ function ProductLinkCard({
         target="_blank"
         onClick={() => trackLinkClick(link)}
         style={{
-          background: "var(--mr-surface)",
-          border: "1px solid var(--mr-border)",
+          // Colour is the container — no border, no shadow.
+          background: ground.bg,
+          color: ground.fg,
           borderRadius: "var(--mr-radius-card)",
           padding: "20px 22px",
-          boxShadow: "var(--mr-shadow-card)",
           textDecoration: "none",
           minHeight: "148px",
         }}
       >
         <h3
-          className="transition-colors group-hover:text-[var(--mr-coral)]"
           style={{
             fontFamily: "var(--mr-font-display)",
             fontSize: "var(--mr-text-h3)",
             fontWeight: "var(--mr-weight-display)",
             letterSpacing: "-0.01em",
-            color: "var(--mr-ink)",
+            color: ground.fg,
             lineHeight: 1.15,
             margin: "0 0 8px",
           }}
@@ -96,7 +97,7 @@ function ProductLinkCard({
             fontFamily: "var(--mr-font-body)",
             fontSize: "var(--mr-text-sm)",
             lineHeight: 1.55,
-            color: "var(--mr-text-soft)",
+            color: ground.fg,
             margin: 0,
           }}
         >
@@ -117,9 +118,8 @@ function ProductLinkCard({
                 fontFamily: "var(--mr-font-body)",
                 fontSize: "var(--mr-text-xs)",
                 fontWeight: "var(--mr-weight-semi)",
-                color: "var(--mr-coral)",
-                background: "var(--mr-surface-rose)",
-                border: "1px solid var(--mr-border-rose)",
+                color: "var(--mr-ink)",
+                background: ground.chip,
                 borderRadius: "var(--mr-radius-chip)",
                 padding: "4px 10px",
                 letterSpacing: "0.04em",

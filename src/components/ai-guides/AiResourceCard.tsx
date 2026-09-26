@@ -2,9 +2,18 @@ import { Ga4TrackedInternalLink } from "@/components/analytics/Ga4TrackedLink";
 
 import { AI_GUIDE_COMING_SOON_SLUGS } from "@/lib/ai-guides/constants";
 import type { AiGuideIndexEntry } from "@/lib/ai-guides/types";
+import { CARD_GROUNDS, cardButton } from "@/lib/ui/site-styles";
 
-export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
+export function AiResourceCard({
+  guide,
+  index = 0,
+}: {
+  guide: AiGuideIndexEntry;
+  /** Grid position, for the colour cycle. */
+  index?: number;
+}) {
   const href = `/ai/${guide.slug}`;
+  const ground = CARD_GROUNDS[index % CARD_GROUNDS.length];
   const legacyComingSoon = AI_GUIDE_COMING_SOON_SLUGS.has(guide.slug);
   const inProgress = guide.status === "coming-soon";
   const cardMuted = legacyComingSoon;
@@ -18,7 +27,7 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
           fontWeight: "var(--mr-weight-display)",
           letterSpacing: "-0.01em",
           lineHeight: 1.2,
-          color: cardMuted ? "var(--mr-muted)" : "var(--mr-ink)",
+          color: ground.fg,
         }}
       >
         {guide.title}
@@ -29,7 +38,7 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
           fontFamily: "var(--mr-font-body)",
           fontSize: "var(--mr-text-sm)",
           lineHeight: 1.55,
-          color: "var(--mr-text-soft)",
+          color: ground.fg,
         }}
       >
         {guide.description}
@@ -43,9 +52,8 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
                 fontFamily: "var(--mr-font-body)",
                 fontSize: "var(--mr-text-xs)",
                 fontWeight: "var(--mr-weight-semi)",
-                color: "var(--mr-muted)",
-                background: "transparent",
-                border: "1px solid var(--mr-border)",
+                color: "var(--mr-ink)",
+                background: ground.chip,
                 borderRadius: "var(--mr-radius-pill)",
                 padding: "2px 10px",
               }}
@@ -55,22 +63,15 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
           ))}
         </div>
       ) : null}
-      <span
-        className="mt-auto pt-4"
-        style={{
-          fontFamily: "var(--mr-font-body)",
-          fontSize: "var(--mr-text-sm)",
-          fontWeight: "var(--mr-weight-semi)",
-          color: cardMuted
-            ? "var(--mr-faint)"
-            : "var(--mr-coral)",
-        }}
-      >
-        {legacyComingSoon
-          ? "Coming soon..."
-          : inProgress
-            ? "Preview →"
-            : `${guide.cta} →`}
+      <span className="pt-5">
+        <span className={cardButton}>
+          {legacyComingSoon
+            ? "Coming soon"
+            : inProgress
+              ? "Preview"
+              : guide.cta}
+          <span aria-hidden="true">→</span>
+        </span>
       </span>
     </>
   );
@@ -82,8 +83,8 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
         style={{
           display: "flex",
           flexDirection: "column",
-          background: "var(--mr-surface-warm)",
-          border: "1px solid var(--mr-border)",
+          background: ground.bg,
+          color: ground.fg,
           borderRadius: "var(--mr-radius-card)",
           padding: "24px",
           opacity: 0.7,
@@ -99,13 +100,11 @@ export function AiResourceCard({ guide }: { guide: AiGuideIndexEntry }) {
       href={href}
       className="mr-lift flex flex-col"
       style={{
-        background: "var(--mr-surface)",
-        border: "1px solid var(--mr-border)",
+        background: ground.bg,
+        color: ground.fg,
         borderRadius: "var(--mr-radius-card)",
         padding: "24px",
-        boxShadow: "var(--mr-shadow-card)",
         textDecoration: "none",
-        color: "inherit",
       }}
       ga4EventName="ai_guide_card_click"
       ga4Params={{

@@ -208,7 +208,7 @@ const slides: SlideInput[] = [
 
   {
     background: {
-      gradient: "linear-gradient(135deg, #E8425A 0%, #0E8C8C 100%)",
+      gradient: "linear-gradient(135deg, #FF5959 0%, #0E8C8C 100%)",
       transition: "fade",
     },
     content: (

@@ -8,7 +8,7 @@
 .deck-root .reveal,
 .reveal-viewport {
   /* Identity primitives, mirrored. The hexes live in globals.css. */
-  --r-background-color: var(--mr-bg, #fff);
+  --r-background-color: var(--mr-linen, #fff);
   --r-main-color: var(--deck-ink);
   --r-heading-color: var(--deck-ink);
 
@@ -44,7 +44,7 @@
 }
 
 .reveal-viewport {
-  background: var(--mr-bg, #fff);
+  background: var(--mr-linen, #fff);
 }
 
 /* globals.css sets `h1..h6 { font-family: var(--mr-font-display) }` so the
@@ -61,6 +61,12 @@
   font-family: var(--font-deck), ui-sans-serif, system-ui, sans-serif;
   letter-spacing: var(--deck-tracking);
   line-height: var(--deck-leading);
+  /* The website's rule sets weight as well as family — its display face has
+     one cut, so its headings must not reach for a heavier one. This surface
+     does have heavier cuts and wants them, so the weight has to be restated
+     here too. Without this line every already-filmed deck silently drops from
+     800 to the website's 600. */
+  font-weight: var(--r-heading-font-weight, 800);
 }
 
 /* ── Slide box ──────────────────────────────────────────────────────────

@@ -8,6 +8,7 @@ import { CourseCta } from "@/components/ai-guides/CourseCta";
 import { FaqSection } from "@/components/ai-guides/FaqSection";
 import { FaqStructuredData } from "@/components/ai-guides/FaqStructuredData";
 import { GuideEmailCapture } from "@/components/ai-guides/GuideEmailCapture";
+import { InstagramVersionCta } from "@/components/ai-guides/InstagramVersionCta";
 import { renderAiGuideMdx } from "@/components/ai-guides/render-ai-guide-mdx";
 import { normalizeAiGuideFaq } from "@/lib/ai-guides/faq";
 import {
@@ -164,6 +165,9 @@ export default async function AiGuidePage({ params }: Props) {
       ) : (
         <div className="mt-10">{content}</div>
       )}
+      {!isComingSoon && frontmatter.instagram ? (
+        <InstagramVersionCta guideSlug={slug} post={frontmatter.instagram} />
+      ) : null}
       {showFaq ? <FaqSection items={faq} /> : null}
       {!isComingSoon ? <CourseCta /> : null}
     </article>

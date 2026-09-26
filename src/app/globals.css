@@ -1,94 +1,155 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────────
+   Tokens. Roles are stable; values moved with the 2026 identity change.
+   See DESIGN.md for the applied system and BRAND.md for what is durable.
+   ───────────────────────────────────────────────────────────────────── */
+
 :root {
-  --mr-coral:         #E8425A;
-  --mr-coral-bright:  #FF3D68;
-  /* Coral darkened until white on it clears WCAG AA (5.05:1) and it clears AA
-     as text on white (5.05:1) and on cream (4.60:1). Used for button grounds
-     and for any coral text at reading size. Coral itself is 3.92:1 and fails
-     both. See DESIGN.md > Colors. */
-  --mr-coral-deep:    #CE3149;
-  --mr-teal:          #0E8C8C;
-  --mr-teal-deep:     #142A2A;
-  --mr-purple:        #6B4DE6;
+  /* ── Accents ──────────────────────────────────────────────────────
+     Four colours, and nothing else carries hue. Red is the one
+     filled-action fill; the other three are decoration — shape fills,
+     card grounds, section bands, tag pills — and never an action.
+     Names are hues, not palette names, so a future swap is a value edit.
 
-  --mr-ink:           #111111;
-  --mr-text:          #3A3A3A;
-  --mr-text-soft:     #4A4A4A;
-  --mr-muted:         #6B6B6B;
-  --mr-faint:         #8A8580;
+     Type on each, checked against WCAG AA (4.5:1):
+       Red     black 6.83  white 3.08  -> ink
+       Yellow  black 14.14 white 1.49  -> ink
+       Aqua    black 9.33  white 2.25  -> ink
+       Green   black 11.15 white 1.88  -> ink
+     All four take ink, so no ground inverts its type. None of them reads
+     as text on a light ground either; coloured type uses red-deep. */
+  --mr-red:               #FF5959;
+  --mr-yellow:            #FACF5A;
+  --mr-aqua:              #49BEB7;
+  --mr-green:             #6FD098;
+  /* Shades of red, not palette colours in their own right: the hover
+     lift, and a deepened red for type and for white-on-red (5.75:1 with
+     white, 5.44:1 as text on paper). */
+  --mr-red-bright:        #FF7A7A;
+  --mr-red-deep:          #B23E3E;
 
-  --mr-bg:            #FFFFFF;
-  --mr-surface:       #FFFFFF;
-  --mr-surface-warm:  #FFFFFF;
-  --mr-surface-rose:  #FCEAEC;
-  --mr-surface-rose-2:#FCE4E2;
-  --mr-surface-teal:  #E8F4F4;
-  --mr-surface-cream: #F7F4EF;
-  --mr-surface-sand:  #FBF1E9;
+  /* ── Neutrals ─────────────────────────────────────────────────────
+     Seven, each with one job. Ink is structural (headings, hairlines,
+     buttons); charcoal is the one dark band and the long-form reading
+     colour; muted is captions and small print; line is every border and
+     the one neutral fill. Linen is the page, paper is a card one tonal
+     step up, white is pill buttons only. */
+  --mr-ink:               #000000;
+  --mr-charcoal:          #2F2C29;
+  --mr-muted:             #6E655C;
+  --mr-line:              #D9CFC2;
+  --mr-linen:             #F1E8DE;
+  --mr-paper:             #FBF8F5;
+  --mr-white:             #FFFFFF;
 
-  --mr-border:        #E4E0D8;
-  --mr-border-warm:   #EFEBE4;
-  --mr-border-rose:   #F6D2D7;
-  --mr-border-teal:   #B4DBDB;
-  --mr-border-cream:  #E8E3DA;
-  --mr-border-input:  #E0DBD3;
-
-  --mr-font-display: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  /* ── Type ─────────────────────────────────────────────────────────
+     Satoshi displays, Hanken reads. Satoshi ships at two weights only,
+     which is deliberate: hierarchy comes from scale and tight negative
+     tracking, never from reaching for a heavier cut. */
+  --mr-font-display: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --mr-font-body:    var(--font-hanken), "Hanken Grotesk", sans-serif;
 
-  --mr-text-display: 60px;
-  --mr-text-h1:      54px;
-  --mr-text-h2:      38px;
-  --mr-text-h3:      24px;
-  --mr-text-stat:    42px;
-  --mr-text-lead:    20px;
-  --mr-text-body:    17px;
-  --mr-text-sm:      15px;
-  --mr-text-xs:      13px;
-  --mr-text-eyebrow: 12px;
+  --mr-text-display: 100px;
+  --mr-text-h1:      68px;
+  --mr-text-h2:      44px;
+  --mr-text-h3:      28px;
+  --mr-text-stat:    48px;
+  --mr-text-lead:    21px;
+  --mr-text-body:    18px;
+  --mr-text-sm:      16px;
+  --mr-text-xs:      14px;
+  --mr-text-eyebrow: 13px;
+
+  /* Tracking tightens as type grows — that is what makes it editorial. */
+  --mr-track-display: -0.014em;
+  --mr-track-h1:      -0.034em;
+  --mr-track-h2:      -0.034em;
+  --mr-track-h3:      -0.057em;
+  --mr-track-body:    -0.05em;
 
   --mr-weight-body:    400;
   --mr-weight-medium:  500;
   --mr-weight-semi:    600;
-  --mr-weight-display: 700;
-  --mr-weight-heavy:   800;
+  --mr-weight-display: 600;
+  /* No heavier cut exists. This name is kept so old call sites resolve. */
+  --mr-weight-heavy:   600;
 
+  /* ── Shape ────────────────────────────────────────────────────────
+     5px is the structural radius for everything rectangular. Pill radii
+     are button-exclusive. */
+  --mr-radius-card:  5px;
+  --mr-radius-panel: 5px;
+  --mr-radius-chip:  5px;
+  --mr-radius-input: 5px;
   --mr-radius-pill:  100px;
-  --mr-radius-card:  18px;
-  --mr-radius-panel: 22px;
-  --mr-radius-input: 10px;
-  --mr-radius-chip:  14px;
+  --mr-radius-cta:   160px;
 
-  --mr-shadow-card:  0 6px 16px -10px rgba(150,100,40,.30);
-  --mr-shadow-lift:  0 12px 28px -8px rgba(0,0,0,.22);
-  --mr-shadow-cta:   0 12px 24px -8px rgba(232,66,90,.60);
-  --mr-shadow-frame: 0 26px 56px -22px rgba(20,42,42,.45);
+  /* ── Elevation ────────────────────────────────────────────────────
+     The system is flat. Surfaces separate by tonal step and hairline,
+     not by shadow, so the card and frame shadows resolve to none. The
+     one exception is a floating panel that genuinely sits above the
+     page, like the nav dropdown. */
+  --mr-shadow-card:  none;
+  --mr-shadow-frame: none;
+  --mr-shadow-cta:   none;
+  --mr-shadow-lift:  none;
+  --mr-shadow-panel: rgba(0, 0, 0, 0.13) 1px 0 5px 0, rgba(0, 0, 0, 0.08) 2px 2px 4px 1px;
 
   --mr-space-section: 64px;
   --mr-space-gutter:  40px;
   --mr-space-gap:     28px;
+  --mr-max:           1200px;
+
+  /* Where the content column's edge falls inside a full-bleed section.
+     Decorative shapes anchor to this rather than to the viewport, so
+     they hold the same distance from the content at any width. */
+  --mr-edge: max(24px, calc((100% - 1200px) / 2 + 24px));
 
   --mr-ease:        cubic-bezier(.2,.8,.3,1);
   --mr-dur-press:   .15s;
   --mr-dur-lift:    .25s;
 
   /* legacy compat */
-  --background: var(--mr-bg);
+  --background: var(--mr-linen);
   --foreground: var(--mr-ink);
-  --accent: var(--mr-coral);
-  --accent-hover: var(--mr-coral-bright);
+  --accent: var(--mr-red);
+  --accent-hover: var(--mr-red-bright);
 }
 
 @theme inline {
-  --color-background: var(--mr-bg);
+  --color-background: var(--mr-linen);
   --color-foreground: var(--mr-ink);
-  --color-accent: var(--mr-coral);
-  --color-accent-hover: var(--mr-coral-bright);
-  --color-teal: var(--mr-teal);
+  --color-accent: var(--mr-red);
+  --color-accent-hover: var(--mr-red-bright);
+  --color-teal: var(--mr-aqua);
   --font-display: var(--mr-font-display);
   --font-sans: var(--mr-font-body);
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* ── The zinc bridge ────────────────────────────────────────────────
+   Roughly twice as many components reach for Tailwind's `zinc-*` scale
+   as reach for the tokens above — the drift DESIGN.md has been calling
+   out. Re-pointing the ramp at warm neutrals means those components
+   inherit the new ground instead of sitting cool-grey on warm linen,
+   without every one of them having to be rewritten first.
+
+   This is a bridge, not an endorsement. New work uses the tokens; a
+   component being migrated should drop its `zinc-*` classes rather than
+   rely on these values. */
+@theme {
+  --color-zinc-50:  #FBF8F5;
+  --color-zinc-100: #F1E8DE;
+  --color-zinc-200: #D9CFC2;
+  --color-zinc-300: #D9CFC2;
+  --color-zinc-400: #6E655C;
+  --color-zinc-500: #6E655C;
+  --color-zinc-600: #6E655C;
+  --color-zinc-700: #2F2C29;
+  --color-zinc-800: #2F2C29;
+  --color-zinc-900: #2F2C29;
+  --color-zinc-950: #000000;
 }
 
 @keyframes mr-float      { 0%,100%{transform:translateY(0) rotate(var(--rot,0deg));} 50%{transform:translateY(-10px) rotate(var(--rot,0deg));} }
@@ -136,16 +197,19 @@
 }
 
 body {
-  background: var(--mr-bg);
+  background: var(--mr-linen);
   color: var(--mr-ink);
   font-family: var(--mr-font-body);
 }
 
-/* Headings are Bricolage everywhere. `body` is Hanken, so without this rule any
+/* Headings are Satoshi everywhere. `body` is Hanken, so without this rule any
    heading that doesn't set a family inherits the BODY font — which is exactly
    how article titles on /blog/<post> and /ai/<guide> drifted off-brand while
    their index pages (which go through PageHero) stayed correct.
-   See DESIGN.md > Typography. */
+
+   The weight and tracking are here for the same reason: the system is a single
+   display weight with tight negative tracking, and a heading that opts out of
+   either stops looking like the rest of the site. See DESIGN.md > Typography. */
 h1,
 h2,
 h3,
@@ -153,7 +217,15 @@ h4,
 h5,
 h6 {
   font-family: var(--mr-font-display);
+  font-weight: var(--mr-weight-display);
+  letter-spacing: var(--mr-track-h2);
+  /* Satoshi ships two cuts. Never let a browser fake a third. */
+  font-synthesis-weight: none;
 }
+
+h1 { letter-spacing: var(--mr-track-h1); line-height: 1.02; }
+h2 { letter-spacing: var(--mr-track-h2); line-height: 1.1; }
+h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 
 /* ── Homepage motion layer (see HomepageMotion.tsx) ──────────────────
    Keyframes and cursor rules consumed by the client-side motion layer.
@@ -199,4 +271,729 @@ h6 {
 /* Pill-shaped hover targets on /link-in-bio: the social icon buttons and the
    footer link. Shared so the two hover states can never drift apart. */
 .bio-social { transition: color var(--mr-dur-lift) var(--mr-ease), background var(--mr-dur-lift) var(--mr-ease); }
-.bio-social:hover { color: var(--mr-teal); background: var(--mr-surface-teal); }
+.bio-social:hover { color: var(--mr-red-deep); background: var(--mr-paper); }
+
+/* ── Shared surface primitives ──────────────────────────────────────
+   The applied system, available to every page. DESIGN.md documents the
+   rules these encode; the short version is that colour is the container,
+   5px is the structural radius, and pill radii belong to buttons only. */
+
+.mr-card {
+  border-radius: var(--mr-radius-card);
+  padding: 24px;
+}
+
+.mr-card-paper {
+  background: var(--mr-paper);
+}
+
+/* The one filled action. Ink on coral, never white — see the token note. */
+.mr-cta {
+  display: inline-block;
+  background: var(--mr-red);
+  color: var(--mr-ink);
+  border: 1px solid var(--mr-ink);
+  border-radius: var(--mr-radius-cta);
+  padding: 16px 24px;
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-body);
+  letter-spacing: var(--mr-track-body);
+  text-decoration: none;
+  transition: transform var(--mr-dur-press) var(--mr-ease);
+}
+
+.mr-ghost {
+  display: inline-block;
+  background: var(--mr-white);
+  color: var(--mr-ink);
+  border: 1px solid var(--mr-ink);
+  border-radius: var(--mr-radius-pill);
+  padding: 8px 20px;
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-body);
+  letter-spacing: var(--mr-track-body);
+  text-decoration: none;
+  transition: transform var(--mr-dur-press) var(--mr-ease);
+}
+
+.mr-ghost-dark {
+  background: transparent;
+  color: var(--mr-white);
+  border-color: var(--mr-white);
+}
+
+.mr-tag {
+  display: inline-block;
+  border-radius: var(--mr-radius-chip);
+  padding: 5px 8px;
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-eyebrow);
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.mr-rule {
+  height: 1px;
+  border: 0;
+  background: var(--mr-ink);
+  margin: 0;
+}
+
+/* `.mr-root a { color: inherit }` is (0,1,1) and lands after these rules, so it
+   was overriding the buttons' own colour. On a light ground that is invisible —
+   inherited colour is ink anyway — but inside the charcoal band the CTA came
+   out white on coral at 3.92:1. Doubling the class outranks the reset without
+   weakening it for ordinary links. */
+.mr-cta.mr-cta {
+  color: var(--mr-ink);
+}
+
+.mr-ghost.mr-ghost {
+  color: var(--mr-ink);
+}
+
+.mr-ghost-dark.mr-ghost-dark {
+  color: var(--mr-white);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mr-cta:hover,
+  .mr-ghost:hover {
+    transform: translateY(-2px);
+  }
+}
+/* ─────────────────────────────────────────────────────────────
+   The applied visual system — "designer scrapbook desk".
+
+   Warm linen ground, one filled action in coral, colour-as-container
+   cards at a 5px radius, one charcoal band per page, and a layer of
+   cut-paper shapes in the gutters. DESIGN.md is the reference for the
+   rules these encode; BRAND.md owns what is durable underneath them.
+
+   `.mr-root` wraps a page that opts into the full system. Individual
+   primitives work anywhere.
+   ───────────────────────────────────────────────────────────── */
+
+.mr-root {
+  min-height: 100vh;
+  background: var(--mr-linen);
+  color: var(--mr-ink);
+  font-family: var(--mr-font-body);
+  font-weight: var(--mr-weight-body);
+  font-size: var(--mr-text-body);
+  line-height: 1.2;
+  letter-spacing: var(--mr-track-body);
+  /* Satoshi ships two cuts. Never let a browser fake a third. */
+  font-synthesis-weight: none;
+}
+
+.mr-root *,
+.mr-root *::before,
+.mr-root *::after {
+  box-sizing: border-box;
+}
+
+.mr-root h1,
+.mr-root h2,
+.mr-root h3,
+.mr-root p,
+.mr-root figure {
+  margin: 0;
+}
+
+.mr-root a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mr-root img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Type roles ─────────────────────────────────────────── */
+
+.mr-display {
+  font-family: var(--mr-font-display);
+  font-weight: var(--mr-weight-display);
+  font-size: clamp(52px, 11vw, var(--mr-text-display));
+  line-height: 1;
+  letter-spacing: -0.014em;
+}
+
+.mr-heading-lg {
+  font-family: var(--mr-font-display);
+  font-weight: var(--mr-weight-display);
+  font-size: clamp(38px, 7vw, var(--mr-text-h1));
+  line-height: 1;
+  letter-spacing: -0.034em;
+}
+
+.mr-heading {
+  font-family: var(--mr-font-display);
+  font-weight: var(--mr-weight-display);
+  font-size: clamp(24px, 4vw, var(--mr-text-h2));
+  line-height: 1.1;
+  letter-spacing: -0.034em;
+}
+
+.mr-subheading {
+  font-family: var(--mr-font-display);
+  font-weight: var(--mr-weight-display);
+  font-size: clamp(22px, 3.4vw, var(--mr-text-h3));
+  line-height: 1.1;
+  letter-spacing: -0.057em;
+}
+
+.mr-body-lg {
+  font-size: var(--mr-text-lead);
+  line-height: 1.35;
+  letter-spacing: -0.05em;
+}
+
+.mr-body {
+  font-size: var(--mr-text-body);
+  line-height: 1.35;
+  letter-spacing: -0.05em;
+}
+
+.mr-caption {
+  font-size: var(--mr-text-eyebrow);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Layout ─────────────────────────────────────────────── */
+
+.mr-wrap {
+  max-width: var(--mr-max);
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+.mr-section {
+  padding-block: clamp(56px, 9vw, 96px);
+  /* Positioning context for the confetti layer. `overflow: hidden` lets the
+     narrow placements hang off the page edge — that bleed is the effect —
+     without any of them opening a horizontal scrollbar. */
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Nav ────────────────────────────────────────────────── */
+
+.mr-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--mr-linen);
+  /* A hairline, the same one the pills carry, instead of the reference's
+     nav shadow — the page reads flatter and the bar stops floating. */
+  border-bottom: 1px solid var(--mr-ink);
+}
+
+.mr-nav-inner {
+  max-width: var(--mr-max);
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Footer lockup: mark plus wordline. */
+.mr-navmark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mr-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  flex-shrink: 0;
+  /* Hairline ring so the mark reads as a pressed sticker on the linen,
+     the same treatment the ghost pills get. */
+  border: 1px solid var(--mr-ink);
+  transition: transform 0.15s ease;
+}
+
+.mr-badge:hover {
+  transform: translateY(-2px) rotate(-6deg);
+}
+
+.mr-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mr-navright {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Hamburger. Replaces the old text button, and hard right like everything
+   else in the bar. The three bars fold into a cross when the panel opens. */
+.mr-hamburger {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--mr-ink);
+  border-radius: var(--mr-radius-card);
+  background: var(--mr-ink);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mr-hamburger-bars {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 12px;
+}
+
+.mr-hamburger-bars span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--mr-paper);
+  transition: transform 0.2s ease, opacity 0.15s ease;
+}
+
+.mr-hamburger-bars span:nth-child(1) { top: 0; }
+.mr-hamburger-bars span:nth-child(2) { top: 5px; }
+.mr-hamburger-bars span:nth-child(3) { top: 10px; }
+
+.mr-hamburger-bars[data-open] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.mr-hamburger-bars[data-open] span:nth-child(2) { opacity: 0; }
+.mr-hamburger-bars[data-open] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+.mr-navlinks {
+  display: none;
+  gap: 6px;
+  align-items: center;
+}
+
+.mr-navlink {
+  padding: 8px 14px;
+  border-radius: var(--mr-radius-pill);
+  letter-spacing: -0.06em;
+  transition: background 0.15s ease;
+}
+
+.mr-navlink:hover {
+  background: var(--mr-aqua);
+  color: var(--mr-ink);
+}
+
+.mr-navactions {
+  /* Compressed, these move into the Menu panel rather than crowding the
+     bar next to the logo. */
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Dark editorial band ────────────────────────────────── */
+
+.mr-dark {
+  background: var(--mr-charcoal);
+  color: var(--mr-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Grids ──────────────────────────────────────────────── */
+
+.mr-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .mr-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1000px) {
+  .mr-grid { grid-template-columns: repeat(4, 1fr); }
+  .mr-navlinks { display: flex; }
+  /* Once the links sit inline there is nothing left for the hamburger to
+     reveal, so it goes away rather than duplicating the nav. */
+  .mr-hamburger { display: none; }
+  .mr-navactions { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mr-root * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Two-up editorial split — stacks on small screens. */
+.mr-split {
+  display: grid;
+  gap: clamp(24px, 4vw, 40px);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .mr-split { grid-template-columns: 1fr 1fr; }
+}
+
+/* Homepage hero — copy left, photo right; stacks copy-first on small
+   screens. The name steps down from full display size inside the column
+   so "Mika Reyes" holds on one line beside the photo. */
+.mr-hero {
+  display: grid;
+  gap: clamp(40px, 6vw, 64px);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+.mr-hero-photo {
+  aspect-ratio: 4 / 3;
+  height: auto;
+}
+
+@media (min-width: 900px) {
+  .mr-hero { grid-template-columns: 1.1fr 0.9fr; }
+  .mr-hero-name { font-size: clamp(52px, 7.2vw, var(--mr-text-display)); }
+  .mr-hero-photo { aspect-ratio: 4 / 5; }
+}
+
+/* ── Confetti: the cut-paper shape library ──────────────────
+   Atmosphere, not iconography. Every one of these is decorative
+   and aria-hidden; none of them may ever carry meaning, and none
+   may sit where it can land on running text.
+
+   Position and size are driven entirely by custom properties, so
+   a single instance can hold two placements: the wide one, and a
+   narrow one that takes over below the gutter breakpoint. That is
+   what lets them survive a phone instead of being switched off —
+   narrow placements either hug the page edge, where the 24px
+   wrap padding leaves a clear strip, or sit inside a section's
+   vertical padding band, which is empty across the full width.
+
+   Every instance animates. `--dur` and `--delay` are staggered per
+   placement so nothing falls into lockstep. */
+.mr-confetti {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--c, var(--mr-red));
+  width: var(--w);
+  height: var(--w);
+  top: var(--t, auto);
+  right: var(--rr, auto);
+  bottom: var(--b, auto);
+  left: var(--l, auto);
+  animation-duration: var(--dur, 6s);
+  animation-delay: var(--delay, 0s);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  /* Fallback for reduced motion, where no animation applies the tilt. */
+  transform: rotate(var(--rot, 0deg));
+}
+
+@media (max-width: 1199px) {
+  .mr-confetti {
+    width: calc(var(--w) * 0.62);
+    height: calc(var(--w) * 0.62);
+    top: var(--nt, var(--t, auto));
+    right: var(--nr, var(--rr, auto));
+    bottom: var(--nb, var(--b, auto));
+    left: var(--nl, var(--l, auto));
+  }
+}
+
+.mr-confetti svg {
+  display: block;
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes mr-bob {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50%      { transform: translateY(-14px) rotate(var(--rot, 0deg)); }
+}
+
+@keyframes mr-sway {
+  0%, 100% { transform: translate(0, 0) rotate(var(--rot, 0deg)); }
+  33%      { transform: translate(9px, -11px) rotate(calc(var(--rot, 0deg) + 7deg)); }
+  66%      { transform: translate(-8px, 6px) rotate(calc(var(--rot, 0deg) - 6deg)); }
+}
+
+@keyframes mr-spin {
+  from { transform: rotate(var(--rot, 0deg)); }
+  to   { transform: rotate(calc(var(--rot, 0deg) + 360deg)); }
+}
+
+@keyframes mr-twist {
+  0%, 100% { transform: rotate(calc(var(--rot, 0deg) - 14deg)); }
+  50%      { transform: rotate(calc(var(--rot, 0deg) + 14deg)); }
+}
+
+@keyframes mr-shake {
+  0%, 100%     { transform: translateX(0) rotate(var(--rot, 0deg)); }
+  20%, 60%     { transform: translateX(-6px) rotate(calc(var(--rot, 0deg) - 4deg)); }
+  40%, 80%     { transform: translateX(6px) rotate(calc(var(--rot, 0deg) + 4deg)); }
+}
+
+@keyframes mr-drift {
+  0%, 100% { transform: translate(0, 0) rotate(var(--rot, 0deg)); }
+  25%      { transform: translate(12px, -8px) rotate(calc(var(--rot, 0deg) + 10deg)); }
+  50%      { transform: translate(0, -16px) rotate(var(--rot, 0deg)); }
+  75%      { transform: translate(-12px, -8px) rotate(calc(var(--rot, 0deg) - 10deg)); }
+}
+
+@keyframes mr-pulse {
+  0%, 100% { transform: scale(1) rotate(var(--rot, 0deg)); }
+  50%      { transform: scale(1.18) rotate(calc(var(--rot, 0deg) + 5deg)); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mr-bob   { animation-name: mr-bob; }
+  .mr-sway  { animation-name: mr-sway; }
+  .mr-spin  { animation-name: mr-spin; animation-timing-function: linear; }
+  .mr-twist { animation-name: mr-twist; }
+  .mr-shake { animation-name: mr-shake; }
+  .mr-drift { animation-name: mr-drift; }
+  .mr-pulse { animation-name: mr-pulse; }
+}
+
+/* Press logos sit back until hovered, so the strip reads as one texture
+   rather than six competing marks. */
+.mr-presslogo {
+  opacity: 0.72;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.mr-presslogo:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* ── Learn AI dropdown ──────────────────────────────────────── */
+
+.mr-menupanel {
+  width: 340px;
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  background: var(--mr-paper);
+  border: 1px solid var(--mr-ink);
+  border-radius: var(--mr-radius-card);
+  box-shadow: var(--mr-shadow-panel);
+}
+
+.mr-menuitem {
+  display: block;
+  padding: 14px 14px 15px;
+  border-radius: var(--mr-radius-card);
+  transition: background 0.15s ease;
+}
+
+.mr-menuitem:hover {
+  background: var(--mr-aqua);
+}
+
+/* Featured rows carry their own fill, so the hover has to win over it. */
+.mr-menuitem[style]:hover {
+  background: var(--mr-aqua);
+}
+
+.mr-menuitem-desc {
+  display: block;
+  margin-top: 6px;
+  text-transform: none;
+  opacity: 0.72;
+  line-height: 1.4;
+}
+
+/* ── Collapsed nav ──────────────────────────────────────────
+   A stacked list, mirroring the live site's mobile header: one row
+   per nav item, with Learn AI expanding in place to its sub-items
+   rather than pushing anyone to a second screen. */
+
+.mr-mobilenav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mr-mobilerow {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--mr-line, rgba(0, 0, 0, 0.12));
+  background: none;
+  font: inherit;
+  font-size: var(--mr-text-lead);
+  letter-spacing: -0.05em;
+  color: var(--mr-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: padding-left 0.15s ease;
+}
+
+.mr-mobilerow:hover {
+  padding-left: 10px;
+}
+
+.mr-mobilechevron {
+  font-size: 10px;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.mr-mobilerow[aria-expanded="true"] .mr-mobilechevron {
+  transform: rotate(180deg);
+}
+
+.mr-mobilesub {
+  display: block;
+  padding: 15px 4px 16px 20px;
+  border-bottom: 1px solid var(--mr-line, rgba(0, 0, 0, 0.12));
+  background: var(--mr-paper);
+}
+
+.mr-mobilesub-desc {
+  display: block;
+  margin-top: 6px;
+  text-transform: none;
+  opacity: 0.72;
+  line-height: 1.35;
+}
+
+.mr-featured {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 7px;
+  border-radius: var(--mr-radius-card);
+  background: var(--mr-yellow);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* Award pills. Links, not labels — each one points at the coverage. */
+.mr-award {
+  display: inline-block;
+  border-radius: var(--mr-radius-card);
+  padding: 12px 18px;
+  transition: transform 0.15s ease;
+}
+
+.mr-award:hover {
+  transform: translateY(-3px);
+}
+
+/* ── Press & awards band ────────────────────────────────────
+   The green mass on the page, run full-bleed as a section ground, with
+   ink type like every other accent. The cards inside it carry their own
+   paper ground. */
+.mr-press-band {
+  background: var(--mr-green);
+  color: var(--mr-ink);
+}
+
+.mr-press-band .mr-card-paper {
+  color: var(--mr-ink);
+}
+
+/* ── Time Rich Club bento ───────────────────────────────────
+   Four columns on desktop: landscape photos stack on the left, the
+   portraits run two rows tall, and the logos and sponsor tiles close
+   the bottom row either side of the last portrait. Collapses to two
+   columns, then one. */
+.mr-bento {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "banner" "talk" "group" "dinner" "selfie" "present" "room" "logos" "cta";
+}
+
+.mr-bento-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--mr-radius-card);
+  background: var(--mr-line);
+  min-height: 260px;
+}
+
+/* The banner holds its own 2:1 so its lettering never crops; the row it
+   sits in takes that height. */
+.mr-bento-banner {
+  aspect-ratio: 2 / 1;
+  min-height: 0;
+}
+
+.mr-bento-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  text-decoration: none;
+}
+
+.mr-bento-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 36px;
+}
+
+@media (min-width: 640px) {
+  .mr-bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "banner  banner"
+      "talk    dinner"
+      "talk    dinner"
+      "group   group"
+      "present selfie"
+      "present room"
+      "logos   cta";
+    grid-auto-rows: minmax(220px, auto);
+  }
+}
+
+@media (min-width: 1000px) {
+  .mr-bento {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "banner banner talk    dinner"
+      "group  group  talk    dinner"
+      "selfie selfie present room"
+      "logos  logos  present cta";
+    grid-auto-rows: minmax(220px, auto);
+  }
+}
+
+.mr-panel-rule {
+  height: 1px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.2);
+  margin: clamp(32px, 4vw, 44px) 0 clamp(20px, 3vw, 28px);
+}

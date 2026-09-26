@@ -5,7 +5,7 @@ brand: ../../../BRAND.md
 version: alpha
 colors:
   primary: "#111111"
-  accent: "#E8425A"
+  accent: "#FF5959"
   neutral: "#FFFFFF"
   secondary: "#52525B"
   meta: "#71717A"
@@ -144,11 +144,11 @@ URL hash (`#/3`), not a `?slide=` query param.
 ## Colors
 
 Values are mirrored from the brand's approved identity colors; the role names
-are assigned here. The accent is the brand Coral, unchanged.
+are assigned here. The accent is the brand red `#FF5959`, which replaced coral `#E8425A` in BRAND.md v3.
 
 | Role | Brand color | Value | Origin |
 |---|---|---|---|
-| `accent` | Coral (mandatory) | `#E8425A` | Mirrored |
+| `accent` | Coral (mandatory) | `#FF5959` | Mirrored |
 | `neutral` | White (mandatory) | `#FFFFFF` | Mirrored |
 | `primary` | Ink (mandatory) | `#111111` | Mirrored |
 | `on-accent` | White | `#FFFFFF` | Mirrored |
@@ -167,7 +167,7 @@ message-bearing text on this surface.
 
 - **Primary `#111111`** — the brand Ink, mirrored. Every headline, statement,
   and step label. Referenced as `var(--deck-ink)`, never as a literal.
-- **Accent `#E8425A`** — the approved brand Coral, mirrored. Highlighted words
+- **Accent `#FF5959`** — the approved brand Coral, mirrored. Highlighted words
   inside a statement, step numbers, the CTA pill, the active progress dot.
 - **Neutral `#FFFFFF`** — the ground. Always pure white, never a tinted surface.
 - **Secondary `#52525B`** — upcoming step numbers, nav button glyphs.
@@ -182,7 +182,7 @@ never more than one accent element competing for the eye on a slide. The brand
 file is explicit that coral means something because it is rare; on a surface
 this large, a second coral element halves the value of the first.
 
-**White on coral is a large-text-only pairing.** It measures 3.92:1, which is
+**White on coral is a large-text-only pairing.** It measures 3.08:1 with red `#FF5959`, which is
 below the 4.5:1 WCAG AA floor for normal text and above the 3:1 floor that
 applies to large text. Every use of it in this system is far into large-text
 territory: the CTA headline is 176px and the step marker number is 48px bold,
@@ -201,19 +201,34 @@ failing the 3:1 floor for interactive components). Both now pass. Do not
 reintroduce `zinc-400` or lighter for text or for a control on this surface.
 
 **Never hardcode the accent hex.** `--deck-accent` is defined once in
-`deck.css` as `var(--mr-coral)`, which resolves to the approved brand value in
+`deck.css` as `var(--mr-red)`, which resolves to the approved brand value in
 `globals.css`. Slides and SVGs reference `var(--deck-accent)`. Decks built
 before 2026-08-24 hardcode a retired salmon `#fd4869`; that is legacy, not a
 pattern to copy.
 
 ## Typography
 
-**Inter** for everything with a voice, Geist Mono for step numbers.
+**Inter** for everything with a voice, Geist Mono for step numbers — see the
+migration note directly below before adding a new deck.
 
-Inter is an **approved brand voice**, mirrored from BRAND.md `version: 2`, which
-splits the two faces by surface: Bricolage Grotesque for the website, Inter for
-the decks. Bricolage does not belong on a slide, and Inter does not belong on a
-web page — neither is a variation, both are off-brand.
+> **This surface is mid-migration. Read this before making a new deck.**
+>
+> BRAND.md version 2 retired the surface split. **Satoshi is now the display
+> voice everywhere, decks included**, and Inter is retired for new work.
+>
+> `deck.css` has deliberately not been repointed. Every deck shares it, so
+> switching the token would re-type all sixty-odd already-filmed decks at once
+> — and those are finished artefacts with videos recorded against them. They are
+> **grandfathered, not off-brand**: an existing deck set in Inter is correct and
+> should be left alone.
+>
+> What that leaves is a real gap: there is no mechanism yet for a *new* deck to
+> take Satoshi without dragging the old ones with it. Closing it means either a
+> per-deck opt-in or a dated cutover, and that is a decision, not a cleanup.
+> Until it is made, a new deck built today will come out in Inter — which is
+> off-brand under version 2. Flag it rather than quietly shipping it.
+
+The rest of this section describes the surface as it stands today, in Inter.
 
 Inter is more neutral than Bricolage and reads loose at display sizes, so this
 surface tightens both axes. Two tokens in `deck.css`, and everything follows
@@ -356,7 +371,7 @@ Two shadows exist, both doing a specific job rather than expressing hierarchy:
 - **Framed media** — `0 24px 70px -24px rgba(0,0,0,0.3)`. Lifts a screenshot or
   portrait off pure white so its own white background does not dissolve into the
   slide. Used only when `framed` is set.
-- **CTA pill** — `0 18px 50px -12px rgba(232,66,90,0.6)`. A coral glow under the
+- **CTA pill** — `0 18px 50px -12px rgba(255,89,89,0.6)`. A coral glow under the
   final call to action, the one moment the deck is allowed to be loud.
 
 Unframed images sit directly on white with no shadow at all.
@@ -418,7 +433,7 @@ area, so it never collides with a slide.
 
 **Don't**
 
-- Hardcode `#E8425A`, `#fd4869`, or any accent hex anywhere.
+- Hardcode `#FF5959`, `#fd4869`, or any accent hex anywhere.
 - Set a font size below `statement` for anything spoken aloud. Not with a
   Tailwind class, not with inline style, not "just this once."
 - Add sub-text, kickers, captions under images, or a third type size.

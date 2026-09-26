@@ -6,6 +6,12 @@ export type AiGuideFaqItem = {
   answer: string;
 };
 
+/** The Instagram post a guide was made from, linked as its visual version. */
+export type AiGuideInstagramPost = {
+  url: string;
+  format: "reel" | "carousel";
+};
+
 export type AiGuideFrontmatter = {
   title: string;
   description: string;
@@ -21,6 +27,8 @@ export type AiGuideFrontmatter = {
   status?: AiGuideStatus;
   /** Optional Q&A pairs rendered as a visible FAQ + FAQPage structured data. */
   faq?: AiGuideFaqItem[];
+  /** Instagram post this guide came from; renders the "visual version" card. */
+  instagram?: AiGuideInstagramPost;
 };
 
 export type AiGuideIndexEntry = Omit<AiGuideFrontmatter, "published"> & {

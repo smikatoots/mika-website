@@ -14,7 +14,7 @@ const socialLinks = [
 
 export function SiteFooter() {
   return (
-    <footer style={{ background: "var(--mr-surface-warm)", borderTop: "1px solid var(--mr-border-warm)" }}>
+    <footer style={{ background: "var(--mr-paper)", borderTop: "1px solid var(--mr-line)" }}>
       <div className="mx-auto max-w-6xl px-6 py-12 md:px-10 md:py-16">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
@@ -53,7 +53,7 @@ export function SiteFooter() {
               style={{
                 fontFamily: "var(--mr-font-body)",
                 fontSize: "var(--mr-text-xs)",
-                color: "var(--mr-faint)",
+                color: "var(--mr-muted)",
               }}
             >
               © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {SITE_NAME}
@@ -83,10 +83,10 @@ export function SiteFooter() {
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "var(--mr-text-sm)",
                       fontWeight: "var(--mr-weight-semi)",
-                      color: "var(--mr-text-soft)",
+                      color: "var(--mr-charcoal)",
                       textDecoration: "none",
                     }}
-                    className="transition-colors hover:text-[var(--mr-coral)]"
+                    className="transition-colors hover:text-[var(--mr-red-deep)]"
                   >
                     {label}
                   </InternalLink>
@@ -120,10 +120,10 @@ export function SiteFooter() {
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "var(--mr-text-sm)",
                       fontWeight: "var(--mr-weight-semi)",
-                      color: "var(--mr-text-soft)",
+                      color: "var(--mr-charcoal)",
                       textDecoration: "none",
                     }}
-                    className="transition-colors hover:text-[var(--mr-coral)]"
+                    className="transition-colors hover:text-[var(--mr-red-deep)]"
                   >
                     {label}
                   </a>

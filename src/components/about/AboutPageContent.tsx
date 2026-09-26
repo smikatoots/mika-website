@@ -2,6 +2,12 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { BackLink } from "@/components/ui/BackLink";
+import { PageHero } from "@/components/ui/PageHero";
+import {
+  ConfettiField,
+  outsideEdge as outside,
+  type ConfettiPlacement,
+} from "@/components/ui/Confetti";
 import { homeBioLinks } from "@/lib/home-bio-links";
 import { siteLink } from "@/lib/ui/site-styles";
 
@@ -57,6 +63,27 @@ const ABOUT_IMAGE_PATHS: readonly string[] = [
   "/about-assets/011.jpg",
 ];
 
+/* The about column is capped far narrower than the home page's, so its shapes
+   anchor to its own edge — the wrapper below overrides `--mr-edge` and every
+   placement follows. Narrow widths leave no gutter beside a single column, so
+   those positions hug the page edge inside the article's own padding. */
+const ABOUT_CONFETTI: ConfettiPlacement[] = [
+  { shape: "sparkle", color: "var(--mr-red)", size: 42, motion: "bob", duration: 5, at: { top: "4%", left: outside(16) }, narrow: { top: "10px", left: "-14px" } },
+  { shape: "squiggle", color: "var(--mr-aqua)", size: 88, rotate: 6, motion: "drift", duration: 11, delay: 0.6, at: { top: "17%", right: outside(14) }, narrow: { top: "16%", right: "-40px" } },
+  { shape: "ring", color: "var(--mr-aqua)", size: 54, motion: "sway", duration: 9, delay: 1.2, at: { top: "31%", left: outside(20) }, narrow: { top: "30%", left: "-22px" } },
+  { shape: "burst", color: "var(--mr-yellow)", size: 44, motion: "spin", duration: 22, at: { top: "45%", right: outside(22) }, narrow: { top: "44%", right: "-16px" } },
+  { shape: "blob", color: "var(--mr-red)", size: 92, rotate: 14, motion: "drift", duration: 12.5, delay: 0.4, at: { top: "59%", left: outside(12) }, narrow: { top: "58%", left: "-42px" } },
+  { shape: "capsule", color: "var(--mr-green)", size: 76, rotate: -12, motion: "twist", duration: 8, delay: 1.5, at: { top: "73%", right: outside(16) }, narrow: { top: "72%", right: "-34px" } },
+  { shape: "dots", color: "var(--mr-aqua)", size: 52, rotate: 8, motion: "shake", duration: 6.5, delay: 0.9, at: { top: "87%", left: outside(18) }, narrow: { top: "86%", left: "-20px" } },
+  // Filling the gaps between the seven above, so the column reads as evenly
+  // scattered rather than as one shape per screenful.
+  { shape: "cross", color: "var(--mr-green)", size: 34, motion: "spin", duration: 24, delay: 0.2, at: { top: "10%", right: outside(24) }, narrow: { top: "9%", right: "-8px" } },
+  { shape: "triangle", color: "var(--mr-yellow)", size: 58, rotate: -12, motion: "twist", duration: 8.5, delay: 1.1, at: { top: "24%", left: outside(24) }, narrow: { top: "23%", left: "-26px" } },
+  { shape: "arc", color: "var(--mr-aqua)", size: 70, rotate: 16, motion: "bob", duration: 7, delay: 0.5, at: { top: "38%", right: outside(18) }, narrow: { top: "37%", right: "-30px" } },
+  { shape: "zigzag", color: "var(--mr-red)", size: 80, rotate: -6, motion: "twist", duration: 9.5, delay: 1.8, at: { top: "52%", left: outside(16) }, narrow: { top: "51%", left: "-36px" } },
+  { shape: "sparkle", color: "var(--mr-aqua)", size: 40, motion: "pulse", duration: 6, delay: 0.7, at: { top: "94%", right: outside(26) }, narrow: { top: "93%", right: "-12px" } },
+];
+
 export function AboutPageContent() {
   const [
     profileImg,
@@ -81,14 +108,24 @@ export function AboutPageContent() {
   const a = homeBioLinks.awards;
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-14 md:max-w-4xl md:px-10 md:py-20">
+    <div
+      style={{
+        position: "relative",
+        // Shapes track this column, not the site's wider one.
+        ["--mr-edge" as string]: "max(24px, calc((100% - 896px) / 2 + 24px))",
+        overflow: "hidden",
+      }}
+    >
+      <ConfettiField items={ABOUT_CONFETTI} />
+
+      <article className="relative mx-auto max-w-3xl px-6 py-14 md:max-w-4xl md:px-10 md:py-20">
       <BackLink href="/" label="Home" />
 
-      <header className="mt-8 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-950 md:text-5xl">
-          About
-        </h1>
-      </header>
+      {/* PageHero, not a hand-rolled heading — that is how this page ended up
+          two sizes smaller than every index page. */}
+      <div className="mt-8">
+        <PageHero title="About" />
+      </div>
 
       <section className="mt-12 grid gap-10 md:grid-cols-2 md:items-start md:gap-12">
         <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm">
@@ -176,12 +213,14 @@ export function AboutPageContent() {
                   <ALink href="https://www.linkedin.com/in/nicolasreyes26/">
                     Nick
                   </ALink>
-                  . Want to increase website conversions autonomously? Check out{" "}
-                  <ALink href="https://askleda.com">askleda.com</ALink> and get a
-                  site audit!
+                  . We&apos;re helping teams build products connected to social
+                  media or ads platforms with one unified API. You can also
+                  connect it to your AI agents via our MCP.{" "}
+                  <ALink href="http://tryadeli.com/">Check out Adeli!</ALink>
                 </li>
                 <li>
-                  Teaching AI to 25K+ ambitious founders &amp; professionals on{" "}
+                  Teaching AI to 35K+ ambitious founders, creators &amp;
+                  professionals on{" "}
                   <ALink href={homeBioLinks.instagram}>Instagram</ALink>,{" "}
                   <ALink href={homeBioLinks.linkedinProfile}>LinkedIn</ALink>, and{" "}
                   <ALink href="https://maven.com/mika-reyes/master-claude-code-as-a-non-technical-pro">
@@ -274,7 +313,7 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      <section className="mt-12 space-y-4">
+      <section className="mt-4 space-y-4">
         <div className={bioBoxClass}>
           <span className="text-xl leading-none" aria-hidden>
             🇵🇭
@@ -300,7 +339,11 @@ export function AboutPageContent() {
             (as an NFT) &amp; launched{" "}
             <ALink href="/links">a fun social card game</ALink>. Nowadays,
             I&apos;m overloading on coffee &amp; funneling my type A energy
-            towards wedding planning.
+            towards{" "}
+            <ALink href="https://instagram.com/its.mikareyes">
+              growing my startup &amp; creator business
+            </ALink>
+            .
           </p>
         </div>
       </section>
@@ -393,6 +436,7 @@ export function AboutPageContent() {
           ) : null}
         </section>
       ) : null}
-    </article>
+      </article>
+    </div>
   );
 }

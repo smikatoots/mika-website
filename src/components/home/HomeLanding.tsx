@@ -1,55 +1,110 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 
-import { trackGa4Event } from "@/lib/analytics/ga4";
 import { homeBioLinks } from "@/lib/home-bio-links";
-import { HomepageMotion } from "@/components/home/HomepageMotion";
 
-import { buttonStyle } from "@/components/ui/buttonStyle";
+import {
+  ConfettiField,
+  insideEdge as inside,
+  outsideEdge as outside,
+  type ConfettiPlacement,
+} from "@/components/ui/Confetti";
 
+/* ────────────────────────────────────────────────────────────
+   The mikareyes.com landing page — "designer scrapbook desk".
+
+   Sections run light -> charcoal -> light, one dark band only. The green
+   press band gets a linen breather (Time Rich Club), then the page closes
+   on full-bleed yellow and aqua bands that butt together. The
+   confetti layer lives in the gutters; see DESIGN.md for the rules it
+   follows and `Confetti.tsx` for why placements come in pairs.
+   ──────────────────────────────────────────────────────────── */
+
+// The hero's secondary action sends readers to the newsletter, tagged so
+// Substack's traffic report shows this button as its own source.
+const SUBSTACK_HERO_URL =
+  "https://mikareyes.substack.com/?utm_source=mikareyes.com&utm_medium=website&utm_campaign=homepage_hero";
+
+// Destinations come from the live homepage's link map, same as the press
+// strip. The pills sit on the green band, so green is the one accent
+// they cannot use; yellow repeats as the fourth. Every fill clears AA with
+// black type, so the pills all set ink.
 const awards = [
-  { icon: "🏆", label: "Forbes 30 Under 30", href: homeBioLinks.awards.forbes30 },
-  { icon: "✦", label: "Tatler Gen.T Leader of Tomorrow", href: homeBioLinks.awards.tatler },
-  { icon: "🌱", label: "Kleiner Perkins Fellow", href: homeBioLinks.awards.kleinerPerkins },
-  { icon: "🚀", label: "SPC Founder Fellow", href: homeBioLinks.awards.spc },
+  { label: "Forbes 30 Under 30", bg: "var(--mr-yellow)", href: homeBioLinks.awards.forbes30 },
+  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--mr-aqua)", href: homeBioLinks.awards.tatler },
+  { label: "Kleiner Perkins Fellow", bg: "var(--mr-red)", href: homeBioLinks.awards.kleinerPerkins },
+  { label: "SPC Founder Fellow", bg: "var(--mr-yellow)", href: homeBioLinks.awards.spc },
 ];
 
-const pressItems = [
-  { label: "Forbes", href: homeBioLinks.press.forbes, logo: "/press-logos/forbes.svg", logoHeight: 20 },
-  { label: "TechCrunch", href: homeBioLinks.press.techcrunch, logo: "/press-logos/techcrunch-icon.svg", logoHeight: 28 },
-  { label: "Yahoo!", href: homeBioLinks.press.yahoo, logo: "/press-logos/yahoo.svg", logoHeight: 22 },
-  { label: "Tech in Asia", href: homeBioLinks.press.techInAsia, logo: "/press-logos/tech-in-asia.png", logoHeight: 24, logoMaxWidth: 180 },
-  { label: "Rappler", href: homeBioLinks.press.rappler, logo: "/press-logos/rappler.png", logoHeight: 28, logoMaxWidth: 140 },
-  { label: "Inquirer", href: homeBioLinks.press.inquirer, logo: "/press-logos/inquirer.svg", logoHeight: 18 },
+// Destinations come from the live homepage's link map, so the prototype
+// points at the same coverage rather than a second copy that can drift.
+// `ratio` is each file's intrinsic width / height. Width is set from it
+// rather than left to `auto`, because next/image warns whenever the
+// rendered size drifts from the width/height attributes on only one axis.
+const pressLogos = [
+  { label: "Forbes", logo: "/press-logos/forbes.svg", h: 20, ratio: 3.818, href: homeBioLinks.press.forbes },
+  { label: "TechCrunch", logo: "/press-logos/techcrunch-icon.svg", h: 26, ratio: 1, href: homeBioLinks.press.techcrunch },
+  { label: "Yahoo!", logo: "/press-logos/yahoo.svg", h: 22, ratio: 3.606, href: homeBioLinks.press.yahoo },
+  { label: "Tech in Asia", logo: "/press-logos/tech-in-asia.png", h: 22, ratio: 5.307, href: homeBioLinks.press.techInAsia },
+  { label: "Rappler", logo: "/press-logos/rappler.png", h: 26, ratio: 3.97, href: homeBioLinks.press.rappler },
+  { label: "Inquirer", logo: "/press-logos/inquirer.svg", h: 18, ratio: 5.364, href: homeBioLinks.press.inquirer },
 ];
 
-const featuredPress = [
+const startHere = [
   {
-    outlet: "Forbes",
-    title: "Forbes 30 Under 30: Finance & Venture Capital",
-    type: "READ",
-    href: "/press/forbes-30-under-30-finance-venture-capital-forbes",
+    tag: "Course",
+    title: "Master Agentic AI",
+    blurb: "Build your own custom AI agent in a day. No engineering degree.",
+    href: "/build-your-first-agent-101",
+    bg: "var(--mr-aqua)",
+    fg: "var(--mr-ink)",
   },
   {
-    outlet: "TechCrunch",
-    title: "Parallax on TechCrunch",
-    type: "READ",
-    href: "/press/parallax-on-techcrunch",
+    tag: "Free",
+    title: "AI Guides",
+    blurb: "Practical how-tos pulled straight from the videos.",
+    href: "/ai",
+    bg: "var(--mr-yellow)",
+    fg: "var(--mr-ink)",
   },
   {
-    outlet: "Yahoo! Finance",
-    title: "Parallax Launch Coverage",
-    type: "READ",
-    href: "/press/parallax-launch-on-yahoo",
+    tag: "Series",
+    title: "AI Challenges",
+    blurb: "Hard skills learned with AI as the only coach.",
+    href: "/challenges",
+    bg: "var(--mr-green)",
+    fg: "var(--mr-ink)",
   },
   {
-    outlet: "Kleiner Perkins",
-    title: "Meet the Kleiner Perkins Fellows",
-    type: "READ",
-    href: "/press/meet-the-kleiner-perkins-fellows",
+    tag: "Writing",
+    title: "The Blog",
+    blurb: "Longer thinking on building small, staying time-rich.",
+    href: "/blog",
+    bg: "var(--mr-red)",
+    fg: "var(--mr-ink)",
   },
+];
+
+// Time Rich Club. The banner is the one tile that goes anywhere (Luma);
+// the event photos are evidence, not links. `ratio` is each logo file's
+// intrinsic width / height, for the same next/image reason as the press strip.
+const TIME_RICH_CLUB_URL = "https://luma.com/timerichclub";
+
+const eventPhotos = [
+  { area: "talk", src: "/time-rich-club/workshop.webp", alt: "Mika presenting a live Claude workshop at a Time Rich Club event", position: "60% center" },
+  { area: "group", src: "/time-rich-club/group.webp", alt: "A full room of founders and creators at a Time Rich Club workshop in New York", position: "center 60%" },
+  { area: "dinner", src: "/time-rich-club/dinner.webp", alt: "An intimate Time Rich Club dinner around one long table", position: "center" },
+  { area: "selfie", src: "/time-rich-club/selfie.webp", alt: "A small Time Rich Club gathering smiling around a conference table", position: "center 40%" },
+  { area: "present", src: "/time-rich-club/presenting.webp", alt: "Mika walking a small group through a live AI demo", position: "72% 55%" },
+  { area: "room", src: "/time-rich-club/room.webp", alt: "Attendees building along on laptops during a Time Rich Club workshop", position: "30% center" },
+];
+
+// Paper ships only its mark, so it carries a set wordmark beside it.
+const collaborators: { label: string; logo: string; h: number; ratio: number; href: string; wordmark?: boolean }[] = [
+  { label: "Milled", logo: "/time-rich-club/milled.png", h: 34, ratio: 3.92, href: "https://milled.com" },
+  { label: "Claude", logo: "/time-rich-club/claude.png", h: 38, ratio: 4.644, href: "https://claude.com" },
+  { label: "BuildBetter", logo: "/time-rich-club/buildbetter.png", h: 50, ratio: 3.73, href: "https://buildbetter.ai" },
+  { label: "Paper", logo: "/time-rich-club/paper.svg", h: 34, ratio: 1, href: "https://paper.design", wordmark: true },
 ];
 
 const speakingTopics = [
@@ -58,686 +113,612 @@ const speakingTopics = [
   { num: "03", title: "Career strategy in the age of AI" },
 ];
 
-const contactTypes = [
-  { num: "01", title: "Brand partnerships", desc: "Sponsorships, integrations, ongoing partnerships.", subject: "Brand partnership inquiry" },
-  { num: "02", title: "Press", desc: "Quotes, interviews, podcast guesting.", subject: "Press inquiry" },
-  { num: "03", title: "Speaking", desc: "Conferences, company off-sites, universities, panels, podcasts.", subject: "Speaking inquiry" },
-  { num: "04", title: "AI Workshop", desc: "Classes, tutorials and workshops about AI.", subject: "AI Workshop inquiry" },
+const featuredPress = [
+  {
+    outlet: "Forbes",
+    title: "Forbes 30 Under 30: Finance & Venture Capital",
+    href: "/press/forbes-30-under-30-finance-venture-capital-forbes",
+  },
+  {
+    outlet: "TechCrunch",
+    title: "Parallax on TechCrunch",
+    href: "/press/parallax-on-techcrunch",
+  },
+  {
+    outlet: "Yahoo! Finance",
+    title: "Parallax Launch Coverage",
+    href: "/press/parallax-launch-on-yahoo",
+  },
+  {
+    outlet: "Kleiner Perkins",
+    title: "Meet the Kleiner Perkins Fellows",
+    href: "/press/meet-the-kleiner-perkins-fellows",
+  },
 ];
 
-const eyebrow = (color: string): React.CSSProperties => ({
-  display: "inline-block",
-  fontFamily: "var(--mr-font-body)",
-  fontSize: "var(--mr-text-eyebrow)",
-  fontWeight: "var(--mr-weight-display)",
-  color,
-  textTransform: "uppercase",
-  letterSpacing: "0.14em",
-  marginBottom: "16px",
-});
+const contactTypes = [
+  { num: "01", title: "Brand partnerships", desc: "Sponsorships, integrations, ongoing partnerships." },
+  { num: "02", title: "Press", desc: "Quotes, interviews, podcast guesting." },
+  { num: "03", title: "Speaking", desc: "Conferences, off-sites, universities, panels." },
+  { num: "04", title: "AI workshops", desc: "Classes, tutorials and team training." },
+];
+
+/* ── Confetti placements ──────────────────────────────────────────────
+   One entry per shape. `at` is the wide placement; `narrow` takes over
+   below 1200px and goes where a compressed layout actually has room —
+   hugging the page edge inside the 24px wrap padding, or inside a
+   section's vertical padding band, which is empty across the width.
+   Nothing is switched off when the layout narrows, and nothing is
+   static. Durations are deliberately coprime-ish so the field never
+   falls into step. */
+
+const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
+  // Salmon carries the buttons now, so the big masses beside the CTA are
+  // yellow and turquoise — a salmon blob here would pull rank on it.
+  { shape: "disc", color: "var(--mr-yellow)", size: 104, motion: "bob", duration: 5.5, at: { top: "-38px", left: "-38px" } },
+  { shape: "triangle", color: "var(--mr-aqua)", size: 66, rotate: 18, motion: "sway", duration: 7.5, delay: 0.6, at: { bottom: "-30px", right: "34px" } },
+  { shape: "capsule", color: "var(--mr-green)", size: 78, rotate: 12, motion: "twist", duration: 6.5, delay: 1.1, at: { top: "-30px", right: "-26px" } },
+];
+
+const HERO_CONFETTI: ConfettiPlacement[] = [
+  { shape: "sparkle", color: "var(--mr-red)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: outside(18) }, narrow: { top: "8px", left: "8%" } },
+  { shape: "squiggle", color: "var(--mr-aqua)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: outside(14) }, narrow: { bottom: "6px", left: "8%" } },
+  { shape: "zigzag", color: "var(--mr-green)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: outside(12) }, narrow: { top: "62%", left: "-40px" } },
+  { shape: "dots", color: "var(--mr-red)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: outside(22) }, narrow: { bottom: "10px", right: "6%" } },
+];
+
+const PRESS_STRIP_CONFETTI: ConfettiPlacement[] = [
+  { shape: "dots", color: "var(--mr-aqua)", size: 46, motion: "shake", duration: 7, at: { top: "38%", right: outside(16) }, narrow: { top: "34%", right: "-8px" } },
+];
+
+const DARK_CONFETTI: ConfettiPlacement[] = [
+  // The headline column stops at 820px, so there is room inside the wrap here
+  // that the card-grid sections do not have.
+  { shape: "disc", color: "var(--mr-yellow)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: inside(18) }, narrow: { top: "1%", left: "-48px" } },
+  { shape: "triangle", color: "var(--mr-red)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "30%", right: inside(30) }, narrow: { top: "22%", right: "-27px" } },
+  { shape: "arc", color: "var(--mr-yellow)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "52%", left: inside(26) }, narrow: { bottom: "12px", right: "8%" } },
+  { shape: "blob", color: "var(--mr-green)", size: 132, rotate: -8, motion: "drift", duration: 12, delay: 0.2, at: { top: "70%", right: inside(14) }, narrow: { top: "70%", right: "-64px" } },
+  { shape: "ring", color: "var(--mr-aqua)", size: 52, motion: "pulse", duration: 6.5, delay: 1.9, at: { bottom: "6%", left: inside(70) }, narrow: { bottom: "10px", left: "8%" } },
+];
+
+const PRESS_AWARDS_CONFETTI: ConfettiPlacement[] = [
+  { shape: "sparkle", color: "var(--mr-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "14%", left: outside(14) }, narrow: { top: "6px", left: "4%" } },
+  { shape: "squiggle", color: "var(--mr-red)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "12px", right: "8%" } },
+  { shape: "dots", color: "var(--mr-aqua)", size: 54, rotate: 8, motion: "shake", duration: 6.5, delay: 1.4, at: { top: "86%", left: outside(20) }, narrow: { top: "6px", right: "6%" } },
+];
+
+const ADVENTURE_CONFETTI: ConfettiPlacement[] = [
+  { shape: "zigzag", color: "var(--mr-aqua)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "8%", left: outside(12) }, narrow: { top: "2%", left: "-34px" } },
+  { shape: "ring", color: "var(--mr-red)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "34%", right: outside(16) }, narrow: { top: "30%", right: "-18px" } },
+  { shape: "blob", color: "var(--mr-yellow)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { top: "62%", left: outside(10) }, narrow: { top: "62%", left: "-38px" } },
+  { shape: "burst", color: "var(--mr-green)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: outside(22) }, narrow: { bottom: "12px", right: "-8px" } },
+];
+
+const CLUB_CONFETTI: ConfettiPlacement[] = [
+  { shape: "burst", color: "var(--mr-red)", size: 42, motion: "spin", duration: 20, at: { top: "10%", right: outside(16) }, narrow: { top: "6px", right: "6%" } },
+  { shape: "squiggle", color: "var(--mr-yellow)", size: 84, rotate: 8, motion: "drift", duration: 11.5, delay: 0.9, at: { top: "46%", left: outside(12) }, narrow: { top: "6px", left: "4%" } },
+  { shape: "capsule", color: "var(--mr-aqua)", size: 70, rotate: -16, motion: "bob", duration: 7, delay: 1.6, at: { bottom: "10%", right: outside(18) }, narrow: { bottom: "10px", right: "8%" } },
+];
+
+const SPEAKING_CONFETTI: ConfettiPlacement[] = [
+  { shape: "arc", color: "var(--mr-green)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "capsule", color: "var(--mr-red)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: outside(12) }, narrow: { bottom: "8%", right: "-30px" } },
+];
+
+const CONTACT_CONFETTI: ConfettiPlacement[] = [
+  { shape: "zigzag", color: "var(--mr-yellow)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "12%", left: outside(10) }, narrow: { top: "1%", left: "-36px" } },
+  { shape: "ring", color: "var(--mr-red)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "48%", right: outside(14) }, narrow: { top: "44%", right: "-22px" } },
+  { shape: "cross", color: "var(--mr-red)", size: 34, motion: "spin", duration: 26, at: { top: "85%", left: outside(24) }, narrow: { bottom: "6%", left: "-3px" } },
+];
 
 export function HomeLanding() {
   return (
-    <main>
-      {/* ── Hero ─────────────────────────────────────────── */}
-      <section style={{ background: "var(--mr-bg)", padding: "clamp(48px,8vw,80px) 0", overflow: "hidden" }}>
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-6 text-center md:flex-row md:items-center md:gap-12 md:px-10 md:text-left">
-          {/* Text */}
-          <div className="flex w-full flex-col items-center md:items-start" style={{ flex: "1 1 0", minWidth: 0 }}>
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                background: "var(--mr-surface-rose-2)",
-                color: "var(--mr-coral)",
-                padding: "7px 16px",
-                borderRadius: "var(--mr-radius-pill)",
-                fontFamily: "var(--mr-font-body)",
-                fontSize: "var(--mr-text-xs)",
-                fontWeight: "var(--mr-weight-display)",
-                marginBottom: "28px",
-              }}
-            >
-              ✦ AI Educator · Founder · Creator
-            </span>
+    <div className="mr-root">
+      {/* ── Hero ────────────────────────────────────────── */}
+      <header className="mr-section" style={{ overflow: "hidden" }}>
+        <ConfettiField items={HERO_CONFETTI} />
 
-            <h1
-              style={{
-                fontFamily: "var(--mr-font-display)",
-                fontSize: "clamp(42px, 6vw, 72px)",
-                fontWeight: "var(--mr-weight-display)",
-                lineHeight: 0.95,
-                letterSpacing: "-0.03em",
-                color: "var(--mr-ink)",
-                marginBottom: "20px",
-              }}
-            >
+        <div className="mr-wrap mr-hero" style={{ position: "relative", zIndex: 1 }}>
+          <div>
+            <p className="mr-subheading">✦ AI Educator · Founder · Creator ✦</p>
+
+            <h1 className="mr-display mr-hero-name" style={{ marginTop: "clamp(16px,3vw,28px)" }}>
               Mika Reyes
             </h1>
 
-            <p
-              className="mx-auto md:mx-0"
-              style={{
-                fontFamily: "var(--mr-font-body)",
-                fontSize: "clamp(16px, 2vw, var(--mr-text-lead))",
-                color: "var(--mr-text-soft)",
-                lineHeight: 1.55,
-                marginBottom: "36px",
-                maxWidth: "520px",
-              }}
-            >
-              I&apos;m a founder & knowledge creator helping high-achieving professionals leverage AI to build ambitious & time-rich careers, wealth & lives.
+            <p className="mr-body-lg" style={{ maxWidth: "520px", marginTop: "clamp(20px,3vw,32px)" }}>
+              I help high-achieving founders, creators &amp; professionals use AI to build
+              ambitious, time-rich careers, wealth and lives.
             </p>
 
-            <div className="flex w-full flex-wrap items-center justify-center gap-3 md:justify-start">
-              <a
-                href="#contact"
-                className="mr-pressable"
-                onClick={() =>
-                  trackGa4Event("contact_cta_click", {
-                    cta_label: "Work with me",
-                    cta_location: "hero",
-                    destination_url: "#contact",
-                    link_type: "internal_anchor",
-                  })
-                }
-                style={buttonStyle({ size: "lg" })}
-              >
-                Work with me →
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", marginTop: "32px" }}>
+              <a href="#contact" className="mr-cta">
+                Work with me
               </a>
-
               <a
-                href="https://instagram.com/its.mikareyes"
+                href={SUBSTACK_HERO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mr-pressable"
-                onClick={() =>
-                  trackGa4Event("social_cta_click", {
-                    cta_label: "Follow on Instagram",
-                    cta_location: "hero",
-                    destination_url: "https://instagram.com/its.mikareyes",
-                    link_type: "social_instagram",
-                  })
-                }
-                style={buttonStyle({ variant: "secondary", size: "lg" })}
+                className="mr-ghost"
+                style={{ padding: "16px 24px" }}
               >
-                Follow on Instagram
+                Subscribe
               </a>
             </div>
           </div>
 
-          {/* Photo */}
-          <div
-            className="-mx-6 w-[calc(100%+3rem)] md:mx-0 md:w-auto"
-            style={{ position: "relative", flexShrink: 0 }}
-          >
-            <div className="mr-float-slow" style={{ position: "relative", zIndex: 1 }}>
-              <Image
-                data-hero-photo
-                src="/about-assets/009.jpg"
-                alt="Mika Reyes"
-                width={340}
-                height={420}
-                priority
-                unoptimized
-                className="aspect-[4/5] w-full md:aspect-auto md:h-[420px] md:w-[340px] md:rounded-[var(--mr-radius-card)]"
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center 15%",
-                  boxShadow: "var(--mr-shadow-frame)",
-                  display: "block",
-                }}
-                sizes="(max-width: 768px) 100vw, 340px"
-              />
-            </div>
-            <div
-              className="mr-drift hidden md:block"
+          {/* Photo, framed as a paper cutout with shapes around it */}
+          <figure style={{ position: "relative" }}>
+            <Image
+              src="/about-assets/009.jpg"
+              alt="Mika Reyes"
+              width={720}
+              height={900}
+              priority
+              unoptimized
+              className="mr-hero-photo"
               style={{
-                position: "absolute", top: "-20px", right: "-24px",
-                width: "80px", height: "80px", borderRadius: "50%",
-                background: "var(--mr-coral)", opacity: 0.12, zIndex: 0,
+                width: "100%",
+                objectFit: "cover",
+                objectPosition: "center 18%",
+                borderRadius: "var(--mr-radius-card)",
               }}
             />
-            <div
-              className="hidden md:block"
-              style={{
-                position: "absolute", bottom: "-16px", left: "-20px",
-                width: "48px", height: "48px", borderRadius: "50%",
-                background: "var(--mr-teal)", opacity: 0.18, zIndex: 0,
-              }}
-            />
-          </div>
+            <ConfettiField items={HERO_PHOTO_CONFETTI} />
+          </figure>
         </div>
-      </section>
+      </header>
 
-      {/* ── Press Bar ────────────────────────────────────── */}
-      <section style={{ background: "var(--mr-coral)", position: "relative", overflow: "hidden", padding: "36px 0" }}>
+      {/* ── Press strip ─────────────────────────────────── */}
+      <section aria-label="Press coverage" style={{ position: "relative", overflow: "hidden" }}>
+        <ConfettiField items={PRESS_STRIP_CONFETTI} />
+
+        <hr className="mr-rule" />
         <div
+          className="mr-wrap"
           style={{
-            position: "absolute", inset: 0, pointerEvents: "none",
-            background: "radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 60%)",
+            paddingBlock: "28px",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "clamp(24px,5vw,56px)",
           }}
-        />
-        <div className="relative mx-auto max-w-6xl px-6 md:px-10">
-          <p
-            className="mb-8 text-center"
-            style={{
-              fontFamily: "var(--mr-font-body)",
-              fontSize: "var(--mr-text-eyebrow)",
-              fontWeight: "var(--mr-weight-display)",
-              color: "#FBD7DC",
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
-            }}
-          >
-            Featured in
-          </p>
-          <div data-press-row className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
-            {pressItems.map(({ label, href, logo, logoHeight, logoMaxWidth }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("/") ? undefined : "_blank"}
-                rel={href.startsWith("/") ? undefined : "noopener noreferrer"}
-                aria-label={label}
-                onClick={() =>
-                  trackGa4Event("press_reference_click", {
-                    cta_label: label,
-                    cta_location: "press_bar",
-                    destination_url: href,
-                    link_type: "external_press",
-                  })
-                }
-                className="group transition-opacity hover:opacity-100"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  opacity: 0.8,
-                  textDecoration: "none",
-                }}
-              >
+        >
+          <span className="mr-caption" style={{ letterSpacing: "0.04em" }}>
+            As seen in
+          </span>
+          {pressLogos.map(({ label, logo, h, ratio, href }) => {
+            const w = Math.round(h * ratio);
+            return (
+              <Link key={label} href={href} aria-label={`${label} coverage`}>
                 <Image
                   src={logo}
                   alt={label}
-                  width={140}
-                  height={logoHeight}
+                  width={w}
+                  height={h}
                   unoptimized
-                  style={{
-                    height: `${logoHeight}px`,
-                    width: "auto",
-                    maxWidth: `${logoMaxWidth ?? 140}px`,
-                    filter: "grayscale(100%) brightness(0) invert(1)",
-                  }}
-                  className="transition-[filter] group-hover:brightness-[1.1]"
+                  className="mr-presslogo"
+                  style={{ height: `${h}px`, width: `${w}px` }}
                 />
-              </a>
-            ))}
-          </div>
+              </Link>
+            );
+          })}
         </div>
+        <hr className="mr-rule" />
       </section>
 
-      {/* ── Awards ───────────────────────────────────────── */}
-      <section data-awards style={{ background: "var(--mr-surface-sand)", padding: "clamp(48px,6vw,64px) 0" }}>
-        <div className="mx-auto max-w-6xl px-6 md:px-10">
+      {/* ── Dark editorial band — the one per page ──────── */}
+      <section className="mr-dark mr-section">
+        {/* Collage atmosphere. Everything here lives in the gutters — the
+            headline column runs to 820px and white type over a yellow disc
+            is unreadable, so nothing may drift inward. */}
+        <ConfettiField items={DARK_CONFETTI} />
+
+        <div className="mr-wrap" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
+          <span
+            className="mr-tag"
+            style={{ background: "var(--mr-aqua)", color: "var(--mr-ink)" }}
+          >
+            THE THESIS
+          </span>
+
+          <h2 className="mr-heading-lg" style={{ margin: "24px auto 0", maxWidth: "820px" }}>
+            Ambitious <em>and</em>{" "}time-rich. You don&apos;t have to pick.
+          </h2>
+
           <p
-            className="mb-8 text-center"
+            className="mr-body-lg"
+            style={{ maxWidth: "600px", margin: "28px auto 0", color: "rgba(255,255,255,0.78)" }}
+          >
+            High achievers get told to choose either the big career or a life outside it.
+            I think that&apos;s a false trade, and AI unlocks a new way.
+          </p>
+
+          <p
+            className="mr-body-lg"
+            style={{ maxWidth: "600px", margin: "20px auto 0", color: "rgba(255,255,255,0.78)" }}
+          >
+            I played the prestige game: Product at LinkedIn, a venture-backed company,
+            fellowships, awards &amp; an acquisition. Now I&apos;m still building a startup
+            &amp; creator business but leverage AI to protect my hours for the people I love.
+          </p>
+
+          {/* Overlapping circular photo crops */}
+          <div
             style={{
-              fontFamily: "var(--mr-font-body)",
-              fontSize: "var(--mr-text-eyebrow)",
-              fontWeight: "var(--mr-weight-display)",
-              color: "var(--mr-muted)",
-              textTransform: "uppercase",
-              letterSpacing: "0.14em",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "44px",
             }}
           >
-            Awards & Fellowships
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            {awards.map(({ icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("/") ? undefined : "_blank"}
-                rel={href.startsWith("/") ? undefined : "noopener noreferrer"}
-                className="mr-lift"
-                onClick={() =>
-                  trackGa4Event("award_reference_click", {
-                    cta_label: label,
-                    cta_location: "awards_band",
-                    destination_url: href,
-                    link_type: "external_award",
-                  })
-                }
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  background: "var(--mr-surface)",
-                  border: "1px solid #EFE0CF",
-                  borderRadius: "var(--mr-radius-chip)",
-                  padding: "13px 18px",
-                  boxShadow: "var(--mr-shadow-card)",
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
-              >
-                <span data-award-emoji style={{ fontSize: "18px", lineHeight: 1 }}>{icon}</span>
-                <span
+            {["/about-assets/002.jpg", "/about-assets/007.jpg", "/about-assets/011.jpg"].map(
+              (src, i) => (
+                <Image
+                  key={src}
+                  src={src}
+                  alt=""
+                  aria-hidden="true"
+                  width={132}
+                  height={132}
+                  unoptimized
                   style={{
-                    fontFamily: "var(--mr-font-body)",
-                    fontSize: "var(--mr-text-sm)",
-                    fontWeight: "var(--mr-weight-semi)",
-                    color: "var(--mr-ink)",
+                    width: "clamp(84px,13vw,132px)",
+                    height: "clamp(84px,13vw,132px)",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    marginLeft: i === 0 ? 0 : "-22px",
+                    border: `3px solid ${
+                      ["var(--mr-yellow)", "var(--mr-red)", "var(--mr-aqua)"][i]
+                    }`,
                   }}
-                >
-                  {label}
+                />
+              ),
+            )}
+          </div>
+
+          <div style={{ marginTop: "40px" }}>
+            <Link href="/about" className="mr-cta">
+              Read the whole story
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Time for some adventure: 4-column card grid ──────────────── */}
+      <section className="mr-section">
+        <ConfettiField items={ADVENTURE_CONFETTI} />
+
+        <div className="mr-wrap">
+          <div className="mr-grid">
+            {startHere.map(({ tag, title, blurb, href, bg, fg }) => (
+              <Link
+                key={href}
+                href={href}
+                className="mr-card"
+                style={{ background: bg, color: fg, display: "block" }}
+              >
+                <span className="mr-tag" style={{ background: "var(--mr-paper)", color: "var(--mr-ink)" }}>
+                  {tag.toUpperCase()}
                 </span>
-              </a>
+                <h3 className="mr-subheading" style={{ marginTop: "10px" }}>
+                  {title}
+                </h3>
+                <p className="mr-body" style={{ marginTop: "8px" }}>
+                  {blurb}
+                </p>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── SPEAKING ─────────────────────────────────────── */}
-      <section style={{ background: "var(--mr-teal-deep)", overflow: "hidden" }}>
-        {/* On mobile: stacked. On md+: photo left (380px), content right */}
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-[380px_1fr]">
-          {/* Left: photo */}
+      {/* ── Press & awards ──────────────────────────────── */}
+      <section className="mr-section mr-press-band">
+        <ConfettiField items={PRESS_AWARDS_CONFETTI} />
+
+        <div className="mr-wrap">
           <div
-            className="hidden md:block"
-            style={{ position: "relative", overflow: "hidden", minHeight: "420px" }}
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              gap: "20px",
+            }}
           >
-            <Image
-              src="/about-assets/005.jpg"
-              alt="Mika Reyes"
-              fill
-              unoptimized
-              style={{ objectFit: "cover", objectPosition: "72% center", opacity: 0.9 }}
-              sizes="380px"
-            />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(to right, var(--mr-teal-deep) 0%, transparent 22%, transparent 55%, var(--mr-teal-deep) 100%)",
-              }}
-            />
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[32%]"
-              style={{
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                maskImage: "linear-gradient(to right, black 0%, transparent 100%)",
-                WebkitMaskImage: "linear-gradient(to right, black 0%, transparent 100%)",
-              }}
-            />
-          </div>
-
-          {/* Right: content */}
-          <div className="px-6 md:px-0" style={{ padding: "clamp(40px,6vw,64px) clamp(28px,4vw,56px)" }}>
-            <span style={eyebrow("var(--mr-coral)")}>Speaking</span>
-
-            <h2
-              style={{
-                fontFamily: "var(--mr-font-display)",
-                fontSize: "clamp(26px, 3.2vw, 40px)",
-                fontWeight: "var(--mr-weight-display)",
-                color: "#fff",
-                letterSpacing: "-0.02em",
-                lineHeight: 1.1,
-                marginBottom: "16px",
-              }}
-            >
-              Talks, panels,{" "}
-              <br />
-              <span style={{ color: "var(--mr-coral)", fontStyle: "italic" }}>and workshops.</span>
-            </h2>
-
-            <p
-              style={{
-                fontFamily: "var(--mr-font-body)",
-                fontSize: "var(--mr-text-sm)",
-                color: "rgba(255,255,255,0.6)",
-                lineHeight: 1.6,
-                marginBottom: "32px",
-                maxWidth: "420px",
-              }}
-            >
-              I speak about AI for non-technical audiences — founders, professionals, and teams who want practical tools, not hype.
-            </p>
-
-            <div data-drag-zone>
-              {speakingTopics.map(({ num, title }, i) => (
-                <div
-                  key={num}
-                  style={{
-                    borderTop: "1px solid rgba(255,255,255,0.1)",
-                    paddingTop: "18px",
-                    paddingBottom: "18px",
-                    borderBottom: i === speakingTopics.length - 1 ? "1px solid rgba(255,255,255,0.1)" : undefined,
-                    display: "flex",
-                    gap: "16px",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--mr-font-body)",
-                      fontSize: "var(--mr-text-xs)",
-                      fontWeight: "var(--mr-weight-display)",
-                      color: "var(--mr-coral)",
-                      letterSpacing: "0.08em",
-                      flexShrink: 0,
-                      width: "24px",
-                    }}
-                  >
-                    {num}
-                  </span>
-                  <p
-                    style={{
-                      fontFamily: "var(--mr-font-display)",
-                      fontSize: "var(--mr-text-sm)",
-                      fontWeight: "var(--mr-weight-display)",
-                      color: "#fff",
-                      lineHeight: 1.3,
-                      margin: 0,
-                    }}
-                  >
-                    {title}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ marginTop: "32px" }}>
-              <a
-                href="#contact"
-                className="mr-pressable"
-                style={buttonStyle({ size: "md" })}
-              >
-                Book me to speak →
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PRESS PREVIEW ────────────────────────────────── */}
-      <section style={{ background: "var(--mr-bg)", padding: "clamp(56px,8vw,80px) 0" }}>
-        <div className="mx-auto max-w-6xl px-6 md:px-10">
-          {/* Header row */}
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
-            <div>
-              <span style={eyebrow("var(--mr-muted)")}>Press</span>
-              <h2
-                style={{
-                  fontFamily: "var(--mr-font-display)",
-                  fontSize: "clamp(26px, 3.5vw, 44px)",
-                  fontWeight: "var(--mr-weight-display)",
-                  color: "var(--mr-ink)",
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.05,
-                  margin: 0,
-                }}
-              >
-                Coverage{" "}
-                <span style={{ fontStyle: "italic", color: "var(--mr-teal)" }}>in the media.</span>
-              </h2>
-            </div>
-            <Link
-              href="/press"
-              className="mr-pressable"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                background: "var(--mr-surface)",
-                border: "1.5px solid var(--mr-border-input)",
-                borderRadius: "var(--mr-radius-pill)",
-                padding: "10px 20px",
-                fontFamily: "var(--mr-font-body)",
-                fontSize: "var(--mr-text-xs)",
-                fontWeight: "var(--mr-weight-display)",
-                color: "var(--mr-ink)",
-                textDecoration: "none",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                whiteSpace: "nowrap",
-              }}
-            >
-              See all press →
+            <h2 className="mr-heading-lg">In the press</h2>
+            <Link href="/press" className="mr-ghost">
+              All coverage
             </Link>
           </div>
 
-          {/* Table — 3 cols on mobile (no date), 4 cols on md+ */}
-          <div style={{ borderTop: "1.5px solid var(--mr-border)" }}>
-            {featuredPress.map((item, i) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="group"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "140px 1fr 72px",
-                  gap: "0 12px",
-                  alignItems: "center",
-                  padding: "18px 16px",
-                  borderBottom: "1px solid var(--mr-border)",
-                  textDecoration: "none",
-                  background: i % 2 === 1 ? "var(--mr-surface-cream)" : "transparent",
-                  transition: "background 0.15s",
-                }}
+          <div className="mr-grid" style={{ marginTop: "36px" }}>
+            {featuredPress.map(({ outlet, title, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="mr-card mr-card-paper"
+                style={{ display: "block" }}
               >
-                <span
-                  style={{
-                    fontFamily: "var(--mr-font-body)",
-                    fontSize: "var(--mr-text-xs)",
-                    fontWeight: "var(--mr-weight-display)",
-                    color: "var(--mr-muted)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {item.outlet}
+                <span className="mr-caption" style={{ letterSpacing: "0.04em" }}>
+                  {outlet}
                 </span>
-                <span
-                  className="group-hover:text-[var(--mr-teal)] transition-colors"
-                  style={{
-                    fontFamily: "var(--mr-font-display)",
-                    fontSize: "var(--mr-text-sm)",
-                    fontWeight: "var(--mr-weight-semi)",
-                    color: "var(--mr-ink)",
-                    lineHeight: 1.35,
-                  }}
-                >
-                  {item.title}
+                <p className="mr-body-lg" style={{ marginTop: "12px" }}>
+                  {title}
+                </p>
+                <span className="mr-tag" style={{ background: "var(--mr-line)", marginTop: "20px" }}>
+                  READ →
                 </span>
-                <span
-                  style={{
-                    fontFamily: "var(--mr-font-body)",
-                    fontSize: "var(--mr-text-xs)",
-                    fontWeight: "var(--mr-weight-display)",
-                    color: "var(--mr-teal)",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    whiteSpace: "nowrap",
-                    textAlign: "right",
-                  }}
-                >
-                  {item.type} →
-                </span>
-              </a>
+              </Link>
             ))}
+          </div>
+
+          <hr className="mr-panel-rule" />
+
+          <p className="mr-caption" style={{ letterSpacing: "0.04em" }}>
+            Awards &amp; fellowships
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
+              gap: "12px",
+              marginTop: "16px",
+            }}
+          >
+            {awards.map(({ label, bg, href }) => {
+              const external = !href.startsWith("/");
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  className="mr-award mr-body"
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  style={{ background: bg, color: "var(--mr-ink)", textAlign: "center" }}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── CONTACT ──────────────────────────────────────── */}
-      <section id="contact" style={{ background: "var(--mr-teal-deep)", padding: "clamp(56px,8vw,80px) 0" }}>
-        <div className="mx-auto max-w-6xl px-6 md:px-10">
-          {/* 2-col on md+: left = header + email card, right = categories. Stacked on mobile. */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-16 items-center">
+      {/* ── Time Rich Club ─────────────────────────────── */}
+      <section className="mr-section">
+        <ConfettiField items={CLUB_CONFETTI} />
 
-            {/* Left: header + email card */}
+        <div className="mr-wrap">
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              gap: "20px",
+            }}
+          >
             <div>
-              <span style={eyebrow("var(--mr-coral)")}>Contact</span>
-              <h2
-                style={{
-                  fontFamily: "var(--mr-font-display)",
-                  fontSize: "clamp(30px, 4vw, 48px)",
-                  fontWeight: "var(--mr-weight-display)",
-                  color: "#fff",
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.05,
-                  marginBottom: "12px",
-                }}
-              >
-                Let&apos;s{" "}
-                <span style={{ fontStyle: "italic", color: "var(--mr-coral)" }}>work together.</span>
-              </h2>
-              <p
-                style={{
-                  fontFamily: "var(--mr-font-body)",
-                  fontSize: "var(--mr-text-body)",
-                  color: "rgba(255,255,255,0.55)",
-                  lineHeight: 1.55,
-                  marginBottom: "32px",
-                }}
-              >
-                For brand partnerships, press, speaking, and AI workshops.
+              <h2 className="mr-heading-lg">Time Rich Club</h2>
+              <p className="mr-body-lg" style={{ marginTop: "16px", maxWidth: "620px" }}>
+                In-person community and events in New York City for ambitious AI builders.
+                I host talks, workshops, intimate gatherings and socials for founders &amp;
+                creators building time-rich businesses with AI.
               </p>
-
-              {/* Email card */}
-              <div
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "var(--mr-radius-panel)",
-                  padding: "clamp(24px,4vw,36px)",
-                }}
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px" }}>
+              <a
+                href={TIME_RICH_CLUB_URL}
+                className="mr-ghost"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ padding: "16px 24px" }}
               >
-                <p
-                  style={{
-                    fontFamily: "var(--mr-font-body)",
-                    fontSize: "var(--mr-text-xs)",
-                    fontWeight: "var(--mr-weight-display)",
-                    color: "var(--mr-coral)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.14em",
-                    marginBottom: "10px",
-                  }}
-                >
-                  Reach out directly
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--mr-font-display)",
-                    fontSize: "clamp(17px, 2vw, 22px)",
-                    fontWeight: "var(--mr-weight-display)",
-                    color: "#fff",
-                    lineHeight: 1.2,
-                    marginBottom: "8px",
-                  }}
-                >
-                  mika@kingscrosslabs.com
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--mr-font-body)",
-                    fontSize: "var(--mr-text-sm)",
-                    color: "rgba(255,255,255,0.45)",
-                    lineHeight: 1.6,
-                    marginBottom: "24px",
-                  }}
-                >
-                  Choose a category for a pre-filled message. Or just email me directly.
-                </p>
-                <a
-                  href="mailto:mika@kingscrosslabs.com"
-                  className="mr-pressable"
-                  style={buttonStyle({ size: "md" })}
-                >
-                  Send an email →
-                </a>
+                Join future events
+              </a>
+              <Link href="/events" className="mr-cta">
+                Sponsor an event
+              </Link>
+            </div>
+          </div>
 
+          <div className="mr-bento" style={{ marginTop: "36px" }}>
+            <a
+              href={TIME_RICH_CLUB_URL}
+              className="mr-bento-tile mr-bento-banner mr-lift"
+              style={{ gridArea: "banner" }}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Time Rich Club on Luma"
+            >
+              <Image
+                src="/time-rich-club/banner.webp"
+                alt="Time Rich Club: for ambitious founders, creators and growth operators building time-rich lives. Hosted by mikareyes.com"
+                fill
+                sizes="(min-width: 1000px) 560px, 100vw"
+                style={{ objectFit: "cover" }}
+              />
+            </a>
+
+            {eventPhotos.map(({ area, src, alt, position }) => (
+              <div key={area} className="mr-bento-tile" style={{ gridArea: area }}>
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  sizes="(min-width: 1000px) 560px, (min-width: 640px) 50vw, 100vw"
+                  style={{ objectFit: "cover", objectPosition: position }}
+                />
+              </div>
+            ))}
+
+            <div className="mr-card mr-bento-card" style={{ gridArea: "logos", background: "var(--mr-green)" }}>
+              <p className="mr-caption" style={{ letterSpacing: "0.04em", color: "var(--mr-ink)" }}>
+                Past collaborators &amp; sponsors
+              </p>
+              <div className="mr-bento-logos">
+                {collaborators.map(({ label, logo, h, ratio, href, wordmark }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    className="mr-presslogo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    style={{ display: "flex", alignItems: "center", gap: "10px", color: "var(--mr-ink)" }}
+                  >
+                    <Image
+                      src={logo}
+                      alt={label}
+                      width={Math.round(h * ratio)}
+                      height={h}
+                      style={{ height: `${h}px`, width: `${Math.round(h * ratio)}px`, display: "block" }}
+                    />
+                    {wordmark && (
+                      <span className="mr-subheading" aria-hidden style={{ lineHeight: 1 }}>
+                        {label}
+                      </span>
+                    )}
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* Right: category list — each row is a mailto: link */}
-            <div style={{ paddingTop: "4px" }}>
-              {contactTypes.map(({ num, title, desc, subject }, i) => (
-                <a
-                  key={num}
-                  href={`mailto:mika@kingscrosslabs.com?subject=${encodeURIComponent(subject)}`}
-                  className="group block"
-                  style={{
-                    borderTop: "1px solid rgba(255,255,255,0.12)",
-                    paddingTop: "20px",
-                    paddingBottom: "20px",
-                    borderBottom: i === contactTypes.length - 1 ? "1px solid rgba(255,255,255,0.12)" : undefined,
-                    display: "flex",
-                    gap: "16px",
-                    alignItems: "flex-start",
-                    textDecoration: "none",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--mr-font-body)",
-                      fontSize: "var(--mr-text-xs)",
-                      fontWeight: "var(--mr-weight-display)",
-                      color: "var(--mr-coral)",
-                      letterSpacing: "0.08em",
-                      flexShrink: 0,
-                      marginTop: "2px",
-                      width: "24px",
-                    }}
-                  >
-                    {num}
-                  </span>
-                  <div style={{ flex: 1 }}>
-                    <p
-                      className="group-hover:text-[var(--mr-coral)] transition-colors"
-                      style={{
-                        fontFamily: "var(--mr-font-display)",
-                        fontSize: "var(--mr-text-sm)",
-                        fontWeight: "var(--mr-weight-display)",
-                        color: "#fff",
-                        lineHeight: 1.25,
-                        marginBottom: "5px",
-                      }}
-                    >
-                      {title}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--mr-font-body)",
-                        fontSize: "var(--mr-text-xs)",
-                        color: "rgba(255,255,255,0.45)",
-                        lineHeight: 1.55,
-                      }}
-                    >
-                      {desc}
-                    </p>
-                  </div>
-                  <span
-                    className="opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ color: "var(--mr-coral)", fontSize: "var(--mr-text-sm)", flexShrink: 0, alignSelf: "center" }}
-                  >
-                    →
-                  </span>
-                </a>
-              ))}
-            </div>
-
+            <a
+              href="mailto:ask@kingscrosslabs.com?subject=Sponsoring%20Time%20Rich%20Club"
+              className="mr-card mr-bento-card mr-lift"
+              style={{ gridArea: "cta", background: "var(--mr-red)", color: "var(--mr-ink)" }}
+            >
+              <p className="mr-caption" style={{ letterSpacing: "0.04em", color: "var(--mr-ink)" }}>
+                For brands
+              </p>
+              <div>
+                <h3 className="mr-subheading">Sponsor an event</h3>
+                <p className="mr-body" style={{ marginTop: "6px" }}>
+                  Put your product in front of a room of AI builders.
+                </p>
+                <span className="mr-ghost" style={{ marginTop: "16px" }}>
+                  Get in touch →
+                </span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
 
-      <HomepageMotion />
-    </main>
+      {/* ── Speaking ────────────────────────────────────── */}
+      <section className="mr-section" style={{ background: "var(--mr-yellow)" }}>
+        <ConfettiField items={SPEAKING_CONFETTI} />
+
+        <div className="mr-wrap">
+          <div className="mr-split">
+            <Image
+              src="/about-assets/005.jpg"
+              alt="Mika Reyes speaking"
+              width={520}
+              height={360}
+              unoptimized
+              style={{
+                width: "100%",
+                maxWidth: "380px",
+                aspectRatio: "4 / 5",
+                objectFit: "cover",
+                objectPosition: "72% center",
+                borderRadius: "var(--mr-radius-card)",
+              }}
+            />
+
+            <div>
+              <h2 className="mr-heading-lg">
+                Talks, panels, and workshops.
+              </h2>
+
+              <p className="mr-body-lg" style={{ marginTop: "16px", maxWidth: "460px" }}>
+                I speak about AI for non-technical audiences — founders, professionals,
+                and teams who want practical tools, not hype.
+              </p>
+
+              <div style={{ marginTop: "28px" }}>
+                {speakingTopics.map(({ num, title }, i) => (
+                  <div
+                    key={num}
+                    style={{
+                      borderTop: "1px solid var(--mr-ink)",
+                      borderBottom:
+                        i === speakingTopics.length - 1 ? "1px solid var(--mr-ink)" : undefined,
+                      paddingBlock: "14px",
+                      display: "flex",
+                      gap: "16px",
+                    }}
+                  >
+                    <span className="mr-caption" style={{ width: "24px", flexShrink: 0 }}>
+                      {num}
+                    </span>
+                    <p className="mr-body">{title}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: "28px" }}>
+                <a href="#contact" className="mr-cta">
+                  Book me to speak
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Contact ─────────────────────────────────────── */}
+      <section id="contact" className="mr-section" style={{ background: "var(--mr-aqua)" }}>
+        <ConfettiField items={CONTACT_CONFETTI} />
+
+        <div className="mr-wrap">
+          <div className="mr-split">
+            <div>
+              <h2 className="mr-heading-lg">Work with me</h2>
+              <p className="mr-body-lg" style={{ marginTop: "16px", maxWidth: "420px" }}>
+                Tell me what you&apos;re building and what you need. I read every note
+                myself.
+              </p>
+              <div style={{ marginTop: "28px" }}>
+                <a href="mailto:ask@kingscrosslabs.com" className="mr-ghost" style={{ padding: "16px 24px" }}>
+                  ask@kingscrosslabs.com
+                </a>
+              </div>
+            </div>
+
+            <div>
+              {contactTypes.map(({ num, title, desc }, i) => (
+                <div
+                  key={num}
+                  style={{
+                    borderTop: "1px solid var(--mr-ink)",
+                    borderBottom:
+                      i === contactTypes.length - 1 ? "1px solid var(--mr-ink)" : undefined,
+                    paddingBlock: "14px",
+                    display: "flex",
+                    gap: "16px",
+                  }}
+                >
+                  <span className="mr-caption" style={{ width: "24px", flexShrink: 0 }}>
+                    {num}
+                  </span>
+                  <div>
+                    <p className="mr-body-lg">{title}</p>
+                    <p className="mr-body" style={{ marginTop: "4px" }}>
+                      {desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

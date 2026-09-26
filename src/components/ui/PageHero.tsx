@@ -15,8 +15,10 @@ export function PageHero({
         <span
           className="mb-5 inline-flex items-center gap-2"
           style={{
-            background: "var(--mr-surface-rose-2)",
-            color: "var(--mr-coral)",
+            // A tag pill in the system's idiom: colour is the ground, type is
+            // ink. Coral on the old rose fill was 3.24:1 and failed AA.
+            background: "var(--mr-yellow)",
+            color: "var(--mr-ink)",
             padding: "7px 16px",
             borderRadius: "var(--mr-radius-pill)",
             fontFamily: "var(--mr-font-body)",
