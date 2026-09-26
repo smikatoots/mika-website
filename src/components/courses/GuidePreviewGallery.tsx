@@ -64,8 +64,8 @@ export function GuidePreviewGallery() {
             key={src}
             className="overflow-hidden"
             style={{
-              background: "var(--mr-surface)",
-              border: "1px solid var(--mr-border-warm)",
+              background: "var(--mr-paper)",
+              border: "1px solid var(--mr-line)",
               borderRadius: "var(--mr-radius-card)",
               boxShadow: "var(--mr-shadow-card)",
             }}
@@ -88,8 +88,8 @@ export function GuidePreviewGallery() {
             </button>
             <figcaption
               style={{
-                borderTop: "1px solid var(--mr-border-warm)",
-                color: "var(--mr-text-soft)",
+                borderTop: "1px solid var(--mr-line)",
+                color: "var(--mr-charcoal)",
                 fontFamily: "var(--mr-font-body)",
                 fontSize: "var(--mr-text-sm)",
                 fontWeight: "var(--mr-weight-semi)",

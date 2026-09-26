@@ -19,7 +19,7 @@ export default function BuildYourFirstAgentThankYouPage() {
 
       <section
         style={{
-          background: "var(--mr-teal-deep)",
+          background: "var(--mr-charcoal)",
           padding: "96px 0 104px",
           minHeight: "calc(100vh - 200px)",
           display: "flex",
@@ -32,7 +32,7 @@ export default function BuildYourFirstAgentThankYouPage() {
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-eyebrow)",
               fontWeight: "var(--mr-weight-display)",
-              color: "var(--mr-coral-bright)",
+              color: "var(--mr-watermelon-bright)",
               textTransform: "uppercase",
               letterSpacing: "0.14em",
               marginBottom: "20px",

@@ -17,7 +17,7 @@ export function PageHero({
           style={{
             // A tag pill in the system's idiom: colour is the ground, type is
             // ink. Coral on the old rose fill was 3.24:1 and failed AA.
-            background: "var(--mr-sun-yellow)",
+            background: "var(--mr-gold)",
             color: "var(--mr-ink)",
             padding: "7px 16px",
             borderRadius: "var(--mr-radius-pill)",

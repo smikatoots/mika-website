@@ -107,7 +107,7 @@ export function GuideEmailCapture({
   return (
     <section
       aria-labelledby="guide-email-heading"
-      className="mt-8 md:hidden rounded-[var(--mr-radius-card)] border border-[var(--mr-border-teal)] bg-[var(--mr-surface-teal)] px-6 py-8 text-center md:px-10 md:py-10"
+      className="mt-8 md:hidden rounded-[var(--mr-radius-card)] border border-[var(--mr-line)] bg-[var(--mr-paper)] px-6 py-8 text-center md:px-10 md:py-10"
       ref={sectionRef}
     >
       {isSent ? (
@@ -157,7 +157,7 @@ export function GuideEmailCapture({
             </label>
             <input
               autoComplete="email"
-              className="min-h-12 w-full rounded-[var(--mr-radius-input)] border border-[var(--mr-border-input)] bg-white px-4 text-left text-base text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-[var(--mr-coral)] focus:ring-2 focus:ring-[var(--mr-coral)]/20"
+              className="min-h-12 w-full rounded-[var(--mr-radius-input)] border border-[var(--mr-line)] bg-white px-4 text-left text-base text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-[var(--mr-watermelon)] focus:ring-2 focus:ring-[var(--mr-watermelon)]/20"
               id="guide-email"
               inputMode="email"
               onChange={(event) => setEmail(event.target.value)}
@@ -167,7 +167,7 @@ export function GuideEmailCapture({
               value={email}
             />
             <button
-              className="mr-pressable mt-3 min-h-12 w-full rounded-[var(--mr-radius-pill)] bg-[var(--mr-coral-deep)] px-6 py-3 text-sm font-bold text-white transition disabled:cursor-wait disabled:opacity-65"
+              className="mr-pressable mt-3 min-h-12 w-full rounded-[var(--mr-radius-pill)] bg-[var(--mr-watermelon-deep)] px-6 py-3 text-sm font-bold text-white transition disabled:cursor-wait disabled:opacity-65"
               disabled={isSubmitting}
               type="submit"
             >

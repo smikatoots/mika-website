@@ -14,7 +14,7 @@ const CTA_LOCATION = "ai_guide_article_end";
  */
 export function CourseCta() {
   return (
-    <section className="mt-16 rounded-2xl border border-[var(--mr-border-rose)] bg-[var(--mr-surface-rose)] px-6 py-8 text-center md:px-10 md:py-10">
+    <section className="mt-16 rounded-2xl border border-[var(--mr-line)] bg-[var(--mr-paper)] px-6 py-8 text-center md:px-10 md:py-10">
       <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl">
         Want to build your first AI agent?
       </h2>
@@ -28,7 +28,7 @@ export function CourseCta() {
       </p>
       <Ga4TrackedInternalLink
         href={COURSE_HREF}
-        className="mr-pressable mt-6 inline-flex items-center justify-center rounded-[var(--mr-radius-pill)] bg-[var(--mr-coral-deep)] px-8 py-3 text-sm font-bold text-white"
+        className="mr-pressable mt-6 inline-flex items-center justify-center rounded-[var(--mr-radius-pill)] bg-[var(--mr-watermelon-deep)] px-8 py-3 text-sm font-bold text-white"
         ga4EventName="course_cta_clicked"
         ga4Params={{
           cta_label: "Learn more",

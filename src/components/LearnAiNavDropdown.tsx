@@ -9,7 +9,7 @@ const navLinkStyle = {
   fontFamily: "var(--mr-font-body)",
   fontSize: "var(--mr-text-sm)",
   fontWeight: "var(--mr-weight-semi)",
-  color: "var(--mr-text-soft)",
+  color: "var(--mr-charcoal)",
 } as const;
 
 export function LearnAiNavDropdown() {
@@ -30,7 +30,7 @@ export function LearnAiNavDropdown() {
     >
       <button
         type="button"
-        className="mr-navlink flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 transition-colors hover:text-[var(--mr-coral)]"
+        className="mr-navlink flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 transition-colors hover:text-[var(--mr-watermelon)]"
         style={navLinkStyle}
         aria-haspopup="true"
         aria-expanded={open}
@@ -56,8 +56,8 @@ export function LearnAiNavDropdown() {
         <div
           className="min-w-[320px] overflow-hidden py-2"
           style={{
-            background: "var(--mr-surface)",
-            border: "1px solid var(--mr-border)",
+            background: "var(--mr-paper)",
+            border: "1px solid var(--mr-line)",
             borderRadius: "var(--mr-radius-card)",
             boxShadow: "var(--mr-shadow-lift)",
           }}
@@ -67,7 +67,7 @@ export function LearnAiNavDropdown() {
               key={href}
               href={href}
               role="menuitem"
-              className="block px-4 py-3 transition-colors hover:bg-[var(--mr-surface-cream)]"
+              className="block px-4 py-3 transition-colors hover:bg-[var(--mr-paper)]"
               style={{ textDecoration: "none" }}
             >
               <span
@@ -85,8 +85,8 @@ export function LearnAiNavDropdown() {
                     className="rounded-full"
                     style={{
                       background:
-                        "color-mix(in srgb, var(--mr-teal) 14%, white)",
-                      color: "var(--mr-teal)",
+                        "color-mix(in srgb, var(--mr-verdigris) 14%, white)",
+                      color: "var(--mr-verdigris)",
                       fontSize: "10px",
                       fontWeight: "var(--mr-weight-display)",
                       letterSpacing: "0.06em",

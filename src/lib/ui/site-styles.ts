@@ -5,7 +5,7 @@
 
 export const textDefault = "text-[var(--mr-ink)]";
 
-export const textBody = "text-[length:var(--mr-text-body)] leading-relaxed text-[var(--mr-text-soft)]";
+export const textBody = "text-[length:var(--mr-text-body)] leading-relaxed text-[var(--mr-charcoal)]";
 
 export const textH1 =
   "font-[family-name:var(--mr-font-display)] text-4xl font-bold tracking-tight text-[var(--mr-ink)] leading-[1.02] md:text-5xl";
@@ -18,18 +18,18 @@ export const textH3 = "font-[family-name:var(--mr-font-display)] text-xl font-bo
 export const textMuted = "text-[length:var(--mr-text-xs)] text-[var(--mr-muted)]";
 
 /* Links stay coral — they should look like links — but at the deepened value.
-   Plain coral as text is 3.7:1 on paper white and fails AA; `--mr-coral-deep`
+   Plain coral as text is 3.7:1 on paper white and fails AA; `--mr-watermelon-deep`
    is 4.79:1 and exists for exactly this. Hover brightens to full coral, where
    the contrast requirement no longer applies because it is a transient state
    on text the reader has already found. */
 export const siteLink =
-  "font-semibold text-[var(--mr-coral-deep)] underline decoration-[var(--mr-border-rose)] underline-offset-[3px] transition-colors hover:text-[var(--mr-coral)]";
+  "font-semibold text-[var(--mr-watermelon-deep)] underline decoration-[var(--mr-line)] underline-offset-[3px] transition-colors hover:text-[var(--mr-watermelon)]";
 
 export const siteLinkSubtle =
-  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-coral-deep)] underline decoration-[var(--mr-coral-deep)]/40 underline-offset-[3px] transition-colors hover:text-[var(--mr-coral)]";
+  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-watermelon-deep)] underline decoration-[var(--mr-watermelon-deep)]/40 underline-offset-[3px] transition-colors hover:text-[var(--mr-watermelon)]";
 
 export const siteNavLink =
-  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-text-soft)] transition-colors hover:text-[var(--mr-coral-deep)]";
+  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-charcoal)] transition-colors hover:text-[var(--mr-watermelon-deep)]";
 
 /** Article-width main column. */
 export const mainProse =
@@ -50,22 +50,22 @@ export const mainGallery =
 /* Card grounds for the colour-cycled grids on /links and /ai. Shared so the
    two pages cannot drift into different palettes.
 
-   Each ground carries its own type colour rather than assuming ink. Purple is
-   the reason: black on it is 3.89:1 and fails AA, where paper white is 5.40:1.
-   It is the only ground in the palette that inverts, and hard-coding ink would
-   have made it the one unreadable card.
+   Each ground carries its own type colour rather than assuming ink. Sapphire
+   is the reason: black on it is 4.40:1 and fails AA, where paper white is
+   4.51:1. It is the only ground in the palette that inverts, and hard-coding
+   ink would have made it the one unreadable card.
 
    Cycle these by grid position, not by item id, so a filtered grid still shows
    the full spread. */
 export const CARD_GROUNDS = [
-  { bg: "var(--mr-purple)", fg: "var(--mr-paper)", chip: "var(--mr-paper)" },
-  { bg: "var(--mr-lime)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
-  { bg: "var(--mr-teal)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
-  { bg: "var(--mr-coral-soft)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-sapphire)", fg: "var(--mr-paper)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-gold)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-verdigris)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-watermelon)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
 ] as const;
 
 /** The white pill CTA that sits inside a coloured card. */
 export const cardButton =
   "mt-auto inline-flex w-fit items-center gap-1.5 rounded-[var(--mr-radius-pill)]" +
-  " border border-[var(--mr-border-ink)] bg-white px-4 py-2" +
+  " border border-[var(--mr-ink)] bg-white px-4 py-2" +
   " text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-ink)]";

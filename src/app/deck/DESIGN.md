@@ -201,7 +201,7 @@ failing the 3:1 floor for interactive components). Both now pass. Do not
 reintroduce `zinc-400` or lighter for text or for a control on this surface.
 
 **Never hardcode the accent hex.** `--deck-accent` is defined once in
-`deck.css` as `var(--mr-coral)`, which resolves to the approved brand value in
+`deck.css` as `var(--mr-watermelon)`, which resolves to the approved brand value in
 `globals.css`. Slides and SVGs reference `var(--deck-accent)`. Decks built
 before 2026-08-24 hardcode a retired salmon `#fd4869`; that is legacy, not a
 pattern to copy.

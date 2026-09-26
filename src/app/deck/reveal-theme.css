@@ -8,7 +8,7 @@
 .deck-root .reveal,
 .reveal-viewport {
   /* Identity primitives, mirrored. The hexes live in globals.css. */
-  --r-background-color: var(--mr-bg, #fff);
+  --r-background-color: var(--mr-linen, #fff);
   --r-main-color: var(--deck-ink);
   --r-heading-color: var(--deck-ink);
 
@@ -44,7 +44,7 @@
 }
 
 .reveal-viewport {
-  background: var(--mr-bg, #fff);
+  background: var(--mr-linen, #fff);
 }
 
 /* globals.css sets `h1..h6 { font-family: var(--mr-font-display) }` so the

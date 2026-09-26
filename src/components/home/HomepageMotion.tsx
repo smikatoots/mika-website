@@ -13,7 +13,7 @@ import { useEffect } from "react";
  * pointer:fine, and fully cleaned up on unmount.
  */
 
-const COLORS = ["#E8425A", "#0E8C8C", "#FBD7DC", "#FF3D68", "#6B4DE6", "#FFC53D"];
+const COLORS = ["#E8425A", "#FFBD4B", "#109180", "#555DFF"];
 const SCRAMBLE_CHARS = "!<>-_\\/[]{}—=+*^?#·✦";
 const AWARD_EMOJI = ["🏆", "✦", "🌱", "🚀"];
 
@@ -409,7 +409,7 @@ export function HomepageMotion() {
       const t = document.createElement("div");
       t.textContent = msg;
       t.style.cssText =
-        "position:fixed; bottom:28px; left:50%; transform:translate(-50%,80px); background:#142A2A; color:#FFFFFF; font-family:var(--mr-font-body,'Hanken Grotesk',sans-serif); font-size:15px; font-weight:600; padding:14px 26px; border-radius:100px; z-index:10002; box-shadow:0 16px 40px -10px rgba(0,0,0,.4); animation:ea-toast 3s cubic-bezier(.2,.8,.3,1) forwards; pointer-events:none;";
+        "position:fixed; bottom:28px; left:50%; transform:translate(-50%,80px); background:#2F2C29; color:#FFFFFF; font-family:var(--mr-font-body,'Hanken Grotesk',sans-serif); font-size:15px; font-weight:600; padding:14px 26px; border-radius:100px; z-index:10002; box-shadow:0 16px 40px -10px rgba(0,0,0,.4); animation:ea-toast 3s cubic-bezier(.2,.8,.3,1) forwards; pointer-events:none;";
       fx.appendChild(t);
       window.setTimeout(() => t.remove(), 3100);
     }
@@ -588,7 +588,7 @@ export function HomepageMotion() {
     const heroPhoto = document.querySelector<HTMLElement>("[data-hero-photo]");
     if (heroPhoto) tilt(heroPhoto);
     document.querySelectorAll<HTMLElement>("main section").forEach((sec) => {
-      if (getComputedStyle(sec).backgroundColor === "rgb(20, 42, 42)") spotlight(sec);
+      if (getComputedStyle(sec).backgroundColor === "rgb(47, 44, 41)") spotlight(sec);
     });
     const h1 = document.querySelector<HTMLElement>("h1");
     if (h1) scramble(h1);
@@ -598,7 +598,7 @@ export function HomepageMotion() {
     const hint = document.createElement("div");
     hint.textContent = "🎮 psst… this page has secrets";
     hint.style.cssText =
-      "position:fixed; bottom:20px; right:20px; background:#FFFFFF; border:1.5px solid #E0DBD3; color:#4A4A4A; font-family:var(--mr-font-body,'Hanken Grotesk',sans-serif); font-size:12px; font-weight:600; padding:8px 14px; border-radius:100px; z-index:9999; box-shadow:0 8px 20px -8px rgba(0,0,0,.25); cursor:pointer; animation:ea-wiggle 2.5s ease-in-out infinite;";
+      "position:fixed; bottom:20px; right:20px; background:#FFFFFF; border:1.5px solid #D9CFC2; color:#2F2C29; font-family:var(--mr-font-body,'Hanken Grotesk',sans-serif); font-size:12px; font-weight:600; padding:8px 14px; border-radius:100px; z-index:9999; box-shadow:0 8px 20px -8px rgba(0,0,0,.25); cursor:pointer; animation:ea-wiggle 2.5s ease-in-out infinite;";
     on(hint, "click", () => {
       toast(
         'Try: triple-click the logo · type "mika" · type "drop" · click award emoji · drag the Speaking rows',

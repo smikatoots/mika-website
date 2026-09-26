@@ -148,7 +148,7 @@ function SectionHeader({
         onClick={onSeeAll}
         style={{
           ...META,
-          color: "var(--mr-teal)",
+          color: "var(--mr-verdigris)",
           textDecoration: "none",
           whiteSpace: "nowrap",
         }}
@@ -193,7 +193,7 @@ export function LinkInBioContent({
             borderRadius: "50%",
             objectFit: "cover",
             margin: "0 auto 10px",
-            border: "3px solid var(--mr-teal)",
+            border: "3px solid var(--mr-verdigris)",
           }}
         />
         <h1 style={{ ...DISPLAY, color: "var(--mr-ink)", marginBottom: "8px" }}>
@@ -214,7 +214,7 @@ export function LinkInBioContent({
         className="mr-pressable"
         style={{
           display: "block",
-          background: "var(--mr-teal-deep)",
+          background: "var(--mr-charcoal)",
           borderRadius: "var(--mr-radius-panel)",
           padding: "22px",
           textDecoration: "none",
@@ -234,14 +234,14 @@ export function LinkInBioContent({
         >
           Build your first AI agent in 1 day with a step-by-step guide!
         </p>
-        <CardButton background="var(--mr-coral)">Learn more →</CardButton>
+        <CardButton background="var(--mr-watermelon)">Learn more →</CardButton>
       </Link>
 
       {/* ── Newsletter subscribe ─────────────────────────────────── */}
       <div
         style={{
-          background: "var(--mr-surface-rose)",
-          border: "1px solid var(--mr-border-rose)",
+          background: "var(--mr-paper)",
+          border: "1px solid var(--mr-line)",
           borderRadius: "var(--mr-radius-panel)",
           padding: "22px",
           marginBottom: "12px",
@@ -251,7 +251,7 @@ export function LinkInBioContent({
         <p style={{ ...DISPLAY, color: "var(--mr-ink)", marginBottom: "8px" }}>
           Subscribe to my newsletter
         </p>
-        <p style={{ ...BODY, color: "var(--mr-text-soft)", marginBottom: "12px" }}>
+        <p style={{ ...BODY, color: "var(--mr-charcoal)", marginBottom: "12px" }}>
           For high-achievers leveraging AI to build time-rich &amp; ambitious
           careers, wealth &amp; lives
         </p>
@@ -289,8 +289,8 @@ export function LinkInBioContent({
         className="mr-pressable"
         style={{
           display: "block",
-          background: "var(--mr-surface-teal)",
-          border: "1px solid var(--mr-border-teal)",
+          background: "var(--mr-paper)",
+          border: "1px solid var(--mr-line)",
           borderRadius: "var(--mr-radius-panel)",
           padding: "22px",
           textDecoration: "none",
@@ -298,14 +298,14 @@ export function LinkInBioContent({
         }}
       >
         <p
-          style={{ ...DISPLAY, color: "var(--mr-teal-deep)", marginBottom: "8px" }}
+          style={{ ...DISPLAY, color: "var(--mr-charcoal)", marginBottom: "8px" }}
         >
           Office hours with Mika
         </p>
-        <p style={{ ...BODY, color: "var(--mr-text-soft)", marginBottom: "16px" }}>
+        <p style={{ ...BODY, color: "var(--mr-charcoal)", marginBottom: "16px" }}>
           Ask me anything for 30min! (${OFFICE_HOURS_PRICE})
         </p>
-        <CardButton background="var(--mr-teal)">Book a 1:1 →</CardButton>
+        <CardButton background="var(--mr-verdigris)">Book a 1:1 →</CardButton>
       </a>
 
       {/* ── Tools & deals: horizontal swipe ──────────────────────── */}
@@ -351,8 +351,8 @@ export function LinkInBioContent({
                 minWidth: 0,
                 maxWidth: "250px",
                 scrollSnapAlign: "start",
-                background: "var(--mr-surface)",
-                border: "1px solid var(--mr-border)",
+                background: "var(--mr-paper)",
+                border: "1px solid var(--mr-line)",
                 borderRadius: "var(--mr-radius-card)",
                 boxShadow: "var(--mr-shadow-card)",
                 padding: "16px 18px",
@@ -372,7 +372,7 @@ export function LinkInBioContent({
                   {FEATURED_LINK_BLURBS[link.id] ?? link.description}
                 </p>
               </div>
-              <span style={{ ...META, color: "var(--mr-teal)" }}>
+              <span style={{ ...META, color: "var(--mr-verdigris)" }}>
                 Get the deal →
               </span>
             </a>
@@ -408,8 +408,8 @@ export function LinkInBioContent({
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: "14px",
-                background: "var(--mr-surface)",
-                border: "1px solid var(--mr-border)",
+                background: "var(--mr-paper)",
+                border: "1px solid var(--mr-line)",
                 borderRadius: "var(--mr-radius-card)",
                 padding: "14px 16px",
                 textDecoration: "none",
@@ -420,7 +420,7 @@ export function LinkInBioContent({
               </span>
               <span
                 aria-hidden
-                style={{ ...BODY, color: "var(--mr-teal)" }}
+                style={{ ...BODY, color: "var(--mr-verdigris)" }}
               >
                 →
               </span>
@@ -464,7 +464,7 @@ export function LinkInBioContent({
                   width: "44px",
                   height: "44px",
                   borderRadius: "var(--mr-radius-pill)",
-                  color: "var(--mr-teal-deep)",
+                  color: "var(--mr-charcoal)",
                   textDecoration: "none",
                 }}
               >
