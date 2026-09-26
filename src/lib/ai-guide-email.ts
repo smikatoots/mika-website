@@ -70,17 +70,17 @@ export function buildAiGuideEmail({
   <body style="margin:0;padding:0;background:#F1E8DE;color:#000000;">
     <div style="max-width:560px;margin:0 auto;padding:40px 20px;font-family:${FONT_STACK};">
       <div style="overflow:hidden;border:1px solid #D9CFC2;border-radius:18px;background:#FFFFFF;">
-        <div style="background:#109180;padding:20px 32px;">
+        <div style="background:#49BEB7;padding:20px 32px;">
           <p style="margin:0;font-family:${FONT_STACK};font-size:26px;font-weight:400;line-height:1.1;letter-spacing:-.03em;color:#FFFFFF;"><span style="font-weight:700;">Mika Reyes</span> &middot; Time Rich AI</p>
         </div>
         <div style="padding:32px;">
           <p style="margin:0 0 6px;font-size:16px;font-weight:400;line-height:1.5;color:#2F2C29;">You requested an email for the guide:</p>
           <p style="margin:0 0 24px;font-size:20px;font-weight:700;line-height:1.4;color:#000000;">${safeGuideTitle}</p>
-          <a href="${safeGuideUrl}" style="display:inline-block;border-radius:100px;background:#E8425A;padding:14px 22px;font-family:${FONT_STACK};font-size:16px;font-weight:600;line-height:1.2;color:#FFFFFF;text-decoration:none;">Read the guide</a>
+          <a href="${safeGuideUrl}" style="display:inline-block;border-radius:100px;background:#FF5959;padding:14px 22px;font-family:${FONT_STACK};font-size:16px;font-weight:600;line-height:1.2;color:#FFFFFF;text-decoration:none;">Read the guide</a>
           <p style="margin:32px 0 10px;font-size:15px;font-weight:600;line-height:1.6;color:#000000;">Other resources:</p>
           <ul style="margin:0 0 18px;padding-left:20px;font-size:15px;line-height:1.6;color:#2F2C29;">
-            <li style="margin:0 0 8px;"><a href="${newsletterUrl.replace(/&/g, "&amp;")}" style="color:#E8425A;font-weight:600;text-decoration:underline;">My newsletter!</a> - I go deeper in using AI for a Time Rich Life</li>
-            <li style="margin:0;"><a href="${agentGuideUrl.replace(/&/g, "&amp;")}" style="color:#E8425A;font-weight:600;text-decoration:underline;">Master Agentic AI 101</a> - build your 1st agent</li>
+            <li style="margin:0 0 8px;"><a href="${newsletterUrl.replace(/&/g, "&amp;")}" style="color:#B23E3E;font-weight:600;text-decoration:underline;">My newsletter!</a> - I go deeper in using AI for a Time Rich Life</li>
+            <li style="margin:0;"><a href="${agentGuideUrl.replace(/&/g, "&amp;")}" style="color:#B23E3E;font-weight:600;text-decoration:underline;">Master Agentic AI 101</a> - build your 1st agent</li>
           </ul>
           <p style="margin:24px 0 18px;font-size:15px;line-height:1.6;color:#2F2C29;">If you have any other questions, just let me know! &#10024;</p>
           <table role="presentation" cellspacing="0" cellpadding="0" border="0">
@@ -90,7 +90,7 @@ export function buildAiGuideEmail({
               </td>
               <td style="vertical-align:middle;">
                 <p style="margin:0 0 4px;font-family:${FONT_STACK};font-size:15px;font-weight:600;line-height:1.5;color:#000000;">Mika Reyes</p>
-                <p style="margin:0;font-family:${FONT_STACK};font-size:13px;font-weight:600;line-height:1.5;color:#E8425A;">Founder &amp; CEO</p>
+                <p style="margin:0;font-family:${FONT_STACK};font-size:13px;font-weight:600;line-height:1.5;color:#B23E3E;">Founder &amp; CEO</p>
               </td>
             </tr>
           </table>

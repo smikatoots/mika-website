@@ -69,7 +69,7 @@ function LearnAiMenu() {
               href={href}
               role="menuitem"
               className="mr-menuitem"
-              style={featured ? { background: "var(--mr-gold)" } : undefined}
+              style={featured ? { background: "var(--mr-yellow)" } : undefined}
             >
               <span className="mr-body">{label}</span>
               <span className="mr-caption mr-menuitem-desc">{description}</span>

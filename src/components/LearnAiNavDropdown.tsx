@@ -30,7 +30,7 @@ export function LearnAiNavDropdown() {
     >
       <button
         type="button"
-        className="mr-navlink flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 transition-colors hover:text-[var(--mr-watermelon)]"
+        className="mr-navlink flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 transition-colors hover:text-[var(--mr-red-deep)]"
         style={navLinkStyle}
         aria-haspopup="true"
         aria-expanded={open}
@@ -84,9 +84,8 @@ export function LearnAiNavDropdown() {
                   <span
                     className="rounded-full"
                     style={{
-                      background:
-                        "color-mix(in srgb, var(--mr-verdigris) 14%, white)",
-                      color: "var(--mr-verdigris)",
+                      background: "var(--mr-aqua)",
+                      color: "var(--mr-ink)",
                       fontSize: "10px",
                       fontWeight: "var(--mr-weight-display)",
                       letterSpacing: "0.06em",

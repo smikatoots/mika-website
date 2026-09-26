@@ -402,19 +402,20 @@ not apply to the other three, which are meant to be used freely.
 
 **Accents**
 
-- **Watermelon** `#E8425A` (mandatory). The single point of heat, and the only
-  colour with filled-button authority. It marks the one thing being asked for.
-  Black on it is 5.36:1 and clears AA; white is 3.92:1 and does not, so type on
-  watermelon is ink. It may also appear as decoration, but never as a second
-  button.
-- **Sunflower Gold** `#FFBD4B`. The signature warm pop. Black type (12.63:1).
-- **Verdigris** `#109180`. The calm counterweight. Black type (5.38:1).
-- **Electric Sapphire** `#555DFF`. The one cool accent. **White type only** —
-  black on it is 4.40:1 and fails AA; white is 4.78:1.
+- **Red** `#FF5959` (mandatory). The single point of heat, and the only colour
+  with filled-button authority. It marks the one thing being asked for. Black
+  on it is 6.83:1 and clears AA; white is 3.08:1 and does not, so type on red
+  is ink. It may also appear as decoration, but never as a second button.
+- **Yellow** `#FACF5A`. The signature warm pop. Black type (14.14:1).
+- **Aqua** `#49BEB7`. The fresh counterweight. Black type (9.33:1).
+- **Emerald** `#6FD098`. The fresh green. Black type (11.15:1).
 
-Two interaction states of watermelon exist and are not palette colours in their
-own right: a hover lift `#FF3D68`, and a deepened `#CE3149` for the rare case
-that needs white type on it (5.05:1).
+All four accents take black type, and none of them is dark enough to be used
+as text on a light ground. Coloured type uses the deep shade of red below.
+
+Two shades of red exist and are not palette colours in their own right: a
+hover lift `#FF7A7A`, and a deepened `#B23E3E` for red type and for the rare
+case that needs white type on red (5.75:1).
 
 **Neutrals**
 
@@ -434,21 +435,22 @@ that needs white type on it (5.05:1).
 
 **Avoid:** any colour outside these eleven, including tints of the accents.
 Neon. Gradients used as decoration. Dark-mode-first palettes. Any accent used
-for body text or as a primary action other than watermelon.
+for body text or as a primary action other than red.
 
 Roles are not assigned here. Which accent grounds a card or a section is a
 decision each surface makes in its own `DESIGN.md`.
 
 > **Migration note (version 3).** Mika's call. Nine accents became four:
-> coral stays as Watermelon (same value); Sun Yellow becomes Sunflower Gold;
-> Teal becomes Verdigris; Periwinkle and Purple both become Electric Sapphire;
-> Lime and Coral Soft are retired. The neutrals collapsed from sixteen to
-> seven: the body and soft text colours merge into Charcoal, Faint into Muted,
-> Sand, Stone and every border tone into Line, and the rose and teal surface
-> tints into Paper White.
+> Red `#FF5959` replaces coral `#E8425A` as the action colour; Sun Yellow
+> becomes Yellow; Teal and Lime become Aqua; Periwinkle and Purple become
+> Emerald; Coral Soft is retired. The neutrals collapsed from sixteen to seven:
+> the body and soft text colours merge into Charcoal, Faint into Muted, Sand,
+> Stone and every border tone into Line, and the rose and teal surface tints
+> into Paper White. Two interim v3 palettes were tried and dropped the same
+> week.
 >
-> Version 1's note about `#fd4869` in the deck system still stands: watermelon
-> `#E8425A` is the single approved red.
+> Version 1's note about `#fd4869` in the deck system still stands: `#FF5959`
+> is now the single approved red, and the deck picks it up through its token.
 
 ### Typefaces
 

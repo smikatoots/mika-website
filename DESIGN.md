@@ -4,11 +4,11 @@ description: Visual system for mikareyes.com — the marketing pages, AI guides,
 brand: ./BRAND.md
 version: 3
 colors:
-  watermelon: "#E8425A"
-  watermelon-deep: "#CE3149"
-  gold: "#FFBD4B"
-  verdigris: "#109180"
-  sapphire: "#555DFF"
+  red: "#FF5959"
+  red-deep: "#B23E3E"
+  yellow: "#FACF5A"
+  aqua: "#49BEB7"
+  green: "#6FD098"
   ink: "#000000"
   charcoal: "#2F2C29"
   muted: "#6E655C"
@@ -16,9 +16,8 @@ colors:
   linen: "#F1E8DE"
   paper: "#FBF8F5"
   white: "#FFFFFF"
-  on-watermelon: "#000000"
+  on-red: "#000000"
   on-dark: "#FFFFFF"
-  on-sapphire: "#FBF8F5"
 typography:
   display:
     fontFamily: Satoshi
@@ -87,8 +86,8 @@ spacing:
   section: 64px
 components:
   button-primary:
-    backgroundColor: "{colors.watermelon}"
-    textColor: "{colors.on-watermelon}"
+    backgroundColor: "{colors.red}"
+    textColor: "{colors.on-red}"
     typography: "{typography.body-md}"
     rounded: "{rounded.cta}"
     padding: 16px
@@ -104,7 +103,7 @@ components:
     rounded: "{rounded.card}"
     padding: 24px
   card-colored:
-    backgroundColor: "{colors.verdigris}"
+    backgroundColor: "{colors.aqua}"
     textColor: "{colors.ink}"
     rounded: "{rounded.card}"
     padding: 24px
@@ -134,14 +133,14 @@ components:
   section-dark:
     backgroundColor: "{colors.charcoal}"
     textColor: "{colors.on-dark}"
-  band-sapphire:
-    backgroundColor: "{colors.sapphire}"
-    textColor: "{colors.on-sapphire}"
+  band-green:
+    backgroundColor: "{colors.green}"
+    textColor: "{colors.ink}"
   divider:
     backgroundColor: "{colors.ink}"
   brand-secondary-mark:
     backgroundColor: "{colors.paper}"
-    textColor: "{colors.verdigris}"
+    textColor: "{colors.red-deep}"
     typography: "{typography.h3}"
 ---
 
@@ -182,33 +181,37 @@ carries hue — no tints of the accents either.
 
 ### The one action colour
 
-Watermelon `#E8425A` fills every primary action. It is the whole conversion
-hierarchy, and it only works because it is scarce — a page with two watermelon
+Red `#FF5959` fills every primary action. It is the whole conversion
+hierarchy, and it only works because it is scarce — a page with two red
 buttons has none. It may also appear as a card or shape fill, but never behind
-or next to a watermelon button, where it would compete with it.
+or next to a red button, where it would compete with it.
 
-Type on watermelon is **ink, not white**. Black on it is 5.36:1 and clears AA;
-white is 3.92:1 and does not. This is the single most common way to get the
-system wrong, because white-on-red looks right and fails.
+Type on red is **ink, not white**. Black on it is 6.83:1 and clears AA; white
+is 3.08:1 and does not. Where a button needs white type, it sits on red-deep
+`#B23E3E` (5.75:1) instead. Red is also too light to be text: red type always
+uses red-deep (5.44:1 on paper).
 
 ### Decoration
 
-Sunflower gold, verdigris and electric sapphire are grounds, section bands and
-shape fills. None is ever a primary action, and none carries meaning on its own
-— a reader who cannot distinguish them loses nothing.
+Yellow, aqua and emerald are grounds, section bands and shape fills. None is
+ever a primary action, and none carries meaning on its own — a reader who
+cannot distinguish them loses nothing.
 
 | Ground | Black on it | White on it | Type |
 |---|---|---|---|
-| Sunflower Gold `#FFBD4B` | 12.63:1 | 1.66:1 | ink |
-| Verdigris `#109180` | 5.38:1 | 3.90:1 | ink |
-| Watermelon `#E8425A` | 5.36:1 | 3.92:1 | ink |
-| Electric Sapphire `#555DFF` | **4.40:1** | 4.78:1 | **paper white only** |
+| Yellow `#FACF5A` | 14.14:1 | 1.49:1 | ink |
+| Aqua `#49BEB7` | 9.33:1 | 2.25:1 | ink |
+| Red `#FF5959` | 6.83:1 | 3.08:1 | ink |
+| Emerald `#6FD098` | 11.15:1 | 1.88:1 | ink |
 | Line `#D9CFC2` | 13.6:1 | — | ink |
 
-Sapphire is the exception in the palette and the only ground that inverts its
-type. If a component sets black on sapphire, that is a bug. A paper chip or tag
-sitting on sapphire sets its own ink, since it would otherwise inherit paper
-type and vanish.
+Every accent takes ink; no ground inverts its type. Aqua and emerald sit
+close in lightness, so never put them side by side — separate them with
+yellow, red or a linen gap.
+
+None of the accents works as **text** on a light ground (red 2.91:1, aqua
+2.13:1, emerald 1.78:1, yellow 1.40:1). A link or label that wants colour uses
+red-deep `#B23E3E` (5.44:1 on paper).
 
 ### Neutrals
 
@@ -359,7 +362,7 @@ not need its own element. Never hand-write a button's styles again — the CTA w
 previously copy-pasted in ten places with nine different padding pairs.
 
 - **Primary** — Accent-deep ground, white text, Hanken 700, `pill` radius,
-  `--mr-shadow-cta`. Hovers up to Watermelon.
+  `--mr-shadow-cta`. Hovers up to Red.
 - **Secondary** — white ground, Ink text, 1.5px `border-input`, no shadow.
 - **Tertiary / external link** — white ground, 1px `border`, Accent-deep label,
   `rounded-lg`, `--mr-shadow-card`.
@@ -384,7 +387,7 @@ for you when you spread it manually, so pair it with `className="mr-pressable"`;
 `border-cream` footer rule.
 
 **Eyebrow pills** sit above a page title in `eyebrow` type, often prefixed
-`✦`, on a paper or accent ground with ink type (paper type on sapphire).
+`✦`, on a paper or accent ground with ink type.
 
 **Modals** use `panel` radius, `--mr-shadow-frame`, and a
 `rgba(17,17,17,0.45)` scrim. Three different modal shells exist today
@@ -429,8 +432,8 @@ asset needs it.
 - Trust the global `h1`-`h6` rule in `globals.css` for heading fonts. Do not
   set a body font on a heading.
 - Use `buttonStyle()` or `<Button>` for every button. No exceptions.
-- Use `Watermelon-deep #CE3149` for any watermelon text at reading size;
-  reserve `Watermelon #E8425A` for fills and display type.
+- Use `red-deep #B23E3E` for any red text, at every size; reserve
+  `red #FF5959` for fills and shapes.
 - Give buttons `.mr-pressable` and cards `.mr-lift`.
 - Use `100px` for pill radii so the magnetic-button effect keeps working.
 - Use `md:px-10` desktop gutters.
@@ -442,7 +445,8 @@ asset needs it.
 
 - Don't add a `zinc-*` color. The warm neutral ramp is the site's; `zinc` is a
   cool grey that quietly makes pages look like a different product.
-- Don't use Watermelon, Verdigris, Gold or Sapphire for body-size text.
+- Don't use Red, Yellow, Aqua or Emerald for text at any size on a light
+  ground. Red-deep is the only coloured type.
   All four fail WCAG AA on white.
 - Don't put a tint on a tint, or carry light borders into a dark section.
 - Don't use `rounded-full` on a button.

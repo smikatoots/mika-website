@@ -43,10 +43,10 @@ export default async function BlogIndexPage({ searchParams }: Props) {
 
   const tagPillActive =
     "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-    " border-[var(--mr-watermelon)] bg-[var(--mr-paper)] text-[var(--mr-watermelon)]";
+    " border-[var(--mr-red)] bg-[var(--mr-paper)] text-[var(--mr-red-deep)]";
   const tagPillIdle =
     "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-    " border-[var(--mr-line)] text-[var(--mr-muted)] hover:border-[var(--mr-watermelon)] hover:text-[var(--mr-watermelon)]";
+    " border-[var(--mr-line)] text-[var(--mr-muted)] hover:border-[var(--mr-red)] hover:text-[var(--mr-red-deep)]";
 
   return (
     <main className={mainWide}>
@@ -127,11 +127,11 @@ export default async function BlogIndexPage({ searchParams }: Props) {
               >
                 <span
                   className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-                  style={{ color: "var(--mr-watermelon)" }}
+                  style={{ color: "var(--mr-red-deep)" }}
                 >
                   →
                 </span>
-                <span className="group-hover:text-[var(--mr-watermelon)] transition-colors">
+                <span className="group-hover:text-[var(--mr-red-deep)] transition-colors">
                   {post.title}
                 </span>
               </span>

@@ -18,18 +18,18 @@ export const textH3 = "font-[family-name:var(--mr-font-display)] text-xl font-bo
 export const textMuted = "text-[length:var(--mr-text-xs)] text-[var(--mr-muted)]";
 
 /* Links stay coral — they should look like links — but at the deepened value.
-   Plain coral as text is 3.7:1 on paper white and fails AA; `--mr-watermelon-deep`
+   Plain coral as text is 3.7:1 on paper white and fails AA; `--mr-red-deep`
    is 4.79:1 and exists for exactly this. Hover brightens to full coral, where
    the contrast requirement no longer applies because it is a transient state
    on text the reader has already found. */
 export const siteLink =
-  "font-semibold text-[var(--mr-watermelon-deep)] underline decoration-[var(--mr-line)] underline-offset-[3px] transition-colors hover:text-[var(--mr-watermelon)]";
+  "font-semibold text-[var(--mr-red-deep)] underline decoration-[var(--mr-line)] underline-offset-[3px] transition-colors hover:text-[var(--mr-red-deep)]";
 
 export const siteLinkSubtle =
-  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-watermelon-deep)] underline decoration-[var(--mr-watermelon-deep)]/40 underline-offset-[3px] transition-colors hover:text-[var(--mr-watermelon)]";
+  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-red-deep)] underline decoration-[var(--mr-red-deep)]/40 underline-offset-[3px] transition-colors hover:text-[var(--mr-red-deep)]";
 
 export const siteNavLink =
-  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-charcoal)] transition-colors hover:text-[var(--mr-watermelon-deep)]";
+  "text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-charcoal)] transition-colors hover:text-[var(--mr-red-deep)]";
 
 /** Article-width main column. */
 export const mainProse =
@@ -50,18 +50,18 @@ export const mainGallery =
 /* Card grounds for the colour-cycled grids on /links and /ai. Shared so the
    two pages cannot drift into different palettes.
 
-   Each ground carries its own type colour rather than assuming ink. Sapphire
-   is the reason: black on it is 4.40:1 and fails AA, where paper white is
-   4.51:1. It is the only ground in the palette that inverts, and hard-coding
-   ink would have made it the one unreadable card.
+   Each ground carries its own type colour rather than assuming ink, so a
+   future dark accent can invert without touching the grids. Today all four
+   take ink.
 
    Cycle these by grid position, not by item id, so a filtered grid still shows
-   the full spread. */
+   the full spread. Green and aqua are kept apart in the order because they
+   sit close in lightness. */
 export const CARD_GROUNDS = [
-  { bg: "var(--mr-sapphire)", fg: "var(--mr-paper)", chip: "var(--mr-paper)" },
-  { bg: "var(--mr-gold)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
-  { bg: "var(--mr-verdigris)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
-  { bg: "var(--mr-watermelon)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-green)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-yellow)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-aqua)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-red)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
 ] as const;
 
 /** The white pill CTA that sits inside a coloured card. */

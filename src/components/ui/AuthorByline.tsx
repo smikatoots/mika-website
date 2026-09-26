@@ -22,7 +22,7 @@ export function AuthorByline() {
       <div className="min-w-0">
         <Link
           href="/about"
-          className="font-[family-name:var(--mr-font-display)] text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-ink)] transition-colors hover:text-[var(--mr-watermelon)]"
+          className="font-[family-name:var(--mr-font-display)] text-[length:var(--mr-text-sm)] font-semibold text-[var(--mr-ink)] transition-colors hover:text-[var(--mr-red-deep)]"
         >
           Mika Reyes
         </Link>

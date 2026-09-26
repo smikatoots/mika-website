@@ -14,19 +14,19 @@ import {
    The mikareyes.com landing page — "designer scrapbook desk".
 
    Sections run light -> charcoal -> light, one dark band only, then
-   close on full-bleed purple, lime and yellow bands that butt together. The
+   close on full-bleed green, yellow and aqua bands that butt together. The
    confetti layer lives in the gutters; see DESIGN.md for the rules it
    follows and `Confetti.tsx` for why placements come in pairs.
    ──────────────────────────────────────────────────────────── */
 
 // Destinations come from the live homepage's link map, same as the press
-// strip. The pills sit on the sapphire band, so sapphire is the one accent
+// strip. The pills sit on the green band, so green is the one accent
 // they cannot use; paper stands in as the fourth. Every fill clears AA with
 // black type, so the pills all set ink.
 const awards = [
-  { label: "Forbes 30 Under 30", bg: "var(--mr-gold)", href: homeBioLinks.awards.forbes30 },
-  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--mr-verdigris)", href: homeBioLinks.awards.tatler },
-  { label: "Kleiner Perkins Fellow", bg: "var(--mr-watermelon)", href: homeBioLinks.awards.kleinerPerkins },
+  { label: "Forbes 30 Under 30", bg: "var(--mr-yellow)", href: homeBioLinks.awards.forbes30 },
+  { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--mr-aqua)", href: homeBioLinks.awards.tatler },
+  { label: "Kleiner Perkins Fellow", bg: "var(--mr-red)", href: homeBioLinks.awards.kleinerPerkins },
   { label: "SPC Founder Fellow", bg: "var(--mr-paper)", href: homeBioLinks.awards.spc },
 ];
 
@@ -50,7 +50,7 @@ const startHere = [
     title: "Master Agentic AI",
     blurb: "Build your own custom AI agent in a day. No engineering degree.",
     href: "/build-your-first-agent-101",
-    bg: "var(--mr-verdigris)",
+    bg: "var(--mr-aqua)",
     fg: "var(--mr-ink)",
   },
   {
@@ -58,7 +58,7 @@ const startHere = [
     title: "AI Guides",
     blurb: "Practical how-tos pulled straight from the videos.",
     href: "/ai",
-    bg: "var(--mr-gold)",
+    bg: "var(--mr-yellow)",
     fg: "var(--mr-ink)",
   },
   {
@@ -66,15 +66,15 @@ const startHere = [
     title: "AI Challenges",
     blurb: "Hard skills learned with AI as the only coach.",
     href: "/challenges",
-    bg: "var(--mr-sapphire)",
-    fg: "var(--mr-paper)",
+    bg: "var(--mr-green)",
+    fg: "var(--mr-ink)",
   },
   {
     tag: "Writing",
     title: "The Blog",
     blurb: "Longer thinking on building small, staying time-rich.",
     href: "/blog",
-    bg: "var(--mr-watermelon)",
+    bg: "var(--mr-red)",
     fg: "var(--mr-ink)",
   },
 ];
@@ -127,54 +127,54 @@ const contactTypes = [
 const HERO_PHOTO_CONFETTI: ConfettiPlacement[] = [
   // Salmon carries the buttons now, so the big masses beside the CTA are
   // yellow and turquoise — a salmon blob here would pull rank on it.
-  { shape: "disc", color: "var(--mr-gold)", size: 104, motion: "bob", duration: 5.5, at: { top: "-38px", left: "-38px" } },
-  { shape: "triangle", color: "var(--mr-verdigris)", size: 66, rotate: 18, motion: "sway", duration: 7.5, delay: 0.6, at: { bottom: "-30px", right: "34px" } },
-  { shape: "capsule", color: "var(--mr-sapphire)", size: 78, rotate: 12, motion: "twist", duration: 6.5, delay: 1.1, at: { top: "-30px", right: "-26px" } },
+  { shape: "disc", color: "var(--mr-yellow)", size: 104, motion: "bob", duration: 5.5, at: { top: "-38px", left: "-38px" } },
+  { shape: "triangle", color: "var(--mr-aqua)", size: 66, rotate: 18, motion: "sway", duration: 7.5, delay: 0.6, at: { bottom: "-30px", right: "34px" } },
+  { shape: "capsule", color: "var(--mr-green)", size: 78, rotate: 12, motion: "twist", duration: 6.5, delay: 1.1, at: { top: "-30px", right: "-26px" } },
 ];
 
 const HERO_CONFETTI: ConfettiPlacement[] = [
-  { shape: "sparkle", color: "var(--mr-watermelon)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: outside(18) }, narrow: { top: "8px", left: "8%" } },
-  { shape: "squiggle", color: "var(--mr-verdigris)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: outside(14) }, narrow: { bottom: "6px", left: "8%" } },
-  { shape: "zigzag", color: "var(--mr-sapphire)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: outside(12) }, narrow: { top: "62%", left: "-40px" } },
-  { shape: "dots", color: "var(--mr-watermelon)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: outside(22) }, narrow: { bottom: "10px", right: "6%" } },
+  { shape: "sparkle", color: "var(--mr-red)", size: 44, motion: "bob", duration: 5, at: { top: "12%", left: outside(18) }, narrow: { top: "8px", left: "8%" } },
+  { shape: "squiggle", color: "var(--mr-aqua)", size: 96, rotate: 6, motion: "drift", duration: 11, delay: 0.5, at: { top: "38%", right: outside(14) }, narrow: { bottom: "6px", left: "8%" } },
+  { shape: "zigzag", color: "var(--mr-green)", size: 92, rotate: -8, motion: "twist", duration: 8, delay: 1.1, at: { top: "62%", left: outside(12) }, narrow: { top: "62%", left: "-40px" } },
+  { shape: "dots", color: "var(--mr-red)", size: 64, rotate: -12, motion: "shake", duration: 6, delay: 0.3, at: { top: "85%", right: outside(22) }, narrow: { bottom: "10px", right: "6%" } },
 ];
 
 const PRESS_STRIP_CONFETTI: ConfettiPlacement[] = [
-  { shape: "dots", color: "var(--mr-verdigris)", size: 46, motion: "shake", duration: 7, at: { top: "38%", right: outside(16) }, narrow: { top: "34%", right: "-8px" } },
+  { shape: "dots", color: "var(--mr-aqua)", size: 46, motion: "shake", duration: 7, at: { top: "38%", right: outside(16) }, narrow: { top: "34%", right: "-8px" } },
 ];
 
 const DARK_CONFETTI: ConfettiPlacement[] = [
   // The headline column stops at 820px, so there is room inside the wrap here
   // that the card-grid sections do not have.
-  { shape: "disc", color: "var(--mr-gold)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: inside(18) }, narrow: { top: "1%", left: "-48px" } },
-  { shape: "triangle", color: "var(--mr-watermelon)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "30%", right: inside(30) }, narrow: { top: "22%", right: "-27px" } },
-  { shape: "arc", color: "var(--mr-gold)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "52%", left: inside(26) }, narrow: { bottom: "12px", right: "8%" } },
-  { shape: "blob", color: "var(--mr-sapphire)", size: 132, rotate: -8, motion: "drift", duration: 12, delay: 0.2, at: { top: "70%", right: inside(14) }, narrow: { top: "70%", right: "-64px" } },
-  { shape: "ring", color: "var(--mr-verdigris)", size: 52, motion: "pulse", duration: 6.5, delay: 1.9, at: { bottom: "6%", left: inside(70) }, narrow: { bottom: "10px", left: "8%" } },
+  { shape: "disc", color: "var(--mr-yellow)", size: 110, motion: "bob", duration: 6, at: { top: "10%", left: inside(18) }, narrow: { top: "1%", left: "-48px" } },
+  { shape: "triangle", color: "var(--mr-red)", size: 72, rotate: -14, motion: "twist", duration: 8.5, delay: 0.7, at: { top: "30%", right: inside(30) }, narrow: { top: "22%", right: "-27px" } },
+  { shape: "arc", color: "var(--mr-yellow)", size: 78, rotate: -18, motion: "sway", duration: 9.5, delay: 1.4, at: { top: "52%", left: inside(26) }, narrow: { bottom: "12px", right: "8%" } },
+  { shape: "blob", color: "var(--mr-green)", size: 132, rotate: -8, motion: "drift", duration: 12, delay: 0.2, at: { top: "70%", right: inside(14) }, narrow: { top: "70%", right: "-64px" } },
+  { shape: "ring", color: "var(--mr-aqua)", size: 52, motion: "pulse", duration: 6.5, delay: 1.9, at: { bottom: "6%", left: inside(70) }, narrow: { bottom: "10px", left: "8%" } },
 ];
 
 const PRESS_AWARDS_CONFETTI: ConfettiPlacement[] = [
-  { shape: "sparkle", color: "var(--mr-gold)", size: 38, motion: "spin", duration: 18, at: { top: "14%", left: outside(14) }, narrow: { top: "6px", left: "4%" } },
-  { shape: "squiggle", color: "var(--mr-watermelon)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "12px", right: "8%" } },
-  { shape: "dots", color: "var(--mr-verdigris)", size: 54, rotate: 8, motion: "shake", duration: 6.5, delay: 1.4, at: { top: "86%", left: outside(20) }, narrow: { top: "6px", right: "6%" } },
+  { shape: "sparkle", color: "var(--mr-yellow)", size: 38, motion: "spin", duration: 18, at: { top: "14%", left: outside(14) }, narrow: { top: "6px", left: "4%" } },
+  { shape: "squiggle", color: "var(--mr-red)", size: 80, rotate: -10, motion: "drift", duration: 10.5, delay: 0.8, at: { top: "52%", right: outside(12) }, narrow: { bottom: "12px", right: "8%" } },
+  { shape: "dots", color: "var(--mr-aqua)", size: 54, rotate: 8, motion: "shake", duration: 6.5, delay: 1.4, at: { top: "86%", left: outside(20) }, narrow: { top: "6px", right: "6%" } },
 ];
 
 const ADVENTURE_CONFETTI: ConfettiPlacement[] = [
-  { shape: "zigzag", color: "var(--mr-verdigris)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "8%", left: outside(12) }, narrow: { top: "2%", left: "-34px" } },
-  { shape: "ring", color: "var(--mr-watermelon)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "34%", right: outside(16) }, narrow: { top: "30%", right: "-18px" } },
-  { shape: "blob", color: "var(--mr-gold)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { top: "62%", left: outside(10) }, narrow: { top: "62%", left: "-38px" } },
-  { shape: "burst", color: "var(--mr-sapphire)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: outside(22) }, narrow: { bottom: "12px", right: "-8px" } },
+  { shape: "zigzag", color: "var(--mr-aqua)", size: 84, rotate: 6, motion: "twist", duration: 7, at: { top: "8%", left: outside(12) }, narrow: { top: "2%", left: "-34px" } },
+  { shape: "ring", color: "var(--mr-red)", size: 54, motion: "sway", duration: 9, delay: 0.6, at: { top: "34%", right: outside(16) }, narrow: { top: "30%", right: "-18px" } },
+  { shape: "blob", color: "var(--mr-yellow)", size: 96, rotate: 14, motion: "drift", duration: 12.5, delay: 1.3, at: { top: "62%", left: outside(10) }, narrow: { top: "62%", left: "-38px" } },
+  { shape: "burst", color: "var(--mr-green)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: outside(22) }, narrow: { bottom: "12px", right: "-8px" } },
 ];
 
 const SPEAKING_CONFETTI: ConfettiPlacement[] = [
-  { shape: "arc", color: "var(--mr-sapphire)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
-  { shape: "capsule", color: "var(--mr-watermelon)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: outside(12) }, narrow: { bottom: "8%", right: "-30px" } },
+  { shape: "arc", color: "var(--mr-green)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
+  { shape: "capsule", color: "var(--mr-red)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: outside(12) }, narrow: { bottom: "8%", right: "-30px" } },
 ];
 
 const CONTACT_CONFETTI: ConfettiPlacement[] = [
-  { shape: "zigzag", color: "var(--mr-verdigris)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "12%", left: outside(10) }, narrow: { top: "1%", left: "-36px" } },
-  { shape: "ring", color: "var(--mr-watermelon)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "48%", right: outside(14) }, narrow: { top: "44%", right: "-22px" } },
-  { shape: "cross", color: "var(--mr-sapphire)", size: 34, motion: "spin", duration: 26, at: { top: "85%", left: outside(24) }, narrow: { bottom: "6%", left: "-3px" } },
+  { shape: "zigzag", color: "var(--mr-yellow)", size: 88, rotate: -6, motion: "twist", duration: 8.5, at: { top: "12%", left: outside(10) }, narrow: { top: "1%", left: "-36px" } },
+  { shape: "ring", color: "var(--mr-red)", size: 58, motion: "sway", duration: 10, delay: 1.5, at: { top: "48%", right: outside(14) }, narrow: { top: "44%", right: "-22px" } },
+  { shape: "cross", color: "var(--mr-red)", size: 34, motion: "spin", duration: 26, at: { top: "85%", left: outside(24) }, narrow: { bottom: "6%", left: "-3px" } },
 ];
 
 export function HomeLanding() {
@@ -284,7 +284,7 @@ export function HomeLanding() {
         <div className="mr-wrap" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
           <span
             className="mr-tag"
-            style={{ background: "var(--mr-verdigris)", color: "var(--mr-ink)" }}
+            style={{ background: "var(--mr-aqua)", color: "var(--mr-ink)" }}
           >
             THE THESIS
           </span>
@@ -336,7 +336,7 @@ export function HomeLanding() {
                     objectFit: "cover",
                     marginLeft: i === 0 ? 0 : "-22px",
                     border: `3px solid ${
-                      ["var(--mr-gold)", "var(--mr-watermelon)", "var(--mr-verdigris)"][i]
+                      ["var(--mr-yellow)", "var(--mr-red)", "var(--mr-aqua)"][i]
                     }`,
                   }}
                 />
@@ -381,7 +381,7 @@ export function HomeLanding() {
       </section>
 
       {/* ── Press & awards ──────────────────────────────── */}
-      <section className="mr-section mr-panel-purple">
+      <section className="mr-section mr-press-band">
         <ConfettiField items={PRESS_AWARDS_CONFETTI} />
 
         <div className="mr-wrap">
@@ -395,7 +395,7 @@ export function HomeLanding() {
             }}
           >
             <h2 className="mr-heading-lg">In the press</h2>
-            <Link href="/press" className="mr-ghost mr-ghost-dark">
+            <Link href="/press" className="mr-ghost">
               All coverage
             </Link>
           </div>
@@ -454,7 +454,7 @@ export function HomeLanding() {
       </section>
 
       {/* ── Speaking ────────────────────────────────────── */}
-      <section className="mr-section" style={{ background: "var(--mr-verdigris)" }}>
+      <section className="mr-section" style={{ background: "var(--mr-yellow)" }}>
         <ConfettiField items={SPEAKING_CONFETTI} />
 
         <div className="mr-wrap">
@@ -517,7 +517,7 @@ export function HomeLanding() {
       </section>
 
       {/* ── Contact ─────────────────────────────────────── */}
-      <section id="contact" className="mr-section" style={{ background: "var(--mr-gold)" }}>
+      <section id="contact" className="mr-section" style={{ background: "var(--mr-aqua)" }}>
         <ConfettiField items={CONTACT_CONFETTI} />
 
         <div className="mr-wrap">

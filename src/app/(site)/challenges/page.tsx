@@ -56,11 +56,11 @@ export default async function ChallengesIndexPage() {
               >
                 <span
                   className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-                  style={{ color: "var(--mr-watermelon)" }}
+                  style={{ color: "var(--mr-red-deep)" }}
                 >
                   →
                 </span>
-                <span className="group-hover:text-[var(--mr-watermelon)] transition-colors">
+                <span className="group-hover:text-[var(--mr-red-deep)] transition-colors">
                   {entry.title}
                 </span>
               </span>

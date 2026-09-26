@@ -32,7 +32,7 @@ export default function BuildYourFirstAgentThankYouPage() {
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-eyebrow)",
               fontWeight: "var(--mr-weight-display)",
-              color: "var(--mr-watermelon-bright)",
+              color: "var(--mr-red-bright)",
               textTransform: "uppercase",
               letterSpacing: "0.14em",
               marginBottom: "20px",

@@ -10,7 +10,9 @@ export const OG_CONTENT_TYPE = "image/png";
 // Palette pulled from globals.css tokens.
 const CREAM = "#F1E8DE";
 const INK = "#000000";
-const CORAL = "#E8425A";
+const CORAL = "#FF5959";
+// The frame red fails as type on the cream inset; text uses the deep shade.
+const CORAL_TEXT = "#B23E3E";
 const MUTED = "#6E655C";
 const BORDER = "#D9CFC2";
 
@@ -97,7 +99,7 @@ export async function renderOgImage({ eyebrow, title }: OgImageOptions) {
                 fontWeight: 700,
                 letterSpacing: 4,
                 textTransform: "uppercase",
-                color: CORAL,
+                color: CORAL_TEXT,
               }}
             >
               {eyebrow}
