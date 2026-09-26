@@ -16,7 +16,7 @@ type FilterId = (typeof productLinkCategories)[number]["id"];
 
 const filterPillActive =
   "rounded-full border px-3 py-1.5 text-sm font-semibold transition-[background,border-color,color,transform] duration-300" +
-  " border-[var(--mr-ink)] bg-[var(--mr-watermelon)] text-[var(--mr-ink)] scale-[1.02]";
+  " border-[var(--mr-ink)] bg-[var(--mr-red)] text-[var(--mr-ink)] scale-[1.02]";
 
 const filterPillIdle =
   "rounded-full border px-3 py-1.5 text-sm font-semibold transition-[background,border-color,color,transform] duration-300" +

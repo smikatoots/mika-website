@@ -150,7 +150,7 @@ export function CtaSlide({
         </div>
       ) : (
         <div
-          className={`deck-cta-pulse ${headlinePad} max-w-full text-balance break-words text-center leading-[1.04] rounded-2xl bg-[var(--deck-accent)] font-extrabold tracking-tight text-white shadow-[0_18px_50px_-12px_rgba(232,66,90,0.6)] ${headlineSize}`}
+          className={`deck-cta-pulse ${headlinePad} max-w-full text-balance break-words text-center leading-[1.04] rounded-2xl bg-[var(--deck-accent)] font-extrabold tracking-tight text-white shadow-[0_18px_50px_-12px_rgba(255,89,89,0.6)] ${headlineSize}`}
           style={{ animationDelay: "0.15s" }}
         >
           {headline}

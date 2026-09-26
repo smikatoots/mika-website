@@ -58,11 +58,11 @@ function StepLabel({ n, name }: { n?: string; name: string }) {
   return (
     <div className="mb-4 flex items-center gap-2.5">
       <span
-        className="h-3.5 w-0.5 shrink-0 rounded-full bg-[var(--mr-watermelon)]"
+        className="h-3.5 w-0.5 shrink-0 rounded-full bg-[var(--mr-red)]"
         aria-hidden
       />
       <span
-        className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-watermelon)]"
+        className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-red-deep)]"
         style={{ fontFamily: "var(--mr-font-body)" }}
       >
         {n ? `${n} · ${name}` : name}
@@ -130,7 +130,7 @@ function LinkCard({
       }}
     >
       <p
-        className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-watermelon)]"
+        className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-red-deep)]"
         style={{ fontFamily: "var(--mr-font-body)" }}
       >
         {label}
@@ -296,7 +296,7 @@ export default function ClaudeWorkshopAug20Page() {
             }}
           >
             <p
-              className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-watermelon)]"
+              className="text-[length:var(--mr-text-eyebrow)] font-bold uppercase tracking-[0.14em] text-[var(--mr-red-deep)]"
               style={{ fontFamily: "var(--mr-font-body)" }}
             >
               Substack

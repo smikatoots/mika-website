@@ -29,7 +29,7 @@ type Props = {
 
 const tagPillActive =
   "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-  " border-[var(--mr-ink)] bg-[var(--mr-watermelon)] text-[var(--mr-ink)]";
+  " border-[var(--mr-ink)] bg-[var(--mr-red)] text-[var(--mr-ink)]";
 const tagPillIdle =
   "rounded-full border px-3 py-1 text-sm font-semibold transition" +
   " border-[var(--mr-line)] text-[var(--mr-ink)] hover:border-[var(--mr-ink)] hover:bg-[var(--mr-paper)]";

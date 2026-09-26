@@ -7,26 +7,28 @@
 
 :root {
   /* ── Accents ──────────────────────────────────────────────────────
-     Four colours, and nothing else carries hue. Watermelon is the one
+     Four colours, and nothing else carries hue. Red is the one
      filled-action fill; the other three are decoration — shape fills,
      card grounds, section bands, tag pills — and never an action.
+     Names are hues, not palette names, so a future swap is a value edit.
 
      Type on each, checked against WCAG AA (4.5:1):
-       Watermelon  black 5.36  white 3.92  -> ink
-       Gold        black 14.36 white 1.46  -> ink
-       Mint        black 9.46  white 2.22  -> ink
-       Blue        black 3.46  white 6.06  -> white/paper, the one inversion
-     Blue is also the only accent that reads as text on a light ground
-     (5.73:1 on paper); mint and gold never do. */
-  --mr-watermelon:        #E8425A;
-  --mr-gold:              #FFD043;
-  --mr-mint:              #00C68D;
-  --mr-blue:              #005AD9;
-  /* Interaction states of Watermelon, not palette colours in their own
-     right: the hover lift, and a deepened shade for the rare case that
-     needs white type on it (5.05:1). */
-  --mr-watermelon-bright: #FF3D68;
-  --mr-watermelon-deep:   #CE3149;
+       Red     black 6.83  white 3.08  -> ink
+       Yellow  black 14.14 white 1.49  -> ink
+       Aqua    black 9.33  white 2.25  -> ink
+       Teal    black 2.83  white 7.43  -> white/paper, the one inversion
+     Teal is also the only accent that reads as text on a light ground
+     (7.02:1 on paper). Red, yellow and aqua never do — red text uses
+     red-deep instead. */
+  --mr-red:               #FF5959;
+  --mr-yellow:            #FACF5A;
+  --mr-aqua:              #49BEB7;
+  --mr-teal:              #085F63;
+  /* Shades of red, not palette colours in their own right: the hover
+     lift, and a deepened red for type and for white-on-red (5.75:1 with
+     white, 5.44:1 as text on paper). */
+  --mr-red-bright:        #FF7A7A;
+  --mr-red-deep:          #B23E3E;
 
   /* ── Neutrals ─────────────────────────────────────────────────────
      Seven, each with one job. Ink is structural (headings, hairlines,
@@ -112,16 +114,16 @@
   /* legacy compat */
   --background: var(--mr-linen);
   --foreground: var(--mr-ink);
-  --accent: var(--mr-watermelon);
-  --accent-hover: var(--mr-watermelon-bright);
+  --accent: var(--mr-red);
+  --accent-hover: var(--mr-red-bright);
 }
 
 @theme inline {
   --color-background: var(--mr-linen);
   --color-foreground: var(--mr-ink);
-  --color-accent: var(--mr-watermelon);
-  --color-accent-hover: var(--mr-watermelon-bright);
-  --color-teal: var(--mr-mint);
+  --color-accent: var(--mr-red);
+  --color-accent-hover: var(--mr-red-bright);
+  --color-teal: var(--mr-aqua);
   --font-display: var(--mr-font-display);
   --font-sans: var(--mr-font-body);
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -270,7 +272,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 /* Pill-shaped hover targets on /link-in-bio: the social icon buttons and the
    footer link. Shared so the two hover states can never drift apart. */
 .bio-social { transition: color var(--mr-dur-lift) var(--mr-ease), background var(--mr-dur-lift) var(--mr-ease); }
-.bio-social:hover { color: var(--mr-blue); background: var(--mr-paper); }
+.bio-social:hover { color: var(--mr-teal); background: var(--mr-paper); }
 
 /* ── Shared surface primitives ──────────────────────────────────────
    The applied system, available to every page. DESIGN.md documents the
@@ -289,7 +291,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 /* The one filled action. Ink on coral, never white — see the token note. */
 .mr-cta {
   display: inline-block;
-  background: var(--mr-watermelon);
+  background: var(--mr-red);
   color: var(--mr-ink);
   border: 1px solid var(--mr-ink);
   border-radius: var(--mr-radius-cta);
@@ -592,7 +594,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 }
 
 .mr-navlink:hover {
-  background: var(--mr-mint);
+  background: var(--mr-aqua);
   color: var(--mr-ink);
 }
 
@@ -694,7 +696,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   display: block;
   pointer-events: none;
   z-index: 0;
-  color: var(--c, var(--mr-watermelon));
+  color: var(--c, var(--mr-red));
   width: var(--w);
   height: var(--w);
   top: var(--t, auto);
@@ -809,12 +811,12 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 }
 
 .mr-menuitem:hover {
-  background: var(--mr-mint);
+  background: var(--mr-aqua);
 }
 
 /* Featured rows carry their own fill, so the hover has to win over it. */
 .mr-menuitem[style]:hover {
-  background: var(--mr-mint);
+  background: var(--mr-aqua);
 }
 
 .mr-menuitem-desc {
@@ -888,7 +890,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   margin-left: 8px;
   padding: 2px 7px;
   border-radius: var(--mr-radius-card);
-  background: var(--mr-gold);
+  background: var(--mr-yellow);
   font-size: 10px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -913,7 +915,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
    throughout and the cards inside it carry their own light ground. The
    linen card-grid section keeps it apart from the charcoal band above. */
 .mr-panel-purple {
-  background: var(--mr-blue);
+  background: var(--mr-teal);
   color: var(--mr-paper);
 }
 

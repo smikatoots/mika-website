@@ -13,7 +13,7 @@ import { useEffect } from "react";
  * pointer:fine, and fully cleaned up on unmount.
  */
 
-const COLORS = ["#E8425A", "#FFD043", "#00C68D", "#005AD9"];
+const COLORS = ["#FF5959", "#FACF5A", "#49BEB7", "#085F63"];
 const SCRAMBLE_CHARS = "!<>-_\\/[]{}—=+*^?#·✦";
 const AWARD_EMOJI = ["🏆", "✦", "🌱", "🚀"];
 
@@ -221,7 +221,7 @@ export function HomepageMotion() {
     /* ── 2. Custom cursor dot (no ring; native cursor kept) ──── */
     const dot = document.createElement("div");
     dot.style.cssText =
-      "position:fixed; width:8px; height:8px; border-radius:50%; background:#E8425A; pointer-events:none; z-index:10001; transform:translate(-50%,-50%); left:-99px; top:-99px;";
+      "position:fixed; width:8px; height:8px; border-radius:50%; background:#FF5959; pointer-events:none; z-index:10001; transform:translate(-50%,-50%); left:-99px; top:-99px;";
     fx.appendChild(dot);
     on(document, "mousemove", (event) => {
       const e = event as MouseEvent;

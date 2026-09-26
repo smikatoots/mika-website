@@ -73,13 +73,13 @@ function panelRevealStyle(
 }
 
 /* Timeline card grounds. Every one of these clears AA with black type — the
-   check that matters, since the card sets ink on the colour. Blue is left
-   out for that reason (black on it is 3.46:1). Ten milestones cycle through
+   check that matters, since the card sets ink on the colour. Teal is left
+   out for that reason (black on it is 2.83:1). Ten milestones cycle through
    four grounds, so no two adjacent cards repeat. */
 const STORY_CARD_GROUNDS = [
-  "var(--mr-gold)",
-  "var(--mr-mint)",
-  "var(--mr-watermelon)",
+  "var(--mr-yellow)",
+  "var(--mr-aqua)",
+  "var(--mr-red)",
   "var(--mr-line)",
 ] as const;
 
@@ -314,17 +314,17 @@ export function MyStoryTimeline() {
 
     if (isPast) {
       return {
-        background: "var(--mr-watermelon)",
+        background: "var(--mr-red)",
         border: "2px solid var(--mr-paper)",
-        boxShadow: "0 0 0 1px var(--mr-watermelon)",
+        boxShadow: "0 0 0 1px var(--mr-red)",
       };
     }
 
     if (isActive) {
       return {
-        background: "var(--mr-watermelon)",
+        background: "var(--mr-red)",
         border: "3px solid var(--mr-paper)",
-        boxShadow: "0 0 0 2px var(--mr-watermelon)",
+        boxShadow: "0 0 0 2px var(--mr-red)",
       };
     }
 
@@ -358,7 +358,7 @@ export function MyStoryTimeline() {
           className="absolute left-0 right-0 top-0 rounded-full"
           style={{
             height: `${fillPercent * 100}%`,
-            background: "var(--mr-watermelon)",
+            background: "var(--mr-red)",
           }}
         />
         {showDot ? (
@@ -367,7 +367,7 @@ export function MyStoryTimeline() {
             className="absolute left-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
             style={{
               top: `${fillPercent * 100}%`,
-              background: "var(--mr-watermelon)",
+              background: "var(--mr-red)",
               border: "3px solid var(--mr-paper)",
               boxShadow: "0 0 0 1px var(--mr-line)",
             }}

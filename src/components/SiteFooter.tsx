@@ -86,7 +86,7 @@ export function SiteFooter() {
                       color: "var(--mr-charcoal)",
                       textDecoration: "none",
                     }}
-                    className="transition-colors hover:text-[var(--mr-watermelon)]"
+                    className="transition-colors hover:text-[var(--mr-red-deep)]"
                   >
                     {label}
                   </InternalLink>
@@ -123,7 +123,7 @@ export function SiteFooter() {
                       color: "var(--mr-charcoal)",
                       textDecoration: "none",
                     }}
-                    className="transition-colors hover:text-[var(--mr-watermelon)]"
+                    className="transition-colors hover:text-[var(--mr-red-deep)]"
                   >
                     {label}
                   </a>

@@ -113,7 +113,7 @@ function CardButton({
         alignItems: "center",
         justifyContent: "center",
         background,
-        // Ink, not white: both grounds (watermelon, mint) fail AA with white.
+        // Ink, not white: both grounds (red, aqua) fail AA with white.
         color: "var(--mr-ink)",
         padding: "14px 24px",
         borderRadius: "var(--mr-radius-pill)",
@@ -149,7 +149,7 @@ function SectionHeader({
         onClick={onSeeAll}
         style={{
           ...META,
-          color: "var(--mr-blue)",
+          color: "var(--mr-teal)",
           textDecoration: "none",
           whiteSpace: "nowrap",
         }}
@@ -194,7 +194,7 @@ export function LinkInBioContent({
             borderRadius: "50%",
             objectFit: "cover",
             margin: "0 auto 10px",
-            border: "3px solid var(--mr-mint)",
+            border: "3px solid var(--mr-aqua)",
           }}
         />
         <h1 style={{ ...DISPLAY, color: "var(--mr-ink)", marginBottom: "8px" }}>
@@ -235,7 +235,7 @@ export function LinkInBioContent({
         >
           Build your first AI agent in 1 day with a step-by-step guide!
         </p>
-        <CardButton background="var(--mr-watermelon)">Learn more →</CardButton>
+        <CardButton background="var(--mr-red)">Learn more →</CardButton>
       </Link>
 
       {/* ── Newsletter subscribe ─────────────────────────────────── */}
@@ -306,7 +306,7 @@ export function LinkInBioContent({
         <p style={{ ...BODY, color: "var(--mr-charcoal)", marginBottom: "16px" }}>
           Ask me anything for 30min! (${OFFICE_HOURS_PRICE})
         </p>
-        <CardButton background="var(--mr-mint)">Book a 1:1 →</CardButton>
+        <CardButton background="var(--mr-aqua)">Book a 1:1 →</CardButton>
       </a>
 
       {/* ── Tools & deals: horizontal swipe ──────────────────────── */}
@@ -373,7 +373,7 @@ export function LinkInBioContent({
                   {FEATURED_LINK_BLURBS[link.id] ?? link.description}
                 </p>
               </div>
-              <span style={{ ...META, color: "var(--mr-blue)" }}>
+              <span style={{ ...META, color: "var(--mr-teal)" }}>
                 Get the deal →
               </span>
             </a>
@@ -421,7 +421,7 @@ export function LinkInBioContent({
               </span>
               <span
                 aria-hidden
-                style={{ ...BODY, color: "var(--mr-blue)" }}
+                style={{ ...BODY, color: "var(--mr-teal)" }}
               >
                 →
               </span>

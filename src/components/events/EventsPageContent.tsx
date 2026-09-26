@@ -84,7 +84,7 @@ export function EventsPageContent() {
             className="mb-5 inline-flex items-center gap-2"
             style={{
               background: "var(--mr-paper)",
-              color: "var(--mr-watermelon)",
+              color: "var(--mr-red-deep)",
               padding: "7px 16px",
               borderRadius: "var(--mr-radius-pill)",
               fontFamily: "var(--mr-font-body)",

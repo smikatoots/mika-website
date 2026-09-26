@@ -10,7 +10,7 @@ type DemographicSlice = {
 /** Categorical data palette. Brand Coral leads; the rest are chart-only hues
  *  chosen for separability, not brand colors. See DESIGN.md > Colors. */
 const PIE_COLORS = [
-  "#E8425A",
+  "#FF5959",
   "#2563eb",
   "#f59e0b",
   "#10b981",

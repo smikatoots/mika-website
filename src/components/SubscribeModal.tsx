@@ -130,7 +130,7 @@ export function SubscribeModal() {
         aria-labelledby={titleId}
         className="relative w-full max-w-[520px] overflow-hidden"
         style={{
-          background: "var(--mr-gold)",
+          background: "var(--mr-yellow)",
           borderRadius: "var(--mr-radius-panel)",
           // A hairline, not a shadow — the frame shadow token is `none` now.
           border: "1px solid var(--mr-ink)",

@@ -68,20 +68,20 @@ const ABOUT_IMAGE_PATHS: readonly string[] = [
    placement follows. Narrow widths leave no gutter beside a single column, so
    those positions hug the page edge inside the article's own padding. */
 const ABOUT_CONFETTI: ConfettiPlacement[] = [
-  { shape: "sparkle", color: "var(--mr-watermelon)", size: 42, motion: "bob", duration: 5, at: { top: "4%", left: outside(16) }, narrow: { top: "10px", left: "-14px" } },
-  { shape: "squiggle", color: "var(--mr-mint)", size: 88, rotate: 6, motion: "drift", duration: 11, delay: 0.6, at: { top: "17%", right: outside(14) }, narrow: { top: "16%", right: "-40px" } },
-  { shape: "ring", color: "var(--mr-mint)", size: 54, motion: "sway", duration: 9, delay: 1.2, at: { top: "31%", left: outside(20) }, narrow: { top: "30%", left: "-22px" } },
-  { shape: "burst", color: "var(--mr-gold)", size: 44, motion: "spin", duration: 22, at: { top: "45%", right: outside(22) }, narrow: { top: "44%", right: "-16px" } },
-  { shape: "blob", color: "var(--mr-watermelon)", size: 92, rotate: 14, motion: "drift", duration: 12.5, delay: 0.4, at: { top: "59%", left: outside(12) }, narrow: { top: "58%", left: "-42px" } },
-  { shape: "capsule", color: "var(--mr-blue)", size: 76, rotate: -12, motion: "twist", duration: 8, delay: 1.5, at: { top: "73%", right: outside(16) }, narrow: { top: "72%", right: "-34px" } },
-  { shape: "dots", color: "var(--mr-mint)", size: 52, rotate: 8, motion: "shake", duration: 6.5, delay: 0.9, at: { top: "87%", left: outside(18) }, narrow: { top: "86%", left: "-20px" } },
+  { shape: "sparkle", color: "var(--mr-red)", size: 42, motion: "bob", duration: 5, at: { top: "4%", left: outside(16) }, narrow: { top: "10px", left: "-14px" } },
+  { shape: "squiggle", color: "var(--mr-aqua)", size: 88, rotate: 6, motion: "drift", duration: 11, delay: 0.6, at: { top: "17%", right: outside(14) }, narrow: { top: "16%", right: "-40px" } },
+  { shape: "ring", color: "var(--mr-aqua)", size: 54, motion: "sway", duration: 9, delay: 1.2, at: { top: "31%", left: outside(20) }, narrow: { top: "30%", left: "-22px" } },
+  { shape: "burst", color: "var(--mr-yellow)", size: 44, motion: "spin", duration: 22, at: { top: "45%", right: outside(22) }, narrow: { top: "44%", right: "-16px" } },
+  { shape: "blob", color: "var(--mr-red)", size: 92, rotate: 14, motion: "drift", duration: 12.5, delay: 0.4, at: { top: "59%", left: outside(12) }, narrow: { top: "58%", left: "-42px" } },
+  { shape: "capsule", color: "var(--mr-teal)", size: 76, rotate: -12, motion: "twist", duration: 8, delay: 1.5, at: { top: "73%", right: outside(16) }, narrow: { top: "72%", right: "-34px" } },
+  { shape: "dots", color: "var(--mr-aqua)", size: 52, rotate: 8, motion: "shake", duration: 6.5, delay: 0.9, at: { top: "87%", left: outside(18) }, narrow: { top: "86%", left: "-20px" } },
   // Filling the gaps between the seven above, so the column reads as evenly
   // scattered rather than as one shape per screenful.
-  { shape: "cross", color: "var(--mr-blue)", size: 34, motion: "spin", duration: 24, delay: 0.2, at: { top: "10%", right: outside(24) }, narrow: { top: "9%", right: "-8px" } },
-  { shape: "triangle", color: "var(--mr-gold)", size: 58, rotate: -12, motion: "twist", duration: 8.5, delay: 1.1, at: { top: "24%", left: outside(24) }, narrow: { top: "23%", left: "-26px" } },
-  { shape: "arc", color: "var(--mr-mint)", size: 70, rotate: 16, motion: "bob", duration: 7, delay: 0.5, at: { top: "38%", right: outside(18) }, narrow: { top: "37%", right: "-30px" } },
-  { shape: "zigzag", color: "var(--mr-watermelon)", size: 80, rotate: -6, motion: "twist", duration: 9.5, delay: 1.8, at: { top: "52%", left: outside(16) }, narrow: { top: "51%", left: "-36px" } },
-  { shape: "sparkle", color: "var(--mr-mint)", size: 40, motion: "pulse", duration: 6, delay: 0.7, at: { top: "94%", right: outside(26) }, narrow: { top: "93%", right: "-12px" } },
+  { shape: "cross", color: "var(--mr-teal)", size: 34, motion: "spin", duration: 24, delay: 0.2, at: { top: "10%", right: outside(24) }, narrow: { top: "9%", right: "-8px" } },
+  { shape: "triangle", color: "var(--mr-yellow)", size: 58, rotate: -12, motion: "twist", duration: 8.5, delay: 1.1, at: { top: "24%", left: outside(24) }, narrow: { top: "23%", left: "-26px" } },
+  { shape: "arc", color: "var(--mr-aqua)", size: 70, rotate: 16, motion: "bob", duration: 7, delay: 0.5, at: { top: "38%", right: outside(18) }, narrow: { top: "37%", right: "-30px" } },
+  { shape: "zigzag", color: "var(--mr-red)", size: 80, rotate: -6, motion: "twist", duration: 9.5, delay: 1.8, at: { top: "52%", left: outside(16) }, narrow: { top: "51%", left: "-36px" } },
+  { shape: "sparkle", color: "var(--mr-aqua)", size: 40, motion: "pulse", duration: 6, delay: 0.7, at: { top: "94%", right: outside(26) }, narrow: { top: "93%", right: "-12px" } },
 ];
 
 export function AboutPageContent() {

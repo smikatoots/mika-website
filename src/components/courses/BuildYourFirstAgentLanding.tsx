@@ -86,7 +86,7 @@ function QualList({
   return (
     <div
       style={{
-        background: isFor ? "var(--mr-mint)" : "var(--mr-line)",
+        background: isFor ? "var(--mr-aqua)" : "var(--mr-line)",
         border: isFor
           ? "1px solid var(--mr-line)"
           : "1px solid var(--mr-line)",
@@ -376,7 +376,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Social proof */}
       <section
-        style={{ background: "var(--mr-gold)", padding: sectionPad }}
+        style={{ background: "var(--mr-yellow)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ Testimonials</SectionEyebrow>
@@ -515,7 +515,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Learning formats */}
       <section
-        style={{ background: "var(--mr-mint)", padding: sectionPad }}
+        style={{ background: "var(--mr-aqua)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ How you&apos;ll learn</SectionEyebrow>
@@ -567,7 +567,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Curriculum */}
       <section
-        style={{ background: "var(--mr-watermelon)", padding: sectionPad }}
+        style={{ background: "var(--mr-red)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ What you&apos;ll learn</SectionEyebrow>
@@ -710,7 +710,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Qualification */}
       <section
-        style={{ background: "var(--mr-gold)", padding: sectionPad }}
+        style={{ background: "var(--mr-yellow)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ Who this is for and not for</SectionEyebrow>
@@ -858,7 +858,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Pricing */}
       <section
-        style={{ background: "var(--mr-mint)", padding: sectionPad }}
+        style={{ background: "var(--mr-aqua)", padding: sectionPad }}
       >
         <div className={container}>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-start">
@@ -918,7 +918,7 @@ export function BuildYourFirstAgentLanding() {
               <aside
                 style={{
                   background: "var(--mr-paper)",
-                  border: "2px solid var(--mr-watermelon)",
+                  border: "2px solid var(--mr-red)",
                   borderRadius: "var(--mr-radius-panel)",
                   padding: "32px",
                   boxShadow: "var(--mr-shadow-lift)",
@@ -964,7 +964,7 @@ export function BuildYourFirstAgentLanding() {
                   <span
                     className="inline-flex rounded-full"
                     style={{
-                      background: "var(--mr-mint)",
+                      background: "var(--mr-aqua)",
                       color: "var(--mr-ink)",
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "var(--mr-text-sm)",
