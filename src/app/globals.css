@@ -921,6 +921,76 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   color: var(--mr-ink);
 }
 
+/* ── Time Rich Club bento ───────────────────────────────────
+   Four columns on desktop: landscape photos stack on the left, the
+   portraits run two rows tall, and the logos and sponsor tiles close
+   the bottom row either side of the last portrait. Collapses to two
+   columns, then one. */
+.mr-bento {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "banner" "talk" "group" "dinner" "selfie" "present" "room" "logos" "cta";
+}
+
+.mr-bento-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--mr-radius-card);
+  background: var(--mr-line);
+  min-height: 260px;
+}
+
+/* The banner holds its own 2:1 so its lettering never crops; the row it
+   sits in takes that height. */
+.mr-bento-banner {
+  aspect-ratio: 2 / 1;
+  min-height: 0;
+}
+
+.mr-bento-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  text-decoration: none;
+}
+
+.mr-bento-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 36px;
+}
+
+@media (min-width: 640px) {
+  .mr-bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "banner  banner"
+      "talk    dinner"
+      "talk    dinner"
+      "group   group"
+      "present selfie"
+      "present room"
+      "logos   cta";
+    grid-auto-rows: minmax(220px, auto);
+  }
+}
+
+@media (min-width: 1000px) {
+  .mr-bento {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "banner banner talk    dinner"
+      "group  group  talk    dinner"
+      "selfie selfie present room"
+      "logos  logos  present cta";
+    grid-auto-rows: minmax(220px, auto);
+  }
+}
+
 .mr-panel-rule {
   height: 1px;
   border: 0;

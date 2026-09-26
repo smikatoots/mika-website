@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { EventsPageContent } from "@/components/events/EventsPageContent";
 import { buildOpenGraph, buildTwitter, canonicalUrl } from "@/lib/site-metadata";
 
-const title = "Events";
+const title = "Sponsor an Event";
 const description =
-  "Host an event in New York with Mika — put your company in front of decision-makers at high-growth, early-stage tech companies.";
+  "Sponsor a Time Rich Club event: hands-on AI workshops and intimate socials in New York for founders, creators, builders and growth operators.";
 const canonical = canonicalUrl("/events");
 
 export const metadata: Metadata = {

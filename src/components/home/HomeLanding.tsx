@@ -13,21 +13,27 @@ import {
 /* ────────────────────────────────────────────────────────────
    The mikareyes.com landing page — "designer scrapbook desk".
 
-   Sections run light -> charcoal -> light, one dark band only, then
-   close on full-bleed green, yellow and aqua bands that butt together. The
+   Sections run light -> charcoal -> light, one dark band only. The green
+   press band gets a linen breather (Time Rich Club), then the page closes
+   on full-bleed yellow and aqua bands that butt together. The
    confetti layer lives in the gutters; see DESIGN.md for the rules it
    follows and `Confetti.tsx` for why placements come in pairs.
    ──────────────────────────────────────────────────────────── */
 
+// The hero's secondary action sends readers to the newsletter, tagged so
+// Substack's traffic report shows this button as its own source.
+const SUBSTACK_HERO_URL =
+  "https://mikareyes.substack.com/?utm_source=mikareyes.com&utm_medium=website&utm_campaign=homepage_hero";
+
 // Destinations come from the live homepage's link map, same as the press
 // strip. The pills sit on the green band, so green is the one accent
-// they cannot use; paper stands in as the fourth. Every fill clears AA with
+// they cannot use; yellow repeats as the fourth. Every fill clears AA with
 // black type, so the pills all set ink.
 const awards = [
   { label: "Forbes 30 Under 30", bg: "var(--mr-yellow)", href: homeBioLinks.awards.forbes30 },
   { label: "Tatler Gen.T Leader of Tomorrow", bg: "var(--mr-aqua)", href: homeBioLinks.awards.tatler },
   { label: "Kleiner Perkins Fellow", bg: "var(--mr-red)", href: homeBioLinks.awards.kleinerPerkins },
-  { label: "SPC Founder Fellow", bg: "var(--mr-paper)", href: homeBioLinks.awards.spc },
+  { label: "SPC Founder Fellow", bg: "var(--mr-yellow)", href: homeBioLinks.awards.spc },
 ];
 
 // Destinations come from the live homepage's link map, so the prototype
@@ -77,6 +83,28 @@ const startHere = [
     bg: "var(--mr-red)",
     fg: "var(--mr-ink)",
   },
+];
+
+// Time Rich Club. The banner is the one tile that goes anywhere (Luma);
+// the event photos are evidence, not links. `ratio` is each logo file's
+// intrinsic width / height, for the same next/image reason as the press strip.
+const TIME_RICH_CLUB_URL = "https://luma.com/timerichclub";
+
+const eventPhotos = [
+  { area: "talk", src: "/time-rich-club/workshop.webp", alt: "Mika presenting a live Claude workshop at a Time Rich Club event", position: "60% center" },
+  { area: "group", src: "/time-rich-club/group.webp", alt: "A full room of founders and creators at a Time Rich Club workshop in New York", position: "center 60%" },
+  { area: "dinner", src: "/time-rich-club/dinner.webp", alt: "An intimate Time Rich Club dinner around one long table", position: "center" },
+  { area: "selfie", src: "/time-rich-club/selfie.webp", alt: "A small Time Rich Club gathering smiling around a conference table", position: "center 40%" },
+  { area: "present", src: "/time-rich-club/presenting.webp", alt: "Mika walking a small group through a live AI demo", position: "72% 55%" },
+  { area: "room", src: "/time-rich-club/room.webp", alt: "Attendees building along on laptops during a Time Rich Club workshop", position: "30% center" },
+];
+
+// Paper ships only its mark, so it carries a set wordmark beside it.
+const collaborators: { label: string; logo: string; h: number; ratio: number; href: string; wordmark?: boolean }[] = [
+  { label: "Milled", logo: "/time-rich-club/milled.png", h: 34, ratio: 3.92, href: "https://milled.com" },
+  { label: "Claude", logo: "/time-rich-club/claude.png", h: 38, ratio: 4.644, href: "https://claude.com" },
+  { label: "BuildBetter", logo: "/time-rich-club/buildbetter.png", h: 50, ratio: 3.73, href: "https://buildbetter.ai" },
+  { label: "Paper", logo: "/time-rich-club/paper.svg", h: 34, ratio: 1, href: "https://paper.design", wordmark: true },
 ];
 
 const speakingTopics = [
@@ -166,6 +194,12 @@ const ADVENTURE_CONFETTI: ConfettiPlacement[] = [
   { shape: "burst", color: "var(--mr-green)", size: 40, motion: "spin", duration: 22, at: { bottom: "8%", right: outside(22) }, narrow: { bottom: "12px", right: "-8px" } },
 ];
 
+const CLUB_CONFETTI: ConfettiPlacement[] = [
+  { shape: "burst", color: "var(--mr-red)", size: 42, motion: "spin", duration: 20, at: { top: "10%", right: outside(16) }, narrow: { top: "6px", right: "6%" } },
+  { shape: "squiggle", color: "var(--mr-yellow)", size: 84, rotate: 8, motion: "drift", duration: 11.5, delay: 0.9, at: { top: "46%", left: outside(12) }, narrow: { top: "6px", left: "4%" } },
+  { shape: "capsule", color: "var(--mr-aqua)", size: 70, rotate: -16, motion: "bob", duration: 7, delay: 1.6, at: { bottom: "10%", right: outside(18) }, narrow: { bottom: "10px", right: "8%" } },
+];
+
 const SPEAKING_CONFETTI: ConfettiPlacement[] = [
   { shape: "arc", color: "var(--mr-green)", size: 72, rotate: 12, motion: "bob", duration: 6.5, at: { top: "20%", left: outside(14) }, narrow: { top: "2%", left: "-26px" } },
   { shape: "capsule", color: "var(--mr-red)", size: 78, rotate: -14, motion: "shake", duration: 8, delay: 1, at: { top: "75%", right: outside(12) }, narrow: { bottom: "8%", right: "-30px" } },
@@ -202,13 +236,13 @@ export function HomeLanding() {
                 Work with me
               </a>
               <a
-                href="https://instagram.com/its.mikareyes"
+                href={SUBSTACK_HERO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mr-ghost"
                 style={{ padding: "16px 24px" }}
               >
-                Follow on Instagram
+                Subscribe
               </a>
             </div>
           </div>
@@ -290,24 +324,24 @@ export function HomeLanding() {
           </span>
 
           <h2 className="mr-heading-lg" style={{ margin: "24px auto 0", maxWidth: "820px" }}>
-            Two people. One small company. No permission needed.
+            Ambitious <em>and</em>{" "}time-rich. You don&apos;t have to pick.
           </h2>
 
           <p
             className="mr-body-lg"
             style={{ maxWidth: "600px", margin: "28px auto 0", color: "rgba(255,255,255,0.78)" }}
           >
-            I raised venture money, scaled a cross-border payments company past $100M in
-            volume, and got acquired. Then I chose a different shape: bootstrapped,
-            couple-led, built for autonomy instead of hypergrowth.
+            High achievers get told to choose either the big career or a life outside it.
+            I think that&apos;s a false trade, and AI unlocks a new way.
           </p>
 
           <p
             className="mr-body-lg"
             style={{ maxWidth: "600px", margin: "20px auto 0", color: "rgba(255,255,255,0.78)" }}
           >
-            Everything I teach comes out of running that experiment in public — the AI
-            systems that let a team of two do the work of twenty.
+            I played the prestige game: Product at LinkedIn, a venture-backed company,
+            fellowships, awards &amp; an acquisition. Now I&apos;m still building a startup
+            &amp; creator business but leverage AI to protect my hours for the people I love.
           </p>
 
           {/* Overlapping circular photo crops */}
@@ -449,6 +483,128 @@ export function HomeLanding() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Time Rich Club ─────────────────────────────── */}
+      <section className="mr-section">
+        <ConfettiField items={CLUB_CONFETTI} />
+
+        <div className="mr-wrap">
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              gap: "20px",
+            }}
+          >
+            <div>
+              <h2 className="mr-heading-lg">Time Rich Club</h2>
+              <p className="mr-body-lg" style={{ marginTop: "16px", maxWidth: "620px" }}>
+                In-person community and events in New York City for ambitious AI builders.
+                I host talks, workshops, intimate gatherings and socials for founders &amp;
+                creators building time-rich businesses with AI.
+              </p>
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px" }}>
+              <a
+                href={TIME_RICH_CLUB_URL}
+                className="mr-ghost"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ padding: "16px 24px" }}
+              >
+                Join future events
+              </a>
+              <Link href="/events" className="mr-cta">
+                Sponsor an event
+              </Link>
+            </div>
+          </div>
+
+          <div className="mr-bento" style={{ marginTop: "36px" }}>
+            <a
+              href={TIME_RICH_CLUB_URL}
+              className="mr-bento-tile mr-bento-banner mr-lift"
+              style={{ gridArea: "banner" }}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Time Rich Club on Luma"
+            >
+              <Image
+                src="/time-rich-club/banner.webp"
+                alt="Time Rich Club: for ambitious founders, creators and growth operators building time-rich lives. Hosted by mikareyes.com"
+                fill
+                sizes="(min-width: 1000px) 560px, 100vw"
+                style={{ objectFit: "cover" }}
+              />
+            </a>
+
+            {eventPhotos.map(({ area, src, alt, position }) => (
+              <div key={area} className="mr-bento-tile" style={{ gridArea: area }}>
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  sizes="(min-width: 1000px) 560px, (min-width: 640px) 50vw, 100vw"
+                  style={{ objectFit: "cover", objectPosition: position }}
+                />
+              </div>
+            ))}
+
+            <div className="mr-card mr-bento-card" style={{ gridArea: "logos", background: "var(--mr-green)" }}>
+              <p className="mr-caption" style={{ letterSpacing: "0.04em", color: "var(--mr-ink)" }}>
+                Past collaborators &amp; sponsors
+              </p>
+              <div className="mr-bento-logos">
+                {collaborators.map(({ label, logo, h, ratio, href, wordmark }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    className="mr-presslogo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    style={{ display: "flex", alignItems: "center", gap: "10px", color: "var(--mr-ink)" }}
+                  >
+                    <Image
+                      src={logo}
+                      alt={label}
+                      width={Math.round(h * ratio)}
+                      height={h}
+                      style={{ height: `${h}px`, width: `${Math.round(h * ratio)}px`, display: "block" }}
+                    />
+                    {wordmark && (
+                      <span className="mr-subheading" aria-hidden style={{ lineHeight: 1 }}>
+                        {label}
+                      </span>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <a
+              href="mailto:ask@kingscrosslabs.com?subject=Sponsoring%20Time%20Rich%20Club"
+              className="mr-card mr-bento-card mr-lift"
+              style={{ gridArea: "cta", background: "var(--mr-red)", color: "var(--mr-ink)" }}
+            >
+              <p className="mr-caption" style={{ letterSpacing: "0.04em", color: "var(--mr-ink)" }}>
+                For brands
+              </p>
+              <div>
+                <h3 className="mr-subheading">Sponsor an event</h3>
+                <p className="mr-body" style={{ marginTop: "6px" }}>
+                  Put your product in front of a room of AI builders.
+                </p>
+                <span className="mr-ghost" style={{ marginTop: "16px" }}>
+                  Get in touch →
+                </span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
