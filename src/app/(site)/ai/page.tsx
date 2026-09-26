@@ -29,10 +29,10 @@ type Props = {
 
 const tagPillActive =
   "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-  " border-[var(--mr-border-ink)] bg-[var(--mr-coral)] text-[var(--mr-ink)]";
+  " border-[var(--mr-ink)] bg-[var(--mr-watermelon)] text-[var(--mr-ink)]";
 const tagPillIdle =
   "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-  " border-[var(--mr-border)] text-[var(--mr-ink)] hover:border-[var(--mr-border-ink)] hover:bg-[var(--mr-paper)]";
+  " border-[var(--mr-line)] text-[var(--mr-ink)] hover:border-[var(--mr-ink)] hover:bg-[var(--mr-paper)]";
 
 function formatFilterTagLabel(raw: string): string {
   const t = raw.toLowerCase();

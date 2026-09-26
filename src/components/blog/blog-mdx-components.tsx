@@ -99,7 +99,7 @@ export const blogMdxComponents: MDXComponents = {
     if (inline) {
       return (
         <code
-          className="rounded-[var(--mr-radius-card)] border border-[var(--mr-border)] bg-[var(--mr-sand)] px-1.5 py-0.5 text-[0.9em] text-[var(--mr-ink)]"
+          className="rounded-[var(--mr-radius-card)] border border-[var(--mr-line)] bg-[var(--mr-line)] px-1.5 py-0.5 text-[0.9em] text-[var(--mr-ink)]"
           {...props}
         >
           {children}

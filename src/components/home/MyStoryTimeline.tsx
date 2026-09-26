@@ -73,15 +73,14 @@ function panelRevealStyle(
 }
 
 /* Timeline card grounds. Every one of these clears AA with black type — the
-   check that matters, since the card sets ink on the colour. Ten milestones
-   cycle through six grounds, so no two adjacent cards repeat. */
+   check that matters, since the card sets ink on the colour. Sapphire is left
+   out for that reason (black on it is 4.40:1). Ten milestones cycle through
+   four grounds, so no two adjacent cards repeat. */
 const STORY_CARD_GROUNDS = [
-  "var(--mr-sun-yellow)",
-  "var(--mr-teal)",
-  "var(--mr-coral-soft)",
-  "var(--mr-lime)",
-  "var(--mr-periwinkle)",
-  "var(--mr-sand)",
+  "var(--mr-gold)",
+  "var(--mr-verdigris)",
+  "var(--mr-watermelon)",
+  "var(--mr-line)",
 ] as const;
 
 function StoryCard({
@@ -147,7 +146,7 @@ function StoryCard({
           style={{
             fontFamily: "var(--mr-font-body)",
             fontSize: "var(--mr-text-sm)",
-            color: "var(--mr-text-soft)",
+            color: "var(--mr-charcoal)",
             lineHeight: 1.6,
             margin: 0,
             whiteSpace: "pre-line",
@@ -315,24 +314,24 @@ export function MyStoryTimeline() {
 
     if (isPast) {
       return {
-        background: "var(--mr-coral)",
-        border: "2px solid var(--mr-surface)",
-        boxShadow: "0 0 0 1px var(--mr-coral)",
+        background: "var(--mr-watermelon)",
+        border: "2px solid var(--mr-paper)",
+        boxShadow: "0 0 0 1px var(--mr-watermelon)",
       };
     }
 
     if (isActive) {
       return {
-        background: "var(--mr-coral)",
-        border: "3px solid var(--mr-surface)",
-        boxShadow: "0 0 0 2px var(--mr-coral)",
+        background: "var(--mr-watermelon)",
+        border: "3px solid var(--mr-paper)",
+        boxShadow: "0 0 0 2px var(--mr-watermelon)",
       };
     }
 
     return {
-      background: "var(--mr-surface)",
-      border: "2px solid var(--mr-border)",
-      boxShadow: "0 0 0 1px var(--mr-border)",
+      background: "var(--mr-paper)",
+      border: "2px solid var(--mr-line)",
+      boxShadow: "0 0 0 1px var(--mr-line)",
     };
   };
 
@@ -353,13 +352,13 @@ export function MyStoryTimeline() {
       >
         <div
           className="absolute inset-0 rounded-full"
-          style={{ background: "var(--mr-border)" }}
+          style={{ background: "var(--mr-line)" }}
         />
         <div
           className="absolute left-0 right-0 top-0 rounded-full"
           style={{
             height: `${fillPercent * 100}%`,
-            background: "var(--mr-coral)",
+            background: "var(--mr-watermelon)",
           }}
         />
         {showDot ? (
@@ -368,9 +367,9 @@ export function MyStoryTimeline() {
             className="absolute left-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full"
             style={{
               top: `${fillPercent * 100}%`,
-              background: "var(--mr-coral)",
-              border: "3px solid var(--mr-surface)",
-              boxShadow: "0 0 0 1px var(--mr-border)",
+              background: "var(--mr-watermelon)",
+              border: "3px solid var(--mr-paper)",
+              boxShadow: "0 0 0 1px var(--mr-line)",
             }}
           />
         ) : null}

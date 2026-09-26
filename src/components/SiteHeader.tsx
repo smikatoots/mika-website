@@ -69,7 +69,7 @@ function LearnAiMenu() {
               href={href}
               role="menuitem"
               className="mr-menuitem"
-              style={featured ? { background: "var(--mr-sun-yellow)" } : undefined}
+              style={featured ? { background: "var(--mr-gold)" } : undefined}
             >
               <span className="mr-body">{label}</span>
               <span className="mr-caption mr-menuitem-desc">{description}</span>
@@ -165,7 +165,7 @@ export function SiteHeader() {
       {menuOpen ? (
         <div
           style={{
-            borderTop: "1px solid var(--mr-border-ink)",
+            borderTop: "1px solid var(--mr-ink)",
             background: "var(--mr-paper)",
             padding: "8px 24px 20px",
           }}

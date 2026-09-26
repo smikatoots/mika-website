@@ -16,11 +16,11 @@ type FilterId = (typeof productLinkCategories)[number]["id"];
 
 const filterPillActive =
   "rounded-full border px-3 py-1.5 text-sm font-semibold transition-[background,border-color,color,transform] duration-300" +
-  " border-[var(--mr-border-ink)] bg-[var(--mr-coral)] text-[var(--mr-ink)] scale-[1.02]";
+  " border-[var(--mr-ink)] bg-[var(--mr-watermelon)] text-[var(--mr-ink)] scale-[1.02]";
 
 const filterPillIdle =
   "rounded-full border px-3 py-1.5 text-sm font-semibold transition-[background,border-color,color,transform] duration-300" +
-  " border-[var(--mr-border)] text-[var(--mr-ink)] hover:border-[var(--mr-border-ink)] hover:bg-[var(--mr-paper)] hover:scale-[1.02]";
+  " border-[var(--mr-line)] text-[var(--mr-ink)] hover:border-[var(--mr-ink)] hover:bg-[var(--mr-paper)] hover:scale-[1.02]";
 
 function trackLinkClick(link: ProductLink) {
   posthog.capture("referral_link_clicked", {

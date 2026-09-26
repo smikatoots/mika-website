@@ -7,69 +7,38 @@
 
 :root {
   /* ── Accents ──────────────────────────────────────────────────────
-     Coral is the emphasis colour: the one filled-action fill, carrying
-     the whole conversion hierarchy. Black on it is 5.42:1 and clears
-     AA; white is 3.87:1 and does not, which is why buttons set ink.
-     Everything below coral is decoration — shape fills, card grounds,
-     tag pills — and never an action. */
-  --mr-coral:         #E8425A;
-  --mr-coral-bright:  #FF3D68;
-  /* Coral darkened until white on it clears AA (5.05:1). Kept for the
-     rare case that needs coral behind white type. */
-  --mr-coral-deep:    #CE3149;
-  --mr-teal:          #0E8C8C;   /* black on it: 5.09:1 */
-  --mr-sun-yellow:    #FFDE3B;
-  --mr-lime:          #C1F32B;
-  --mr-periwinkle:    #6483FF;
-  --mr-purple:        #6B4DE6;   /* white type only — black is 3.89:1 */
-  --mr-coral-soft:    #F79086;
+     Four colours, and nothing else carries hue. Watermelon is the one
+     filled-action fill; the other three are decoration — shape fills,
+     card grounds, section bands, tag pills — and never an action.
 
-  /* The one dark ground. Warmer than black, and used sparingly — one
-     dark band per page, never two stacked. */
-  --mr-charcoal:      #2F2C29;
-  --mr-teal-deep:     #2F2C29;   /* legacy name, now the charcoal band */
+     Type on each, checked against WCAG AA (4.5:1):
+       Watermelon  black 5.36  white 3.92  -> ink
+       Gold        black 12.63 white 1.66  -> ink
+       Verdigris   black 5.38  white 3.90  -> ink
+       Sapphire    black 4.40  white 4.78  -> white/paper, the one inversion */
+  --mr-watermelon:        #E8425A;
+  --mr-gold:              #FFBD4B;
+  --mr-verdigris:         #109180;
+  --mr-sapphire:          #555DFF;
+  /* Interaction states of Watermelon, not palette colours in their own
+     right: the hover lift, and a deepened shade for the rare case that
+     needs white type on it (5.05:1). */
+  --mr-watermelon-bright: #FF3D68;
+  --mr-watermelon-deep:   #CE3149;
 
-  /* ── Ink ──────────────────────────────────────────────────────────
-     Black is structural: type, hairlines, icon strokes. Long-form body
-     copy steps back to a warm near-black so a full article does not
-     read as harshly as a headline. */
-  --mr-ink:           #000000;
-  --mr-text:          #1C1A17;
-  --mr-text-soft:     #2E2A26;
-  --mr-muted:         #6E655C;
-  /* Darkened until 14px on paper white clears AA (4.79:1). The old value
-     was 3.65:1, which the footer credit line sat on across every page. */
-  --mr-faint:         #776D63;
-
-  /* ── Surfaces ─────────────────────────────────────────────────────
-     Warm linen is the page. Paper white is a single tonal step up for
-     cards — not a border, a step. Pure white is for inverted elements
-     and pill buttons only. */
-  --mr-bg:            #F1E8DE;
-  --mr-linen:         #F1E8DE;
-  --mr-paper:         #FBF8F5;
-  --mr-surface:       #FBF8F5;
-  --mr-surface-warm:  #FBF8F5;
-  --mr-surface-cream: #FBF8F5;
-  --mr-surface-sand:  #EADCCE;
-  --mr-sand:          #EADCCE;
-  --mr-stone:         #C3B7AC;
-  --mr-white:         #FFFFFF;
-  --mr-surface-rose:  #FCEAEC;
-  --mr-surface-rose-2:#FCE4E2;
-  --mr-surface-teal:  #E8F4F4;
-
-  /* ── Borders ──────────────────────────────────────────────────────
-     `--mr-border-ink` is the system's structural hairline, the one the
-     pills carry. The warm tones below are for large soft edges where a
-     black line would shout. */
-  --mr-border-ink:    #000000;
-  --mr-border:        #D9CFC2;
-  --mr-border-warm:   #E4D9CB;
-  --mr-border-cream:  #E4D9CB;
-  --mr-border-input:  #D9CFC2;
-  --mr-border-rose:   #F6D2D7;
-  --mr-border-teal:   #B4DBDB;
+  /* ── Neutrals ─────────────────────────────────────────────────────
+     Seven, each with one job. Ink is structural (headings, hairlines,
+     buttons); charcoal is the one dark band and the long-form reading
+     colour; muted is captions and small print; line is every border and
+     the one neutral fill. Linen is the page, paper is a card one tonal
+     step up, white is pill buttons only. */
+  --mr-ink:               #000000;
+  --mr-charcoal:          #2F2C29;
+  --mr-muted:             #6E655C;
+  --mr-line:              #D9CFC2;
+  --mr-linen:             #F1E8DE;
+  --mr-paper:             #FBF8F5;
+  --mr-white:             #FFFFFF;
 
   /* ── Type ─────────────────────────────────────────────────────────
      Satoshi displays, Hanken reads. Satoshi ships at two weights only,
@@ -139,18 +108,18 @@
   --mr-dur-lift:    .25s;
 
   /* legacy compat */
-  --background: var(--mr-bg);
+  --background: var(--mr-linen);
   --foreground: var(--mr-ink);
-  --accent: var(--mr-coral);
-  --accent-hover: var(--mr-coral-bright);
+  --accent: var(--mr-watermelon);
+  --accent-hover: var(--mr-watermelon-bright);
 }
 
 @theme inline {
-  --color-background: var(--mr-bg);
+  --color-background: var(--mr-linen);
   --color-foreground: var(--mr-ink);
-  --color-accent: var(--mr-coral);
-  --color-accent-hover: var(--mr-coral-bright);
-  --color-teal: var(--mr-teal);
+  --color-accent: var(--mr-watermelon);
+  --color-accent-hover: var(--mr-watermelon-bright);
+  --color-teal: var(--mr-verdigris);
   --font-display: var(--mr-font-display);
   --font-sans: var(--mr-font-body);
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -169,14 +138,14 @@
 @theme {
   --color-zinc-50:  #FBF8F5;
   --color-zinc-100: #F1E8DE;
-  --color-zinc-200: #EADCCE;
+  --color-zinc-200: #D9CFC2;
   --color-zinc-300: #D9CFC2;
-  --color-zinc-400: #A89E92;
-  --color-zinc-500: #857B70;
+  --color-zinc-400: #6E655C;
+  --color-zinc-500: #6E655C;
   --color-zinc-600: #6E655C;
-  --color-zinc-700: #4A443D;
+  --color-zinc-700: #2F2C29;
   --color-zinc-800: #2F2C29;
-  --color-zinc-900: #211F1C;
+  --color-zinc-900: #2F2C29;
   --color-zinc-950: #000000;
 }
 
@@ -225,7 +194,7 @@
 }
 
 body {
-  background: var(--mr-bg);
+  background: var(--mr-linen);
   color: var(--mr-ink);
   font-family: var(--mr-font-body);
 }
@@ -299,7 +268,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 /* Pill-shaped hover targets on /link-in-bio: the social icon buttons and the
    footer link. Shared so the two hover states can never drift apart. */
 .bio-social { transition: color var(--mr-dur-lift) var(--mr-ease), background var(--mr-dur-lift) var(--mr-ease); }
-.bio-social:hover { color: var(--mr-teal); background: var(--mr-surface-teal); }
+.bio-social:hover { color: var(--mr-verdigris); background: var(--mr-paper); }
 
 /* ── Shared surface primitives ──────────────────────────────────────
    The applied system, available to every page. DESIGN.md documents the
@@ -318,9 +287,9 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 /* The one filled action. Ink on coral, never white — see the token note. */
 .mr-cta {
   display: inline-block;
-  background: var(--mr-coral);
+  background: var(--mr-watermelon);
   color: var(--mr-ink);
-  border: 1px solid var(--mr-border-ink);
+  border: 1px solid var(--mr-ink);
   border-radius: var(--mr-radius-cta);
   padding: 16px 24px;
   font-family: var(--mr-font-body);
@@ -334,7 +303,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   display: inline-block;
   background: var(--mr-white);
   color: var(--mr-ink);
-  border: 1px solid var(--mr-border-ink);
+  border: 1px solid var(--mr-ink);
   border-radius: var(--mr-radius-pill);
   padding: 8px 20px;
   font-family: var(--mr-font-body);
@@ -363,7 +332,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 .mr-rule {
   height: 1px;
   border: 0;
-  background: var(--mr-border-ink);
+  background: var(--mr-ink);
   margin: 0;
 }
 
@@ -621,7 +590,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 }
 
 .mr-navlink:hover {
-  background: var(--mr-teal);
+  background: var(--mr-verdigris);
   color: var(--mr-ink);
 }
 
@@ -723,7 +692,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   display: block;
   pointer-events: none;
   z-index: 0;
-  color: var(--c, var(--mr-coral));
+  color: var(--c, var(--mr-watermelon));
   width: var(--w);
   height: var(--w);
   top: var(--t, auto);
@@ -838,12 +807,12 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 }
 
 .mr-menuitem:hover {
-  background: var(--mr-teal);
+  background: var(--mr-verdigris);
 }
 
 /* Featured rows carry their own fill, so the hover has to win over it. */
 .mr-menuitem[style]:hover {
-  background: var(--mr-teal);
+  background: var(--mr-verdigris);
 }
 
 .mr-menuitem-desc {
@@ -872,7 +841,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   gap: 12px;
   padding: 14px 4px;
   border: 0;
-  border-bottom: 1px solid var(--mr-border, rgba(0, 0, 0, 0.12));
+  border-bottom: 1px solid var(--mr-line, rgba(0, 0, 0, 0.12));
   background: none;
   font: inherit;
   font-size: var(--mr-text-lead);
@@ -900,7 +869,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 .mr-mobilesub {
   display: block;
   padding: 15px 4px 16px 20px;
-  border-bottom: 1px solid var(--mr-border, rgba(0, 0, 0, 0.12));
+  border-bottom: 1px solid var(--mr-line, rgba(0, 0, 0, 0.12));
   background: var(--mr-paper);
 }
 
@@ -917,7 +886,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
   margin-left: 8px;
   padding: 2px 7px;
   border-radius: var(--mr-radius-card);
-  background: var(--mr-sun-yellow);
+  background: var(--mr-gold);
   font-size: 10px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -942,7 +911,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
    throughout and the cards inside it carry their own light ground. The
    linen card-grid section keeps it apart from the charcoal band above. */
 .mr-panel-purple {
-  background: var(--mr-purple);
+  background: var(--mr-sapphire);
   color: var(--mr-paper);
 }
 

@@ -57,11 +57,11 @@ export function CodeBlock({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="relative my-6 overflow-hidden rounded-[var(--mr-radius-card)] border border-[var(--mr-border-ink)] bg-[var(--mr-sand)]">
+    <div className="relative my-6 overflow-hidden rounded-[var(--mr-radius-card)] border border-[var(--mr-ink)] bg-[var(--mr-line)]">
       <button
         type="button"
         onClick={handleCopy}
-        className="absolute right-3 top-3 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-[var(--mr-radius-card)] border border-[var(--mr-border-ink)] bg-[var(--mr-paper)] text-[var(--mr-ink)] transition hover:bg-white"
+        className="absolute right-3 top-3 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-[var(--mr-radius-card)] border border-[var(--mr-ink)] bg-[var(--mr-paper)] text-[var(--mr-ink)] transition hover:bg-white"
         aria-label="Copy code block"
         title={copied ? "Copied" : "Copy"}
       >

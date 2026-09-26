@@ -86,10 +86,10 @@ function QualList({
   return (
     <div
       style={{
-        background: isFor ? "var(--mr-lime)" : "var(--mr-sand)",
+        background: isFor ? "var(--mr-verdigris)" : "var(--mr-line)",
         border: isFor
-          ? "1px solid var(--mr-border)"
-          : "1px solid var(--mr-border-warm)",
+          ? "1px solid var(--mr-line)"
+          : "1px solid var(--mr-line)",
         borderRadius: "var(--mr-radius-panel)",
         padding: "28px 24px",
         boxShadow: isFor ? "var(--mr-shadow-card)" : "none",
@@ -120,7 +120,7 @@ function QualList({
               lineHeight: 1.55,
               padding: "14px 0",
               borderTop:
-                index === 0 ? "none" : "1px solid var(--mr-border-warm)",
+                index === 0 ? "none" : "1px solid var(--mr-line)",
             }}
           >
             <span
@@ -146,7 +146,7 @@ export function BuildYourFirstAgentLanding() {
     <main>
       {/* Hero */}
       <section
-        style={{ background: "var(--mr-teal-deep)", padding: "80px 0 88px" }}
+        style={{ background: "var(--mr-charcoal)", padding: "80px 0 88px" }}
       >
         <div className={container}>
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
@@ -240,7 +240,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Credibility strip */}
       <section
-        style={{ background: "var(--mr-sand)", padding: "32px 0" }}
+        style={{ background: "var(--mr-line)", padding: "32px 0" }}
       >
         <div className={`${container} grid grid-cols-2 gap-6 md:grid-cols-4`}>
           {credibility.map(({ value, label }) => (
@@ -294,8 +294,8 @@ export function BuildYourFirstAgentLanding() {
               <div
                 key={title}
                 style={{
-                  background: "var(--mr-surface)",
-                  border: "1px solid var(--mr-border)",
+                  background: "var(--mr-paper)",
+                  border: "1px solid var(--mr-line)",
                   borderRadius: "var(--mr-radius-card)",
                   padding: "24px",
                 }}
@@ -376,7 +376,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Social proof */}
       <section
-        style={{ background: "var(--mr-periwinkle)", padding: sectionPad }}
+        style={{ background: "var(--mr-gold)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ Testimonials</SectionEyebrow>
@@ -414,8 +414,8 @@ export function BuildYourFirstAgentLanding() {
                       className="shrink-0"
                       style={{
                         width: "min(640px, 92vw)",
-                        background: "var(--mr-surface)",
-                        border: "1px solid var(--mr-border)",
+                        background: "var(--mr-paper)",
+                        border: "1px solid var(--mr-line)",
                         borderRadius: "var(--mr-radius-card)",
                         overflow: "hidden",
                         boxShadow: "var(--mr-shadow-card)",
@@ -489,7 +489,7 @@ export function BuildYourFirstAgentLanding() {
               className="flex items-center"
               style={{
                 background: "var(--mr-paper)",
-                border: "1px solid var(--mr-border-warm)",
+                border: "1px solid var(--mr-line)",
                 borderRadius: "var(--mr-radius-card)",
                 padding: "24px",
                 boxShadow: "var(--mr-shadow-card)",
@@ -515,7 +515,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Learning formats */}
       <section
-        style={{ background: "var(--mr-lime)", padding: sectionPad }}
+        style={{ background: "var(--mr-verdigris)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ How you&apos;ll learn</SectionEyebrow>
@@ -567,7 +567,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Curriculum */}
       <section
-        style={{ background: "var(--mr-coral-soft)", padding: sectionPad }}
+        style={{ background: "var(--mr-watermelon)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ What you&apos;ll learn</SectionEyebrow>
@@ -596,8 +596,8 @@ export function BuildYourFirstAgentLanding() {
                   key={num}
                   className="mr-lift"
                   style={{
-                    background: "var(--mr-surface)",
-                    border: "1px solid var(--mr-border-rose)",
+                    background: "var(--mr-paper)",
+                    border: "1px solid var(--mr-line)",
                     borderRadius: "var(--mr-radius-card)",
                     padding: "28px",
                   }}
@@ -675,8 +675,8 @@ export function BuildYourFirstAgentLanding() {
               <article
                 key={title}
                 style={{
-                  background: "var(--mr-surface)",
-                  border: "1px solid var(--mr-border)",
+                  background: "var(--mr-paper)",
+                  border: "1px solid var(--mr-line)",
                   borderRadius: "var(--mr-radius-card)",
                   padding: "24px",
                 }}
@@ -710,7 +710,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Qualification */}
       <section
-        style={{ background: "var(--mr-sun-yellow)", padding: sectionPad }}
+        style={{ background: "var(--mr-gold)", padding: sectionPad }}
       >
         <div className={container}>
           <SectionEyebrow>✦ Who this is for and not for</SectionEyebrow>
@@ -770,8 +770,8 @@ export function BuildYourFirstAgentLanding() {
               <article
                 key={instructor.name}
                 style={{
-                  background: "var(--mr-surface)",
-                  border: "1px solid var(--mr-border)",
+                  background: "var(--mr-paper)",
+                  border: "1px solid var(--mr-line)",
                   borderRadius: "var(--mr-radius-panel)",
                   padding: "28px",
                 }}
@@ -858,7 +858,7 @@ export function BuildYourFirstAgentLanding() {
 
       {/* Pricing */}
       <section
-        style={{ background: "var(--mr-teal)", padding: sectionPad }}
+        style={{ background: "var(--mr-verdigris)", padding: sectionPad }}
       >
         <div className={container}>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-start">
@@ -892,7 +892,7 @@ export function BuildYourFirstAgentLanding() {
                       fontSize: "var(--mr-text-sm)",
                       color: "var(--mr-ink)",
                       paddingBottom: "12px",
-                      borderBottom: "1px solid var(--mr-border-warm)",
+                      borderBottom: "1px solid var(--mr-line)",
                     }}
                   >
                     <span style={{ color: "var(--mr-ink)" }}>✓</span>
@@ -917,8 +917,8 @@ export function BuildYourFirstAgentLanding() {
             <div className="sticky top-24">
               <aside
                 style={{
-                  background: "var(--mr-surface)",
-                  border: "2px solid var(--mr-coral)",
+                  background: "var(--mr-paper)",
+                  border: "2px solid var(--mr-watermelon)",
                   borderRadius: "var(--mr-radius-panel)",
                   padding: "32px",
                   boxShadow: "var(--mr-shadow-lift)",
@@ -965,7 +965,7 @@ export function BuildYourFirstAgentLanding() {
                     className="inline-flex rounded-full"
                     style={{
                       background:
-                        "color-mix(in srgb, var(--mr-teal) 14%, white)",
+                        "color-mix(in srgb, var(--mr-verdigris) 14%, white)",
                       color: "var(--mr-ink)",
                       fontFamily: "var(--mr-font-body)",
                       fontSize: "var(--mr-text-sm)",
@@ -1076,8 +1076,8 @@ export function BuildYourFirstAgentLanding() {
                 key={question}
                 className="group"
                 style={{
-                  background: "var(--mr-surface)",
-                  border: "1px solid var(--mr-border)",
+                  background: "var(--mr-paper)",
+                  border: "1px solid var(--mr-line)",
                   borderRadius: "var(--mr-radius-card)",
                   padding: "4px 20px",
                 }}
@@ -1124,9 +1124,9 @@ export function BuildYourFirstAgentLanding() {
       {/* P.S. */}
       <section
         style={{
-          background: "var(--mr-sand)",
+          background: "var(--mr-line)",
           padding: "88px 0",
-          borderTop: "1px solid var(--mr-border-warm)",
+          borderTop: "1px solid var(--mr-line)",
         }}
       >
         <div className={`${container} mx-auto max-w-2xl text-center`}>

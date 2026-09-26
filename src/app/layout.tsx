@@ -77,7 +77,7 @@ export default function RootLayout({
       <head>
         <SiteStructuredData />
       </head>
-      <body className="flex min-h-screen flex-col antialiased" style={{ background: "var(--mr-bg)", color: "var(--mr-ink)" }}>
+      <body className="flex min-h-screen flex-col antialiased" style={{ background: "var(--mr-linen)", color: "var(--mr-ink)" }}>
         {children}
         {gaMeasurementId ? (
           <>

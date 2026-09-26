@@ -8,11 +8,11 @@ export const OG_SIZE = { width: 1200, height: 630 } as const;
 export const OG_CONTENT_TYPE = "image/png";
 
 // Palette pulled from globals.css tokens.
-const CREAM = "#F7F4EF";
-const INK = "#111111";
+const CREAM = "#F1E8DE";
+const INK = "#000000";
 const CORAL = "#E8425A";
-const MUTED = "#6B6B6B";
-const BORDER = "#E4E0D8";
+const MUTED = "#6E655C";
+const BORDER = "#D9CFC2";
 
 const FRAME = 16; // coral border thickness on all four sides
 

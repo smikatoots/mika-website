@@ -83,8 +83,8 @@ export function EventsPageContent() {
           <span
             className="mb-5 inline-flex items-center gap-2"
             style={{
-              background: "var(--mr-surface-rose-2)",
-              color: "var(--mr-coral)",
+              background: "var(--mr-paper)",
+              color: "var(--mr-watermelon)",
               padding: "7px 16px",
               borderRadius: "var(--mr-radius-pill)",
               fontFamily: "var(--mr-font-body)",
@@ -128,7 +128,7 @@ export function EventsPageContent() {
 
       <section
         style={{
-          borderTop: "1px solid var(--mr-border-warm)",
+          borderTop: "1px solid var(--mr-line)",
           padding: "clamp(48px, 7vw, 72px) 0",
         }}
       >
@@ -138,7 +138,7 @@ export function EventsPageContent() {
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-body)",
               lineHeight: 1.7,
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-charcoal)",
               textAlign: "center",
             }}
           >
@@ -152,7 +152,7 @@ export function EventsPageContent() {
 
       <section
         style={{
-          borderTop: "1px solid var(--mr-border-warm)",
+          borderTop: "1px solid var(--mr-line)",
           padding: "clamp(48px, 7vw, 72px) 0 clamp(64px, 10vw, 96px)",
         }}
       >
@@ -186,7 +186,7 @@ export function EventsPageContent() {
                   style={{
                     fontFamily: "var(--mr-font-body)",
                     fontSize: "var(--mr-text-sm)",
-                    color: "var(--mr-text-soft)",
+                    color: "var(--mr-charcoal)",
                     lineHeight: 1.65,
                   }}
                 >

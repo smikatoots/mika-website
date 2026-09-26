@@ -2,32 +2,23 @@
 name: Mika Reyes Website
 description: Visual system for mikareyes.com — the marketing pages, AI guides, blog, and every public content surface.
 brand: ./BRAND.md
-version: 2
+version: 3
 colors:
+  watermelon: "#E8425A"
+  watermelon-deep: "#CE3149"
+  gold: "#FFBD4B"
+  verdigris: "#109180"
+  sapphire: "#555DFF"
   ink: "#000000"
-  body: "#1C1A17"
-  soft: "#2E2A26"
+  charcoal: "#2F2C29"
   muted: "#6E655C"
-  accent: "#E8425A"
-  accent-deep: "#CE3149"
-  accent-soft: "#F79086"
-  teal: "#0E8C8C"
-  sun-yellow: "#FFDE3B"
-  lime: "#C1F32B"
-  periwinkle: "#6483FF"
-  purple: "#6B4DE6"
+  line: "#D9CFC2"
   linen: "#F1E8DE"
   paper: "#FBF8F5"
   white: "#FFFFFF"
-  charcoal: "#2F2C29"
-  sand: "#EADCCE"
-  stone: "#C3B7AC"
-  border-ink: "#000000"
-  border: "#D9CFC2"
-  border-warm: "#E4D9CB"
-  on-accent: "#000000"
+  on-watermelon: "#000000"
   on-dark: "#FFFFFF"
-  on-purple: "#FBF8F5"
+  on-sapphire: "#FBF8F5"
 typography:
   display:
     fontFamily: Satoshi
@@ -96,8 +87,8 @@ spacing:
   section: 64px
 components:
   button-primary:
-    backgroundColor: "{colors.accent}"
-    textColor: "{colors.on-accent}"
+    backgroundColor: "{colors.watermelon}"
+    textColor: "{colors.on-watermelon}"
     typography: "{typography.body-md}"
     rounded: "{rounded.cta}"
     padding: 16px
@@ -109,11 +100,11 @@ components:
     padding: 16px
   card:
     backgroundColor: "{colors.paper}"
-    textColor: "{colors.body}"
+    textColor: "{colors.charcoal}"
     rounded: "{rounded.card}"
     padding: 24px
   card-colored:
-    backgroundColor: "{colors.lime}"
+    backgroundColor: "{colors.verdigris}"
     textColor: "{colors.ink}"
     rounded: "{rounded.card}"
     padding: 24px
@@ -131,7 +122,7 @@ components:
     padding: 12px
   text-body:
     backgroundColor: "{colors.linen}"
-    textColor: "{colors.body}"
+    textColor: "{colors.charcoal}"
     typography: "{typography.body-md}"
   text-muted:
     backgroundColor: "{colors.linen}"
@@ -143,14 +134,14 @@ components:
   section-dark:
     backgroundColor: "{colors.charcoal}"
     textColor: "{colors.on-dark}"
-  panel-purple:
-    backgroundColor: "{colors.purple}"
-    textColor: "{colors.on-purple}"
+  band-sapphire:
+    backgroundColor: "{colors.sapphire}"
+    textColor: "{colors.on-sapphire}"
   divider:
-    backgroundColor: "{colors.border-ink}"
+    backgroundColor: "{colors.ink}"
   brand-secondary-mark:
     backgroundColor: "{colors.paper}"
-    textColor: "{colors.teal}"
+    textColor: "{colors.verdigris}"
     typography: "{typography.h3}"
 ---
 
@@ -186,37 +177,45 @@ Values mirror the brand's approved identity; the role names are assigned here,
 because a role is a decision this surface makes and not something the brand can
 know in advance.
 
+The palette is four accents and seven neutrals, and nothing outside them
+carries hue — no tints of the accents either.
+
 ### The one action colour
 
-Coral `#E8425A` fills every primary action and nothing else. It is the whole
-conversion hierarchy, and it only works because it is scarce — a page with two
-coral buttons has none.
+Watermelon `#E8425A` fills every primary action. It is the whole conversion
+hierarchy, and it only works because it is scarce — a page with two watermelon
+buttons has none. It may also appear as a card or shape fill, but never behind
+or next to a watermelon button, where it would compete with it.
 
-Type on coral is **ink, not white**. Black on coral is 5.42:1 and clears AA;
-white is 3.87:1 and does not. This is the single most common way to get the
+Type on watermelon is **ink, not white**. Black on it is 5.36:1 and clears AA;
+white is 3.92:1 and does not. This is the single most common way to get the
 system wrong, because white-on-red looks right and fails.
 
 ### Decoration
 
-Teal, sun yellow, lime, periwinkle, purple, coral-soft, sand and stone are
-grounds and shape fills. None is ever a primary action, and none carries
-meaning on its own — a reader who cannot distinguish them loses nothing.
+Sunflower gold, verdigris and electric sapphire are grounds, section bands and
+shape fills. None is ever a primary action, and none carries meaning on its own
+— a reader who cannot distinguish them loses nothing.
 
-Contrast for black type, since these are card grounds:
+| Ground | Black on it | White on it | Type |
+|---|---|---|---|
+| Sunflower Gold `#FFBD4B` | 12.63:1 | 1.66:1 | ink |
+| Verdigris `#109180` | 5.38:1 | 3.90:1 | ink |
+| Watermelon `#E8425A` | 5.36:1 | 3.92:1 | ink |
+| Electric Sapphire `#555DFF` | **4.40:1** | 4.78:1 | **paper white only** |
+| Line `#D9CFC2` | 13.6:1 | — | ink |
 
-| Ground | Black on it | Verdict |
-|---|---|---|
-| Sun Yellow `#FFDE3B` | 16.4:1 | fine |
-| Lime `#C1F32B` | 14.9:1 | fine |
-| Coral Soft `#F79086` | 9.2:1 | fine |
-| Sand `#EADCCE` | 13.6:1 | fine |
-| Teal `#0E8C8C` | 5.09:1 | passes AA |
-| Coral `#E8425A` | 5.42:1 | passes AA |
-| Periwinkle `#6483FF` | 5.9:1 | passes AA |
-| Purple `#6B4DE6` | **3.89:1** | **fails — white only, at 5.40:1** |
+Sapphire is the exception in the palette and the only ground that inverts its
+type. If a component sets black on sapphire, that is a bug. A paper chip or tag
+sitting on sapphire sets its own ink, since it would otherwise inherit paper
+type and vanish.
 
-Purple is the exception in the palette and the only ground that inverts its
-type. If a component sets black on purple, that is a bug.
+### Neutrals
+
+Seven, each with one job: **ink** `#000000` for headings, hairlines and button
+type; **charcoal** `#2F2C29` for the dark band and long-form reading text;
+**muted** `#6E655C` for captions and small print; **line** `#D9CFC2` for every
+border and the one neutral fill; and the three grounds below.
 
 ### Grounds
 
@@ -360,7 +359,7 @@ not need its own element. Never hand-write a button's styles again — the CTA w
 previously copy-pasted in ten places with nine different padding pairs.
 
 - **Primary** — Accent-deep ground, white text, Hanken 700, `pill` radius,
-  `--mr-shadow-cta`. Hovers up to Coral.
+  `--mr-shadow-cta`. Hovers up to Watermelon.
 - **Secondary** — white ground, Ink text, 1.5px `border-input`, no shadow.
 - **Tertiary / external link** — white ground, 1px `border`, Accent-deep label,
   `rounded-lg`, `--mr-shadow-card`.
@@ -384,8 +383,8 @@ for you when you spread it manually, so pair it with `className="mr-pressable"`;
 `--mr-shadow-card`, `.mr-lift`. Media tiles use a 16:10 crop with a
 `border-cream` footer rule.
 
-**Eyebrow pills** sit above a page title: Surface-rose-strong ground, Coral
-border, Accent-text label, `eyebrow` type, often prefixed `✦`.
+**Eyebrow pills** sit above a page title in `eyebrow` type, often prefixed
+`✦`, on a paper or accent ground with ink type (paper type on sapphire).
 
 **Modals** use `panel` radius, `--mr-shadow-frame`, and a
 `rgba(17,17,17,0.45)` scrim. Three different modal shells exist today
@@ -430,8 +429,8 @@ asset needs it.
 - Trust the global `h1`-`h6` rule in `globals.css` for heading fonts. Do not
   set a body font on a heading.
 - Use `buttonStyle()` or `<Button>` for every button. No exceptions.
-- Use `Accent-deep #CE3149` for buttons and for any Coral text at reading size;
-  reserve `Accent #E8425A` for large fills, section grounds, and display type.
+- Use `Watermelon-deep #CE3149` for any watermelon text at reading size;
+  reserve `Watermelon #E8425A` for fills and display type.
 - Give buttons `.mr-pressable` and cards `.mr-lift`.
 - Use `100px` for pill radii so the magnetic-button effect keeps working.
 - Use `md:px-10` desktop gutters.
@@ -443,13 +442,14 @@ asset needs it.
 
 - Don't add a `zinc-*` color. The warm neutral ramp is the site's; `zinc` is a
   cool grey that quietly makes pages look like a different product.
-- Don't use Coral, Coral-bright, Teal, or `faint #8A8580` for body-size text.
+- Don't use Watermelon, Verdigris, Gold or Sapphire for body-size text.
   All four fail WCAG AA on white.
 - Don't put a tint on a tint, or carry light borders into a dark section.
 - Don't use `rounded-full` on a button.
 - Don't introduce another bespoke section `clamp()` or another article H1 size.
 - Don't add `xl:` or `2xl:` breakpoints.
 - Don't add an icon library or a gradient. Neither belongs to this brand.
-- Don't reintroduce purple. It is retired in BRAND.md.
+- Don't add a colour outside the eleven in BRAND.md, including tints of the
+  accents. If a design seems to need one, the palette is the conversation.
 - Don't copy the deck's system here. That surface is pure white, two type sizes,
   and no tints on purpose; this one is warm, ranged, and meant to be read.

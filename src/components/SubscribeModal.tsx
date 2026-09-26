@@ -130,10 +130,10 @@ export function SubscribeModal() {
         aria-labelledby={titleId}
         className="relative w-full max-w-[520px] overflow-hidden"
         style={{
-          background: "var(--mr-sun-yellow)",
+          background: "var(--mr-gold)",
           borderRadius: "var(--mr-radius-panel)",
           // A hairline, not a shadow — the frame shadow token is `none` now.
-          border: "1px solid var(--mr-border-ink)",
+          border: "1px solid var(--mr-ink)",
         }}
       >
         <button
@@ -169,7 +169,7 @@ export function SubscribeModal() {
             style={{
               fontFamily: "var(--mr-font-body)",
               fontSize: "var(--mr-text-sm)",
-              color: "var(--mr-text-soft)",
+              color: "var(--mr-charcoal)",
               lineHeight: 1.55,
               maxWidth: "40ch",
               marginLeft: "auto",

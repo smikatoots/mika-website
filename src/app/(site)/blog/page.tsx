@@ -25,7 +25,7 @@ type Props = {
 };
 
 const listTagClass =
-  "rounded-full border border-[var(--mr-border)] px-2 py-0.5 text-xs font-medium text-[var(--mr-muted)]";
+  "rounded-full border border-[var(--mr-line)] px-2 py-0.5 text-xs font-medium text-[var(--mr-muted)]";
 
 export default async function BlogIndexPage({ searchParams }: Props) {
   const { tag: tagRaw } = await searchParams;
@@ -43,10 +43,10 @@ export default async function BlogIndexPage({ searchParams }: Props) {
 
   const tagPillActive =
     "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-    " border-[var(--mr-coral)] bg-[var(--mr-surface-rose-2)] text-[var(--mr-coral)]";
+    " border-[var(--mr-watermelon)] bg-[var(--mr-paper)] text-[var(--mr-watermelon)]";
   const tagPillIdle =
     "rounded-full border px-3 py-1 text-sm font-semibold transition" +
-    " border-[var(--mr-border)] text-[var(--mr-muted)] hover:border-[var(--mr-coral)] hover:text-[var(--mr-coral)]";
+    " border-[var(--mr-line)] text-[var(--mr-muted)] hover:border-[var(--mr-watermelon)] hover:text-[var(--mr-watermelon)]";
 
   return (
     <main className={mainWide}>
@@ -107,10 +107,10 @@ export default async function BlogIndexPage({ searchParams }: Props) {
 
       <ul
         className="mx-auto mt-8 max-w-4xl text-left"
-        style={{ borderBottom: "1px solid var(--mr-border)" }}
+        style={{ borderBottom: "1px solid var(--mr-line)" }}
       >
         {filtered.map((post) => (
-          <li key={post.slug} style={{ borderTop: "1px solid var(--mr-border)" }}>
+          <li key={post.slug} style={{ borderTop: "1px solid var(--mr-line)" }}>
             <InternalLink
               href={`/blog/${post.slug}`}
               className="group grid grid-cols-1 gap-x-4 gap-y-1 py-3 transition sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline"
@@ -127,11 +127,11 @@ export default async function BlogIndexPage({ searchParams }: Props) {
               >
                 <span
                   className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-                  style={{ color: "var(--mr-coral)" }}
+                  style={{ color: "var(--mr-watermelon)" }}
                 >
                   →
                 </span>
-                <span className="group-hover:text-[var(--mr-coral)] transition-colors">
+                <span className="group-hover:text-[var(--mr-watermelon)] transition-colors">
                   {post.title}
                 </span>
               </span>

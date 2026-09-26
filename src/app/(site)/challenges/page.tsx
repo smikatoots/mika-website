@@ -33,12 +33,12 @@ export default async function ChallengesIndexPage() {
 
       <ul
         className="mx-auto mt-8 max-w-4xl text-left"
-        style={{ borderBottom: "1px solid var(--mr-border)" }}
+        style={{ borderBottom: "1px solid var(--mr-line)" }}
       >
         {entries.map((entry) => (
           <li
             key={entry.slug}
-            style={{ borderTop: "1px solid var(--mr-border)" }}
+            style={{ borderTop: "1px solid var(--mr-line)" }}
           >
             <InternalLink
               href={`/challenges/${entry.slug}`}
@@ -56,11 +56,11 @@ export default async function ChallengesIndexPage() {
               >
                 <span
                   className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
-                  style={{ color: "var(--mr-coral)" }}
+                  style={{ color: "var(--mr-watermelon)" }}
                 >
                   →
                 </span>
-                <span className="group-hover:text-[var(--mr-coral)] transition-colors">
+                <span className="group-hover:text-[var(--mr-watermelon)] transition-colors">
                   {entry.title}
                 </span>
               </span>

@@ -7,7 +7,7 @@
      and src/app/deck/DESIGN.md. Never fork this value: the deck is one
      surface expressing one identity, so the hex lives in globals.css only.
      The literal is a fallback for when globals.css has not loaded. */
-  --deck-accent: var(--mr-coral, #E8425A);
+  --deck-accent: var(--mr-watermelon, #E8425A);
   /* Mirrors the approved brand Ink. Same rule as the accent: the hex lives in
      globals.css, this only points at it. Replaces the previous `zinc-950`
      (#09090B), which was a different value for the same meaning. */

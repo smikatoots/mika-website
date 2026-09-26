@@ -2,7 +2,7 @@
 name: "Mika Reyes"
 tagline: "Thrive and stay time-rich in the age of AI"
 specVersion: "0.3.0"
-version: 2
+version: 3
 language: en
 type: master
 ---
@@ -395,73 +395,60 @@ instance, legitimately shows the `@its.mikareyes` handle instead.
 
 ### Core Colors
 
-The palette widened in version 2. Version 1 held a single point of heat on a
-white ground; the system now runs a warm ground with a small arsenal of vivid
-accents, in the register of a designer's scrapbook rather than a product page.
-Scarcity still governs the *action* colour — it did not transfer to the
-decorative ones, which are meant to be used freely.
+Version 3 cut the palette down. Version 2 widened it into a small arsenal of
+accents; that arsenal is now four colours and seven neutrals, and nothing
+outside them carries hue. Scarcity still governs the *action* colour — it does
+not apply to the other three, which are meant to be used freely.
 
-**Ground**
+**Accents**
 
+- **Watermelon** `#E8425A` (mandatory). The single point of heat, and the only
+  colour with filled-button authority. It marks the one thing being asked for.
+  Black on it is 5.36:1 and clears AA; white is 3.92:1 and does not, so type on
+  watermelon is ink. It may also appear as decoration, but never as a second
+  button.
+- **Sunflower Gold** `#FFBD4B`. The signature warm pop. Black type (12.63:1).
+- **Verdigris** `#109180`. The calm counterweight. Black type (5.38:1).
+- **Electric Sapphire** `#555DFF`. The one cool accent. **White type only** —
+  black on it is 4.40:1 and fails AA; white is 4.78:1.
+
+Two interaction states of watermelon exist and are not palette colours in their
+own right: a hover lift `#FF3D68`, and a deepened `#CE3149` for the rare case
+that needs white type on it (5.05:1).
+
+**Neutrals**
+
+- **Ink** `#000000` (mandatory). Headings, hairlines, icon strokes, button type.
+- **Charcoal** `#2F2C29`. The one dark ground, for a single editorial band per
+  page, and the long-form reading colour so a full article does not read as
+  harshly as a headline.
+- **Muted** `#6E655C`. Captions, labels and small print.
+- **Line** `#D9CFC2`. Every border, and the one neutral fill (tags, quiet
+  panels).
 - **Warm Linen** `#F1E8DE` (mandatory). The page. Space is part of the identity,
-  not what is left over, and warmth is what keeps a page of instructions from
-  reading as a spec sheet.
+  not what is left over.
 - **Paper White** `#FBF8F5` (mandatory). Cards and content blocks — one tonal
   step up from the ground, never a border.
-- **Pure White** `#FFFFFF` (optional). Inverted elements and pill buttons only.
-  Not a card surface: on warm linen it breaks the paper progression.
-- **Charcoal** `#2F2C29` (optional). The one dark ground, for a single editorial
-  band per page. Warmer than black.
+- **Pure White** `#FFFFFF`. Pill buttons only. Not a card surface: on warm linen
+  it breaks the paper progression.
 
-**Action**
+**Avoid:** any colour outside these eleven, including tints of the accents.
+Neon. Gradients used as decoration. Dark-mode-first palettes. Any accent used
+for body text or as a primary action other than watermelon.
 
-- **Coral** `#E8425A` (mandatory). The single point of heat, and the only colour
-  with filled-button authority. It marks the one thing being asked for. Its
-  meaning depends on scarcity, so more of it is always worse. Black on coral is
-  5.42:1 and clears AA; white is 3.87:1 and does not, so type on coral is ink.
-- **Coral Deep** `#CE3149` (optional). Coral darkened until white on it clears
-  AA at 5.05:1, for the rare case that needs coral behind white type.
+Roles are not assigned here. Which accent grounds a card or a section is a
+decision each surface makes in its own `DESIGN.md`.
 
-**Decoration.** These are card grounds, shape fills, and tag pills. None of them
-is ever a primary action, and none of them carries meaning — a reader who cannot
-see colour loses nothing.
-
-- **Teal** `#0E8C8C`. The calm counterweight. Black on it is 5.09:1.
-- **Sun Yellow** `#FFDE3B`. The signature pop.
-- **Lime** `#C1F32B`. Energetic counterweight to the yellow.
-- **Periwinkle** `#6483FF`. The one cool accent in a warm-first palette.
-- **Purple** `#6B4DE6`. White type only — black on it is 3.89:1 and fails.
-- **Coral Soft** `#F79086`. The coral's tint, for softer grounds.
-- **Sand** `#EADCCE` and **Stone** `#C3B7AC`. Warm neutral fills.
-
-**Ink**
-
-- **Ink** `#000000` (mandatory). Type, hairlines, icon strokes — structural, and
-  used at extreme scale. Long-form body copy steps back to a warm near-black so
-  a full article does not read as harshly as a headline.
-
-**Avoid:** neon. Gradients used as decoration. Dark-mode-first palettes, which
-belong to the developer-tools category this brand is not in. Any accent colour
-used for body text or as a primary action.
-
-Roles are not assigned here. That coral is the call-to-action colour and teal a
-card ground are decisions each surface makes in its own `DESIGN.md`.
-
-> **Migration note (version 2).** Two reversals from version 1, both
-> deliberate, both Mika's call — recorded here so the change is visible rather
-> than inferred.
+> **Migration note (version 3).** Mika's call. Nine accents became four:
+> coral stays as Watermelon (same value); Sun Yellow becomes Sunflower Gold;
+> Teal becomes Verdigris; Periwinkle and Purple both become Electric Sapphire;
+> Lime and Coral Soft are retired. The neutrals collapsed from sixteen to
+> seven: the body and soft text colours merge into Charcoal, Faint into Muted,
+> Sand, Stone and every border tone into Line, and the rose and teal surface
+> tints into Paper White.
 >
-> - **White is no longer the ground.** Warm linen is. Version 1 called white
->   mandatory; a component still setting a white page background is now off.
-> - **Purple is un-retired.** Version 1 said to avoid "purple and violet of any
->   kind, previously carried in the tokens and now retired." `#6B4DE6` is back
->   as a decorative ground. If that retirement mattered for a reason not written
->   down at the time, this is the line to revisit.
->
-> Version 1's note about `#fd4869` in the deck system still stands: coral
-> `#E8425A` is the single approved red, and `src/app/deck/deck.css` should be
-> repointed. `--mr-coral-bright` `#FF3D68` remains a hover state, not an
-> identity colour.
+> Version 1's note about `#fd4869` in the deck system still stands: watermelon
+> `#E8425A` is the single approved red.
 
 ### Typefaces
 
