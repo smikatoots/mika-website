@@ -8,7 +8,7 @@ colors:
   red-deep: "#B23E3E"
   yellow: "#FACF5A"
   aqua: "#49BEB7"
-  teal: "#085F63"
+  green: "#6FD098"
   ink: "#000000"
   charcoal: "#2F2C29"
   muted: "#6E655C"
@@ -18,7 +18,6 @@ colors:
   white: "#FFFFFF"
   on-red: "#000000"
   on-dark: "#FFFFFF"
-  on-teal: "#FBF8F5"
 typography:
   display:
     fontFamily: Satoshi
@@ -134,14 +133,14 @@ components:
   section-dark:
     backgroundColor: "{colors.charcoal}"
     textColor: "{colors.on-dark}"
-  band-teal:
-    backgroundColor: "{colors.teal}"
-    textColor: "{colors.on-teal}"
+  band-green:
+    backgroundColor: "{colors.green}"
+    textColor: "{colors.ink}"
   divider:
     backgroundColor: "{colors.ink}"
   brand-secondary-mark:
     backgroundColor: "{colors.paper}"
-    textColor: "{colors.teal}"
+    textColor: "{colors.red-deep}"
     typography: "{typography.h3}"
 ---
 
@@ -194,7 +193,7 @@ uses red-deep (5.44:1 on paper).
 
 ### Decoration
 
-Yellow, aqua and deep teal are grounds, section bands and shape fills. None is
+Yellow, aqua and emerald are grounds, section bands and shape fills. None is
 ever a primary action, and none carries meaning on its own — a reader who
 cannot distinguish them loses nothing.
 
@@ -203,18 +202,16 @@ cannot distinguish them loses nothing.
 | Yellow `#FACF5A` | 14.14:1 | 1.49:1 | ink |
 | Aqua `#49BEB7` | 9.33:1 | 2.25:1 | ink |
 | Red `#FF5959` | 6.83:1 | 3.08:1 | ink |
-| Deep Teal `#085F63` | **2.83:1** | 7.43:1 | **paper white only** |
+| Emerald `#6FD098` | 11.15:1 | 1.88:1 | ink |
 | Line `#D9CFC2` | 13.6:1 | — | ink |
 
-Teal is the exception in the palette and the only ground that inverts its
-type. If a component sets black on teal, that is a bug. A paper chip or tag
-sitting on teal sets its own ink, since it would otherwise inherit paper type
-and vanish. Teal is dark, so a teal band counts toward the page's weight the
-way the charcoal band does: never stack the two.
+Every accent takes ink; no ground inverts its type. Aqua and emerald sit
+close in lightness, so never put them side by side — separate them with
+yellow, red or a linen gap.
 
-Teal is also the only accent that works as **text** on a light ground (7.02:1
-on paper). Aqua and yellow as text are unreadable (2.13:1 and 1.40:1); a link
-or label that wants colour uses teal, or red-deep.
+None of the accents works as **text** on a light ground (red 2.91:1, aqua
+2.13:1, emerald 1.78:1, yellow 1.40:1). A link or label that wants colour uses
+red-deep `#B23E3E` (5.44:1 on paper).
 
 ### Neutrals
 
@@ -390,7 +387,7 @@ for you when you spread it manually, so pair it with `className="mr-pressable"`;
 `border-cream` footer rule.
 
 **Eyebrow pills** sit above a page title in `eyebrow` type, often prefixed
-`✦`, on a paper or accent ground with ink type (paper type on teal).
+`✦`, on a paper or accent ground with ink type.
 
 **Modals** use `panel` radius, `--mr-shadow-frame`, and a
 `rgba(17,17,17,0.45)` scrim. Three different modal shells exist today
@@ -448,8 +445,8 @@ asset needs it.
 
 - Don't add a `zinc-*` color. The warm neutral ramp is the site's; `zinc` is a
   cool grey that quietly makes pages look like a different product.
-- Don't use Red, Aqua or Yellow for text at any size on a light ground.
-  Teal and red-deep are the only coloured type.
+- Don't use Red, Yellow, Aqua or Emerald for text at any size on a light
+  ground. Red-deep is the only coloured type.
   All four fail WCAG AA on white.
 - Don't put a tint on a tint, or carry light borders into a dark section.
 - Don't use `rounded-full` on a button.

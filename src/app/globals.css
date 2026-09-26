@@ -16,14 +16,13 @@
        Red     black 6.83  white 3.08  -> ink
        Yellow  black 14.14 white 1.49  -> ink
        Aqua    black 9.33  white 2.25  -> ink
-       Teal    black 2.83  white 7.43  -> white/paper, the one inversion
-     Teal is also the only accent that reads as text on a light ground
-     (7.02:1 on paper). Red, yellow and aqua never do — red text uses
-     red-deep instead. */
+       Green   black 11.15 white 1.88  -> ink
+     All four take ink, so no ground inverts its type. None of them reads
+     as text on a light ground either; coloured type uses red-deep. */
   --mr-red:               #FF5959;
   --mr-yellow:            #FACF5A;
   --mr-aqua:              #49BEB7;
-  --mr-teal:              #085F63;
+  --mr-green:             #6FD098;
   /* Shades of red, not palette colours in their own right: the hover
      lift, and a deepened red for type and for white-on-red (5.75:1 with
      white, 5.44:1 as text on paper). */
@@ -272,7 +271,7 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 /* Pill-shaped hover targets on /link-in-bio: the social icon buttons and the
    footer link. Shared so the two hover states can never drift apart. */
 .bio-social { transition: color var(--mr-dur-lift) var(--mr-ease), background var(--mr-dur-lift) var(--mr-ease); }
-.bio-social:hover { color: var(--mr-teal); background: var(--mr-paper); }
+.bio-social:hover { color: var(--mr-red-deep); background: var(--mr-paper); }
 
 /* ── Shared surface primitives ──────────────────────────────────────
    The applied system, available to every page. DESIGN.md documents the
@@ -910,22 +909,21 @@ h3 { letter-spacing: var(--mr-track-h3); line-height: 1.25; }
 }
 
 /* ── Press & awards band ────────────────────────────────────
-   The one purple mass on the page, run full-bleed as a section ground.
-   Black type fails on this fill (3.89:1), so the band sets paper white
-   throughout and the cards inside it carry their own light ground. The
-   linen card-grid section keeps it apart from the charcoal band above. */
-.mr-panel-purple {
-  background: var(--mr-teal);
-  color: var(--mr-paper);
+   The green mass on the page, run full-bleed as a section ground, with
+   ink type like every other accent. The cards inside it carry their own
+   paper ground. */
+.mr-press-band {
+  background: var(--mr-green);
+  color: var(--mr-ink);
 }
 
-.mr-panel-purple .mr-card-paper {
+.mr-press-band .mr-card-paper {
   color: var(--mr-ink);
 }
 
 .mr-panel-rule {
   height: 1px;
   border: 0;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.2);
   margin: clamp(32px, 4vw, 44px) 0 clamp(20px, 3vw, 28px);
 }

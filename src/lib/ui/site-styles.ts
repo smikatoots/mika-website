@@ -50,15 +50,15 @@ export const mainGallery =
 /* Card grounds for the colour-cycled grids on /links and /ai. Shared so the
    two pages cannot drift into different palettes.
 
-   Each ground carries its own type colour rather than assuming ink. Teal is
-   the reason: black on it is 2.83:1 and fails AA, where paper white is
-   7.02:1. It is the only ground in the palette that inverts, and hard-coding
-   ink would have made it the one unreadable card.
+   Each ground carries its own type colour rather than assuming ink, so a
+   future dark accent can invert without touching the grids. Today all four
+   take ink.
 
    Cycle these by grid position, not by item id, so a filtered grid still shows
-   the full spread. */
+   the full spread. Green and aqua are kept apart in the order because they
+   sit close in lightness. */
 export const CARD_GROUNDS = [
-  { bg: "var(--mr-teal)", fg: "var(--mr-paper)", chip: "var(--mr-paper)" },
+  { bg: "var(--mr-green)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
   { bg: "var(--mr-yellow)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
   { bg: "var(--mr-aqua)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },
   { bg: "var(--mr-red)", fg: "var(--mr-ink)", chip: "var(--mr-paper)" },

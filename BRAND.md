@@ -408,9 +408,10 @@ not apply to the other three, which are meant to be used freely.
   is ink. It may also appear as decoration, but never as a second button.
 - **Yellow** `#FACF5A`. The signature warm pop. Black type (14.14:1).
 - **Aqua** `#49BEB7`. The fresh counterweight. Black type (9.33:1).
-- **Deep Teal** `#085F63`. The one dark accent. **White type only** — black on
-  it is 2.83:1 and fails AA; white is 7.43:1. It is also the only accent that
-  can be used as text on a light ground (7.02:1 on paper white).
+- **Emerald** `#6FD098`. The fresh green. Black type (11.15:1).
+
+All four accents take black type, and none of them is dark enough to be used
+as text on a light ground. Coloured type uses the deep shade of red below.
 
 Two shades of red exist and are not palette colours in their own right: a
 hover lift `#FF7A7A`, and a deepened `#B23E3E` for red type and for the rare
@@ -441,8 +442,8 @@ decision each surface makes in its own `DESIGN.md`.
 
 > **Migration note (version 3).** Mika's call. Nine accents became four:
 > Red `#FF5959` replaces coral `#E8425A` as the action colour; Sun Yellow
-> becomes Yellow; Teal and Lime become Aqua; Periwinkle and Purple become Deep
-> Teal; Coral Soft is retired. The neutrals collapsed from sixteen to seven:
+> becomes Yellow; Teal and Lime become Aqua; Periwinkle and Purple become
+> Emerald; Coral Soft is retired. The neutrals collapsed from sixteen to seven:
 > the body and soft text colours merge into Charcoal, Faint into Muted, Sand,
 > Stone and every border tone into Line, and the rose and teal surface tints
 > into Paper White. Two interim v3 palettes were tried and dropped the same

@@ -73,13 +73,14 @@ function panelRevealStyle(
 }
 
 /* Timeline card grounds. Every one of these clears AA with black type — the
-   check that matters, since the card sets ink on the colour. Teal is left
-   out for that reason (black on it is 2.83:1). Ten milestones cycle through
-   four grounds, so no two adjacent cards repeat. */
+   check that matters, since the card sets ink on the colour. Ten milestones
+   cycle through five grounds, so no two adjacent cards repeat, and the two
+   greens (aqua, green) are kept apart. */
 const STORY_CARD_GROUNDS = [
   "var(--mr-yellow)",
-  "var(--mr-aqua)",
+  "var(--mr-green)",
   "var(--mr-red)",
+  "var(--mr-aqua)",
   "var(--mr-line)",
 ] as const;
 

@@ -149,7 +149,7 @@ function SectionHeader({
         onClick={onSeeAll}
         style={{
           ...META,
-          color: "var(--mr-teal)",
+          color: "var(--mr-red-deep)",
           textDecoration: "none",
           whiteSpace: "nowrap",
         }}
@@ -373,7 +373,7 @@ export function LinkInBioContent({
                   {FEATURED_LINK_BLURBS[link.id] ?? link.description}
                 </p>
               </div>
-              <span style={{ ...META, color: "var(--mr-teal)" }}>
+              <span style={{ ...META, color: "var(--mr-red-deep)" }}>
                 Get the deal →
               </span>
             </a>
@@ -421,7 +421,7 @@ export function LinkInBioContent({
               </span>
               <span
                 aria-hidden
-                style={{ ...BODY, color: "var(--mr-teal)" }}
+                style={{ ...BODY, color: "var(--mr-red-deep)" }}
               >
                 →
               </span>
