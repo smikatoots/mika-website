@@ -8,6 +8,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 Read [`SEO.md`](./SEO.md) before changing routes, metadata, sitemap behavior, or internal links. Run `yarn lint` after relevant changes; production builds enforce the same SEO source policy.
 
+When a change affects how search or AI answer engines find, read, or cite the site, add an entry to [`docs/seo-aeo-log.md`](./docs/seo-aeo-log.md).
+
 ## Brand
 
 Read [`BRAND.md`](./BRAND.md) before writing any user-facing copy, naming

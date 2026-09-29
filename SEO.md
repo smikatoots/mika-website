@@ -153,6 +153,15 @@ SEO_BASE_URL=http://127.0.0.1:3000 yarn verify:seo:site
 
 This combination catches both source-level policy mistakes and mistakes that only become visible after Next.js resolves metadata.
 
+## IndexNow
+
+`.github/workflows/indexnow.yml` runs after Vercel reports a successful production deploy. `scripts/indexnow-submit.mjs` reads the live sitemap, diffs it against the snapshot from the last run (kept in the Actions cache), and submits only new or changed URLs to IndexNow. Bing, Yandex, Naver, Seznam and Yep use IndexNow. Google does not; it keeps reading the sitemap through Search Console.
+
+- The key file `public/11632f18d629ff9b5ca9ede331235d25.txt` must stay published. Deleting or renaming it breaks verification.
+- A URL is only resubmitted when it is new or its `lastmod` changes. To make an edited guide re-crawl, bump its `updated` frontmatter.
+- Seed or recover by hand: Actions → IndexNow → Run workflow, with "Submit every sitemap URL" checked. Use it once, not routinely.
+- Preview locally: `node scripts/indexnow-submit.mjs --dry-run`.
+
 ## Checklist for a new indexable page
 
 1. Add a unique title and useful description.
