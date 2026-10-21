@@ -3,6 +3,9 @@
    because the slide wrapper is remounted with a fresh `key`. */
 
 .deck-root {
+  /* Step numbers and other former-mono labels set in the deck's display face.
+     There is no monospace on any surface; see BRAND.md > Typefaces. */
+  --mr-font-label: var(--mr-font-display);
   /* Mirrors the approved brand Coral. See BRAND.md > Visual > Core Colors
      and src/app/deck/DESIGN.md. Never fork this value: the deck is one
      surface expressing one identity, so the hex lives in globals.css only.

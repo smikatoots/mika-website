@@ -49,6 +49,7 @@
      tracking, never from reaching for a heavier cut. */
   --mr-font-display: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --mr-font-body:    var(--font-hanken), "Hanken Grotesk", sans-serif;
+  --mr-font-label:   var(--mr-font-body);
 
   --mr-text-display: 100px;
   --mr-text-h1:      68px;
@@ -125,7 +126,10 @@
   --color-teal: var(--mr-aqua);
   --font-display: var(--mr-font-display);
   --font-sans: var(--mr-font-body);
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* No monospace on any surface (Mika's call, 2026-10-20). Tailwind's
+     `font-mono` now resolves to the surface's label face: Hanken on the
+     website, Satoshi inside decks (set on .deck-root). */
+  --font-mono: var(--mr-font-label);
 }
 
 /* ── The zinc bridge ────────────────────────────────────────────────

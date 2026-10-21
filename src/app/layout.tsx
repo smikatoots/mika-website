@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Geist_Mono, Hanken_Grotesk } from "next/font/google";
+import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 
@@ -23,11 +23,6 @@ const hanken = Hanken_Grotesk({
   variable: "--font-hanken",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 // Satoshi (Indian Type Foundry, via Fontshare) — the display voice, on the
@@ -72,7 +67,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${satoshi.variable} ${bricolage.variable} ${hanken.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${satoshi.variable} ${bricolage.variable} ${hanken.variable} h-full antialiased`}
     >
       <head>
         <SiteStructuredData />

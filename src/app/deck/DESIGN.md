@@ -38,7 +38,7 @@ typography:
     fontWeight: 800
     lineHeight: 1.05
   step-number:
-    fontFamily: Geist Mono
+    fontFamily: Satoshi
     fontSize: 3rem
     fontWeight: 700
   meta:
@@ -208,7 +208,8 @@ pattern to copy.
 
 ## Typography
 
-**Inter** for everything with a voice, Geist Mono for step numbers — see the
+**Inter** for everything with a voice, Satoshi for step numbers (Geist Mono is
+retired everywhere; see BRAND.md > Typefaces) — see the
 migration note directly below before adding a new deck.
 
 > **This surface is mid-migration. Read this before making a new deck.**

@@ -474,14 +474,17 @@ the split was buying.
 - **Hanken Grotesk**, body and long-form reading on the website. Sits quietly
   under Satoshi without competing with it. Fallback: `ui-sans-serif, system-ui,
   -apple-system, sans-serif`. Licensing: SIL Open Font License 1.1. Verified.
-- **Geist Mono**, numbers, metadata, step markers, and anything that should read
-  as data rather than prose. Fallback: `ui-monospace, monospace`. Licensing:
-  SIL Open Font License 1.1. Verified.
+- **No monospace, anywhere.** Numbers, metadata, labels and step markers use
+  Hanken Grotesk on the website and Satoshi on decks, with tabular figures
+  where columns of numbers need to line up.
 
 **Retired, and what that means for what already exists.**
 
 - **Bricolage Grotesque** is retired. It was the website display voice in
   version 1; no new work uses it.
+- **Geist Mono** is retired everywhere, existing decks included (Mika's call,
+  2026-10-20). The shared `--font-mono` token now points at each surface's
+  label face, so nothing renders in a monospace.
 - **Inter** is retired for new work. Decks built before this change keep it and
   are not to be re-typed — they are finished artefacts, and re-cutting sixty of
   them buys nothing. Any deck made from here on uses Satoshi.

@@ -15,7 +15,8 @@ const GREY = "#e4e4e7";
 const GREY_DARK = "#c7c7cc";
 const MUTED = "#a1a1aa";
 const SVG_FONT = "var(--font-bricolage), system-ui, sans-serif";
-const MONO_FONT = "ui-monospace, SFMono-Regular, Menlo, monospace";
+// Former monospace labels; no monospace on any surface (BRAND.md > Typefaces).
+const LABEL_FONT = { fontFamily: "var(--mr-font-display)" };
 
 /** Small white check mark, centered on (cx, cy). */
 function Check({ cx, cy, scale = 1 }: { cx: number; cy: number; scale?: number }) {
@@ -143,7 +144,7 @@ function BrandFileCard() {
         {/* filename tab */}
         <rect x={40} y={26} width={196} height={52} rx={12} fill={INK} />
         <rect x={43} y={68} width={190} height={12} fill={INK} />
-        <text x={138} y={53} textAnchor="middle" dominantBaseline="central" fontSize={26} fontWeight={700} fill="#ffffff" fontFamily={MONO_FONT}>
+        <text x={138} y={53} textAnchor="middle" dominantBaseline="central" fontSize={26} fontWeight={700} fill="#ffffff" style={LABEL_FONT}>
           brand.md
         </text>
 
@@ -314,7 +315,7 @@ function PromptToSkill() {
             fontSize={38}
             fontWeight={700}
             fill="#ffffff"
-            fontFamily={MONO_FONT}
+            style={LABEL_FONT}
           >
             /design-options
           </text>
