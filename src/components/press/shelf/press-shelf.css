@@ -291,11 +291,11 @@
 .press-shelf__detail {
   position: absolute;
   top: 50%;
-  /* Never wider apart than the site's content column, so book + panel stay a
-     centred group on large screens. */
-  right: max(clamp(34px, 5vw, 78px), calc((100% - 1200px) / 2 + 24px));
+  /* Book + panel stay one centred group, capped at 1440px wide so they fill
+     a laptop screen without drifting apart on very large ones. */
+  right: max(clamp(34px, 4vw, 64px), calc((100% - 1440px) / 2 + 24px));
   z-index: 4;
-  width: min(34vw, 460px);
+  width: min(36vw, 520px);
   max-height: calc(100% - 64px);
   overflow: auto;
   /* Room inside the scroll box for focus rings and the buttons' hover lift,

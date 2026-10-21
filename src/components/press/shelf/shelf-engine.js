@@ -148,8 +148,8 @@ export function mountPressShelf(root, BOOKS) {
     fog: new THREE.Color(ROOM.linen),
     hemisphere: new THREE.Color(ROOM.paper),
     hemisphereGround: new THREE.Color(ROOM.muted),
-    key: new THREE.Color(0xfff4e6),
-    fill: new THREE.Color(0xe6ecee),
+    key: new THREE.Color(0xffffff),
+    fill: new THREE.Color(0xf4f6f7),
     rim: new THREE.Color(ROOM.line)
   };
 
@@ -235,8 +235,8 @@ export function mountPressShelf(root, BOOKS) {
   const COVER_OPEN_COMMIT_PROGRESS = 0.16;
   const COVER_CLOSE_COMMIT_PROGRESS = 0.2;
   const DETAIL_TRANSITION_DURATION = 0.92;
-  const SHELF_EXPOSURE = 0.82;
-  const READING_EXPOSURE = 0.7;
+  const SHELF_EXPOSURE = 0.7;
+  const READING_EXPOSURE = 0.64;
   const SHELF_TRANSITION_DURATION = 0.92;
   let openingViewOffsetX = 0;
   let closingViewOffsetX = 0;
@@ -687,7 +687,7 @@ export function mountPressShelf(root, BOOKS) {
   }
 
   function drawPaperSurface(ctx, width, height, random) {
-    ctx.fillStyle = "#f4eee4";
+    ctx.fillStyle = "#FBF8F5";
     ctx.fillRect(0, 0, width, height);
 
     const paperWash = ctx.createLinearGradient(0, 0, width, height);
@@ -1005,16 +1005,15 @@ export function mountPressShelf(root, BOOKS) {
   function ensureInterior(rig) {
     if (rig.interior) return;
     const { canvases, textures } = makeInteriorPageTextures(rig.data);
-    const materials = textures.map((texture) => {
-      const material = createFadeMaterial(shared.pageSheet);
-      material.map = texture;
-      material.bumpMap = rig.paperFaceTexture;
-      material.bumpScale = 0.0012;
-      material.roughness = 0.96;
-      material.side = THREE.FrontSide;
-      material.needsUpdate = true;
-      return material;
-    });
+    // Printed pages are unlit and skip tone mapping, so the paper, type and
+    // pasted clipping photos show at their true colours. Lit paper picked up
+    // the scene's light colour and read peach and oversaturated.
+    const materials = textures.map((texture) => new THREE.MeshBasicMaterial({
+      map: texture,
+      toneMapped: false,
+      transparent: true,
+      side: THREE.FrontSide
+    }));
     rig.interior = { canvases, textures, materials };
     rig.leaves.forEach((leaf) => {
       leaf.front.material = materials[leaf.leafOrder * 2] || rig.blankPageMaterial;
@@ -2050,7 +2049,7 @@ export function mountPressShelf(root, BOOKS) {
     const panelRightGap = panelBounds.width > 0
       ? rootBounds.right - panelBounds.right
       : clamp(viewWidth * 0.05, 34, 78);
-    const gutter = clamp(viewWidth * 0.035, 32, 56);
+    const gutter = clamp(viewWidth * 0.025, 24, 44);
     detailSafeWidth = Math.max(viewWidth * 0.36, panelLeft - gutter - panelRightGap);
     const desiredBookCenter = panelRightGap + detailSafeWidth * 0.5;
     detailViewOffsetX = viewWidth * 0.5 - desiredBookCenter;
@@ -2065,8 +2064,10 @@ export function mountPressShelf(root, BOOKS) {
     // Size for the open spread (two covers wide), not the closed book, so a
     // centred spread never runs under the panel.
     const spreadWidth = activeBook.base.width * pixelsPerWorld * 2.1;
-    const scaleForSafeWidth = (detailSafeWidth * 0.92) / Math.max(spreadWidth, 1);
-    return clamp(scaleForSafeWidth, 0.72, 1.32);
+    const scaleForSafeWidth = (detailSafeWidth * 0.98) / Math.max(spreadWidth, 1);
+    // Also cap by height so a tall spread never runs off the section.
+    const scaleForHeight = (viewHeight * 0.8) / Math.max(activeBook.base.height * pixelsPerWorld, 1);
+    return clamp(Math.min(scaleForSafeWidth, scaleForHeight), 0.72, 1.7);
   }
 
   function applyDetailViewOffset() {
@@ -2146,7 +2147,7 @@ export function mountPressShelf(root, BOOKS) {
     roomLights.hemisphere = new THREE.HemisphereLight(ROOM.paper, ROOM.muted, 0.56);
     scene.add(roomLights.hemisphere);
 
-    const key = new THREE.DirectionalLight(0xfff4e6, 1.42);
+    const key = new THREE.DirectionalLight(0xffffff, 1.42);
     key.name = "shadow-key";
     key.position.set(-4.6, 7.4, 5.8);
     key.castShadow = true;
@@ -2163,14 +2164,14 @@ export function mountPressShelf(root, BOOKS) {
     scene.add(key);
     roomLights.key = key;
 
-    const softKey = new THREE.RectAreaLight(0xfff4e6, 5.4, 4.8, 5.6);
+    const softKey = new THREE.RectAreaLight(0xffffff, 5.4, 4.8, 5.6);
     softKey.name = "cloth-softbox";
     softKey.position.set(-3.2, 5.5, 4.6);
     softKey.lookAt(0, 1.45, 0);
     scene.add(softKey);
     roomLights.softKey = softKey;
 
-    const fill = new THREE.DirectionalLight(0xe6ecee, 0.3);
+    const fill = new THREE.DirectionalLight(0xf4f6f7, 0.3);
     fill.name = "cool-fill";
     fill.position.set(5.5, 3.6, 4.2);
     scene.add(fill);
@@ -2183,21 +2184,21 @@ export function mountPressShelf(root, BOOKS) {
     scene.add(rim);
     roomLights.rim = rim;
 
-    const backFill = new THREE.RectAreaLight(0xe6ecee, 2.7, 3.8, 4.8);
+    const backFill = new THREE.RectAreaLight(0xf4f6f7, 2.7, 3.8, 4.8);
     backFill.name = "back-cover-softbox";
     backFill.position.set(-1.8, 2.9, -4.5);
     backFill.lookAt(-0.1, 1.45, 0);
     scene.add(backFill);
     roomLights.backFill = backFill;
 
-    const spineRake = new THREE.RectAreaLight(0xfff4e6, 1.9, 0.9, 4.6);
+    const spineRake = new THREE.RectAreaLight(0xffffff, 1.9, 0.9, 4.6);
     spineRake.name = "spine-rake";
     spineRake.position.set(-4.6, 3.2, 1.1);
     spineRake.lookAt(-0.55, 1.5, 0);
     scene.add(spineRake);
     roomLights.spineRake = spineRake;
 
-    const pageRake = new THREE.RectAreaLight(0xfff7e7, 2.15, 1.15, 3.8);
+    const pageRake = new THREE.RectAreaLight(0xffffff, 2.15, 1.15, 3.8);
     pageRake.name = "page-edge-rake";
     pageRake.position.set(4.2, 4.8, 3.1);
     pageRake.lookAt(0.65, 1.55, 0);

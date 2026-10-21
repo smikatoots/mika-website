@@ -217,7 +217,8 @@ function hostOf(url: string | null): string {
 
 function outletFor(entry: PressManifestEntry): string {
   const fromTitle = entry.title.match(/\(([^()]+)\)\s*$/);
-  if (fromTitle) return fromTitle[1].trim();
+  // "(Twitter)" in older Notion titles and twitter.com links are one outlet.
+  if (fromTitle) return fromTitle[1].trim() === "Twitter" ? OUTLETS_BY_HOST["twitter.com"] : fromTitle[1].trim();
   const host = hostOf(entry.url);
   const match = Object.keys(OUTLETS_BY_HOST).find(
     (key) => host === key || host.endsWith(`.${key}`),
