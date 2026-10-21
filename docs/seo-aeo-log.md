@@ -15,6 +15,11 @@ find, read, or cite the site. Format:
 
 ---
 
+## 2026-10-20 — /press becomes a 3D shelf, archive grouped by volume
+- **What:** `/press` opens on a WebGL bookshelf (`src/components/press/shelf/`, ported from ThreeUI's Complete Shelf). Clippings are grouped into six volumes in `src/lib/press/shelf-volumes.ts`. Below the shelf, an "Every clipping" section lists all 36 items as `PressCard` links under per-volume `h3`s. The page keeps one `h1` ("Press") and its canonical. The meta description now names Forbes 30 Under 30, Parallax/Phantom and the WSJ.
+- **Why:** The 3D canvas is invisible to crawlers, so every `/press/<slug>` link stays in server-rendered HTML, now with topical grouping (volume headings) that gives answer engines context for each clipping.
+- **Check:** `yarn verify:seo:site` passes on `/press`; Search Console → Pages shows no drop in indexed `/press/*` URLs over the next 4 weeks.
+
 ## 2026-09-29 — IndexNow on every production deploy
 - **What:** `.github/workflows/indexnow.yml` + `scripts/indexnow-submit.mjs`. After each successful Vercel production deploy, new or changed sitemap URLs are pushed to IndexNow. Key file at `public/11632f18d629ff9b5ca9ede331235d25.txt`.
 - **Why:** Bing feeds ChatGPT search, Copilot and DuckDuckGo. Pushing new guides instead of waiting for a recrawl should get them into AI answers faster.
