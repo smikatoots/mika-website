@@ -245,7 +245,9 @@ using tokens, not tuning the bridge. Where the two disagree, this file wins.
 
 ## Typography
 
-Satoshi displays, Hanken reads.
+Satoshi displays, Hanken reads. There is no monospace on this surface: labels,
+counters and metadata use the eyebrow role (Hanken, tabular figures where
+numbers line up). Tailwind's `font-mono` resolves to Hanken for that reason.
 
 **Satoshi ships at two weights, Medium and Bold, and that is the whole point.**
 There is no third cut to reach for, so hierarchy has to come from scale and

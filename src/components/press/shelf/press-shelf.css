@@ -1,0 +1,727 @@
+/*
+ * Press shelf chrome. Layout, breakpoints and motion follow the ThreeUI
+ * "Complete Shelf" source; colour, type and buttons are the website system
+ * (DESIGN.md). Everything is scoped under .press-shelf.
+ */
+.press-shelf {
+  --shelf-accent: var(--mr-red);
+  --shelf-ease: cubic-bezier(0.2, 0.72, 0.24, 1);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  height: clamp(600px, calc(100svh - 72px), 940px);
+  /* Clears the sticky site header when an archive link scrolls back here. */
+  scroll-margin-top: 72px;
+  background: var(--mr-linen);
+  color: var(--mr-ink);
+}
+
+.press-shelf [hidden] {
+  display: none !important;
+}
+
+.press-shelf__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  opacity: 0;
+  /* Vertical swipes scroll the page; horizontal drags move the shelf. */
+  touch-action: pan-y;
+  transition: opacity 900ms var(--shelf-ease);
+}
+
+.press-shelf.webgl-ready .press-shelf__canvas {
+  opacity: 1;
+}
+
+.press-shelf__canvas.has-book-hover,
+.mode-detail .press-shelf__canvas.has-closed-book-hover {
+  cursor: pointer;
+}
+
+.press-shelf__canvas.is-shelf-dragging,
+.mode-detail .press-shelf__canvas.is-page-dragging,
+.mode-detail .press-shelf__canvas:active {
+  cursor: grabbing;
+}
+
+.mode-detail .press-shelf__canvas,
+.mode-detail .press-shelf__canvas.has-page-hover {
+  cursor: grab;
+  touch-action: none;
+}
+
+.press-shelf.shelf-fallback .press-shelf__canvas {
+  display: none;
+}
+
+/* ---------- Header ---------- */
+
+.press-shelf__header {
+  position: absolute;
+  top: 28px;
+  right: var(--mr-edge);
+  left: var(--mr-edge);
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  pointer-events: none;
+  transition:
+    opacity 520ms var(--shelf-ease),
+    transform 680ms var(--shelf-ease);
+}
+
+.press-shelf__header > * {
+  pointer-events: auto;
+}
+
+.press-shelf__title {
+  margin: 0;
+  font-family: var(--mr-font-display);
+  font-size: clamp(44px, 5.4vw, var(--mr-text-h1));
+  font-weight: var(--mr-weight-display);
+  letter-spacing: var(--mr-track-h1);
+  line-height: 1;
+}
+
+.press-shelf__subtitle {
+  max-width: 34ch;
+  margin: 10px 0 0;
+  color: var(--mr-charcoal);
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-body);
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.press-shelf__index {
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  padding-top: 6px;
+  text-align: right;
+}
+
+/* Labels and metadata use the eyebrow role (Hanken, DESIGN.md), not a mono. */
+.press-shelf__mono,
+.press-shelf__counter,
+.press-shelf__microcopy,
+.press-shelf__detail-eyebrow,
+.press-shelf__meta dt,
+.press-shelf__page-reading span {
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-eyebrow);
+  font-weight: var(--mr-weight-semi);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.press-shelf__archive-link {
+  color: var(--mr-red-deep);
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-sm);
+  font-weight: var(--mr-weight-semi);
+  text-decoration: underline;
+  text-decoration-color: var(--mr-line);
+  text-underline-offset: 3px;
+}
+
+/* ---------- Browse UI ---------- */
+
+.press-shelf__browse {
+  position: absolute;
+  right: var(--mr-edge);
+  bottom: 26px;
+  left: var(--mr-edge);
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(360px, 1.5fr) auto minmax(200px, 1fr);
+  align-items: end;
+  gap: 26px;
+  transition:
+    opacity 400ms var(--shelf-ease),
+    transform 650ms var(--shelf-ease);
+}
+
+.press-shelf__selection {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.press-shelf__counter {
+  padding-top: 8px;
+  color: var(--mr-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.press-shelf__selection-title {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--mr-font-display);
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: var(--mr-weight-display);
+  letter-spacing: var(--mr-track-h2);
+  line-height: 1.02;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.press-shelf__selection-note {
+  max-width: 420px;
+  margin: 8px 0 0;
+  color: var(--mr-charcoal);
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-sm);
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.press-shelf__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+.press-shelf__round {
+  display: grid;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--mr-ink);
+  border-radius: var(--mr-radius-pill);
+  background: var(--mr-white);
+  color: var(--mr-ink);
+  cursor: pointer;
+  place-items: center;
+}
+
+.press-shelf__round svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.press-shelf__round:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.press-shelf__round:focus-visible,
+.press-shelf__marker:focus-visible,
+.press-shelf__item-link:focus-visible {
+  outline: 2px solid var(--mr-ink);
+  outline-offset: 3px;
+}
+
+.press-shelf__index-nav {
+  display: grid;
+  justify-items: end;
+  align-self: end;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.press-shelf__markers {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.press-shelf__marker {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.press-shelf__marker::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: var(--mr-line);
+  content: "";
+  transform: translate(-50%, -50%);
+  transition: width 260ms var(--shelf-ease), height 260ms var(--shelf-ease), background 220ms ease;
+}
+
+.press-shelf__marker:hover::before {
+  background: var(--mr-muted);
+}
+
+.press-shelf__marker[aria-current="true"]::before {
+  width: 28px;
+  height: 6px;
+  border: 1px solid var(--mr-ink);
+  background: var(--shelf-accent);
+}
+
+.press-shelf__microcopy {
+  margin: 0;
+  color: var(--mr-muted);
+  text-align: right;
+}
+
+/* ---------- Detail panel ---------- */
+
+.press-shelf__detail {
+  position: absolute;
+  top: 50%;
+  /* Book + panel stay one centred group, capped at 1440px wide so they fill
+     a laptop screen without drifting apart on very large ones. */
+  right: max(clamp(34px, 4vw, 64px), calc((100% - 1440px) / 2 + 24px));
+  z-index: 4;
+  width: min(36vw, 520px);
+  max-height: calc(100% - 64px);
+  overflow: auto;
+  /* Room inside the scroll box for focus rings and the buttons' hover lift,
+     which overflow: auto would otherwise clip. */
+  padding: 8px;
+  color: var(--mr-ink);
+  opacity: 0;
+  transform: translateY(calc(-50% + 18px));
+  transition:
+    opacity 620ms var(--shelf-ease),
+    transform 620ms var(--shelf-ease);
+  pointer-events: none;
+}
+
+.mode-detail .press-shelf__detail {
+  opacity: 1;
+  transform: translateY(-50%);
+  transition-delay: 300ms;
+  pointer-events: auto;
+}
+
+.mode-detail.is-opening .press-shelf__detail {
+  pointer-events: none;
+}
+
+.mode-detail .press-shelf__browse {
+  opacity: 0;
+  transform: translateY(26px);
+  pointer-events: none;
+}
+
+/* The source dims its small masthead; this header carries a 68px title that
+   would sit behind the open book, so it clears completely. */
+.mode-detail .press-shelf__header {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.mode-detail .press-shelf__header > * {
+  pointer-events: none;
+}
+
+.press-shelf__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.press-shelf__detail-eyebrow {
+  margin: 0 56px 14px 0;
+  color: var(--mr-muted);
+}
+
+.press-shelf__detail-title {
+  max-width: calc(100% - 52px);
+  margin: 0;
+  font-family: var(--mr-font-display);
+  font-size: clamp(40px, 4.2vw, 64px);
+  font-weight: var(--mr-weight-display);
+  letter-spacing: var(--mr-track-h1);
+  line-height: 1;
+}
+
+.press-shelf__detail-deck {
+  margin: 20px 0 0;
+  color: var(--mr-charcoal);
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-body);
+  letter-spacing: -0.02em;
+  line-height: 1.5;
+}
+
+.press-shelf__meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 22px;
+  margin: 24px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--mr-ink);
+}
+
+.press-shelf__meta div {
+  min-width: 0;
+}
+
+.press-shelf__meta .press-shelf__meta-wide {
+  grid-column: 1 / -1;
+}
+
+.press-shelf__meta dt {
+  margin: 0 0 4px;
+  color: var(--mr-muted);
+}
+
+.press-shelf__meta dd {
+  margin: 0;
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-xs);
+  line-height: 1.45;
+}
+
+.press-shelf__pages {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--mr-line);
+}
+
+.press-shelf__page-status {
+  display: grid;
+  min-width: 0;
+  justify-items: center;
+  text-align: center;
+}
+
+.press-shelf__page-reading {
+  display: grid;
+  min-width: 0;
+  width: 100%;
+  gap: 3px;
+  margin: 0;
+}
+
+.press-shelf__page-reading strong {
+  overflow: hidden;
+  font-family: var(--mr-font-display);
+  font-size: var(--mr-text-sm);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.press-shelf__page-reading span {
+  color: var(--mr-muted);
+}
+
+/* Outlets: each one opens the book to its clipping. */
+.press-shelf__outlets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.press-shelf__outlet {
+  padding: 3px 9px;
+  border: 1px solid var(--mr-line);
+  border-radius: var(--mr-radius-chip);
+  background: var(--mr-paper);
+  color: var(--mr-ink);
+  cursor: pointer;
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-xs);
+  line-height: 1.4;
+}
+
+.press-shelf__outlet:hover,
+.press-shelf__outlet[aria-current="true"] {
+  border-color: var(--mr-ink);
+}
+
+.press-shelf__outlet:focus-visible {
+  outline: 2px solid var(--mr-ink);
+  outline-offset: 2px;
+}
+
+.press-shelf__item-link {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--mr-red-deep);
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-sm);
+  font-weight: var(--mr-weight-semi);
+  text-decoration: underline;
+  text-decoration-color: var(--mr-line);
+  text-underline-offset: 3px;
+}
+
+/* ---------- Loading and fallback ---------- */
+
+.press-shelf__loading,
+.press-shelf__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: var(--mr-linen);
+}
+
+.press-shelf__fallback {
+  display: none;
+  padding: 24px;
+  text-align: center;
+}
+
+.press-shelf.shelf-fallback .press-shelf__fallback {
+  display: grid;
+}
+
+.press-shelf.shelf-fallback .press-shelf__browse,
+.press-shelf.shelf-fallback .press-shelf__detail {
+  display: none;
+}
+
+.press-shelf__fallback p {
+  max-width: 44ch;
+  margin: 0 0 12px;
+  color: var(--mr-charcoal);
+  font-family: var(--mr-font-body);
+  font-size: var(--mr-text-body);
+  line-height: 1.5;
+}
+
+.press-shelf__loading-inner {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  color: var(--mr-muted);
+}
+
+.press-shelf__loading-mark {
+  width: 46px;
+  height: 58px;
+  border: 1.5px solid var(--mr-ink);
+  border-radius: 2px 5px 5px 2px;
+  background: var(--mr-yellow);
+  animation: press-shelf-bind 1.6s var(--shelf-ease) infinite alternate;
+}
+
+@keyframes press-shelf-bind {
+  from {
+    transform: rotateY(-8deg) translateY(2px);
+  }
+  to {
+    transform: rotateY(14deg) translateY(-2px);
+  }
+}
+
+.press-shelf__sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ---------- Responsive (source breakpoints) ---------- */
+
+@media (max-width: 880px) {
+  .press-shelf {
+    height: clamp(560px, calc(100svh - 64px), 820px);
+  }
+
+  .press-shelf__header {
+    top: 20px;
+  }
+
+  .press-shelf__subtitle {
+    display: none;
+  }
+
+  .press-shelf__browse {
+    bottom: 18px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 16px;
+  }
+
+  .press-shelf__selection {
+    grid-column: 1 / -1;
+  }
+
+  .press-shelf__actions {
+    justify-content: flex-start;
+  }
+
+  .press-shelf__index-nav {
+    align-self: center;
+    padding-bottom: 0;
+  }
+
+  .press-shelf__detail {
+    top: auto;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    width: auto;
+    max-height: 46%;
+    padding: 20px;
+    border: 1px solid var(--mr-line);
+    border-radius: var(--mr-radius-panel);
+    background: var(--mr-paper);
+    transform: translateY(18px);
+  }
+
+  .mode-detail .press-shelf__detail {
+    transform: translateY(0);
+  }
+
+  .press-shelf__close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .press-shelf__detail-title {
+    font-size: clamp(36px, 10vw, 56px);
+  }
+
+  .press-shelf__detail-deck {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: var(--mr-text-sm);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .press-shelf__meta {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .press-shelf__selection-note,
+  .press-shelf__microcopy {
+    display: none;
+  }
+
+  .press-shelf__header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .press-shelf__index {
+    justify-items: start;
+    padding-top: 0;
+    text-align: left;
+  }
+
+  .press-shelf__title {
+    font-size: 40px;
+  }
+
+  .press-shelf__browse {
+    bottom: 14px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .press-shelf__actions {
+    justify-content: space-between;
+  }
+
+  .press-shelf__index-nav {
+    justify-items: center;
+  }
+
+  .press-shelf__selection {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .press-shelf__counter {
+    padding-top: 5px;
+  }
+
+  .press-shelf__selection-title {
+    font-size: 28px;
+  }
+
+  .press-shelf__detail {
+    max-height: 40%;
+    padding: 16px;
+  }
+
+  .press-shelf__detail-deck {
+    display: none;
+  }
+
+  .press-shelf__detail-title {
+    font-size: 30px;
+  }
+
+  .press-shelf__pages {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .press-shelf__marker {
+    width: 20px;
+  }
+
+  .press-shelf__marker::before {
+    width: 10px;
+  }
+
+  .press-shelf__marker[aria-current="true"]::before {
+    width: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press-shelf *,
+  .press-shelf *::before,
+  .press-shelf *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Archive volume headings open their book on the shelf. */
+.press-archive__volume-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--mr-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.press-archive__volume-link:hover {
+  text-decoration-color: var(--mr-ink);
+}

@@ -324,7 +324,7 @@ function DropIntoFoldersSvg() {
               fontSize="34"
               fontWeight="800"
               fill={INK}
-              fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
+              style={{ fontFamily: "var(--mr-font-display)" }}
             >
               {f.label.replace("/", "")}
               <tspan fill={ACCENT}>/</tspan>
