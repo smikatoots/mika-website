@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import { homeBioLinks } from "@/lib/home-bio-links";
 
+import { HeroPortraitReveal } from "@/components/home/HeroPortraitReveal";
+
 import {
   ConfettiField,
   insideEdge as inside,
@@ -247,23 +249,9 @@ export function HomeLanding() {
             </div>
           </div>
 
-          {/* Photo, framed as a paper cutout with shapes around it */}
+          {/* Illustration framed as a paper cutout; hover reveals the photo */}
           <figure style={{ position: "relative" }}>
-            <Image
-              src="/about-assets/009.jpg"
-              alt="Mika Reyes"
-              width={720}
-              height={900}
-              priority
-              unoptimized
-              className="mr-hero-photo"
-              style={{
-                width: "100%",
-                objectFit: "cover",
-                objectPosition: "center 18%",
-                borderRadius: "var(--mr-radius-card)",
-              }}
-            />
+            <HeroPortraitReveal />
             <ConfettiField items={HERO_PHOTO_CONFETTI} />
           </figure>
         </div>
