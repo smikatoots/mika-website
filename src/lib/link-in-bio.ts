@@ -19,17 +19,12 @@ export const OFFICE_HOURS_PRICE = 150;
  * `src/lib/product-links.ts` — the full catalog stays the source of truth for
  * URLs and descriptions.
  */
-export const FEATURED_LINK_IDS = [
-  "granola",
-  "wispr-flow",
-  "monarch-money",
-] as const;
+export const FEATURED_LINK_IDS = ["stanley", "wispr-flow"] as const;
 
 /** Short, benefit-led blurbs for the bio page. The /links page keeps its own. */
 export const FEATURED_LINK_BLURBS: Record<string, string> = {
-  granola: "I stopped taking meeting notes entirely. 2 months free.",
+  stanley: "My AI head of content. It drafts and plans my posts across socials.",
   "wispr-flow": "I talk instead of type. 3x faster than my keyboard.",
-  "monarch-money": "How I track every dollar without a spreadsheet.",
 };
 
 export const LINK_IN_BIO_SOCIALS = [

@@ -45,6 +45,7 @@ const U = {
   granola: "https://join.granola.ai/t/vhhbzajvu7",
   wisprFlow: "https://wisprflow.ai/r?MIKAELA1",
   cursor: "https://cursor.com/referral?code=W5VDPGO8R3BO",
+  stanley: "https://x.getstanley.ai/r/ds7wyy",
 } as const;
 
 export const productLinks: ProductLink[] = [
@@ -70,6 +71,13 @@ export const productLinks: ProductLink[] = [
     description: "Voice dictation into any text field. One free month of Pro.",
     href: U.wisprFlow,
     categories: ["ai"],
+  },
+  {
+    id: "stanley",
+    name: "Stanley",
+    description: "An AI head of content that drafts and plans posts across your socials.",
+    href: U.stanley,
+    categories: ["ai", "work"],
   },
   {
     id: "cursor",
